@@ -1,0 +1,44 @@
+% SPDX-License-Identifier: Apache-2.0
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesExplPackage{texstage-coordinates-plane}{2026-11-05}{0.1.0}{Coordinate plane example plugin}
+\RequirePackage{texstage}
+\RequirePackage{tikz}
+\tl_new:N \l__coordinates_id_tl
+\tl_new:N \l__coordinates_xmin_tl
+\tl_new:N \l__coordinates_xmax_tl
+\tl_new:N \l__coordinates_ymin_tl
+\tl_new:N \l__coordinates_ymax_tl
+\tl_new:N \l__coordinates_x_tl
+\tl_new:N \l__coordinates_y_tl
+\keys_define:nn { coordinates }
+  {
+    id .tl_set:N = \l__coordinates_id_tl,
+    xmin .tl_set:N = \l__coordinates_xmin_tl,
+    xmax .tl_set:N = \l__coordinates_xmax_tl,
+    ymin .tl_set:N = \l__coordinates_ymin_tl,
+    ymax .tl_set:N = \l__coordinates_ymax_tl,
+    answer-x .tl_set:N = \l__coordinates_x_tl,
+    answer-y .tl_set:N = \l__coordinates_y_tl
+  }
+\NewDocumentEnvironment { coordinatesplane } { O{} m m }
+  {
+    \group_begin:
+    \keys_set:nn { coordinates } {id=point,xmin=-5,xmax=5,ymin=-5,ymax=5,answer-x=3,answer-y=4,#1}
+    \begin{texstagepluginbox}[
+      type=org.example.coordinates.plane,id=\l__coordinates_id_tl,
+      public-json={ {"xmin":\l__coordinates_xmin_tl,"xmax":\l__coordinates_xmax_tl,
+                     "ymin":\l__coordinates_ymin_tl,"ymax":\l__coordinates_ymax_tl} },
+      private-json={ {"x":\l__coordinates_x_tl,"y":\l__coordinates_y_tl} }
+    ]{#2}{#3}
+      \centering
+      \begin{tikzpicture}[x=0.4cm,y=0.4cm]
+        \draw[step=1,gray!35] (\l__coordinates_xmin_tl,\l__coordinates_ymin_tl)
+          grid (\l__coordinates_xmax_tl,\l__coordinates_ymax_tl);
+        \draw[->] (\l__coordinates_xmin_tl,0)--(\l__coordinates_xmax_tl,0) node[right]{$x$};
+        \draw[->] (0,\l__coordinates_ymin_tl)--(0,\l__coordinates_ymax_tl) node[above]{$y$};
+        \texstage_if_mode:nT { solutions }
+          { \fill[blue] (\l__coordinates_x_tl,\l__coordinates_y_tl) circle(3pt); }
+      \end{tikzpicture}
+    \end{texstagepluginbox}
+  }
+  { \group_end: }

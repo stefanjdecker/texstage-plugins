@@ -1,0 +1,24 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{texstage-coordinates-plane}
+\title{Finding a point together}
+\author{Texstage plugin example}
+\begin{document}
+\begin{frame}
+  \titlepage
+  Two independently installed plugins: an interactive plane and a distance engine.
+\end{frame}
+\begin{frame}{Three steps right, four steps up}
+  Start at the origin $(0,0)$. Move three units right, then four units up.
+  On your phone, choose the point where you arrive.
+  \begin{coordinatesplane}[id=walk,answer-x=3,answer-y=4]{0.9\textwidth}{4.5cm}
+  \end{coordinatesplane}
+  \note{Wait for responses. Discuss the two coordinates before revealing the answer.
+  Distance is extra feedback: different points can have the same distance from the origin.}
+\end{frame}
+\begin{frame}{What did the plugins add?}
+  The phone collects a point. The presenter computer calculates its distance.
+  The projector displays the class responses, and the presenter reveals the reference point.
+  \medskip
+  The PDF and PowerPoint versions keep a useful static diagram.
+\end{frame}
+\end{document}

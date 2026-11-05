@@ -1,0 +1,56 @@
+{
+  "manifest_version": 1,
+  "plugin_api": 1,
+  "id": "org.example.coordinates",
+  "version": "0.1.0",
+  "description": "An interactive coordinate plane with private reference coordinates.",
+  "license": "Apache-2.0",
+  "latex_namespace": "coordinates",
+  "latex_exports": {
+    "commands": [],
+    "environments": [
+      "coordinatesplane"
+    ]
+  },
+  "capabilities": {
+    "content_types": {
+      "org.example.coordinates.plane": {
+        "content_api": 1,
+        "build_hook": "plane",
+        "state_hook": "plane",
+        "state_schema": 1,
+        "latex_packages": [
+          "texstage_example_coordinates/latex/texstage-coordinates-plane.sty"
+        ],
+        "evaluations": {
+          "distance": {
+            "engine": "org.example.distance.euclidean"
+          }
+        },
+        "views": {
+          "presenter-overlay": "texstage_example_coordinates/web/overlay.mjs",
+          "projector-overlay": "texstage_example_coordinates/web/overlay.mjs",
+          "presenter-controls": "texstage_example_coordinates/web/controls.mjs",
+          "participant-input": "texstage_example_coordinates/web/participant.mjs"
+        },
+        "messages": {
+          "submit-point": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_example_coordinates/schemas/point.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "exact",
+            "schema": "texstage_example_coordinates/schemas/empty.json"
+          }
+        },
+        "fallback": "static-slide"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "x",
+    "y"
+  ],
+  "properties": {
+    "x": {
+      "type": "number",
+      "minimum": -10000,
+      "maximum": 10000
+    },
+    "y": {
+      "type": "number",
+      "minimum": -10000,
+      "maximum": 10000
+    }
+  },
+  "examples": [
+    {
+      "x": 3,
+      "y": 4
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "manifest_version": 1,
+  "plugin_api": 1,
+  "id": "org.example.distance",
+  "version": "0.1.0",
+  "description": "Distance from the origin, evaluated in a browser worker.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "org.example.distance.euclidean": {
+        "engine_api": 1,
+        "module": "texstage_example_distance/web/distance.mjs",
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "coordinates",
+          "tokens": [
+            ","
+          ]
+        },
+        "canonical_format": "euclidean-distance-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission"
+      }
+    }
+  }
+}
