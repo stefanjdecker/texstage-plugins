@@ -6,9 +6,10 @@ const root = path.resolve(__dirname, ".."), bundle = path.resolve(process.argv[2
 const browserName = process.env.BROWSER || "chromium", output = path.join(root, "artifacts", browserName);
 fs.mkdirSync(output, { recursive: true });
 const profile = fs.mkdtempSync(path.join(output, "profile-"));
+const faultFile = path.join(profile, "test-engine.mjs");
 const port = Number(process.env.TEXSTAGE_TEST_PORT || 18747), base = `http://127.0.0.1:${port}`;
 const server = spawn(process.env.PYTHON || "python", [path.join(__dirname, "serve_example.py"), "--bundle", bundle,
-  "--data", profile, "--port", String(port)], { windowsHide: true, stdio: ["ignore", "pipe", "pipe"] });
+  "--data", profile, "--port", String(port), "--fault-file", faultFile], { windowsHide: true, stdio: ["ignore", "pipe", "pipe"] });
 const log = fs.createWriteStream(path.join(output, "server.log")); server.stdout.pipe(log); server.stderr.pipe(log);
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 (async () => {
@@ -65,44 +66,45 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     await presenter.locator("#next").click();
     await presenter.locator(".presenter-overlay").waitFor({ state: "detached" });
     await phone.locator(".participant-input").waitFor({ state: "detached" });
-    // Fault injection changes only the browser response, never an installed package.
+    // Fault injection changes only the disposable test server's engine response.
+    // Firefox bypasses Playwright's route interception for worker module loads.
     const job = JSON.parse(fs.readFileSync(path.join(profile, "test-context.json")));
     const run = async (candidate = job) => presenter.evaluate(async job => {
       const { PluginEvaluator } = await import("/static/stage/plugin-evaluator.js");
       const evaluator = Object.create(PluginEvaluator.prototype); evaluator.workers = new Set();
       return evaluator.evaluate(job);
     }, candidate);
-    const target = base + job.engine.url;
+    const override = body => fs.writeFileSync(faultFile, body);
+    const restore = () => fs.rmSync(faultFile, {force: true});
     const typed = structuredClone(job);
     typed.engine.result_data_schema = "synthetic/result.json";
     typed.engine.result_contract.data_schema = { type: "object", additionalProperties: false,
       required: ["valid", "order"], properties: {valid: {type:"boolean"},
         order: {type:"array", items:{type:"string"}, uniqueItems:true}} };
-    const inject = async data => ctx.route(target, route => route.fulfill({contentType:"text/javascript",
-      body: 'export const start=()=>({}),load=()=>({}),dispose=()=>{};export function evaluate(){return ' +
-        JSON.stringify({status:"ok",canonical:"schedule",summary:{kind:"text",text:"Analyzed"},data}) + ';}' }));
+    const inject = async data => override( 'export const start=()=>({}),load=()=>({}),dispose=()=>{};export function evaluate(){return ' +
+        JSON.stringify({status:"ok",canonical:"schedule",summary:{kind:"text",text:"Analyzed"},data}) + ';}');
     await inject({valid:true,order:["a","b"]});
     const facts = await run(typed);
-    if (facts.status !== "ok" || !facts.data.valid || facts.data.order.join(",") !== "a,b" || "matches" in facts)
-      throw new Error("Typed engine facts did not survive the real worker and transport");
-    await ctx.unroute(target);
+    if (facts.status !== "ok" || !facts.data?.valid || facts.data.order.join(",") !== "a,b" || "matches" in facts)
+      throw new Error("Typed engine facts did not survive the real worker and transport: " + JSON.stringify(facts));
+    restore();
     await inject({valid:true,order:["a","b"],private:"unintended"});
     if ((await run(typed)).status !== "error") throw new Error("Worker accepted undeclared data fields");
-    await ctx.unroute(target);
+    restore();
     await inject({valid:true,order:["a","b"]});
     if ((await run()).status !== "error") throw new Error("Revision-1 engine accepted undeclared data");
-    await ctx.unroute(target);
-    await ctx.route(target, route => route.fulfill({ contentType: "text/javascript", body:
-      'export const start=()=>({}),load=()=>({}),dispose=()=>{}; export async function evaluate(){await fetch("/api/status");return {status:"ok",canonical:"x",summary:{kind:"text",text:"network"}};}' }));
+    restore();
+    override(
+      'export const start=()=>({}),load=()=>({}),dispose=()=>{}; export async function evaluate(){await fetch("/api/status");return {status:"ok",canonical:"x",summary:{kind:"text",text:"network"}};}');
     if ((await run()).status !== "error") throw new Error("Worker network policy did not block fetch");
-    await ctx.unroute(target);
-    await ctx.route(target, route => route.fulfill({ contentType: "text/javascript", body:
-      'export const start=()=>({}),load=()=>({}),dispose=()=>{}; export function evaluate(){while(true){}}' }));
+    restore();
+    override(
+      'export const start=()=>({}),load=()=>({}),dispose=()=>{}; export function evaluate(){while(true){}}');
     if ((await run()).status !== "timeout") throw new Error("Evaluation budget was not enforced");
-    await ctx.unroute(target);
+    restore();
     if (errors.length) throw new Error(errors.join("\n"));
     const report = { browser: browserName, interactions: true, touch: true, teardown: true, csp: true,
-      timeout: true, typedResults: true, invalidResultsRejected: true, errors };
+      timeout: true, typedResults: true, invalidResultsRejected: true, version: browser.version(), errors };
     fs.writeFileSync(path.join(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
     console.log(JSON.stringify(report));
   } finally { await browser.close(); }

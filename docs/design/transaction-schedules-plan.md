@@ -60,6 +60,10 @@ The design checker passing alone does not satisfy this exit.
 | Capacity and status | `server/plugins.py`, publication scheduling, `plugins/runtime.py`, `plugins/worker.py`, presenter dispatcher | Fair bounded queues, pending status, batch projections and responsive navigation under load |
 | Worker module compatibility | `server/app.py` static worker policy and `web/stage/plugin-evaluator-worker.js` | The real evaluator starts in Chromium, Firefox and WebKit while preserving network and worker restrictions |
 
+Worker module compatibility is now verified locally for both database engines
+and the original example pair; see the [compatibility record](worker-browser-compatibility.md).
+Other classroom host gates remain open.
+
 Paths in the table are relative to `src/texstage/`, except the LaTeX file.
 Extend existing mechanisms; no transaction-specific core modules or routes.
 Preserve API facade laziness, built-in SQL read-only behavior, formats 1/2,

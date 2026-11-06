@@ -351,8 +351,8 @@ provider, and no styles are copied into existing courses.
 
 Typed facts and pre-TeX preparation exist locally. Shared prerequisites are:
 
-- Reproduce and fix Firefox/WebKit module-worker startup under the real policy,
-  preserving network and worker restrictions.
+- Preserve the [verified Firefox/WebKit worker fix](worker-browser-compatibility.md)
+  and its unchanged network and child-worker restrictions.
 - Preserve structured command refusals so clients can distinguish stale answer,
   closed phase and operational failure.
 - Reconcile removed/replaced descriptors and mounts while preserving edits;

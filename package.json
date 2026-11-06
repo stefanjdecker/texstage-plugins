@@ -2,6 +2,13 @@
   "name": "texstage-plugins-conformance",
   "private": true,
   "version": "0.1.0",
-  "scripts": {"test:browser": "node maintenance/browser_conformance.cjs"},
-  "devDependencies": {"playwright": "1.62.1"}
+  "scripts": {
+    "test:browser": "node maintenance/browser_conformance.cjs",
+    "build:workers": "node maintenance/build_worker_modules.cjs",
+    "check:workers": "node maintenance/build_worker_modules.cjs --check"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "esbuild": "0.28.2"
+  }
 }

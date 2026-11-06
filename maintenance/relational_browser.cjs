@@ -15,7 +15,7 @@ assert(fs.readFileSync(path.join(config.host_root, "server/app.py"), "utf8").inc
 const prefix = "/plugins/" + config.payload + "/";
 const files = new Map();
 for (const name of ["stage/plugin-evaluator.js", "stage/plugin-evaluator-worker.js",
-                    "stage/plugin-contracts.js", "engines/common.js"]) {
+                    "stage/plugin-contracts.js", "stage/plugin-contracts-worker.mjs", "engines/common.js"]) {
   files.set("/static/" + name, path.join(config.host_root, "web", name));
 }
 files.set(prefix + config.job.engine.module, fileURLToPath(config.module));
@@ -26,6 +26,8 @@ const fetched = new Set();
 const runInfo = {browser: process.env.BROWSER || "chromium", provider_payload: config.payload,
   host_result_schema: config.job.engine.result_contract.data_schema_digest, worker_csp: workerCSP};
 const diagnostics = [];
+const {securityFixtures, checkWorkerSecurity} = require("./plugin_worker_security.cjs");
+const fixtures = securityFixtures();
 const server = http.createServer((req, res) => {
   const pathname = new URL(req.url, "http://localhost").pathname;
   if (pathname === "/") {
@@ -33,6 +35,7 @@ const server = http.createServer((req, res) => {
     return res.end("<!doctype html><meta charset=utf-8><title>Relational engine worker check</title>");
   }
   if (pathname === "/favicon.ico") { res.writeHead(204); return res.end(); }
+  if (fixtures.handle(req, res)) return;
   if (!files.has(pathname)) { res.writeHead(404); return res.end(); }
   fetched.add(pathname);
   const headers = {"Content-Type": "application/javascript", "Cache-Control": "no-store"};
@@ -40,6 +43,8 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, headers);
   res.end(fs.readFileSync(files.get(pathname)));
 });
+
+server.on("upgrade", fixtures.upgrade);
 
 (async () => {
   let browser;
@@ -122,7 +127,8 @@ const server = http.createServer((req, res) => {
     assert(fetched.has(prefix + config.job.engine.assets[0]));
     assert.deepEqual(external, []);
     assert.deepEqual(errors, []);
-    const report = {...runInfo, passed: true, samples: rows.length, max_elapsed_ms: Math.max(...rows.map(r => r.elapsed_ms)),
+    const security = await checkWorkerSecurity({page, base, fixtures, template: config.job, engine, request: requests[0]});
+    const report = {...runInfo, security, passed: true, samples: rows.length, max_elapsed_ms: Math.max(...rows.map(r => r.elapsed_ms)),
       actual_host_deadline_ms: 2000, rows};
     fs.writeFileSync(path.join(output, "browser-" + family + ".json"), JSON.stringify(report, null, 2) + "\n");
     console.log(JSON.stringify({...report, rows: undefined}, null, 2));

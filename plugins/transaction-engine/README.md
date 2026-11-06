@@ -21,6 +21,13 @@ those unpublished changes; record the exact host wheel hash.
 
 From the collection root:
 
+The checked-in worker entry is built from the modular sources using pinned
+esbuild. Before packaging edited JavaScript, run `npm ci --ignore-scripts` and
+`npm run build:workers`. CI checks freshness with `npm run check:workers`.
+Python wheel/sdist builds and end-user installs consume the committed output;
+they do not invoke Node. Do not edit the generated `*.worker.mjs` files by hand.
+Both the source modules and bundle remain hashed provider resources.
+
 ```console
 python maintenance/build_wheels.py --package transaction-engine
 python -m pip install --no-deps dist/texstage_transaction_engine-0.1.0-py3-none-any.whl
@@ -125,9 +132,11 @@ Select the other engines with `BROWSER=firefox` or `BROWSER=webkit` (PowerShell:
 an installed Chromium browser. JSON reports include the actual browser version,
 provider/schema identities, worker policy, deadlines and outcomes.
 
-Known host compatibility gate: the current H1/H2 worker policy blocks module
-imports in Firefox and WebKit before this engine starts. Chromium passes the
-same check. The probe reports this as a failure; it does not relax the policy.
-Resolve that host issue before a cross-browser classroom release.
+The matching host's worker compatibility fix and this wheel's bundled entry
+pass Chrome, Firefox and WebKit with the original policy intact. The
+[compatibility record](../../docs/design/worker-browser-compatibility.md) identifies
+the tested host/provider artifacts and security probes. Earlier host wheels still
+fail; use the matching fixed host. This resolves engine loading, not the pending
+classroom interfaces or physical-device/capacity gates.
 
 License: [Apache-2.0](LICENSE).

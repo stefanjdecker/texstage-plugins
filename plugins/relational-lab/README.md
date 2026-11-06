@@ -39,6 +39,13 @@ Use the host wheel/payload recorded with the validation evidence.
 
 From the collection root:
 
+The checked-in worker entry is built from the modular sources using pinned
+esbuild. Before packaging edited JavaScript, run `npm ci --ignore-scripts` and
+`npm run build:workers`. CI checks freshness with `npm run check:workers`.
+Python wheel/sdist builds and end-user installs consume the committed output;
+they do not invoke Node. Do not edit the generated `*.worker.mjs` files by hand.
+Both the source modules and bundle remain hashed provider resources.
+
 ```sh
 python maintenance/build_wheels.py --package relational-lab
 python -m pip install --no-deps dist/texstage_relational_lab-0.1.0-py3-none-any.whl
@@ -63,7 +70,11 @@ Select `BROWSER=firefox` or `BROWSER=webkit` using the current shell. On PowerSh
 use `$env:BROWSER='firefox'`. For an installed Chrome/Edge browser, set
 `TEXSTAGE_BROWSER_CHANNEL` to `chrome` or `msedge`. The harness serves the installed
 host modules with the actual worker policy; it does not relax that policy.
-The validation record distinguishes engine passes from host startup failures.
+The [worker compatibility record](../../docs/design/worker-browser-compatibility.md)
+supersedes the earlier Firefox/WebKit startup failures: both now pass with the
+fixed matching host and bundled engine, without widening the worker policy.
+The probe actively checks blocked connections, nested workers and dynamic code,
+invalid typed results, timeout termination and recovery.
 
 Keep these tests separate from the original coordinate/distance pair's exact
 provider tests. The workflow has independent domain/package, browser and Windows
@@ -110,7 +121,8 @@ binding. Deck uploads never install or enable code.
 Prepared authoring, the style wrapper, static exports, lesson state, grading,
 role-filtered views, the phone tree editor and cooperative local preview UI are
 not implemented. The engine's synchronous pure modules are not yet a responsive
-phone preview controller. Firefox/WebKit host-worker compatibility, physical-phone
-checks and the 64-participant measurements remain release gates.
+phone preview controller. Engine worker compatibility now passes Chrome, Firefox
+and WebKit with the fixed host. Physical-phone interaction checks and the
+64-participant measurements remain release gates.
 
 No catalog release is published by this milestone.

@@ -9,7 +9,7 @@
     "engines": {
       "io.github.stefanjdecker.transactionengine.schedule": {
         "engine_api": 1,
-        "module": "texstage_transaction_engine/web/schedule.mjs",
+        "module": "texstage_transaction_engine/web/schedule.worker.mjs",
         "assets": ["texstage_transaction_engine/web/identity.mjs"],
         "seed_types": {".json": "application/json"},
         "input": {"mode": "code", "label": "Operation order (JSON)", "tokens": ["order"]},

@@ -1,5 +1,9 @@
 # Relational Algebra Lab: R0/R2 validation
 
+This historical record retains the original artifact hashes and browser failures.
+The subsequent [worker compatibility fix](worker-browser-compatibility.md) records
+passing Firefox/WebKit results for new host and plugin wheels under the same CSP.
+
 Local Windows validation, 2026-11-06. This is an implemented engine slice,
 not a released classroom activity. The [machine-readable record](relational-algebra-r2-validation.json)
 contains artifact/source hashes, exact host identity and browser diagnostics.

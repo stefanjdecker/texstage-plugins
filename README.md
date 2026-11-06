@@ -69,6 +69,17 @@ operator forms and checked rewrite certificates in an installable wheel. The
 independent Python model, installed-wheel checks and browser limits.
 The lesson type, LaTeX command and phone/presenter interfaces remain pending.
 
+## Worker browser compatibility
+
+The transaction and relational engines now use generated, self-contained ES module
+entries. The matching Texstage worker fix loads them in Chrome, Firefox and WebKit
+without widening its security policy. See the
+[validation and reproduction record](docs/design/worker-browser-compatibility.md)
+for exact artifacts, active security checks and remaining classroom gates.
+When changing engine source modules, run `npm ci --ignore-scripts` followed by
+`npm run build:workers`; commit the generated files. `npm run check:workers`
+verifies they match source. No bundler is needed by someone installing the wheels.
+
 ## Build and try
 
 First install the experimental Texstage branch's wheel and locked development

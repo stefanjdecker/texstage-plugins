@@ -1,5 +1,9 @@
 # Transaction engine M2: local validation
 
+This historical record retains the original hashes and browser failures. The
+subsequent [worker compatibility record](worker-browser-compatibility.md) covers
+the fixed matching host and new engine bundles passing all three browsers.
+
 Recorded on 2026-11-06. The independent engine is implemented; the transaction
 lesson package and its interfaces are still pending. This is local engineering
 evidence, not a classroom or release approval.

@@ -3,7 +3,9 @@
 Status: engine slice implemented, 2026-11-06. The
 [v1 contract](relational-algebra-contract.md) and
 [validation record](relational-algebra-r2-validation.md) cover the R0 schemas and
-R2 algebra/certificate engine. R1 host work and R3–R6 classroom integration remain.
+R2 algebra/certificate engine. R1 worker startup is now fixed and tested under
+the unchanged CSP; see [the compatibility record](worker-browser-compatibility.md).
+The other R1 host gates and R3–R6 classroom integration remain.
 The [design](relational-algebra.md) specifies the teaching modes and target behavior.
 
 ## Delivery scope and dependencies
@@ -115,7 +117,7 @@ adds installed-wheel and host-contract evidence; classroom gates remain open.
 
 | Generic work | Active host locations | Evidence required |
 | --- | --- | --- |
-| Module-worker startup and policy | `src/texstage/server/app.py`, `web/stage/plugin-evaluator-worker.js` | Actual evaluator starts in Chromium/Firefox/WebKit; network restrictions and worker cleanup still hold |
+| Module-worker startup and policy | `web/stage/plugin-evaluator-worker.js` and generated host/provider modules | Passed locally in Chrome, Firefox and WebKit with unchanged CSP; active connection/child-worker restrictions, result validation, timeouts and cleanup verified in the compatibility record |
 | Structured command outcomes | `src/texstage/web/shared/plugins.js`, dispatch/server boundary | Closed/stale/capacity/unavailable outcomes remain distinguishable without parsing exception prose |
 | Mount reconciliation | `src/texstage/web/shared/plugins.js` | Removed modules/descriptors destroy old mounts; replacements do not keep obsolete item context; asynchronous mounts cannot reappear |
 | Fair bounded evaluation/status | `src/texstage/plugins/runtime.py`, `worker.py`, `server/plugins.py` and presenter dispatch | Measured pilot workload, bounded replacement jobs and useful pending/unavailable status |
@@ -248,7 +250,7 @@ entry under the user's release authorization. No course migration is implicit.
 ## Next implementation task
 
 Implement R3's prepared authoring and R4's lesson state using the frozen contract
-and the engine facts. Address the reproduced generic worker-policy issue in R1
-before claiming cross-browser support. Keep the transaction design and existing
+and the engine facts. Preserve the fixed worker loading and its security probes;
+close the remaining R1 gates before a classroom release. Keep the transaction design and existing
 course environments intact. R5's visual editor follows the shared authoring,
 state and result contracts.

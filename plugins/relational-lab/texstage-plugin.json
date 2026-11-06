@@ -9,7 +9,7 @@
     "engines": {
       "io.github.stefanjdecker.relationallab.algebra": {
         "engine_api": 1,
-        "module": "texstage_relational_lab/web/engine.mjs",
+        "module": "texstage_relational_lab/web/engine.worker.mjs",
         "assets": [
           "texstage_relational_lab/web/identity.mjs",
           "texstage_relational_lab/web/validation.mjs",
