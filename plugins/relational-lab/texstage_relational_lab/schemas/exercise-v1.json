@@ -1,0 +1,688 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 12
+    },
+    "index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15
+    },
+    "literal": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 24
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "operand": {
+      "oneOf": [
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "a"
+            },
+            {
+              "$ref": "#/$defs/id"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "v"
+            },
+            {
+              "$ref": "#/$defs/literal"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      ]
+    },
+    "predicate": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "enum": [
+              "eq",
+              "ne",
+              "lt",
+              "le",
+              "gt",
+              "ge"
+            ]
+          },
+          {
+            "$ref": "#/$defs/operand"
+          },
+          {
+            "$ref": "#/$defs/operand"
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true
+    },
+    "node": {
+      "oneOf": [
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "rel"
+            },
+            {
+              "$ref": "#/$defs/id"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "select"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/predicate"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "project"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/names"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "rename"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "$ref": "#/$defs/id"
+                  },
+                  {
+                    "$ref": "#/$defs/id"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 1,
+              "maxItems": 12
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "product"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/index"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "union"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/index"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "difference"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/index"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "join"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/index"
+            },
+            {
+              "$ref": "#/$defs/predicate"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        }
+      ]
+    },
+    "tree": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule",
+        "path"
+      ],
+      "properties": {
+        "rule": {
+          "enum": [
+            "split-select",
+            "push-select-left",
+            "push-select-right",
+            "product-to-join",
+            "collapse-project"
+          ]
+        },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 0,
+          "maxItems": 7
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/step"
+      },
+      "minItems": 0,
+      "maxItems": 8
+    },
+    "column": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/id"
+        },
+        {
+          "enum": [
+            "int",
+            "text",
+            "bool"
+          ]
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "header": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/column"
+      },
+      "minItems": 1,
+      "maxItems": 12
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "id",
+        "title",
+        "prompt",
+        "relations",
+        "instances",
+        "task",
+        "initial_tree",
+        "reference_tree"
+      ],
+      "properties": {
+        "format": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en",
+            "de"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            }
+          }
+        },
+        "prompt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en",
+            "de"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            }
+          }
+        },
+        "relations": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 4,
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]{0,11}$"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/column"
+            },
+            "minItems": 1,
+            "maxItems": 6
+          }
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "visibility",
+              "tables"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "visibility": {
+                "enum": [
+                  "public",
+                  "private"
+                ]
+              },
+              "tables": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 4,
+                "propertyNames": {
+                  "pattern": "^[a-z][a-z0-9_]{0,11}$"
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/literal"
+                    },
+                    "minItems": 1,
+                    "maxItems": 6
+                  },
+                  "minItems": 0,
+                  "maxItems": 12
+                }
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 4
+        },
+        "task": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "allowed_operators",
+            "expected_header",
+            "feedback"
+          ],
+          "properties": {
+            "mode": {
+              "const": "construct"
+            },
+            "allowed_operators": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "rel",
+                  "select",
+                  "project",
+                  "rename",
+                  "product",
+                  "join",
+                  "union",
+                  "difference"
+                ]
+              },
+              "minItems": 1,
+              "maxItems": 8,
+              "uniqueItems": true
+            },
+            "expected_header": {
+              "$ref": "#/$defs/header"
+            },
+            "feedback": {
+              "const": "on-reveal"
+            }
+          }
+        },
+        "initial_tree": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "reference_tree": {
+          "$ref": "#/$defs/tree"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "id",
+        "title",
+        "prompt",
+        "relations",
+        "instances",
+        "task",
+        "baseline_tree"
+      ],
+      "properties": {
+        "format": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en",
+            "de"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            }
+          }
+        },
+        "prompt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "en",
+            "de"
+          ],
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            }
+          }
+        },
+        "relations": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 4,
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]{0,11}$"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/column"
+            },
+            "minItems": 1,
+            "maxItems": 6
+          }
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "visibility",
+              "tables"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "visibility": {
+                "enum": [
+                  "public",
+                  "private"
+                ]
+              },
+              "tables": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 4,
+                "propertyNames": {
+                  "pattern": "^[a-z][a-z0-9_]{0,11}$"
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/literal"
+                    },
+                    "minItems": 1,
+                    "maxItems": 6
+                  },
+                  "minItems": 0,
+                  "maxItems": 12
+                }
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 4
+        },
+        "task": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "allowed_operators",
+            "allowed_rules",
+            "goal",
+            "feedback"
+          ],
+          "properties": {
+            "mode": {
+              "const": "rewrite"
+            },
+            "allowed_operators": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "rel",
+                  "select",
+                  "project",
+                  "rename",
+                  "product",
+                  "join",
+                  "union",
+                  "difference"
+                ]
+              },
+              "minItems": 1,
+              "maxItems": 8,
+              "uniqueItems": true
+            },
+            "allowed_rules": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "split-select",
+                  "push-select-left",
+                  "push-select-right",
+                  "product-to-join",
+                  "collapse-project"
+                ]
+              },
+              "minItems": 1,
+              "maxItems": 5,
+              "uniqueItems": true
+            },
+            "goal": {
+              "const": "reduce-public-materialization"
+            },
+            "feedback": {
+              "const": "on-reveal"
+            }
+          }
+        },
+        "baseline_tree": {
+          "$ref": "#/$defs/tree"
+        }
+      }
+    }
+  ]
+}

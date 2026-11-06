@@ -82,6 +82,25 @@ def test_geometry_and_loaded_style_are_verified(world):
         verify_styles(catalog, recorder, root)
 
 
+def test_actor_scoped_correlations_in_installed_coordinate_wheel(world, tmp_path):
+    _, _, catalog, result = world
+    bundle = load_bundle(result.bundle, catalog=catalog)
+    runtime = Runtime(tmp_path / "actors.sqlite3", catalog)
+    try:
+        runtime.ensure("session", TYPE, "walk", {"public": bundle.items[TYPE]["walk"],
+                       **bundle.keys["items"][TYPE]["walk"]})
+        runtime.activate("session", {(TYPE, "walk")})
+        command = {"type": TYPE, "item": "walk", "operation": "submit-point", "epoch": 1,
+                   "expected_revision": 1, "request_id": "same-request-from-two-phones", "payload": {"x": 3, "y": 4}}
+        a = runtime.command("session", "alice", "participant", command)
+        b = runtime.command("session", "bob", "participant", command)
+        assert a["accepted"] and b["accepted"] and set(a["jobs"]).isdisjoint(b["jobs"])
+        assert runtime.command("session", "alice", "participant", command) == a
+        assert len(runtime.lease("session", "presenter")) == 2
+    finally:
+        runtime.close()
+
+
 def recv(ws, kind, condition=lambda m: True):
     for _ in range(100):
         message = ws.receive_json()

@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-06",
+  "scope": "Design fixtures only; no runtime provider, UI, CI or capacity claim",
+  "expected_cases_checked": 14,
+  "cases": [
+    "late-filter-valid",
+    "early-filter-valid",
+    "missing-open-filter",
+    "missing-topic-filter",
+    "overfit-visible-name",
+    "attribute-removed-too-early",
+    "union-is-a-set",
+    "difference-left",
+    "difference-reversed",
+    "rename-then-product",
+    "colliding-product",
+    "incompatible-union",
+    "empty-input-keeps-header",
+    "projection-removes-duplicates"
+  ],
+  "rewrite_steps_checked": 5,
+  "rewrite_instances_checked_per_step": 4,
+  "invalid_pushdown_rejected": true,
+  "independent_sqlite_cross_checks": 4,
+  "checker": "maintenance/check_relational_design.py",
+  "checker_sha256": "70f8c0f39d186e08a15248968c4e646ee9b6aba11660a41267ac52ba1cdc5f1c",
+  "python": "3.14.4",
+  "sqlite": "3.50.4",
+  "late_filter_intermediate_cells": 83,
+  "early_filter_intermediate_cells": 51,
+  "maximum_example_answer_bytes": 297,
+  "source_sha256": {
+    "construct.exercise.json": "3b9ddf08d5fe499386800e5e9c6dc6a2798a676a34ab3dfe5ab77073a0fe8b48",
+    "rewrite.exercise.json": "3dcd7aa8f9928fd5ae0575fbe291dc946bd836ce2733b01c026b2cdbedee0be6",
+    "expected-cases.json": "abce621280c38a3bab905ece4a9fe7fa48c7fe602a402d4adb04a1e166fd32aa"
+  },
+  "not_checked": [
+    "Complete JSON schemas",
+    "Maximum bound combinations",
+    "Browser/worker integration",
+    "Installed wheels",
+    "Live state and privacy",
+    "Phone UI",
+    "64-participant workload"
+  ]
+}

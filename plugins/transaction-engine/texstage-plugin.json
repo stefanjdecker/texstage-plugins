@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.transactionengine",
+  "version": "0.1.0",
+  "description": "Bounded transaction schedules: captured reads, direct conflicts and conflict-serializability certificates.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.transactionengine.schedule": {
+        "engine_api": 1,
+        "module": "texstage_transaction_engine/web/schedule.mjs",
+        "assets": ["texstage_transaction_engine/web/identity.mjs"],
+        "seed_types": {".json": "application/json"},
+        "input": {"mode": "code", "label": "Operation order (JSON)", "tokens": ["order"]},
+        "canonical_format": "schedule-analysis-v1",
+        "summary_kinds": ["text"],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_transaction_engine/schemas/analysis-result.json"
+      }
+    }
+  }
+}

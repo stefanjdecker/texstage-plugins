@@ -67,12 +67,31 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     await phone.locator(".participant-input").waitFor({ state: "detached" });
     // Fault injection changes only the browser response, never an installed package.
     const job = JSON.parse(fs.readFileSync(path.join(profile, "test-context.json")));
-    const run = async () => presenter.evaluate(async job => {
+    const run = async (candidate = job) => presenter.evaluate(async job => {
       const { PluginEvaluator } = await import("/static/stage/plugin-evaluator.js");
       const evaluator = Object.create(PluginEvaluator.prototype); evaluator.workers = new Set();
       return evaluator.evaluate(job);
-    }, job);
+    }, candidate);
     const target = base + job.engine.url;
+    const typed = structuredClone(job);
+    typed.engine.result_data_schema = "synthetic/result.json";
+    typed.engine.result_contract.data_schema = { type: "object", additionalProperties: false,
+      required: ["valid", "order"], properties: {valid: {type:"boolean"},
+        order: {type:"array", items:{type:"string"}, uniqueItems:true}} };
+    const inject = async data => ctx.route(target, route => route.fulfill({contentType:"text/javascript",
+      body: 'export const start=()=>({}),load=()=>({}),dispose=()=>{};export function evaluate(){return ' +
+        JSON.stringify({status:"ok",canonical:"schedule",summary:{kind:"text",text:"Analyzed"},data}) + ';}' }));
+    await inject({valid:true,order:["a","b"]});
+    const facts = await run(typed);
+    if (facts.status !== "ok" || !facts.data.valid || facts.data.order.join(",") !== "a,b" || "matches" in facts)
+      throw new Error("Typed engine facts did not survive the real worker and transport");
+    await ctx.unroute(target);
+    await inject({valid:true,order:["a","b"],private:"unintended"});
+    if ((await run(typed)).status !== "error") throw new Error("Worker accepted undeclared data fields");
+    await ctx.unroute(target);
+    await inject({valid:true,order:["a","b"]});
+    if ((await run()).status !== "error") throw new Error("Revision-1 engine accepted undeclared data");
+    await ctx.unroute(target);
     await ctx.route(target, route => route.fulfill({ contentType: "text/javascript", body:
       'export const start=()=>({}),load=()=>({}),dispose=()=>{}; export async function evaluate(){await fetch("/api/status");return {status:"ok",canonical:"x",summary:{kind:"text",text:"network"}};}' }));
     if ((await run()).status !== "error") throw new Error("Worker network policy did not block fetch");
@@ -82,7 +101,8 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     if ((await run()).status !== "timeout") throw new Error("Evaluation budget was not enforced");
     await ctx.unroute(target);
     if (errors.length) throw new Error(errors.join("\n"));
-    const report = { browser: browserName, interactions: true, touch: true, teardown: true, csp: true, timeout: true, errors };
+    const report = { browser: browserName, interactions: true, touch: true, teardown: true, csp: true,
+      timeout: true, typedResults: true, invalidResultsRejected: true, errors };
     fs.writeFileSync(path.join(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
     console.log(JSON.stringify(report));
   } finally { await browser.close(); }

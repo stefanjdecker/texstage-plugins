@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transaction schedule analysis v1",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 12
+    },
+    "transaction": {
+      "enum": [
+        "T1",
+        "T2",
+        "T3"
+      ]
+    },
+    "value": {
+      "type": "integer",
+      "minimum": -1120000,
+      "maximum": 1120000
+    },
+    "valid": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "schedule-analysis-v1"
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "valid": {
+          "const": true
+        },
+        "vertices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/transaction"
+          },
+          "minItems": 2,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "final": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 3,
+          "additionalProperties": {
+            "$ref": "#/$defs/value"
+          }
+        },
+        "reads": {
+          "type": "object",
+          "maxProperties": 12,
+          "additionalProperties": {
+            "$ref": "#/$defs/value"
+          }
+        },
+        "trace": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "operation": {
+                "$ref": "#/$defs/id"
+              },
+              "value": {
+                "$ref": "#/$defs/value"
+              }
+            },
+            "required": [
+              "operation"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 4,
+          "maxItems": 15
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "$ref": "#/$defs/transaction"
+              },
+              "to": {
+                "$ref": "#/$defs/transaction"
+              },
+              "witnesses": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 1,
+                "maxItems": 48,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "from",
+              "to",
+              "witnesses"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 6
+        },
+        "acyclic": {
+          "type": "boolean"
+        },
+        "serial_order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/transaction"
+          },
+          "minItems": 0,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "cycle": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/transaction"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "format",
+        "exercise",
+        "order",
+        "valid",
+        "vertices",
+        "final",
+        "reads",
+        "trace",
+        "edges",
+        "acyclic",
+        "serial_order",
+        "cycle"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "acyclic": {
+                  "const": true
+                },
+                "serial_order": {
+                  "minItems": 2
+                },
+                "cycle": {
+                  "maxItems": 0
+                }
+              }
+            },
+            {
+              "properties": {
+                "acyclic": {
+                  "const": false
+                },
+                "serial_order": {
+                  "maxItems": 0
+                },
+                "cycle": {
+                  "minItems": 3
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "invalid": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "schedule-analysis-v1"
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "valid": {
+          "const": false
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "unknown-operation",
+              "duplicate-operation",
+              "missing-operation",
+              "program-order"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "format",
+        "exercise",
+        "order",
+        "valid",
+        "reasons"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/valid"
+    },
+    {
+      "$ref": "#/$defs/invalid"
+    }
+  ]
+}

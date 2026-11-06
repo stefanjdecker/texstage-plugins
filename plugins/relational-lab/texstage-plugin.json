@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.relationallab",
+  "version": "0.1.0",
+  "description": "Bounded set relational algebra and checked query-tree rewrite certificates; engine milestone.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.relationallab.algebra": {
+        "engine_api": 1,
+        "module": "texstage_relational_lab/web/engine.mjs",
+        "assets": [
+          "texstage_relational_lab/web/identity.mjs",
+          "texstage_relational_lab/web/validation.mjs",
+          "texstage_relational_lab/web/algebra.mjs",
+          "texstage_relational_lab/web/rewrites.mjs"
+        ],
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "Query tree or rewrite steps (JSON)",
+          "tokens": [
+            "tree",
+            "steps"
+          ]
+        },
+        "canonical_format": "relational-analysis-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_relational_lab/schemas/analysis-result-v1.json"
+      }
+    }
+  }
+}

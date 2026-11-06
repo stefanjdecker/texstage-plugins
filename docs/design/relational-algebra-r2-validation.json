@@ -1,0 +1,682 @@
+{
+  "date": "2026-11-06",
+  "scope": "R0/R2 engine slice; no lesson, UI, authoring or classroom-capacity claim",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "provider": {
+    "id": "io.github.stefanjdecker.relationallab",
+    "version": "0.1.0",
+    "payload": "30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f"
+  },
+  "result_schema_sha256": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+  "artifacts": {
+    "wheel": {
+      "filename": "texstage_relational_lab-0.1.0-py3-none-any.whl",
+      "sha256": "b66ce2495193f95c4c9c1c17082cf8c114ba32164d5ba04de80fab43f300960d"
+    },
+    "sdist": {
+      "filename": "texstage_relational_lab-0.1.0.tar.gz",
+      "sha256": "8d30e1ad8e2a24b91a1c3c7065c4c5cc0a876487d80d8dbb764c135fb1579f7b"
+    },
+    "sdist_payload_parity": true
+  },
+  "host": {
+    "source_head": "37b50ed9fa7edf22e60c62d67c9d75f4bdcd73f5",
+    "unpublished_working_changes": true,
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "wheel_sha256": "ee86bcb875bd6cc042fd01991c25dbe335e2aba40c3dc1ccc1173281d2d91437",
+    "installed_payload_sha256": "22c2681862ade087ebf8655bc28c202c3da2437c98aed5feb7fa851ea3061c76",
+    "source_package_files_matched": 145,
+    "packaged_only_files": [
+      "latex/texactivity.sty",
+      "latex/texquiz.sty",
+      "latex/texstage.sty",
+      "latex/texvideo.sty"
+    ]
+  },
+  "engine_tests": {
+    "tests": "48",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "46.659"
+  },
+  "original_pair_tests": {
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "17.782"
+  },
+  "tiny_domain_cases": {
+    "union_difference": 128,
+    "selection_rewrites": 64,
+    "product_join_rewrites": 64,
+    "projection_collapse": 16
+  },
+  "finite_library_checks": {
+    "hand_cases": 14,
+    "sqlite_instances": 4,
+    "worked_certificate_steps": 5
+  },
+  "installed_probe": {
+    "cases": 4,
+    "max_evaluation_ms": 10.756599999999999,
+    "javascript_and_python_contracts": true,
+    "without_webcrypto": true
+  },
+  "coexistence": {
+    "providers": [
+      "io.github.stefanjdecker.relationallab",
+      "io.github.stefanjdecker.transactionengine",
+      "org.example.coordinates",
+      "org.example.distance"
+    ],
+    "resource_verification": true,
+    "relational_probe_cases": 4,
+    "transaction_probe_cases": 4
+  },
+  "browsers": [
+    {
+      "browser": "chromium",
+      "provider_payload": "30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f",
+      "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "156.0.8078.80",
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 35.19999998807907,
+      "actual_host_deadline_ms": 2000,
+      "rows": [
+        {
+          "result": {
+            "status": "ok",
+            "key": "b95e76d6749f0558",
+            "namespace": "1ccda671a66fa1b80c9e2642e32d09d4e18205bfaa9c21c7e5c81d36afb257e8",
+            "summary": {
+              "kind": "text",
+              "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+            },
+            "data": {
+              "format": "relational-analysis-v1",
+              "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+              "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+              "mode": "construct",
+              "valid": true,
+              "fixtures": [
+                {
+                  "id": "closed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                },
+                {
+                  "id": "renamed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                },
+                {
+                  "id": "shown",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                },
+                {
+                  "id": "topics",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                }
+              ],
+              "public": {
+                "trace": [
+                  [
+                    0,
+                    3,
+                    3
+                  ],
+                  [
+                    1,
+                    4,
+                    4
+                  ],
+                  [
+                    2,
+                    4,
+                    7
+                  ],
+                  [
+                    3,
+                    3,
+                    2
+                  ],
+                  [
+                    4,
+                    4,
+                    9
+                  ],
+                  [
+                    5,
+                    2,
+                    9
+                  ],
+                  [
+                    6,
+                    1,
+                    1
+                  ]
+                ],
+                "cells": 83
+              }
+            }
+          },
+          "elapsed_ms": 35.19999998807907,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "ok",
+            "key": "a942cb55adbb408e",
+            "namespace": "1ccda671a66fa1b80c9e2642e32d09d4e18205bfaa9c21c7e5c81d36afb257e8",
+            "summary": {
+              "kind": "text",
+              "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+            },
+            "data": {
+              "format": "relational-analysis-v1",
+              "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+              "answer": "f79d0acecf2d5b3bfa86a23f65c990649415768b7bbff572f3b2e1346863912c",
+              "mode": "construct",
+              "valid": true,
+              "fixtures": [
+                {
+                  "id": "closed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                },
+                {
+                  "id": "renamed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                },
+                {
+                  "id": "shown",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                },
+                {
+                  "id": "topics",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                }
+              ],
+              "public": {
+                "trace": [
+                  [
+                    0,
+                    3,
+                    3
+                  ],
+                  [
+                    1,
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    4,
+                    4
+                  ],
+                  [
+                    3,
+                    3,
+                    4
+                  ],
+                  [
+                    4,
+                    2,
+                    7
+                  ],
+                  [
+                    5,
+                    3,
+                    2
+                  ],
+                  [
+                    6,
+                    2,
+                    9
+                  ],
+                  [
+                    7,
+                    1,
+                    1
+                  ]
+                ],
+                "cells": 51
+              }
+            }
+          },
+          "elapsed_ms": 27.30000001192093,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "ok",
+            "key": "cd7398a84a265ff1",
+            "namespace": "1ccda671a66fa1b80c9e2642e32d09d4e18205bfaa9c21c7e5c81d36afb257e8",
+            "summary": {
+              "kind": "text",
+              "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+            },
+            "data": {
+              "format": "relational-analysis-v1",
+              "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+              "answer": "e333dd2a023308ea439f3aad046c32d080d7350ec1a284971ad41022bff126ef",
+              "mode": "construct",
+              "valid": true,
+              "fixtures": [
+                {
+                  "id": "closed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                },
+                {
+                  "id": "renamed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                },
+                {
+                  "id": "shown",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                },
+                {
+                  "id": "topics",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                }
+              ],
+              "public": {
+                "trace": [
+                  [
+                    0,
+                    3,
+                    2
+                  ],
+                  [
+                    1,
+                    1,
+                    2
+                  ],
+                  [
+                    2,
+                    1,
+                    1
+                  ]
+                ],
+                "cells": 3
+              }
+            }
+          },
+          "elapsed_ms": 23.19999998807907,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "ok",
+            "key": "cdc00119cb24aa99",
+            "namespace": "b4fc28f712c19f62f7c66cec210e442c1bbfe08a3ef87158acbec3fafce6fe54",
+            "summary": {
+              "kind": "text",
+              "text": "The rewrite certificate is verified; this is not a runtime cost estimate."
+            },
+            "data": {
+              "format": "relational-analysis-v1",
+              "exercise": "524ad0c604f819ab06b4d90224ced198b7037749eadcec395e30cb695a790a4f",
+              "answer": "c485b500ec37a1a47ff9b60365ad84d270d93ab69520a9672a358e4a12b206de",
+              "mode": "rewrite",
+              "valid": true,
+              "fixtures": [
+                {
+                  "id": "shown",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                }
+              ],
+              "public": {
+                "trace": [
+                  [
+                    0,
+                    3,
+                    3
+                  ],
+                  [
+                    1,
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    4,
+                    4
+                  ],
+                  [
+                    3,
+                    3,
+                    4
+                  ],
+                  [
+                    4,
+                    2,
+                    7
+                  ],
+                  [
+                    5,
+                    3,
+                    2
+                  ],
+                  [
+                    6,
+                    2,
+                    9
+                  ],
+                  [
+                    7,
+                    1,
+                    1
+                  ]
+                ],
+                "cells": 51
+              },
+              "proof": {
+                "verified": true,
+                "steps": 5,
+                "tree": [
+                  [
+                    "rel",
+                    "books"
+                  ],
+                  [
+                    "select",
+                    0,
+                    [
+                      [
+                        "eq",
+                        [
+                          "a",
+                          "topic"
+                        ],
+                        [
+                          "v",
+                          "db"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "rel",
+                    "loans"
+                  ],
+                  [
+                    "select",
+                    2,
+                    [
+                      [
+                        "eq",
+                        [
+                          "a",
+                          "open"
+                        ],
+                        [
+                          "v",
+                          true
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "join",
+                    1,
+                    3,
+                    [
+                      [
+                        "eq",
+                        [
+                          "a",
+                          "book"
+                        ],
+                        [
+                          "a",
+                          "item"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "rel",
+                    "members"
+                  ],
+                  [
+                    "join",
+                    4,
+                    5,
+                    [
+                      [
+                        "eq",
+                        [
+                          "a",
+                          "borrower"
+                        ],
+                        [
+                          "a",
+                          "member"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "project",
+                    6,
+                    [
+                      "name"
+                    ]
+                  ]
+                ],
+                "baseline_cells": 83,
+                "improved": true
+              }
+            }
+          },
+          "elapsed_ms": 27.80000001192093,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "syntax"
+          },
+          "elapsed_ms": 22,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "refused"
+          },
+          "elapsed_ms": 20.5,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "error"
+          },
+          "elapsed_ms": 16.30000001192093,
+          "remaining_workers": 0
+        },
+        {
+          "result": {
+            "status": "ok",
+            "key": "b95e76d6749f0558",
+            "namespace": "1ccda671a66fa1b80c9e2642e32d09d4e18205bfaa9c21c7e5c81d36afb257e8",
+            "summary": {
+              "kind": "text",
+              "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+            },
+            "data": {
+              "format": "relational-analysis-v1",
+              "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+              "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+              "mode": "construct",
+              "valid": true,
+              "fixtures": [
+                {
+                  "id": "closed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                },
+                {
+                  "id": "renamed",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                },
+                {
+                  "id": "shown",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                },
+                {
+                  "id": "topics",
+                  "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                  "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                }
+              ],
+              "public": {
+                "trace": [
+                  [
+                    0,
+                    3,
+                    3
+                  ],
+                  [
+                    1,
+                    4,
+                    4
+                  ],
+                  [
+                    2,
+                    4,
+                    7
+                  ],
+                  [
+                    3,
+                    3,
+                    2
+                  ],
+                  [
+                    4,
+                    4,
+                    9
+                  ],
+                  [
+                    5,
+                    2,
+                    9
+                  ],
+                  [
+                    6,
+                    1,
+                    1
+                  ]
+                ],
+                "cells": 83
+              }
+            }
+          },
+          "elapsed_ms": 28.099999994039536,
+          "remaining_workers": 0
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "provider_payload": "30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f",
+      "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "153.0",
+      "passed": false,
+      "error": "page.evaluate: Unexpected evaluator status for sample 0: timeout\n@debugger eval code line 311 > eval:14:56\nasync*evaluate@debugger eval code:313:16\n@debugger eval code:1:44\n@debugger eval code:1:62\n",
+      "diagnostics": [
+        "Evaluator worker: undefined undefined undefined undefined"
+      ],
+      "fetched": [
+        "/static/stage/plugin-evaluator.js",
+        "/static/stage/plugin-contracts.js",
+        "/static/engines/common.js",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/identity.mjs",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/validation.mjs",
+        "/static/stage/plugin-evaluator-worker.js",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/algebra.mjs",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/rewrites.mjs"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "provider_payload": "30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f",
+      "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "26.5",
+      "passed": false,
+      "error": "page.evaluate: Error: Unexpected evaluator status for sample 0: timeout",
+      "diagnostics": [
+        "Refused to load http://127.0.0.1:54921/static/stage/plugin-contracts.js because it does not appear in the worker-src directive of the Content Security Policy.",
+        "Evaluator worker: undefined undefined undefined undefined"
+      ],
+      "fetched": [
+        "/static/stage/plugin-evaluator.js",
+        "/static/stage/plugin-contracts.js",
+        "/static/engines/common.js",
+        "/static/stage/plugin-evaluator-worker.js",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/identity.mjs",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/validation.mjs",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/algebra.mjs",
+        "/plugins/30b1d4d9c83ec213943270f8833624a938e32087273b83919180a5f4ec154b0f/texstage_relational_lab/web/rewrites.mjs"
+      ]
+    }
+  ],
+  "ci": {
+    "jobs_added": [
+      "relational-lab",
+      "relational-lab-browsers",
+      "relational-lab-windows"
+    ],
+    "hosted_runs": false,
+    "compatible_published_host_pin_pending": true
+  },
+  "package_source_sha256": {
+    "plugins/relational-lab/LICENSE": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+    "plugins/relational-lab/MANIFEST.in": "2cba7092936618a080690f725cb520e29fa87e63d2ac817e870f3940eb07e479",
+    "plugins/relational-lab/pyproject.toml": "9f3cd5e50a8e1679fbec2c98c426304dbf7369b32402aa1b7afed89734d2f5af",
+    "plugins/relational-lab/README.md": "0f4968e33ac10578c0f1b712ac5fc26474bcf106126381bb8f522bf5222659d9",
+    "plugins/relational-lab/tests/test_engine.py": "a46f26f87061cbb8cc04d7fc312b736e91251cdfd7f59a4782e3b974c655f64e",
+    "plugins/relational-lab/texstage-plugin.json": "0ab9981fea48d7ad6b4f2db367d3b0e5cc1f8d3c8673850a8f0647621b542b15",
+    "plugins/relational-lab/texstage_relational_lab/__init__.py": "aeca7ff3d27c43932d3120717ae13b1db840fd864552f8614d121d4618bbeed5",
+    "plugins/relational-lab/texstage_relational_lab/fixtures/construct.exercise.json": "3b9ddf08d5fe499386800e5e9c6dc6a2798a676a34ab3dfe5ab77073a0fe8b48",
+    "plugins/relational-lab/texstage_relational_lab/fixtures/expected-cases.json": "abce621280c38a3bab905ece4a9fe7fa48c7fe602a402d4adb04a1e166fd32aa",
+    "plugins/relational-lab/texstage_relational_lab/fixtures/rewrite.exercise.json": "3dcd7aa8f9928fd5ae0575fbe291dc946bd836ce2733b01c026b2cdbedee0be6",
+    "plugins/relational-lab/texstage_relational_lab/model.py": "1aa9923a459ebed04ed34d4f40818bb7f4be27b97d980acf683ffd5ecd241b04",
+    "plugins/relational-lab/texstage_relational_lab/schemas/analysis-result-v1.json": "1ade8b3723c13100bd2f3326ca7cea35fe7b3c09a57b60bc53f6dfe0663858b7",
+    "plugins/relational-lab/texstage_relational_lab/schemas/answer-v1.json": "ad0d386a62ffa328dbb0a04fa52aec0b3cf8f1eb6f6206a783aa65298979ac7f",
+    "plugins/relational-lab/texstage_relational_lab/schemas/exercise-v1.json": "c5c7a6040459c30a906b543a3fda16774b14d5541035616f8fb71a60d2f5c4d1",
+    "plugins/relational-lab/texstage_relational_lab/web/algebra.mjs": "e361ab9c85b6eaed8a6703a0ef4054a8f036478526089bc2b8c865ad3ca07f8b",
+    "plugins/relational-lab/texstage_relational_lab/web/engine.mjs": "6ae4d1bd149233416333a5b5e824b1cd522532fe6525035c5924be1a6f5a26f0",
+    "plugins/relational-lab/texstage_relational_lab/web/identity.mjs": "38821654b02e4f622486fcc132fb9d0b6e13380a0883dad7d9bcc5df2337dd6b",
+    "plugins/relational-lab/texstage_relational_lab/web/rewrites.mjs": "6a3af23e7c09077f08d8a74e46a5a72fb58a99a722ddb3be108f3791bf700878",
+    "plugins/relational-lab/texstage_relational_lab/web/validation.mjs": "53c58f0ccf39f61f2c02cfd0d2cf6efc48705930675448142ac572cf2709181b"
+  },
+  "remaining": [
+    "Shared Firefox/WebKit host-worker startup/policy",
+    "Published compatible host pin",
+    "Prepared authoring and static exports",
+    "Lesson state, grading and role views",
+    "Cooperative phone preview and tree editor",
+    "Physical phone and 64-participant workload",
+    "Linux execution and identical-wheel cross-OS transfer"
+  ]
+}

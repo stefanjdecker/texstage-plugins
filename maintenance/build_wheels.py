@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Build independent wheels and prove source-distribution payload parity."""
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import shutil
@@ -20,10 +21,16 @@ def manifest(path):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    packages = sorted(p.name for p in (ROOT / "plugins").iterdir() if (p / "pyproject.toml").is_file())
+    parser.add_argument("--package", action="append", choices=packages,
+                        help="Build only this package; repeat for an isolated test scenario.")
+    args = parser.parse_args()
     out = ROOT / "dist"; out.mkdir(exist_ok=True)
     reports = []
     for source in sorted((ROOT / "plugins").iterdir()):
         if not (source / "pyproject.toml").is_file(): continue
+        if args.package and source.name not in args.package: continue
         subprocess.run([sys.executable, "-m", "build", "--wheel", "--sdist", "--no-isolation"], cwd=source, check=True)
         wheels = list((source / "dist").glob("*.whl"))
         assert len(wheels) == 1, "use a clean checkout for release builds"

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Synthetic reference type. Distance is feedback, never the correctness test."""
 import math
-from texstage.plugin_api.v1 import Evaluate, PluginV1, PreparedItem, Transition
+from texstage.plugin_api.v1 import Evaluate, PluginV1, PreparedItem, Transition, evaluation_correlation
 
 
 def prepare(record, ctx):
@@ -34,7 +34,7 @@ class Plane:
             p, limits = event["payload"], ctx["item"]["public"]
             if not limits["xmin"] <= p["x"] <= limits["xmax"] or not limits["ymin"] <= p["y"] <= limits["ymax"]:
                 return {"refusal": "point-outside-plane"}
-            correlation = event["request_id"]
+            correlation = evaluation_correlation(event["actor"], event["request_id"], "distance")
             state["points"][event["actor"]] = {"point": p, "correlation": correlation, "status": "queued"}
             effects.append(Evaluate("distance", correlation, f"{p['x']},{p['y']}"))
         elif kind == "evaluation.finished":

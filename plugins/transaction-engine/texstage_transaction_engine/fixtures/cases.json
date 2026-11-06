@@ -1,0 +1,618 @@
+{
+  "format": 1,
+  "cases": [
+    {
+      "id": "lost-update",
+      "file": "counter.exercise.json",
+      "expected": {
+        "final": {
+          "x": 110
+        },
+        "reads": {
+          "a1": 100,
+          "b1": 100
+        },
+        "conflicts": [
+          [
+            "a1",
+            "b2"
+          ],
+          [
+            "b1",
+            "a2"
+          ],
+          [
+            "a2",
+            "b2"
+          ]
+        ],
+        "edges": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T2",
+            "T1"
+          ]
+        ],
+        "csr": false,
+        "serial_orders": [],
+        "cycle": [
+          "T1",
+          "T2",
+          "T1"
+        ]
+      }
+    },
+    {
+      "id": "serial-repair-one",
+      "file": "counter.exercise.json",
+      "schedule": [
+        "a1",
+        "a2",
+        "a3",
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "expected": {
+        "final": {
+          "x": 120
+        },
+        "edges": [
+          [
+            "T1",
+            "T2"
+          ]
+        ],
+        "csr": true,
+        "serial_orders": [
+          [
+            "T1",
+            "T2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "serial-repair-two",
+      "file": "counter.exercise.json",
+      "schedule": [
+        "b1",
+        "b2",
+        "b3",
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "expected": {
+        "final": {
+          "x": 120
+        },
+        "edges": [
+          [
+            "T2",
+            "T1"
+          ]
+        ],
+        "csr": true,
+        "serial_orders": [
+          [
+            "T2",
+            "T1"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "interleaved-repair",
+      "file": "counter.exercise.json",
+      "schedule": [
+        "a1",
+        "a2",
+        "b1",
+        "b2",
+        "a3",
+        "b3"
+      ],
+      "expected": {
+        "final": {
+          "x": 120
+        },
+        "edges": [
+          [
+            "T1",
+            "T2"
+          ]
+        ],
+        "csr": true
+      }
+    },
+    {
+      "id": "independent-objects",
+      "exercise": {
+        "format": 1,
+        "id": "independent",
+        "language": "de",
+        "title": {
+          "de": "Transaktionen untersuchen",
+          "en": "Investigating transactions"
+        },
+        "prompt": {
+          "de": "Bestimmen Sie die Endwerte und untersuchen Sie die Konflikte.",
+          "en": "Predict the final values and examine the conflicts."
+        },
+        "initial": {
+          "x": 100,
+          "y": 50
+        },
+        "transactions": [
+          {
+            "id": "T1",
+            "operations": [
+              {
+                "id": "a1",
+                "kind": "read",
+                "object": "x"
+              },
+              {
+                "id": "a2",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "read": "a1",
+                  "add": 10
+                }
+              },
+              {
+                "id": "a3",
+                "kind": "commit"
+              }
+            ]
+          },
+          {
+            "id": "T2",
+            "operations": [
+              {
+                "id": "b1",
+                "kind": "read",
+                "object": "y"
+              },
+              {
+                "id": "b2",
+                "kind": "write",
+                "object": "y",
+                "value": {
+                  "read": "b1",
+                  "add": 20
+                }
+              },
+              {
+                "id": "b3",
+                "kind": "commit"
+              }
+            ]
+          }
+        ],
+        "schedule": [
+          "a1",
+          "b1",
+          "a2",
+          "b2",
+          "b3",
+          "a3"
+        ],
+        "task": {
+          "repair": "conflict-serializable",
+          "feedback": "staged"
+        }
+      },
+      "expected": {
+        "final": {
+          "x": 110,
+          "y": 70
+        },
+        "edges": [],
+        "csr": true,
+        "serial_orders": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T2",
+            "T1"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "read-read",
+      "exercise": {
+        "format": 1,
+        "id": "read_read",
+        "language": "de",
+        "title": {
+          "de": "Transaktionen untersuchen",
+          "en": "Investigating transactions"
+        },
+        "prompt": {
+          "de": "Bestimmen Sie die Endwerte und untersuchen Sie die Konflikte.",
+          "en": "Predict the final values and examine the conflicts."
+        },
+        "initial": {
+          "x": 100
+        },
+        "transactions": [
+          {
+            "id": "T1",
+            "operations": [
+              {
+                "id": "a1",
+                "kind": "read",
+                "object": "x"
+              },
+              {
+                "id": "a2",
+                "kind": "commit"
+              }
+            ]
+          },
+          {
+            "id": "T2",
+            "operations": [
+              {
+                "id": "b1",
+                "kind": "read",
+                "object": "x"
+              },
+              {
+                "id": "b2",
+                "kind": "commit"
+              }
+            ]
+          }
+        ],
+        "schedule": [
+          "a1",
+          "b1",
+          "b2",
+          "a2"
+        ],
+        "task": {
+          "repair": "conflict-serializable",
+          "feedback": "staged"
+        }
+      },
+      "expected": {
+        "final": {
+          "x": 100
+        },
+        "conflicts": [],
+        "edges": [],
+        "csr": true
+      }
+    },
+    {
+      "id": "write-write",
+      "exercise": {
+        "format": 1,
+        "id": "write_write",
+        "language": "de",
+        "title": {
+          "de": "Transaktionen untersuchen",
+          "en": "Investigating transactions"
+        },
+        "prompt": {
+          "de": "Bestimmen Sie die Endwerte und untersuchen Sie die Konflikte.",
+          "en": "Predict the final values and examine the conflicts."
+        },
+        "initial": {
+          "x": 100
+        },
+        "transactions": [
+          {
+            "id": "T1",
+            "operations": [
+              {
+                "id": "a1",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "constant": 10
+                }
+              },
+              {
+                "id": "a2",
+                "kind": "commit"
+              }
+            ]
+          },
+          {
+            "id": "T2",
+            "operations": [
+              {
+                "id": "b1",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "constant": 20
+                }
+              },
+              {
+                "id": "b2",
+                "kind": "commit"
+              }
+            ]
+          }
+        ],
+        "schedule": [
+          "a1",
+          "b1",
+          "b2",
+          "a2"
+        ],
+        "task": {
+          "repair": "conflict-serializable",
+          "feedback": "staged"
+        }
+      },
+      "expected": {
+        "final": {
+          "x": 20
+        },
+        "conflicts": [
+          [
+            "a1",
+            "b1"
+          ]
+        ],
+        "edges": [
+          [
+            "T1",
+            "T2"
+          ]
+        ],
+        "csr": true,
+        "serial_orders": [
+          [
+            "T1",
+            "T2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "chain-without-transitive-edge",
+      "exercise": {
+        "format": 1,
+        "id": "chain",
+        "language": "de",
+        "title": {
+          "de": "Transaktionen untersuchen",
+          "en": "Investigating transactions"
+        },
+        "prompt": {
+          "de": "Bestimmen Sie die Endwerte und untersuchen Sie die Konflikte.",
+          "en": "Predict the final values and examine the conflicts."
+        },
+        "initial": {
+          "x": 100,
+          "y": 0,
+          "z": 0
+        },
+        "transactions": [
+          {
+            "id": "T1",
+            "operations": [
+              {
+                "id": "a1",
+                "kind": "read",
+                "object": "x"
+              },
+              {
+                "id": "a2",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "read": "a1",
+                  "add": 10
+                }
+              },
+              {
+                "id": "a3",
+                "kind": "commit"
+              }
+            ]
+          },
+          {
+            "id": "T2",
+            "operations": [
+              {
+                "id": "b1",
+                "kind": "read",
+                "object": "x"
+              },
+              {
+                "id": "b2",
+                "kind": "write",
+                "object": "y",
+                "value": {
+                  "read": "b1",
+                  "add": 0
+                }
+              },
+              {
+                "id": "b3",
+                "kind": "commit"
+              }
+            ]
+          },
+          {
+            "id": "T3",
+            "operations": [
+              {
+                "id": "c1",
+                "kind": "read",
+                "object": "y"
+              },
+              {
+                "id": "c2",
+                "kind": "write",
+                "object": "z",
+                "value": {
+                  "read": "c1",
+                  "add": 0
+                }
+              },
+              {
+                "id": "c3",
+                "kind": "commit"
+              }
+            ]
+          }
+        ],
+        "schedule": [
+          "a1",
+          "a2",
+          "b1",
+          "b2",
+          "c1",
+          "c2",
+          "c3",
+          "b3",
+          "a3"
+        ],
+        "task": {
+          "repair": "conflict-serializable",
+          "feedback": "staged"
+        }
+      },
+      "expected": {
+        "final": {
+          "x": 110,
+          "y": 110,
+          "z": 110
+        },
+        "edges": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T2",
+            "T3"
+          ]
+        ],
+        "csr": true,
+        "serial_orders": [
+          [
+            "T1",
+            "T2",
+            "T3"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "same-final-state-with-cycle",
+      "exercise": {
+        "format": 1,
+        "id": "blind_write",
+        "language": "de",
+        "title": {
+          "de": "Transaktionen untersuchen",
+          "en": "Investigating transactions"
+        },
+        "prompt": {
+          "de": "Bestimmen Sie die Endwerte und untersuchen Sie die Konflikte.",
+          "en": "Predict the final values and examine the conflicts."
+        },
+        "initial": {
+          "x": 100
+        },
+        "transactions": [
+          {
+            "id": "T1",
+            "operations": [
+              {
+                "id": "a1",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "constant": 1
+                }
+              },
+              {
+                "id": "a2",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "constant": 3
+                }
+              },
+              {
+                "id": "a3",
+                "kind": "commit"
+              }
+            ]
+          },
+          {
+            "id": "T2",
+            "operations": [
+              {
+                "id": "b1",
+                "kind": "write",
+                "object": "x",
+                "value": {
+                  "constant": 2
+                }
+              },
+              {
+                "id": "b2",
+                "kind": "commit"
+              }
+            ]
+          }
+        ],
+        "schedule": [
+          "a1",
+          "b1",
+          "a2",
+          "a3",
+          "b2"
+        ],
+        "task": {
+          "repair": "conflict-serializable",
+          "feedback": "staged"
+        }
+      },
+      "expected": {
+        "final": {
+          "x": 3
+        },
+        "edges": [
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T2",
+            "T1"
+          ]
+        ],
+        "csr": false,
+        "cycle": [
+          "T1",
+          "T2",
+          "T1"
+        ]
+      },
+      "same_final_serial_order": [
+        "T2",
+        "T1"
+      ]
+    }
+  ]
+}

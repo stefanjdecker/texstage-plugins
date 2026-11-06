@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-06",
+  "scope": "M2 independent engine; not a classroom release",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "host": {
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "sha256": "ee86bcb875bd6cc042fd01991c25dbe335e2aba40c3dc1ccc1173281d2d91437",
+    "installed_payload_sha256": "22c2681862ade087ebf8655bc28c202c3da2437c98aed5feb7fa851ea3061c76",
+    "package_source_comparison": {
+      "checked": 145,
+      "different": []
+    },
+    "source_status": "Active codex/plugin-system checkout with unpublished H1/H2 changes; version alone is insufficient",
+    "requirements_dev_sha256": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813"
+  },
+  "engine": {
+    "wheel": "texstage_transaction_engine-0.1.0-py3-none-any.whl",
+    "sha256": "1104d2391b666c168d45a306d0e58384167a83cee39a88754cf00499afb74d21",
+    "id": "io.github.stefanjdecker.transactionengine",
+    "version": "0.1.0",
+    "payload": "d1332b9465dbfea076868ee81e4347a3645af263bac86cadbdd8ff03bce53e3f",
+    "result_schema_sha256": "c863d11dfc18cc4c06a32b90a7a654b84f1c96e91ded0b26288d3e2e01aa5e10",
+    "sdist_payload_parity": true
+  },
+  "tests": {
+    "engine": {
+      "tests": 67,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "legacy_pair": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hand_checked_cases": 9,
+    "legal_interleavings": 1742,
+    "exercise_programs": 6
+  },
+  "browsers": {
+    "chromium": {
+      "version": "156.0.4314.58",
+      "passed": true,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "samples": 8,
+      "max_elapsed_ms": 46.400000005960464,
+      "actual_host_deadline_ms": 2000
+    },
+    "firefox": {
+      "version": "153.0",
+      "passed": false,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "blocker": "Host worker-src policy blocks evaluator module loading before the plugin starts."
+    },
+    "webkit": {
+      "version": "26.5",
+      "passed": false,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "blocker": "Host worker-src policy blocks evaluator module loading before the plugin starts."
+    }
+  },
+  "hosted_ci_run": false,
+  "remaining": [
+    "Publish/pin compatible host",
+    "Resolve Firefox/WebKit worker policy without removing isolation",
+    "M3 authoring and lesson state",
+    "M4 interfaces",
+    "M5 capacity and full conformance"
+  ]
+}

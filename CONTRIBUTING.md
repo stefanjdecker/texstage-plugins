@@ -23,3 +23,28 @@ compatibility, immutable release URL, wheel and payload hashes, dependencies and
 conformance evidence. Do not include credentials, personal submissions, private
 lecture files or unpublished media. Catalog releases are immutable; withdrawals
 preserve old entries and existing locks.
+
+For richer activities, distinguish reference-output equality from validity of a
+student's solution. Use schema-validated engine facts and explicit domain
+criteria when several different answers are valid. Separate global snapshot
+revision, activity-phase guards and actor-local answer versions; preserve a
+student's draft and focus across unrelated updates. Do not hide a missing host
+contract inside encoded text summaries or duplicated static solutions.
+
+The [transaction-schedule design and plan](docs/design/transaction-schedules-plan.md)
+provide a worked review case. Its checker verifies the proposed finite model;
+it does not replace installed-wheel, browser, privacy or classroom-load testing.
+
+Use `maintenance/build_wheels.py --package <directory>` to build a specific
+installation scenario. The original coordinate/distance tests must still see
+exactly those two providers. Run the transaction engine's tests in an
+engine-only environment; its [README](plugins/transaction-engine/README.md)
+documents the probe and typed result format. Do not weaken the original fixture
+gate when adding another package.
+
+The [relational engine](plugins/relational-lab/README.md) has its own isolated
+installation, typed schemas and independent Python model. Its
+[v1 contract](docs/design/relational-algebra-contract.md) distinguishes finite
+construction checks from verified rewrite certificates. Run its package tests
+and actual-host browser probe; a successful Node import does not close the
+Firefox/WebKit worker-policy gate.

@@ -6,6 +6,7 @@ from pathlib import Path
 
 from texstage.plugins.catalog import discover
 from texstage.plugins.policy import enable, catalog_for
+from texstage.plugins.contracts import result_contract
 from texstage.server.app import ServerConfig, create_app
 import uvicorn
 
@@ -18,7 +19,8 @@ for provider in discover(): enable(args.data, provider.id, provider.version, pro
 catalog = catalog_for(args.data)
 provider, engine = catalog.capability("org.example.distance.euclidean", engine=True)
 (args.data / "test-context.json").write_text(json.dumps({"engine": engine | {
-    "url": f"/plugins/{provider.payload}/{engine['module']}", "assets": {}},
+    "url": f"/plugins/{provider.payload}/{engine['module']}", "assets": {},
+    "result_contract": result_contract(provider, engine)},
     "binding": {"seed": "{}", "references": []}, "text": "3,4", "namespace": "0" * 64}))
 app = create_app(ServerConfig(bundles=[args.bundle], data_dir=args.data,
     public_url=f"http://127.0.0.1:{args.port}", presenter_key="plugin-demo-key"))
