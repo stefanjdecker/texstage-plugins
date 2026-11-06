@@ -99,7 +99,7 @@ def test_owned_schemas_and_fixtures(provider, example, rewrite, cases):
         schema = json.loads(provider.resources[f"{probe.PACKAGE}/schemas/{name}-v1.json"])
         validate_portable_schema(schema)
     assert all("/" in p for p in provider.resources)
-    assert not provider.manifest["capabilities"].get("content_types")
+    assert set(provider.manifest["capabilities"]["content_types"]) == {probe.PROVIDER + ".tree"}
 
 
 def test_hand_cases_and_independent_sqlite(example, cases):

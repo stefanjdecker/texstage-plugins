@@ -1,3 +1,3 @@
 include texstage-plugin.json README.md LICENSE
-recursive-include texstage_relational_lab *.py *.mjs *.json
+recursive-include texstage_relational_lab *.py *.mjs *.json *.sty
 recursive-include tests *.py

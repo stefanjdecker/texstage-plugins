@@ -1,8 +1,13 @@
-# Relational Algebra Lab — engine milestone
+# Relational Algebra Lab
 
-Experimental, independently installable engine for named set relational algebra
-and checked rewrite certificates. This milestone has no lesson state, LaTeX
-command, phone editor or presenter interface. See the collection design and plan.
+Experimental, independently installable engine and prepared lesson for named
+set relational algebra and checked rewrite certificates. The lesson includes
+phased submissions, private checks, anonymous sharing, reveal/reset controls
+and a basic JSON answer editor. The graphical tree editor and cooperative
+local preview remain the next milestone.
+
+Start with the [lesson guide](../../docs/relational-lesson.md) for installation,
+the example deck, LaTeX authoring, answer syntax and classroom workflow.
 
 The Python model and browser engine evaluate the same finite contract through
 independent implementations. Returned relation digests are facts, not grades:
@@ -84,7 +89,11 @@ artifact-consumer jobs. Hosted runs still require a published compatible host.
 
 Provider: `io.github.stefanjdecker.relationallab`.
 Engine: `io.github.stefanjdecker.relationallab.algebra`.
-The wheel currently declares no content types or LaTeX resources.
+Content type: `io.github.stefanjdecker.relationallab.tree`.
+Style: `texstage-relational-tree.sty`, providing
+`\relationaltree{item-id}{width}{height}` around the host's prepared box.
+The lesson envelope in `schemas/lesson-v1.json` adds a checked worked answer
+and bilingual explanation around the unchanged engine seed.
 
 The UTF-8 seed is a validated exercise source, with empty options. A construction
 input is `{"mode":"construct","tree":[...]}`; a rewrite input is
@@ -113,16 +122,16 @@ normalize to a set. This model is independently implemented from the browser
 engine. The supplied examples and tests are synthetic and public.
 
 Installation does not enable a provider. Inspect and explicitly enable a reviewed
-payload in an isolated Texstage operator profile before using a future lesson
+payload in an isolated Texstage operator profile before using the lesson
 binding. Deck uploads never install or enable code.
 
 ## Remaining classroom work
 
-Prepared authoring, the style wrapper, static exports, lesson state, grading,
-role-filtered views, the phone tree editor and cooperative local preview UI are
-not implemented. The engine's synchronous pure modules are not yet a responsive
-phone preview controller. Engine worker compatibility now passes Chrome, Firefox
-and WebKit with the fixed host. Physical-phone interaction checks and the
-64-participant measurements remain release gates.
+Prepared authoring, static exports, bounded lesson state, independent grading
+policy and role-filtered views are implemented and covered by
+[the R3/R4 checks](../../docs/design/relational-algebra-lesson-validation.md).
+The JSON editor makes that workflow executable; it is not the planned visual
+tree editor. Cooperative preview, intermediate-result inspection, physical-phone
+interaction checks and measured 64-participant load remain release gates.
 
 No catalog release is published by this milestone.

@@ -217,16 +217,20 @@ jobs:
           python -m build --wheel --no-isolation
           python -m pip install --no-deps dist/*.whl
           python -c "from texstage.plugins.contracts import CONTRACT_VERSION; assert CONTRACT_VERSION == 2, 'Select a host with typed plugin contracts'"
-      - name: Build and test the isolated engine
+      - name: Install TeX for prepared lesson editions
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-lang-german lmodern latexmk
+      - name: Build and test the isolated engine and lesson
         run: |
           python maintenance/build_wheels.py --package relational-lab
           python -m pip install --no-deps dist/*.whl
-          python -m pytest plugins/relational-lab/tests -q --junitxml=artifacts/relational-lab-tests.xml
+          python -m pytest plugins/relational-lab/tests -q --basetemp=artifacts/lesson-tests --junitxml=artifacts/relational-lab-tests.xml
           python maintenance/relational_probe.py
           git -C host-source rev-parse HEAD > artifacts/relational-lab/host-commit.txt
       - name: Stage identical wheels for Windows
         run: |
-          python -c "from pathlib import Path; import shutil; p=Path('engine-handoff'); p.mkdir(); shutil.copytree('dist',p/'plugins'); shutil.copytree('host-source/dist',p/'host'); shutil.copytree('host-source/requirements',p/'requirements')"
+          python -c "from pathlib import Path; import shutil; p=Path('engine-handoff'); p.mkdir(); shutil.copytree('dist',p/'plugins'); shutil.copytree('host-source/dist',p/'host'); shutil.copytree('host-source/requirements',p/'requirements'); shutil.copytree('artifacts/lesson-tests/test_installed_authoring_all_e0/out/lesson.bundle',p/'lesson.bundle')"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with: {name: relational-lab-wheels, path: engine-handoff/, retention-days: 14}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -260,6 +264,7 @@ jobs:
           npm ci
           npx playwright install --with-deps "$BROWSER"
           node maintenance/relational_browser.cjs
+          node maintenance/relational_lesson_browser.cjs handoff/lesson.bundle
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

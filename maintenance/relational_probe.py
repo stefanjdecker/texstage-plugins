@@ -76,7 +76,7 @@ def request(exercise, submission=None, **extra):
 
 def bound_requests(provider, engine, requests):
     return [row if "hash" in row else row | {"namespace": namespace(provider, ENGINE, engine,
-            {"seed": row["seed"], "options": row.get("options", {}), "references": []})}
+            row.get("binding", {"seed": row["seed"], "options": row.get("options", {}), "references": []}))}
             for row in requests]
 
 

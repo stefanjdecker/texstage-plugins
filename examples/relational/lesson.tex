@@ -1,0 +1,28 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{texstage}
+\usepackage{texstage-relational-tree}
+\setbeamertemplate{navigation symbols}{}
+\title{From a question to a query tree}
+\author{TeXStage Relational Algebra Lab}
+\date{}
+\begin{document}
+\begin{frame}\titlepage
+\small Build a query, inspect its meaning, then improve its structure.
+\end{frame}
+\begin{frame}{Who borrowed database books?}
+\relationaltree{construct}{.96\linewidth}{.72\textheight}
+\end{frame}
+\begin{frame}{Move filters earlier}
+\relationaltree{rewrite}{.96\linewidth}{.75\textheight}
+\end{frame}
+\begin{frame}{What have we checked?}
+\begin{itemize}
+\item Matching examples is useful evidence, not a proof for every database.
+\item Verified rewrite rules establish equivalence under their stated conditions.
+\item Intermediate output cells illustrate materialization, not execution time.
+\end{itemize}
+\end{frame}
+\end{document}

@@ -3,7 +3,7 @@
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.relationallab",
   "version": "0.1.0",
-  "description": "Bounded set relational algebra and checked query-tree rewrite certificates; engine milestone.",
+  "description": "Bounded relational algebra engine with prepared worksheets and phased lessons.",
   "license": "Apache-2.0",
   "capabilities": {
     "engines": {
@@ -34,6 +34,93 @@
         "state_policy": "fresh-per-submission",
         "result_data_schema": "texstage_relational_lab/schemas/analysis-result-v1.json"
       }
+    },
+    "content_types": {
+      "io.github.stefanjdecker.relationallab.tree": {
+        "content_api": 1,
+        "authoring_hook": "tree",
+        "state_hook": "tree",
+        "state_schema": 1,
+        "latex_packages": [
+          "texstage_relational_lab/latex/texstage-relational-tree.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.relationallab.algebra"
+          }
+        },
+        "views": {
+          "participant-input": "texstage_relational_lab/web/participant.mjs",
+          "presenter-controls": "texstage_relational_lab/web/presenter-controls.mjs",
+          "presenter-overlay": "texstage_relational_lab/web/lesson-overlay.mjs",
+          "projector-overlay": "texstage_relational_lab/web/lesson-overlay.mjs"
+        },
+        "view_schemas": {
+          "participant-input": "texstage_relational_lab/schemas/views/participant-input.json",
+          "presenter-controls": "texstage_relational_lab/schemas/views/presenter-controls.json",
+          "presenter-overlay": "texstage_relational_lab/schemas/views/presenter-overlay.json",
+          "projector-overlay": "texstage_relational_lab/schemas/views/projector-overlay.json"
+        },
+        "messages": {
+          "submit-tree": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/submit.json"
+          },
+          "submit-rewrite": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/submit.json"
+          },
+          "open": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/control.json"
+          },
+          "close": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/control.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/control.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/select.json"
+          },
+          "select-demonstration": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_relational_lab/schemas/commands/select.json"
+          }
+        },
+        "fallback": "static-slide"
+      }
     }
+  },
+  "latex_namespace": "relational",
+  "latex_exports": {
+    "commands": [
+      "relationaltree"
+    ],
+    "environments": []
   }
 }

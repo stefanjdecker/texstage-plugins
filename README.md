@@ -11,7 +11,7 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-example-distance` | Browser engine `org.example.distance.euclidean` | None |
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
 | `texstage-transaction-engine` | Schedule analysis engine `io.github.stefanjdecker.transactionengine.schedule` (M2) | None; lesson package pending |
-| `texstage-relational-lab` | Set-algebra and rewrite engine `io.github.stefanjdecker.relationallab.algebra` (R0/R2 slice) | None; lesson and editor pending |
+| `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
 
 The coordinate slide accepts a phone response, displays class points on the
 projector, gives distance feedback from the presenter browser, and supports reveal
@@ -47,13 +47,14 @@ direct-pdfLaTeX entry points.
 Use its updated wheel: the coordinate example now uses the SDK's
 `evaluation_correlation` helper to keep different participants' jobs separate.
 
-## Relational algebra: implemented engine, planned lesson
+## Relational algebra: prepared lessons and checked answers
 
 The [Relational Algebra Lab design](docs/design/relational-algebra.md) covers
 building query trees, inspecting intermediate relations and applying verified
-rewrite rules. The package supplies the activity engine; its planned lesson
-will add public-data previews on phones and private exercise checks through
-Texstage. Matching example datasets is explicitly distinguished from proving
+rewrite rules. The package now supplies the engine, prepared authoring,
+lesson state, presenter controls and a basic JSON answer editor on phones.
+The visual tree editor and public-data preview are the next milestone.
+Matching example datasets is explicitly distinguished from proving
 equivalence through checked rules.
 
 The [implementation plan](docs/design/relational-algebra-plan.md) lists the
@@ -67,7 +68,12 @@ operator forms and checked rewrite certificates in an installable wheel. The
 [v1 contract](docs/design/relational-algebra-contract.md) and
 [validation record](docs/design/relational-algebra-r2-validation.md) document the
 independent Python model, installed-wheel checks and browser limits.
-The lesson type, LaTeX command and phone/presenter interfaces remain pending.
+The [lesson guide](docs/relational-lesson.md) explains installation, the
+[\relationaltree example deck](examples/relational/lesson.tex), answer syntax,
+phases, anonymous sharing and static exports. The
+[R3/R4 validation record](docs/design/relational-algebra-lesson-validation.md)
+records installed-wheel authoring and browser checks. Physical-phone testing
+and measured classroom load remain release gates.
 
 ## Worker browser compatibility
 

@@ -5,7 +5,7 @@ build-backend = "texstage.plugins.sdk"
 [project]
 name = "texstage-relational-lab"
 version = "0.1.0"
-description = "Experimental Texstage set relational algebra and query-tree rewrite engine"
+description = "Experimental Texstage relational algebra engine and prepared query-tree lessons"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
@@ -18,4 +18,4 @@ dependencies = ["texstage>=0.2.1.dev3"]
 packages = ["texstage_relational_lab"]
 
 [tool.setuptools.package-data]
-"texstage_relational_lab" = ["web/*.mjs", "schemas/*.json", "fixtures/*.json"]
+"texstage_relational_lab" = ["web/*.mjs", "schemas/*.json", "schemas/commands/*.json", "schemas/views/*.json", "fixtures/*.json", "latex/*.sty"]

@@ -1,7 +1,9 @@
 # Relational Algebra Lab: plugin design
 
-Status: target design, 2026-11-06. The engine slice is implemented; the lesson,
-authoring and interfaces remain planned. See the
+Status: target design, 2026-11-06. The engine and R3/R4 prepared lesson are
+implemented, including a basic JSON interface. The visual editor and preview
+below remain planned. See the [lesson guide](../relational-lesson.md), the
+[R3/R4 evidence](relational-algebra-lesson-validation.md), and the
 [v1 contract](relational-algebra-contract.md) and
 [R0/R2 validation record](relational-algebra-r2-validation.md).
 See the [implementation plan](relational-algebra-plan.md) and

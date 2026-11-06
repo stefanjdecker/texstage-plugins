@@ -1,0 +1,3284 @@
+{
+  "date": "2026-11-06",
+  "status": "Local R3/R4 implementation; not a classroom release",
+  "python": "3.14.4",
+  "os": "Windows-10-10.0.19045-SP0",
+  "node": "v24.15.0",
+  "base_commits": {
+    "texstage-public": "06d808c5b21475af58fc8c58e382a88193bab256",
+    "texstage-plugins": "35e6515f5addecf357416f7ef984208a840e15bd"
+  },
+  "artifacts_sha256": {
+    "texstage-0.2.1.dev3-py3-none-any.whl": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "texstage_relational_lab-0.1.0-py3-none-any.whl": "5dff8fe63e3dff6727bedea60501f7b9fe217cb3c270567ba598181f6ab34edd",
+    "texstage_relational_lab-0.1.0.tar.gz": "f09828e1b04039d3d1698a8c98bd0aca671cb9bc8907cda373f84833b1a9a07b"
+  },
+  "provider_payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d",
+  "host_changed_code_sha256": {
+    "plugins/__init__.py": "7967035d365b1628798a0197ec7120e067e19d2912641db3696ee2eca8699107",
+    "plugins/runtime.py": "8bac8a98909c4d8587db7ccab2446227343e29ba3e50ce40784c4a7d6a6c823e",
+    "plugins/worker.py": "8808d094ef3c9d44bfe2f2a5f91b1e3032357cf20d759be5f0c4bc2fabd17aaa",
+    "server/app.py": "2ad9dc38300b2e3ab1588b9ca0ced7802f1b22c8bd98c67fda2e64e6dbf00d6b",
+    "web/shared/plugins.js": "6f7f37db7ffe1b40c0a287a6359d6879d2b1ae84b4007df5ac2f7e00cf1f010e"
+  },
+  "provider_resources_sha256": {
+    "texstage_relational_lab/__init__.py": "d6433c344db13fbf9a04c2e8d1ebddabfbdb8c4112687f8331d11f6d8039ddc1",
+    "texstage_relational_lab/authoring.py": "161461754cf71f168470d13d1336982bdb6982bbde21c3bf01a6ea5a12bdd090",
+    "texstage_relational_lab/fixtures/construct.exercise.json": "3b9ddf08d5fe499386800e5e9c6dc6a2798a676a34ab3dfe5ab77073a0fe8b48",
+    "texstage_relational_lab/fixtures/expected-cases.json": "abce621280c38a3bab905ece4a9fe7fa48c7fe602a402d4adb04a1e166fd32aa",
+    "texstage_relational_lab/fixtures/rewrite.exercise.json": "3dcd7aa8f9928fd5ae0575fbe291dc946bd836ce2733b01c026b2cdbedee0be6",
+    "texstage_relational_lab/latex/texstage-relational-tree.sty": "0a4d915c2bb9ccad989853a9319e00273cdd3a257a9b1806b91f1b39c45e5c1b",
+    "texstage_relational_lab/model.py": "1aa9923a459ebed04ed34d4f40818bb7f4be27b97d980acf683ffd5ecd241b04",
+    "texstage_relational_lab/schemas/analysis-result-v1.json": "1ade8b3723c13100bd2f3326ca7cea35fe7b3c09a57b60bc53f6dfe0663858b7",
+    "texstage_relational_lab/schemas/answer-v1.json": "ad0d386a62ffa328dbb0a04fa52aec0b3cf8f1eb6f6206a783aa65298979ac7f",
+    "texstage_relational_lab/schemas/commands/control.json": "ec11e27da88fb218c4b5420af5c45f301fedde3e23be6ed33c3e430b74e32b4a",
+    "texstage_relational_lab/schemas/commands/select.json": "0941eb9e7a9e5d5f39b8e81748e2a301cc6aa38c39bb7077d0e6b459740ccf51",
+    "texstage_relational_lab/schemas/commands/submit.json": "c1d75883a4922b92bfa0fa9e8db10ba5d72a8466511674c52287acb4930f0750",
+    "texstage_relational_lab/schemas/exercise-v1.json": "c5c7a6040459c30a906b543a3fda16774b14d5541035616f8fb71a60d2f5c4d1",
+    "texstage_relational_lab/schemas/lesson-v1.json": "4e632ed7f6579cec60e02af5c208acfe595b0435995820017a7b52afe3a7c71d",
+    "texstage_relational_lab/schemas/views/participant-input.json": "b093f7f0b86dc670dd60c27a52b7696e57725684a2e97c8ce6d4f09630747c63",
+    "texstage_relational_lab/schemas/views/presenter-controls.json": "18c23609aec18d51550ead55f6a073a0b5238456b3fdb0b256c18a94955c9234",
+    "texstage_relational_lab/schemas/views/presenter-overlay.json": "18c23609aec18d51550ead55f6a073a0b5238456b3fdb0b256c18a94955c9234",
+    "texstage_relational_lab/schemas/views/projector-overlay.json": "240f1d79a2c231ad96f41f77cc960e85811bb4921a87b846b590f2cb74830e89",
+    "texstage_relational_lab/state.py": "2ccb487cd5152d15ef69d291fd758e56ea369aa193faa0e75d5284fb59c840b9",
+    "texstage_relational_lab/web/algebra.mjs": "e361ab9c85b6eaed8a6703a0ef4054a8f036478526089bc2b8c865ad3ca07f8b",
+    "texstage_relational_lab/web/engine.mjs": "6ae4d1bd149233416333a5b5e824b1cd522532fe6525035c5924be1a6f5a26f0",
+    "texstage_relational_lab/web/engine.worker.mjs": "2b7210e8afe3855c366ca692e9eeceae21a89b0bd9418238a787ea6321931531",
+    "texstage_relational_lab/web/identity.mjs": "38821654b02e4f622486fcc132fb9d0b6e13380a0883dad7d9bcc5df2337dd6b",
+    "texstage_relational_lab/web/lesson-overlay.mjs": "a828565c41e25799cf47b0d06858deaaca22775a5e3f7d158f6ad09fe797e245",
+    "texstage_relational_lab/web/lesson-ui.mjs": "14a931ed8e6ba301f817a6228bc0c9b6d82912810b57699bfba1f58b8614c279",
+    "texstage_relational_lab/web/participant.mjs": "0aa19513a2decef8e219789e235fde6e1460c293a85c5d8f99e8c73bcd6346e1",
+    "texstage_relational_lab/web/presenter-controls.mjs": "81c84a903b7979b2f786f9e4f73c9755d1791fc0f10685ecf56c01d772f6309c",
+    "texstage_relational_lab/web/rewrites.mjs": "6a3af23e7c09077f08d8a74e46a5a72fb58a99a722ddb3be108f3791bf700878",
+    "texstage_relational_lab/web/validation.mjs": "53c58f0ccf39f61f2c02cfd0d2cf6efc48705930675448142ac572cf2709181b"
+  },
+  "tests": {
+    "relational_installed": 72,
+    "transaction_isolated": 67,
+    "original_pair_isolated": 4,
+    "host_unique_passed": 410,
+    "host_skipped": 1,
+    "host_note": "Full sandbox run: 404 passed, 1 skipped; six registry-blocked tests passed on scoped rerun (9 rerun tests total)."
+  },
+  "storage_probe": {
+    "actors": 64,
+    "actor_key_characters": 256,
+    "answer_bytes": 1787,
+    "max_actor_slot_bytes": 2314,
+    "shared_state_bytes": 98,
+    "state_bytes": 148142,
+    "max_transition_bytes": 150349,
+    "view_bytes": {
+      "participant": 1899,
+      "presenter": 20215,
+      "projector": 59
+    },
+    "scope": "Serialized storage with near-limit answer shapes and compact operational feedback; not a classroom throughput measurement."
+  },
+  "static_editions": [
+    "live/presenter",
+    "stage",
+    "handout",
+    "solutions",
+    "static PowerPoint",
+    "direct pdfLaTeX handout",
+    "direct pdfLaTeX solutions"
+  ],
+  "freshness_tampering_rejected": true,
+  "sdist_resource_parity": true,
+  "browsers": {
+    "chromium": {
+      "lesson": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "modes": [
+          "construct",
+          "rewrite"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      },
+      "relational_engine": {
+        "browser": "chromium",
+        "provider_payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d",
+        "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "156.0.8078.80",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2011.9000000059605,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 8,
+        "max_elapsed_ms": 26.19999998807907,
+        "actual_host_deadline_ms": 2000,
+        "rows": [
+          {
+            "result": {
+              "status": "ok",
+              "key": "b95e76d6749f0558",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      4,
+                      4
+                    ],
+                    [
+                      2,
+                      4,
+                      7
+                    ],
+                    [
+                      3,
+                      3,
+                      2
+                    ],
+                    [
+                      4,
+                      4,
+                      9
+                    ],
+                    [
+                      5,
+                      2,
+                      9
+                    ],
+                    [
+                      6,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 83
+                }
+              }
+            },
+            "elapsed_ms": 26.19999998807907,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "a942cb55adbb408e",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "f79d0acecf2d5b3bfa86a23f65c990649415768b7bbff572f3b2e1346863912c",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      2,
+                      4,
+                      4
+                    ],
+                    [
+                      3,
+                      3,
+                      4
+                    ],
+                    [
+                      4,
+                      2,
+                      7
+                    ],
+                    [
+                      5,
+                      3,
+                      2
+                    ],
+                    [
+                      6,
+                      2,
+                      9
+                    ],
+                    [
+                      7,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 51
+                }
+              }
+            },
+            "elapsed_ms": 21.900000005960464,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "cd7398a84a265ff1",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "e333dd2a023308ea439f3aad046c32d080d7350ec1a284971ad41022bff126ef",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      2
+                    ],
+                    [
+                      1,
+                      1,
+                      2
+                    ],
+                    [
+                      2,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 3
+                }
+              }
+            },
+            "elapsed_ms": 18.400000005960464,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "cdc00119cb24aa99",
+              "namespace": "e762729ff0d8c91e352a8c1e3ab13acfd905c60f0acb131d0ad04f1ab4d98a46",
+              "summary": {
+                "kind": "text",
+                "text": "The rewrite certificate is verified; this is not a runtime cost estimate."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "524ad0c604f819ab06b4d90224ced198b7037749eadcec395e30cb695a790a4f",
+                "answer": "c485b500ec37a1a47ff9b60365ad84d270d93ab69520a9672a358e4a12b206de",
+                "mode": "rewrite",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      2,
+                      4,
+                      4
+                    ],
+                    [
+                      3,
+                      3,
+                      4
+                    ],
+                    [
+                      4,
+                      2,
+                      7
+                    ],
+                    [
+                      5,
+                      3,
+                      2
+                    ],
+                    [
+                      6,
+                      2,
+                      9
+                    ],
+                    [
+                      7,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 51
+                },
+                "proof": {
+                  "verified": true,
+                  "steps": 5,
+                  "tree": [
+                    [
+                      "rel",
+                      "books"
+                    ],
+                    [
+                      "select",
+                      0,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "topic"
+                          ],
+                          [
+                            "v",
+                            "db"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "rel",
+                      "loans"
+                    ],
+                    [
+                      "select",
+                      2,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "open"
+                          ],
+                          [
+                            "v",
+                            true
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "join",
+                      1,
+                      3,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "book"
+                          ],
+                          [
+                            "a",
+                            "item"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "rel",
+                      "members"
+                    ],
+                    [
+                      "join",
+                      4,
+                      5,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "borrower"
+                          ],
+                          [
+                            "a",
+                            "member"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "project",
+                      6,
+                      [
+                        "name"
+                      ]
+                    ]
+                  ],
+                  "baseline_cells": 83,
+                  "improved": true
+                }
+              }
+            },
+            "elapsed_ms": 21,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "syntax"
+            },
+            "elapsed_ms": 14.599999994039536,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "refused"
+            },
+            "elapsed_ms": 12.900000005960464,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "error"
+            },
+            "elapsed_ms": 11,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "b95e76d6749f0558",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      4,
+                      4
+                    ],
+                    [
+                      2,
+                      4,
+                      7
+                    ],
+                    [
+                      3,
+                      3,
+                      2
+                    ],
+                    [
+                      4,
+                      4,
+                      9
+                    ],
+                    [
+                      5,
+                      2,
+                      9
+                    ],
+                    [
+                      6,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 83
+                }
+              }
+            },
+            "elapsed_ms": 19,
+            "remaining_workers": 0
+          }
+        ]
+      },
+      "transaction_engine": {
+        "browser": "chromium",
+        "provider_payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc",
+        "host_result_schema": "c863d11dfc18cc4c06a32b90a7a654b84f1c96e91ded0b26288d3e2e01aa5e10",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "156.0.8078.80",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2014.699999988079,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 8,
+        "max_elapsed_ms": 19.099999994039536,
+        "actual_host_deadline_ms": 2000,
+        "rows": [
+          {
+            "result": {
+              "status": "ok",
+              "key": "c0cbbd001adc0f59",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph has a cycle; this schedule is not conflict serializable."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "b1",
+                  "a2",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 110
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 100
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  },
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": false,
+                "serial_order": [],
+                "cycle": [
+                  "T1",
+                  "T2",
+                  "T1"
+                ]
+              }
+            },
+            "elapsed_ms": 19.099999994039536,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "b6d47cb4ffd3db2a",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph is acyclic."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "a2",
+                  "a3",
+                  "b1",
+                  "b2",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 120
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 110
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 120
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b1"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": true,
+                "serial_order": [
+                  "T1",
+                  "T2"
+                ],
+                "cycle": []
+              }
+            },
+            "elapsed_ms": 15.300000011920929,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "d574f6db8b6f4e0c",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph is acyclic."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "b1",
+                  "b2",
+                  "b3",
+                  "a1",
+                  "a2",
+                  "a3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 120
+                },
+                "reads": {
+                  "b1": 100,
+                  "a1": 110
+                },
+                "trace": [
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b3"
+                  },
+                  {
+                    "operation": "a1",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 120
+                  },
+                  {
+                    "operation": "a3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ],
+                      [
+                        "b2",
+                        "a1"
+                      ],
+                      [
+                        "b2",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": true,
+                "serial_order": [
+                  "T2",
+                  "T1"
+                ],
+                "cycle": []
+              }
+            },
+            "elapsed_ms": 14,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "f18d2fe62a3bb09d",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "Invalid operation order: program-order."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a2",
+                  "b1",
+                  "a1",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": false,
+                "reasons": [
+                  "program-order"
+                ]
+              }
+            },
+            "elapsed_ms": 12.400000005960464,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "syntax"
+            },
+            "elapsed_ms": 11.900000005960464,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "refused"
+            },
+            "elapsed_ms": 12.899999976158142,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "error"
+            },
+            "elapsed_ms": 10.800000011920929,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "c0cbbd001adc0f59",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph has a cycle; this schedule is not conflict serializable."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "b1",
+                  "a2",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 110
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 100
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  },
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": false,
+                "serial_order": [],
+                "cycle": [
+                  "T1",
+                  "T2",
+                  "T1"
+                ]
+              }
+            },
+            "elapsed_ms": 13.5,
+            "remaining_workers": 0
+          }
+        ]
+      },
+      "original_pair": {
+        "browser": "chromium",
+        "interactions": true,
+        "touch": true,
+        "teardown": true,
+        "csp": true,
+        "timeout": true,
+        "typedResults": true,
+        "invalidResultsRejected": true,
+        "version": "156.0.8078.80",
+        "errors": []
+      }
+    },
+    "firefox": {
+      "lesson": {
+        "browser": "firefox",
+        "version": "153.0",
+        "modes": [
+          "construct",
+          "rewrite"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      },
+      "relational_engine": {
+        "browser": "firefox",
+        "provider_payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d",
+        "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "153.0",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2032,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 8,
+        "max_elapsed_ms": 103,
+        "actual_host_deadline_ms": 2000,
+        "rows": [
+          {
+            "result": {
+              "status": "ok",
+              "key": "b95e76d6749f0558",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      4,
+                      4
+                    ],
+                    [
+                      2,
+                      4,
+                      7
+                    ],
+                    [
+                      3,
+                      3,
+                      2
+                    ],
+                    [
+                      4,
+                      4,
+                      9
+                    ],
+                    [
+                      5,
+                      2,
+                      9
+                    ],
+                    [
+                      6,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 83
+                }
+              }
+            },
+            "elapsed_ms": 83,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "a942cb55adbb408e",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "f79d0acecf2d5b3bfa86a23f65c990649415768b7bbff572f3b2e1346863912c",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      2,
+                      4,
+                      4
+                    ],
+                    [
+                      3,
+                      3,
+                      4
+                    ],
+                    [
+                      4,
+                      2,
+                      7
+                    ],
+                    [
+                      5,
+                      3,
+                      2
+                    ],
+                    [
+                      6,
+                      2,
+                      9
+                    ],
+                    [
+                      7,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 51
+                }
+              }
+            },
+            "elapsed_ms": 58,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "cd7398a84a265ff1",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "e333dd2a023308ea439f3aad046c32d080d7350ec1a284971ad41022bff126ef",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      2
+                    ],
+                    [
+                      1,
+                      1,
+                      2
+                    ],
+                    [
+                      2,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 3
+                }
+              }
+            },
+            "elapsed_ms": 74,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "cdc00119cb24aa99",
+              "namespace": "e762729ff0d8c91e352a8c1e3ab13acfd905c60f0acb131d0ad04f1ab4d98a46",
+              "summary": {
+                "kind": "text",
+                "text": "The rewrite certificate is verified; this is not a runtime cost estimate."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "524ad0c604f819ab06b4d90224ced198b7037749eadcec395e30cb695a790a4f",
+                "answer": "c485b500ec37a1a47ff9b60365ad84d270d93ab69520a9672a358e4a12b206de",
+                "mode": "rewrite",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      2,
+                      4,
+                      4
+                    ],
+                    [
+                      3,
+                      3,
+                      4
+                    ],
+                    [
+                      4,
+                      2,
+                      7
+                    ],
+                    [
+                      5,
+                      3,
+                      2
+                    ],
+                    [
+                      6,
+                      2,
+                      9
+                    ],
+                    [
+                      7,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 51
+                },
+                "proof": {
+                  "verified": true,
+                  "steps": 5,
+                  "tree": [
+                    [
+                      "rel",
+                      "books"
+                    ],
+                    [
+                      "select",
+                      0,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "topic"
+                          ],
+                          [
+                            "v",
+                            "db"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "rel",
+                      "loans"
+                    ],
+                    [
+                      "select",
+                      2,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "open"
+                          ],
+                          [
+                            "v",
+                            true
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "join",
+                      1,
+                      3,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "book"
+                          ],
+                          [
+                            "a",
+                            "item"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "rel",
+                      "members"
+                    ],
+                    [
+                      "join",
+                      4,
+                      5,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "borrower"
+                          ],
+                          [
+                            "a",
+                            "member"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "project",
+                      6,
+                      [
+                        "name"
+                      ]
+                    ]
+                  ],
+                  "baseline_cells": 83,
+                  "improved": true
+                }
+              }
+            },
+            "elapsed_ms": 103,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "syntax"
+            },
+            "elapsed_ms": 56,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "refused"
+            },
+            "elapsed_ms": 35,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "error"
+            },
+            "elapsed_ms": 33,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "b95e76d6749f0558",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      4,
+                      4
+                    ],
+                    [
+                      2,
+                      4,
+                      7
+                    ],
+                    [
+                      3,
+                      3,
+                      2
+                    ],
+                    [
+                      4,
+                      4,
+                      9
+                    ],
+                    [
+                      5,
+                      2,
+                      9
+                    ],
+                    [
+                      6,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 83
+                }
+              }
+            },
+            "elapsed_ms": 48,
+            "remaining_workers": 0
+          }
+        ]
+      },
+      "transaction_engine": {
+        "browser": "firefox",
+        "provider_payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc",
+        "host_result_schema": "c863d11dfc18cc4c06a32b90a7a654b84f1c96e91ded0b26288d3e2e01aa5e10",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "153.0",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2023,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 8,
+        "max_elapsed_ms": 150,
+        "actual_host_deadline_ms": 2000,
+        "rows": [
+          {
+            "result": {
+              "status": "ok",
+              "key": "c0cbbd001adc0f59",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph has a cycle; this schedule is not conflict serializable."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "b1",
+                  "a2",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 110
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 100
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  },
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": false,
+                "serial_order": [],
+                "cycle": [
+                  "T1",
+                  "T2",
+                  "T1"
+                ]
+              }
+            },
+            "elapsed_ms": 59,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "b6d47cb4ffd3db2a",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph is acyclic."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "a2",
+                  "a3",
+                  "b1",
+                  "b2",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 120
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 110
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 120
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b1"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": true,
+                "serial_order": [
+                  "T1",
+                  "T2"
+                ],
+                "cycle": []
+              }
+            },
+            "elapsed_ms": 66,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "d574f6db8b6f4e0c",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph is acyclic."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "b1",
+                  "b2",
+                  "b3",
+                  "a1",
+                  "a2",
+                  "a3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 120
+                },
+                "reads": {
+                  "b1": 100,
+                  "a1": 110
+                },
+                "trace": [
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b3"
+                  },
+                  {
+                    "operation": "a1",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 120
+                  },
+                  {
+                    "operation": "a3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ],
+                      [
+                        "b2",
+                        "a1"
+                      ],
+                      [
+                        "b2",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": true,
+                "serial_order": [
+                  "T2",
+                  "T1"
+                ],
+                "cycle": []
+              }
+            },
+            "elapsed_ms": 50,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "f18d2fe62a3bb09d",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "Invalid operation order: program-order."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a2",
+                  "b1",
+                  "a1",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": false,
+                "reasons": [
+                  "program-order"
+                ]
+              }
+            },
+            "elapsed_ms": 150,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "syntax"
+            },
+            "elapsed_ms": 33,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "refused"
+            },
+            "elapsed_ms": 37,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "error"
+            },
+            "elapsed_ms": 30,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "c0cbbd001adc0f59",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph has a cycle; this schedule is not conflict serializable."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "b1",
+                  "a2",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 110
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 100
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  },
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": false,
+                "serial_order": [],
+                "cycle": [
+                  "T1",
+                  "T2",
+                  "T1"
+                ]
+              }
+            },
+            "elapsed_ms": 38,
+            "remaining_workers": 0
+          }
+        ]
+      },
+      "original_pair": {
+        "browser": "firefox",
+        "interactions": true,
+        "touch": true,
+        "teardown": true,
+        "csp": true,
+        "timeout": true,
+        "typedResults": true,
+        "invalidResultsRejected": true,
+        "version": "153.0",
+        "errors": []
+      }
+    },
+    "webkit": {
+      "lesson": {
+        "browser": "webkit",
+        "version": "26.5",
+        "modes": [
+          "construct",
+          "rewrite"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      },
+      "relational_engine": {
+        "browser": "webkit",
+        "provider_payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d",
+        "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "26.5",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2082,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 8,
+        "max_elapsed_ms": 95,
+        "actual_host_deadline_ms": 2000,
+        "rows": [
+          {
+            "result": {
+              "status": "ok",
+              "key": "b95e76d6749f0558",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      4,
+                      4
+                    ],
+                    [
+                      2,
+                      4,
+                      7
+                    ],
+                    [
+                      3,
+                      3,
+                      2
+                    ],
+                    [
+                      4,
+                      4,
+                      9
+                    ],
+                    [
+                      5,
+                      2,
+                      9
+                    ],
+                    [
+                      6,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 83
+                }
+              }
+            },
+            "elapsed_ms": 94,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "a942cb55adbb408e",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "f79d0acecf2d5b3bfa86a23f65c990649415768b7bbff572f3b2e1346863912c",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      2,
+                      4,
+                      4
+                    ],
+                    [
+                      3,
+                      3,
+                      4
+                    ],
+                    [
+                      4,
+                      2,
+                      7
+                    ],
+                    [
+                      5,
+                      3,
+                      2
+                    ],
+                    [
+                      6,
+                      2,
+                      9
+                    ],
+                    [
+                      7,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 51
+                }
+              }
+            },
+            "elapsed_ms": 90,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "cd7398a84a265ff1",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "e333dd2a023308ea439f3aad046c32d080d7350ec1a284971ad41022bff126ef",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      2
+                    ],
+                    [
+                      1,
+                      1,
+                      2
+                    ],
+                    [
+                      2,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 3
+                }
+              }
+            },
+            "elapsed_ms": 91,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "cdc00119cb24aa99",
+              "namespace": "e762729ff0d8c91e352a8c1e3ab13acfd905c60f0acb131d0ad04f1ab4d98a46",
+              "summary": {
+                "kind": "text",
+                "text": "The rewrite certificate is verified; this is not a runtime cost estimate."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "524ad0c604f819ab06b4d90224ced198b7037749eadcec395e30cb695a790a4f",
+                "answer": "c485b500ec37a1a47ff9b60365ad84d270d93ab69520a9672a358e4a12b206de",
+                "mode": "rewrite",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      2,
+                      4,
+                      4
+                    ],
+                    [
+                      3,
+                      3,
+                      4
+                    ],
+                    [
+                      4,
+                      2,
+                      7
+                    ],
+                    [
+                      5,
+                      3,
+                      2
+                    ],
+                    [
+                      6,
+                      2,
+                      9
+                    ],
+                    [
+                      7,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 51
+                },
+                "proof": {
+                  "verified": true,
+                  "steps": 5,
+                  "tree": [
+                    [
+                      "rel",
+                      "books"
+                    ],
+                    [
+                      "select",
+                      0,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "topic"
+                          ],
+                          [
+                            "v",
+                            "db"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "rel",
+                      "loans"
+                    ],
+                    [
+                      "select",
+                      2,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "open"
+                          ],
+                          [
+                            "v",
+                            true
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "join",
+                      1,
+                      3,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "book"
+                          ],
+                          [
+                            "a",
+                            "item"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "rel",
+                      "members"
+                    ],
+                    [
+                      "join",
+                      4,
+                      5,
+                      [
+                        [
+                          "eq",
+                          [
+                            "a",
+                            "borrower"
+                          ],
+                          [
+                            "a",
+                            "member"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "project",
+                      6,
+                      [
+                        "name"
+                      ]
+                    ]
+                  ],
+                  "baseline_cells": 83,
+                  "improved": true
+                }
+              }
+            },
+            "elapsed_ms": 91,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "syntax"
+            },
+            "elapsed_ms": 90,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "refused"
+            },
+            "elapsed_ms": 90,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "error"
+            },
+            "elapsed_ms": 90,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "b95e76d6749f0558",
+              "namespace": "d9043537fdc469738b6359ff0480f8396632ee0d429fd440c3ab7996d1d5d714",
+              "summary": {
+                "kind": "text",
+                "text": "Query evaluated on the exercise instances. Matching results is not proof of equivalence."
+              },
+              "data": {
+                "format": "relational-analysis-v1",
+                "exercise": "d6a19ed13380657092e922a9baf6603ef51038550da38f6d641f4a5f8e5bab2f",
+                "answer": "48fc215c9a95adf2b54f9148ed22cd6f14e861a6765c5ae5fdd41e9a59a79b1d",
+                "mode": "construct",
+                "valid": true,
+                "fixtures": [
+                  {
+                    "id": "closed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "ba2843d4eddce23a1368115f4a4b6a929c3e8258a71a7e14759998071307a938"
+                  },
+                  {
+                    "id": "renamed",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "c354302e0e34c9207714017e326fcaa690354ff2ee3422f30c6c39b28363ef32"
+                  },
+                  {
+                    "id": "shown",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "5a1d229a94cd8ea15455761587e4c99627ff004f6fff67843aa1914f8e4fc036"
+                  },
+                  {
+                    "id": "topics",
+                    "header": "f88de52af6729489962dcde7cd766552a066c5e3f74823a85205b4ee43311ba3",
+                    "relation": "fc5650c41b9a2516dee3dce92096fcbfb409a51e0edc30f4b340b7d4070b2f9a"
+                  }
+                ],
+                "public": {
+                  "trace": [
+                    [
+                      0,
+                      3,
+                      3
+                    ],
+                    [
+                      1,
+                      4,
+                      4
+                    ],
+                    [
+                      2,
+                      4,
+                      7
+                    ],
+                    [
+                      3,
+                      3,
+                      2
+                    ],
+                    [
+                      4,
+                      4,
+                      9
+                    ],
+                    [
+                      5,
+                      2,
+                      9
+                    ],
+                    [
+                      6,
+                      1,
+                      1
+                    ]
+                  ],
+                  "cells": 83
+                }
+              }
+            },
+            "elapsed_ms": 95,
+            "remaining_workers": 0
+          }
+        ]
+      },
+      "transaction_engine": {
+        "browser": "webkit",
+        "provider_payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc",
+        "host_result_schema": "c863d11dfc18cc4c06a32b90a7a654b84f1c96e91ded0b26288d3e2e01aa5e10",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "26.5",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2035,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 8,
+        "max_elapsed_ms": 49,
+        "actual_host_deadline_ms": 2000,
+        "rows": [
+          {
+            "result": {
+              "status": "ok",
+              "key": "c0cbbd001adc0f59",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph has a cycle; this schedule is not conflict serializable."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "b1",
+                  "a2",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 110
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 100
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  },
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": false,
+                "serial_order": [],
+                "cycle": [
+                  "T1",
+                  "T2",
+                  "T1"
+                ]
+              }
+            },
+            "elapsed_ms": 49,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "b6d47cb4ffd3db2a",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph is acyclic."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "a2",
+                  "a3",
+                  "b1",
+                  "b2",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 120
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 110
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 120
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b1"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": true,
+                "serial_order": [
+                  "T1",
+                  "T2"
+                ],
+                "cycle": []
+              }
+            },
+            "elapsed_ms": 44,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "d574f6db8b6f4e0c",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph is acyclic."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "b1",
+                  "b2",
+                  "b3",
+                  "a1",
+                  "a2",
+                  "a3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 120
+                },
+                "reads": {
+                  "b1": 100,
+                  "a1": 110
+                },
+                "trace": [
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b3"
+                  },
+                  {
+                    "operation": "a1",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 120
+                  },
+                  {
+                    "operation": "a3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ],
+                      [
+                        "b2",
+                        "a1"
+                      ],
+                      [
+                        "b2",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": true,
+                "serial_order": [
+                  "T2",
+                  "T1"
+                ],
+                "cycle": []
+              }
+            },
+            "elapsed_ms": 44,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "f18d2fe62a3bb09d",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "Invalid operation order: program-order."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a2",
+                  "b1",
+                  "a1",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": false,
+                "reasons": [
+                  "program-order"
+                ]
+              }
+            },
+            "elapsed_ms": 47,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "syntax"
+            },
+            "elapsed_ms": 45,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "refused"
+            },
+            "elapsed_ms": 45,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "error"
+            },
+            "elapsed_ms": 45,
+            "remaining_workers": 0
+          },
+          {
+            "result": {
+              "status": "ok",
+              "key": "c0cbbd001adc0f59",
+              "namespace": "41498dbf42fd69e5e6ee634c193f07eecce333c944eceffd99116e0b9cc0d72d",
+              "summary": {
+                "kind": "text",
+                "text": "The conflict graph has a cycle; this schedule is not conflict serializable."
+              },
+              "data": {
+                "format": "schedule-analysis-v1",
+                "exercise": "2f0d64f44a115208fdad9b6773ac2c94e0c796bcaf2aa8ca7bc1f34513ae974c",
+                "order": [
+                  "a1",
+                  "b1",
+                  "a2",
+                  "b2",
+                  "a3",
+                  "b3"
+                ],
+                "valid": true,
+                "vertices": [
+                  "T1",
+                  "T2"
+                ],
+                "final": {
+                  "x": 110
+                },
+                "reads": {
+                  "a1": 100,
+                  "b1": 100
+                },
+                "trace": [
+                  {
+                    "operation": "a1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "b1",
+                    "value": 100
+                  },
+                  {
+                    "operation": "a2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "b2",
+                    "value": 110
+                  },
+                  {
+                    "operation": "a3"
+                  },
+                  {
+                    "operation": "b3"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "T1",
+                    "to": "T2",
+                    "witnesses": [
+                      [
+                        "a1",
+                        "b2"
+                      ],
+                      [
+                        "a2",
+                        "b2"
+                      ]
+                    ]
+                  },
+                  {
+                    "from": "T2",
+                    "to": "T1",
+                    "witnesses": [
+                      [
+                        "b1",
+                        "a2"
+                      ]
+                    ]
+                  }
+                ],
+                "acyclic": false,
+                "serial_order": [],
+                "cycle": [
+                  "T1",
+                  "T2",
+                  "T1"
+                ]
+              }
+            },
+            "elapsed_ms": 48,
+            "remaining_workers": 0
+          }
+        ]
+      },
+      "original_pair": {
+        "browser": "webkit",
+        "interactions": true,
+        "touch": true,
+        "teardown": true,
+        "csp": true,
+        "timeout": true,
+        "typedResults": true,
+        "invalidResultsRejected": true,
+        "version": "26.5",
+        "errors": []
+      }
+    }
+  },
+  "coexistence": {
+    "providers": [
+      "io.github.stefanjdecker.relationallab",
+      "io.github.stefanjdecker.transactionengine",
+      "org.example.coordinates",
+      "org.example.distance"
+    ],
+    "catalog": "0034f6eb404c7507225b5a03d606ebed255c3fc31269893eb2f3f17fb41edfb1"
+  },
+  "not_checked": [
+    "Physical phone over LAN",
+    "64-participant load/latency/fairness",
+    "Full accessibility/zoom/reduced-motion review",
+    "Visual tree editor and cooperative preview (not implemented)",
+    "Hosted CI",
+    "Linux run and cross-OS transfer",
+    "Published immutable compatible host pin",
+    "Actual projector recording"
+  ]
+}

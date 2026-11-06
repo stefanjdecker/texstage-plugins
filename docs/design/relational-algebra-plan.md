@@ -1,11 +1,15 @@
 # Relational Algebra Lab: implementation plan
 
-Status: engine slice implemented, 2026-11-06. The
+Status: engine and R3/R4 lesson implemented, 2026-11-06. The
 [v1 contract](relational-algebra-contract.md) and
 [validation record](relational-algebra-r2-validation.md) cover the R0 schemas and
 R2 algebra/certificate engine. R1 worker startup is now fixed and tested under
 the unchanged CSP; see [the compatibility record](worker-browser-compatibility.md).
-The other R1 host gates and R3–R6 classroom integration remain.
+Structured command errors, mount reconciliation and queue replacement now have
+generic host regression coverage. R3/R4 supply the prepared exercise/solutions,
+bounded state and role-filtered views, with a basic JSON entry interface for
+end-to-end checks. See [the lesson validation record](relational-algebra-lesson-validation.md).
+R5's visual editor/preview, remaining R1 scheduling gates and R6 measurements remain.
 The [design](relational-algebra.md) specifies the teaching modes and target behavior.
 
 ## Delivery scope and dependencies
@@ -249,8 +253,10 @@ entry under the user's release authorization. No course migration is implicit.
 
 ## Next implementation task
 
-Implement R3's prepared authoring and R4's lesson state using the frozen contract
-and the engine facts. Preserve the fixed worker loading and its security probes;
-close the remaining R1 gates before a classroom release. Keep the transaction design and existing
-course environments intact. R5's visual editor follows the shared authoring,
-state and result contracts.
+Implement R5's visual query-tree editor and cooperative public-data preview.
+Replace the basic JSON entry experience while preserving its explicit save,
+draft/conflict handling, anonymous sharing and phase/version semantics.
+Keep authoring, state and result contracts shared by both modes. Preserve the
+worker policy and security probes, and complete the remaining R1/R6 gates
+before a classroom release. Keep the transaction design and existing course
+environments intact.
