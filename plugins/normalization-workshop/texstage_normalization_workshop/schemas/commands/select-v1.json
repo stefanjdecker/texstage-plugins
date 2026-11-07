@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop commands/select-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "control",
+    "handle",
+    "version"
+  ],
+  "properties": {
+    "control": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "handle": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    }
+  }
+}

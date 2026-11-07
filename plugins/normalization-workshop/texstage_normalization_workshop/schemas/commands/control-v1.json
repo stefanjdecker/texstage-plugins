@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop commands/control-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "control"
+  ],
+  "properties": {
+    "control": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    }
+  }
+}

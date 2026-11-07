@@ -19,3 +19,6 @@ fd.lock.json
 examples/bplus/texquiz-out/
 bplus-profile/
 bplus.lock.json
+examples/normalization/texquiz-out/
+normalization-profile/
+normalization.lock.json

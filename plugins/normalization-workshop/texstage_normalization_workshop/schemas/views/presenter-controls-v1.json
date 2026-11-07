@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop views/presenter-controls-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "active",
+    "control_version",
+    "phase_version",
+    "counts",
+    "answers",
+    "selected",
+    "shared"
+  ],
+  "properties": {
+    "phase": {
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "control_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "phase_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "received",
+        "pending",
+        "checked",
+        "unavailable"
+      ],
+      "properties": {
+        "received": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "checked": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "unavailable": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        }
+      }
+    },
+    "answers": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "handle",
+          "version",
+          "status"
+        ],
+        "properties": {
+          "handle": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "checked",
+              "unavailable"
+            ]
+          }
+        }
+      }
+    },
+    "selected": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "handle",
+            "version"
+          ],
+          "properties": {
+            "handle": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            },
+            "version": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            }
+          }
+        }
+      ]
+    },
+    "shared": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "handle",
+            "version"
+          ],
+          "properties": {
+            "handle": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            },
+            "version": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            }
+          }
+        }
+      ]
+    }
+  }
+}

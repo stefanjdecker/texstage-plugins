@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-06",
+  "milestone": "N4 comparison and evidence UI slice",
+  "collection_base": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "committed": false,
+  "published": false,
+  "host": {
+    "commit": "de3351550f3553ca63023554521fbe84806ec94e",
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "changed": false
+  },
+  "environment": {
+    "os": "Windows",
+    "python": "3.14.4",
+    "node": "24.15.0",
+    "playwright": "1.62.1",
+    "host_locks": {
+      "dev.txt": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+      "build.txt": "9c482fa721548dd14edba2f2a7ec98b2dda4b7b27950a6e437a10eae88580f1e"
+    },
+    "collection_package_lock": "25c32f3fef6cda39c5c43b55205a8b24355a2a67a4bbbdd6b88af86bbeea5330"
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.normalizationworkshop",
+    "version": "0.3.0",
+    "payload": "192103429f8541bd0b090d12a9aa31153ea0b0c8ff3fa21e98e4e889a0b2d48c",
+    "wheel": "texstage_normalization_workshop-0.3.0-py3-none-any.whl",
+    "wheel_sha256": "450739bdfef1fb78a3cb0afd211c947e037e2fdae870ac27f2091cc7e8268daa",
+    "sdist": "texstage_normalization_workshop-0.3.0.tar.gz",
+    "sdist_sha256": "6182990baaa86ff948ea37d0d644338ad10fea23acdac2a2c4045875a051ce7c",
+    "sdist_payload_parity": true
+  },
+  "tests": {
+    "normalization": {
+      "tests": "52",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "102.397",
+      "report": "tests-final.xml",
+      "sha256": "afb4c49354a0e218f7a43fa34c0d8477ff7a867309d8f19626dfb7bb3576d289"
+    }
+  },
+  "displayed_evidence": {
+    "cases": 243,
+    "lossy": 88,
+    "lost_fd": 93,
+    "seed": 7342
+  },
+  "schema_byte_budgets": {
+    "texstage_normalization_workshop/schemas/analysis-result-v1.json": 3391,
+    "classify_70_keys": 2009,
+    "complete_outcome": 3669,
+    "texstage_normalization_workshop/schemas/answer-v1.json": 66,
+    "texstage_normalization_workshop/schemas/commands/compare-v1.json": 1640,
+    "texstage_normalization_workshop/schemas/commands/control-v1.json": 22,
+    "texstage_normalization_workshop/schemas/commands/select-v1.json": 823,
+    "texstage_normalization_workshop/schemas/commands/submit-v1.json": 117,
+    "texstage_normalization_workshop/schemas/commands/topic-v1.json": 45,
+    "texstage_normalization_workshop/schemas/state-v1.json": 118209,
+    "replacement_transition": 120645,
+    "texstage_normalization_workshop/schemas/state-v2.json": 119863,
+    "texstage_normalization_workshop/schemas/views/participant-input-v1.json": 48427,
+    "texstage_normalization_workshop/schemas/views/participant-input-v2.json": 51830,
+    "texstage_normalization_workshop/schemas/views/presenter-controls-v1.json": 54662,
+    "texstage_normalization_workshop/schemas/views/presenter-controls-v2.json": 56316,
+    "texstage_normalization_workshop/schemas/views/presenter-overlay-v1.json": 51706,
+    "texstage_normalization_workshop/schemas/views/presenter-overlay-v2.json": 55233,
+    "texstage_normalization_workshop/schemas/views/projector-overlay-v1.json": 48301,
+    "texstage_normalization_workshop/schemas/views/projector-overlay-v2.json": 55231
+  },
+  "schema_hashes": {
+    "schemas/analysis-result-v1.json": "1a4616042f0af3d34e024b0b38ba3f4af58b5510022578f1d5f7e9a1f28f00c0",
+    "schemas/answer-v1.json": "bc37cf8e330d561629bbb7eded058524d731e59ee63a0d763afc203c6bfe54cd",
+    "schemas/commands/compare-v1.json": "fddc31f5ad5f8cefb1d86bcfbd8926d3718344fd77816af7f1c2fe387835ded4",
+    "schemas/commands/control-v1.json": "bfeefc4194827b393f2fffccb0e9111963f51805e076fffae5f9bb9431d3a7a9",
+    "schemas/commands/select-v1.json": "7f7dfce80daa395408722d3de08803353afb8e7bbf24450cd620dee4b7204871",
+    "schemas/commands/submit-v1.json": "daf15d56b3be7fc17c6d74f54043325abef5192086e4a9be29f8e42e660d2668",
+    "schemas/commands/topic-v1.json": "a554d940205ee1b80dd5890f8e83846730a955418a781ba9c4448b6b5aeb7714",
+    "schemas/lesson-v1.json": "42c20057546e5e3dc24120c7076fcdf546467de487daf8d36019a38bc06cbe8e",
+    "schemas/seed-v1.json": "c9943dd1e58822916cbc2922f1c5a22a931025af6186b0666d19dd03473d36d1",
+    "schemas/state-v1.json": "3b4997e7971bed58580f7712378438a4605007b6f894260541277cdab7583475",
+    "schemas/state-v2.json": "7f731129cffb42fcbb8454342cdd520a89fa1aaff26450e8416904785fbe7e5b",
+    "schemas/views/participant-input-v1.json": "bfe088b55d7253e50d4fc5f5a9beebfcf9540cf2880f5e2404d372654c391c55",
+    "schemas/views/participant-input-v2.json": "f7cc42810a44860cb7c5b28fd8b1001aedaa4e61d5820b09eb633a8209f79fb3",
+    "schemas/views/presenter-controls-v1.json": "96120e228b59c35a693fa369b9c1522a6f207524feef017ca96b94748e42b7de",
+    "schemas/views/presenter-controls-v2.json": "6414653a2ce8900de63841fb5ced108e2f351f3fd21cefa481e79707ea479b65",
+    "schemas/views/presenter-overlay-v1.json": "329d9b54696056acd3446d2fb7b8f6008bb4ce45986d71fbb5cc579e4790050f",
+    "schemas/views/presenter-overlay-v2.json": "42f24f6c9a306cf6d3ef90915e8aa3ceec45900fb84aa4fb7c56107cff9b9f91",
+    "schemas/views/projector-overlay-v1.json": "60eb4ed6cf32e8cb9c8b48118237005e020a4918a070dd3f3c65bc2b34ced71b",
+    "schemas/views/projector-overlay-v2.json": "9f6193471c0c2abc9664f26cac12681861dd185d21d214eb8d284ae865cff82b"
+  },
+  "engine_modules_unchanged_from_n3": {
+    "model.py": "d9e8b4369a9f4abe17944c6c5fc692a08e5338094002dbad4232b7541ad6c6e2",
+    "validation.py": "db7af7ce8b762473277ca7bae02053495b0aca94b8d88af3fc3c8f9bf97a8342",
+    "web/fd.mjs": "1ed7fe2da0e2fd9d6e6eff0c97e23d59349d90dad7e42c0cd926f5792d93ac76",
+    "web/chase.mjs": "231d259af8b5ded4ea292e19ec98b6380a780fdfcae207d8b8c1e0d33c31b7a8",
+    "web/engine.mjs": "97e5c0715fd7fbacd207bd4ab671f7c9d12735fc20dfa2fb93d945ac510567b7",
+    "web/engine.worker.mjs": "8fe298bef2a9628ec34f6e6b6d93e1d7e6930cc5227282c8174aaab727c57eca",
+    "web/identity.mjs": "38821654b02e4f622486fcc132fb9d0b6e13380a0883dad7d9bcc5df2337dd6b",
+    "web/validation.mjs": "bd43f34b77e5280bdb2d56b010feac9b4092032042b0443afc0eef3dfdee9038"
+  },
+  "browsers": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "comparison": true,
+      "explicitChecksSharing": true,
+      "lossyCounterexample": true,
+      "lostFDExample": true,
+      "chasePlayback": true,
+      "proofFocusPreserved": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "comparison": true,
+      "explicitChecksSharing": true,
+      "lossyCounterexample": true,
+      "lostFDExample": true,
+      "chasePlayback": true,
+      "proofFocusPreserved": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "comparison": true,
+      "explicitChecksSharing": true,
+      "lossyCounterexample": true,
+      "lostFDExample": true,
+      "chasePlayback": true,
+      "proofFocusPreserved": true,
+      "errors": []
+    }
+  ],
+  "visual_review": {
+    "screenshots": [
+      "chromium/comparison-valid.png",
+      "chromium/comparison-lossy.png",
+      "firefox/phone-lossy-evidence.png",
+      "webkit/phone-lost-fd.png",
+      "webkit/projector-lost-fd.png"
+    ],
+    "result": "Readable cards and counterexample tables. Wide phone tables scroll within the card; long overlay proof content scrolls."
+  },
+  "security": {
+    "production_csp_unchanged": true,
+    "engine_bundle_unchanged": true,
+    "note": "Actual installed host worker and role-filtered transport used. N2 forbidden-operation probes not rerun: no worker or host changes."
+  },
+  "remaining": [
+    "comprehensive German/zoom/keyboard and screen-reader review",
+    "new-learner review",
+    "cross-platform hosted CI against a reproducible published host pin",
+    "physical Android/iPhone classroom LAN tests",
+    "measured classroom load"
+  ],
+  "scope": {
+    "host_changed": false,
+    "example_source_changed": false,
+    "original_repositories_or_courses_changed": false,
+    "other_provider_suites": "Not rerun for this isolated normalization-only slice. N3 record retains earlier results."
+  },
+  "frozen_v1_schema_count": 12
+}

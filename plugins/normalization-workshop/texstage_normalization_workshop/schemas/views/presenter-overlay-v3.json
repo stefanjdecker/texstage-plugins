@@ -1,0 +1,693 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop views/presenter-overlay-v3.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "counts",
+    "topic",
+    "selected",
+    "worked"
+  ],
+  "properties": {
+    "phase": {
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "received",
+        "pending",
+        "checked",
+        "unavailable"
+      ],
+      "properties": {
+        "received": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "checked": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "unavailable": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        }
+      }
+    },
+    "topic": {
+      "enum": [
+        "summary",
+        "lossless",
+        "preservation"
+      ]
+    },
+    "selected": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "version",
+          "analysis"
+        ],
+        "properties": {
+          "answer": {
+            "$ref": "#/$defs/answer"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "analysis": {
+            "$ref": "#/$defs/analysis"
+          }
+        }
+      }
+    },
+    "worked": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/worked"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "witnesses": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "2nf",
+        "3nf",
+        "bcnf"
+      ],
+      "properties": {
+        "2nf": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "3nf": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "bcnf": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "normal_form",
+        "prime",
+        "witnesses"
+      ],
+      "properties": {
+        "relation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 255
+        },
+        "normal_form": {
+          "enum": [
+            "1nf",
+            "2nf",
+            "3nf",
+            "bcnf"
+          ]
+        },
+        "prime": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "witnesses": {
+          "$ref": "#/$defs/witnesses"
+        }
+      }
+    },
+    "class": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normal_form",
+        "prime",
+        "keys",
+        "witnesses",
+        "witness_valid"
+      ],
+      "properties": {
+        "normal_form": {
+          "enum": [
+            "1nf",
+            "2nf",
+            "3nf",
+            "bcnf"
+          ]
+        },
+        "prime": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 70,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "uniqueItems": true
+        },
+        "witnesses": {
+          "$ref": "#/$defs/witnesses"
+        },
+        "witness_valid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "decompose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "covered",
+        "missing",
+        "components",
+        "preservation",
+        "join"
+      ],
+      "properties": {
+        "covered": {
+          "type": "boolean"
+        },
+        "missing": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "components": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/component"
+          }
+        },
+        "preservation": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "preserved",
+                "fd",
+                "closure"
+              ],
+              "properties": {
+                "preserved": {
+                  "type": "boolean"
+                },
+                "fd": {
+                  "type": "integer",
+                  "minimum": -1,
+                  "maximum": 31
+                },
+                "closure": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              }
+            }
+          ]
+        },
+        "join": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "lossless",
+                "rows",
+                "columns",
+                "merges",
+                "tableau"
+              ],
+              "properties": {
+                "lossless": {
+                  "type": "boolean"
+                },
+                "rows": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                },
+                "columns": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                },
+                "merges": {
+                  "type": "array",
+                  "minItems": 0,
+                  "maxItems": 56,
+                  "items": {
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "prefixItems": [
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 31
+                      },
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 7
+                      },
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 7
+                      }
+                    ],
+                    "items": false
+                  }
+                },
+                "tableau": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 8,
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 71
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "answer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "normal_form",
+            "witness"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "classify"
+              ]
+            },
+            "normal_form": {
+              "enum": [
+                "1nf",
+                "2nf",
+                "3nf",
+                "bcnf"
+              ]
+            },
+            "witness": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 255
+                    },
+                    {
+                      "enum": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128
+                      ]
+                    }
+                  ],
+                  "items": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "relations"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "decompose"
+              ]
+            },
+            "relations": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 8,
+              "items": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 255
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      ]
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accepted",
+        "normal_form",
+        "missing",
+        "lossless",
+        "preserved",
+        "witness",
+        "lost_fd"
+      ],
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "normal_form": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "1nf",
+                "2nf",
+                "3nf",
+                "bcnf"
+              ]
+            }
+          ]
+        },
+        "missing": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "lossless": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "preserved": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "witness": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "lost_fd": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 31
+        }
+      }
+    },
+    "analysis": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "format",
+            "exercise",
+            "answer",
+            "mode",
+            "facts"
+          ],
+          "properties": {
+            "format": {
+              "const": 1,
+              "type": "integer"
+            },
+            "exercise": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            },
+            "answer": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            },
+            "mode": {
+              "enum": [
+                "classify"
+              ]
+            },
+            "facts": {
+              "$ref": "#/$defs/class"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "format",
+            "exercise",
+            "answer",
+            "mode",
+            "facts"
+          ],
+          "properties": {
+            "format": {
+              "const": 1,
+              "type": "integer"
+            },
+            "exercise": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            },
+            "answer": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            },
+            "mode": {
+              "enum": [
+                "decompose"
+              ]
+            },
+            "facts": {
+              "$ref": "#/$defs/decompose"
+            }
+          }
+        }
+      ]
+    },
+    "worked": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "answer",
+        "explanation"
+      ],
+      "properties": {
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      }
+    }
+  }
+}

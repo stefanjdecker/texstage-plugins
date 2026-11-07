@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop commands/compare-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "control",
+    "answers"
+  ],
+  "properties": {
+    "control": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "answers": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "handle",
+          "version"
+        ],
+        "properties": {
+          "handle": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      }
+    }
+  }
+}

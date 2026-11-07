@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop views/projector-overlay-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "counts",
+    "shared",
+    "worked"
+  ],
+  "properties": {
+    "phase": {
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "received",
+        "pending",
+        "checked",
+        "unavailable"
+      ],
+      "properties": {
+        "received": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "checked": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "unavailable": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        }
+      }
+    },
+    "shared": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "answer",
+            "version"
+          ],
+          "properties": {
+            "answer": {
+              "$ref": "#/$defs/answer"
+            },
+            "version": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            }
+          }
+        }
+      ]
+    },
+    "worked": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/worked"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "answer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "normal_form",
+            "witness"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "classify"
+              ]
+            },
+            "normal_form": {
+              "enum": [
+                "1nf",
+                "2nf",
+                "3nf",
+                "bcnf"
+              ]
+            },
+            "witness": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 255
+                    },
+                    {
+                      "enum": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128
+                      ]
+                    }
+                  ],
+                  "items": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "relations"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "decompose"
+              ]
+            },
+            "relations": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 8,
+              "items": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 255
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      ]
+    },
+    "worked": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "answer",
+        "explanation"
+      ],
+      "properties": {
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      }
+    }
+  }
+}

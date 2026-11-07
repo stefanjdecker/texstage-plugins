@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-06",
+  "milestone": "N3 prepared authoring/state and initial N4 controls",
+  "collection_base": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "committed": false,
+  "published": false,
+  "host": {
+    "commit": "de3351550f3553ca63023554521fbe84806ec94e",
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "changed": false
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.normalizationworkshop",
+    "version": "0.2.0",
+    "payload": "281ecd7a8739b936ba38eac2092075ca19b105dd57e0c6c89ea08050c1a6d1fe",
+    "wheel": "texstage_normalization_workshop-0.2.0-py3-none-any.whl",
+    "wheel_sha256": "7985f5a9304dbabad5227bbcfed12bbe01a0e42790469c924e3a3845e3d0aab7",
+    "sdist": "texstage_normalization_workshop-0.2.0.tar.gz",
+    "sdist_sha256": "6594a62d4b0191d29b83b1271d4904993d5d5d4f91169893770ac61d801c4515",
+    "sdist_payload_parity": true
+  },
+  "environment": {
+    "os": "Windows",
+    "python": "3.14.4",
+    "node": "24.15.0",
+    "playwright": "1.62.1",
+    "host_locks": {
+      "dev.txt": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+      "build.txt": "9c482fa721548dd14edba2f2a7ec98b2dda4b7b27950a6e437a10eae88580f1e"
+    },
+    "collection_package_lock": "25c32f3fef6cda39c5c43b55205a8b24355a2a67a4bbbdd6b88af86bbeea5330"
+  },
+  "tests": {
+    "normalization": {
+      "tests": "47",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "102.821",
+      "report": "tests-final.xml",
+      "sha256": "9f0dc3e2ee521b7ebd0b6d4f7c6fbddccbbf8c0cdc25a9877cd67366fa5250cf"
+    },
+    "coordinates_distance": {
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "16.605",
+      "report": "regression-pair.xml",
+      "sha256": "2384757eb8196cb7979a5e56decc1b3560b9f62e3bbdb281a8bdb4634188866d"
+    },
+    "transaction": {
+      "tests": "67",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "122.308",
+      "report": "regression-transaction.xml",
+      "sha256": "85a473066ff112323ad7273f367863dcabb154b3d9bd098953a4b56fefe3b529"
+    },
+    "relational": {
+      "tests": "72",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "130.816",
+      "report": "regression-relational.xml",
+      "sha256": "3ba91ebe55ec39c8626927d187a2de17e625badac8ea94bcd5f5aa2b4ccdfa7f"
+    }
+  },
+  "frozen_schema_hashes": {
+    "schemas/analysis-result-v1.json": "1a4616042f0af3d34e024b0b38ba3f4af58b5510022578f1d5f7e9a1f28f00c0",
+    "schemas/answer-v1.json": "bc37cf8e330d561629bbb7eded058524d731e59ee63a0d763afc203c6bfe54cd",
+    "schemas/lesson-v1.json": "42c20057546e5e3dc24120c7076fcdf546467de487daf8d36019a38bc06cbe8e",
+    "schemas/seed-v1.json": "c9943dd1e58822916cbc2922f1c5a22a931025af6186b0666d19dd03473d36d1",
+    "schemas/state-v1.json": "3b4997e7971bed58580f7712378438a4605007b6f894260541277cdab7583475",
+    "schemas/commands/control-v1.json": "bfeefc4194827b393f2fffccb0e9111963f51805e076fffae5f9bb9431d3a7a9",
+    "schemas/commands/select-v1.json": "7f7dfce80daa395408722d3de08803353afb8e7bbf24450cd620dee4b7204871",
+    "schemas/commands/submit-v1.json": "daf15d56b3be7fc17c6d74f54043325abef5192086e4a9be29f8e42e660d2668",
+    "schemas/views/participant-input-v1.json": "bfe088b55d7253e50d4fc5f5a9beebfcf9540cf2880f5e2404d372654c391c55",
+    "schemas/views/presenter-controls-v1.json": "96120e228b59c35a693fa369b9c1522a6f207524feef017ca96b94748e42b7de",
+    "schemas/views/presenter-overlay-v1.json": "329d9b54696056acd3446d2fb7b8f6008bb4ce45986d71fbb5cc579e4790050f",
+    "schemas/views/projector-overlay-v1.json": "60eb4ed6cf32e8cb9c8b48118237005e020a4918a070dd3f3c65bc2b34ced71b"
+  },
+  "engine_modules_unchanged_from_n2": [
+    "model.py",
+    "validation.py",
+    "web/fd.mjs",
+    "web/chase.mjs",
+    "web/engine.mjs",
+    "web/engine.worker.mjs",
+    "web/identity.mjs",
+    "web/validation.mjs"
+  ],
+  "browsers": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "errors": []
+    }
+  ],
+  "visual_review": {
+    "exercise_and_solution_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "screenshots": [
+      "chromium/presenter-inspection.png",
+      "chromium/phone-decomposition.png",
+      "firefox/phone-classification.png",
+      "webkit/projector-revealed.png"
+    ],
+    "result": "No clipping/overlap after compacting the presenter overlay."
+  },
+  "coexistence": {
+    "providers": 5,
+    "ids": [
+      "io.github.stefanjdecker.normalizationworkshop",
+      "io.github.stefanjdecker.relationallab",
+      "io.github.stefanjdecker.transactionengine",
+      "org.example.coordinates",
+      "org.example.distance"
+    ],
+    "resource_verification": true,
+    "catalog_collisions": false
+  },
+  "remaining": [
+    "side-by-side comparison",
+    "readable chase/spurious-tuple UI",
+    "full German/keyboard/zoom learner review",
+    "cross-platform hosted CI against published host pin",
+    "physical Android/iPhone LAN tests",
+    "classroom-load measurements"
+  ],
+  "security": {
+    "production_csp_unchanged": true,
+    "engine_bundle_unchanged": true,
+    "note": "Actual host evaluator used in all N3 browser flows. Active forbidden-operation probes were run in N2; not rerun in N3."
+  }
+}

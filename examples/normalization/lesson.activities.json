@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "language": "en",
+  "items": [
+    {
+      "id": "registration",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/registration.json"
+    },
+    {
+      "id": "classify",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/classify.json"
+    },
+    {
+      "id": "tradeoff",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/tradeoff.json"
+    }
+  ]
+}

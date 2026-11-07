@@ -1,0 +1,51 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{texstage}
+\usepackage{texstage-normalization-workshop}
+\setbeamertemplate{navigation symbols}{}
+\title{Split tables without losing meaning}
+\author{TeXStage Normalization Workshop}
+\date{}
+\begin{document}
+\begin{frame}\titlepage
+\small Choose a normal form, propose a decomposition, and discuss what it preserves.
+\end{frame}
+\begin{frame}{Three different questions}
+\begin{enumerate}
+\item Normal form: which dependencies cause redundancy?
+\item Lossless join: can the original relation always be reconstructed?
+\item FD preservation: can we enforce the dependencies in the smaller tables?
+\end{enumerate}
+\medskip
+Assume atomic values (1NF). Work with functional dependencies, not a sample of rows.
+\end{frame}
+\begin{frame}{Keep the student/course link}
+\normalizationworkshop{registration}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{3NF or BCNF?}
+\normalizationworkshop{classify}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Can every goal be met?}
+\normalizationworkshop{tradeoff}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Discuss the evidence}
+\begin{itemize}
+\item Registration: why does omitting the student/course table lose information?
+\item Tutoring: can locally valid smaller tables violate the original dependency?
+\item Compare your answer with another decomposition. More than one answer can work.
+\end{itemize}
+\medskip
+A dependency-preserving decomposition can be lossy.
+A lossless BCNF decomposition can lose a dependency.
+\end{frame}
+\begin{frame}{Take away}
+\begin{itemize}
+\item Keep the normal form, losslessness and dependency preservation separate.
+\item State a violating dependency when a higher normal form fails.
+\item Check all dependencies implied by the theory when analyzing a component.
+\item A saved answer is checked independently; it need not match the worked answer.
+\end{itemize}
+\end{frame}
+\end{document}

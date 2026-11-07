@@ -1,0 +1,260 @@
+{
+  "format": 1,
+  "date": "2026-11-06",
+  "scope": "N1/N2; analyzer only, reserved lesson schemas",
+  "host_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+  "wheel": {
+    "file": "texstage_normalization_workshop-0.1.0-py3-none-any.whl",
+    "sha256": "25234126a5175a22e8aa2dc40c0e85e40c16258d97c625360c98c7d98cbb1347"
+  },
+  "sdist": {
+    "file": "texstage_normalization_workshop-0.1.0.tar.gz",
+    "sha256": "54c2acff94543bb76616cf2e99015502840e2a489602861eb5b1831d17861b3f",
+    "payload_parity": true
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.normalizationworkshop",
+    "version": "0.1.0",
+    "payload": "b42b55309c59fa41ce2d603c8edae723280d7b1197c04afaa1d3e9b6c5653761"
+  },
+  "result_schema_sha256": "c3e255f57f5104bdbd61cf5de0276a0a99cdc62ccfd3716e099625088cddbffd",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "pytest": {
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0
+  },
+  "finite_checks": {
+    "hand_cases": 17,
+    "worked_lessons": 2,
+    "three_attribute_fd_sets": 4096,
+    "classifications": 4096,
+    "binary_decompositions": 49152,
+    "total_differential_analyses": 53248
+  },
+  "larger_cases": {
+    "cases": 120,
+    "max_python_verification_ms": 9.133199986536056,
+    "max_python_work": 67114,
+    "max_node_with_contract_ms": 4.620100000000001
+  },
+  "schema_bytes": {
+    "texstage_normalization_workshop/schemas/analysis-result-v1.json": 3391,
+    "classify_70_keys": 2009,
+    "complete_outcome": 3669,
+    "texstage_normalization_workshop/schemas/answer-v1.json": 66,
+    "texstage_normalization_workshop/schemas/commands/control-v1.json": 22,
+    "texstage_normalization_workshop/schemas/commands/select-v1.json": 823,
+    "texstage_normalization_workshop/schemas/commands/submit-v1.json": 117,
+    "texstage_normalization_workshop/schemas/state-v1.json": 118209,
+    "replacement_transition": 118991,
+    "texstage_normalization_workshop/schemas/views/participant-input-v1.json": 48427,
+    "texstage_normalization_workshop/schemas/views/presenter-controls-v1.json": 54662,
+    "texstage_normalization_workshop/schemas/views/presenter-overlay-v1.json": 51706,
+    "texstage_normalization_workshop/schemas/views/projector-overlay-v1.json": 48301
+  },
+  "coexistence": {
+    "providers": [
+      {
+        "id": "io.github.stefanjdecker.normalizationworkshop",
+        "version": "0.1.0",
+        "payload": "b42b55309c59fa41ce2d603c8edae723280d7b1197c04afaa1d3e9b6c5653761"
+      },
+      {
+        "id": "io.github.stefanjdecker.relationallab",
+        "version": "0.1.0",
+        "payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d"
+      },
+      {
+        "id": "io.github.stefanjdecker.transactionengine",
+        "version": "0.1.0",
+        "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc"
+      },
+      {
+        "id": "org.example.coordinates",
+        "version": "0.1.0",
+        "payload": "9125ee1b9e7219b09b0ae373b4b208b57d0d06c3c5b87a04111493815317cf3c"
+      },
+      {
+        "id": "org.example.distance",
+        "version": "0.1.0",
+        "payload": "461488b4dd540fb9c7e5527ce7487c1357ada41c8ecbd0df5a19b2997d11b6ab"
+      }
+    ],
+    "distinct_capabilities": 6,
+    "metadata_only_discovery": true,
+    "resource_integrity": true
+  },
+  "browsers": {
+    "chromium": {
+      "browser": "chromium",
+      "provider_payload": "b42b55309c59fa41ce2d603c8edae723280d7b1197c04afaa1d3e9b6c5653761",
+      "host_result_schema": "c3e255f57f5104bdbd61cf5de0276a0a99cdc62ccfd3716e099625088cddbffd",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "156.0.8078.80",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2014.5999999940395,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 28.80000001192093,
+      "actual_host_deadline_ms": 2000
+    },
+    "firefox": {
+      "browser": "firefox",
+      "provider_payload": "b42b55309c59fa41ce2d603c8edae723280d7b1197c04afaa1d3e9b6c5653761",
+      "host_result_schema": "c3e255f57f5104bdbd61cf5de0276a0a99cdc62ccfd3716e099625088cddbffd",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "153.0",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2054,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 669,
+      "actual_host_deadline_ms": 2000
+    },
+    "webkit": {
+      "browser": "webkit",
+      "provider_payload": "b42b55309c59fa41ce2d603c8edae723280d7b1197c04afaa1d3e9b6c5653761",
+      "host_result_schema": "c3e255f57f5104bdbd61cf5de0276a0a99cdc62ccfd3716e099625088cddbffd",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "26.5",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2025,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 50,
+      "actual_host_deadline_ms": 2000
+    }
+  },
+  "not_implemented_or_measured": [
+    "prepared LaTeX authoring hook",
+    "classroom reducer and role projections",
+    "phone/presenter UI",
+    "physical phones and LAN",
+    "classroom throughput/fairness",
+    "hosted CI",
+    "cross-platform transfer"
+  ]
+}
