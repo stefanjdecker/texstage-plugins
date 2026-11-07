@@ -128,5 +128,6 @@
       "de": "Nach der Blatt- und inneren Vereinigung hat die alte Wurzel nur ein Kind. Dieses wird automatisch zur neuen Wurzel."
     }
   },
-  "feedback": "on-reveal"
+  "feedback": "on-reveal",
+  "points": 1000
 }

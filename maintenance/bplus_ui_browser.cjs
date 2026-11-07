@@ -142,6 +142,14 @@ let server,log;
     if((await data(presenter)).selected.feedback?.correct===false)break;
    }
    assert.equal((await data(presenter)).selected.feedback.correct,false);
+   const partial=name==="lookup"?400:name==="range"?700:900;
+   assert.equal((await data(presenter)).selected.feedback.grade.credit,partial);
+   for(const student of [phone,bob,second]){
+    assert.equal((await data(student)).scoring.awarded,null);
+    assert.equal((await student.evaluate(()=>window.bplusUIState.me.score)),0);
+    assert.equal(await student.locator('[data-bp="grade"] table').count(),0);
+   }
+   assert.equal(await presenter.locator('[data-bp="inspection"] [data-bp="grade"] table').count(),1);
    assert(await action(presenter,"share").isDisabled());assert.equal(await projector.locator(".bp-overlay:visible").count(),0);
    await activate(presenter,"close");await until(async()=>(await data(presenter)).phase==="closed","closed");
    await activate(presenter,"share");await projector.locator(".bp-overlay:visible").waitFor();
@@ -157,19 +165,43 @@ let server,log;
    await activate(presenter,"clear-share");await until(async()=>await projector.locator(".bp-overlay:visible").count()===0,"clear shared overlay");
    await activate(presenter,"reveal");await until(async()=>(await data(phone))?.own?.feedback?.correct===true,"released correct feedback");
    await projector.locator(".bp-overlay:visible").waitFor();
+   await until(async()=>(await data(bob))?.scoring?.awarded===partial,"published partial credit");
+   await until(async()=>(await phone.evaluate(()=>window.bplusUIState.me.score))===1000&&
+     (await bob.evaluate(()=>window.bplusUIState.me.score))===partial,"scoreboard totals");
+   assert.equal((await phone.evaluate(()=>window.bplusUIState.me.rank)),1);
+   assert.equal((await bob.evaluate(()=>window.bplusUIState.me.rank)),2);
+   assert.equal((await data(phone)).own.feedback.grade.credit,1000);
+   assert.equal((await data(phone)).scoring.awarded,1000);
+   assert((await action(bob,"awarded").innerText()).includes(partial+" / 1000"));
+   assert.equal(await bob.locator('[data-bp="grade"] table').count(),1);
+   const session=await presenter.evaluate(()=>window.bplusUIState.session.id);
+   const response=await fetch(base+"/api/results/"+session+".csv",{headers:{"X-Texquiz-Key":"plugin-demo-key"}});
+   assert.equal(response.status,200);
+   // This fixture uses controlled ASCII nicknames and item IDs without CSV quoting.
+   const csv=(await response.text()).replace(/^\uFEFF/,"").trim().split(/\r?\n/).map(row=>row.split(","));
+   const creditColumn=csv[0].indexOf(name+" activity credit"),pointsColumn=csv[0].indexOf(name+" activity points");
+   assert(creditColumn>=0&&pointsColumn>=0);
+   assert.equal(Number(csv.find(row=>row[1]==="Alice")[pointsColumn]),1000);
+   assert.equal(Number(csv.find(row=>row[1]==="Bob")[pointsColumn]),partial);
+   assert.equal(Number(csv.find(row=>row[1]==="Bob")[creditColumn]),partial/1000);
    if(name==="insert"){
+    await bob.screenshot({path:path.join(output,"phone-partial-credit.png"),fullPage:true});
+    await action(bob,"score").screenshot({path:path.join(output,"partial-credit-panel.png")});
     await phone.screenshot({path:path.join(output,"phone-feedback.png"),fullPage:true});
     await projector.screenshot({path:path.join(output,"projector-worked.png"),fullPage:true});
    }
    await activate(presenter,"reset");await activate(presenter,"confirm-reset");
    await until(async()=>(await data(phone))?.phase==="introduce"&&!(await data(phone))?.own,"reset "+name);
+   await until(async()=>(await phone.evaluate(()=>window.bplusUIState.me.score))===0&&
+     (await bob.evaluate(()=>window.bplusUIState.me.score))===0,"reset withdraws scoreboard points");
+   assert.equal(await phone.locator('[data-bp="grade"] table').count(),0);
   }
   // Keep an unsaved draft explicitly across an epoch change; never submit on reset.
   await input(phone,"height").selectOption("2");
   await activate(presenter,"reset");await activate(presenter,"confirm-reset");
   await action(phone,"conflict").waitFor({state:"visible"});
-  assert.equal(await input(phone,"height").inputValue(),"2");assert.equal((await data(phone)).count,0);
-  await activate(phone,"keep");assert.equal((await data(phone)).count,0);
+  assert.equal(await input(phone,"height").inputValue(),"2");assert.equal((await data(phone)).own,undefined);
+  await activate(phone,"keep");assert.equal((await data(phone)).own,undefined);
   // Reflow and accessibility structure at 200% equivalent viewport width.
   const layout=await geometry(phone);await phone.setViewportSize({width:320,height:420});await geometry(phone);
   await phone.screenshot({path:path.join(output,"phone-reflow.png"),fullPage:true});
@@ -183,6 +215,7 @@ let server,log;
   assert.deepEqual(errors,[]);
   const report={browser:family,version:browser.version(),language,operations:timings.map(t=>t.operation),actualUI:true,
    touch:true,keyboard:true,undoRedo:true,preview:true,draftFocus:true,sameActorConflict:true,resetConflict:true,
+   fixedScoring:true,partialCredit:true,privateBeforeReveal:true,scoreboardTotalsAndRanks:true,resultsCSV:true,resetWithdrawsPoints:true,
    privateInspection:true,predictionOnlySharing:true,replay:true,reveal:true,navigation:true,layout,
    reducedMotion:true,ariaSnapshot:true,physicalPhone:false,lifecycle:lifecycleReport,timings,pageErrors:errors};
   fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify(report));

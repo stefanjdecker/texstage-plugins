@@ -87,5 +87,6 @@
       "de": "Steige einmal ab, dann folge den Blattzeigern. Stoppe bei P3, dessen Maximum die obere Grenze erreicht."
     }
   },
-  "feedback": "on-reveal"
+  "feedback": "on-reveal",
+  "points": 1000
 }

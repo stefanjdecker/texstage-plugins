@@ -1,6 +1,10 @@
 # B+ Tree Operations Lab: plugin design
 
-Status: B0–B4 software implemented locally, 2026-11-07. Version 0.4.0 supplies
+Scoring extension: [rubric and lifecycle](../bplus-scoring.md),
+fixed-v1 points on reveal, state schema 5, and
+[scoring verification](bplus-tree-scoring-validation.md).
+
+Status: B0–B4 software implemented locally, 2026-11-07. Version 0.7.0 supplies
 the engine, bilingual prepared lessons, authoritative submissions/feedback and
 structured phone/presenter views. The physical-device pilot and release gates
 remain open. See the [author guide](../bplus-lesson.md),
@@ -186,9 +190,9 @@ it denotes reference canonical equality, which is inappropriate here.
 ## 5. Ownership and package identity
 
 The distribution, engine, prepared content type and style below are implemented.
-The content type currently has state schema 1, an empty read-only state and
-transparent presenter/projector overlays. Classroom phases, submissions and
-controls remain planned and require a new state-schema revision.
+Version 0.7.0 uses state schema 5, with classroom phases, submissions, feedback,
+private presenter inspection and anonymous sharing. Host-owned actor records
+hold up to 1,000 answers; the presenter roster has 25 entries per page.
 
 | Component | Identity |
 | --- | --- |
@@ -206,7 +210,7 @@ authoring, feedback policy, phases, actor answers and audience views.
 TeXStage continues to own authentication, receipts, epochs, job supervision,
 validated transport, mount lifecycle and resource/pin enforcement.
 
-Use plugin API 1, manifest revision 2 and the existing typed-result contract.
+Use plugin API 1, manifest revision 4 and typed-result contract revision 2.
 An uploaded deck, style or JSON file must never install or enable code.
 No provider is added to the catalog until an immutable reviewed release exists.
 
@@ -289,21 +293,28 @@ Budgets in the [contract](bplus-tree-contract.md#bounds) are deliberately small:
 three repairs. They still cover a cascading split through an internal root.
 Persist compact certificates, not every intermediate tree.
 
-Propose 48 admitted actors with at most 4 KiB per serialized slot including
-its private actor digest key and reserved feedback, plus 16 KiB shared state. This leaves
-headroom under the host's transition limit. It is a storage design, not a
-measured classroom capacity. The pilot must measure bursts, replacements,
-reconnects and fairness before advertising a supported class size.
+Support 600 students with a hard ceiling of 1,000 saved answers per activity.
+Use the generic actor-record contract together with manifest-4 fixed points,
+704-byte reserved encoded slots,
+16 KiB shared state and a 25-row presenter roster. No class-wide answer snapshot
+travels through reducers or views. The
+[capacity validation](bplus-tree-1000-validation.md) distinguishes storage bounds,
+synthetic throughput and the remaining campus-network/physical-phone pilot.
 
 ## 8. Host review and evidence boundary
 
-The local host at `de3351550f3553ca63023554521fbe84806ec94e` already has prepared
+The original design's host at `de3351550f3553ca63023554521fbe84806ec94e` had prepared
 authoring, typed facts/views, structured dispatch errors, mount reconciliation
 and atomic queue replacement. The transaction and relational worker fixes
 already have local Chrome/Firefox/WebKit evidence. These are usable foundations,
-not B+ tree conformance results or published compatibility guarantees.
+not B+ tree conformance results or published compatibility guarantees. The
+[scoring record](bplus-tree-scoring-validation.md) identifies the current matched
+host/provider builds and the measurements for 600 and 1,000 students. The
+[earlier capacity record](bplus-tree-1000-validation.md) covers the ungraded 0.6.0 build.
 
-No new core API is justified by this design. B+ tree capacity, separator
+The original small-class design needed no new core API. Scaling now uses the
+generic actor-record extension, combined with the host's fixed-points ledger;
+separator
 semantics, replay, diagrams and grading belong entirely in the provider.
 The implementation must still test the actual full evaluation binding,
 portable result/view schemas, installed wheels and real browser flow.

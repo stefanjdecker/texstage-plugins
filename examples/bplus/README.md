@@ -14,9 +14,12 @@ from its own tree. Edit the JSON once; preparation derives the live exercise,
 diagram and checked solution. Change the worked certificate with the exercise,
 or the build will stop.
 
-Version 0.4.0 provides structured phone answers, local preview, private presenter
+Version 0.7.0 provides structured phone answers, local preview, private presenter
 inspection, anonymous sharing and replay. Follow the
 [classroom guide](../../docs/bplus-classroom.md) to run the examples.
+The six teaching sources each set **points: 1000**; the stress sources default
+to practice. The [rubric](../../docs/bplus-scoring.md) appears on phones and
+exercise sheets; reveal publishes points to TeXStage's scoreboard.
 The source files include worked answers for
 authors; distribute the generated exercise PDF/PPT to students, not raw author
 sources or preparation directories containing solutions.

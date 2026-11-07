@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "B+ private roster summary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "status"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000000
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "saved",
+        "unavailable"
+      ]
+    }
+  }
+}

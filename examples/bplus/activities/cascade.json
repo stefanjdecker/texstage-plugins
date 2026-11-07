@@ -264,5 +264,6 @@
       "de": "Eine Blattteilung kopiert einen Eintrag; eine innere Teilung verschiebt einen Trennschlüssel. Die neue Wurzel erhöht die Höhe von zwei auf drei Kanten."
     }
   },
-  "feedback": "on-reveal"
+  "feedback": "on-reveal",
+  "points": 1000
 }

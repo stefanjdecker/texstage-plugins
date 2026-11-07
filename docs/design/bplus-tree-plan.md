@@ -1,15 +1,22 @@
 # B+ Tree Operations Lab: implementation plan
 
-Status: B0–B4 software implemented locally, 2026-11-07. Version 0.4.0 adds
-structured phone editing, preview and presenter/projector views to the B3
-protocol. See the [B4 verification record](bplus-tree-b4-validation.md) for exact
-artifacts and measured browser coverage. The B4 physical-phone criterion and
-B5 load/release gates remain open.
+Scoring extension: [rubric and lifecycle](../bplus-scoring.md),
+fixed-v1 points on reveal, state schema 5, and
+[scoring verification](bplus-tree-scoring-validation.md).
+
+Status: B0–B4 implemented. Version 0.7.0 targets 600 students with a 1,000-answer
+ceiling, combining manifest-4 fixed points, actor records and a paged roster. The
+[scoring record](bplus-tree-scoring-validation.md) reports the current local
+measurements and matching host requirements.
+See also the earlier [600/1,000-student record](bplus-tree-1000-validation.md) and the historical
+[B4 UI record](bplus-tree-b4-validation.md). Physical phones, campus networking,
+cross-OS artifact transfer and publication remain release gates.
 
 ## Scope and dependencies
 
-Work in the plugin collection, using the active TeXStage code checkout as the
-host. Keep original lecture-tools, lecture-tools-next, existing courses and
+The scoring implementation uses isolated host and collection worktrees on
+`codex/bplus-scoring`, preserving the previous capacity implementation on
+`codex/bplus-1000-capacity`. Keep concurrent development, original lecture-tools, lecture-tools-next, existing courses and
 pins, archived Texstage and private media unchanged. Do not add a catalog
 entry or installation instructions for a package that does not yet exist.
 
@@ -18,10 +25,10 @@ editor. It reuses the host contracts already exercised by those providers.
 A classroom release includes lookup, range, insert and delete; an early engine
 milestone must be labelled engine-only.
 
-The baseline reviewed here is host
+The original design baseline was host
 `de3351550f3553ca63023554521fbe84806ec94e` and collection
 `5f00b62f6292de01e4eca067c8acd96dddf67eb9`, both local development history.
-Recheck identity before implementation and record exact matching wheels.
+The scoring record identifies the newer source bases and exact matching wheels.
 A development version string alone is not a compatibility pin.
 
 ## File ownership
@@ -37,6 +44,7 @@ A development version string alone is not a compatibility pin.
 | `plugins/bplus-lab/texstage_bplus_lab/__init__.py` | Factory and registered hooks |
 | `.../model.py`, `.../identity.py` | Independent Python semantics, preparation oracle and canonical identity |
 | `.../authoring.py`, `.../state.py` | Prepared lesson/solutions and deterministic classroom reducer |
+| `.../grading.py`, `.../storage.py` | Versioned partial-credit rubric and compact private grade storage |
 | `.../schemas/exercise-v1.json`, `answer-v1.json`, `lesson-v1.json`, `analysis-result-v1.json` | Separate source, submission, author envelope and portable result contracts |
 | `.../schemas/command-*-v2.json`, `.../schemas/*-v2.json` | Closed role-specific commands and all four surface views |
 | `.../web/validation.mjs`, `tree.mjs`, `operations.mjs`, `identity.mjs` | Bounded pure engine implementation |
@@ -47,7 +55,7 @@ A development version string alone is not a compatibility pin.
 | `.../web/locale.mjs`, `ui.mjs` | Instructions, domain feedback and accessible labels |
 | `plugins/bplus-lab/tests/` | Model, authoring, state, schema, package and bounded-work tests |
 | `examples/bplus/lesson.tex`, `lesson.en.activities.json`, `lesson.de.activities.json`, `activities/` | Synthetic progression through all operations |
-| `docs/bplus-lesson.md`, `docs/bplus-classroom.md` | Authoring and implemented classroom protocol |
+| `docs/bplus-lesson.md`, `docs/bplus-classroom.md`, `docs/bplus-scoring.md` | Authoring, classroom protocol and grading rubric |
 | `maintenance/bplus_probe.py`, `run_bplus_engine.mjs`, `bplus_browser.cjs`, `bplus_classroom_browser.cjs` | Installed-wheel, actual worker and full lesson evidence |
 
 Here `.../` means `plugins/bplus-lab/texstage_bplus_lab/`.
@@ -76,8 +84,9 @@ gap appears; document such a gap separately with evidence and affected providers
 
 Engine specification and four bounded schemas are implemented. Full repair replay
 now supplements the original snapshot checker. B3 now implements and measures
-state/view storage; throughput and physical-device measurements remain later
-work. The original design-only record is retained.
+state/view storage; the newer 600/1,000-student record measures synthetic throughput.
+Physical-device measurements remain later work. The original design-only record
+is retained.
 
 Translate the draft contract into machine-checked schemas and semantic validators.
 Review source IDs, capacities, root exceptions, exact separator convention,
@@ -186,7 +195,7 @@ Exit criteria:
   Unavailable/failed evaluation is operational feedback, not an incorrect answer.
 - Counts, select/share/version changes and replay cursor cannot leak private
   inspection records. Test actual public/participant/projector payloads.
-- Admission reserves the private actor-digest key, answer and eventual feedback bytes.
+- Admission reserves each host-owned record's encoded answer and eventual feedback bytes.
   Measure full canonical state, transitions with effects and every view.
   No silent truncation, unbounded history or class-wide copies of tree snapshots.
 - Active/reset/navigation state is correct independently of renderer remounts.
@@ -222,13 +231,15 @@ Exit criteria:
 
 ## B5 — measure and prepare a release
 
-Measure the provisional 48-participant workload with answer replacement,
+Measure the 600/1,000-participant workload with answer replacement,
 two presenters, projector, reconnects and one slow/failed evaluator.
 Record named hardware/OS/browser, p95/worst UI and feedback latency, queue age,
 worker memory, state/effect/view bytes and fairness. Provisional pilot targets
-are local interaction p95 below 200 ms, UI work chunks below 16 ms, and burst
-feedback p95 below 10 s / worst below 30 s. Confirm or revise after measurement;
-these are not promises from finite checks.
+for the 600/1,000-student synthetic workload are durable acknowledgments p95 below
+5 s at 600 / 10 s at the 1,000 ceiling and latest-answer evaluation-ready p95 below 30 s at 600 / 60 s at 1,000, with evaluator-reconnect recovery
+below 150 s. The earlier 10 s feedback target was provisional for the original
+48-student proposal. Local interaction p95 below 200 ms and UI work chunks below
+16 ms remain separate device-pilot targets; socket timings do not measure them.
 
 Run isolated scenarios for host alone, original coordinate/distance pair,
 B+ engine/lesson alone, transaction plus relational plus B+, and all providers.
@@ -248,8 +259,10 @@ No course pin or course environment changes are implicit.
 
 ## Next implementation task
 
-Run a physical-phone/LAN pilot of the implemented B4 UI, then measure B5's
-48-participant workload, including replacement, reconnects and evaluator failure.
+Run a physical-phone/LAN pilot of the implemented UI and repeat the checked-in
+600/1,000-participant workload on the intended classroom server. The local synthetic
+burst, replacement and evaluator-reconnection measurements are recorded in the
+[capacity report](bplus-tree-1000-validation.md).
 Publish/pin the compatible host before claiming release compatibility or hosted
 CI coverage; run the configured Linux/Windows identical-artifact checks. Keep
 original repositories, existing courses, catalog and media unchanged unless

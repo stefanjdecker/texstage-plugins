@@ -16,7 +16,7 @@
     },
     "actor": {
       "type": "string",
-      "maxLength": 64
+      "maxLength": 256
     },
     "answer_version": {
       "type": "integer",

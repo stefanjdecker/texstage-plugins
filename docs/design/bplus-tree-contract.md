@@ -1,15 +1,19 @@
 # B+ Tree Operations Lab: v1 engine and classroom contracts
 
+Scoring extension: [rubric and lifecycle](../bplus-scoring.md),
+fixed-v1 points on reveal, state schema 5, and
+[scoring verification](bplus-tree-scoring-validation.md).
+
 Status: engine, prepared authoring, classroom protocol and visual UI implemented
-locally, 2026-11-07. Provider version 0.4.0 retains the B1 source/answer/result
-semantics and content state schema 2. See the [B4 record](bplus-tree-b4-validation.md)
+locally, 2026-11-07. Provider version 0.7.0 retains the B1 source/answer/result
+semantics and uses content state schema 5 for host-owned actor records with a 1,000-answer ceiling. See the [B4 record](bplus-tree-b4-validation.md)
 and [classroom guide](../bplus-classroom.md).
 
-Public preparation contains format/title/prompt/exercise/interaction, with
+Public preparation contains format/title/prompt/exercise/interaction/points/rubric, with
 interaction set to `classroom`. Worked answer, facts, explanation,
 feedback policy and evaluation binding remain private in preparation. The
 reducer projects authorized feedback and releases worked material only after
-reveal. It never projects the full persisted state. Schema-1 sessions must be
+reveal. It never projects the full persisted state. Earlier state-schema sessions must be
 replaced with a rebuilt bundle and a new session after the provider update.
 
 ## Exercise seed and page encoding
@@ -254,10 +258,10 @@ actual protocol views; these are not classroom-performance claims.
 | Lesson envelope | ≤20 KiB, independent validation/depth budget; no arbitrary assets in v1 |
 | Typed facts / complete outcome | Target ≤6 KiB / ≤8 KiB; hard host limits 8 KiB / 12 KiB |
 | Shared persisted state | ≤16 KiB including selections and counts; no copied class-wide tree traces |
-| Actor slot | ≤4 KiB including the 64-character actor digest key, saved answer, versions, pending identity and reserved feedback |
-| Admitted actors | Initial ceiling 48; replacement still possible at capacity |
-| Whole state / transition | Provider targets ≤224 KiB / ≤240 KiB including effects; host transition ceiling 256 KiB |
-| Surface view | Target ≤48 KiB; host ceiling 128 KiB; one selected attempt rather than every answer |
+| Actor slot | ≤704 encoded bytes for saved answer, versions, pending identity and reserved feedback; stored separately by the host |
+| Admitted actors | Ceiling 1,000; replacement still possible at capacity |
+| Whole state / transition | Provider targets ≤16 KiB / ≤24 KiB including effects; host transition ceiling 256 KiB |
+| Surface view | Target ≤80 KiB; host ceiling 128 KiB; one selected attempt rather than every answer |
 | Replay computation | 20,000 charged work units across browser load/evaluation; all loops also bounded by pages/entries/3 repairs |
 
 A valid starting tree of height two can grow to height three through at most
@@ -267,20 +271,19 @@ per-field schema maxima, enforce these bounds. A valid update cannot contain
 An authored checkpoint starting at height three is refused in v1 even when a
 preceding item produced it; long sequences must stay within the input bounds.
 
-Key the provider's actor-slot map by SHA-256 of canonical ASCII JSON
-`["bplus-actor-v1", authenticated_actor]`, not by the potentially much longer
-escaped actor string. Keep this digest private; it remains a pseudonymous
-identifier. Compute it again from the authenticated event/view context, never
-from a participant payload. The host retains the real actor for receipts/jobs;
-the SDK correlation helper still receives that original actor. The private
-presenter selection uses this bounded slot key and answer version.
+Manifest-3 `actor_records` storage is scoped by session, item, epoch and the
+authenticated actor. `SaveActor` cannot select another identity; the host
+atomically validates/stores the record, summary, receipt and evaluation job.
+The private presenter roster contains at most 25 summaries, with stable response
+numbers and an explicit page command. Only declared presenter messages may read
+one selected actor value. Shared state holds counts plus at most two selected
+snapshots; it has no answer map or class-wide tree traces.
 
-Count bytes with the host's ASCII-escaped canonical JSON, including quoting a
-saved answer string, digest keys, feedback, effect records and all envelope
-fields. Reserve feedback space **before** accepting an answer. Refuse at the
-provider capacity without changing limits or truncating facts. B3 tests measure the
-reserved slot and complete state/views, including non-ASCII authenticated actors. A smaller
-certificate cap or actor ceiling is preferable to widening the host transport.
+Count all serialized bytes with ASCII-escaped canonical JSON. Reserve feedback
+space before admission. Keep one answer per student; refuse the 1,001st record
+while allowing existing students to replace answers. Host queue and transport
+ceilings remain unchanged. Tests cover 1,000 worst-case records, maximal escaped
+actor identities, all 40 roster pages and both portable view validators.
 
 The work counter and browser deadline are different safeguards. Each page
 inspection charges one unit plus its keys and (for internal pages) child

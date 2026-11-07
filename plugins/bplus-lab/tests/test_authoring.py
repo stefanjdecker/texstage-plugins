@@ -47,7 +47,7 @@ def test_all_worked_cases_and_private_boundary(provider, language):
         public, private = made["prepared"]["public"], made["prepared"]["private"]
         assert model.canonical(source) == before
         assert public["exercise"] == seed and public["interaction"] == "classroom"
-        assert set(public) == {"format", "title", "prompt", "exercise", "interaction"}
+        assert set(public) == {"format", "title", "prompt", "exercise", "interaction", "points", "rubric"}
         assert "worked" not in public and "analysis" not in public and "feedback" not in public
         assert private["exercise_digest"] == model.digest(seed)
         assert private["worked"]["analysis"] == model.analyze(seed, case["answer"])
@@ -120,13 +120,15 @@ def test_plain_text_escaping_fallback_and_envelope_budget(provider):
 
 def test_classroom_state_and_style_capability(provider):
     content = provider.manifest["capabilities"]["content_types"][TYPE]
-    assert content["state_schema"] == 2 and "submit-answer" in content["messages"]
+    assert content["state_schema"] == 5 and "submit-answer" in content["messages"]
     assert set(content["views"]) == {"presenter-overlay", "projector-overlay", "participant-input", "presenter-controls"}
     assert content["fallback"] == "static-slide"
     assert provider.manifest["latex_exports"]["commands"] == ["bplustree"]
     for name in content["view_schemas"].values():
         validate_portable_schema(json.loads(provider.resources[name]))
-    context = {"item": json_value(prepare_lesson(lesson(), {}))["prepared"]}
+    context = {"scoring": {"maximum": 1000, "released": False, "awarded": None}, "item": json_value(prepare_lesson(lesson(), {}))["prepared"],
+               "records": {"count": 0, "actor": "alice", "number": 1, "value": None},
+               "record_page": {"page": 0, "pages": 1, "total": 0, "rows": []}}
     state = Lesson().initial_state(context["item"], context)
     for role, surface in (("presenter", "presenter-controls"), ("projector", "projector-overlay"), ("participant", "participant-input")):
         projected = Lesson().view(state, {"role": role, "surface": surface, "actor": "alice"}, context)

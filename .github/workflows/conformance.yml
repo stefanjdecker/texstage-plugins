@@ -12,6 +12,10 @@ on:
         description: Run the measured 600-student bursts and separate Chromium headroom check
         type: boolean
         default: false
+      bplus_texstage_ref:
+        description: Published TeXStage commit with manifest-4 points and actor records (40-character SHA)
+        required: false
+        type: string
 permissions:
   contents: read
 defaults:
@@ -424,13 +428,21 @@ jobs:
   bplus-lab:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    env:
+      BPLUS_HOST_REF: ${{ inputs.bplus_texstage_ref || vars.TEXSTAGE_BPLUS_HOST_REF || '9fa37afda69f1cacc0d12ff2933214cf4598f79f' }}
     steps:
+      - name: Require the published scoring and actor-record host pin
+        run: |
+          if [[ ! "$BPLUS_HOST_REF" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Set TEXSTAGE_BPLUS_HOST_REF or bplus_texstage_ref to the compatible published host SHA."
+            exit 1
+          fi
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with: {persist-credentials: false}
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || '6b64828b98e9908fc67c265cab31a71a216308d5' }}
+          ref: ${{ env.BPLUS_HOST_REF }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -444,14 +456,15 @@ jobs:
           python -m build --wheel --no-isolation
           python -m pip install --no-deps dist/*.whl
           python -c "from texstage.plugins.contracts import CONTRACT_VERSION; assert CONTRACT_VERSION == 2, 'Select a host with typed plugin contracts'"
-      - name: Build and test the isolated engine
+      - name: Build and test the scored B+ provider
         run: |
+          python -c "from texstage.plugin_api.v1 import SaveActor, SetCredit, PublishPoints; from texstage.plugins.runtime import Runtime; assert callable(Runtime.views), 'Select the matching scoring and batched actor-record host'"
           python maintenance/build_bplus_schemas.py --check
           python maintenance/build_bplus_lesson_schemas.py --check
           python maintenance/build_wheels.py --package bplus-lab
           python -m pip install --no-deps dist/*.whl
           mkdir -p artifacts
-          python -m pytest plugins/bplus-lab/tests/test_engine.py plugins/bplus-lab/tests/test_state.py plugins/bplus-lab/tests/test_ui.py -q --basetemp=artifacts/bplus-tests --junitxml=artifacts/bplus-lab-tests.xml
+          python -m pytest plugins/bplus-lab/tests/test_engine.py plugins/bplus-lab/tests/test_state.py plugins/bplus-lab/tests/test_storage.py plugins/bplus-lab/tests/test_ui.py plugins/bplus-lab/tests/test_grading.py -q --basetemp=artifacts/bplus-tests --junitxml=artifacts/bplus-lab-tests.xml
           python maintenance/bplus_probe.py
           git -C host-source rev-parse HEAD > artifacts/bplus-lab/host-commit.txt
       - name: Stage identical wheels for Windows
@@ -515,7 +528,7 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
           python -m pip install --no-deps handoff/host/*.whl handoff/plugins/*.whl
           mkdir -p artifacts
-          python -m pytest plugins/bplus-lab/tests/test_engine.py plugins/bplus-lab/tests/test_state.py plugins/bplus-lab/tests/test_ui.py -q --basetemp=artifacts/bplus-tests --junitxml=artifacts/bplus-lab-tests.xml
+          python -m pytest plugins/bplus-lab/tests/test_engine.py plugins/bplus-lab/tests/test_state.py plugins/bplus-lab/tests/test_storage.py plugins/bplus-lab/tests/test_ui.py plugins/bplus-lab/tests/test_grading.py -q --basetemp=artifacts/bplus-tests --junitxml=artifacts/bplus-lab-tests.xml
           python maintenance/bplus_probe.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

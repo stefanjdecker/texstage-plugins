@@ -112,8 +112,8 @@ def schemas():
         "format": {"type": "integer", "const": 1}, "title": localized(160), "prompt": localized(800),
         "exercise": ref("exercise"),
         "worked": obj({"answer": answer, "explanation": localized(1200)}),
-        "feedback": enum("on-reveal", "immediate"),
-    }), "B+ lesson envelope v1", {k: defs[k] for k in ("page", "exercise", "lookup", "range", "update")})
+        "feedback": enum("on-reveal", "immediate"), "points": num(0, 10000),
+    }, required=["format", "title", "prompt", "exercise", "worked", "feedback"]), "B+ lesson envelope v1", {k: defs[k] for k in ("page", "exercise", "lookup", "range", "update")})
     return outputs
 
 

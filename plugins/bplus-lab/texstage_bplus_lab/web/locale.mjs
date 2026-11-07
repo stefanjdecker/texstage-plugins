@@ -1,5 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 const en = {
+ rubric:"Grading rubric",criterion:"Criterion",available:"Available",earnedAvailable:"Earned / available",
+ savedGrade:"Grade for the saved answer",maximumPoints:"maximum scoreboard points",practice:"Practice — no scoreboard points.",
+ pointsPrivate:"Points are published when the solution is revealed.",ungraded:"No evaluated answer; scoreboard points are ungraded.",
+ scoreboard:"Scoreboard points",criteria:{path:"Descent",scan:"Leaf scan",keys:"Returned keys",repairs:"Repairs",separators:"Final separators",height:"Height"},
+ rubricRules:"Fixed credit, with no speed or streak bonus. The latest saved answer replaces earlier credit. Each component is rounded down to 0.1%; scoreboard points are rounded to the nearest integer. Routing credit uses the correct edge prefix; the supplied root earns no edge credit.",
+ readCredit:"Scan credit uses the correct leaf prefix. Result credit counts correct keys minus unexpected keys; unsorted or duplicate keys earn zero for the result. Reading criteria are independent.",
+ repairCredit:"A complete legal repair sequence earns 50%, including a correct choice of no repair. Otherwise each verified repair earns 10%, capped at 20%. Final separator and height credit require a complete legal replay of your choices. Any valid alternative repair can earn full marks.",
  title:"B+ Tree Lab",controls:"B+ tree controls",dismiss:"Close controls",task:"Task",lookup:"Lookup",range:"Inclusive range",insert:"Insert",delete:"Delete",
  starting:"Starting tree",tree:"Page overview",outline:"Keyboard page outline",page:"Page",leaf:"Leaf",internal:"Internal page",entries:"Entries",
  children:"Child pages",nextLeaf:"Next leaf",none:"None",empty:"Empty",root:"Root",capacity:"Capacity",leafCap:"leaf entries",internalCap:"child pointers",
@@ -26,7 +33,7 @@ const en = {
  error:"The action failed. Your draft is preserved.",stale:"The activity changed. Review the updated view and retry.",closedError:"Answers are closed.",
  full:"The activity or session is full. Your draft is preserved.",busy:"The evaluation queue is busy. Keep your draft and retry.",
  openButton:"Open answers",closeButton:"Close answers",reveal:"Reveal solution",reset:"Reset activity",confirmReset:"Clear all answers and start a new round?",
- confirm:"Yes, reset",cancel:"Cancel",roster:"Choose an answer",response:"Answer",inspect:"Inspect privately",clearInspection:"Clear inspection",
+ confirm:"Yes, reset",cancel:"Cancel",roster:"Choose an answer",rosterPage:"Answer page",rosterPrevious:"Previous answers",rosterNext:"Next answers",response:"Answer",inspect:"Inspect privately",clearInspection:"Clear inspection",
  share:"Share inspected answer anonymously",clearShare:"Clear shared answer",private:"Private inspection",shared:"Anonymously shared attempt",
  predictionsOnly:"Submitted predictions — no corrections or correctness labels before reveal.",
  worked:"Worked solution",explanation:"Explanation",replay:"Replay focus",source:"Replay source",previous:"Previous step",next:"Next step",step:"Step",
@@ -44,6 +51,13 @@ const en = {
   "illegal-merge":"These pages cannot be merged under the occupancy/sibling rules."
  }};
 const de = {
+ rubric:"Bewertungsschema",criterion:"Kriterium",available:"Erreichbar",earnedAvailable:"Erreicht / erreichbar",
+ savedGrade:"Bewertung der gespeicherten Antwort",maximumPoints:"maximale Ranglistenpunkte",practice:"Übung — keine Ranglistenpunkte.",
+ pointsPrivate:"Punkte werden mit der Lösung freigegeben.",ungraded:"Keine ausgewertete Antwort; Ranglistenpunkte sind unbewertet.",
+ scoreboard:"Ranglistenpunkte",criteria:{path:"Abstieg",scan:"Blattscan",keys:"Gefundene Schlüssel",repairs:"Reparaturen",separators:"Endgültige Trennschlüssel",height:"Höhe"},
+ rubricRules:"Feste Teilpunkte ohne Zeit- oder Serienbonus. Die letzte gespeicherte Antwort ersetzt frühere Bewertungen. Jedes Kriterium wird auf 0,1% abgerundet; Ranglistenpunkte werden auf ganze Zahlen gerundet. Beim Abstieg zählt das korrekte Kantenpräfix; die vorgegebene Wurzel zählt nicht als Kante.",
+ readCredit:"Beim Scan zählt das korrekte Blattpräfix. Für Ergebnisse zählen richtige Schlüssel abzüglich unerwarteter Schlüssel; unsortierte oder doppelte Schlüssel erhalten keine Ergebnispunkte. Die Lesekriterien werden unabhängig bewertet.",
+ repairCredit:"Eine vollständige zulässige Reparaturfolge erhält 50%, auch wenn korrekt keine Reparatur nötig ist. Sonst gibt jede geprüfte Reparatur 10%, höchstens 20%. Punkte für Trennschlüssel und Höhe erfordern eine vollständige zulässige Ausführung Ihrer Entscheidungen. Gültige Alternativen können volle Punkte erhalten.",
  title:"B+ Baum-Labor",controls:"B+ Baum bedienen",dismiss:"Bedienfeld schließen",task:"Aufgabe",lookup:"Suche",range:"Inklusiver Bereich",insert:"Einfügen",delete:"Löschen",
  starting:"Ausgangsbaum",tree:"Seitenübersicht",outline:"Seitenliste für Tastaturbedienung",page:"Seite",leaf:"Blatt",internal:"Innere Seite",entries:"Einträge",
  children:"Kindseiten",nextLeaf:"Nächstes Blatt",none:"Keine",empty:"Leer",root:"Wurzel",capacity:"Kapazität",leafCap:"Blatteinträge",internalCap:"Kindzeiger",
@@ -70,7 +84,7 @@ const de = {
  error:"Aktion fehlgeschlagen. Ihr Entwurf bleibt erhalten.",stale:"Aktivität geändert. Prüfen Sie die aktuelle Ansicht und versuchen Sie es erneut.",closedError:"Antworten sind geschlossen.",
  full:"Aktivität oder Sitzung ist voll. Ihr Entwurf bleibt erhalten.",busy:"Die Auswertung ist ausgelastet. Behalten Sie den Entwurf und versuchen Sie es erneut.",
  openButton:"Antworten öffnen",closeButton:"Antworten schließen",reveal:"Lösung freigeben",reset:"Aktivität zurücksetzen",confirmReset:"Alle Antworten löschen und eine neue Runde beginnen?",
- confirm:"Ja, zurücksetzen",cancel:"Abbrechen",roster:"Antwort auswählen",response:"Antwort",inspect:"Privat prüfen",clearInspection:"Private Auswahl aufheben",
+ confirm:"Ja, zurücksetzen",cancel:"Abbrechen",roster:"Antwort auswählen",rosterPage:"Antwortseite",rosterPrevious:"Vorherige Antworten",rosterNext:"Nächste Antworten",response:"Antwort",inspect:"Privat prüfen",clearInspection:"Private Auswahl aufheben",
  share:"Geprüfte Antwort anonym zeigen",clearShare:"Geteilte Antwort ausblenden",private:"Private Prüfung",shared:"Anonym geteilter Versuch",
  predictionsOnly:"Abgesendete Vorhersagen — vor Freigabe keine Korrekturen oder Richtigkeitsanzeige.",
  worked:"Beispiellösung",explanation:"Erklärung",replay:"Schrittweise Ansicht",source:"Quelle",previous:"Vorheriger Schritt",next:"Nächster Schritt",step:"Schritt",

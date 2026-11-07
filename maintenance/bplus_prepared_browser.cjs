@@ -106,8 +106,9 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
           for (const field of ['"private":','"worked":','"analysis":','"explanation":','"evaluations":','"exercise_digest":'])
             if (raw.includes(field)) throw new Error("private transport: "+field);
           for (const item of state.plugins?.items || []) {
-            for (const view of Object.values(item.views || {}))
-              if (view.data.format!==1 || view.data.phase!=="introduce" || view.data.count!==0 || view.data.own || view.data.worked)
+            for (const [surface,view] of Object.entries(item.views || {}))
+              if (view.data.format!==1 || view.data.phase!=="introduce" ||
+                  (surface==="participant-input"?Object.hasOwn(view.data,"count"):view.data.count!==0) || view.data.own || view.data.worked)
                 throw new Error("unexpected initial classroom projection");
           }
           return true;

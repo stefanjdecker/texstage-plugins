@@ -94,5 +94,6 @@
       "de": "Leihe von einem direkten Nachbarn mit freiem Spielraum. Der Trennschlüssel folgt dem neuen Minimum des rechten Teilbaums."
     }
   },
-  "feedback": "on-reveal"
+  "feedback": "on-reveal",
+  "points": 1000
 }

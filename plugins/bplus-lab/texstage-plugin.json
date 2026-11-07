@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 4,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.bpluslab",
-  "version": "0.4.0",
+  "version": "0.7.0",
   "description": "B+ operation certificates, prepared LaTeX lessons and structured classroom editing.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -42,7 +42,7 @@
         "content_api": 1,
         "authoring_hook": "tree",
         "state_hook": "tree",
-        "state_schema": 2,
+        "state_schema": 5,
         "latex_packages": [
           "texstage_bplus_lab/latex/texstage-bplus-tree.sty"
         ],
@@ -97,14 +97,16 @@
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_bplus_lab/schemas/command-selection-v2.json"
+            "schema": "texstage_bplus_lab/schemas/command-selection-v2.json",
+            "record_actor_field": "actor"
           },
           "share-answer": {
             "from": [
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_bplus_lab/schemas/command-selection-v2.json"
+            "schema": "texstage_bplus_lab/schemas/command-selection-v2.json",
+            "record_actor_field": "actor"
           },
           "clear-share": {
             "from": [
@@ -119,9 +121,35 @@
             ],
             "revision_policy": "latest",
             "schema": "texstage_bplus_lab/schemas/command-replay-v2.json"
+          },
+          "roster-page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-page-v2.json"
           }
         },
-        "fallback": "static-slide"
+        "fallback": "static-slide",
+        "actor_records": {
+          "capacity": 1000,
+          "page_size": 25,
+          "page_field": "records_page",
+          "value_schema": "texstage_bplus_lab/schemas/actor-value-v1.json",
+          "summary_schema": "texstage_bplus_lab/schemas/actor-summary-v1.json"
+        },
+        "participant_updates": "actor",
+        "broadcast_fields": [
+          "phase",
+          "phase_version",
+          "active",
+          "shared",
+          "replay"
+        ],
+        "scoring": {
+          "policy": "fixed-v1",
+          "points_field": "points"
+        }
       }
     }
   },

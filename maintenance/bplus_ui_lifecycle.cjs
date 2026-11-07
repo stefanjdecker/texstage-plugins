@@ -6,7 +6,8 @@ module.exports=async function lifecycle(page,urls,sources){
   const participant=await import(urls.participant),controls=await import(urls.controls),overlay=await import(urls.overlay);
   const check=(condition,message)=>{if(!condition)throw Error("UI lifecycle: "+message);};
   const wait=()=>new Promise(resolve=>setTimeout(resolve,25));
-  const item=s=>({format:1,id:"lifecycle",title:s.title,prompt:s.prompt,exercise:s.exercise,interaction:"classroom"});
+  const item=s=>({format:1,id:"lifecycle",title:s.title,prompt:s.prompt,exercise:s.exercise,interaction:"classroom",points:s.points||0,
+   rubric:{id:"bplus-partial-v1",weights:{lookup:{path:400,keys:600},range:{path:300,scan:400,keys:300},insert:{path:200,repairs:500,separators:200,height:100},delete:{path:200,repairs:500,separators:200,height:100}}[s.exercise.task.kind]}});
   const base=(epoch=1,revision=1,data={})=>({epoch,revision,data:{
    format:2,phase:"open",phase_version:1,active:true,count:1,...data}});
   const own=(answer,version=1)=>({version,answer,status:"saved"});
@@ -65,7 +66,7 @@ module.exports=async function lifecycle(page,urls,sources){
   check(c.container.childElementCount===0,"late preview revived participant");
 
   const d=make(controls,lookup,"presenter");
-  const controlData={control_version:1,counts:{pending:0,saved:0,unavailable:0},participants:[]};
+   const controlData={control_version:1,counts:{pending:0,saved:0,unavailable:0},participants:[],roster_page:{page:0,pages:1,total:0}};
   d.handle.update(base(1,1,controlData));d.get("close").click();check(d.requests.length===1,"close missing");
   d.handle.update(base(2,0,{...controlData,phase:"introduce",control_version:0}));
   d.requests[0].resolve({epoch:1,revision:2});await wait();

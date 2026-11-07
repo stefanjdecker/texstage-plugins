@@ -7,6 +7,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 from texstage.plugin_api.v1 import PreparedAuthoring, PreparedItem, latex_escape
 from . import layout, model
+from .grading import rubric
 
 TYPE = "io.github.stefanjdecker.bpluslab.tree"
 ENGINE = "io.github.stefanjdecker.bpluslab.operations"
@@ -89,12 +90,22 @@ def _fragment(public, private, language, solutions):
                  "insert": words("Insert", "Einfügen", language), "delete": words("Delete", "Löschen", language)}[task["kind"]]
     operation += " " + (f"[{task['lower']}, {task['upper']}]" if task["kind"] == "range" else str(task["key"])) + ". "
     capacities = operation + capacities
+    names = {"path": words("descent", "Abstieg", language), "scan": words("scan", "Scan", language),
+             "keys": words("result", "Ergebnis", language), "repairs": words("repairs", "Reparaturen", language),
+             "separators": words("separators", "Trennschlüssel", language), "height": words("height", "Höhe", language)}
+    grading = words("Credit: ", "Bewertung: ", language) + ", ".join(
+        names[key] + " " + str(weight // 10) + "%" for key, weight in public["rubric"]["weights"].items()) + "."
+    grading += (" " + str(public["points"]) + words(" scoreboard points.", " Ranglistenpunkte.", language)
+                if public["points"] else words(" Practice.", " Übung.", language))
     lines += [r"\fontsize{7.5}{9}\selectfont " + e(capacities) + r"\par\smallskip", diagram]
     legend = words("I: separators / child pages. L: entries / next leaf. Equality goes right.",
                    "I: Trennschlüssel / Kindseiten. L: Einträge / nächstes Blatt. Gleichheit führt nach rechts.", language)
     if mode == "map":
         legend += words(" Page map in depth order (d).", " Seitenplan nach Tiefe (d).", language)
-    lines += [r"\fontsize{7}{8}\selectfont " + e(legend) + r"\par\smallskip"]
+    lines += [r"\fontsize{7}{8}\selectfont " + e(legend) + r"\par"]
+    if not solutions:
+        lines.append(e(grading) + r"\par")
+    lines.append(r"\smallskip")
     if solutions:
         lines.append(r"\fontsize{8}{9.5}\selectfont")
         for step in _steps(exercise, answer, facts, language):
@@ -126,6 +137,8 @@ def prepare_lesson(source, context):
     # Author envelope and engine input have different byte limits.
     source = model.parse(model.canonical(source), byte_limit=20480)
     LESSON.validate(source)
+    if type(source.get("points", 0)) is not int:
+        raise model.InputError("lesson-points")
     if type(source["format"]) is not int:
         raise model.InputError("lesson-format")
     for text in (source["title"], source["prompt"], source["worked"]["explanation"]):
@@ -138,7 +151,8 @@ def prepare_lesson(source, context):
     if facts["replay"]["state"] != "complete" or any(facts["claims"][name] is not True for name in required):
         raise model.InputError("Worked certificate must complete and every applicable prediction must be correct")
     public = {"format": 1, "title": copy.deepcopy(source["title"]), "prompt": copy.deepcopy(source["prompt"]),
-              "exercise": copy.deepcopy(exercise), "interaction": "classroom"}
+              "exercise": copy.deepcopy(exercise), "interaction": "classroom",
+              "points": source.get("points", 0), "rubric": rubric(exercise["task"]["kind"])}
     private = {"exercise_digest": facts["exercise"], "feedback": source["feedback"],
                "worked": {"answer": copy.deepcopy(answer), "analysis": facts,
                           "explanation": copy.deepcopy(source["worked"]["explanation"])}}

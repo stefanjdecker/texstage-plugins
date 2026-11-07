@@ -8,7 +8,7 @@
     "phase",
     "phase_version",
     "active",
-    "count"
+    "scoring"
   ],
   "properties": {
     "format": {
@@ -30,11 +30,6 @@
     },
     "active": {
       "type": "boolean"
-    },
-    "count": {
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 48
     },
     "demonstration": {
       "type": "object",
@@ -118,6 +113,37 @@
                   "maximum": 19
                 }
               }
+            }
+          ]
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maximum",
+        "released",
+        "awarded"
+      ],
+      "properties": {
+        "maximum": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "released": {
+          "type": "boolean"
+        },
+        "awarded": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            {
+              "type": "null"
             }
           ]
         }
@@ -516,7 +542,8 @@
             "correct",
             "reason",
             "failed",
-            "checked_repairs"
+            "checked_repairs",
+            "grade"
           ],
           "properties": {
             "code": {
@@ -550,6 +577,9 @@
               "type": "integer",
               "minimum": 0,
               "maximum": 3
+            },
+            "grade": {
+              "$ref": "#/$defs/grade"
             }
           }
         },
@@ -562,7 +592,8 @@
             "reason",
             "checked_repairs",
             "at",
-            "node"
+            "node",
+            "grade"
           ],
           "properties": {
             "code": {
@@ -605,10 +636,114 @@
                   "type": "null"
                 }
               ]
+            },
+            "grade": {
+              "$ref": "#/$defs/grade"
             }
           }
         }
       ]
+    },
+    "grade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rubric",
+        "credit",
+        "parts"
+      ],
+      "properties": {
+        "rubric": {
+          "const": "bplus-partial-v1"
+        },
+        "credit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "parts": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "keys"
+              ],
+              "properties": {
+                "path": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 400
+                },
+                "keys": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 600
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "scan",
+                "keys"
+              ],
+              "properties": {
+                "path": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 300
+                },
+                "scan": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 400
+                },
+                "keys": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 300
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "repairs",
+                "separators",
+                "height"
+              ],
+              "properties": {
+                "path": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "repairs": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 500
+                },
+                "separators": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100
+                }
+              }
+            }
+          ]
+        }
+      }
     },
     "worked": {
       "type": "object",

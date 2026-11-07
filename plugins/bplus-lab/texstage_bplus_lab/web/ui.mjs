@@ -27,6 +27,39 @@ export function feedback(own,w) {
   if(f.node!==undefined&&f.node!==null)text+=" "+w.page+" P"+f.node+".";
   return text;
 }
+const percent = value => String(value / 10) + "%";
+const criteria = item => ["path","scan","keys","repairs","separators","height"]
+  .filter(name => Object.hasOwn(item.rubric.weights,name)).map(name => [name,item.rubric.weights[name]]);
+export function rubricView(item,w) {
+  const box=details(w.rubric);box.dataset.bp="rubric";
+  box.append(el("p",item.points ? item.points+" "+w.maximumPoints : w.practice));
+  const table=el("table",undefined,{class:"bp-table"}),head=el("tr");
+  head.append(el("th",w.criterion,{scope:"col"}),el("th",w.available,{scope:"col"}));table.append(head);
+  for(const [name,weight] of criteria(item)){
+    const row=el("tr");row.append(el("th",w.criteria[name],{scope:"row"}),el("td",percent(weight)));table.append(row);
+  }
+  box.append(table,el("p",w.rubricRules,{class:"bp-note"}),el("p",
+    ["insert","delete"].includes(item.exercise.task.kind)?w.repairCredit:w.readCredit,{class:"bp-note"}));
+  return box;
+}
+export function gradeView(grade,item,w) {
+  const box=el("div",undefined,{"data-bp":"grade"});
+  if(!grade)return box;
+  box.append(el("p",w.savedGrade+": "+percent(grade.credit),{class:"bp-badge"}));
+  const table=el("table",undefined,{class:"bp-table"}),head=el("tr");
+  head.append(el("th",w.criterion,{scope:"col"}),el("th",w.earnedAvailable,{scope:"col"}));table.append(head);
+  for(const [name,weight] of criteria(item)){
+    const row=el("tr");row.append(el("th",w.criteria[name],{scope:"row"}),el("td",percent(grade.parts[name])+" / "+percent(weight)));table.append(row);
+  }
+  box.append(table);return box;
+}
+export function scoreView(own,scoring,item,w) {
+  const box=el("section",undefined,{"data-bp":"score",class:"bp-card","aria-label":w.savedGrade});
+  const status=!item.points?w.practice:!scoring?.released?w.pointsPrivate:
+    scoring.awarded===null?w.ungraded:w.scoreboard+": "+scoring.awarded+" / "+scoring.maximum;
+  box.append(el("p",status,{"data-bp":"awarded",role:"status"}),gradeView(own?.feedback?.grade,item,w));
+  return box;
+}
 export function commandError(e,w) {
   if(["stale-answer","stale-phase","stale-control","stale-epoch","reset-required"].includes(e?.code))return w.stale;
   if(["closed","item-closed","inactive"].includes(e?.code))return w.closedError;

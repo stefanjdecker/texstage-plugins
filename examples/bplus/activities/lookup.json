@@ -80,5 +80,6 @@
       "de": "Gleichheit führt nach rechts. Der Trennschlüssel 20 ist eine Kopie; der Eintrag liegt in Blatt P2."
     }
   },
-  "feedback": "on-reveal"
+  "feedback": "on-reveal",
+  "points": 1000
 }

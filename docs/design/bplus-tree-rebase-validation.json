@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-07",
+  "scope": "Rebase integration; installed portable wheels on Windows",
+  "host_commit": "9fa37afda69f1cacc0d12ff2933214cf4598f79f",
+  "host_base": "6b64828b98e9908fc67c265cab31a71a216308d5",
+  "collection_base": "10ae0b4d4627c9fe916b108deeb1c262857fe152",
+  "collection_source_snapshot": "c3589260e93190df25d136e93af4d1f48c4abed1",
+  "note": "The final collection commit only adds the host CI pin and this verification documentation to the tested snapshot.",
+  "provider": {
+    "id": "io.github.stefanjdecker.bpluslab",
+    "version": "0.7.0",
+    "payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27"
+  },
+  "wheels": [
+    {
+      "component": "host",
+      "wheel": "texstage-0.2.1.dev7-py3-none-any.whl",
+      "sha256": "4db8b8379fbd8db81d785c549b6ce614c3255f6f0daf9b1ca4c693f093b171b3",
+      "source_and_installed_matched_files": 156
+    },
+    {
+      "component": "provider",
+      "wheel": "texstage_bplus_lab-0.7.0-py3-none-any.whl",
+      "sha256": "a971432e5dc88a100f75c633516d73cbcb9c61e99ce65b705d3f4d66b8e99221",
+      "source_and_installed_matched_files": 38
+    }
+  ],
+  "sdist_parity": true,
+  "tests": {
+    "host": 241,
+    "provider": 145
+  },
+  "test_setup_note": "The initial temporary-parent setup error was corrected; the host suite passed on rerun, and the two affected provider authoring tests passed in a targeted rerun (143+2).",
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "engine_security": true,
+      "scoring_ui": true
+    },
+    "firefox": {
+      "version": "153.0",
+      "engine_security": true,
+      "scoring_ui": true
+    },
+    "webkit": {
+      "version": "26.5",
+      "engine_security": true,
+      "scoring_ui": true
+    }
+  },
+  "authoring_checks": [
+    "single preparation",
+    "live bundle privacy",
+    "exercise/solution separation",
+    "static PowerPoint media",
+    "three direct pdfLaTeX editions",
+    "same item identities",
+    "no clipped PDF text",
+    "changed source refused",
+    "PNG renders saved for visual review"
+  ],
+  "capacity_retested": false,
+  "hosted_ci_observed": false,
+  "evidence_sha256": {
+    "host-tests.xml": "ee37314f2130a9a3a03c35155c2b48e87dd572dce66caa901a01c88eec0d239c",
+    "provider-tests.xml": "ec51d25199a9d4321168a4b62a5cc860776b0f9bb0c1ed3ab85f601a8a26c6ca",
+    "provider-authoring-retry.xml": "5bebf8d6c6cc9fd02529f5e00915fea0d56071e00ea43b2a783f7337ae07da48",
+    "engine/browser-chromium.json": "0cc7ad9b6c555e6443948d9e4a13ce5064b73dc94436126d37744e84242ccc13",
+    "engine/browser-firefox.json": "5e8adc608e2d32e68e9d79aacf63a479f01b56d09db14a4fa7aec898b6f98a26",
+    "engine/browser-webkit.json": "03eabc324bf9536aa9856e8eebbad0b8ff38e76b0b7ed7c98b0e8170abafa656",
+    "ui/chromium-en/report.json": "0ea19bd5b387c4c3707c94f771bae2f9efff47e92a4ed40553f3259cd090e8f8",
+    "ui/firefox-en/report.json": "50d0e5bee15a05dfe4e22104e6592548747b2b6e834ae7112ed8b52ab4fa4431",
+    "ui/webkit-en/report.json": "38d8d63c512b0010529cbb997b6aeb2c15e95c6db46b0155aaf5c7a758f634ef",
+    "prepared/lesson-en/report.json": "b4c2c6bcc76c05e2d992b9283ba7aa29518f3acd321509926a936bfe4fe86bb9"
+  }
+}

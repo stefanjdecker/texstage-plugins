@@ -96,5 +96,6 @@
       "de": "Kopiere 27 in den Elternknoten. Der Eintrag bleibt im neuen rechten Blatt P4. Die Blattfolge P1, P2, P4, P3 ist keine numerische Seitenfolge."
     }
   },
-  "feedback": "on-reveal"
+  "feedback": "on-reveal",
+  "points": 1000
 }

@@ -11,7 +11,8 @@
     "count",
     "control_version",
     "counts",
-    "participants"
+    "participants",
+    "roster_page"
   ],
   "properties": {
     "format": {
@@ -37,7 +38,7 @@
     "count": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 48
+      "maximum": 1000
     },
     "demonstration": {
       "type": "object",
@@ -143,37 +144,43 @@
         "pending": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 48
+          "maximum": 1000
         },
         "saved": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 48
+          "maximum": 1000
         },
         "unavailable": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 48
+          "maximum": 1000
         }
       }
     },
     "participants": {
       "type": "array",
       "minItems": 0,
-      "maxItems": 48,
+      "maxItems": 25,
       "items": {
         "type": "object",
         "additionalProperties": false,
         "required": [
           "actor",
+          "number",
           "version",
           "status"
         ],
         "properties": {
           "actor": {
             "type": "string",
-            "minLength": 64,
-            "maxLength": 64
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
           },
           "version": {
             "type": "integer",
@@ -202,8 +209,8 @@
       "properties": {
         "actor": {
           "type": "string",
-          "minLength": 64,
-          "maxLength": 64
+          "minLength": 1,
+          "maxLength": 256
         },
         "version": {
           "type": "integer",
@@ -222,6 +229,32 @@
         },
         "feedback": {
           "$ref": "#/$defs/feedback"
+        }
+      }
+    },
+    "roster_page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page",
+        "pages",
+        "total"
+      ],
+      "properties": {
+        "page": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 39
+        },
+        "pages": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 40
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
         }
       }
     }
@@ -589,7 +622,8 @@
             "correct",
             "reason",
             "failed",
-            "checked_repairs"
+            "checked_repairs",
+            "grade"
           ],
           "properties": {
             "code": {
@@ -623,6 +657,9 @@
               "type": "integer",
               "minimum": 0,
               "maximum": 3
+            },
+            "grade": {
+              "$ref": "#/$defs/grade"
             }
           }
         },
@@ -635,7 +672,8 @@
             "reason",
             "checked_repairs",
             "at",
-            "node"
+            "node",
+            "grade"
           ],
           "properties": {
             "code": {
@@ -678,10 +716,114 @@
                   "type": "null"
                 }
               ]
+            },
+            "grade": {
+              "$ref": "#/$defs/grade"
             }
           }
         }
       ]
+    },
+    "grade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rubric",
+        "credit",
+        "parts"
+      ],
+      "properties": {
+        "rubric": {
+          "const": "bplus-partial-v1"
+        },
+        "credit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "parts": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "keys"
+              ],
+              "properties": {
+                "path": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 400
+                },
+                "keys": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 600
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "scan",
+                "keys"
+              ],
+              "properties": {
+                "path": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 300
+                },
+                "scan": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 400
+                },
+                "keys": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 300
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "repairs",
+                "separators",
+                "height"
+              ],
+              "properties": {
+                "path": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "repairs": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 500
+                },
+                "separators": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100
+                }
+              }
+            }
+          ]
+        }
+      }
     },
     "worked": {
       "type": "object",

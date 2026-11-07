@@ -15,6 +15,7 @@ from texstage.plugins.catalog import Catalog
 from texstage.plugins.contracts import validate_portable_schema
 from texstage.plugins.runtime import Runtime
 from texstage_bplus_lab import model
+from texstage_bplus_lab.storage import read_slot, write_slot, reserve_slot
 from texstage_bplus_lab.authoring import prepare_lesson, TYPE
 from texstage_bplus_lab.state import (
     Lesson, MAX_ACTORS, MAX_VERSION, SLOT_BYTES, FEEDBACK_RESERVE, STATE_BYTES,
@@ -44,19 +45,52 @@ def context(name="insert", policy="on-reveal"):
     value["feedback"] = policy
     spec = json_value(prepare_lesson(value, {}))["prepared"]
     spec["evaluations"]["analysis"]["engine"] = probe.ENGINE
-    return {"item": spec, "epoch": 1, "role": "participant"}
+    return {"item": spec, "epoch": 1, "role": "participant", "_slots": {}, "_ledger": {"credits": {}, "released": False}}
 
 
 def command(op, payload, actor="alice", request="request00001"):
     return {"kind": "command", "operation": op, "payload": payload, "actor": actor, "request_id": request}
 
 
+def record_context(state, ctx, actor=None, role=None):
+    """Test-side record store; the real Runtime tests below prove atomicity."""
+    slots=ctx["_slots"]; keys=list(slots)
+    role=role or ctx["role"]
+    result={k:v for k,v in ctx.items() if k not in ("_slots", "_ledger")}
+    ledger=ctx["_ledger"]; credit=ledger["credits"].get(actor)
+    result["scoring"]={"maximum":ctx["item"]["public"]["points"], "released":ledger["released"],
+        "awarded": (ctx["item"]["public"]["points"] * credit + 500)//1000 if ledger["released"] and credit is not None else None}
+    result["records"]={"actor":actor,"count":len(slots),"value":slots.get(actor),
+                       "number":keys.index(actor)+1 if actor in slots else len(keys)+1}
+    if role == "presenter":
+        page=state["records_page"]
+        result["record_page"]={"page":page,"pages":max(1,(len(keys)+24)//25),"total":len(keys),
+            "rows":[{"actor":key,"number":keys.index(key)+1,"summary":{
+                k:read_slot(slots[key])[k] for k in ("version","status")}}
+                for key in keys[page*25:(page+1)*25]]}
+    return result
+
+
+def event_context(state,event,ctx):
+    actor=event.get("actor") if event["kind"]=="evaluation.finished" or ctx["role"]=="participant" else None
+    if event.get("operation") in ("select-answer","share-answer"):
+        actor=event["payload"]["actor"] or None
+    return record_context(state,ctx,actor)
+
+
 def advance(state, event, ctx):
     old = copy.deepcopy(state)
-    result = json_value(Lesson().transition(state, event, ctx))
+    result = json_value(Lesson().transition(state, event, event_context(state,event,ctx)))
     assert state == old
     assert "refusal" not in result, result
-    return result["state"], result["effects"]
+    for effect in result["effects"]:
+        if effect["kind"] == "save-actor":
+            ctx["_slots"][event["actor"]]=effect["value"]
+        elif effect["kind"] == "set-credit":
+            ctx["_ledger"]["credits"][event["actor"]]=effect["credit"]
+        elif effect["kind"] == "publish-points":
+            ctx["_ledger"]["released"]=True
+    return result["state"], [e for e in result["effects"] if e["kind"] not in ("save-actor", "set-credit", "publish-points")]
 
 
 def control(state, ctx, op, **payload):
@@ -75,7 +109,7 @@ def opened(name="insert", policy="on-reveal"):
 def submission(state, ctx, actor="alice", request="request00001", answer=None):
     return command("submit-answer", {
         "phase_version": state["phase_version"],
-        "answer_version": state["answers"].get(actor_key(actor), {}).get("version", 0),
+        "answer_version": (read_slot(ctx["_slots"].get(actor_key(actor))) or {}).get("version", 0),
         "answer": copy.deepcopy(answer if answer is not None else ctx["item"]["private"]["worked"]["answer"]),
     }, actor, request)
 
@@ -85,7 +119,7 @@ def submit(state, ctx, **kw):
 
 
 def complete(state, ctx, actor="alice", outcome=None, **changes):
-    slot = state["answers"][actor_key(actor)]
+    slot = read_slot(ctx["_slots"][actor_key(actor)])
     if outcome is None:
         outcome = {"status": "ok", "data": model.analyze(json.loads(ctx["item"]["evaluations"]["analysis"]["seed"]), slot["answer"])}
     return advance(state, {"kind": "evaluation.finished", "actor": actor, "binding": "analysis",
@@ -95,12 +129,12 @@ def complete(state, ctx, actor="alice", outcome=None, **changes):
 def view(state, ctx, role="participant", actor="alice", surface=None):
     surface = surface or {"participant": "participant-input", "presenter": "presenter-controls",
                            "projector": "projector-overlay"}[role]
-    return Lesson().view(state, {"role": role, "actor": actor, "surface": surface}, ctx)
+    return Lesson().view(state, {"role": role, "actor": actor, "surface": surface}, record_context(state,ctx,actor if role=="participant" else None,role))
 
 
 def refusal(state, ctx, event, expected):
     original = copy.deepcopy(state)
-    assert Lesson().transition(state, event, ctx) == {"refusal": expected}
+    assert Lesson().transition(state, event, event_context(state,event,ctx)) == {"refusal": expected}
     assert state == original
 
 
@@ -151,7 +185,7 @@ def test_different_valid_repairs_are_not_reference_equality(provider):
         for index, answer in enumerate(answers):
             state, _ = submit(state, ctx, actor="actor" + str(index), answer=answer)
             state = complete(state, ctx, actor="actor" + str(index))
-            assert state["answers"][actor_key("actor" + str(index))]["feedback"]["correct"]
+            assert read_slot(ctx["_slots"][actor_key("actor" + str(index))])["feedback"]["correct"]
 
 
 @pytest.mark.parametrize("fault,reason", [
@@ -170,7 +204,7 @@ def test_specific_domain_feedback(provider, fault, reason):
     else: answer["leaves"] = [63]
     state, _ = submit(state, ctx, answer=answer)
     state = complete(state, ctx)
-    feedback = state["answers"][actor_key("alice")]["feedback"]
+    feedback = read_slot(ctx["_slots"][actor_key("alice")])["feedback"]
     assert feedback["code"] == "revise" and feedback["correct"] is False and feedback["reason"] == reason
 
 
@@ -178,7 +212,7 @@ def test_specific_domain_feedback(provider, fault, reason):
 def test_forged_facts_do_not_grade(provider, fault):
     state, ctx = opened()
     state, _ = submit(state, ctx)
-    slot = state["answers"][actor_key("alice")]
+    slot = read_slot(ctx["_slots"][actor_key("alice")])
     facts = model.analyze(json.loads(ctx["item"]["evaluations"]["analysis"]["seed"]), slot["answer"])
     if fault in ("exercise", "answer"): facts[fault] = "0" * 64
     elif fault == "operation": facts["operation"] = "delete"
@@ -229,10 +263,10 @@ def test_versions_pending_close_navigation_and_late_completion(provider):
     assert complete(state, ctx | {"epoch": 2}) == original
     assert complete(state, ctx, binding="other") == original
     state, effects = advance(state, {"kind": "deactivate"}, ctx)
-    assert state["phase"] == "closed" and not effects and state["answers"][actor_key("alice")]["status"] == "pending"
+    assert state["phase"] == "closed" and not effects and read_slot(ctx["_slots"][actor_key("alice")])["status"] == "pending"
     state = complete(state, ctx)
     state, _ = advance(state, {"kind": "activate"}, ctx)
-    assert state["phase"] == "closed" and state["answers"][actor_key("alice")]["status"] == "saved"
+    assert state["phase"] == "closed" and read_slot(ctx["_slots"][actor_key("alice")])["status"] == "saved"
     state, _ = control(state, ctx, "open")
     stale = submission(state, ctx, actor="charlie")
     stale["payload"]["phase_version"] -= 1
@@ -283,20 +317,20 @@ def test_capacity_portable_views_and_worst_escaped_budgets(provider, tmp_path):
     answer = {"format": 1, "path": [63] * 3, "repairs": [
         {"op": "split", "node": 63, "left_count": 6, "separator": -9999}] * 3,
         "separators": [{"node": 63, "keys": [-9999] * 5}] * 10, "height": 3}
-    actors = [("\U0001f333" * 250) + str(i).zfill(6) for i in range(MAX_ACTORS)]
+    actors = [("\U0001f333" * 64) + "x" * 186 + str(i).zfill(6) for i in range(MAX_ACTORS)]
     maximum_slot = maximum_transition = 0
     cases, views = [], {}
     content = provider.manifest["capabilities"]["content_types"][TYPE]
     for actor in actors:
         state, effects = submit(state, ctx, actor=actor, answer=answer)
         key = actor_key(actor)
-        state["answers"][key]["version"] = MAX_VERSION - 1
+        ctx["_slots"][key] = write_slot(read_slot(ctx["_slots"][key]) | {"version": MAX_VERSION - 1})
         maximum_transition = max(maximum_transition, size({"state": state, "effects": effects}))
-        reserve = state["answers"][key] | {"version": MAX_VERSION, "feedback": "x" * FEEDBACK_RESERVE}
-        maximum_slot = max(maximum_slot, size({key: reserve}))
+        reserve = reserve_slot(ctx["_slots"][key], MAX_VERSION, FEEDBACK_RESERVE)
+        maximum_slot = max(maximum_slot, size(reserve))
     refusal(state, ctx, submission(state, ctx, actor="one-more", answer=answer), "capacity")
     state, effects = submit(state, ctx, actor=actors[0], request="replacement1", answer=answer)
-    assert len(effects) == 2 and state["answers"][actor_key(actors[0])]["version"] == MAX_VERSION
+    assert len(effects) == 2 and read_slot(ctx["_slots"][actor_key(actors[0])])["version"] == MAX_VERSION
     maximum_transition = max(maximum_transition, size({"state": state, "effects": effects}))
     for actor in actors:
         state = complete(state, ctx, actor=actor)
@@ -320,16 +354,24 @@ def test_capacity_portable_views_and_worst_escaped_budgets(provider, tmp_path):
             cases.append({"schema": schema, "value": bad, "expected": False})
     assert maximum_slot <= SLOT_BYTES and size(state) <= STATE_BYTES and maximum_transition <= TRANSITION_BYTES
     assert max(views.values()) <= VIEW_BYTES and size({"state": state, "effects": effects}) < 256 * 1024
-    # Even slots filled to the admission ceiling leave room for shared state/effects.
-    assert MAX_ACTORS * SLOT_BYTES + 16 * 1024 <= STATE_BYTES
-    assert len(actors[0]) == 256 and len(actor_key(actors[0])) == 64 and actors[0] not in model.canonical(state)
+    # The per-actor store stays outside shared state and every hook projection.
+    assert MAX_ACTORS == 1000 and len(ctx["_slots"]) == 1000 and "answers" not in state
+    assert all(size(slot) <= SLOT_BYTES for slot in ctx["_slots"].values())
+    assert len(actors[0]) == 256 and size(actors[0]) <= 1024
+    seen=[]
+    for page in range(40):
+        state["records_page"]=page
+        roster=view(state,ctx,"presenter")
+        assert len(roster["participants"])==25 and roster["roster_page"]["pages"]==40
+        seen.extend(row["actor"] for row in roster["participants"])
+    assert seen == actors
     import texstage
     config = tmp_path / "contracts.json"
     config.write_text(json.dumps({"module": (Path(texstage.__file__).parent / "web/stage/plugin-contracts.js").as_uri(),
                                   "cases": cases}), encoding="utf-8")
     subprocess.run(["node", str(ROOT / "maintenance/check_bplus_lesson_contracts.mjs"), str(config)], check=True)
     report = {"actors": MAX_ACTORS, "answer_bytes": size(answer), "reserved_slot_bytes": maximum_slot,
-              "state_bytes": size(state), "transition_bytes": maximum_transition, "view_bytes": views,
+              "state_bytes": size(state), "record_bytes_total": sum(size(s) for s in ctx["_slots"].values()), "transition_bytes": maximum_transition, "view_bytes": views,
               "validator_cases": len(cases), "capacity_claim": "storage only; no throughput measurement"}
     output = Path(os.environ.get("BPLUS_REPORT_DIR", tmp_path))
     output.mkdir(parents=True, exist_ok=True)
@@ -389,7 +431,7 @@ def test_real_runtime_receipts_full_queue_close_finish_reset(runtime, monkeypatc
     assert r.command("session", "teacher", "presenter", reset)["epoch"] == 2
     assert r.command("session", "teacher2", "presenter", reset | {"request_id": "reset0000002"})["error"] == "stale-epoch"
     assert not r.finish("session", "evaluator", result, now=103)
-    assert r.view("session", TYPE, "insert", "participant", "participant-input", "alice")["data"]["count"] == 0
+    assert "own" not in r.view("session", TYPE, "insert", "participant", "participant-input", "alice")["data"]
 
 
 @pytest.mark.parametrize("mutation", ["bool", "extra", "role", "foreign-seed", "actor", "wrong-answer", "wrong-surface"])
@@ -478,7 +520,30 @@ def test_invalid_operation_shape_and_version_ceiling(provider):
     invalid = submission(state, ctx, answer={"format": 1, "path": [0], "keys": []})
     refusal(state, ctx, invalid, "invalid-answer")
     state, _ = submit(state, ctx)
-    state["answers"][actor_key("alice")]["version"] = MAX_VERSION
+    ctx["_slots"][actor_key("alice")] = write_slot(read_slot(ctx["_slots"][actor_key("alice")]) | {"version": MAX_VERSION})
     refusal(state, ctx, submission(state, ctx), "reset-required")
     state["control_version"] = MAX_VERSION
     refusal(state, ctx | {"role": "presenter"}, command("close", {"control_version": MAX_VERSION}), "reset-required")
+
+
+def test_phone_views_are_independent_but_late_shared_feedback_notifies_everyone(runtime):
+    r=runtime
+    r.command('session','teacher','presenter',envelope('open',{'control_version':0}))
+    r.take_changes('session')
+    before=r.view('session',TYPE,'insert','participant','participant-input','bob')['data']
+    r.command('session','alice','participant',envelope('submit-answer',{
+        'phase_version':1,'answer_version':0,'answer':source()['worked']['answer']}))
+    assert r.take_changes('session') == {'alice'}
+    assert r.view('session',TYPE,'insert','participant','participant-input','bob')['data'] == before
+    for op,payload,request in [
+        ('close',{'control_version':1},'close0000001'),
+        ('share-answer',{'control_version':2,'actor':'alice','answer_version':1},'share0000001'),
+        ('reveal',{'control_version':3},'reveal000001'),
+    ]:
+        r.command('session','teacher','presenter',envelope(op,payload,request))
+        assert r.take_changes('session') is None
+    job=r.lease('session','evaluator',now=100)[0]
+    r.finish('session','evaluator',{k:job[k] for k in ('id','epoch','generation')}|{'outcome':{'status':'error'}},now=101)
+    r.drain('session')
+    assert r.take_changes('session') is None  # the shared snapshot changed
+    assert r.view('session',TYPE,'insert','participant','participant-input','bob')['data']['demonstration']['feedback']['code']=='unavailable'

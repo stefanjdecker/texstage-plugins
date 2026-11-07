@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import {copy,key,blank,fromAnswer,toAnswer,isRead,preview} from "./editor-model.mjs";
-import {words,local,el,button,field,option,details,shell,feedback,commandError,delivered,setText,taskText} from "./ui.mjs";
+import {words,local,el,button,field,option,details,shell,feedback,rubricView,scoreView,commandError,delivered,setText,taskText} from "./ui.mjs";
 import {treeView} from "./tree-view.mjs";
 import {answerView} from "./answer-view.mjs";
 export function mount(ctx) {
@@ -11,6 +11,8 @@ export function mount(ctx) {
   const conflict=el("div",undefined,{class:"bp-conflict",role:"status","data-bp":"conflict"}),conflictText=el("p");
   const error=el("p",undefined,{role:"alert","data-bp":"error"}),draftStatus=el("p",undefined,{role:"status","data-bp":"draft-status"});
   const ownStatus=el("p",undefined,{role:"status","data-bp":"feedback"}),formStatus=el("p",undefined,{class:"bp-note"});
+  const scoreBox=el("div");let scoreKey="";
+  problem.append(rubricView(ctx.item,w));
   const pathText=el("p",undefined,{class:"bp-sequence","data-bp":"path"}),leavesText=el("p",undefined,{class:"bp-sequence","data-bp":"leaves"});
   const editor=el("div"),fields=el("div"),actions=el("div",undefined,{class:"bp-actions"});
   const previewBox=details(w.previewTitle),previewStatus=el("p",w.previewHint,{role:"status","data-bp":"preview-status"});
@@ -44,7 +46,7 @@ export function mount(ctx) {
   previewFrames.addEventListener("change",paintPreview,{signal:ctx.signal});
   previewBox.append(previewStatus,field(w.step,previewFrames),previewTree.root);previewFrames.parentElement.hidden=true;previewTree.root.hidden=true;
   root.append(el("h2",w.title),phase,problem,el("p",w.notice,{class:"bp-note"}),conflict,editor,formStatus,actions,error,draftStatus,
-    el("h3",w.feedback),ownStatus,previewBox,sharedBox,workedBox);
+    el("h3",w.feedback),ownStatus,scoreBox,previewBox,sharedBox,workedBox);
   function snapshotFocus() {
     const node=document.activeElement;
     if(!fields.contains(node))return null;
@@ -128,8 +130,10 @@ export function mount(ctx) {
     setText(leavesText,(draft.leaves||[]).map(n=>"P"+n).join(" → ")||w.empty);
     setText(draftStatus,busy?(receipt?w.waiting:w.saving):dirty?w.dirty:(d?.own?w.clean:""));
     setText(ownStatus,feedback(d?.own,w)+(d?.own?" · "+w.version+" "+d.own.version:""));
+    const nextScore=JSON.stringify([d?.own?.feedback,d?.scoring]);
+    if(nextScore!==scoreKey){scoreKey=nextScore;scoreBox.replaceChildren(scoreView(d?.own,d?.scoring,ctx.item,w));}
     setText(formStatus,!validAnswer()?w.invalid:d?.phase!=="open"?w.roundClosed:"");
-    if(d)setText(phase,w.phase+": "+w[d.phase]+" · "+w.count+": "+d.count);
+    if(d)setText(phase,w.phase+": "+w[d.phase]);
   }
   function paintPreview(){
     if(!analysis)return;

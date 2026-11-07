@@ -12,7 +12,7 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
 | `texstage-transaction-engine` | Schedule analysis engine `io.github.stefanjdecker.transactionengine.schedule` (M2) | None; lesson package pending |
 | `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
-| `texstage-bplus-lab` | B+ operation engine and bilingual prepared lessons | `texstage-bplus-tree.sty` / `\bplustree` |
+| `texstage-bplus-lab` | B+ operations, prepared lessons and up to 1,000 student answers | `texstage-bplus-tree.sty` / `\bplustree` |
 | `texstage-er-decisions` | ER registration activity: phone decisions, model preview and discussion | `texstage-er-decisions.sty` / `\erdecisions` |
 | `texstage-query-plan` | Query-plan selectors, cost inspection and classroom activity (Q0–Q4) | `\queryplanchallenge` |
 | `texstage-fd-lab` | Closure, candidate-key and implication lessons (F1-F3) | `\fdlab{id}{width}{height}` |
@@ -212,7 +212,7 @@ normal game total and rankings. Practice remains the default. See the
 
 ## B+ tree operations: interactive classroom activities
 
-The [B+ provider](plugins/bplus-lab/README.md) version 0.4.0 combines its checked
+The [B+ provider](plugins/bplus-lab/README.md) version 0.7.0 combines its checked
 lookup/range/insert/delete engine with [prepared LaTeX authoring](docs/bplus-lesson.md)
 and [phone and presenter views](docs/bplus-classroom.md).
 One JSON source generates English/German exercises, diagrams and checked solutions.
@@ -223,7 +223,17 @@ Students build answers with structured fields, undo/redo and local replay
 preview, then submit explicitly. Presenters inspect privately, share anonymously,
 reveal/reset and step through attempts or worked solutions. Saved feedback stays
 separate from local preview; drafts survive peer updates and expose device/reset
-conflicts. The physical-phone pilot and release/load measurements remain open.
+conflicts. Version 0.7.0 supports 1,000 saved student answers with the matching
+manifest-4 host with actor records. For classes approaching 1,000, use Chrome or
+Firefox for the presenter: the Windows WebKit presenter intermittently crashed
+at that load. See the [current measurements](docs/design/bplus-tree-scoring-validation.md).
+The [partial-credit rubric](docs/bplus-scoring.md) now connects optional fixed
+points to TeXStage's scoreboard and CSV on reveal. Sources without **points**
+remain practice activities. The [scoring record](docs/design/bplus-tree-scoring-validation.md)
+identifies the 0.7.0 artifacts and capacity measurements. The
+[rebase integration record](docs/design/bplus-tree-rebase-validation.md) gives
+the current compatible host commit and CI pin.
+The physical-phone/campus-network pilot and publication gates remain open.
 
 See the [B1 engine record](docs/design/bplus-tree-b1-validation.md),
 [B2 authoring record](docs/design/bplus-tree-b2-validation.md),

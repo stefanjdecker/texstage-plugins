@@ -1,0 +1,3393 @@
+{
+  "date": "2026-11-07",
+  "status": "local scoring implementation; WebKit presenter 1000 load gate failed; not committed or published",
+  "branch": "codex/bplus-scoring",
+  "committed": false,
+  "pushed": false,
+  "source_bases": {
+    "host": "77ddd9537f23827f6da99068d0a8d00c85f71ea5",
+    "capacity_host": "34d0c537135f32b0690147dbb66dd8ff155987f8",
+    "collection": "c05cc9e080b330cc2822a3bbc17ba80acb67de0d"
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.bpluslab",
+    "version": "0.7.0",
+    "payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27"
+  },
+  "manifest_version": 4,
+  "state_schema": 5,
+  "rubric": "bplus-partial-v1",
+  "artifacts": {
+    "wheels": [
+      {
+        "component": "host",
+        "wheel": "texstage-0.2.1.dev6-py3-none-any.whl",
+        "sha256": "79f67704191881204a95f6e2bdb7bfb92b809c2cf11fd841766dc97d4001f636",
+        "source_and_installed_matched_files": 156,
+        "package_inventory_sha256": "3218289b0961454607050ab57a191375982806fcb3cb5c87c193947e60744933",
+        "members": {
+          "texstage/__init__.py": "275af8f03b8c680c5cdbaef231cb2f73993ce3e9f1cfae6db01f21ac36869c35",
+          "texstage/addin.py": "27fa40793d4627c74465d5ebbbcf24172c281186a19c8b6401d135ac4e5a211b",
+          "texstage/api.py": "ea8a9007dde2f6a302b14f2a25991f922401ace02a283efddd3f1a38c7bcd268",
+          "texstage/builds.py": "0f2f8e9835596e3ea107b85dbd1ff5b822d5a579ad32f11094442f5f91aa437b",
+          "texstage/cli.py": "3aa9508a237dc3e2b3a283ec713fdef652f8accce46f72bbb696e643d6ffe6b0",
+          "texstage/engines.py": "8b0c9aca884f9663c90faa913373b9e294d25e782f55e757ff2285ffa760de61",
+          "texstage/keys.py": "43c5e4e0ccdc3d306bab1b5ea8ccceed96edc7baa0442fde1b0796c82a9382d0",
+          "texstage/preflight.py": "b6f9b7499aa14c9460c6b377faa66b776b618d558a96295e06a7afda2921a8d1",
+          "texstage/publish.py": "ceddb97fa07761b47c6691fcb9a56a729506de016f4fd77901ea3a4301557658",
+          "texstage/build/__init__.py": "9c84506be0f5776805e2de22a332912491b7d7cc05119d0dc7971c7fbec78085",
+          "texstage/build/activity.py": "d99b094e278d07931b3b7380d6807110999eda384c896b55b6555fcfbae38ef2",
+          "texstage/build/authoring.py": "79ba0d776034ba1835cbf6396308fb3999c9f587a34db0b2c1af39f425f77ab8",
+          "texstage/build/beamer.py": "9ba005f501f7d7486450939255b49046204cdf853d14833dd55490b8c5081c9a",
+          "texstage/build/builder.py": "082ef533f32785d55c4c1dd2e377df53983356261471565788af84b7ccbef2a9",
+          "texstage/build/bundle.py": "2724b99ded01b769b23d6ae04fe39b04559ddb7a99cd7f210e92df9dbe767b64",
+          "texstage/build/check.py": "9d177d2d6d5b5414a58ed10ad27462cc87861604188072ebe0ce4090107655a9",
+          "texstage/build/compiler.py": "2fe641cc388d61c9be96103fac0c2478ebbd4364ec90ce0a33a572f62cae56b2",
+          "texstage/build/latex.py": "ff929712ef37d61508ea9aeb10b41f6e50b990332a9d946d39c8c9c31cf11745",
+          "texstage/build/notes.py": "829643ba6629638440dd31c992990094652efa293730f61580a0d870349acfd7",
+          "texstage/build/pdf.py": "0bfa3bc1b439b29774f2e9eaa7ba8849f5629329e9e6af1b0de5a5a932a4ec25",
+          "texstage/build/plugins.py": "9d9cdec5712fd2f64e2045dc28b95619a5bb80e2ad1ed662b71250f39747418f",
+          "texstage/build/powerpoint.py": "5cd2fefa4c9c33b7a0ddd0bc8b3433672e3c0199afa5c95fd4cf5b401f8cc011",
+          "texstage/build/quiz.py": "2983c901055c75f8708584e7e251e42ef6cc916fa8c6918c67552f5d0e278cab",
+          "texstage/build/raster.py": "ffc436bd0082e1a39b71fd785d24d36124dd328eee5f65af2521fc359d7095a0",
+          "texstage/build/stage.py": "0aa1c3e0ed9ec1b590cae386cc55211c82d33ffff5a7cfa31598bed171123975",
+          "texstage/build/tqz.py": "d29ef96db7b94f9f94dc8a8e01f9ccf8026e1f7edde89f91a1fee301d3c4c815",
+          "texstage/build/types.py": "5b1ecdb579ce1a5aca1605d1c4275c6311bce5b83465242376d187edbb934b67",
+          "texstage/build/video.py": "0fda21fb11e4bd05b4fb80749e2709fa054137df11e1aa9fa531e57f4fe562d8",
+          "texstage/latex/texactivity.sty": "5a71fa9d1850ef7509a009dd6dd922e6d631ce4a9d8b40a8d8270cffac80dfac",
+          "texstage/latex/texquiz.sty": "cf7c62135566589cd4f1fa3d158bc4c4de2456d2882b83a6f4c2dc9a391f50a7",
+          "texstage/latex/texstage.sty": "277e84495de1b58a92d15d2612de8d78233cbeab4a3fb5e7f86029c6f497db5c",
+          "texstage/latex/texvideo.sty": "68105ae1a224b28f3f01fee6603668335b13d96bc6f65ec31c9ad9751ecd4eab",
+          "texstage/plugin_api/__init__.py": "2037c6e230d0c4f58d3ef5cfcd0b645d477c29cb4b57ed53ec60bd0a550446f1",
+          "texstage/plugin_api/v1/__init__.py": "4028eae7bc2a9822b2ed065fb8ce874a777525e6f7bc8d639855bb05f1431dfc",
+          "texstage/plugins/__init__.py": "7967035d365b1628798a0197ec7120e067e19d2912641db3696ee2eca8699107",
+          "texstage/plugins/assets.py": "de8560b678d3ca073b655e1d6f15ddf2e9325738e729cca4ff1405b8196737bc",
+          "texstage/plugins/catalog.py": "da237c39792acc11f4d9f05d12742fb5a1cf0401b4ae1a23095499efbc3e5dc1",
+          "texstage/plugins/cli.py": "d63fcbad72c32c13df9c38d6d1bf8e96cbc620d71ce87a0fca0bc7ab5ee0536b",
+          "texstage/plugins/collection.py": "09d44137f3163a735bb509631237d9584aeb751d8afcc82c86cc781bd6a36952",
+          "texstage/plugins/contracts.py": "8f3c84bd932c9f5af95c1174b5f27ad92190ad5c83e54d1f80c872f4483e0735",
+          "texstage/plugins/lock.py": "3d5eebf11186a9197a57304449a1fa7db96f5b90b12434997d78b9abd8d19844",
+          "texstage/plugins/manifest.py": "a0bdfde0874d0353cf801a8ab115ca6665cfea12fd91fa86edd9a1bf239e4830",
+          "texstage/plugins/points.py": "66706682ab8a144d92dc4185f4cb25600ae43b40c3992f3cfa13fb9d25b18cfb",
+          "texstage/plugins/policy.py": "0371c5bdc400d969c7487456de94202099ed9ba9d87904c9e897105690e78972",
+          "texstage/plugins/records.py": "b0057c03d4bec91c1601f374fd429c4f556c31c4cf982e76b64991a271a12dd3",
+          "texstage/plugins/runtime.py": "5855bf0c5962175129af6e867c704ed90a2a3dfb2da284436ad499f6849e680f",
+          "texstage/plugins/sdk.py": "eb1ec6bdcc15dcf9e4cf831d78cc291fd59546ec45ab9f942c6350de5d2ccd3f",
+          "texstage/plugins/worker.py": "a9cdee472789e6f2246704afa04a6ea51334ea06bd4613ac91dee4d8898a8e07",
+          "texstage/plugins/schemas/engine-summary-v1.json": "f7b14763ac586e72b516d7509c4d98b96a51b7d9ba8e3d355020457c4c7eb987",
+          "texstage/plugins/schemas/manifest-v1.json": "6bd9bbecf363ceb51845574da293e07fd42bb2d54bf303f7c813d01b6bc13868",
+          "texstage/plugins/schemas/manifest-v2.json": "a75b28d0c623119513ef4e3621b77b41d0939b8948e0f82c6cf916382d2c6eb0",
+          "texstage/plugins/schemas/manifest-v3.json": "360dd0e5c193b444b2199b6444746b59417840b337fd01a9e18d46b9add27453",
+          "texstage/plugins/schemas/manifest-v4.json": "ca52a3365f190604626c5fa6f2b273ac7854230a46b709a449787ecef8f7138f",
+          "texstage/plugins/schemas/manifest-v5.json": "9165de613156499858792455ffb51250c846ce48648769fc70eb69c3e4d9b586",
+          "texstage/server/__init__.py": "519bc005326af73ca0fb3f474648ff95706c3013042991a5d00d1d33e101db78",
+          "texstage/server/activity.py": "c8d8a5c943556e9c1bd7794ec0db068dc1a6252ddea3fa8037377fff48874e2e",
+          "texstage/server/activity_points.py": "ee464988e3056e7b113eec148ce589b298e430b3f8f5be6dfccf3366999bbc90",
+          "texstage/server/app.py": "c5c45f2bf1e6d88f5428f2b29ca75e032134cb6da2339aa5e39fdaf6000d2693",
+          "texstage/server/archive.py": "b43b6b32346e11f87731704c4fd614ff4843715e5ea300346fe01b0ce264cac9",
+          "texstage/server/bundles.py": "63a66696d3b6dc609d1399380ac655969594819160e84dca8def7689464db423",
+          "texstage/server/devices.py": "08e999038293c43acaea9f9d8ba131bf61ccbb33deb92a14e7706ff0d2ed7422",
+          "texstage/server/game.py": "f42b611ee7990f1caa6505b793fb6a10cc158f928e90d670dc008a1148563dd0",
+          "texstage/server/ink.py": "f39e21ad5d0d1cb34615d59e6b425085251008f37141fcad2fd6d3ba1c540e94",
+          "texstage/server/lecturers.py": "221cdca336f340d8d20bd48a3fadf15907519d0966fdf0ff27e99aeffca7ee43",
+          "texstage/server/library.py": "fea9801ba7844154443fb1b818d8d1928de688a5045d5b5d28252a5f70b9057d",
+          "texstage/server/plugins.py": "f063622232345ee922f377f6e762868b66fa474f03b7b9ae231830b43bdb6d77",
+          "texstage/server/polls.py": "b92334bd6722193b3d6196e2a68b775bd364e586232198d672c05f0226724819",
+          "texstage/server/qa.py": "56a6be835cb301fd6be1f2c9732d2cfffe874c538e908fa5cae12702970a52f0",
+          "texstage/server/scoring.py": "5e5e442e4a8f10f71f54050acea3bafc07f1115b816465201e945ecb9a9ebae2",
+          "texstage/server/store.py": "079b0e6a8d41c7fa5dc126780e007e50187f2d5f2bc1058a07ed4a2cc3069b94",
+          "texstage/server/tunnel.py": "9dce8946aadea5453863ea61d5ad6b67e80e3eee6ea41b9b69efa430e4959249",
+          "texstage/server/types.py": "3ae32d047737c677050a572d25fa1a50c66fdff6ec8df69bcfa734604ea654a3",
+          "texstage/server/video.py": "0424f54936a6aadda097446a23da01760aec4931b19d878fb86853401ca905c4",
+          "texstage/server/windows_loop.py": "f0f989819e9f6ab7be11337e4f5c4e2f8488a20f35f7dce6ab84df8450651cc8",
+          "texstage/web/addin/addin.css": "fff47377b8a228c219745c78bb5ed2210b54f767c7994317866806bb7b1271f0",
+          "texstage/web/addin/addin.js": "3c88e31bed08f6c687f7b061cce864de32accead587093a05eaeec913d8ee49b",
+          "texstage/web/addin/index.html": "9ae04e44ba4a8d582a651050b3dce9a0f301e5e90817b86f71add0c6a7557c1b",
+          "texstage/web/engines/common.js": "74b44c091e3e8593302673a69bb9adf0458181b149c406dac001af0583ffbcb3",
+          "texstage/web/engines/index.js": "7e46708b77b997bd3217b4c0a4d39ce2294e4e635548dac6fbcd35bcac2bd7b0",
+          "texstage/web/engines/sparql.js": "96f79bbf6e9d84d23dd71d5b7233c26fd97716e13362ff247abbbbaebdb1b968",
+          "texstage/web/engines/sql.js": "790407f44be4922b6b8fa0a09fe096575f28a41f6021607ed6033d68842be35f",
+          "texstage/web/engines/turtle.js": "7f08b4e543fd4da816ac114e6f59dcb339743b0686da44ae0398845c5a7d510a",
+          "texstage/web/host/host.css": "60ddc73f5230c49927a08563e4efec4dece5919367f580b12392cf2b220a6559",
+          "texstage/web/host/host.js": "73fece51b18fbc88f222f6c4998faabe25db5f3c3cb695e86cb19b9eb455ae88",
+          "texstage/web/host/index.html": "28732c0ed0de687a841204507d7d6771b8c20d325a494295814f8d2651965878",
+          "texstage/web/play/activity.js": "42cf4145239b546d716fa75962525fb272a2a7a41127819d43d4e9a15401e588",
+          "texstage/web/play/index.html": "481e047a2f1f0902a67dd0762aaa555798982660aa8a3ba4342fbb1ca04aa4c1",
+          "texstage/web/play/play.css": "4e632b73e7e3c34461290cae1cef014ba7a8ef7b19a22a8941b60d384d934f21",
+          "texstage/web/play/play.js": "054c1ec92fbcef4fce8e9faa074f1cabdf19a04b280b0921544c9fc102690174",
+          "texstage/web/shared/client.js": "a4601e5fc4528679134cec342b48dc4a3e4509d29080c33ae12ed59d1c32f445",
+          "texstage/web/shared/live.css": "ad6573f4624d9496bde79d97f761f653016de2232f833a1c2f06fb5ad6c8dbef",
+          "texstage/web/shared/live.js": "51775c1138841b32105b39591d3a6df7751226c4f5a2771a0e62f333118a691c",
+          "texstage/web/shared/plugins.js": "bfb2468904a5c8943753b38a820ac8c928edfbf8f53d8c94f74adfb221454564",
+          "texstage/web/shared/shapes.js": "872cff054df0c8d30d557d9e7d9509d4407e5758d603b5c6f0afe5e09c08703d",
+          "texstage/web/shared/sketch.js": "875ff4cb041cc025b4c16357f74983d82d21a4a9843875f27f0fda5189d541cf",
+          "texstage/web/shared/text.js": "ec1650f08282eb735f0e6423031a9db6b123e36f07e2155c953b8e9e8a584fda",
+          "texstage/web/shared/upload.js": "2c87d33634ff5a956400ff2d8ef76d6e07ec461684ae78cd3c6eb288609b1745",
+          "texstage/web/stage/activity.js": "10a605f69b3efba5663d71b8a74b496d29b2aec60e9e5fc71fe06433b074fab7",
+          "texstage/web/stage/ask.js": "9f5e8f579544e5fe4f7c41fb1175810bd5026a42454eeb18e9e8b47ec172fb2a",
+          "texstage/web/stage/evaluator-worker.js": "4d5887763933ed8f2377ace5e834f86fa2b2e5b6abe3367d02e0cc4380177881",
+          "texstage/web/stage/evaluator.js": "f0178926ffb0653560bd86519c7dd5fd6c4dd68fb1491dc1f35f7cebcd241f90",
+          "texstage/web/stage/export.js": "e8b51ea245feed96f179f0623e57758b998c1057e1842c475d24ae460bc24a5a",
+          "texstage/web/stage/index.html": "e9b70529b5390706a7776a55754b79979bdbff7ae7760a759aab98634eb52b0b",
+          "texstage/web/stage/ink.js": "649d06d8a144ea2f76f50aef997ecacbaaea384fd68e9c08ba3986a05b89e529",
+          "texstage/web/stage/pdfview.js": "70ec2592c09dbc1a54f5bda4e2eba056af857d3b3e6e2789e818dca53d6f396b",
+          "texstage/web/stage/pen.js": "a03079ad1bdb9f8ef43ad086cef74fdaa514c5f933e1718046bedce40d68adbb",
+          "texstage/web/stage/plugin-contracts-worker.mjs": "0257ff5a7188e7623d2d70a2237f5b25ddb71b1d9225762e94424ab236380495",
+          "texstage/web/stage/plugin-contracts.js": "fee23e08f0e4fc76a877d511c18701c138bcf080bb5f57e2a583308c638b7a14",
+          "texstage/web/stage/plugin-evaluator-worker.js": "7264a98a0874f25d15e22f3d078e05389e6886ac1c410b5fbb5f4de69bf7052f",
+          "texstage/web/stage/plugin-evaluator.js": "36a86737641937f347c291fd3c8bc0660d1059fcc2fcc9955d42250f74acea12",
+          "texstage/web/stage/presenter.js": "a70a52926c73ca0d49576dcff7ca68e23966c97d3919d75cc78e0391850c955d",
+          "texstage/web/stage/projector.html": "5b2e6e9a619108df9a695b2fbab59bf863a8d58deffefbef120b82f1739305be",
+          "texstage/web/stage/projector.js": "7cf170ed402b7f3c10f66780a1e744ac1b5d87676b61ec412ce6be2dd65b52a2",
+          "texstage/web/stage/record.js": "c227ea42af9fcee12dc15e0acdf79b094c4a01ba45212542482247bed62566dc",
+          "texstage/web/stage/split.js": "7d506ab7c2f5e1e1453cec271e627d661af62524aeea3a5c0f2265b74b2c8fd7",
+          "texstage/web/stage/stage.css": "64dd4d469ce28e44b050133f1b5e2b90dfdd7d6d718835877c92cd1abcaf9426",
+          "texstage/web/stage/video.js": "53a764607509d997e32c5dffa46a6c4565f542652efcb6b2b117f4134056c356",
+          "texstage/web/vendor/README.md": "d535101c34e6d7d9318cdd66cea3d95f1a23a972e1e8cd341c85e91147d41548",
+          "texstage/web/vendor/katex/LICENSE": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3",
+          "texstage/web/vendor/katex/katex.min.css": "d4ab5b8ee16989b070cdb0ea24bd6ad48fc8df1b787f280f29d3ae4f959f2c00",
+          "texstage/web/vendor/katex/katex.min.js": "103a53763cc033bba8d175bf3f0ba597c3505c9b6747dd3f2c7bc2a6bfcc8ae7",
+          "texstage/web/vendor/katex/fonts/KaTeX_AMS-Regular.woff2": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+          "texstage/web/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+          "texstage/web/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+          "texstage/web/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+          "texstage/web/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+          "texstage/web/vendor/katex/fonts/KaTeX_Main-Bold.woff2": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+          "texstage/web/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+          "texstage/web/vendor/katex/fonts/KaTeX_Main-Italic.woff2": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+          "texstage/web/vendor/katex/fonts/KaTeX_Main-Regular.woff2": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+          "texstage/web/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+          "texstage/web/vendor/katex/fonts/KaTeX_Math-Italic.woff2": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+          "texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+          "texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+          "texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+          "texstage/web/vendor/katex/fonts/KaTeX_Script-Regular.woff2": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+          "texstage/web/vendor/katex/fonts/KaTeX_Size1-Regular.woff2": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+          "texstage/web/vendor/katex/fonts/KaTeX_Size2-Regular.woff2": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+          "texstage/web/vendor/katex/fonts/KaTeX_Size3-Regular.woff2": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+          "texstage/web/vendor/katex/fonts/KaTeX_Size4-Regular.woff2": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+          "texstage/web/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+          "texstage/web/vendor/oxigraph/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+          "texstage/web/vendor/oxigraph/LICENSE-MIT": "1f4f6736adc52ebfda18bb84947e0ef492bd86a408c0e83872efb75ed5e02838",
+          "texstage/web/vendor/oxigraph/web.js": "2fcfdcadc79c9146cee98028a273aebc93df3282eb0299c248595bc529deca41",
+          "texstage/web/vendor/oxigraph/web_bg.wasm": "b95b15accb6b789667b8d8b0b8f139d5de588e572499672ff37ce9ba01c4a428",
+          "texstage/web/vendor/pdf-lib/LICENSE.md": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb",
+          "texstage/web/vendor/pdf-lib/pdf-lib.esm.min.js": "72c052d97b4d5d9fa6cdbdcb7ad709f03d4ddb1122390cb3afeba4d88651d969",
+          "texstage/web/vendor/pdfjs/LICENSE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "texstage/web/vendor/pdfjs/pdf.min.mjs": "57456c8e0c81e46be31174b499ef77f2b9f5ee46d04412ba627320a36755d4c2",
+          "texstage/web/vendor/pdfjs/pdf.worker.min.mjs": "9536359f1b8367850d485731ca1d5e45c159a7b7a0912325e539937aa21ceb18",
+          "texstage/web/vendor/perfect-freehand/LICENSE": "6a5ac82b42ce0af6a1e5fe39b46f0b52f1368e81e437175e8d9ae21569c8688e",
+          "texstage/web/vendor/perfect-freehand/index.mjs": "a02e221f71a757e46915a51d8f5ffc8d1788d9134e063b3edd21f429c973d46c",
+          "texstage/web/vendor/sqljs/AUTHORS": "2bb11c65286bd0f2919022e119671036ff8d85c6cd1522b6ebcc1362e67f2ce5",
+          "texstage/web/vendor/sqljs/LICENSE": "60a3f6e4d7b29b4321359e683b36cf198d24f58e24582070f56e6fa89d5ee2be",
+          "texstage/web/vendor/sqljs/sql-wasm-browser.js": "35e39a73b2e0bc1c2202a4cadb23bcf7a3a77071a39c270f014402968785b95f",
+          "texstage/web/vendor/sqljs/sql-wasm-browser.wasm": "38c14f6e379210bc942bdc4ebca44e7bfdb4318ecc1c72ca666a28fdce96670a"
+        }
+      },
+      {
+        "component": "provider",
+        "wheel": "texstage_bplus_lab-0.7.0-py3-none-any.whl",
+        "sha256": "a971432e5dc88a100f75c633516d73cbcb9c61e99ce65b705d3f4d66b8e99221",
+        "source_and_installed_matched_files": 38,
+        "package_inventory_sha256": "b8ccd722c19aab25c1bc4129a0b02a1dbf9718fc0722b293dcc4bc9edaaee0bc",
+        "members": {
+          "texstage_bplus_lab/__init__.py": "9d6aa60c4d55413c2254d7c04bccebdb0a5588afd17e5eb965560d3ea5716552",
+          "texstage_bplus_lab/authoring.py": "f71ea4c73399f77f8f60e977bd7ac42a2656eebf67186beb0e3eae496ee63112",
+          "texstage_bplus_lab/fixtures/design-cases.json": "b26effe4568111da57a9bf5f4f2769dea57995c6185d4d1141856a23742a4ee8",
+          "texstage_bplus_lab/grading.py": "853a7dccf7b5e4dbd77087242e0ebcedea6c19a1175184c2dc112cd2ec87b75f",
+          "texstage_bplus_lab/latex/texstage-bplus-tree.sty": "201708ec4521360b79eeabb08709a39b2a85d7c4d76c2851dbb8243603bffef5",
+          "texstage_bplus_lab/layout.py": "a7c312959503ea2a97f56b3605bedc8bf7b4f18550ab743fe68526adc0f00722",
+          "texstage_bplus_lab/model.py": "334bb436af4ecfaa18db0e7a0c629741d1670dc61f31c4f2d9af8517774f0cef",
+          "texstage_bplus_lab/schemas/actor-summary-v1.json": "57ccc4e04cb6b7b0f69651523560f23afb785272e91c26654b20637691a88c2b",
+          "texstage_bplus_lab/schemas/actor-value-v1.json": "1bcef0a2e4f1c8503df2dd36a5427444e20969abcb7ff9e1c8815f67bf4b120f",
+          "texstage_bplus_lab/schemas/analysis-result-v1.json": "749ccbf4c1663fb2938d731fd18a68effc1478e5b91ca4e3c4224f5549735bbd",
+          "texstage_bplus_lab/schemas/answer-v1.json": "9a24633af34362b855b45688f80a92f328d23d0359ff377cf5dd64c614fb1717",
+          "texstage_bplus_lab/schemas/command-control-v2.json": "bb170f081ad0135108ec7eeddc9e6e7b9cf658be99dfa5f89c20177088ec76d9",
+          "texstage_bplus_lab/schemas/command-page-v2.json": "1164c41fe22bcab22703711c12fee2d25d68c9ad2381d6a333239827d1eae7f6",
+          "texstage_bplus_lab/schemas/command-replay-v2.json": "c2d2a2e48a35904f1d35ef34d0071f67fa7334a3859f2351ffb84e0f25641099",
+          "texstage_bplus_lab/schemas/command-selection-v2.json": "a4f6a8c3c4aba90027abb74f43dda60830fb4f9d1c3258ac76ba71413bb7bf5a",
+          "texstage_bplus_lab/schemas/command-submit-v2.json": "5cecdacd306acee3d1816c53df84ff2385b6aeb2a3179ca9c3f799f8284c3b77",
+          "texstage_bplus_lab/schemas/exercise-v1.json": "33bb92c0c05d38c6758465af528bf332981b287e55186ee77088d62cdfd5616e",
+          "texstage_bplus_lab/schemas/lesson-v1.json": "c6236541b86d6b58c821a35d406a598f94ac6028cd95eb5d8dff5b1a72c22384",
+          "texstage_bplus_lab/schemas/participant-input-v2.json": "674ec37be68a3c4f08dcd39b64d7d10539a0ca71ad83584951bf49c9cab86f59",
+          "texstage_bplus_lab/schemas/presenter-controls-v2.json": "17b52e601876a6fd3d55b83c655f677751847cc87063e5cb1f42b7ea06dfacb6",
+          "texstage_bplus_lab/schemas/presenter-overlay-v2.json": "e5dec2f14cc902a1940257493cbb038338d253ea113f70b8de3278d351be8606",
+          "texstage_bplus_lab/schemas/projector-overlay-v2.json": "4baf4ad67778458bb2d853449a6f3e4d0c629ab4b9a768659e3d123ba6ba4d47",
+          "texstage_bplus_lab/state.py": "eda1b56c085d95ee1292c438edc7b270f02e7e928650aa9e430b98351d9ee868",
+          "texstage_bplus_lab/storage.py": "b97645c7b8db86c2b49f9c804ef119e3908638f972dc4485551d3e2ff8526d5a",
+          "texstage_bplus_lab/web/answer-view.mjs": "f5349a7bf3fdffa1ad992514af6059716a017522ff5669bd47fc67b5f88d2859",
+          "texstage_bplus_lab/web/editor-model.mjs": "04d6a42f024ef10771d191fd8c86cdff93257a329a29c8476c5a9475fb3d7cac",
+          "texstage_bplus_lab/web/engine.mjs": "cf856da978acd3a16dfc6cac4eddd49e7e3c1f0c19d98f5e4c7f2c4448eb999b",
+          "texstage_bplus_lab/web/engine.worker.mjs": "d47698f2f39b435fdbf87239078b487ae5a27efcd81c7be5b02db98cadcc43fb",
+          "texstage_bplus_lab/web/identity.mjs": "38821654b02e4f622486fcc132fb9d0b6e13380a0883dad7d9bcc5df2337dd6b",
+          "texstage_bplus_lab/web/lesson-overlay.mjs": "257988945fab8d4853e708486e73c490063225222dfe75a9a576f9df212b6571",
+          "texstage_bplus_lab/web/locale.mjs": "363acdce0ce8f14a744a41be79f5f99d0acab08313e8b7ac51722de796e03cdf",
+          "texstage_bplus_lab/web/operations.mjs": "099000bbe2b30b71296e30698ee31267b34e8b9ba425bf04714ea549f812846f",
+          "texstage_bplus_lab/web/participant.mjs": "6835d57200aeaa62d212c7c40c91c671d1d5a60355f2634d649fd2865826b590",
+          "texstage_bplus_lab/web/presenter-controls.mjs": "13d36fe982da96cf7d3375dc1d8b0c2b73e60662965bf385932b015aefeb3281",
+          "texstage_bplus_lab/web/tree-view.mjs": "6236ce59ecd9c7847607660b81b5ae0e9117cd6231ebf951a4e90d078e712284",
+          "texstage_bplus_lab/web/tree.mjs": "5c00831a4d1dbf9f604beb2afcf0a4e628a5dab889e62ca8b7540d3aaed32f8b",
+          "texstage_bplus_lab/web/ui.mjs": "967f8e1c17a72dee8ec3635781bb73941711357ce5ba9fb274a071d0be80baee",
+          "texstage_bplus_lab/web/validation.mjs": "bf1bc297d6fc1e3b2ad752492360cd3730e77b31d1ab10fa1cc7b605d8876a30"
+        }
+      }
+    ],
+    "provider": {
+      "id": "io.github.stefanjdecker.bpluslab",
+      "version": "0.7.0",
+      "payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27"
+    },
+    "schemas": {
+      "texstage_bplus_lab/schemas/actor-summary-v1.json": "57ccc4e04cb6b7b0f69651523560f23afb785272e91c26654b20637691a88c2b",
+      "texstage_bplus_lab/schemas/actor-value-v1.json": "1bcef0a2e4f1c8503df2dd36a5427444e20969abcb7ff9e1c8815f67bf4b120f",
+      "texstage_bplus_lab/schemas/analysis-result-v1.json": "749ccbf4c1663fb2938d731fd18a68effc1478e5b91ca4e3c4224f5549735bbd",
+      "texstage_bplus_lab/schemas/answer-v1.json": "9a24633af34362b855b45688f80a92f328d23d0359ff377cf5dd64c614fb1717",
+      "texstage_bplus_lab/schemas/command-control-v2.json": "bb170f081ad0135108ec7eeddc9e6e7b9cf658be99dfa5f89c20177088ec76d9",
+      "texstage_bplus_lab/schemas/command-page-v2.json": "1164c41fe22bcab22703711c12fee2d25d68c9ad2381d6a333239827d1eae7f6",
+      "texstage_bplus_lab/schemas/command-replay-v2.json": "c2d2a2e48a35904f1d35ef34d0071f67fa7334a3859f2351ffb84e0f25641099",
+      "texstage_bplus_lab/schemas/command-selection-v2.json": "a4f6a8c3c4aba90027abb74f43dda60830fb4f9d1c3258ac76ba71413bb7bf5a",
+      "texstage_bplus_lab/schemas/command-submit-v2.json": "5cecdacd306acee3d1816c53df84ff2385b6aeb2a3179ca9c3f799f8284c3b77",
+      "texstage_bplus_lab/schemas/exercise-v1.json": "33bb92c0c05d38c6758465af528bf332981b287e55186ee77088d62cdfd5616e",
+      "texstage_bplus_lab/schemas/lesson-v1.json": "c6236541b86d6b58c821a35d406a598f94ac6028cd95eb5d8dff5b1a72c22384",
+      "texstage_bplus_lab/schemas/participant-input-v2.json": "674ec37be68a3c4f08dcd39b64d7d10539a0ca71ad83584951bf49c9cab86f59",
+      "texstage_bplus_lab/schemas/presenter-controls-v2.json": "17b52e601876a6fd3d55b83c655f677751847cc87063e5cb1f42b7ea06dfacb6",
+      "texstage_bplus_lab/schemas/presenter-overlay-v2.json": "e5dec2f14cc902a1940257493cbb038338d253ea113f70b8de3278d351be8606",
+      "texstage_bplus_lab/schemas/projector-overlay-v2.json": "4baf4ad67778458bb2d853449a6f3e4d0c629ab4b9a768659e3d123ba6ba4d47"
+    },
+    "sdist_parity": true,
+    "documentation_repack": {
+      "tested_provider_wheel_sha256": "b1c364d958743c62d8595a308c60397b7fee9e23c5bbc917df9c94ae66a0d9be",
+      "changed_members": [
+        "texstage_bplus_lab-0.7.0.dist-info/METADATA",
+        "texstage_bplus_lab-0.7.0.dist-info/RECORD"
+      ],
+      "runtime_and_resource_bytes_identical": true,
+      "reason": "Final README records the observed WebKit presenter limit; runtime, schemas, manifest and provider payload are unchanged."
+    }
+  },
+  "engine": {
+    "provider": {
+      "id": "io.github.stefanjdecker.bpluslab",
+      "version": "0.7.0",
+      "payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27"
+    },
+    "host_version": "0.2.1.dev6",
+    "result_schema_sha256": "7e5ae204c3226b03ed4ca1250b5f1aa5d63b808256ec14f13b16e826a5fdd6c2",
+    "python": "3.14.4",
+    "node": "v24.15.0",
+    "cases": 30,
+    "max_evaluation_ms": 5.926900000000003,
+    "scope": "Engine conformance; prepared authoring, classroom protocol and visual UI have separate probes"
+  },
+  "engine_browsers": [
+    {
+      "browser": "chromium",
+      "provider_payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27",
+      "host_result_schema": "7e5ae204c3226b03ed4ca1250b5f1aa5d63b808256ec14f13b16e826a5fdd6c2",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "156.0.8078.80",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2025.7999999523163,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 34,
+      "max_elapsed_ms": 20.399999976158142,
+      "actual_host_deadline_ms": 2000
+    },
+    {
+      "browser": "firefox",
+      "provider_payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27",
+      "host_result_schema": "7e5ae204c3226b03ed4ca1250b5f1aa5d63b808256ec14f13b16e826a5fdd6c2",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "153.0",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2038,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 34,
+      "max_elapsed_ms": 108,
+      "actual_host_deadline_ms": 2000
+    },
+    {
+      "browser": "webkit",
+      "provider_payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27",
+      "host_result_schema": "7e5ae204c3226b03ed4ca1250b5f1aa5d63b808256ec14f13b16e826a5fdd6c2",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "26.5",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2081,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 34,
+      "max_elapsed_ms": 96,
+      "actual_host_deadline_ms": 2000
+    }
+  ],
+  "unit_tests": {
+    "provider": {
+      "tests": 145,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "host_final_targeted": {
+      "passed": 196,
+      "failures": 0
+    },
+    "host_broad_before_count_optimization": {
+      "passed": 556,
+      "failed": 1,
+      "errors": 5,
+      "skipped": 1,
+      "permission_dependent_rerun_passed": 9,
+      "note": "The six failures/errors were sandbox Windows registry-access restrictions. A scoped rerun outside the sandbox passed all nine selected tests. The final 196-test set covers the subsequent count-query changes."
+    }
+  },
+  "ui": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "language": "en",
+      "operations": [
+        "lookup",
+        "range",
+        "insert",
+        "delete",
+        "cascade",
+        "shrink"
+      ],
+      "actualUI": true,
+      "touch": true,
+      "keyboard": true,
+      "undoRedo": true,
+      "preview": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "resetConflict": true,
+      "fixedScoring": true,
+      "partialCredit": true,
+      "privateBeforeReveal": true,
+      "scoreboardTotalsAndRanks": true,
+      "resultsCSV": true,
+      "resetWithdrawsPoints": true,
+      "privateInspection": true,
+      "predictionOnlySharing": true,
+      "replay": true,
+      "reveal": true,
+      "navigation": true,
+      "layout": {
+        "viewport": 320,
+        "width": 320,
+        "minimumTouch": 44,
+        "unlabeled": 0
+      },
+      "reducedMotion": true,
+      "ariaSnapshot": true,
+      "physicalPhone": false,
+      "lifecycle": {
+        "viewBeforeReceipt": true,
+        "editWhileSaving": true,
+        "lateReceiptAfterReset": true,
+        "lateReceiptAfterDestroy": true,
+        "refusalKeepsDraft": true,
+        "staleAnswerConflict": true,
+        "structuralFocus": true,
+        "obsoletePreview": true,
+        "disposedPreview": true,
+        "presenterReset": true,
+        "overlayTeardown": true,
+        "largeTreeFocus": true
+      },
+      "timings": [
+        {
+          "operation": "lookup",
+          "saveToFeedbackStateMs": 480
+        },
+        {
+          "operation": "range",
+          "saveToFeedbackStateMs": 715
+        },
+        {
+          "operation": "insert",
+          "saveToFeedbackStateMs": 498
+        },
+        {
+          "operation": "delete",
+          "saveToFeedbackStateMs": 719
+        },
+        {
+          "operation": "cascade",
+          "saveToFeedbackStateMs": 712
+        },
+        {
+          "operation": "shrink",
+          "saveToFeedbackStateMs": 504
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "language": "en",
+      "operations": [
+        "lookup",
+        "range",
+        "insert",
+        "delete",
+        "cascade",
+        "shrink"
+      ],
+      "actualUI": true,
+      "touch": true,
+      "keyboard": true,
+      "undoRedo": true,
+      "preview": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "resetConflict": true,
+      "fixedScoring": true,
+      "partialCredit": true,
+      "privateBeforeReveal": true,
+      "scoreboardTotalsAndRanks": true,
+      "resultsCSV": true,
+      "resetWithdrawsPoints": true,
+      "privateInspection": true,
+      "predictionOnlySharing": true,
+      "replay": true,
+      "reveal": true,
+      "navigation": true,
+      "layout": {
+        "viewport": 320,
+        "width": 320,
+        "minimumTouch": 44,
+        "unlabeled": 0
+      },
+      "reducedMotion": true,
+      "ariaSnapshot": true,
+      "physicalPhone": false,
+      "lifecycle": {
+        "viewBeforeReceipt": true,
+        "editWhileSaving": true,
+        "lateReceiptAfterReset": true,
+        "lateReceiptAfterDestroy": true,
+        "refusalKeepsDraft": true,
+        "staleAnswerConflict": true,
+        "structuralFocus": true,
+        "obsoletePreview": true,
+        "disposedPreview": true,
+        "presenterReset": true,
+        "overlayTeardown": true,
+        "largeTreeFocus": true
+      },
+      "timings": [
+        {
+          "operation": "lookup",
+          "saveToFeedbackStateMs": 1015
+        },
+        {
+          "operation": "range",
+          "saveToFeedbackStateMs": 592
+        },
+        {
+          "operation": "insert",
+          "saveToFeedbackStateMs": 673
+        },
+        {
+          "operation": "delete",
+          "saveToFeedbackStateMs": 705
+        },
+        {
+          "operation": "cascade",
+          "saveToFeedbackStateMs": 614
+        },
+        {
+          "operation": "shrink",
+          "saveToFeedbackStateMs": 699
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "language": "en",
+      "operations": [
+        "lookup",
+        "range",
+        "insert",
+        "delete",
+        "cascade",
+        "shrink"
+      ],
+      "actualUI": true,
+      "touch": true,
+      "keyboard": true,
+      "undoRedo": true,
+      "preview": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "resetConflict": true,
+      "fixedScoring": true,
+      "partialCredit": true,
+      "privateBeforeReveal": true,
+      "scoreboardTotalsAndRanks": true,
+      "resultsCSV": true,
+      "resetWithdrawsPoints": true,
+      "privateInspection": true,
+      "predictionOnlySharing": true,
+      "replay": true,
+      "reveal": true,
+      "navigation": true,
+      "layout": {
+        "viewport": 320,
+        "width": 320,
+        "minimumTouch": 44,
+        "unlabeled": 0
+      },
+      "reducedMotion": true,
+      "ariaSnapshot": true,
+      "physicalPhone": false,
+      "lifecycle": {
+        "viewBeforeReceipt": true,
+        "editWhileSaving": true,
+        "lateReceiptAfterReset": true,
+        "lateReceiptAfterDestroy": true,
+        "refusalKeepsDraft": true,
+        "staleAnswerConflict": true,
+        "structuralFocus": true,
+        "obsoletePreview": true,
+        "disposedPreview": true,
+        "presenterReset": true,
+        "overlayTeardown": true,
+        "largeTreeFocus": true
+      },
+      "timings": [
+        {
+          "operation": "lookup",
+          "saveToFeedbackStateMs": 680
+        },
+        {
+          "operation": "range",
+          "saveToFeedbackStateMs": 759
+        },
+        {
+          "operation": "insert",
+          "saveToFeedbackStateMs": 483
+        },
+        {
+          "operation": "delete",
+          "saveToFeedbackStateMs": 545
+        },
+        {
+          "operation": "cascade",
+          "saveToFeedbackStateMs": 664
+        },
+        {
+          "operation": "shrink",
+          "saveToFeedbackStateMs": 560
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "language": "de",
+      "operations": [
+        "lookup",
+        "range",
+        "insert",
+        "delete",
+        "cascade",
+        "shrink"
+      ],
+      "actualUI": true,
+      "touch": true,
+      "keyboard": true,
+      "undoRedo": true,
+      "preview": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "resetConflict": true,
+      "fixedScoring": true,
+      "partialCredit": true,
+      "privateBeforeReveal": true,
+      "scoreboardTotalsAndRanks": true,
+      "resultsCSV": true,
+      "resetWithdrawsPoints": true,
+      "privateInspection": true,
+      "predictionOnlySharing": true,
+      "replay": true,
+      "reveal": true,
+      "navigation": true,
+      "layout": {
+        "viewport": 320,
+        "width": 320,
+        "minimumTouch": 44,
+        "unlabeled": 0
+      },
+      "reducedMotion": true,
+      "ariaSnapshot": true,
+      "physicalPhone": false,
+      "lifecycle": {
+        "viewBeforeReceipt": true,
+        "editWhileSaving": true,
+        "lateReceiptAfterReset": true,
+        "lateReceiptAfterDestroy": true,
+        "refusalKeepsDraft": true,
+        "staleAnswerConflict": true,
+        "structuralFocus": true,
+        "obsoletePreview": true,
+        "disposedPreview": true,
+        "presenterReset": true,
+        "overlayTeardown": true,
+        "largeTreeFocus": true
+      },
+      "timings": [
+        {
+          "operation": "lookup",
+          "saveToFeedbackStateMs": 475
+        },
+        {
+          "operation": "range",
+          "saveToFeedbackStateMs": 717
+        },
+        {
+          "operation": "insert",
+          "saveToFeedbackStateMs": 283
+        },
+        {
+          "operation": "delete",
+          "saveToFeedbackStateMs": 505
+        },
+        {
+          "operation": "cascade",
+          "saveToFeedbackStateMs": 717
+        },
+        {
+          "operation": "shrink",
+          "saveToFeedbackStateMs": 615
+        }
+      ],
+      "pageErrors": []
+    }
+  ],
+  "static_exports": {
+    "lesson-en": {
+      "pages": {
+        "handout": 7,
+        "solutions": 7,
+        "stage": 7,
+        "direct-handout": 7,
+        "direct-solutions": 7,
+        "direct-present": 7
+      },
+      "sha256": {
+        "handout": "11a56c3a66c0a25a20074f99b5fef29fe99fff758c5b16b160259bd23a3bc826",
+        "solutions": "4de70530c488dc8e1a46bb9b013701f92e9daaca42b2faf8438d3eb7d2a86ae2",
+        "stage": "fcfe35bf14cb166d14d7403b45355463503e5d0ab3a9be408308769d4e9b8d33",
+        "powerpoint": "b51e78369d4423d100627f246f9e0b971f86bfd4c39a483f7b7985524637ad90",
+        "direct-handout": "4d29969d0f9f369894ef8f22edd9235d0b09f23e93605762826a58f4b5d9e43d",
+        "direct-solutions": "fa6775cc95467d941beddb9b60542a34c2a63ff9debce8b40074bed61809d092",
+        "direct-present": "83a1deb3fa3988003ac004f8c902411cbf97906575124d1936eda93dc189113d"
+      },
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    },
+    "lesson-de": {
+      "pages": {
+        "handout": 7,
+        "solutions": 7,
+        "stage": 7,
+        "direct-handout": 7,
+        "direct-solutions": 7,
+        "direct-present": 7
+      },
+      "sha256": {
+        "handout": "a0058737f2899dce34cb5cba1659185e9313f845295d6c5061443c51a0a6b8c6",
+        "solutions": "6ae79e32ce358da13a976a10fbc7f35f6b5b381cfcfee670a146ae64a5ecf5a9",
+        "stage": "858d7f48b0cee984de83a6a548d3e2f05122c8581fa502dd5d70f777f6b1ef2b",
+        "powerpoint": "19c393c0e2ca47bfe98353fb78ddce5515bfc923be5c071f5ffdcaa4a2856be0",
+        "direct-handout": "943dfda809517dbe88ee3d97659b7faebd9b64513c998aa7580a3f448f51bb9e",
+        "direct-solutions": "a5dea06ee1560bd2dd93473dae98e76531925e8131c02aba7633e3d0974844f8",
+        "direct-present": "3d2d0f4840a26a5f882612b285c53fec7aa6bfeca41fd866f4e680ba2bdac14d"
+      },
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    },
+    "stress-en": {
+      "pages": {
+        "handout": 3,
+        "solutions": 3,
+        "stage": 3,
+        "direct-handout": 3,
+        "direct-solutions": 3,
+        "direct-present": 3
+      },
+      "sha256": {
+        "handout": "0b38b45a08e665a6c097a17431a1c1f154add9fffea9adda9666c49edf2328a4",
+        "solutions": "378d29c5e803eb58a3b1080d9770a21d5a5a171c3797957b8a7682454c2767d3",
+        "stage": "143dd9146a0569bac9a21e46abe7f9ebb9427849a2df6ea55da3e379c587f488",
+        "powerpoint": "e90a6a643382f8a24c208a572d65aae320dde2aa3a38bb114a5f6d15adcd261e",
+        "direct-handout": "7af7262a48e72f5d38739e97c49b66a3ffcfc47971526a51df271d74e7eed09f",
+        "direct-solutions": "f53254140d53dd2e7befa4739a692856256b20de997e148b6f30599aa41bc980",
+        "direct-present": "3fd55d7f5573734655fa923330df4d67beb8c18f189ffdc7f7a05c4b122e866a"
+      },
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    },
+    "stress-de": {
+      "pages": {
+        "handout": 3,
+        "solutions": 3,
+        "stage": 3,
+        "direct-handout": 3,
+        "direct-solutions": 3,
+        "direct-present": 3
+      },
+      "sha256": {
+        "handout": "4396c506917d88ceb72b9b84f2fb0a2a9d0b4800cd0337bbd0a30f57a293196a",
+        "solutions": "1462c17adc01653ae53f26a70720076f6feb7eee557757bcb0cc297fc19cd8af",
+        "stage": "a84635a1c23ceccf0f81c47d20e904e797b9ceeb7a38b1470df50d8cbbf94762",
+        "powerpoint": "1856630a841e76a62734f256090e19146d60af3c483710383741128949e0f185",
+        "direct-handout": "cecc0b23bad7e7683111f101208b6b5cc973756f3364ca6e6f9ac674abea28dc",
+        "direct-solutions": "861ae26974e922cf4cf7aac11ebac034bba9283fad496be80b23425b29764ba7",
+        "direct-present": "98f49a1d482028063d9aad9bb3f81e11cdfe411dcc8837e92e696a94e288fe86"
+      },
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    }
+  },
+  "load_matrix": [
+    {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 600,
+      "browser": "chromium",
+      "browser_version": "156.0.8078.80",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2698.051300000001
+        },
+        {
+          "name": "initial",
+          "duration_ms": 15126.7144
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 19543.447899999996
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 2593.157800000001
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 693.1208999999944
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 2977.72,
+            "p95_ms": 2985.06,
+            "p99_ms": 2985.56,
+            "max_ms": 2985.63
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 9800.41,
+            "p95_ms": 14542.47,
+            "p99_ms": 15006.31,
+            "max_ms": 15007.69
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 8051.86,
+            "p95_ms": 11502.03,
+            "p99_ms": 11928.75,
+            "max_ms": 12028.18
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 6,
+            "p95_ms": 7.6,
+            "p99_ms": 10,
+            "max_ms": 18
+          },
+          "accepted_results": 600
+        },
+        "replacement-old": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 2908.69,
+            "p95_ms": 2926.54,
+            "p99_ms": 2926.88,
+            "max_ms": 2926.99
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 3055,
+            "p95_ms": 3074.61,
+            "p99_ms": 3074.61,
+            "max_ms": 3074.61
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 6,
+            "p95_ms": 6.8,
+            "p99_ms": 6.8,
+            "max_ms": 6.8
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 4151.79,
+            "p95_ms": 4158.59,
+            "p99_ms": 4159.94,
+            "max_ms": 4160.45
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 11674.71,
+            "p95_ms": 15837.03,
+            "p99_ms": 16556.15,
+            "max_ms": 16557.52
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 8946.38,
+            "p95_ms": 11836.19,
+            "p99_ms": 12301.12,
+            "max_ms": 12374.57
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 5.9,
+            "p95_ms": 7.3,
+            "p99_ms": 8.7,
+            "max_ms": 12.5
+          },
+          "accepted_results": 600
+        },
+        "reconnect": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 1636.44,
+            "p95_ms": 2893.79,
+            "p99_ms": 2895.96,
+            "max_ms": 2896.35
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 9113.09,
+            "p95_ms": 13624.56,
+            "p99_ms": 14329.81,
+            "max_ms": 14331.34
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 7392.5,
+            "p95_ms": 10797.9,
+            "p99_ms": 11234.54,
+            "max_ms": 11361.57
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 5.6,
+            "p95_ms": 6.6,
+            "p99_ms": 7.3,
+            "max_ms": 45.7
+          },
+          "accepted_results": 600
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.93,
+          "p95_ms": 958.1,
+          "p99_ms": 958.1,
+          "max_ms": 958.1,
+          "errors": 0
+        },
+        "transition": {
+          "n": 4814,
+          "p50_ms": 0.76,
+          "p95_ms": 1.76,
+          "p99_ms": 2.21,
+          "max_ms": 8.17,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1087,
+          "p50_ms": 0.85,
+          "p95_ms": 11.19,
+          "p99_ms": 15.74,
+          "max_ms": 19.77,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 944,
+        "p50_ms": 2.83,
+        "p95_ms": 28.49,
+        "p99_ms": 35.57,
+        "max_ms": 2468.75
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 67225329,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 5000,
+        "normal_feedback_budget_ms": 30000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": true
+    },
+    {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 1000,
+      "browser": "chromium",
+      "browser_version": "156.0.8078.80",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 4133.7322
+        },
+        {
+          "name": "initial",
+          "duration_ms": 23599.721099999995
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 34621.741799999996
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 4860.7402
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 1139.6437000000005
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4938.23,
+            "p95_ms": 4950.65,
+            "p99_ms": 4952.44,
+            "max_ms": 4952.69
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 14573.85,
+            "p95_ms": 22270.16,
+            "p99_ms": 23004.82,
+            "max_ms": 23470.07
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 11923.07,
+            "p95_ms": 17428.65,
+            "p99_ms": 18129.01,
+            "max_ms": 18405.5
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 5.8,
+            "p95_ms": 6.7,
+            "p99_ms": 7.5,
+            "max_ms": 13.7
+          },
+          "accepted_results": 1000
+        },
+        "replacement-old": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4815.41,
+            "p95_ms": 4855.82,
+            "p99_ms": 4857.34,
+            "max_ms": 4857.67
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 5079.12,
+            "p95_ms": 5094.44,
+            "p99_ms": 5094.44,
+            "max_ms": 5094.44
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 5.3,
+            "p95_ms": 6.6,
+            "p99_ms": 6.6,
+            "max_ms": 6.6
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 7521.16,
+            "p95_ms": 7537.11,
+            "p99_ms": 7539.78,
+            "max_ms": 7540.95
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 20331.11,
+            "p95_ms": 28406.37,
+            "p99_ms": 29363.58,
+            "max_ms": 29605.76
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 16314.01,
+            "p95_ms": 21182.65,
+            "p99_ms": 21835.16,
+            "max_ms": 22001.5
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 5.8,
+            "p95_ms": 7.4,
+            "p99_ms": 8.9,
+            "max_ms": 13.8
+          },
+          "accepted_results": 1000
+        },
+        "reconnect": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 3009.24,
+            "p95_ms": 5346.68,
+            "p99_ms": 5348.76,
+            "max_ms": 5349.03
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 16382.64,
+            "p95_ms": 24683.96,
+            "p99_ms": 25402.82,
+            "max_ms": 25650.31
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 13552.23,
+            "p95_ms": 19380.05,
+            "p99_ms": 20026.45,
+            "max_ms": 20222.69
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 5.9,
+            "p95_ms": 7.1,
+            "p99_ms": 8.3,
+            "max_ms": 13.2
+          },
+          "accepted_results": 1000
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.78,
+          "p95_ms": 715.71,
+          "p99_ms": 715.71,
+          "max_ms": 715.71,
+          "errors": 0
+        },
+        "transition": {
+          "n": 8014,
+          "p50_ms": 0.8,
+          "p95_ms": 1.75,
+          "p99_ms": 2.17,
+          "max_ms": 7.9,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1810,
+          "p50_ms": 0.73,
+          "p95_ms": 12.14,
+          "p99_ms": 16.57,
+          "max_ms": 18.76,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1563,
+        "p50_ms": 2.79,
+        "p95_ms": 30.11,
+        "p99_ms": 38.12,
+        "max_ms": 4622.42
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 112422006,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 10000,
+        "normal_feedback_budget_ms": 60000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": true
+    },
+    {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 600,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2541.2636
+        },
+        {
+          "name": "initial",
+          "duration_ms": 17146.336799999997
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 21864.1681
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 2611.4663
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 568.5850000000064
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3444.58,
+            "p95_ms": 3456.77,
+            "p99_ms": 3457.75,
+            "max_ms": 3457.98
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 10782.34,
+            "p95_ms": 16115.67,
+            "p99_ms": 16820.86,
+            "max_ms": 17046.56
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 8977.42,
+            "p95_ms": 12791.3,
+            "p99_ms": 13339.39,
+            "max_ms": 13483.45
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 12,
+            "p95_ms": 15,
+            "p99_ms": 21,
+            "max_ms": 28
+          },
+          "accepted_results": 600
+        },
+        "replacement-old": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 2963.97,
+            "p95_ms": 3735.77,
+            "p99_ms": 3737.17,
+            "max_ms": 3737.34
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 3163.12,
+            "p95_ms": 3182.8,
+            "p99_ms": 3182.8,
+            "max_ms": 3182.8
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 11,
+            "p95_ms": 13,
+            "p99_ms": 13,
+            "max_ms": 13
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3276.78,
+            "p95_ms": 4021.12,
+            "p99_ms": 4022.31,
+            "max_ms": 4022.9
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 12408.38,
+            "p95_ms": 17128.72,
+            "p99_ms": 17849.74,
+            "max_ms": 18079.24
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 9892.77,
+            "p95_ms": 13543.8,
+            "p99_ms": 14171.57,
+            "max_ms": 14338.48
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 12,
+            "p95_ms": 15,
+            "p99_ms": 15,
+            "max_ms": 17
+          },
+          "accepted_results": 600
+        },
+        "reconnect": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3171.55,
+            "p95_ms": 3183.75,
+            "p99_ms": 3184.9,
+            "max_ms": 3185.38
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 11904.24,
+            "p95_ms": 17598.59,
+            "p99_ms": 18984.76,
+            "max_ms": 19211.56
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 10036.88,
+            "p95_ms": 14504.27,
+            "p99_ms": 15678.47,
+            "max_ms": 15832.35
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 11,
+            "p95_ms": 15,
+            "p99_ms": 17,
+            "max_ms": 20
+          },
+          "accepted_results": 600
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.75,
+          "p95_ms": 892.51,
+          "p99_ms": 892.51,
+          "max_ms": 892.51,
+          "errors": 0
+        },
+        "transition": {
+          "n": 4814,
+          "p50_ms": 0.86,
+          "p95_ms": 1.86,
+          "p99_ms": 2.41,
+          "max_ms": 11.16,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1094,
+          "p50_ms": 0.77,
+          "p95_ms": 11,
+          "p99_ms": 14.72,
+          "max_ms": 21.84,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 951,
+        "p50_ms": 2.62,
+        "p95_ms": 28.12,
+        "p99_ms": 38.44,
+        "max_ms": 2348.2
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 67285942,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 5000,
+        "normal_feedback_budget_ms": 30000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": true
+    },
+    {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 1000,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3776.2047000000002
+        },
+        {
+          "name": "initial",
+          "duration_ms": 26296.792999999998
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 31503.8476
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 4718.208199999994
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 1003.7526000000071
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4517.21,
+            "p95_ms": 4530.26,
+            "p99_ms": 4530.67,
+            "max_ms": 4530.78
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 15881.15,
+            "p95_ms": 24971.02,
+            "p99_ms": 25878.7,
+            "max_ms": 26122.58
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 13509.08,
+            "p95_ms": 20596.57,
+            "p99_ms": 21376.38,
+            "max_ms": 21599.74
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 12,
+            "p95_ms": 16,
+            "p99_ms": 18,
+            "max_ms": 23
+          },
+          "accepted_results": 1000
+        },
+        "replacement-old": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 3741.87,
+            "p95_ms": 3765.17,
+            "p99_ms": 3766.26,
+            "max_ms": 3766.49
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 3993.19,
+            "p95_ms": 4008,
+            "p99_ms": 4008,
+            "max_ms": 4008
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 9,
+            "p95_ms": 13,
+            "p99_ms": 13,
+            "max_ms": 13
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 5970.91,
+            "p95_ms": 5981.71,
+            "p99_ms": 5983.38,
+            "max_ms": 5983.95
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 18016.89,
+            "p95_ms": 26208.43,
+            "p99_ms": 27396.07,
+            "max_ms": 27629.96
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 14572.81,
+            "p95_ms": 20462.07,
+            "p99_ms": 21308.73,
+            "max_ms": 21547.04
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 13,
+            "p95_ms": 16,
+            "p99_ms": 19,
+            "max_ms": 26
+          },
+          "accepted_results": 1000
+        },
+        "reconnect": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4433.03,
+            "p95_ms": 4449.12,
+            "p99_ms": 4450.3,
+            "max_ms": 4450.76
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 17426.87,
+            "p95_ms": 26799.74,
+            "p99_ms": 27758.98,
+            "max_ms": 28024.25
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 15082.92,
+            "p95_ms": 22405.44,
+            "p99_ms": 23304.74,
+            "max_ms": 23590.89
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 12,
+            "p95_ms": 16,
+            "p99_ms": 22,
+            "max_ms": 32
+          },
+          "accepted_results": 1000
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.85,
+          "p95_ms": 803.96,
+          "p99_ms": 803.96,
+          "max_ms": 803.96,
+          "errors": 0
+        },
+        "transition": {
+          "n": 8014,
+          "p50_ms": 0.69,
+          "p95_ms": 1.83,
+          "p99_ms": 2.24,
+          "max_ms": 12.3,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1823,
+          "p50_ms": 0.7,
+          "p95_ms": 11.38,
+          "p99_ms": 16.18,
+          "max_ms": 26.29,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1576,
+        "p50_ms": 2.39,
+        "p95_ms": 29.07,
+        "p99_ms": 38.22,
+        "max_ms": 4185.19
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 112401806,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 10000,
+        "normal_feedback_budget_ms": 60000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": true
+    },
+    {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 600,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2540.3591000000006
+        },
+        {
+          "name": "initial",
+          "duration_ms": 25273.264199999998
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 30728.771999999997
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 2890.423299999995
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 648.2485999999917
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3168.68,
+            "p95_ms": 3184.46,
+            "p99_ms": 3186.11,
+            "max_ms": 3186.32
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 13231.9,
+            "p95_ms": 22842.1,
+            "p99_ms": 24423.13,
+            "max_ms": 25119.55
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 11491.31,
+            "p95_ms": 19552.4,
+            "p99_ms": 21181.27,
+            "max_ms": 21695.98
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 17,
+            "p95_ms": 21,
+            "p99_ms": 31,
+            "max_ms": 40
+          },
+          "accepted_results": 600
+        },
+        "replacement-old": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3139.23,
+            "p95_ms": 3163.77,
+            "p99_ms": 3165.5,
+            "max_ms": 3165.82
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 3078.52,
+            "p95_ms": 3100.04,
+            "p99_ms": 3100.04,
+            "max_ms": 3100.04
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 17,
+            "p95_ms": 19,
+            "p99_ms": 19,
+            "max_ms": 19
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 4694.63,
+            "p95_ms": 4702.86,
+            "p99_ms": 4703.19,
+            "max_ms": 4703.74
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 15837.11,
+            "p95_ms": 25210.65,
+            "p99_ms": 27027.32,
+            "max_ms": 27491.16
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 13011.11,
+            "p95_ms": 20478.45,
+            "p99_ms": 22144.62,
+            "max_ms": 22600.53
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 16,
+            "p95_ms": 19,
+            "p99_ms": 24,
+            "max_ms": 31
+          },
+          "accepted_results": 600
+        },
+        "reconnect": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 2908.64,
+            "p95_ms": 3477.69,
+            "p99_ms": 3478.04,
+            "max_ms": 3478.16
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 14288.58,
+            "p95_ms": 23883.64,
+            "p99_ms": 25963.18,
+            "max_ms": 26428.76
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 12479.4,
+            "p95_ms": 20424.55,
+            "p99_ms": 22352.34,
+            "max_ms": 22826.35
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 17,
+            "p95_ms": 31,
+            "p99_ms": 35,
+            "max_ms": 39
+          },
+          "accepted_results": 600
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.66,
+          "p95_ms": 722.43,
+          "p99_ms": 722.43,
+          "max_ms": 722.43,
+          "errors": 0
+        },
+        "transition": {
+          "n": 4814,
+          "p50_ms": 0.85,
+          "p95_ms": 1.83,
+          "p99_ms": 2.39,
+          "max_ms": 11.05,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1173,
+          "p50_ms": 0.83,
+          "p95_ms": 10.6,
+          "p99_ms": 14.72,
+          "max_ms": 17.09,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1031,
+        "p50_ms": 2.72,
+        "p95_ms": 26.71,
+        "p99_ms": 33.47,
+        "max_ms": 2542.4
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 67434115,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 5000,
+        "normal_feedback_budget_ms": 30000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": true
+    },
+    {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": false,
+        "allPublished": false,
+        "resetWithdraws": false
+      },
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 4148.4873
+        },
+        {
+          "name": "initial",
+          "duration_ms": 39381.9502
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 47947.5582
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 5030.12,
+            "p95_ms": 5052.19,
+            "p99_ms": 5053.85,
+            "max_ms": 5054.4
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 21401.13,
+            "p95_ms": 36019.04,
+            "p99_ms": 38554.64,
+            "max_ms": 39250.28
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 18606.84,
+            "p95_ms": 31085.6,
+            "p99_ms": 33325.36,
+            "max_ms": 34102.39
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 17,
+            "p95_ms": 22,
+            "p99_ms": 34,
+            "max_ms": 112
+          },
+          "accepted_results": 1000
+        },
+        "replacement-old": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4916.46,
+            "p95_ms": 4946.93,
+            "p99_ms": 4948.46,
+            "max_ms": 4949.04
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 4845.08,
+            "p95_ms": 4867.39,
+            "p99_ms": 4867.39,
+            "max_ms": 4867.39
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 16,
+            "p95_ms": 19,
+            "p99_ms": 19,
+            "max_ms": 19
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 7168.91,
+            "p95_ms": 7187.86,
+            "p99_ms": 7189.1,
+            "max_ms": 7189.43
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 25148.72,
+            "p95_ms": 39924.49,
+            "p99_ms": 42234.09,
+            "max_ms": 42934.66
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 21275.24,
+            "p95_ms": 32933.88,
+            "p99_ms": 34949.34,
+            "max_ms": 35658.81
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 16,
+            "p95_ms": 20,
+            "p99_ms": 31,
+            "max_ms": 42
+          },
+          "accepted_results": 1000
+        },
+        "reconnect": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 5610.07,
+            "p95_ms": 5627.61,
+            "p99_ms": 5629.29,
+            "max_ms": 5630.09
+          },
+          "feedback": {
+            "n": 392,
+            "p50_ms": 14030.94,
+            "p95_ms": 19328.76,
+            "p99_ms": 19812.58,
+            "max_ms": 19813.39
+          },
+          "queue_wait": {
+            "n": 400,
+            "p50_ms": 12740.41,
+            "p95_ms": 17230.79,
+            "p99_ms": 17604.11,
+            "max_ms": 17623.39
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 392
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 6,
+          "p50_ms": 0.61,
+          "p95_ms": 754.45,
+          "p99_ms": 754.45,
+          "max_ms": 754.45,
+          "errors": 0
+        },
+        "transition": {
+          "n": 7398,
+          "p50_ms": 0.75,
+          "p95_ms": 1.71,
+          "p99_ms": 1.95,
+          "max_ms": 12.38,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1576,
+          "p50_ms": 0.7,
+          "p95_ms": 5.23,
+          "p99_ms": 6.12,
+          "max_ms": 10.81,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1578,
+        "p50_ms": 2.77,
+        "p95_ms": 26.3,
+        "p99_ms": 29.84,
+        "max_ms": 769.99
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 50249980,
+      "errors": [
+        "Missing validated results: reconnect"
+      ],
+      "failure": "Error: Timed out: reconnected evaluator\n    at until (<validation-workspace>\\collection\\maintenance\\bplus_load_browser.cjs:21:94)\n    at async <validation-workspace>\\collection\\maintenance\\bplus_load_browser.cjs:176:4",
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 10000,
+        "normal_feedback_budget_ms": 60000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": false,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": false
+    }
+  ],
+  "preliminary_observations": {
+    "chromium_600": {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 600,
+      "browser": "chromium",
+      "browser_version": "156.0.8078.80",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2603.8394
+        },
+        {
+          "name": "initial",
+          "duration_ms": 15703.3837
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 22332.8063
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3192.24,
+            "p95_ms": 3206.8,
+            "p99_ms": 3208.2,
+            "max_ms": 3208.32
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 9632.62,
+            "p95_ms": 14869.43,
+            "p99_ms": 15350.2,
+            "max_ms": 15584.13
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 7924.76,
+            "p95_ms": 11715.62,
+            "p99_ms": 12185.62,
+            "max_ms": 12330.35
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 6.2,
+            "p95_ms": 7.8,
+            "p99_ms": 9.6,
+            "max_ms": 11.6
+          },
+          "accepted_results": 600
+        },
+        "replacement-old": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3434.51,
+            "p95_ms": 3461.37,
+            "p99_ms": 3463.12,
+            "max_ms": 3463.34
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 3361.2,
+            "p95_ms": 3385.87,
+            "p99_ms": 3385.87,
+            "max_ms": 3385.87
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 6.1,
+            "p95_ms": 7.1,
+            "p99_ms": 7.1,
+            "max_ms": 7.1
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 5244.28,
+            "p95_ms": 5257.97,
+            "p99_ms": 5258.29,
+            "max_ms": 5258.43
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 13178.76,
+            "p95_ms": 18063.79,
+            "p99_ms": 18541.34,
+            "max_ms": 18773.94
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 10301.81,
+            "p95_ms": 12965.52,
+            "p99_ms": 13379.23,
+            "max_ms": 13495.41
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 6,
+            "p95_ms": 7.6,
+            "p99_ms": 9.2,
+            "max_ms": 19.9
+          },
+          "accepted_results": 600
+        },
+        "reconnect": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 3403.01,
+            "p95_ms": 3421.69,
+            "p99_ms": 3422.92,
+            "max_ms": 3423.24
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 10765.68,
+            "p95_ms": 15773.35,
+            "p99_ms": 16469.98,
+            "max_ms": 16471.4
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 8761.13,
+            "p95_ms": 12445.48,
+            "p99_ms": 12940.77,
+            "max_ms": 13046.49
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 6.1,
+            "p95_ms": 7.7,
+            "p99_ms": 11.4,
+            "max_ms": 16.7
+          },
+          "accepted_results": 600
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.96,
+          "p95_ms": 870.83,
+          "p99_ms": 870.83,
+          "max_ms": 870.83,
+          "errors": 0
+        },
+        "transition": {
+          "n": 4814,
+          "p50_ms": 0.89,
+          "p95_ms": 1.87,
+          "p99_ms": 2.39,
+          "max_ms": 10.46,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1086,
+          "p50_ms": 0.88,
+          "p95_ms": 11.24,
+          "p99_ms": 18.75,
+          "max_ms": 21.86,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 944,
+        "p50_ms": 2.86,
+        "p95_ms": 30.72,
+        "p99_ms": 38.17,
+        "max_ms": 3121.16
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 67292687,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 5000,
+        "normal_feedback_budget_ms": 30000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": false,
+      "recovery_budget_pass": true
+    },
+    "webkit_1000": {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": false,
+        "allPublished": false,
+        "resetWithdraws": false
+      },
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 4310.7984
+        },
+        {
+          "name": "initial",
+          "duration_ms": 40599.7184
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 5399.43,
+            "p95_ms": 5420.71,
+            "p99_ms": 5423.2,
+            "max_ms": 5423.63
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 22664.59,
+            "p95_ms": 37223.74,
+            "p99_ms": 39542.18,
+            "max_ms": 40457.71
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 19718.47,
+            "p95_ms": 32028.53,
+            "p99_ms": 34149.91,
+            "max_ms": 34821.73
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 1000
+        },
+        "replacement-old": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4588.2,
+            "p95_ms": 4614.06,
+            "p99_ms": 4616.34,
+            "max_ms": 4616.59
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 4811.85,
+            "p95_ms": 4836.93,
+            "p99_ms": 4836.93,
+            "max_ms": 4836.93
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 6950.7,
+            "p95_ms": 6954.76,
+            "p99_ms": 6957.47,
+            "max_ms": 6958.59
+          },
+          "feedback": {
+            "n": 545,
+            "p50_ms": 18903.04,
+            "p95_ms": 26359.92,
+            "p99_ms": 27073.72,
+            "max_ms": 27303.33
+          },
+          "queue_wait": {
+            "n": 552,
+            "p50_ms": 16674.34,
+            "p95_ms": 22758.98,
+            "p99_ms": 23300.7,
+            "max_ms": 23329.12
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 545
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 6,
+          "p50_ms": 0.66,
+          "p95_ms": 748.52,
+          "p99_ms": 748.52,
+          "max_ms": 748.52,
+          "errors": 0
+        },
+        "transition": {
+          "n": 5551,
+          "p50_ms": 0.74,
+          "p95_ms": 1.7,
+          "p99_ms": 1.93,
+          "max_ms": 2.72,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1395,
+          "p50_ms": 0.64,
+          "p95_ms": 5.29,
+          "p99_ms": 6.28,
+          "max_ms": 12.96,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1397,
+        "p50_ms": 2.69,
+        "p95_ms": 27.4,
+        "p99_ms": 30.94,
+        "max_ms": 764.02
+      },
+      "recovery_leases": 0,
+      "bytes_to_students": 37608914,
+      "errors": [
+        "Missing validated results: replacement-latest"
+      ],
+      "failure": "Error: Timed out: replacement saved\n    at until (<validation-workspace>\\collection\\maintenance\\bplus_load_browser.cjs:20:94)\n    at async <validation-workspace>\\collection\\maintenance\\bplus_load_browser.cjs:148:4",
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 10000,
+        "normal_feedback_budget_ms": 60000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": false,
+      "normal_budget_pass": false,
+      "recovery_budget_pass": true
+    },
+    "updated_webkit_1000_diagnostic_repeat": {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 4078.3118
+        },
+        {
+          "name": "initial",
+          "duration_ms": 40384.3599
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 50784.7018
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 4612.676399999997
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 1128.7392999999865
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4665.38,
+            "p95_ms": 4690.59,
+            "p99_ms": 4693.06,
+            "max_ms": 4693.62
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 22275.32,
+            "p95_ms": 37238.03,
+            "p99_ms": 39589.34,
+            "max_ms": 40293.61
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 19653,
+            "p95_ms": 32536.29,
+            "p99_ms": 34754.77,
+            "max_ms": 35568.86
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 17,
+            "p95_ms": 33,
+            "p99_ms": 35,
+            "max_ms": 48
+          },
+          "accepted_results": 1000
+        },
+        "replacement-old": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 5716.45,
+            "p95_ms": 5764.47,
+            "p99_ms": 5766.97,
+            "max_ms": 5767.37
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 8,
+            "p50_ms": 6017.1,
+            "p95_ms": 6036.78,
+            "p99_ms": 6036.78,
+            "max_ms": 6036.78
+          },
+          "evaluation": {
+            "n": 8,
+            "p50_ms": 16,
+            "p95_ms": 19,
+            "p99_ms": 19,
+            "max_ms": 19
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 6918.77,
+            "p95_ms": 6958.1,
+            "p99_ms": 6960.72,
+            "max_ms": 6962.1
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 26166.86,
+            "p95_ms": 41599.31,
+            "p99_ms": 44154.7,
+            "max_ms": 44856.73
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 22457.85,
+            "p95_ms": 34911.78,
+            "p99_ms": 37128.61,
+            "max_ms": 37834.72
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 17,
+            "p95_ms": 33,
+            "p99_ms": 37,
+            "max_ms": 59
+          },
+          "accepted_results": 1000
+        },
+        "reconnect": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4888.46,
+            "p95_ms": 6424.06,
+            "p99_ms": 6424.5,
+            "max_ms": 6424.75
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 24118.62,
+            "p95_ms": 38884.47,
+            "p99_ms": 41456.54,
+            "max_ms": 42152.74
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 20927.33,
+            "p95_ms": 32747.59,
+            "p99_ms": 34932.45,
+            "max_ms": 35673.76
+          },
+          "evaluation": {
+            "n": 1000,
+            "p50_ms": 17,
+            "p95_ms": 24,
+            "p99_ms": 35,
+            "max_ms": 57
+          },
+          "accepted_results": 1000
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.74,
+          "p95_ms": 697.69,
+          "p99_ms": 697.69,
+          "max_ms": 697.69,
+          "errors": 0
+        },
+        "transition": {
+          "n": 8014,
+          "p50_ms": 0.92,
+          "p95_ms": 1.9,
+          "p99_ms": 2.51,
+          "max_ms": 11.08,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1927,
+          "p50_ms": 0.86,
+          "p95_ms": 11.33,
+          "p99_ms": 17.19,
+          "max_ms": 19.56,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1681,
+        "p50_ms": 2.72,
+        "p95_ms": 29.31,
+        "p99_ms": 34.14,
+        "max_ms": 4862.69
+      },
+      "recovery_leases": 8,
+      "bytes_to_students": 112583680,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 10000,
+        "normal_feedback_budget_ms": 60000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": true,
+      "recovery_budget_pass": true
+    },
+    "rejected_four_worker_trial_600": {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": true,
+        "allPublished": true,
+        "resetWithdraws": true
+      },
+      "actors": 600,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2122.525
+        },
+        {
+          "name": "initial",
+          "duration_ms": 31600.152400000003
+        },
+        {
+          "name": "replacement",
+          "duration_ms": 35486.84220000001
+        },
+        {
+          "name": "score-publication",
+          "duration_ms": 2602.595499999996
+        },
+        {
+          "name": "score-withdrawal",
+          "duration_ms": 588.870299999995
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 1509.85,
+            "p95_ms": 2777.36,
+            "p99_ms": 2779.51,
+            "max_ms": 2780.3
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 17346.33,
+            "p95_ms": 29459.64,
+            "p99_ms": 31038.28,
+            "max_ms": 31511.39
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 15685.47,
+            "p95_ms": 26602.27,
+            "p99_ms": 28191.91,
+            "max_ms": 28633.56
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 16,
+            "p95_ms": 22,
+            "p99_ms": 25,
+            "max_ms": 42
+          },
+          "accepted_results": 600
+        },
+        "replacement-old": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 2723.04,
+            "p95_ms": 2742.37,
+            "p99_ms": 2742.58,
+            "max_ms": 2742.87
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 4,
+            "p50_ms": 2994.66,
+            "p95_ms": 3004.05,
+            "p99_ms": 3004.05,
+            "max_ms": 3004.05
+          },
+          "evaluation": {
+            "n": 4,
+            "p50_ms": 12,
+            "p95_ms": 22,
+            "p99_ms": 22,
+            "max_ms": 22
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 4002.27,
+            "p95_ms": 4013.49,
+            "p99_ms": 4013.77,
+            "max_ms": 4014.05
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 18962.97,
+            "p95_ms": 30618.35,
+            "p99_ms": 32209.69,
+            "max_ms": 32661.37
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 16589.36,
+            "p95_ms": 26672.7,
+            "p99_ms": 28157.15,
+            "max_ms": 28559.73
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 16,
+            "p95_ms": 21,
+            "p99_ms": 24,
+            "max_ms": 30
+          },
+          "accepted_results": 600
+        },
+        "reconnect": {
+          "submitted": 600,
+          "accepted": 600,
+          "acknowledgement": {
+            "n": 600,
+            "p50_ms": 2662.08,
+            "p95_ms": 2683.05,
+            "p99_ms": 2684.7,
+            "max_ms": 2685.33
+          },
+          "feedback": {
+            "n": 600,
+            "p50_ms": 17017.13,
+            "p95_ms": 28893.8,
+            "p99_ms": 30673.5,
+            "max_ms": 31120.39
+          },
+          "queue_wait": {
+            "n": 600,
+            "p50_ms": 15567.86,
+            "p95_ms": 26161.39,
+            "p99_ms": 27806.61,
+            "max_ms": 28244.28
+          },
+          "evaluation": {
+            "n": 600,
+            "p50_ms": 16,
+            "p95_ms": 21,
+            "p99_ms": 26,
+            "max_ms": 45
+          },
+          "accepted_results": 600
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 7,
+          "p50_ms": 0.81,
+          "p95_ms": 661.91,
+          "p99_ms": 661.91,
+          "max_ms": 661.91,
+          "errors": 0
+        },
+        "transition": {
+          "n": 4814,
+          "p50_ms": 0.71,
+          "p95_ms": 1.63,
+          "p99_ms": 1.94,
+          "max_ms": 3.6,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1259,
+          "p50_ms": 2.63,
+          "p95_ms": 9.53,
+          "p99_ms": 14.93,
+          "max_ms": 17.92,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1118,
+        "p50_ms": 2.53,
+        "p95_ms": 22.49,
+        "p99_ms": 27.83,
+        "max_ms": 2311.89
+      },
+      "recovery_leases": 4,
+      "bytes_to_students": 67541869,
+      "errors": [],
+      "failure": null,
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 5000,
+        "normal_feedback_budget_ms": 30000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": true,
+      "normal_budget_pass": false,
+      "recovery_budget_pass": true
+    },
+    "rejected_six_worker_trial_1000": {
+      "format": 1,
+      "scoring": {
+        "maximum": 1000,
+        "privateBeforeReveal": false,
+        "allPublished": false,
+        "resetWithdraws": false
+      },
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3093.2787
+        },
+        {
+          "name": "initial",
+          "duration_ms": 38335.7135
+        }
+      ],
+      "groups": {
+        "initial": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 3651.28,
+            "p95_ms": 3668.72,
+            "p99_ms": 3669.64,
+            "max_ms": 3670.16
+          },
+          "feedback": {
+            "n": 1000,
+            "p50_ms": 20685.67,
+            "p95_ms": 35696.42,
+            "p99_ms": 37722.07,
+            "max_ms": 38170.78
+          },
+          "queue_wait": {
+            "n": 1000,
+            "p50_ms": 18886.19,
+            "p95_ms": 32072.77,
+            "p99_ms": 33896.98,
+            "max_ms": 34493.79
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 1000
+        },
+        "replacement-old": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 4291.96,
+            "p95_ms": 4314.73,
+            "p99_ms": 4315.88,
+            "max_ms": 4316.13
+          },
+          "feedback": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "queue_wait": {
+            "n": 6,
+            "p50_ms": 4601.66,
+            "p95_ms": 4613.97,
+            "p99_ms": 4613.97,
+            "max_ms": 4613.97
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 0
+        },
+        "replacement-latest": {
+          "submitted": 1000,
+          "accepted": 1000,
+          "acknowledgement": {
+            "n": 1000,
+            "p50_ms": 5879.84,
+            "p95_ms": 5886.67,
+            "p99_ms": 5888.15,
+            "max_ms": 5888.75
+          },
+          "feedback": {
+            "n": 487,
+            "p50_ms": 17582.42,
+            "p95_ms": 23308.31,
+            "p99_ms": 23976.94,
+            "max_ms": 24208.88
+          },
+          "queue_wait": {
+            "n": 492,
+            "p50_ms": 14479.81,
+            "p95_ms": 20366.92,
+            "p99_ms": 21042.65,
+            "max_ms": 21064.08
+          },
+          "evaluation": {
+            "n": 0,
+            "p50_ms": null,
+            "p95_ms": null,
+            "p99_ms": null,
+            "max_ms": null
+          },
+          "accepted_results": 487
+        }
+      },
+      "hooks": {
+        "initial_state": {
+          "n": 6,
+          "p50_ms": 0.62,
+          "p95_ms": 716.72,
+          "p99_ms": 716.72,
+          "max_ms": 716.72,
+          "errors": 0
+        },
+        "transition": {
+          "n": 5493,
+          "p50_ms": 0.59,
+          "p95_ms": 1.28,
+          "p99_ms": 1.75,
+          "max_ms": 2.98,
+          "errors": 0
+        },
+        "view": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null,
+          "errors": 0
+        },
+        "view_batch": {
+          "n": 1399,
+          "p50_ms": 0.5,
+          "p95_ms": 3.41,
+          "p99_ms": 4.4,
+          "max_ms": 5.44,
+          "errors": 0
+        }
+      },
+      "broadcast": {
+        "n": 1402,
+        "p50_ms": 1.76,
+        "p95_ms": 17.85,
+        "p99_ms": 21.56,
+        "max_ms": 728.26
+      },
+      "recovery_leases": 0,
+      "bytes_to_students": 37245234,
+      "errors": [
+        "Missing validated results: replacement-latest"
+      ],
+      "failure": "Error: Timed out: replacement saved\n    at until (<validation-workspace>\\collection\\maintenance\\bplus_load_browser.cjs:21:94)\n    at async <validation-workspace>\\collection\\maintenance\\bplus_load_browser.cjs:161:4",
+      "graceful_shutdown": true,
+      "environment": {
+        "platform": "win32",
+        "release": "10.0.19045",
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16
+      },
+      "scope": {
+        "synthetic_student_sockets": true,
+        "presenter_browser": true,
+        "network": "loopback",
+        "physical_phones": false,
+        "normal_ack_budget_ms": 10000,
+        "normal_feedback_budget_ms": 60000,
+        "reconnect_budget_ms": 150000
+      },
+      "correctness_pass": false,
+      "normal_budget_pass": false,
+      "recovery_budget_pass": true
+    },
+    "interpretation": "Count-query optimizations brought Chromium 600 within the unchanged 5 s acknowledgement target. WebKit 1000 passed one diagnostic repeat but its final matrix run crashed during recovery; a six-worker trial also crashed. Four workers completed correctly at 600 but missed the unchanged 30 s feedback target (30.62 s). Neither concurrency experiment is shipped. The final host retains 2/4/8, CSP, deadlines and all pass thresholds. The 1000 ceiling is verified locally only with Chrome/Firefox presenters."
+  },
+  "scope": {
+    "network": "loopback",
+    "synthetic_students": true,
+    "real_presenter_browsers": true,
+    "physical_phones": false,
+    "hosted_ci_executed": false,
+    "cross_os_transfer": false,
+    "original_repositories_and_courses": "preserved; guarded baseline check during worktree delivery"
+  },
+  "remaining": [
+    "Publish compatible host/provider commits and set the exact B+ CI host SHA before running hosted conformance.",
+    "Physical phone and campus-network pilot at the intended class size.",
+    "Resolve the Windows WebKit presenter crashes before claiming its 1000-student ceiling; use Chrome/Firefox presenters for that load."
+  ],
+  "record_scope": "Pre-commit validation snapshot. The committed/pushed fields describe the test snapshot, not the later source commits.",
+  "source_pairing": {
+    "host_commit": "9fa798715a8971ae649d0ca794a52a257b7ed2b7",
+    "collection_revision": "commit containing this record",
+    "branch": "codex/bplus-scoring",
+    "published": false
+  }
+}

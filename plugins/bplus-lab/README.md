@@ -5,12 +5,21 @@ range scans, insertion and deletion. It verifies each search path and
 split/borrow/merge, including internal repairs and root growth/contraction.
 Alternative legal repairs can have different correct final trees.
 
-The engine returns typed facts. It does not use reference equality as a grade.
-Version 0.4.0 adds structured phone editing, undo/redo and a local replay preview,
+The engine returns typed facts. The reducer independently verifies them and
+assigns [partial credit using a published rubric](../../docs/bplus-scoring.md).
+Optional fixed points integrate with TeXStage's scoreboard on reveal; replacement
+answers replace credit, and reset withdraws the contribution. Practice remains
+the default for sources without **points**. It does not use reference equality as a grade.
+Version 0.7.0 supports up to 1,000 saved student answers per activity, with compact
+host-owned actor records, 25-entry roster pages and the matching host's batched audience projections. It retains structured phone editing, undo/redo and a local replay preview,
 English/German feedback, private presenter inspection, anonymous sharing and
 stepwise projector replay. Students submit explicit answers; drafts and previews
 do not send classroom commands. See the [classroom guide](../../docs/bplus-classroom.md).
-The physical-phone pilot and release measurements remain open.
+See the [scoring verification record](../../docs/design/bplus-tree-scoring-validation.md)
+for 0.7.0 artifacts and checks. The earlier [600/1,000-student validation](../../docs/design/bplus-tree-1000-validation.md)
+records the ungraded 0.6.0 measurements. For scored classes approaching 1,000,
+use a Chrome or Firefox presenter; the Windows WebKit presenter intermittently
+crashed at that load. Physical-classroom validation remains open.
 See the [author guide](../../docs/bplus-lesson.md) and
 [example decks](../../examples/bplus/README.md).
 
@@ -23,8 +32,8 @@ See the [author guide](../../docs/bplus-lesson.md) and
 | Style / command | `texstage-bplus-tree.sty` / `\bplustree` |
 | Contract / semantics | `bplus-operations-v1` |
 
-Use the matching experimental TeXStage host with manifest revision 2 and typed
-result contract revision 2. The development dependency lower bound is not a
+Use the matching experimental TeXStage host with manifest revision 4, actor
+records and typed result contract revision 2. The development dependency lower bound is not a
 published compatibility pin. Uploading a source file never installs or enables
 this provider.
 
@@ -39,7 +48,7 @@ python maintenance/build_bplus_schemas.py --check
 python maintenance/build_bplus_lesson_schemas.py --check
 npm run check:workers
 python maintenance/build_wheels.py --package bplus-lab
-python -m pip install --no-deps dist/texstage_bplus_lab-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_bplus_lab-0.7.0-py3-none-any.whl
 python -m pytest plugins/bplus-lab/tests -q --basetemp=artifacts/bplus-tests
 python maintenance/bplus_probe.py --output artifacts/bplus-lab
 npx playwright install chromium firefox webkit
@@ -146,9 +155,9 @@ capacity combinations, alternative repairs, malformed inputs, large valid
 results, work refusal and binding identities.
 
 Duplicate-key buckets, variable-size pages, bulk loading, concurrency and
-recovery are outside this model. The content type now uses state schema 2 and
+recovery are outside this model. The content type now uses state schema 5 and
 four closed audience views, with structured phone and presenter renderers.
 Feedback releases immediately or on reveal, as authored. Worked answers remain
 private until reveal; explicitly shared attempts show only submitted predictions
 before reveal. A provider update requires a rebuilt bundle and a new session;
-schema-1 sessions are not migrated in place.
+sessions using earlier state schemas are not migrated in place.

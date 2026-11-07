@@ -1,6 +1,6 @@
 # B+ classroom activities: phone and presenter guide
 
-Version 0.4.0 lets students solve B+ tree operations on their phones while the
+Version 0.7.0 lets students solve B+ tree operations on their phones while the
 lecturer collects, inspects and discusses their answers. The activity covers
 point lookup, inclusive range scans, insertion and deletion, including cascading
 repairs and root changes. English and German use the same mathematical model.
@@ -13,6 +13,27 @@ example deck in the matching TeXStage environment, open its presenter view and
 have students join the session using the displayed PIN/QR code. Keep the
 presenter browser open: it runs the host's authoritative evaluation jobs.
 The projector receives only public classroom material.
+
+For a class approaching 1,000 students, use Chrome or Firefox for the presenter.
+The Windows WebKit presenter intermittently crashed in the 1,000-student load
+test; its ordinary scoring UI and 600-student load check passed. This limitation
+does not require students to use the same browser as the presenter. See the
+[scoring verification record](design/bplus-tree-scoring-validation.md).
+
+## Scores and partial credit
+
+Version 0.7.0 adds a visible [grading rubric](bplus-scoring.md). Lookup uses
+40% descent / 60% result; range uses 30% descent / 40% scan / 30% result;
+updates use 20% descent / 50% repairs / 20% separators / 10% height.
+The saved feedback includes a criterion breakdown. Valid alternatives receive
+full credit; unfinished work may earn partial credit. There is no speed bonus.
+
+An author enables scoreboard points with **points** in the lesson JSON (0–10,000,
+omitted/zero means practice). Reveal publishes the points to the regular
+TeXStage total, rank and CSV. A replacement replaces credit, and reset withdraws
+it. Pending/unavailable answers remain ungraded. See the
+[scoring verification record](design/bplus-tree-scoring-validation.md) for current
+artifacts; the older capacity record below describes version 0.6.0.
 
 ## Run an activity
 
@@ -29,9 +50,9 @@ The projector receives only public classroom material.
 5. Use **Replay source**, **Next step** and **Previous step** to discuss descent,
    scanned leaves, repairs and final predictions. **Clear shared answer** removes
    the shared attempt. **Reveal solution** releases the worked solution and
-   delayed feedback; select the worked replay source to walk through it.
+   delayed feedback and configured scoreboard points; select the worked replay source to walk through it.
 6. **Reset activity** asks for confirmation, clears saved responses and starts
-   a new round. It is required before reopening a revealed activity.
+   a new round, withdrawing this activity's points. It is required before reopening a revealed activity.
 
 The controls can be dismissed with **Close controls** or Escape. Presenter
 inspection never appears on the projector just because it is selected.
@@ -112,8 +133,9 @@ the complete page selector and overview. Keep author explanations concise and
 check the chosen slide box on the actual projector.
 
 The [B4 verification record](design/bplus-tree-b4-validation.md) separates local
-desktop/browser emulation from the still-pending physical-phone and classroom
-load tests. The following sections document the protocol behind the UI.
+desktop/browser emulation from physical-phone testing. The newer
+[600/1,000-student record](design/bplus-tree-1000-validation.md) covers synthetic classroom
+load and reconnection. The following sections document the protocol behind the UI.
 
 ## Round lifecycle
 
@@ -139,20 +161,21 @@ Students cannot choose a different exercise, seed, engine or another actor.
 The reducer saves one latest answer per actor and uses the SDK's `Evaluate`.
 Replacing pending work emits `CancelEvaluation` followed by a new evaluation.
 A replacement at a full queue uses the space freed by cancellation. The reducer
-reserves feedback storage before admission. New actors beyond 48 are refused;
+reserves feedback storage before admission. New actors beyond 1,000 are refused;
 an admitted actor may still replace an answer.
 
 The result must match the exercise and answer digests, task and complete
 persisted binding, including its engine key. Independent bounded replay checks
-all typed facts before grading. The criterion is complete replay and every
-applicable claim true. It does not compare against the author's worked answer:
+all typed facts before grading. Full credit requires complete replay and every
+applicable claim true; the [rubric](bplus-scoring.md) gives partial credit for
+verified components. It does not compare against the author's worked answer:
 different legal split partitions or donor choices can both be correct.
 
 | Saved status / feedback | Meaning |
 | --- | --- |
 | `pending` | Answer accepted; no evaluator result yet |
 | `saved` / `correct` | Complete replay and all applicable predictions correct |
-| `saved` / `revise` | Incorrect path, scan, repair or prediction; compact reason and relevant location/checks |
+| `saved` / `revise` | Incorrect path, scan, repair or prediction; reason, location/checks and partial-credit breakdown |
 | `unavailable` | Operational failure or mismatched/incoherent facts; no incorrect-answer grade |
 
 `feedback: "on-reveal"` withholds mathematical feedback from the submitting
@@ -169,7 +192,7 @@ certificate as a grade.
 
 | Surface | Authorized data |
 | --- | --- |
-| Participant input | Phase/count, own answer/version/status and permitted feedback |
+| Participant input | Phase, own answer/version/status and permitted feedback |
 | Presenter controls | Phase/control tokens, bounded counts, private actor handles/version/status, at most one selected answer/feedback |
 | Presenter overlay | Public classroom material; no private selected inspection |
 | Projector overlay | Public classroom material; no actor handles, own answers or private inspection |
@@ -191,10 +214,10 @@ and submitted predictions only. Revealed replay uses the shared engine semantics
 to reconstruct bounded intermediate snapshots; they are not persisted per actor.
 
 The public item and every view use closed schemas. Correlations, binding hashes,
-actor keys and full engine facts remain in their private domains. The private
-actor map uses SHA-256 of canonical ASCII JSON
-`["bplus-actor-v1", authenticated_actor]`; these handles remain private
-pseudonymous identifiers, not public labels.
+actor keys and full engine facts remain in their private domains. Host-owned
+records use authenticated actor identifiers, scoped to the session, item and
+epoch. These handles appear only in private presenter controls; public sharing
+omits the actor identity.
 
 ## Protocol reference for renderer developers
 
@@ -206,8 +229,9 @@ global revisions, decide conflicts. All presenter commands include
 | --- | --- | --- |
 | `submit-answer` | Participant | `phase_version`, `answer_version`, `answer` |
 | `open`, `close`, `reveal` | Presenter | None |
-| `select-answer` | Presenter | `actor` private digest handle, `answer_version`; empty handle/version zero clears selection |
-| `share-answer` | Presenter | `actor` private digest handle, `answer_version` |
+| `select-answer` | Presenter | `actor` private host actor handle, `answer_version`; empty handle/version zero clears selection |
+| `share-answer` | Presenter | `actor` private host actor handle, `answer_version` |
+| `roster-page` | Presenter | `page` (zero-based, 0–39); roster has 25 stable response numbers per page |
 | `clear-share` | Presenter | None |
 | `replay-step` | Presenter | `source: "shared" \| "worked"`, `step` |
 | `_reset` | Presenter | Host command: empty payload, epoch guarded |
@@ -241,16 +265,44 @@ new control token. The visible interface implements these receipt and conflict c
 
 ## Bounds, upgrades and verification
 
-State schema is now **2**. Rebuild the bundle, enable the new exact payload,
-regenerate its lock and start a new session. Existing schema-1 sessions remain
+State schema is now **5**. Rebuild the bundle, enable the new exact payload,
+regenerate its lock and start a new session. Existing schema-1 through schema-4 sessions remain
 tied to their old environment; this release does not rewrite course pins or
 migrate running sessions.
 
-The provider limits actors to 48, reserves at most 4 KiB per actor slot including
-its key and eventual feedback, and caps state at 224 KiB, transitions at 240 KiB,
-and each view at 48 KiB. Counts and one selected/shared pointer are bounded;
-there is no attempt history or saved class-wide set of computed trees.
-Storage limits are not a throughput or physical-device capacity claim.
+The provider admits at most **1,000 distinct student answers per activity**.
+The existing host also defaults to 1,000 admitted students per session; student
+1,001 is refused at join. The plugin independently enforces its answer-storage
+ceiling and preserves a draft on refusal. The intended classroom target is 600
+students. Students with saved answers can replace them at capacity. Several
+devices for one student still share one answer slot.
+
+Manifest revision **3** enables host-owned actor records: one private slot per
+authenticated student, stored atomically with the shared state, receipt and job.
+The provider reserves 704 bytes per encoded answer including eventual feedback.
+The host retains its 4 KiB per-record and 512-byte summary limits. The provider
+caps shared state at 16 KiB, transitions at 24 KiB and views at 80 KiB. The host's
+256 KiB transition, 128 KiB view and 1,000-pending-job limits are unchanged.
+The complete class is never copied into a hook, transition or presenter view.
+
+Presenter controls show **25 answers per page**, with stable response numbers.
+Use **Previous answers** and **Next answers** to browse; an inspected answer
+remains selected when the page changes. Counts cover the complete class.
+Class counts appear in presenter/projector views. Phones show their own answer
+and round state; another student's result does not redraw every phone. Phase,
+sharing, replay and reset changes still reach the whole class, including a late
+result for an answer that the presenter has already shared.
+Only presenters can request another student's record, and only the explicitly
+shared anonymous answer reaches other students. Participant views include their
+own saved answer; paging never changes phone drafts or feedback policy.
+
+Use both matching feature builds, enable the exact provider payload, rebuild the
+bundle/lock and start a new session. Keep the presenter window active so its
+evaluation queue drains. The host leases two fresh workers normally, four at
+32 eligible jobs and eight at 128. No worker is reused between submissions;
+network/child-worker/dynamic-code restrictions and timeouts remain intact.
+See the [scoring record](design/bplus-tree-scoring-validation.md) for the measured
+600- and 1,000-student cases and physical-classroom limitations.
 
 In a fresh B+-only installed-wheel environment:
 
@@ -258,7 +310,7 @@ In a fresh B+-only installed-wheel environment:
 python maintenance/build_bplus_schemas.py --check
 python maintenance/build_bplus_lesson_schemas.py --check
 python maintenance/build_wheels.py --package bplus-lab
-python -m pip install --no-deps dist/texstage_bplus_lab-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_bplus_lab-0.7.0-py3-none-any.whl
 python -m pytest plugins/bplus-lab/tests -q --basetemp=artifacts/bplus-tests
 python maintenance/bplus_authoring_probe.py --output artifacts/bplus-prepared
 node maintenance/bplus_prepared_browser.cjs <tested-lesson-bundle> artifacts/bplus-prepared-browser
@@ -277,5 +329,23 @@ coverage. The UI probe drives actual controls; its companion lifecycle fixture
 controls delayed promises to check reset, destruction and obsolete previews.
 The engine probe remains a separate security and evaluator regression.
 
-Physical phones, classroom throughput, hosted CI, cross-OS artifact transfer
-and publication remain separate gates. See the [implementation plan](design/bplus-tree-plan.md).
+The repeatable capacity probe uses authenticated synthetic sockets and the
+real presenter evaluator, with replacements, capacity refusal, reconnect and
+private-feedback checks:
+
+```console
+node maintenance/bplus_load_browser.cjs <tested-English-lesson-bundle> artifacts/bplus-load
+```
+
+It defaults to 600 students. Set `BPLUS_ACTORS=1000` for the ceiling test, or use
+any value from 2–1,000 for a rehearsal;
+`BPLUS_SMOKE=1` runs the initial burst only. It fails on missing results, hook
+errors or latency targets (p95 acknowledgment/evaluation-ready targets of 5/30 s at 600 and 10/60 s at the 1,000 ceiling; evaluator
+reconnect 150 s). See the manual B+ capacity workflow to repeat against an explicit
+compatible immutable host revision. The automatic B+ conformance job requires
+`TEXSTAGE_BPLUS_HOST_REF` (a published 40-character host SHA) or the manual
+`bplus_texstage_ref` input. It fails clearly if that pin is absent; no hosted CI
+pass is implied by local tests.
+
+Physical phones, campus Wi-Fi, hosted CI, cross-OS artifact transfer and
+publication remain separate gates. See the [implementation plan](design/bplus-tree-plan.md).

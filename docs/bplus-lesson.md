@@ -6,7 +6,7 @@ from neighbours and merge underfull pages. Each exercise performs one operation
 on a small tree with unique integer keys. Several different repair choices can
 be correct.
 
-Version 0.4.0 supplies the checked engine, **prepared LaTeX material** and
+Version 0.7.0 supplies the checked engine, **prepared LaTeX material** and
 **interactive classroom views**. One JSON lesson produces the exercise, worked
 solution, diagrams and live deck. Students build answers with structured phone
 controls and local preview; presenters inspect, share and replay attempts.
@@ -16,8 +16,8 @@ See the [classroom guide](bplus-classroom.md) for the complete teaching workflow
 
 Use a separate Python 3.12+ environment with the matching experimental
 TeXStage host and its hash-locked build requirements. The
-[validation record](design/bplus-tree-b4-validation.md) identifies the tested
-host and plugin artifacts. The dependency `texstage>=0.2.1.dev3` alone does not
+[scoring verification record](design/bplus-tree-scoring-validation.md) identifies the tested
+host and plugin artifacts. The dependency `texstage>=0.2.1.dev6` alone does not
 identify unpublished host changes.
 
 The decks need pdfLaTeX, Beamer, TikZ/PGF, Babel English/German and Latin Modern
@@ -31,14 +31,14 @@ commands from the plugin collection root:
 
 ```console
 python maintenance/build_wheels.py --package bplus-lab
-python -m pip install --no-deps dist/texstage_bplus_lab-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_bplus_lab-0.7.0-py3-none-any.whl
 texstage plugins --data ./bplus-profile inspect io.github.stefanjdecker.bpluslab
 ```
 
 Copy the printed payload digest into the enable command:
 
 ```console
-texstage plugins --data ./bplus-profile enable io.github.stefanjdecker.bpluslab --version 0.4.0 --payload <printed-payload>
+texstage plugins --data ./bplus-profile enable io.github.stefanjdecker.bpluslab --version 0.7.0 --payload <printed-payload>
 texstage plugins --data ./bplus-profile lock --output ./bplus.lock.json
 texstage present examples/bplus/lesson.tex --activities examples/bplus/lesson.en.activities.json --data ./bplus-profile --plugins-lock ./bplus.lock.json --no-tunnel
 ```
@@ -71,6 +71,10 @@ The [layout stress deck](../examples/bplus/layout-stress.tex) includes an empty
 tree, deletion of the last entry and a 40-entry input whose insertion produces
 41 entries, 29 pages and height three. It uses a taller 4:3 page at 160 × 120 mm.
 Its [German version](../examples/bplus/layout-stress-de.tex) uses the same data.
+
+The six teaching sources set **points: 1000**; stress cases remain practice.
+See the [grading rubric and scoreboard guide](bplus-scoring.md) for partial
+credit, feedback release, replacement answers and reset behavior.
 
 ## Add a prepared item to a deck
 
@@ -118,6 +122,7 @@ complete template. The closed envelope has these fields:
 | Field | Meaning |
 | --- | --- |
 | `format` | Integer `1` |
+| `points` | Optional integer 0–10,000; omitted/zero means practice, positive values enable fixed scoreboard points |
 | `title`, `prompt` | Plain-text `en` and optional `de` strings |
 | `exercise` | The unchanged `bplus-operations-v1` engine seed |
 | `worked.answer` | One complete path/read or repair certificate |
@@ -212,7 +217,7 @@ raw bundle directory containing private files.
 | Worked certificate rejected | Check the path, bottom-up repairs and every final separator/height claim |
 | Stale prepared input | Run `texstage prepare` again after source/provider changes |
 | Prepared material too tall | Increase the box/page height or shorten the prose |
-| No phone answer controls | Install/enable the 0.4.0 payload, rebuild the bundle and start a fresh session with the matching host |
+| No phone answer controls | Install/enable the 0.7.0 payload, rebuild the bundle and start a fresh session with the matching host |
 | Submit is disabled | Finish the required fields, resolve any device/reset conflict, and wait for the presenter to open answers |
 | Saved feedback stays pending | Keep an authenticated presenter evaluator open; check the host's operational status |
 | Draft differs from saved feedback | Submit explicitly to replace the saved version; local preview and saved grade are separate |
