@@ -226,6 +226,7 @@ jobs:
         run: |
           python maintenance/build_wheels.py --package relational-lab
           python -m pip install --no-deps dist/*.whl
+          mkdir -p artifacts
           python -m pytest plugins/relational-lab/tests -q --basetemp=artifacts/lesson-tests --junitxml=artifacts/relational-lab-tests.xml
           python maintenance/relational_probe.py
           git -C host-source rev-parse HEAD > artifacts/relational-lab/host-commit.txt
@@ -333,6 +334,7 @@ jobs:
         run: |
           python maintenance/build_wheels.py --package fd-lab
           python -m pip install --no-deps dist/*.whl
+          mkdir -p artifacts
           FD_TEST_EXPORTS=artifacts/fd-exports python -m pytest plugins/fd-lab/tests maintenance/tests/test_fd_artifacts.py -q --basetemp=artifacts/fd-tests --junitxml=artifacts/fd-lab-tests.xml
           python -c "import xml.etree.ElementTree as E; assert not E.parse('artifacts/fd-lab-tests.xml').findall('.//skipped'), 'Linux producer must execute both TeX authoring cases'"
           test -f artifacts/fd-exports/en/lesson.bundle/deck.json
@@ -405,6 +407,7 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
           python -m pip install --no-deps handoff/wheels/*.whl
           python maintenance/fd_artifacts.py installed handoff --host-commit "$HOST_COMMIT"
+          mkdir -p artifacts
           python -m pytest plugins/fd-lab/tests maintenance/tests/test_fd_artifacts.py -q --basetemp=artifacts/fd-tests --junitxml=artifacts/fd-lab-tests.xml
           python maintenance/fd_probe.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
