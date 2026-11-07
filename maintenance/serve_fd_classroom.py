@@ -66,7 +66,8 @@ def instrument(name):
             if command['operation'] == 'submit':
                 submissions += 1
             emit('command', operation=command['operation'], request=command['request_id'],
-                 item=command['item'], receipt=result, duration_ms=elapsed)
+                 item=command['item'], receipt=result, duration_ms=elapsed,
+                 state_bytes=max((len(r[0].encode('utf-8')) for r in self.db.execute('SELECT state FROM items')), default=0))
         elif name == 'lease' and result:
             emit('lease', jobs=[{k: j[k] for k in ('id', 'generation', 'epoch')} for j in result],
                  duration_ms=elapsed)

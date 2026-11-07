@@ -1,6 +1,6 @@
 # Functional dependencies, keys and implication
 
-Build `lesson.tex` with `lesson.activities.json` using the matching FD Lab 0.5.0
+Build `lesson.tex` with `lesson.activities.json` using the matching FD Lab 0.6.0
 and TeXStage integration wheels. See the [installation and teaching guide](../../docs/fd-lesson.md).
 Existing course installations do not need to change.
 

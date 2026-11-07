@@ -347,7 +347,7 @@ jobs:
           git -C host-source rev-parse HEAD > artifacts/fd-lab/host-commit.txt
       - name: Stage identical wheels and prepared bundle for consumers
         run: |
-          python maintenance/fd_artifacts.py create --host-wheel host-source/dist/texstage-0.2.1.dev5-py3-none-any.whl --plugin-wheel dist/texstage_fd_lab-0.5.0-py3-none-any.whl --plugin-sdist dist/texstage_fd_lab-0.5.0.tar.gz --requirements host-source/requirements --bundles artifacts/fd-exports --host-commit "$HOST_COMMIT" --output engine-handoff
+          python maintenance/fd_artifacts.py create --host-wheel host-source/dist/texstage-0.2.1.dev5-py3-none-any.whl --plugin-wheel dist/texstage_fd_lab-0.6.0-py3-none-any.whl --plugin-sdist dist/texstage_fd_lab-0.6.0.tar.gz --requirements host-source/requirements --bundles artifacts/fd-exports --host-commit "$HOST_COMMIT" --output engine-handoff
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with: {name: fd-lab-wheels, path: engine-handoff/, retention-days: 14, if-no-files-found: error}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -430,6 +430,7 @@ jobs:
     env:
       BROWSER: ${{ matrix.browser }}
       TEXSTAGE_CLASSROOM_ACTORS: '600'
+      TEXSTAGE_CLASSROOM_DIVERSE: '1'
       TEXSTAGE_CLASSROOM_REPLACE: '1'
       TEXSTAGE_CLASSROOM_RECONNECT: '1'
       TEXSTAGE_CLASSROOM_ENFORCE: '1'
@@ -461,6 +462,8 @@ jobs:
           TEXSTAGE_CLASSROOM_RUN: headroom-1000
           TEXSTAGE_CLASSROOM_ACTORS: '1000'
           TEXSTAGE_CLASSROOM_MODES: practice
+          # The latency gate is for 600; headroom still enforces correctness.
+          TEXSTAGE_CLASSROOM_ENFORCE: '0'
         run: node maintenance/fd_classroom_browser.cjs handoff/bundles/en/lesson.bundle
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

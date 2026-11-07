@@ -255,7 +255,7 @@ async function until(check, label) {
     await presenter.locator(".presenter-controls").waitFor({state:"detached"});
     assert.deepEqual(errors,[]);
     const report = {browser:family,version:browser.version(),modes:["closure","keys-one","keys-all","implication-derivation","implication-counterexample","different-size-keys","empty-key"],feedbackPolicies:["after-reveal","practice"],viewport:320,
-      realWorker:true,privacy:true,draftAndFocus:true,keyboard:true,touch:true,sameActorConflict:true,sharing:true,modeSpecificFeedback:true,alternativeKeys:true,alternativeCounterexamples:true,
+      grading:"prepared-provider-hook",privacy:true,draftAndFocus:true,keyboard:true,touch:true,sameActorConflict:true,sharing:true,modeSpecificFeedback:true,alternativeKeys:true,alternativeCounterexamples:true,
       walkthrough:true,reset:true,teardown:true,points:true,pointsWithheld:true,pointsReset:true,errors};
     fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2)+"\n");
     console.log(JSON.stringify(report));

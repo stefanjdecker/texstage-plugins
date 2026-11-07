@@ -13,7 +13,7 @@ person. Students use FD buttons and attribute toggles; no JSON editing is needed
 The presenter opens submissions, inspects answers privately, reveals feedback,
 shares an anonymous response, or walks through one worked derivation.
 
-Version 0.5.0 implements closure, one/all candidate keys and FD implication.
+Version 0.6.0 implements closure, one/all candidate keys and FD implication.
 The deck continues with key sets, positive derivations, negative two-row witnesses,
 keys of different sizes and the empty key. The
 [integration record](design/functional-dependencies-points-validation.md) identifies
@@ -28,7 +28,7 @@ Use Python 3.12+, a matching experimental TeXStage host wheel, and a TeX install
 with pdfLaTeX/latexmk, Beamer, Latin Modern fonts, and English/German Babel support.
 The host must include prepared authoring, typed facts, structured command errors,
 atomic replacement of queued evaluations, and renderer mount reconciliation.
-Version 0.5.0 also requires manifest-4 `actor_records` and `scoring` support from the matching TeXStage
+Version 0.6.0 also requires manifest-4 `actor_records` and `scoring` support from the matching TeXStage
 `codex/fd-points-integration` branch. The earlier published host pin
 `34d0c537135f32b0690147dbb66dd8ff155987f8` cannot load this provider.
 See the [release procedure](fd-release.md) for source and artifact verification.
@@ -44,7 +44,7 @@ From the plugin collection root, with that environment activated:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.5.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.6.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -52,7 +52,7 @@ Review the inventory and replace `<printed-payload>` below with its displayed
 payload digest. Installation and explicit enablement are separate actions.
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.5.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.6.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -72,9 +72,9 @@ presenter's server; keep the presenter browser open to evaluate saved answers.
 3. Each productive step must have all determinants already known and add at least
    one new attribute. The final set must match the reached set and the full closure.
    Any valid derivation is accepted; it need not match the author's step order.
-4. The presenter can inspect a saved response privately and see pending, correct,
-   incorrect and unavailable counts. **Close answers** stops further submissions;
-   already accepted evaluations can still finish.
+4. The presenter can inspect a saved response privately and see correct and
+   incorrect counts. **Close answers** stops further submissions. A saved answer
+   has already been checked; it does not await a browser evaluator.
 5. **Reveal solution** releases the worked answer and each student's own feedback.
    Only then can the presenter share a selected response anonymously. The projector
    receives no student identifier or roster. **Start walkthrough**, **Next step**
@@ -89,8 +89,10 @@ presenter's server; keep the presenter browser open to evaluate saved answers.
 
 Incorrect derivations get specific feedback: a missing determinant, an unproductive
 step, an incomplete closure, an overclaimed attribute, or an incorrect final set.
-“Unavailable” is an operational failure, not a wrong answer. A pending response is
-saved but awaits the presenter's evaluator. Responses can be revised while open.
+The enabled provider checks answers against private prepared data before the
+host accepts them. If the check or storage fails, the submission is not accepted
+and can be retried; a service failure is never graded as a mathematical mistake.
+Responses can be revised while open, even if the presenter browser disconnects.
 
 If another device saves an answer for the same participant, the editor offers
 **Reload saved answer** or **Keep my draft**. Keeping a draft never submits it
@@ -227,15 +229,19 @@ inspect or share. Counts cover the whole class, including off-screen pages.
 Class counts appear on the presenter/projector views. Each phone receives its
 own answer updates, avoiding a class-wide refresh for every submission.
 The storage ceiling is not a throughput guarantee. The
-[600-participant record](design/functional-dependencies-600-validation.md)
+[600-participant record](design/functional-dependencies-prepared-validation.md)
 reports measured response times and remaining gates. Historical F4/F5 records
 retain their exact artifacts and measurements.
 
-Use the matching host described above for further evaluation. Its changes preserve
-the security limits while avoiding repeated schema checks and per-answer full
-broadcasts. A replacement presenter can finish pending work when the old
-connection closes. Without a presenter evaluator, answers remain pending;
-service failure is never presented as a mathematically wrong answer.
+Version 0.6.0 removes the redundant browser round trip from prepared lessons.
+The build derives the private closure tables and candidate keys once. Each
+submission performs bounded lookups or replays at most eight proof steps in
+the trusted provider hook, under the unchanged 250 ms hook deadline. Answer,
+feedback, private points credit and retry receipt are saved atomically.
+The reusable mathematical engine remains available for other content types;
+its worker isolation, two-second execution deadline and network restrictions
+are unchanged. No additional host changes are required beyond the pinned
+actor-record and scoring integration.
 
 In the isolated development environment:
 
@@ -259,15 +265,16 @@ must actually execute with TeX installed to create the browser bundle. Tests che
 installed wheels, both host validators, private transport, concurrent submissions,
 reset, keyboard/touch controls at 320 px, and the unchanged restricted worker policy.
 The classroom harness defaults to 64 protocol actors, one rendered participant
-and a real presenter evaluator. Set `TEXSTAGE_CLASSROOM_ACTORS=600` for the
+and a real presenter window. Set `TEXSTAGE_CLASSROOM_ACTORS=600` for the
 capacity target, or `1000` for a separate headroom measurement. Set
 `TEXSTAGE_CLASSROOM_REPLACE=1` for a second answer from every student; typing is
 sampled throughout each burst and large presenter pages are exercised.
-Set `TEXSTAGE_CLASSROOM_RECONNECT=1` to include evaluator loss,
-same-actor resume, receipt replay and reset/late-result checks. It records JSON
-reports under `artifacts/fd-classroom/`, and exits nonzero when the provisional
-timing targets fail. `TEXSTAGE_CLASSROOM_ENFORCE=0` is for collecting diagnostic
-measurements only; it does not turn failed targets into passing evidence.
+Set `TEXSTAGE_CLASSROOM_DIVERSE=1` for distinct valid submissions with independently
+expected correct and incorrect outcomes. Replacements then change each student's
+answer. Set `TEXSTAGE_CLASSROOM_RECONNECT=1` to check feedback without a presenter,
+same-actor resume, receipt replay, forged-result rejection and stale commands
+after reset. Timing enforcement is enabled by default; exploratory runs can set
+`TEXSTAGE_CLASSROOM_ENFORCE=0` to retain measurements without a passing-gate claim.
 
 Desktop emulation does not establish physical-phone or full accessibility
 coverage. The complete lesson scenario exercises English; the release UI
@@ -282,14 +289,14 @@ except `practice`, which awards none. The same field appears in prepared slides
 and handouts; rebuild the deck after changing it.
 
 A verified correct answer earns the full maximum. A verified incorrect answer
-earns zero. Pending, timed-out or unverifiable results remain ungraded and add
-no points. There is no partial credit, speed multiplier or streak bonus.
+earns zero. A failed check or failed save does not accept a submission or
+award points. There is no partial credit, speed multiplier or streak bonus.
 The `feedback` setting controls when mathematical feedback appears; even with
 `"feedback": "practice"`, points are released only by **Reveal solution**.
 
 Before reveal, credits remain private and cannot alter totals or rankings.
 Reveal publishes awards to the student's phone, normal game total, ranking and
-results CSV. Accepted submissions that finish later receive their award then.
+results CSV. Every accepted answer already has its checked private credit.
 Replacing an answer before reveal replaces its credit; resending a command or
 reconnecting cannot earn it twice. Navigation keeps earned points.
 

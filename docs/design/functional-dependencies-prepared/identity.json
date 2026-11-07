@@ -1,0 +1,237 @@
+{
+  "format": 1,
+  "date": "2026-11-07",
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.6.0",
+    "payload": "f6c07d6f525838f8643afc1c26fa8c9fbdbcde32b973d08d2551c54d35d7bbca"
+  },
+  "host_commit": "7b9934d91f3affcc54e2ab6573c8c662cc87348a",
+  "host_source_clean": true,
+  "collection_base_commit": "290aaaf11ac2bfbffbc7765b8c306cfda5a77c20",
+  "collection_branch": "codex/fd-points-integration",
+  "collection_changes": "local, uncommitted",
+  "artifacts": {
+    "host_wheel": {
+      "file": "wheels/texstage-0.2.1.dev5-py3-none-any.whl",
+      "sha256": "f33ef9953344ae9f776fe74aa21cafa28b5677eb98de63e37064da4155c4afc4",
+      "size": 3342763
+    },
+    "plugin_wheel": {
+      "file": "wheels/texstage_fd_lab-0.6.0-py3-none-any.whl",
+      "sha256": "c894ee553627bc20ececc4e62b917b37d4a9f054b10e5b1354196a18064ae471",
+      "size": 64293
+    },
+    "plugin_sdist": {
+      "file": "wheels/texstage_fd_lab-0.6.0.tar.gz",
+      "sha256": "a7219a82a1ab974bfa041a62b6905b60160a9a7c792b911a7de48a2c7a2862d7",
+      "size": 63886
+    }
+  },
+  "source_sha256": {
+    ".github/workflows/conformance.yml": "70748db6855f31344c3b7b4212fb93d0d45eefa9a1fae0c60526ce2874edf1d7",
+    "maintenance/fd_browser.cjs": "371e09d945a8121733deb1340042055497f47338abeac0af1c84e0b1c44f0f8d",
+    "maintenance/fd_classroom_browser.cjs": "0c25cb411597b03bc25ffe5b6ed8d0ca2fc4b9aee3d9bcb0d35e94109c86b4ef",
+    "maintenance/fd_classroom_cases.py": "68630c6a78e5dbf00d51ef4e7f6bf0dd5b17445c129515995ad2a4bad5c6ef90",
+    "maintenance/fd_classroom_snapshot.py": "c320058446fe9042320e4b279ae927d4f120b1d4ff0fd9bc72914d69a1805518",
+    "maintenance/fd_lesson_browser.cjs": "ca9bfe968bb15a3603784bfbb8887587c1ecc11b7ff8c972d179b183ddcd37df",
+    "maintenance/fd_probe.py": "965db0251e5f0890adb0d3ca85f3fcf9b1d24b0604d13521522ede535a193b4c",
+    "maintenance/fd_release_browser.cjs": "bb9565557dab97b9417e9441ee76019fe87b8bf8924339113beccf4d7052f5a9",
+    "maintenance/plugin_worker_security.cjs": "c5884d693bacdf17ef08e24558dd692353d51e719190422f5fb5f646c540ff96",
+    "maintenance/serve_fd_classroom.py": "1c715710a69566ec0354d7010ce946581187de201bcd22dbf83e6bc06c8d165f",
+    "maintenance/serve_fd_lesson.py": "3116c71c26139954e4cd42c67e7a93aa01b12d01633caffe94feeb800a96f9c5",
+    "plugins/fd-lab/pyproject.toml": "4bb1bbe0c09182fec71a629d3fb99a2973e796cd857e5fa76beae575dce13cfa",
+    "plugins/fd-lab/tests/test_engine.py": "48383b677fa8e2c66df708fab187622d7ec50020334622a5a9b3e6079880a10c",
+    "plugins/fd-lab/tests/test_lesson.py": "4c18cd19458b9e03098255734e6bb575eea75655e2996314834c45c67ad5a6cb",
+    "plugins/fd-lab/tests/test_modes.py": "17aa79ce32b7d89bda6364d58ba81ee4ed011dead76b19d1adde375bc5f6c6b3",
+    "plugins/fd-lab/tests/test_points.py": "88e3a04027c1d30bdfbc1265d2fa2e0b14575b5e1ef314c9c5ad1562177ff54d",
+    "plugins/fd-lab/tests/test_prepared_grading.py": "f7213ce97b3fb124aabc46429e1adfa38bc7b68ceca12a25c6f3fe19fb3fe923",
+    "plugins/fd-lab/texstage-plugin.json": "39cf1737f4d17a4732d19df80b3b965e111f3b7330d84e373e6868db450ba271",
+    "plugins/fd-lab/texstage_fd_lab/__init__.py": "26b3f73339cbdf24d09c3344364acbfab5ce4e2b334cc4915d16b4f4006cc442",
+    "plugins/fd-lab/texstage_fd_lab/authoring.py": "0d4d07c9158de31c63b699b819ea4c86ebac8bfc67e0607bdb635a47aefddb35",
+    "plugins/fd-lab/texstage_fd_lab/grading.py": "53f52090e5c80edb2d9fb842508d5ac0fe6c0107f8d59ecf40051778585020d4",
+    "plugins/fd-lab/texstage_fd_lab/model.py": "b2d9ccd4493554faf5ffda21ab31816eb9016fa9a9717815ad84c858f15acf6b",
+    "plugins/fd-lab/texstage_fd_lab/state.py": "c18c88f7abbea38fa042988e2ef0a6d543bb4c617b6c8e58cd09c9a812e1ed6d"
+  },
+  "handoff_files": {
+    "bundles/de/handout.pdf": {
+      "sha256": "c72095ad6336330c21d01d793d2e2292e9472f96f24dc91eec5211128d404f71",
+      "size": 90258
+    },
+    "bundles/de/lesson.bundle/deck.json": {
+      "sha256": "6f5bf70f0965077f9437490b88566bdf3fa3b82f73d743d6dcd8ed123906e563",
+      "size": 18735
+    },
+    "bundles/de/lesson.bundle/keys.json": {
+      "sha256": "0d4d4460b3072d06cb2f149d07a8bc8bece3dcf8337f2bfc3b5564ffb0b19cd9",
+      "size": 6663
+    },
+    "bundles/de/lesson.bundle/slides/0c7c2b625a046663.png": {
+      "sha256": "0c7c2b625a046663fd729019a1a4d0f94770a2a3e1dfc7ad2ba094f2244d3b03",
+      "size": 30372
+    },
+    "bundles/de/lesson.bundle/slides/206ca9df8ba988c2.png": {
+      "sha256": "206ca9df8ba988c24eaf1f5e0ab718191d118917e832be049cc177603bd79be2",
+      "size": 50032
+    },
+    "bundles/de/lesson.bundle/slides/3367ad768c807777.png": {
+      "sha256": "3367ad768c807777efc5c55b76cd0b73638847d1837a13d0768b484c507843bd",
+      "size": 46216
+    },
+    "bundles/de/lesson.bundle/slides/3d80efe1374984e3.png": {
+      "sha256": "3d80efe1374984e34042e5962698fbc15dd702ea94c8c0239e50980414427119",
+      "size": 63834
+    },
+    "bundles/de/lesson.bundle/slides/554dc1a19080171a.png": {
+      "sha256": "554dc1a19080171a4c1d07403e38e00f89a2190083a24f1048badbb4f4dc44ed",
+      "size": 61663
+    },
+    "bundles/de/lesson.bundle/slides/a399b41ae31229de.png": {
+      "sha256": "a399b41ae31229dea06786b5a68ad10dc72cec2d6770a206e4822a17ae2cfc6a",
+      "size": 58814
+    },
+    "bundles/de/lesson.bundle/slides/c95d2b52bb34a486.png": {
+      "sha256": "c95d2b52bb34a4864f79b63ccc4eb9d3573ee1baf386121957c4a81256c72314",
+      "size": 71709
+    },
+    "bundles/de/lesson.bundle/slides/cd433ffa6aa6c50f.png": {
+      "sha256": "cd433ffa6aa6c50fba9fe73b38e34172e703fe0c28ce51f0460823ea33fea880",
+      "size": 67412
+    },
+    "bundles/de/lesson.bundle/slides/d2204a4d0d7d2d82.png": {
+      "sha256": "d2204a4d0d7d2d8292581abfcdef0872cce9471d4938b7a704b5f823e4ca3ad7",
+      "size": 53798
+    },
+    "bundles/de/lesson.bundle/slides/f1a0b786cfc488c2.png": {
+      "sha256": "f1a0b786cfc488c25c765e4947d1ba64fefa546e5804881c67e3d9f5e883cd20",
+      "size": 64583
+    },
+    "bundles/de/lesson.bundle/stage/46c8eaf9b11fe3ac.pdf": {
+      "sha256": "46c8eaf9b11fe3acfe255fcbb9eecf3dcd06e475b69e5455963fd0b35ef8693a",
+      "size": 90107
+    },
+    "bundles/de/solutions.pdf": {
+      "sha256": "450572f627bfe94712de643619489de6ef4960867b3df041149a50a9681d6e00",
+      "size": 91100
+    },
+    "bundles/en/handout.pdf": {
+      "sha256": "defd48029222058ebd23429bb54fb15938a56d6548afc607d7a9b907925574a9",
+      "size": 85123
+    },
+    "bundles/en/lesson.bundle/deck.json": {
+      "sha256": "0a36b0a8cbc4aaf4d5b1a01887935a417efa98537e6d652562af7c9d3cf5dcc6",
+      "size": 18735
+    },
+    "bundles/en/lesson.bundle/keys.json": {
+      "sha256": "f84213bb3cdfe91c70e1afa497346bd3a5aca898e956a6d14ffe4d5357aaacf1",
+      "size": 6663
+    },
+    "bundles/en/lesson.bundle/slides/0c7c2b625a046663.png": {
+      "sha256": "0c7c2b625a046663fd729019a1a4d0f94770a2a3e1dfc7ad2ba094f2244d3b03",
+      "size": 30372
+    },
+    "bundles/en/lesson.bundle/slides/0e33fdb21eeae589.png": {
+      "sha256": "0e33fdb21eeae58925f9b5e3ee9bed32e7966c05746152a75196f32fc5ad63d4",
+      "size": 45057
+    },
+    "bundles/en/lesson.bundle/slides/1c903122db731d73.png": {
+      "sha256": "1c903122db731d737fc6ae68fbf93dcf03ccf0f8896d4bc0809caa3c1628f0c0",
+      "size": 57618
+    },
+    "bundles/en/lesson.bundle/slides/1cb8b718983a64b8.png": {
+      "sha256": "1cb8b718983a64b8626b15a591f666e827e4653cdbb90ceb0005181089a6e7c9",
+      "size": 54076
+    },
+    "bundles/en/lesson.bundle/slides/2697a992d9e05913.png": {
+      "sha256": "2697a992d9e059134ad63601cfb430f33fa388ddd33c01561cd3269755e0648d",
+      "size": 40354
+    },
+    "bundles/en/lesson.bundle/slides/2765552340545e51.png": {
+      "sha256": "2765552340545e5166f1827f95f2c2bfc9a073b7c4f725bf6698e86235a7bddf",
+      "size": 68672
+    },
+    "bundles/en/lesson.bundle/slides/29a92a7a67cd4dbb.png": {
+      "sha256": "29a92a7a67cd4dbb571d4210bb117e54ef542b56fdc888479634b0f150510a7a",
+      "size": 63357
+    },
+    "bundles/en/lesson.bundle/slides/6295df9d0c5bd6f9.png": {
+      "sha256": "6295df9d0c5bd6f95304c4a551ad5ac8cca50e018f8ada2937d9c241f17f00f5",
+      "size": 55408
+    },
+    "bundles/en/lesson.bundle/slides/edbb9f944174dbc9.png": {
+      "sha256": "edbb9f944174dbc967818b9fd2df3c8bfd2fd39cf47e6b049fe016cd2a3e5b7d",
+      "size": 58842
+    },
+    "bundles/en/lesson.bundle/slides/fccbfc78c0153900.png": {
+      "sha256": "fccbfc78c01539001e836ed662b098cb0870d11548f18b6e9e318fd1d6402dc8",
+      "size": 58035
+    },
+    "bundles/en/lesson.bundle/stage/6bfd0b709f3c19bf.pdf": {
+      "sha256": "6bfd0b709f3c19bf60dfc4a0f9bb64b8d37db3dbbc7b79fadf05e7a65dd8936f",
+      "size": 84972
+    },
+    "bundles/en/solutions.pdf": {
+      "sha256": "9246db401a7bd3ee0f0fe47ffb6dbbdad043a37a0f1e74289c538b348dba0929",
+      "size": 86511
+    },
+    "requirements/build.in": {
+      "sha256": "2e1a2958752f47a443cf2524f0057db560ca9bc06062bdc64730014211fe30d7",
+      "size": 40
+    },
+    "requirements/build.txt": {
+      "sha256": "9c482fa721548dd14edba2f2a7ec98b2dda4b7b27950a6e437a10eae88580f1e",
+      "size": 2581
+    },
+    "requirements/dev.in": {
+      "sha256": "015ba92518a5e93cf38f6a995ff8560e5caa0b6aa545b874fc0b5a2dc60103b0",
+      "size": 91
+    },
+    "requirements/dev.txt": {
+      "sha256": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+      "size": 79139
+    },
+    "requirements/docs.in": {
+      "sha256": "07f5a6aa13d961c7f1a49d642df70fad25796be6c07badba1d8c88c9265e5798",
+      "size": 32
+    },
+    "requirements/docs.txt": {
+      "sha256": "5055f4ae690877b15a76df52dd73bdb451d077cae00648bb093cab369a9dc190",
+      "size": 21903
+    },
+    "requirements/lock-manifest.json": {
+      "sha256": "f85f353fbfaa27eb1606fa58e158ee4e9b6bcb7d54afab872fe02609688794f1",
+      "size": 1089
+    },
+    "requirements/runtime.in": {
+      "sha256": "8ecf051cc09aefb7f3b20a2c164e1a45e422fcdea376ef017b4dcf5bc86c9397",
+      "size": 133
+    },
+    "requirements/runtime.txt": {
+      "sha256": "86406fe187148f89b9fc01d766e2b3ed5c1f0f8628883be561c671ef3004169e",
+      "size": 75415
+    },
+    "wheels/texstage-0.2.1.dev5-py3-none-any.whl": {
+      "sha256": "f33ef9953344ae9f776fe74aa21cafa28b5677eb98de63e37064da4155c4afc4",
+      "size": 3342763
+    },
+    "wheels/texstage_fd_lab-0.6.0-py3-none-any.whl": {
+      "sha256": "c894ee553627bc20ececc4e62b917b37d4a9f054b10e5b1354196a18064ae471",
+      "size": 64293
+    },
+    "wheels/texstage_fd_lab-0.6.0.tar.gz": {
+      "sha256": "a7219a82a1ab974bfa041a62b6905b60160a9a7c792b911a7de48a2c7a2862d7",
+      "size": 63886
+    }
+  },
+  "checks": {
+    "python_tests": 151,
+    "latex_export_tests": 2,
+    "node_engine_cases": 30,
+    "browser_engine_samples": 34,
+    "submissions": 10800,
+    "feedback_p95_target_ms": 10000,
+    "feedback_max_target_ms": 30000,
+    "phone_input_p95_target_ms": 100
+  },
+  "scope": "Local Windows tests on loopback with protocol actors and desktop phone emulation; no hosted CI, physical-phone or deployment claim."
+}

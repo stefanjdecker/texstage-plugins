@@ -98,11 +98,13 @@ records earlier passing 64-answer runs. The
 [F5 report](docs/design/functional-dependencies-f5-validation.md) records passing
 hosted CI with English/German authoring and identical artifacts on Windows and
 three browsers, plus unresolved local input-latency and WebKit setup checks.
-FD Lab 0.5.0 uses the common typed actor records and points APIs, with 25-answer
+FD Lab 0.6.0 uses the common typed actor records and points APIs, with 25-answer
 presenter pages and a 1,000-student storage ceiling. Optional fixed points are
 released on reveal and appear in totals, rankings and CSV exports. It requires
 the matching integration host; rebuild bundles and start fresh sessions.
-See the [integration record](docs/design/functional-dependencies-points-validation.md)
+Prepared lessons now grade from private, bounded reference data in the provider
+hook; feedback no longer waits for a presenter browser worker. The standalone
+engine remains available. See the [600-student performance record](docs/design/functional-dependencies-prepared-validation.md)
 and [release procedure](docs/fd-release.md). Earlier capacity reports retain their
 own artifact identities and timing limits.
 The security policy is unchanged. Physical-phone checks and catalog publication

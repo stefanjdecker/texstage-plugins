@@ -1,14 +1,22 @@
 # FD Lab: v1 contract
 
-Current integration, 2026-11-07: FD Lab 0.5.0 uses manifest revision 4, state
-schema 3, typed `SaveActor` records (25 summaries per page) and host-owned
-`SetCredit` / `PublishPoints` scoring. The old `ActorTransition` API is no longer
-used by this candidate. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
-See the [integration and scoring record](functional-dependencies-points-validation.md)
-and [points guide](../fd-lesson.md#awarding-points). The earlier development and
-capacity history below describes its original versions; those timings do not
-establish performance for this integration. Engine seed/answer/result formats
-remain v1. Upgrades require new bundles and sessions.
+Current path, 2026-11-07: FD Lab 0.6.0 uses manifest revision 4, state schema 4,
+typed `SaveActor` records (25 summaries per page) and host-owned `SetCredit` /
+`PublishPoints` scoring. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+Prepared lessons check private closure tables and bounded proof certificates in
+the provider hook when accepting an answer. They declare no evaluation bindings
+and enqueue no browser jobs. Answer, feedback, credit and receipt commit together;
+there is no accepted-but-pending interval. Hook/storage failures remain retryable
+submission failures, not incorrect answers. The separate mathematical engine
+keeps its v1 formats, fresh workers, time limits and network restrictions.
+
+This supersedes the asynchronous lesson path described in the historical sections
+below. It requires no new core API or relaxed security policy. Rebuild bundles,
+review/enable the new payload and start new sessions when upgrading. See the
+[prepared-grading performance record](functional-dependencies-prepared-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). Earlier measurements apply
+only to their own artifacts; the saved pending/unavailable fields in the view
+schema remain readable but are not emitted for newly accepted 0.6.0 answers.
 
 Engine v1 implemented locally, 2026-11-06. See the
 [package](../../plugins/fd-lab/README.md), [F1 validation](functional-dependencies-f1-validation.md),
@@ -38,7 +46,7 @@ and the still-open feedback latency gate. Upgrades require a new bundle/session.
 | Provider | `io.github.stefanjdecker.fdlab` |
 | Engine | `io.github.stefanjdecker.fdlab.dependencies` |
 | Content type | `io.github.stefanjdecker.fdlab.exercise` |
-| Manifest / plugin API / engine API / content API | 2 / 1 / 1 / 1 |
+| Manifest / plugin API / engine API / content API | 4 / 1 / 1 / 1 |
 | Authoring hook / state hook / state schema | `exercise` / `exercise` / 2 |
 | Binding / canonical format | `analysis` / `fd-analysis-v1` |
 | Style / exported command | `texstage-fd-lab.sty` / `\fdlab` |
@@ -159,7 +167,7 @@ hash implementation so ordinary classroom LAN HTTP does not require WebCrypto.
 The Python model computes closures and candidate keys independently and validates
 the named worked answer. Preparation stores a complete private closure table for
 key tasks, or the fixed determinant closure and implication truth for proof tasks.
-The state reducer verifies engine facts against those tables and replays the
+The state reducer grades answers against those private tables and replays the
 small certificates before grading. Schema validation alone is insufficient.
 Do not re-run an expensive search per participant inside a state hook.
 
@@ -187,10 +195,11 @@ Store neither full key-check arrays nor trace histories per actor. The selected
 inspection view can derive details from the private table and one saved answer.
 Include effects in the 256 KiB host transition limit; every view stays below
 128 KiB. These provider limits must pass worst-case serialization tests before
-being advertised. The presenter receives at most 100 slots per context/page;
-participant/evaluation hooks receive only their authenticated actor's slot.
-`ActorTransition(..., audience="actor")` atomically replaces that slot and shared
-state, and targets the actor's devices plus hosts. Global controls use `Transition`.
+being advertised. The presenter receives at most 25 actor summaries per context/page; participant
+hooks receive only their authenticated actor record. `SaveActor` and `SetCredit`
+effects in `Transition` atomically replace that record, private credit, shared
+state and receipt. Manifest `participant_updates: "actor"` targets the actor's
+devices plus hosts. Presenter phase controls refresh the class.
 Replacement remains possible at capacity. A full classroom
 is an operational refusal, not an incorrect mathematical answer.
 
@@ -212,18 +221,20 @@ Public `select-demonstration` and `demonstrate` require the revealed phase. Priv
 presenter selection may occur earlier. Practice mode releases only the actor's
 own permitted feedback; it does not open public solution projections.
 
-`roster-page` takes `{control,page}`, with page in 0–9 and below the current page
-count. Presenter views include `roster_page`, `roster_pages` and at most 100
+`roster-page` takes `{control,page}`, with page in 0–39 and below the current page
+count. Presenter views include `roster_page`, `roster_pages` and at most 25
 participants; class totals cover all pages. Selection/share commands resolve
-only actors on the current page. Selected private snapshots follow later answer
-replacements and results even if the presenter browses another page.
+only authenticated, server-known actor records. Selected private snapshots follow later answer
+replacements even if the presenter browses another page.
 
-One correlation per actor/request/analysis slot via SDK `evaluation_correlation`.
-Cancel a superseded evaluation and submit its replacement atomically. Preserve
-pending answers through evaluator absence; retries must not duplicate attempts.
-Check the authenticated actor, epoch, correlation, binding and exercise/answer
-identity on completion. Domain refusals and operational dispatch error codes
-remain distinct. Render no grade when transport or evidence is invalid.
+Each accepted submission is already checked. The lesson declares no evaluation
+bindings and accepts no browser-supplied grade or completion. The persisted
+correlation/digest still identify the actor/request/answer for audit. Version,
+epoch and receipt guards protect replacement and replay; resetting removes
+records and withdraws published awards. A failed provider hook or storage
+transaction accepts no new answer and can be retried. Credits remain private
+until `PublishPoints` from a presenter reveal command; a scored revealed round
+must be reset before reopening.
 
 Declare all four surfaces with exact matching portable view schemas:
 participant input, presenter controls, presenter overlay and projector overlay.

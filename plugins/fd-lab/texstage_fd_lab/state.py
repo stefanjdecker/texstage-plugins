@@ -2,11 +2,11 @@
 """Deterministic lesson phases, host actor records and verified fixed points."""
 import copy
 from texstage.plugin_api.v1 import (
-    CancelEvaluation, Evaluate, SaveActor, SetCredit, PublishPoints, Transition,
+    SaveActor, SetCredit, PublishPoints, Transition,
     evaluation_correlation, json_value,
 )
 from . import model
-from .grading import feedback
+from .grading import grade
 
 MAX_ACTORS = 1000
 SLOT_BYTES = 2048
@@ -90,18 +90,22 @@ class Lesson:
                 correlation = evaluation_correlation(actor, event["request_id"], "analysis")
                 slot = {"version": version + 1, "answer": answer,
                         "digest": model.digest(["fd-answer-v1", answer]),
-                        "correlation": correlation, "epoch": ctx["epoch"], "status": "pending"}
+                        "correlation": correlation, "epoch": ctx["epoch"], "status": "saved"}
                 # Reserve space for the largest compact feedback before accepting.
                 reserve = slot | {"feedback": {"code": "unavailable", "detail": "certificate",
                                               "correct": False, "reason": "unmet-lhs", "missing": 255, "extra": 255, "step": 7, "needed": 255, "next_fd": 23, "missing_keys": 256, "invalid_keys": 256,
                                               "key": 255, "key_closure": 255, "removable": 255, "fd": 23}}
                 if len(model.canonical({actor: reserve})) > SLOT_BYTES:
                     return _refuse("capacity")
+                # Prepared finite data already verifies every engine certificate.
+                # Grade here once, in the killable provider hook, and persist the
+                # answer, feedback, credit and receipt in the host transaction.
+                try:
+                    slot["feedback"] = grade(public, ctx["item"]["private"], answer)
+                except (model.InputError, model.ResourceLimit):
+                    return _refuse("evaluation-unavailable")
                 if state["shared"] and state["shared"]["actor"] == actor:
                     state["shared"] = None
-                if old and old["status"] == "pending":
-                    effects.append(CancelEvaluation(old["correlation"]))
-                effects.append(Evaluate("analysis", correlation, model.canonical(answer)))
                 _replace(state, actor, old, slot)
                 return _finish(state, effects, slot)
             else:
@@ -158,20 +162,6 @@ class Lesson:
                 else:
                     return _refuse("operation")
                 state["control_version"] += 1
-        elif kind == "evaluation.finished":
-            actor = event["actor"]
-            own = copy.deepcopy(record["value"]) if record["actor"] == actor else None
-            if (own and own["status"] == "pending" and own["epoch"] == ctx["epoch"] and
-                    own["correlation"] == event["correlation_id"] and event["binding"] == "analysis"):
-                own["feedback"] = feedback(ctx["item"]["public"], ctx["item"]["private"], own, event["outcome"])
-                own["status"] = "unavailable" if own["feedback"]["code"] == "unavailable" else "saved"
-                if len(model.canonical({actor: own})) > SLOT_BYTES:
-                    # Replace only compact feedback; never silently discard an accepted answer.
-                    own["feedback"] = {"code": "unavailable", "detail": "capacity"}
-                    own["status"] = "unavailable"
-                _replace(state, actor, record["value"], own)
-                return _finish(state, effects, own)
-            return _finish(state, effects)
         return _finish(state, effects)
 
     def view(self, state, audience, ctx):

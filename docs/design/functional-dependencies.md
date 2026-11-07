@@ -1,14 +1,22 @@
 # Functional Dependencies and Keys Lab
 
-Current integration, 2026-11-07: FD Lab 0.5.0 uses manifest revision 4, state
-schema 3, typed `SaveActor` records (25 summaries per page) and host-owned
-`SetCredit` / `PublishPoints` scoring. The old `ActorTransition` API is no longer
-used by this candidate. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
-See the [integration and scoring record](functional-dependencies-points-validation.md)
-and [points guide](../fd-lesson.md#awarding-points). The earlier development and
-capacity history below describes its original versions; those timings do not
-establish performance for this integration. Engine seed/answer/result formats
-remain v1. Upgrades require new bundles and sessions.
+Current path, 2026-11-07: FD Lab 0.6.0 uses manifest revision 4, state schema 4,
+typed `SaveActor` records (25 summaries per page) and host-owned `SetCredit` /
+`PublishPoints` scoring. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+Prepared lessons check private closure tables and bounded proof certificates in
+the provider hook when accepting an answer. They declare no evaluation bindings
+and enqueue no browser jobs. Answer, feedback, credit and receipt commit together;
+there is no accepted-but-pending interval. Hook/storage failures remain retryable
+submission failures, not incorrect answers. The separate mathematical engine
+keeps its v1 formats, fresh workers, time limits and network restrictions.
+
+This supersedes the asynchronous lesson path described in the historical sections
+below. It requires no new core API or relaxed security policy. Rebuild bundles,
+review/enable the new payload and start new sessions when upgrading. See the
+[prepared-grading performance record](functional-dependencies-prepared-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). Earlier measurements apply
+only to their own artifacts; the saved pending/unavailable fields in the view
+schema remain readable but are not emitted for newly accepted 0.6.0 answers.
 
 Status: F1 engine and F2/F3 prepared classroom modes implemented locally, 2026-11-06.
 The [package](../../plugins/fd-lab/README.md) supplies reasoning for all three modes

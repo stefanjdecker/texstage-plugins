@@ -104,7 +104,7 @@ def prepare_lesson(source, context):
         seen.add(key)
     return PreparedAuthoring(
         PreparedItem(public=public, private=private,
-                     evaluations={'analysis': {'seed': model.canonical(seed), 'options': {}, 'references': []}},
+                     evaluations={},
                      diagnostics=diagnostics),
         {edition: _fragment(public, worked, language, edition == 'solutions')
          for edition in ('exercise', 'solutions')})

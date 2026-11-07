@@ -8,15 +8,15 @@ fachliche Regeln; Eindeutigkeit in einer Beispieltabelle beweist keine solche Re
 
 Das [Beispiel](../examples/functional-dependencies/lesson.tex) verwendet
 Workshop-Anmeldungen mit Person, E-Mail, Workshop, Tutor, Raum und Gebäude.
-Version 0.5.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
+Version 0.6.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
 Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
-[English guide](fd-lesson.md) · [Aktueller Kapazitätsbericht](design/functional-dependencies-600-validation.md).
+[English guide](fd-lesson.md) · [Aktueller Kapazitätsbericht](design/functional-dependencies-prepared-validation.md).
 
 ## Installation und Start
 
 Verwenden Sie eine neue Python-Umgebung (Python 3.12+) und das passende
 experimentelle TeXStage-Wheel. Bestehende Kursumgebungen bleiben unverändert.
-Version 0.5.0 benötigt Manifest 4 mit `actor_records` und `scoring` aus dem passenden TeXStage-Branch
+Version 0.6.0 benötigt Manifest 4 mit `actor_records` und `scoring` aus dem passenden TeXStage-Branch
 `codex/fd-points-integration`. Der frühere veröffentlichte Host-Pin
 `34d0c537135f32b0690147dbb66dd8ff155987f8` kann diesen Provider nicht laden.
 Das [Release-Verfahren](fd-release.md) erklärt die Prüfung von Quellen und Artefakten.
@@ -32,7 +32,7 @@ Im Stammverzeichnis von `texstage-plugins`, bei aktivierter Umgebung:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.5.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.6.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -40,7 +40,7 @@ Prüfen Sie das Inventar und ersetzen Sie `<printed-payload>` durch den angezeig
 Digest. Installation und explizite Freigabe sind getrennte Schritte:
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.5.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.6.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -174,15 +174,18 @@ mit je 2 KiB reserviertem Speicher abgelegt; der gemeinsame Zustand hat ein
 separates Limit von 160 KiB. **Vorherige Antworten** und **Weitere Antworten**
 blättern durch jeweils 25 Antworten. Die Zähler berücksichtigen die ganze Klasse.
 Die Speichergrenze ist keine Durchsatzgarantie. Der
-[600-Teilnehmer-Bericht](design/functional-dependencies-600-validation.md)
+[600-Teilnehmer-Bericht](design/functional-dependencies-prepared-validation.md)
 dokumentiert Messwerte und offene Prüfschritte. Frühere F4/F5-Messungen bleiben
 für ihre jeweiligen Artefakte gültig.
 
-Verwenden Sie für weitere Prüfungen den oben genannten passenden Host mit den
-Last- und Wiederverbindungsänderungen. Ohne Presenter-Auswertung bleiben
-Antworten ausstehend. Nach einem erkannten Verbindungsabbruch kann ein neuer
-Presenter die ausstehenden Prüfungen übernehmen; verspätete alte Ergebnisse
-werden abgewiesen. Ein Dienstausfall gilt nie als fachlich falsche Antwort.
+Ab Version 0.6.0 prüft der aktivierte Provider Antworten direkt anhand der
+privaten, vorberechneten Daten. Die Prüfung umfasst begrenzte Tabellenzugriffe
+oder höchstens acht Beweisschritte und unterliegt weiter dem Zeitlimit von
+250 ms. Antwort, Rückmeldung, private Bewertung und Wiederholungsbeleg werden
+gemeinsam gespeichert. Eine Presenter-Verbindung ist dafür nicht erforderlich.
+Ein fehlgeschlagener Prüfschritt oder Speichervorgang nimmt keine Antwort an
+und vergibt keine Punkte; die Anfrage kann wiederholt werden. Die separate
+mathematische Engine behält ihre bisherigen Worker- und Netzbeschränkungen.
 Physische Telefone, vollständige Barrierefreiheit und eine unveränderliche
 öffentliche Veröffentlichung bleiben eigene Prüfschritte.
 
@@ -193,11 +196,10 @@ Antwort 100 Punkte. Erlaubt sind ganze Zahlen von 0 bis 10.000. Ohne das Feld
 oder mit 0 bleibt die Aktivität unbewertet. Im Beispiel vergibt jede Aktivität
 außer `practice` 100 Punkte. Nach Änderungen das Deck neu bauen.
 
-Eine nachweislich falsche Antwort erhält 0 Punkte. Ausstehende oder nicht
-verifizierbare Auswertungen bleiben unbewertet. Es gibt keine Teilpunkte,
+Eine nachweislich falsche Antwort erhält 0 Punkte. Fehlgeschlagene Prüfungen
+oder Speichervorgänge vergeben keine Punkte. Es gibt keine Teilpunkte,
 Zeitboni oder Serienboni. Auch bei sofortigem Übungsfeedback werden Punkte
 erst mit **Lösung auflösen** an Telefon, Gesamtwertung, Rangliste und CSV freigegeben.
-Später abgeschlossene, bereits angenommene Antworten erhalten ihre Punkte danach.
 Eine Ersatzantwort ersetzt die Bewertung; Wiederholung und Wiederverbindung
 verdoppeln keine Punkte.
 

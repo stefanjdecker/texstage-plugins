@@ -1,17 +1,19 @@
 # FD Lab release conformance
 
-FD Lab 0.5.0 integrates typed actor records and fixed activity points using
+FD Lab 0.6.0 integrates typed actor records and fixed activity points using
 TeXStage 0.2.1.dev5, manifest revision 4. The isolated integration branch pins
 `7b9934d91f3affcc54e2ab6573c8c662cc87348a`. This commit snapshots the shared host API
 work without modifying its original checkout. See the
-[integration and scoring record](design/functional-dependencies-points-validation.md).
+[prepared-grading and performance record](design/functional-dependencies-prepared-validation.md).
+Version 0.6.0 uses the same host pin and grades bounded prepared exercises
+in the provider hook, saving feedback and credit with the answer.
 Publish the compatible host commit before the collection CI can fetch this pin.
 Local validation is not a hosted CI run. Rebuild bundles and start new sessions.
 Earlier 0.4.0 capacity timings remain historical evidence for their own artifacts.
 
 The **previous 0.3.0 candidate** used the published TeXStage `codex/plugin-system` commit:
 [`34d0c537135f32b0690147dbb66dd8ff155987f8`](https://github.com/stefanjdecker/texstage/commit/34d0c537135f32b0690147dbb66dd8ff155987f8).
-The same historical commit is mirrored to GitLab. It does not support 0.5.0.
+The same historical commit is mirrored to GitLab. It does not support 0.6.0.
 This is an experimental candidate, not a catalog release or a stable API promise.
 
 [Host CI](https://github.com/stefanjdecker/texstage/actions/runs/42351229078) and
@@ -19,7 +21,7 @@ This is an experimental candidate, not a catalog release or a stable API promise
 passed for the earlier 0.3.0 source revisions recorded in the
 [F5 validation report](design/functional-dependencies-f5-validation.md).
 That report includes the tested wheel hashes, downloaded artifact verification,
-and its local capacity checks. Those hosted results are not evidence for 0.5.0.
+and its local capacity checks. Those hosted results are not evidence for 0.6.0.
 
 ## Build and verify
 
@@ -78,8 +80,12 @@ evaluation, an 800Ã—500 presenter workspace and a 320-pixel phone layout.
 Screenshots and JSON reports are retained in CI artifacts.
 
 The manual workflow input `capacity` additionally runs 600-participant bursts in
-all three browsers and a separate Chromium 1,000-participant headroom case.
-Timing enforcement stays enabled and failed measurements are uploaded too.
+all three browsers with distinct correct/incorrect submissions and replacements,
+plus a separate Chromium 1,000-participant headroom case. It also checks feedback
+without a presenter connection, points publication, CSV, replay and reset.
+The 600-student timing gate stays strict and failed measurements are uploaded
+too. The separate 1,000-student timing measurement is informational; its grading,
+privacy, points, replacement and reconnect assertions still fail the job.
 
 The previous [F4 performance record](design/functional-dependencies-f4-performance.md)
 remains evidence for its exact artifacts and named Windows hardware. Rebuilt

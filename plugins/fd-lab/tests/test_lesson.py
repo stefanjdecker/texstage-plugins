@@ -13,6 +13,7 @@ from texstage.plugins.catalog import Catalog, discover
 from texstage.plugins.runtime import Runtime
 from texstage_fd_lab import model
 from texstage_fd_lab.authoring import prepare_lesson, TYPE, ENGINE
+from texstage_fd_lab.grading import feedback as verify_certificate
 from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES, MAX_ACTORS, PAGE_SIZE, _category
 from test_engine import probe
 
@@ -116,7 +117,6 @@ def test_authoring_privacy_and_feedback_release(provider, policy):
     assert 'One worked answer' in made['fragments']['solutions']
     state, ctx = opened(policy)
     state, _ = submit(state, ctx)
-    state = complete(state, ctx)
     own = view(state, ctx, 'participant')['own']
     assert ('feedback' in own) == (policy == 'practice')
     assert 'own' not in view(state, ctx, 'participant', 'bob')
@@ -158,7 +158,6 @@ def test_authoring_language_escaping_and_rejections(provider):
 def test_informative_math_feedback(provider, answer, reason):
     state, ctx = opened()
     state, _ = submit(state, ctx, answer=answer)
-    state = complete(state, ctx)
     feedback = state['answers']['alice']['feedback']
     assert feedback['reason'] == reason and feedback['correct'] is False
     assert state['answers']['alice']['status'] == 'saved'
@@ -168,7 +167,6 @@ def test_alternative_proof_and_guarded_classroom_controls(provider):
     state, ctx = opened('practice')
     answer = worked('practice') | {'steps': [2, 3, 0]}
     state, first = submit(state, ctx, answer=answer)
-    state = complete(state, ctx)
     assert state['answers']['alice']['feedback']['correct']
     teacher = ctx | {'role': 'presenter'}
     assert transition(state, command('close', {'control': 0}), teacher) == {'refusal': 'stale-control'}
@@ -202,31 +200,26 @@ def test_facts_must_match_the_exact_submission(provider, fault):
     elif fault == 'error': data['facts']['trace']['error'] = {'kind': 'no-progress', 'step': 0, 'missing': 0}
     elif fault == 'extra': data['facts']['extra'] = True
     else: data['format'] = True
-    state = complete(state, ctx, {'status': 'ok', 'data': data})
-    assert state['answers']['alice']['status'] == 'unavailable'
-    assert 'correct' not in state['answers']['alice']['feedback']
+    result = verify_certificate(ctx['item']['public'], ctx['item']['private'], state['answers']['alice'], {'status':'ok','data':data})
+    assert result == {'code':'unavailable','detail':'facts'}
+    assert complete(state, ctx, {'status':'ok','data':data}) == state
 
 
-def test_replacement_close_and_unavailable_preserve_answers(provider):
+def test_replacement_close_and_late_engine_results_preserve_answers(provider):
     state, ctx = opened()
     state, first = submit(state, ctx)
+    assert {e['kind'] for e in first} == {'save-actor','set-credit'}
+    old = copy.deepcopy(state['answers']['alice'])
     state, second = submit(state, ctx, version=1, request='replace00001')
-    assert second[0] == {'kind': 'cancel-evaluation', 'correlation_id': first[0]['correlation_id']}
-    assert complete(state, ctx, correlation_id=first[0]['correlation_id']) == state
+    assert {e['kind'] for e in second} == {'save-actor','set-credit'}
+    assert state['answers']['alice']['feedback']['correct']
+    assert complete(state, ctx, correlation_id=old['correlation']) == state
     assert complete(state, ctx, binding='other') == state
     assert complete(state, ctx | {'epoch': 2}) == state
     state, _ = advance(state, command('close', {'control': 1}), ctx | {'role': 'presenter'})
-    state = complete(state, ctx)
-    assert state['answers']['alice']['feedback']['correct']
     assert 'feedback' not in view(state, ctx, 'participant')['own']
     for status in ('error', 'timeout', 'refused', 'syntax'):
-        state, ctx = opened()
-        state, _ = submit(state, ctx)
-        state = complete(state, ctx, {'status': status})
-        own = view(state, ctx, 'participant')['own']
-        assert own['status'] == 'unavailable' and own['answer'] == worked()
-        assert 'correct' not in state['answers']['alice']['feedback']
-
+        assert complete(state, ctx, {'status': status}) == state
 
 def test_bounded_state_actor_versions_and_correlations(provider):
     state, ctx = opened()
@@ -235,7 +228,7 @@ def test_bounded_state_actor_versions_and_correlations(provider):
     for i in range(MAX_ACTORS):
         actor = 'actor' + str(i).zfill(3) + 'x' * 248
         state, effects = submit(state, ctx, actor=actor, answer=answer)
-        correlations.append(next(e['correlation_id'] for e in effects if e['kind'] == 'evaluate'))
+        correlations.append(state['answers'][actor]['correlation'])
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
     assert len(set(correlations)) == MAX_ACTORS
     for actor, slot in list(state['answers'].items()):
@@ -248,7 +241,7 @@ def test_bounded_state_actor_versions_and_correlations(provider):
     assert refused == {'refusal': 'capacity'}
     actor = next(iter(state['answers']))
     state, effects = submit(state, ctx, actor=actor, version=1, answer=worked(), request='replacement1')
-    assert {e['kind'] for e in effects} == {'evaluate', 'save-actor', 'set-credit'} and state['answers'][actor]['version'] == 2
+    assert {e['kind'] for e in effects} == {'save-actor', 'set-credit'} and state['answers'][actor]['version'] == 2
     assert len(model.canonical(shared_state(state))) < STATE_BYTES
     assert len(model.canonical({'state': shared_state(state), 'effects': effects})) < 256 * 1024
     for role in ('participant', 'projector', 'presenter'):
@@ -270,7 +263,6 @@ def test_bounded_state_actor_versions_and_correlations(provider):
 def runtime(tmp_path, provider):
     r = Runtime(tmp_path / "runtime.sqlite3", Catalog([provider]))
     spec = prepared()["prepared"]
-    spec["evaluations"]["analysis"]["engine"] = ENGINE
     r.ensure("lesson", TYPE, "closure", spec)
     r.activate("lesson", {(TYPE, "closure")})
     yield r
@@ -281,27 +273,19 @@ def test_incremental_counts_and_selected_snapshot_follow_replacements(provider):
     state, ctx = opened('practice')
     state, _ = submit(state, ctx)
     state, _ = submit(state, ctx, actor='bob')
-    assert state['counts'] == {'pending': 2, 'correct': 0, 'incorrect': 0, 'unavailable': 0}
-    state = complete(state, ctx)
+    assert state['counts'] == {'pending':0,'correct':2,'incorrect':0,'unavailable':0}
     teacher = ctx | {'role': 'presenter'}
-    state, _ = advance(state, command('select-answer', {'control': state['control_version'], 'actor': 'alice'}), teacher)
+    state, _ = advance(state, command('select-answer', {'control':state['control_version'],'actor':'alice'}), teacher)
     assert view(state, ctx, 'presenter')['selected']['feedback']['correct']
     old = copy.deepcopy(state['answers']['alice'])
-    state, _ = submit(state, ctx, version=1, request='replacement001')
-    assert state['counts'] == {'pending': 2, 'correct': 0, 'incorrect': 0, 'unavailable': 0}
-    assert view(state, ctx, 'presenter')['selected']['version'] == 2
-    assert view(state, ctx, 'presenter')['selected']['status'] == 'pending'
-    before = copy.deepcopy(state)
-    state = complete(state, ctx, correlation_id=old['correlation'])
-    assert state == before
-    state = complete(state, ctx, outcome={'status': 'timeout'})
-    assert state['counts'] == {'pending': 1, 'correct': 0, 'incorrect': 0, 'unavailable': 1}
-    assert view(state, ctx, 'presenter')['selected']['status'] == 'unavailable'
-    state = complete(state, ctx, outcome={'status': 'timeout'})
-    assert sum(state['counts'].values()) == len(state['answers']) == 2
-    for role in ('participant', 'projector'):
-        assert 'selected' not in view(state, ctx, role, 'bob')
-
+    state, _ = submit(state, ctx, version=1, request='replacement001', answer=worked('practice')|{'steps':[],'closure':0})
+    assert state['counts'] == {'pending':0,'correct':1,'incorrect':1,'unavailable':0}
+    selected = view(state, ctx, 'presenter')['selected']
+    assert selected['version']==2 and selected['status']=='saved' and not selected['feedback']['correct']
+    assert complete(state, ctx, correlation_id=old['correlation'])==state
+    assert complete(state, ctx, outcome={'status':'timeout'})==state
+    assert sum(state['counts'].values())==len(state['answers'])==2
+    for role in ('participant','projector'): assert 'selected' not in view(state,ctx,role,'bob')
 
 def envelope(operation, payload, request="request00001", epoch=1):
     return {"type": TYPE, "item": "closure", "operation": operation, "payload": payload,
@@ -309,34 +293,29 @@ def envelope(operation, payload, request="request00001", epoch=1):
 
 
 def test_installed_runtime_replay_replacement_reset_and_validated_views(runtime, monkeypatch):
-    r = runtime
-    monkeypatch.setattr("texstage.plugins.runtime.MAX_PENDING", 1)
-    assert r.command("lesson", "teacher", "presenter", envelope("open", {"control": 0}))["accepted"]
-    first = envelope("submit", {"phase": 1, "version": 0, "answer": worked()})
-    receipt = r.command("lesson", "alice", "participant", first)
-    assert r.command("lesson", "alice", "participant", first) == receipt
-    stale = first | {"request_id": "device000001"}
-    assert r.command("lesson", "alice", "participant", stale)["error"] == "stale-answer"
-    assert r.command("lesson", "teacher2", "presenter", envelope("close", {"control": 0}))["error"] == "stale-control"
-    old = r.lease("lesson", "presenter", now=100)[0]
-    replacement = envelope("submit", {"phase": 1, "version": 1, "answer": worked()}, "replacement01")
-    assert r.command("lesson", "alice", "participant", replacement)["accepted"]
-    assert not r.finish("lesson", "presenter", {k: old[k] for k in ("id","epoch","generation")} | {"outcome": {"status":"error"}}, now=101)
-    job = r.lease("lesson", "presenter", now=101)[0]
-    outcome = probe.run([{"seed": job["binding"]["seed"], "binding": job["binding"], "text": job["text"]}])[0]["outcome"]
-    assert r.finish("lesson", "presenter", {k: job[k] for k in ("id","epoch","generation")} | {"outcome":outcome}, now=102)
-    r.drain("lesson")
-    for role, surface in (("participant","participant-input"), ("presenter","presenter-controls"),
-                          ("presenter","presenter-overlay"), ("projector","projector-overlay")):
-        result = r.view("lesson", TYPE, "closure", role=role, surface=surface, actor="alice")
-        if role == "participant": assert "feedback" not in result["data"]["own"]
-        if role == "presenter": assert result["data"]["counts"]["correct"] == 1
-    reset = envelope("_reset", {}, "reset0000001")
-    assert r.command("lesson", "teacher", "presenter", reset)["epoch"] == 2
-    assert r.command("lesson", "teacher", "presenter", reset)["epoch"] == 2
-    assert r.command("lesson", "alice", "participant", first | {"request_id":"late00000001"})["error"] == "stale-epoch"
-    assert not r.finish("lesson", "presenter", {k: job[k] for k in ("id","epoch","generation")} | {"outcome":outcome}, now=103)
-
+    r=runtime
+    monkeypatch.setattr('texstage.plugins.runtime.MAX_PENDING',0)
+    assert r.command('lesson','teacher','presenter',envelope('open',{'control':0}))['accepted']
+    first=envelope('submit',{'phase':1,'version':0,'answer':worked()})
+    receipt=r.command('lesson','alice','participant',first)
+    assert receipt['accepted'] and receipt['jobs']=={}
+    assert r.command('lesson','alice','participant',first)==receipt
+    assert r.command('lesson','alice','participant',first|{'request_id':'device000001'})['error']=='stale-answer'
+    assert r.command('lesson','teacher2','presenter',envelope('close',{'control':0}))['error']=='stale-control'
+    replacement=envelope('submit',{'phase':1,'version':1,'answer':worked()},'replacement01')
+    assert r.command('lesson','alice','participant',replacement)['accepted']
+    assert r.lease('lesson','presenter')==[]
+    forged={'id':'0'*32,'epoch':1,'generation':1,'outcome':{'status':'error'}}
+    assert not r.finish('lesson','presenter',forged)
+    for role,surface in (('participant','participant-input'),('presenter','presenter-controls'),('presenter','presenter-overlay'),('projector','projector-overlay')):
+        result=r.view('lesson',TYPE,'closure',role,surface,'alice')
+        if role=='participant':assert 'feedback' not in result['data']['own']
+        if role=='presenter':assert result['data']['counts']['correct']==1
+    reset=envelope('_reset',{},'reset0000001')
+    assert r.command('lesson','teacher','presenter',reset)['epoch']==2
+    assert r.command('lesson','teacher','presenter',reset)['epoch']==2
+    assert r.command('lesson','alice','participant',first|{'request_id':'late00000001'})['error']=='stale-epoch'
+    assert not r.finish('lesson','presenter',forged)
 
 @pytest.mark.skipif(shutil.which("pdflatex") is None, reason="needs pdfLaTeX")
 @pytest.mark.parametrize("language", ["en", "de"])
