@@ -19,10 +19,16 @@ explore a lossless BCNF decomposition that loses an FD. Its data are synthetic.
 Use Python 3.12+ and pdfLaTeX/latexmk. Start with an isolated environment and a
 compatible experimental TeXStage wheel. The tested host revision and artifact
 hashes are in the [points validation record](design/normalization-workshop-points-validation.md).
+The published compatible source pin for this integration is
+[TeXStage f568da90ef4a8986012e47721bb11d5cb042186d](https://github.com/stefanjdecker/texstage/commit/f568da90ef4a8986012e47721bb11d5cb042186d).
+Build that host first with its locked development/build requirements. The
+[Normalization CI workflow](../.github/workflows/normalization-conformance.yml)
+uses this immutable pin and tests the installed workshop and browser interactions.
+
 Version 0.5.0 requires host points plus bounded item records, actor-scoped updates
 and deterministic result reuse. The dependency version `texstage>=0.2.1.dev7`
-alone does not identify unpublished
-host changes. No catalog release of this workshop is published yet.
+alone does not identify the exact host bytes; use the commit pin above.
+No catalog release of this workshop is published yet.
 
 For development, install the matching host's locked development/build
 requirements and host wheel first. From the plugin collection root:
