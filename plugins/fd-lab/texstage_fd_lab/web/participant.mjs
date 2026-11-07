@@ -8,10 +8,12 @@ export function mount(ctx) {
   const w = words(ctx.language), root = shell(ctx), seed = ctx.item.seed;
   publicMaterial(ctx, root, w);
   const phase = el("p"), notice = el("p", local(ctx.item.sharing_notice, ctx.language));
+  root.append(el("p", ctx.item.points ? `${w.maximumPoints}: ${ctx.item.points}. ${w.pointsOnReveal}` : w.noPoints));
   root.append(phase, notice, el("p", ctx.item.feedback === "practice" ? w.practice : w.withheld), el("p", w[ctx.item.mode + "Help"]));
   let current, epoch, version = 0, dirty = false, busy = false, pending = null, hasConflict = false;
   const editor = lessonEditor(ctx, root, w, () => { dirty = true; error.textContent = ""; draw(); });
   const message = el("p", "", {role:"status", "aria-live":"polite"}), error = el("p", "", {role:"alert"});
+  const points = el("p", "", {role:"status", "aria-live":"polite", "data-fd-points":""});
   const conflict = el("div", undefined, {class:"fd-conflict", hidden:""}); conflict.append(el("p", w.conflict));
   const adopt = (keep = false) => {
     epoch = current.epoch; version = current.data.own?.version || 0;
@@ -32,15 +34,16 @@ export function mount(ctx) {
       if (["stale-answer", "stale-epoch"].includes(e?.code)) hasConflict = true;
     } finally { busy = false; draw(); }
   }, ctx.signal);
-  root.append(conflict, save, message, error);
+  root.append(conflict, save, message, points, error);
   const worked = workedPanel(root, w, seed);
   function draw() {
     if (!current) return;
     const d = current.data;
-    phase.textContent = `${w.phase}: ${w[d.phase]}. ${w.count}: ${d.count}.`;
+    phase.textContent = `${w.phase}: ${w[d.phase]}.`;
     conflict.hidden = !hasConflict;
     save.disabled = busy || pending !== null || hasConflict || !d.active || d.phase !== "open";
     message.textContent = dirty ? w.draft : feedback(d.own, w, seed);
+    points.textContent = Number.isInteger(d.own?.points) ? `${w.awardedPoints}: ${d.own.points} / ${ctx.item.points}` : "";
     worked(d.worked, ctx.language);
   }
   return {

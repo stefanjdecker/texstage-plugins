@@ -1,0 +1,38 @@
+{
+  "host_commit": "6b64828b98e9908fc67c265cab31a71a216308d5",
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.6.0",
+    "payload": "17e3efd1a57c9500f6a2debfd36b2647d93e0b419817acc849559012920a6c63"
+  },
+  "host_version": "0.2.1.dev7",
+  "artifacts": {
+    "host_wheel": {
+      "name": "wheels/texstage-0.2.1.dev7-py3-none-any.whl",
+      "sha256": "52e2ca02a43ef54678cac5d10be774209b2c5e9ede2d57d2cd6488432963b287"
+    },
+    "plugin_wheel": {
+      "name": "wheels/texstage_fd_lab-0.6.0-py3-none-any.whl",
+      "sha256": "86be26ee668d971f26b660442664bdd4cb9550d120af398f0fce963752600348"
+    },
+    "plugin_sdist": {
+      "name": "wheels/texstage_fd_lab-0.6.0.tar.gz",
+      "sha256": "30dc32c63a3efb463289583c1ad1a553b6be6e0e5f7adb3c462e6abcee92f9f0"
+    }
+  },
+  "tests": {
+    "host_passed": 269,
+    "host_skipped": 1,
+    "host_skip_reason": "symlink creation not permitted on this Windows host",
+    "fd_passed": 153,
+    "fd_skipped": 0,
+    "engine_cases": 30,
+    "worker_bundles_verified": 6,
+    "handoff_files_verified": 42
+  },
+  "collection_parents": {
+    "HEAD": "353638e51fb73dbaa7b5a66482a9825e75a539c2",
+    "codex/fd-points-integration": "4853cf444b524e810794d70a7cfd042f3347a89e"
+  },
+  "scope": "Local merge validation, Windows Python 3.14.4; hosted CI is separate. No physical phones."
+}

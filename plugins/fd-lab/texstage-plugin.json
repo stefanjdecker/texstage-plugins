@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 4,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.fdlab",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "description": "FD reasoning and prepared closure, candidate-key and implication lessons.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -41,15 +41,12 @@
         "content_api": 1,
         "authoring_hook": "exercise",
         "state_hook": "exercise",
-        "state_schema": 1,
+        "state_schema": 4,
+        "participant_updates": "actor",
         "latex_packages": [
           "texstage_fd_lab/latex/texstage-fd-lab.sty"
         ],
-        "evaluations": {
-          "analysis": {
-            "engine": "io.github.stefanjdecker.fdlab.dependencies"
-          }
-        },
+        "evaluations": {},
         "views": {
           "participant-input": "texstage_fd_lab/web/participant.mjs",
           "presenter-controls": "texstage_fd_lab/web/presenter-controls.mjs",
@@ -96,14 +93,16 @@
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_fd_lab/schemas/commands/select.json"
+            "schema": "texstage_fd_lab/schemas/commands/select.json",
+            "record_actor_field": "actor"
           },
           "select-demonstration": {
             "from": [
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_fd_lab/schemas/commands/select.json"
+            "schema": "texstage_fd_lab/schemas/commands/select.json",
+            "record_actor_field": "actor"
           },
           "demonstrate": {
             "from": [
@@ -111,9 +110,27 @@
             ],
             "revision_policy": "latest",
             "schema": "texstage_fd_lab/schemas/commands/demonstrate.json"
+          },
+          "roster-page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/roster-page.json"
           }
         },
-        "fallback": "static-slide"
+        "fallback": "static-slide",
+        "actor_records": {
+          "capacity": 1000,
+          "page_size": 25,
+          "page_field": "actor_page",
+          "value_schema": "texstage_fd_lab/schemas/actor-value-v1.json",
+          "summary_schema": "texstage_fd_lab/schemas/actor-summary-v1.json"
+        },
+        "scoring": {
+          "policy": "fixed-v1",
+          "points_field": "points"
+        }
       }
     }
   },

@@ -2,6 +2,7 @@
 """Installed closure lesson: authoring, facts, races, privacy and real exports."""
 import copy
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -12,7 +13,8 @@ from texstage.plugins.catalog import Catalog, discover
 from texstage.plugins.runtime import Runtime
 from texstage_fd_lab import model
 from texstage_fd_lab.authoring import prepare_lesson, TYPE, ENGINE
-from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES
+from texstage_fd_lab.grading import feedback as verify_certificate
+from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES, MAX_ACTORS, PAGE_SIZE, _category
 from test_engine import probe
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -46,10 +48,40 @@ def command(op, payload, *, actor="alice", request="request00001"):
     return {"kind": "command", "operation": op, "payload": payload, "actor": actor, "request_id": request}
 
 
+def shared_state(state):
+    return {k: v for k, v in state.items() if k != "answers"}
+
+
+def hook_context(state, ctx, actor=None, role=None):
+    answers = state.get("answers", {})
+    role = role or ctx["role"]
+    value = ctx | {"role": role, "actor": actor, "records": {"actor": actor,
+                   "value": copy.deepcopy(answers.get(actor)), "count": len(answers),
+                   "number": list(answers).index(actor)+1 if actor in answers else len(answers)+1}}
+    if role == "presenter":
+        pages = max(1, (len(answers) + PAGE_SIZE - 1) // PAGE_SIZE)
+        page = min(state.get("actor_page", 0), pages - 1)
+        value['record_page'] = {"pages": pages, "page": page, "total": len(answers),
+            "rows": [{"actor": a, "number": i, "summary": {"status": _category(s)}} for i,(a,s) in
+                     enumerate(list(answers.items())[page*PAGE_SIZE:(page+1)*PAGE_SIZE], page*PAGE_SIZE+1)]}
+    return value
+
+
+def transition(state, event, ctx):
+    actor = event.get("actor")
+    if event.get("operation") in ('select-answer', 'select-demonstration'):
+        actor = event['payload']['actor']
+    return Lesson().transition(shared_state(state), event, hook_context(state, ctx, actor))
+
+
 def advance(state, event, ctx):
-    result = json_value(Lesson().transition(state, event, ctx))
+    result = json_value(transition(state, event, ctx))
     assert "refusal" not in result, result
-    return result["state"], result["effects"]
+    answers = dict(state.get("answers", {}))
+    for effect in result['effects']:
+        if effect['kind'] == 'save-actor': answers[event['actor']] = effect['value']
+    # A test-only aggregate for readable assertions; never passed to the hook.
+    return result["state"] | {"answers": answers}, result["effects"]
 
 
 def opened(mode="closure"):
@@ -74,7 +106,7 @@ def complete(state, ctx, outcome=None, **changes):
 
 
 def view(state, ctx, role, actor="alice"):
-    return Lesson().view(state, {"role": role, "actor": actor}, ctx)
+    return Lesson().view(shared_state(state), {"role": role, "actor": actor}, hook_context(state, ctx, actor, role))
 
 
 @pytest.mark.parametrize('policy', ['closure', 'practice'])
@@ -85,7 +117,6 @@ def test_authoring_privacy_and_feedback_release(provider, policy):
     assert 'One worked answer' in made['fragments']['solutions']
     state, ctx = opened(policy)
     state, _ = submit(state, ctx)
-    state = complete(state, ctx)
     own = view(state, ctx, 'participant')['own']
     assert ('feedback' in own) == (policy == 'practice')
     assert 'own' not in view(state, ctx, 'participant', 'bob')
@@ -127,7 +158,6 @@ def test_authoring_language_escaping_and_rejections(provider):
 def test_informative_math_feedback(provider, answer, reason):
     state, ctx = opened()
     state, _ = submit(state, ctx, answer=answer)
-    state = complete(state, ctx)
     feedback = state['answers']['alice']['feedback']
     assert feedback['reason'] == reason and feedback['correct'] is False
     assert state['answers']['alice']['status'] == 'saved'
@@ -137,13 +167,12 @@ def test_alternative_proof_and_guarded_classroom_controls(provider):
     state, ctx = opened('practice')
     answer = worked('practice') | {'steps': [2, 3, 0]}
     state, first = submit(state, ctx, answer=answer)
-    state = complete(state, ctx)
     assert state['answers']['alice']['feedback']['correct']
     teacher = ctx | {'role': 'presenter'}
-    assert Lesson().transition(state, command('close', {'control': 0}), teacher) == {'refusal': 'stale-control'}
-    assert Lesson().transition(state, command('close', {'control': 1}), ctx) == {'refusal': 'role'}
-    assert Lesson().transition(state, command('select-demonstration', {'control': 1, 'actor': 'alice'}), teacher) == {'refusal': 'phase'}
-    assert Lesson().transition(state, command('demonstrate', {'control': 1, 'step': 0}), teacher) == {'refusal': 'phase'}
+    assert transition(state, command('close', {'control': 0}), teacher) == {'refusal': 'stale-control'}
+    assert transition(state, command('close', {'control': 1}), ctx) == {'refusal': 'role'}
+    assert transition(state, command('select-demonstration', {'control': 1, 'actor': 'alice'}), teacher) == {'refusal': 'phase'}
+    assert transition(state, command('demonstrate', {'control': 1, 'step': 0}), teacher) == {'refusal': 'phase'}
     state, _ = advance(state, command('reveal', {'control': 1}), teacher)
     state, _ = advance(state, command('select-demonstration', {'control': 2, 'actor': 'alice'}), teacher)
     assert view(state, ctx, 'projector')['demonstration'] == answer
@@ -152,7 +181,7 @@ def test_alternative_proof_and_guarded_classroom_controls(provider):
     projected = view(state, ctx, 'projector')
     assert projected['walkthrough'] and projected['demonstration']['closure'] == 7
     assert projected['demonstration']['steps'] == [0]
-    assert Lesson().transition(state, command('demonstrate', {'control': 4, 'step': 8}), teacher) == {'refusal': 'invalid-step'}
+    assert transition(state, command('demonstrate', {'control': 4, 'step': 8}), teacher) == {'refusal': 'invalid-step'}
     state, _ = advance(state, command('open', {'control': 4}), teacher)
     assert 'demonstration' not in view(state, ctx, 'projector') and state['demo_step'] is None
     assert 'worked' not in view(state, ctx, 'participant')
@@ -171,69 +200,92 @@ def test_facts_must_match_the_exact_submission(provider, fault):
     elif fault == 'error': data['facts']['trace']['error'] = {'kind': 'no-progress', 'step': 0, 'missing': 0}
     elif fault == 'extra': data['facts']['extra'] = True
     else: data['format'] = True
-    state = complete(state, ctx, {'status': 'ok', 'data': data})
-    assert state['answers']['alice']['status'] == 'unavailable'
-    assert 'correct' not in state['answers']['alice']['feedback']
+    result = verify_certificate(ctx['item']['public'], ctx['item']['private'], state['answers']['alice'], {'status':'ok','data':data})
+    assert result == {'code':'unavailable','detail':'facts'}
+    assert complete(state, ctx, {'status':'ok','data':data}) == state
 
 
-def test_replacement_close_and_unavailable_preserve_answers(provider):
+def test_replacement_close_and_late_engine_results_preserve_answers(provider):
     state, ctx = opened()
     state, first = submit(state, ctx)
+    assert {e['kind'] for e in first} == {'save-actor','set-credit'}
+    old = copy.deepcopy(state['answers']['alice'])
     state, second = submit(state, ctx, version=1, request='replace00001')
-    assert second[0] == {'kind': 'cancel-evaluation', 'correlation_id': first[0]['correlation_id']}
-    assert complete(state, ctx, correlation_id=first[0]['correlation_id']) == state
+    assert {e['kind'] for e in second} == {'save-actor','set-credit'}
+    assert state['answers']['alice']['feedback']['correct']
+    assert complete(state, ctx, correlation_id=old['correlation']) == state
     assert complete(state, ctx, binding='other') == state
     assert complete(state, ctx | {'epoch': 2}) == state
     state, _ = advance(state, command('close', {'control': 1}), ctx | {'role': 'presenter'})
-    state = complete(state, ctx)
-    assert state['answers']['alice']['feedback']['correct']
     assert 'feedback' not in view(state, ctx, 'participant')['own']
     for status in ('error', 'timeout', 'refused', 'syntax'):
-        state, ctx = opened()
-        state, _ = submit(state, ctx)
-        state = complete(state, ctx, {'status': status})
-        own = view(state, ctx, 'participant')['own']
-        assert own['status'] == 'unavailable' and own['answer'] == worked()
-        assert 'correct' not in state['answers']['alice']['feedback']
-
+        assert complete(state, ctx, {'status': status}) == state
 
 def test_bounded_state_actor_versions_and_correlations(provider):
     state, ctx = opened()
     answer = worked() | {'steps': [2] * 8, 'closure': 63}
     correlations = []
-    for i in range(64):
+    for i in range(MAX_ACTORS):
         actor = 'actor' + str(i).zfill(3) + 'x' * 248
         state, effects = submit(state, ctx, actor=actor, answer=answer)
-        correlations.append(effects[-1]['correlation_id'])
+        correlations.append(state['answers'][actor]['correlation'])
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
-    assert len(set(correlations)) == 64
+    assert len(set(correlations)) == MAX_ACTORS
     for actor, slot in list(state['answers'].items()):
         state, _ = advance(state, {'kind': 'evaluation.finished', 'actor': actor, 'binding': 'analysis',
             'correlation_id': slot['correlation'], 'outcome': {'status': 'ok',
             'data': model.analyze(ctx['item']['public']['seed'], slot['answer'])}}, ctx)
         assert state['answers'][actor]['status'] == 'saved'
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
-    refused = Lesson().transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}, actor='extra'), ctx)
+    refused = transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}, actor='extra'), ctx)
     assert refused == {'refusal': 'capacity'}
     actor = next(iter(state['answers']))
     state, effects = submit(state, ctx, actor=actor, version=1, answer=worked(), request='replacement1')
-    assert len(effects) == 1 and state['answers'][actor]['version'] == 2
-    assert len(model.canonical(state)) < STATE_BYTES
-    assert len(model.canonical({'state': state, 'effects': effects})) < 256 * 1024
+    assert {e['kind'] for e in effects} == {'save-actor', 'set-credit'} and state['answers'][actor]['version'] == 2
+    assert len(model.canonical(shared_state(state))) < STATE_BYTES
+    assert len(model.canonical({'state': shared_state(state), 'effects': effects})) < 256 * 1024
     for role in ('participant', 'projector', 'presenter'):
         assert len(model.canonical(view(state, ctx, role, actor))) < 128 * 1024
+    teacher = ctx | {'role': 'presenter'}
+    state, _ = advance(state, command('roster-page', {'control': state['control_version'], 'page': 39}), teacher)
+    roster = view(state, ctx, 'presenter')
+    assert roster['roster_pages'] == 40 and len(roster['participants']) == 25
+    assert [p['number'] for p in roster['participants']] == list(range(976, 1001))
+    last = roster['participants'][-1]['actor']
+    state, _ = advance(state, command('select-answer', {'control': state['control_version'], 'actor': last}), teacher)
+    assert view(state, ctx, 'presenter')['selected']['answer'] == state['answers'][last]['answer']
+    assert 'participants' not in view(state, ctx, 'participant', last)
+    assert 'selected' not in view(state, ctx, 'projector')
+    assert transition(state, command('roster-page', {'control': state['control_version'], 'page': 40}), teacher) == {'refusal': 'invalid-page'}
 
 
 @pytest.fixture
 def runtime(tmp_path, provider):
     r = Runtime(tmp_path / "runtime.sqlite3", Catalog([provider]))
     spec = prepared()["prepared"]
-    spec["evaluations"]["analysis"]["engine"] = ENGINE
     r.ensure("lesson", TYPE, "closure", spec)
     r.activate("lesson", {(TYPE, "closure")})
     yield r
     r.close()
 
+
+def test_incremental_counts_and_selected_snapshot_follow_replacements(provider):
+    state, ctx = opened('practice')
+    state, _ = submit(state, ctx)
+    state, _ = submit(state, ctx, actor='bob')
+    assert state['counts'] == {'pending':0,'correct':2,'incorrect':0,'unavailable':0}
+    teacher = ctx | {'role': 'presenter'}
+    state, _ = advance(state, command('select-answer', {'control':state['control_version'],'actor':'alice'}), teacher)
+    assert view(state, ctx, 'presenter')['selected']['feedback']['correct']
+    old = copy.deepcopy(state['answers']['alice'])
+    state, _ = submit(state, ctx, version=1, request='replacement001', answer=worked('practice')|{'steps':[],'closure':0})
+    assert state['counts'] == {'pending':0,'correct':1,'incorrect':1,'unavailable':0}
+    selected = view(state, ctx, 'presenter')['selected']
+    assert selected['version']==2 and selected['status']=='saved' and not selected['feedback']['correct']
+    assert complete(state, ctx, correlation_id=old['correlation'])==state
+    assert complete(state, ctx, outcome={'status':'timeout'})==state
+    assert sum(state['counts'].values())==len(state['answers'])==2
+    for role in ('participant','projector'): assert 'selected' not in view(state,ctx,role,'bob')
 
 def envelope(operation, payload, request="request00001", epoch=1):
     return {"type": TYPE, "item": "closure", "operation": operation, "payload": payload,
@@ -241,37 +293,33 @@ def envelope(operation, payload, request="request00001", epoch=1):
 
 
 def test_installed_runtime_replay_replacement_reset_and_validated_views(runtime, monkeypatch):
-    r = runtime
-    monkeypatch.setattr("texstage.plugins.runtime.MAX_PENDING", 1)
-    assert r.command("lesson", "teacher", "presenter", envelope("open", {"control": 0}))["accepted"]
-    first = envelope("submit", {"phase": 1, "version": 0, "answer": worked()})
-    receipt = r.command("lesson", "alice", "participant", first)
-    assert r.command("lesson", "alice", "participant", first) == receipt
-    stale = first | {"request_id": "device000001"}
-    assert r.command("lesson", "alice", "participant", stale)["error"] == "stale-answer"
-    assert r.command("lesson", "teacher2", "presenter", envelope("close", {"control": 0}))["error"] == "stale-control"
-    old = r.lease("lesson", "presenter", now=100)[0]
-    replacement = envelope("submit", {"phase": 1, "version": 1, "answer": worked()}, "replacement01")
-    assert r.command("lesson", "alice", "participant", replacement)["accepted"]
-    assert not r.finish("lesson", "presenter", {k: old[k] for k in ("id","epoch","generation")} | {"outcome": {"status":"error"}}, now=101)
-    job = r.lease("lesson", "presenter", now=101)[0]
-    outcome = probe.run([{"seed": job["binding"]["seed"], "binding": job["binding"], "text": job["text"]}])[0]["outcome"]
-    assert r.finish("lesson", "presenter", {k: job[k] for k in ("id","epoch","generation")} | {"outcome":outcome}, now=102)
-    r.drain("lesson")
-    for role, surface in (("participant","participant-input"), ("presenter","presenter-controls"),
-                          ("presenter","presenter-overlay"), ("projector","projector-overlay")):
-        result = r.view("lesson", TYPE, "closure", role=role, surface=surface, actor="alice")
-        if role == "participant": assert "feedback" not in result["data"]["own"]
-        if role == "presenter": assert result["data"]["counts"]["correct"] == 1
-    reset = envelope("_reset", {}, "reset0000001")
-    assert r.command("lesson", "teacher", "presenter", reset)["epoch"] == 2
-    assert r.command("lesson", "teacher", "presenter", reset)["epoch"] == 2
-    assert r.command("lesson", "alice", "participant", first | {"request_id":"late00000001"})["error"] == "stale-epoch"
-    assert not r.finish("lesson", "presenter", {k: job[k] for k in ("id","epoch","generation")} | {"outcome":outcome}, now=103)
-
+    r=runtime
+    monkeypatch.setattr('texstage.plugins.runtime.MAX_PENDING',0)
+    assert r.command('lesson','teacher','presenter',envelope('open',{'control':0}))['accepted']
+    first=envelope('submit',{'phase':1,'version':0,'answer':worked()})
+    receipt=r.command('lesson','alice','participant',first)
+    assert receipt['accepted'] and receipt['jobs']=={}
+    assert r.command('lesson','alice','participant',first)==receipt
+    assert r.command('lesson','alice','participant',first|{'request_id':'device000001'})['error']=='stale-answer'
+    assert r.command('lesson','teacher2','presenter',envelope('close',{'control':0}))['error']=='stale-control'
+    replacement=envelope('submit',{'phase':1,'version':1,'answer':worked()},'replacement01')
+    assert r.command('lesson','alice','participant',replacement)['accepted']
+    assert r.lease('lesson','presenter')==[]
+    forged={'id':'0'*32,'epoch':1,'generation':1,'outcome':{'status':'error'}}
+    assert not r.finish('lesson','presenter',forged)
+    for role,surface in (('participant','participant-input'),('presenter','presenter-controls'),('presenter','presenter-overlay'),('projector','projector-overlay')):
+        result=r.view('lesson',TYPE,'closure',role,surface,'alice')
+        if role=='participant':assert 'feedback' not in result['data']['own']
+        if role=='presenter':assert result['data']['counts']['correct']==1
+    reset=envelope('_reset',{},'reset0000001')
+    assert r.command('lesson','teacher','presenter',reset)['epoch']==2
+    assert r.command('lesson','teacher','presenter',reset)['epoch']==2
+    assert r.command('lesson','alice','participant',first|{'request_id':'late00000001'})['error']=='stale-epoch'
+    assert not r.finish('lesson','presenter',forged)
 
 @pytest.mark.skipif(shutil.which("pdflatex") is None, reason="needs pdfLaTeX")
-def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
+@pytest.mark.parametrize("language", ["en", "de"])
+def test_installed_authoring_all_editions_and_freshness(tmp_path, provider, language):
     from texstage.build.builder import BuildOptions, build
     from texstage.build.latex import compile_deck
     from texstage.build.compiler import compile_latex
@@ -280,6 +328,14 @@ def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
     from texstage.server.bundles import load_bundle
     deck = tmp_path / "deck"
     shutil.copytree(ROOT / "examples/functional-dependencies", deck)
+    if language == "de":
+        source = deck / "lesson.tex"
+        source.write_text(source.read_text(encoding="utf-8").replace(
+            "[ngerman,english]{babel}", "[english,ngerman]{babel}"), encoding="utf-8")
+        sidecar = deck / "lesson.activities.json"
+        data = json.loads(sidecar.read_text(encoding="utf-8"))
+        data["language"] = "de"
+        sidecar.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     catalog = Catalog([provider])
     profile = tmp_path / "profile"
     enable(profile, provider.id, provider.version, provider.payload)
@@ -289,6 +345,7 @@ def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
     result = build(deck / "lesson.tex", out, options)
     assert not result.problems
     bundle = load_bundle(result.bundle, catalog=catalog)
+    assert bundle.deck_json["language"] == language
     assert set(bundle.items[TYPE]) == {"closure", "practice", "keys_one", "keys_all", "implied", "refuted", "different_sizes", "empty_key"}
     public = model.canonical(bundle.deck_json)
     assert '"expected"' not in public and '"worked"' not in public and '"evaluations"' not in public
@@ -297,14 +354,21 @@ def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
     def text(path):
         with Pdf(path) as pdf: return " ".join(page.text() for page in pdf)
     handout = compile_deck(deck / "lesson.tex", "handout", out, plugins=catalog, preparation=options.preparation)
-    assert "One worked answer" not in text(handout.pdf)
-    assert "One worked answer" not in text(result.stage.pdf)
-    assert "One worked answer" in text(out / "build/lesson-solutions.pdf")
+    heading = "One worked answer" if language == "en" else "Eine mögliche Lösung"
+    assert heading not in text(handout.pdf)
+    assert heading not in text(result.stage.pdf)
+    assert heading in text(out / "build/lesson-solutions.pdf")
     exported = options.preparation.export(deck / "lesson.tex", catalog)
     for edition in ("handout", "solutions"):
         direct = compile_latex(exported[edition], output_dir=out / ("direct-" + edition), passes=2)
         assert direct.returncode == 0, direct.stdout[-3000:]
-        assert ("One worked answer" in text(direct.pdf)) == (edition == "solutions")
+        assert (heading in text(direct.pdf)) == (edition == "solutions")
+    if os.environ.get("FD_TEST_EXPORTS"):
+        export = Path(os.environ["FD_TEST_EXPORTS"]) / language
+        export.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(result.bundle, export / "lesson.bundle")
+        shutil.copyfile(handout.pdf, export / "handout.pdf")
+        shutil.copyfile(out / "build/lesson-solutions.pdf", export / "solutions.pdf")
     path = deck / "activities/closure.json"
     path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
     stale = compile_latex(exported["handout"], output_dir=out / "stale")

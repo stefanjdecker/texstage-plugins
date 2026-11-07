@@ -1,17 +1,38 @@
 # FD Lab: implementation plan
 
-Status: F1-F3 implemented; F4 automated load, recovery and browser-security
-gates pass locally, 2026-11-07. The [performance follow-up](functional-dependencies-f4-performance.md)
-supersedes the open WebKit gate in the [initial F4 evidence](functional-dependencies-f4-validation.md).
+Current path, 2026-11-07: FD Lab 0.6.0 uses manifest revision 4, state schema 4,
+typed `SaveActor` records (25 summaries per page) and host-owned `SetCredit` /
+`PublishPoints` scoring. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+Prepared lessons check private closure tables and bounded proof certificates in
+the provider hook when accepting an answer. They declare no evaluation bindings
+and enqueue no browser jobs. Answer, feedback, credit and receipt commit together;
+there is no accepted-but-pending interval. Hook/storage failures remain retryable
+submission failures, not incorrect answers. The separate mathematical engine
+keeps its v1 formats, fresh workers, time limits and network restrictions.
+
+This supersedes the asynchronous lesson path described in the historical sections
+below. It requires no new core API or relaxed security policy. Rebuild bundles,
+review/enable the new payload and start new sessions when upgrading. See the
+[prepared-grading performance record](functional-dependencies-prepared-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). Earlier measurements apply
+only to their own artifacts; the saved pending/unavailable fields in the view
+schema remain readable but are not emitted for newly accepted 0.6.0 answers.
+
+Status, 2026-11-07: F1-F3 implemented; F5 hosted conformance passed for 0.3.0.
+FD Lab 0.4.0 now uses shared host actor slots, paginated presenter views and
+bounded evaluator batches. The [600-participant record](functional-dependencies-600-validation.md)
+reports completed load, replacement, reconnect and browser checks. The original
+10-second feedback p95 gate remains open; input responsiveness now passes in
+all three browsers. Earlier [F5](functional-dependencies-f5-validation.md) and
+[F4](functional-dependencies-f4-performance.md) evidence remains tied to its own artifacts.
 The package owns engine, command and four audience-view schemas, a thin LaTeX
 style, prepared exercise/solution fragments and phone/presenter controls.
 See the [F1 record](functional-dependencies-f1-validation.md),
 [F2 record](functional-dependencies-f2-validation.md) and [lesson guide](../fd-lesson.md).
 F3 adds one/all key editors, derivation/counterexample editors, the full workshop
 sequence and bilingual guides. See the [F3 record](functional-dependencies-f3-validation.md).
-F4's physical-phone check remains deferred at the user's request. The unchanged
-input/feedback targets pass in Chromium, Firefox and WebKit on the measured
-Windows machine. F5 release remains pending; these are local loopback results.
+F4's physical-phone check remains deferred at the user's request. F5 has not
+published permanent release assets or a catalog entry; CI artifacts expire.
 Privacy/race/storage checks already run in F2/F3.
 Start with [the design](functional-dependencies.md) and
 [the contract](functional-dependencies-contract.md).
@@ -29,8 +50,9 @@ Host `de33515` already provides typed facts, revision-2 views, prepared authorin
 structured errors, atomic cancellation/replacement, mount lifecycle handling and
 epoch reset. The Firefox/WebKit worker correction is already implemented under
 unchanged restrictions. Reuse and regression-test these features; do not reopen
-them as speculative prerequisites. Remaining shared gates are measured queue
-fairness/classroom throughput and a published immutable compatible host release.
+them as speculative prerequisites. The current published compatible host commit
+is `34d0c537135f32b0690147dbb66dd8ff155987f8`. Remaining shared gates are consistent
+classroom capacity measurements and immutable reviewed release assets.
 Neither the transaction lesson nor the relational visual editor blocks this plan.
 
 ## Planned files
@@ -203,18 +225,46 @@ Retain existing provider and no-plugin behavior. Add a reviewed catalog entry
 only when immutable release artifacts and matching published host pins exist.
 Publishing, commits, pushes and course migration are separate requested actions.
 
+## F6 — 600-participant capacity
+
+Implemented in the paired `codex/600-participant-capacity` branches: generic
+host storage and targeted notifications, atomic result delivery, bounded
+concurrency, FD state schema 2, 100-answer pages, and automated 600-participant
+bursts in all three modes/browsers with a separate 1,000-participant headroom run.
+The [validation report](functional-dependencies-600-validation.md) distinguishes
+correctness from the unmet feedback p95 target. Old providers retain their
+existing storage model and capacity limits. The original repositories and courses
+are unchanged.
+
 ## Recommended next step
 
-Proceed with F5: finalize a compatible host commit including the reviewed
-renderer changes, publish and pin that immutable host, then run the existing
-Linux producer / Windows consumer CI and its three-browser matrix. Verify that
-TeX authoring executes with both language packs. Catalog publication is a later,
-explicit action. Recheck capacity on the intended lecture hardware and network.
-Physical-phone validation remains deferred under the automated-only scope.
+The parallel host storage APIs are reconciled in FD Lab 0.5.0 on the isolated
+`codex/fd-points-integration` branch. The shared working checkout was preserved;
+the common API snapshot has an exact local commit. See the
+[integration and scoring record](functional-dependencies-points-validation.md).
 
-The performance follow-up adds a bounded cache of immutable asset bytes and
-cost-aware projection coalescing. Every job retains a fresh restricted worker,
-two-job leases and the two-second evaluation deadline. The FD provider remains
-byte-identical at 0.3.0. The new record includes combined FD/relational/transaction
-security checks, full FD UI checks and exact artifact identities. Historical
+Improve presenter evaluation throughput, especially in Firefox and WebKit, and
+repeat the unchanged latency gates. Publish the compatible host before using
+the new collection CI pin, then run hosted conformance with identical artifacts.
+Measure the intended deployment/network before advertising lecture capacity.
+Physical-phone validation remains deferred; catalog publication is a later action.
+
+## Historical F5 follow-up
+
+F5 used published host `34d0c537135f32b0690147dbb66dd8ff155987f8`, including the
+reviewed renderer, keyboard and language fixes. The [release procedure](../fd-release.md)
+requires real English/German authoring and byte-verified artifact transfer to
+Windows and all three browsers. These gates passed in the
+[recorded hosted run](functional-dependencies-f5-validation.md). Local
+Chromium input delays and the WebKit slide-view setup timeout were still open before claiming
+64-student readiness. F6 supersedes those local checks for its exact artifacts;
+recheck capacity on the intended lecture hardware and
+network. Catalog publication remains a later, explicit action. Physical-phone
+validation remains deferred under the automated-only scope.
+
+The earlier performance follow-up added a bounded cache of immutable asset bytes
+and cost-aware projection coalescing. It retained a fresh restricted worker per
+job, two-job leases and the two-second evaluation deadline. The FD provider stayed
+unchanged at 0.3.0 during that optimization. That record includes combined
+FD/relational/transaction security checks, full FD UI checks and exact artifact identities. Historical
 F1-F4 evidence is retained rather than rewritten.

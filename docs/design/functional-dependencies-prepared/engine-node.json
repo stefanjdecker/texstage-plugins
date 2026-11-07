@@ -1,0 +1,14 @@
+{
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.6.0",
+    "payload": "f6c07d6f525838f8643afc1c26fa8c9fbdbcde32b973d08d2551c54d35d7bbca"
+  },
+  "host_version": "0.2.1.dev5",
+  "result_schema_sha256": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "cases": 30,
+  "max_evaluation_ms": 4.866900000000001,
+  "scope": "Engine facts and validators; see fd_lesson_browser.cjs and test_lesson.py for classroom coverage"
+}

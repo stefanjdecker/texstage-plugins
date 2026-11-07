@@ -148,9 +148,22 @@ by the [F3 classroom record](docs/design/functional-dependencies-f3-validation.m
 [F4 load/reconnect measurements](docs/design/functional-dependencies-f4-validation.md).
 A [German guide](docs/fd-lesson-de.md) is also available. The
 [performance follow-up](docs/design/functional-dependencies-f4-performance.md)
-passes the unchanged 64-answer targets in Chromium, Firefox and WebKit, with
-fresh isolated workers and the same security policy. Physical-phone checks are
-deferred; compatible published host pins and release CI remain separate gates.
+records earlier passing 64-answer runs. The
+[F5 report](docs/design/functional-dependencies-f5-validation.md) records passing
+hosted CI with English/German authoring and identical artifacts on Windows and
+three browsers, plus unresolved local input-latency and WebKit setup checks.
+FD Lab 0.6.0 uses the common typed actor records and points APIs, with 25-answer
+presenter pages and a 1,000-student storage ceiling. Optional fixed points are
+released on reveal and appear in totals, rankings and CSV exports. It requires
+the matching integration host; rebuild bundles and start fresh sessions.
+Prepared lessons now grade from private, bounded reference data in the provider
+hook; feedback no longer waits for a presenter browser worker. The standalone
+engine remains available. See the [600-student performance record](docs/design/functional-dependencies-prepared-validation.md),
+[publication merge validation](docs/design/functional-dependencies-publication-validation.md)
+and [release procedure](docs/fd-release.md). Earlier capacity reports retain their
+own artifact identities and timing limits.
+The security policy is unchanged. Physical-phone checks and catalog publication
+remain separate gates.
 
 ```sh
 python maintenance/check_fd_design.py
@@ -254,13 +267,14 @@ touch input, reset, teardown, blocked evaluator network access and timeouts.
 `TEXSTAGE_TEST_BUNDLE` selects a bundle built on another machine for the portability
 test, instead of compiling it locally.
 
-The CI workflows require a host revision containing the experimental API. Until
-that revision reaches Texstage's default branch, run the workflow manually with
-its compatible branch or commit in `texstage_ref`. The default-branch CI runs
-become usable once the host implementation is published. Transaction CI has a
+The CI workflows require a full reviewed host commit in `texstage_ref`. The
+default is `6b64828b98e9908fc67c265cab31a71a216308d5`, merged into TeXStage `main`
+on GitHub and its GitLab mirror. The FD capacity job is opt-in with the
+`capacity` workflow input. Local checks do not establish a passing hosted run. Transaction CI has a
 separate engine-only Linux job (including Chromium, Firefox and WebKit) and a
 Windows job consuming the identical Linux-built wheels. A compatible H1/H2 host
-commit still needs publishing and pinning; local passes do not mean hosted CI ran.
+commit is included in the newer capacity host; release evidence still needs
+the actual hosted run for the selected revisions.
 
 ## Collection layout
 

@@ -23,7 +23,7 @@ defaults:
 env:
   PYTHONDONTWRITEBYTECODE: '1'
   PIP_DISABLE_PIP_VERSION_CHECK: '1'
-  HOST_COMMIT: 'f568da90ef4a8986012e47721bb11d5cb042186d'
+  HOST_COMMIT: '6b64828b98e9908fc67c265cab31a71a216308d5'
 jobs:
   producer:
     runs-on: ubuntu-24.04
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: 'f568da90ef4a8986012e47721bb11d5cb042186d'
+          ref: '6b64828b98e9908fc67c265cab31a71a216308d5'
           path: host-source
           persist-credentials: false
       - run: 'test "$(git -C host-source rev-parse HEAD)" = "$HOST_COMMIT"'

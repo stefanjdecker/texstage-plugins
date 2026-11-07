@@ -19,6 +19,12 @@ data = Path(sys.argv[sys.argv.index('--data') + 1])
 data.mkdir(parents=True, exist_ok=True)
 stream = (data / 'classroom-events.jsonl').open('w', encoding='utf-8', buffering=1)
 submissions = 0
+finish_calls = 0
+if os.environ.get('TEXSTAGE_CLASSROOM_PROFILE') == 'finish':
+    import cProfile
+    finish_profile = cProfile.Profile()
+else:
+    finish_profile = None
 
 
 def rss():
@@ -46,16 +52,22 @@ def emit(event, **fields):
 def instrument(name):
     original = getattr(Runtime, name)
     def call(self, *args, **kwargs):
-        global submissions
+        global submissions, finish_calls
         start = time.perf_counter()
-        result = original(self, *args, **kwargs)
+        if name == 'finish': finish_calls += 1
+        if name == 'finish' and finish_profile is not None and 20 < finish_calls <= 120:
+            result = finish_profile.runcall(original, self, *args, **kwargs)
+            if finish_calls == 120: finish_profile.dump_stats(str(data / 'classroom-finish.prof'))
+        else:
+            result = original(self, *args, **kwargs)
         elapsed = (time.perf_counter() - start) * 1000
         if name == 'command':
             command = args[3]
             if command['operation'] == 'submit':
                 submissions += 1
             emit('command', operation=command['operation'], request=command['request_id'],
-                 item=command['item'], receipt=result, duration_ms=elapsed)
+                 item=command['item'], receipt=result, duration_ms=elapsed,
+                 state_bytes=max((len(r[0].encode('utf-8')) for r in self.db.execute('SELECT state FROM items')), default=0))
         elif name == 'lease' and result:
             emit('lease', jobs=[{k: j[k] for k in ('id', 'generation', 'epoch')} for j in result],
                  duration_ms=elapsed)

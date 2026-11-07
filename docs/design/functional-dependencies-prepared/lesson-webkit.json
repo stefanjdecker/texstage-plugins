@@ -1,0 +1,35 @@
+{
+  "browser": "webkit",
+  "version": "26.5",
+  "modes": [
+    "closure",
+    "keys-one",
+    "keys-all",
+    "implication-derivation",
+    "implication-counterexample",
+    "different-size-keys",
+    "empty-key"
+  ],
+  "feedbackPolicies": [
+    "after-reveal",
+    "practice"
+  ],
+  "viewport": 320,
+  "grading": "prepared-provider-hook",
+  "privacy": true,
+  "draftAndFocus": true,
+  "keyboard": true,
+  "touch": true,
+  "sameActorConflict": true,
+  "sharing": true,
+  "modeSpecificFeedback": true,
+  "alternativeKeys": true,
+  "alternativeCounterexamples": true,
+  "walkthrough": true,
+  "reset": true,
+  "teardown": true,
+  "points": true,
+  "pointsWithheld": true,
+  "pointsReset": true,
+  "errors": []
+}

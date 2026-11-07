@@ -1,0 +1,470 @@
+{
+  "format": 1,
+  "date": "2026-11-07T12:39:41.925Z",
+  "family": "webkit",
+  "hardware": {
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+    "logical_cpus": 16,
+    "ram_bytes": 67869478912,
+    "platform": "win32",
+    "release": "10.0.19045",
+    "arch": "x64"
+  },
+  "scope": "Loopback: 600 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+  "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+  "bursts": [
+    {
+      "item": "practice",
+      "version": 1,
+      "actors": 600,
+      "evaluation": "prepared-provider-hook",
+      "evaluation_jobs": 0,
+      "replaced_answers": 0,
+      "total_ms": 3330.7450000000026,
+      "ack_ms": {
+        "n": 600,
+        "min": 38.427999999999884,
+        "p50": 2036.267399999997,
+        "p95": 2039.3747000000003,
+        "max": 2086.024599999997
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 2063.470199999996,
+        "p50": 2665.627800000002,
+        "p95": 3216.4433999999965,
+        "max": 3278.7450000000026
+      },
+      "queue_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "leased_to_result_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "input_to_frame_ms": {
+        "n": 45,
+        "min": 1,
+        "p50": 2,
+        "p95": 4,
+        "max": 8
+      },
+      "max_participant_state_bytes": 7198,
+      "max_host_state_bytes": 73278,
+      "max_server_rss_bytes": 252264448,
+      "max_persisted_state_bytes": 201,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 409,
+        "total_actor_bytes": 244291,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "all_answers_checked": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "practice",
+      "version": 2,
+      "actors": 600,
+      "evaluation": "prepared-provider-hook",
+      "evaluation_jobs": 0,
+      "replaced_answers": 600,
+      "total_ms": 4297.7863,
+      "ack_ms": {
+        "n": 600,
+        "min": 29.353599999994913,
+        "p50": 2577.9186000000045,
+        "p95": 2597.8791000000056,
+        "max": 2677.4159
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 2694.4691999999995,
+        "p50": 3606.3384000000005,
+        "p95": 4188.495300000002,
+        "max": 4244.306299999997
+      },
+      "queue_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "leased_to_result_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "input_to_frame_ms": {
+        "n": 57,
+        "min": 2,
+        "p50": 3,
+        "p95": 10,
+        "max": 16
+      },
+      "max_participant_state_bytes": 7199,
+      "max_host_state_bytes": 73284,
+      "max_server_rss_bytes": 256172032,
+      "max_persisted_state_bytes": 201,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 409,
+        "total_actor_bytes": 244291,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "all_answers_checked": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "keys_all",
+      "version": 1,
+      "actors": 600,
+      "evaluation": "prepared-provider-hook",
+      "evaluation_jobs": 0,
+      "replaced_answers": 0,
+      "total_ms": 5099.083700000003,
+      "ack_ms": {
+        "n": 600,
+        "min": 40.76909999999043,
+        "p50": 1729.223399999988,
+        "p95": 3700.8675000000076,
+        "max": 3739.2053999999916
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3718.358699999997,
+        "p50": 4384.017200000002,
+        "p95": 4991.553899999999,
+        "max": 5056.626199999999
+      },
+      "queue_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "leased_to_result_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "input_to_frame_ms": {
+        "n": 65,
+        "min": 2,
+        "p50": 3,
+        "p95": 20,
+        "max": 110
+      },
+      "max_participant_state_bytes": 7498,
+      "max_host_state_bytes": 73820,
+      "max_server_rss_bytes": 260116480,
+      "max_persisted_state_bytes": 621,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 413,
+        "total_actor_bytes": 246796,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "all_answers_checked": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "keys_all",
+      "version": 2,
+      "actors": 600,
+      "evaluation": "prepared-provider-hook",
+      "evaluation_jobs": 0,
+      "replaced_answers": 600,
+      "total_ms": 4207.0395000000135,
+      "ack_ms": {
+        "n": 600,
+        "min": 28.167799999995623,
+        "p50": 2343.847099999999,
+        "p95": 2848.2225000000035,
+        "max": 2848.8699999999953
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 2861.7258,
+        "p50": 3484.361400000009,
+        "p95": 4069.4742000000115,
+        "max": 4128.875899999999
+      },
+      "queue_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "leased_to_result_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "input_to_frame_ms": {
+        "n": 57,
+        "min": 1,
+        "p50": 2,
+        "p95": 6,
+        "max": 10
+      },
+      "max_participant_state_bytes": 7498,
+      "max_host_state_bytes": 73820,
+      "max_server_rss_bytes": 262017024,
+      "max_persisted_state_bytes": 621,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 413,
+        "total_actor_bytes": 246796,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "all_answers_checked": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "refuted",
+      "version": 1,
+      "actors": 600,
+      "evaluation": "prepared-provider-hook",
+      "evaluation_jobs": 0,
+      "replaced_answers": 0,
+      "total_ms": 5332.999599999981,
+      "ack_ms": {
+        "n": 600,
+        "min": 75.45009999998729,
+        "p50": 3495.558799999999,
+        "p95": 3569.436399999977,
+        "max": 3569.719000000012
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3569.717799999984,
+        "p50": 4440.324399999983,
+        "p95": 5226.392699999997,
+        "max": 5302.166799999977
+      },
+      "queue_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "leased_to_result_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "input_to_frame_ms": {
+        "n": 70,
+        "min": 3,
+        "p50": 4,
+        "p95": 6,
+        "max": 11
+      },
+      "max_participant_state_bytes": 7535,
+      "max_host_state_bytes": 74897,
+      "max_server_rss_bytes": 265822208,
+      "max_persisted_state_bytes": 621,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 419,
+        "total_actor_bytes": 247412,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "all_answers_checked": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "refuted",
+      "version": 2,
+      "actors": 600,
+      "evaluation": "prepared-provider-hook",
+      "evaluation_jobs": 0,
+      "replaced_answers": 600,
+      "total_ms": 6766.367100000003,
+      "ack_ms": {
+        "n": 600,
+        "min": 39.91209999998682,
+        "p50": 3417.887400000007,
+        "p95": 3818.7191000000166,
+        "max": 3819.8473999999987
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3457.448700000008,
+        "p50": 4718.740500000014,
+        "p95": 6560.0461999999825,
+        "max": 6663.432000000001
+      },
+      "queue_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "leased_to_result_ms": {
+        "n": 0,
+        "min": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "input_to_frame_ms": {
+        "n": 89,
+        "min": 2,
+        "p50": 4,
+        "p95": 5,
+        "max": 16
+      },
+      "max_participant_state_bytes": 7535,
+      "max_host_state_bytes": 74897,
+      "max_server_rss_bytes": 266334208,
+      "max_persisted_state_bytes": 621,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 419,
+        "total_actor_bytes": 247412,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "all_answers_checked": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "26.5",
+  "node": "v24.15.0",
+  "presenterCores": 8,
+  "points": [
+    {
+      "item": "practice",
+      "maximum": 0,
+      "actors": 600,
+      "total_range": [
+        0,
+        0
+      ],
+      "publication_ms": 1519.2541999999958,
+      "replay": true,
+      "withheld": true,
+      "csv": true
+    },
+    {
+      "item": "keys_all",
+      "maximum": 100,
+      "actors": 600,
+      "total_range": [
+        0,
+        100
+      ],
+      "publication_ms": 1487.2618999999977,
+      "replay": true,
+      "withheld": true,
+      "csv": true
+    },
+    {
+      "item": "refuted",
+      "maximum": 100,
+      "actors": 600,
+      "total_range": [
+        0,
+        200
+      ],
+      "publication_ms": 2190.4314000000013,
+      "replay": true,
+      "withheld": true,
+      "csv": true
+    }
+  ],
+  "answerDiversity": {
+    "practice": {
+      "distinct": 600,
+      "correct": 1,
+      "incorrect": 599
+    },
+    "keys_all": {
+      "distinct": 600,
+      "correct": 1,
+      "incorrect": 599
+    },
+    "refuted": {
+      "distinct": 600,
+      "correct": 6,
+      "incorrect": 594
+    }
+  },
+  "roster": {
+    "pages": 24,
+    "last_student": 600,
+    "last_answer_inspected": true
+  },
+  "pointsReset": {
+    "actors": 600,
+    "remaining_score_range": [
+      0,
+      100
+    ],
+    "other_activities_preserved": true
+  },
+  "reconnect": {
+    "absent_presenter_feedback": true,
+    "feedback_ms": 357.394100000005,
+    "same_actor_resumed": true,
+    "replay_same_receipt": true,
+    "closed_answer_preserved": true,
+    "no_evaluation_jobs": true,
+    "forged_result_rejected": true,
+    "reset_stale_command_rejected": true
+  },
+  "complete": true,
+  "targets_passed": true
+}

@@ -8,9 +8,9 @@ from texstage.plugins.catalog import Catalog
 from texstage.plugins.runtime import Runtime
 from texstage_fd_lab import model
 from texstage_fd_lab.authoring import prepare_lesson, TYPE, ENGINE
-from texstage_fd_lab.grading import expected_facts
+from texstage_fd_lab.grading import expected_facts, feedback as verify_certificate
 from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES
-from test_lesson import provider, source, prepared, opened, submit, complete, view, advance, command, envelope
+from test_lesson import provider, source, prepared, opened, submit, complete, view, advance, command, envelope, transition, shared_state
 from test_engine import probe
 
 
@@ -58,7 +58,6 @@ def test_prepared_modes_are_private_and_independently_checked(provider, mode):
 def test_distinct_mathematical_feedback_and_alternatives(provider, mode, answer, reason, correct):
     state, ctx = opened(mode)
     state, _ = submit(state, ctx, answer=answer)
-    state = complete(state, ctx)
     feedback = state['answers']['alice']['feedback']
     assert feedback['correct'] is correct and feedback['reason'] == reason
     assert 'worked' not in view(state, ctx, 'participant')
@@ -84,9 +83,9 @@ def test_corrupt_or_misbound_facts_never_grade(provider, mode):
     else:
         changed = copy.deepcopy(data); changed['facts']['proof']['extra'] = 1; mutations.append(changed)
     for bad in mutations:
-        result = complete(state, ctx, {'status': 'ok', 'data': bad})
-        assert result['answers']['alice']['status'] == 'unavailable'
-        assert 'correct' not in result['answers']['alice']['feedback']
+        result=verify_certificate(ctx['item']['public'],ctx['item']['private'],state['answers']['alice'],{'status':'ok','data':bad})
+        assert result=={'code':'unavailable','detail':'facts'}
+        assert complete(state,ctx,{'status':'ok','data':bad})==state
 
 
 def test_positive_implication_needs_target_not_complete_closure(provider):
@@ -99,7 +98,6 @@ def test_positive_implication_needs_target_not_complete_closure(provider):
     state, _ = advance(state, {'kind': 'activate'}, ctx)
     state, _ = advance(state, command('open', {'control': 0}), ctx | {'role': 'presenter'})
     state, _ = submit(state, ctx)
-    state = complete(state, ctx)
     assert state['answers']['alice']['feedback']['correct']
     value['exercise']['task']['rhs'] = ['workshop']
     value['worked_answer']['steps'] = []
@@ -111,15 +109,11 @@ def test_real_runtime_mode_contracts_and_revealed_sharing(tmp_path, provider, mo
     r = Runtime(tmp_path / 'state.sqlite3', Catalog([provider]))
     try:
         spec = prepared(mode)['prepared']; spec['public']['feedback'] = 'after-reveal'
-        spec['evaluations']['analysis']['engine'] = ENGINE
         r.ensure('lesson', TYPE, 'closure', spec); r.activate('lesson', {(TYPE, 'closure')})
         assert r.command('lesson', 'teacher', 'presenter', envelope('open', {'control': 0}))['accepted']
         answer = spec['private']['worked']['answer']
         assert r.command('lesson', 'alice', 'participant', envelope('submit', {'phase': 1, 'version': 0, 'answer': answer}))['accepted']
-        job = r.lease('lesson', 'presenter', now=100)[0]
-        outcome = probe.run([{'seed': job['binding']['seed'], 'binding': job['binding'], 'text': job['text']}])[0]['outcome']
-        assert r.finish('lesson', 'presenter', {k: job[k] for k in ('id', 'epoch', 'generation')} | {'outcome': outcome}, now=101)
-        r.drain('lesson')
+        assert r.lease('lesson','presenter')==[]
         before = r.view('lesson', TYPE, 'closure', role='participant', surface='participant-input', actor='alice')['data']
         assert 'feedback' not in before['own'] and 'worked' not in before
         assert r.command('lesson', 'teacher', 'presenter', envelope('reveal', {'control': 1}, 'reveal000001'))['accepted']
@@ -152,16 +146,15 @@ def test_largest_key_submissions_fit_completed_slots(provider):
     state, _ = advance(state, command('open', {'control': 0}), ctx | {'role': 'presenter'})
     answer = {'format': 1, 'mode': 'keys', 'keys': list(range(256))}
     facts = model.analyze(spec['public']['seed'], answer)
-    for i in range(64):
+    for i in range(600):
         actor = str(i).zfill(3) + 'x' * 253
         state, effects = submit(state, ctx, actor=actor, answer=answer)
-        state, _ = advance(state, {'kind': 'evaluation.finished', 'actor': actor, 'binding': 'analysis',
-            'correlation_id': effects[-1]['correlation_id'], 'outcome': {'status': 'ok', 'data': facts}}, ctx)
+        assert all(e['kind']!='evaluate' for e in effects)
         assert state['answers'][actor]['status'] == 'saved'
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
-    assert len(model.canonical(state)) < STATE_BYTES
+    assert len(model.canonical(shared_state(state))) < STATE_BYTES
     state, effects = submit(state, ctx, actor=actor, version=1, answer=answer, request='replace00001')
-    assert len(model.canonical({'state': state, 'effects': effects})) < 256 * 1024
+    assert len(model.canonical({'state': shared_state(state), 'effects': effects})) < 256 * 1024
     for role in ('participant', 'projector', 'presenter'):
         assert len(model.canonical(view(state, ctx, role, actor))) < 128 * 1024
 
@@ -170,5 +163,5 @@ def test_one_key_shape_and_mode_guards(provider):
     state, ctx = opened('keys_one')
     for answer in ({'format': 1, 'mode': 'keys', 'keys': []}, {'format': 1, 'mode': 'keys', 'keys': [5, 6]},
                    {'format': 1, 'mode': 'implication', 'implied': False, 'agree': 8}):
-        result = Lesson().transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}), ctx)
+        result = transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}), ctx)
         assert result == {'refusal': 'invalid-answer'}

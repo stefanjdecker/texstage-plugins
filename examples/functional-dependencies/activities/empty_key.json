@@ -60,5 +60,6 @@
     "en": "The empty set determines both attributes. Every legal set-valued relation has at most one tuple.",
     "de": "Die leere Menge bestimmt beide Attribute. Jede zulässige Relation hat höchstens ein Tupel."
   },
-  "feedback": "practice"
+  "feedback": "practice",
+  "points": 100
 }

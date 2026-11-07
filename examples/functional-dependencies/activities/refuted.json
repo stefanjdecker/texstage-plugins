@@ -115,5 +115,6 @@
     "en": "Two rows can agree on tutor and differ everywhere else without violating a premise FD.",
     "de": "Zwei Tupel können beim Tutor übereinstimmen und sich sonst unterscheiden, ohne eine gegebene FD zu verletzen."
   },
-  "feedback": "practice"
+  "feedback": "practice",
+  "points": 100
 }

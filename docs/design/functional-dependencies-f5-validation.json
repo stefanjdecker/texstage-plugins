@@ -1,0 +1,1461 @@
+{
+  "format": 1,
+  "date": "2026-11-07",
+  "milestone": "F5 hosted conformance; experimental candidate, no catalog release",
+  "collection_branch": "codex/fd-release-conformance",
+  "host_branch": "codex/plugin-system",
+  "host_mirror": "https://gitlab.git.nrw/rwth-dbis/infrastructure/texstage",
+  "host_ci": {
+    "databaseId": 42351229078,
+    "headSha": "34d0c537135f32b0690147dbb66dd8ff155987f8",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/stefanjdecker/texstage/actions/runs/42351229078",
+    "jobs": [
+      {
+        "databaseId": 128339599346,
+        "name": "container",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage/actions/runs/42351229078/job/128339599346"
+      },
+      {
+        "databaseId": 128339599439,
+        "name": "test (windows-2025, 3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage/actions/runs/42351229078/job/128339599439"
+      },
+      {
+        "databaseId": 128339599442,
+        "name": "test (ubuntu-24.04, 3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage/actions/runs/42351229078/job/128339599442"
+      },
+      {
+        "databaseId": 128339599477,
+        "name": "test (ubuntu-24.04, 3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage/actions/runs/42351229078/job/128339599477"
+      },
+      {
+        "databaseId": 128339599527,
+        "name": "test (ubuntu-24.04, 3.13)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage/actions/runs/42351229078/job/128339599527"
+      }
+    ]
+  },
+  "collection_ci": {
+    "databaseId": 42351969530,
+    "headSha": "d5c40160fe9dcb07491b86e04e0b96c8c7ccf1d2",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530",
+    "jobs": [
+      {
+        "databaseId": 128341831253,
+        "name": "fd-lab",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341831253"
+      },
+      {
+        "databaseId": 128341831423,
+        "name": "linux-producer",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341831423"
+      },
+      {
+        "databaseId": 128341831434,
+        "name": "worker-bundles (windows-2025)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341831434"
+      },
+      {
+        "databaseId": 128341831438,
+        "name": "relational-lab",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341831438"
+      },
+      {
+        "databaseId": 128341831445,
+        "name": "transaction-engine",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341831445"
+      },
+      {
+        "databaseId": 128341831458,
+        "name": "worker-bundles (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341831458"
+      },
+      {
+        "databaseId": 128341924621,
+        "name": "transaction-engine-browsers (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341924621"
+      },
+      {
+        "databaseId": 128341924629,
+        "name": "transaction-engine-browsers (firefox)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341924629"
+      },
+      {
+        "databaseId": 128341924631,
+        "name": "transaction-engine-windows",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341924631"
+      },
+      {
+        "databaseId": 128341924688,
+        "name": "transaction-engine-browsers (chromium)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128341924688"
+      },
+      {
+        "databaseId": 128342248244,
+        "name": "relational-lab-browsers (firefox)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342248244"
+      },
+      {
+        "databaseId": 128342248289,
+        "name": "relational-lab-browsers (chromium)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342248289"
+      },
+      {
+        "databaseId": 128342248323,
+        "name": "relational-lab-windows",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342248323"
+      },
+      {
+        "databaseId": 128342248444,
+        "name": "relational-lab-browsers (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342248444"
+      },
+      {
+        "databaseId": 128342271078,
+        "name": "fd-lab-browsers (chromium)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342271078"
+      },
+      {
+        "databaseId": 128342271090,
+        "name": "fd-lab-browsers (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342271090"
+      },
+      {
+        "databaseId": 128342271136,
+        "name": "fd-lab-browsers (firefox)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342271136"
+      },
+      {
+        "databaseId": 128342271160,
+        "name": "fd-lab-windows",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342271160"
+      },
+      {
+        "databaseId": 128342388606,
+        "name": "windows-consumer",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530/job/128342388606"
+      }
+    ]
+  },
+  "ci_setup_failure": {
+    "run": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351704342",
+    "cause": "Missing artifacts parent directory for FD and relational pytest basetemp.",
+    "fix_commit": "d5c40160fe9dcb07491b86e04e0b96c8c7ccf1d2"
+  },
+  "ci_artifacts": [
+    {
+      "id": 13566012518,
+      "name": "fd-lab-webkit",
+      "size_in_bytes": 3108861,
+      "digest": "sha256:57b27c52e89f67c3822df6a139ed015c3ef4ae4079bab7f4787838e7ec8fe94f",
+      "expires_at": "2026-11-21T07:39:52Z"
+    },
+    {
+      "id": 13565981627,
+      "name": "fd-lab-firefox",
+      "size_in_bytes": 2995062,
+      "digest": "sha256:149fa973836c967f01974392d7c51491f6b31b8eade48862e0cffe54df9acc19",
+      "expires_at": "2026-11-21T07:39:32Z"
+    },
+    {
+      "id": 13565928578,
+      "name": "fd-lab-wheels",
+      "size_in_bytes": 4364440,
+      "digest": "sha256:e50a618e0374e8af580af0b435b67364b518bffcbb78492356f0cf46d5d4609d",
+      "expires_at": "2026-11-21T07:38:16Z"
+    },
+    {
+      "id": 13565804161,
+      "name": "fd-lab-windows",
+      "size_in_bytes": 54109,
+      "digest": "sha256:dcaa4a59d10df49d224f58433e5566b2090883140817334ce3e8567d8e40cfcb",
+      "expires_at": "2026-11-21T07:39:36Z"
+    },
+    {
+      "id": 13565664318,
+      "name": "fd-lab-chromium",
+      "size_in_bytes": 2910974,
+      "digest": "sha256:c42337e32aad0e169f04fce385b976025b0be48c6022cc9b3447bbf421bf1238",
+      "expires_at": "2026-11-21T07:39:28Z"
+    },
+    {
+      "id": 13565659363,
+      "name": "fd-lab-linux",
+      "size_in_bytes": 6158236,
+      "digest": "sha256:483100163d28faedd8d8b6203ed99563dd55ce05283f445650cb62f3dea8645d",
+      "expires_at": "2026-11-21T07:38:17Z"
+    }
+  ],
+  "ci_handoff": {
+    "format": 1,
+    "host_commit": "34d0c537135f32b0690147dbb66dd8ff155987f8",
+    "provider": {
+      "id": "io.github.stefanjdecker.fdlab",
+      "version": "0.3.0",
+      "payload": "ea2c7777c6c3580a1011ad17fcc6a2571a92e4ed8b1cc4d784ac369208556420"
+    },
+    "host_wheel": "wheels/texstage-0.2.1.dev3-py3-none-any.whl",
+    "plugin_wheel": "wheels/texstage_fd_lab-0.3.0-py3-none-any.whl",
+    "plugin_sdist": "wheels/texstage_fd_lab-0.3.0.tar.gz",
+    "files": {
+      "bundles/de/handout.pdf": {
+        "sha256": "1c04809fadf9facd92ab27da4a4d6b96b45e2959e3fdd7cd331393812d510ef1",
+        "size": 75320
+      },
+      "bundles/de/lesson.bundle/deck.json": {
+        "sha256": "d918fd13bf42f3953303a45dbc6173011a5293c317c3d8975f617b018d9d6e18",
+        "size": 17684
+      },
+      "bundles/de/lesson.bundle/keys.json": {
+        "sha256": "0479960e2dbb51b29498d45f8e59f3ca2740b2cebff5cdca405364b413fe6159",
+        "size": 9939
+      },
+      "bundles/de/lesson.bundle/slides/24ad58b42f1ecf75.png": {
+        "sha256": "24ad58b42f1ecf7503bc70912130f9c8a96e727a9d7a8b7840ab82bcd0a8a6fc",
+        "size": 27389
+      },
+      "bundles/de/lesson.bundle/slides/2d80f589e16e3692.png": {
+        "sha256": "2d80f589e16e36924f5efcdbaeaf4dc574bab2c6f8bcaa58a6398d781e385a48",
+        "size": 35787
+      },
+      "bundles/de/lesson.bundle/slides/44bba500b60160a9.png": {
+        "sha256": "44bba500b60160a9006a2bc1e5ac8c22f667611dffd942a131e32a7d43dd2753",
+        "size": 39026
+      },
+      "bundles/de/lesson.bundle/slides/4c1211de7a8a14d5.png": {
+        "sha256": "4c1211de7a8a14d5bc2391ef3ef0be0db5fbc32348ebeca656e11e2beacbec71",
+        "size": 24740
+      },
+      "bundles/de/lesson.bundle/slides/53a3112acda3df71.png": {
+        "sha256": "53a3112acda3df71a36e4ea2530697a8b7e6a067110e5ef18380035c7d679140",
+        "size": 35172
+      },
+      "bundles/de/lesson.bundle/slides/6327b68d72b56a2b.png": {
+        "sha256": "6327b68d72b56a2b63804d49cf9c0cddff141d83b1375a7cb1b744da87eec867",
+        "size": 37048
+      },
+      "bundles/de/lesson.bundle/slides/95d3cd29d18b5e4a.png": {
+        "sha256": "95d3cd29d18b5e4a38912f84de48b32aa7e9a11101adddf3e949509d8be21d63",
+        "size": 18734
+      },
+      "bundles/de/lesson.bundle/slides/cf38040757d6fe1f.png": {
+        "sha256": "cf38040757d6fe1feee7c8b02eaf44e9f0b45b0dbde7d7d1a686b5cfef77a79a",
+        "size": 36412
+      },
+      "bundles/de/lesson.bundle/slides/d1bbd1367b1681f7.png": {
+        "sha256": "d1bbd1367b1681f7334f0679a2e6d19655117c601a166bb67aa1df651cb0f7f6",
+        "size": 30328
+      },
+      "bundles/de/lesson.bundle/slides/f58ce9d53f025c01.png": {
+        "sha256": "f58ce9d53f025c0167cedf4465335a15440ab75a0733ac7f6b14711cb2e80160",
+        "size": 42079
+      },
+      "bundles/de/lesson.bundle/stage/f1f19908271e8a6e.pdf": {
+        "sha256": "f1f19908271e8a6ecf63c21b46ea4fc0ab1a077ebf23d0ebcab99536ec732efb",
+        "size": 75181
+      },
+      "bundles/de/solutions.pdf": {
+        "sha256": "c87bf29ad70ac131053cf02c56622aa1007f60d1de185c721376b620cf028bdc",
+        "size": 76686
+      },
+      "bundles/en/handout.pdf": {
+        "sha256": "2a1a79aa54ceea44dba7d4ef585db9d2faf67909b53e7ad6b455aa56f696d521",
+        "size": 69709
+      },
+      "bundles/en/lesson.bundle/deck.json": {
+        "sha256": "e82ade28f0ec0052ae7fef1258d861cbb41b95dfcc631cf0985d230462331408",
+        "size": 17684
+      },
+      "bundles/en/lesson.bundle/keys.json": {
+        "sha256": "823a4b33baa660f5b2ab18f15f32381a49754f65671894a395b81ab8d770dc59",
+        "size": 9939
+      },
+      "bundles/en/lesson.bundle/slides/078bde63fca34a08.png": {
+        "sha256": "078bde63fca34a08a4d29a584012606c11fb3acfb5df0c34993197af00b346c4",
+        "size": 39668
+      },
+      "bundles/en/lesson.bundle/slides/385784cf9e0e9794.png": {
+        "sha256": "385784cf9e0e979480b78b593ae2e38ac2867de1af4daf340adb946d2ed7b906",
+        "size": 30323
+      },
+      "bundles/en/lesson.bundle/slides/3a609002b1fb3249.png": {
+        "sha256": "3a609002b1fb3249a703aba129a9e63122def233b8514149b55443bbc3940258",
+        "size": 32619
+      },
+      "bundles/en/lesson.bundle/slides/40001a8f794323a0.png": {
+        "sha256": "40001a8f794323a0cf2710fd3c0073054e45959b8f181d0254022c84a42eda58",
+        "size": 24910
+      },
+      "bundles/en/lesson.bundle/slides/5498af0ae5aa9f61.png": {
+        "sha256": "5498af0ae5aa9f616faf67ec7715aaeff38d89f059c0d56d3b03428d86ac19dc",
+        "size": 33943
+      },
+      "bundles/en/lesson.bundle/slides/8897d1d1871ac84f.png": {
+        "sha256": "8897d1d1871ac84fca34285ff70f8c60992546e9e5b0fe0fa63c77e6635eb7a1",
+        "size": 21018
+      },
+      "bundles/en/lesson.bundle/slides/95d3cd29d18b5e4a.png": {
+        "sha256": "95d3cd29d18b5e4a38912f84de48b32aa7e9a11101adddf3e949509d8be21d63",
+        "size": 18734
+      },
+      "bundles/en/lesson.bundle/slides/98210848cdc884a8.png": {
+        "sha256": "98210848cdc884a885c99a26031c7b93461cba4cd1a5dd345d6ef5c227d8bdab",
+        "size": 34125
+      },
+      "bundles/en/lesson.bundle/slides/9fa0475c35e3d8a0.png": {
+        "sha256": "9fa0475c35e3d8a0cb619ddc1958a6b48f3625605d5e83cabfddf4004c454a69",
+        "size": 36682
+      },
+      "bundles/en/lesson.bundle/slides/dc1c39e5ad603ef8.png": {
+        "sha256": "dc1c39e5ad603ef8b2536b077b99e41e4864c044cfb7c0e1158bf0debb7ba1c6",
+        "size": 34179
+      },
+      "bundles/en/lesson.bundle/stage/78b1c7167747a3be.pdf": {
+        "sha256": "78b1c7167747a3be892100402019eabfbfc43f87b8367ea47797adcd0d7ec626",
+        "size": 69568
+      },
+      "bundles/en/solutions.pdf": {
+        "sha256": "907a82d784280683972b3566a6114aae4faf77101871bc641f76ce253eec4a07",
+        "size": 72565
+      },
+      "requirements/build.in": {
+        "sha256": "2e1a2958752f47a443cf2524f0057db560ca9bc06062bdc64730014211fe30d7",
+        "size": 40
+      },
+      "requirements/build.txt": {
+        "sha256": "9c482fa721548dd14edba2f2a7ec98b2dda4b7b27950a6e437a10eae88580f1e",
+        "size": 2581
+      },
+      "requirements/dev.in": {
+        "sha256": "015ba92518a5e93cf38f6a995ff8560e5caa0b6aa545b874fc0b5a2dc60103b0",
+        "size": 91
+      },
+      "requirements/dev.txt": {
+        "sha256": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+        "size": 79139
+      },
+      "requirements/docs.in": {
+        "sha256": "07f5a6aa13d961c7f1a49d642df70fad25796be6c07badba1d8c88c9265e5798",
+        "size": 32
+      },
+      "requirements/docs.txt": {
+        "sha256": "5055f4ae690877b15a76df52dd73bdb451d077cae00648bb093cab369a9dc190",
+        "size": 21903
+      },
+      "requirements/lock-manifest.json": {
+        "sha256": "f85f353fbfaa27eb1606fa58e158ee4e9b6bcb7d54afab872fe02609688794f1",
+        "size": 1089
+      },
+      "requirements/runtime.in": {
+        "sha256": "8ecf051cc09aefb7f3b20a2c164e1a45e422fcdea376ef017b4dcf5bc86c9397",
+        "size": 133
+      },
+      "requirements/runtime.txt": {
+        "sha256": "86406fe187148f89b9fc01d766e2b3ed5c1f0f8628883be561c671ef3004169e",
+        "size": 75415
+      },
+      "wheels/texstage-0.2.1.dev3-py3-none-any.whl": {
+        "sha256": "5ad3eb2371e7490a8345e3453e4067407027c7c774b3118e6917762a4e3fdcbc",
+        "size": 3284630
+      },
+      "wheels/texstage_fd_lab-0.3.0-py3-none-any.whl": {
+        "sha256": "7de1be2353fcda693ba61d5b697a6b1af4220d27aebd68fd463ec6d35b644dad",
+        "size": 60826
+      },
+      "wheels/texstage_fd_lab-0.3.0.tar.gz": {
+        "sha256": "7bf8a7daf24ce061f078426514e8b90dc8164336df107e288cf1f6d0e9a6c26b",
+        "size": 56384
+      }
+    }
+  },
+  "ci_handoff_sha256": "a49b934816ea4dc923bc202e7f3e12d454d297456a67bb6d1372575352097590",
+  "ci_download_inventory_verified": 42,
+  "fd_tests": {
+    "linux_python_3_12": {
+      "tests": 112,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 112,
+      "skipped_cases": [],
+      "junit_sha256": "e6f6a6439bb4af48b50d6a2327a5c5c447738d31ba88875d08fb5c85c141523a"
+    },
+    "windows_python_3_14": {
+      "tests": 112,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 2,
+      "passed": 110,
+      "skipped_cases": [
+        "test_installed_authoring_all_editions_and_freshness[en]",
+        "test_installed_authoring_all_editions_and_freshness[de]"
+      ],
+      "junit_sha256": "494529f4102157cbb74833b248e7b88a854a1b0b58097b472cf47ae703f9eb6c"
+    }
+  },
+  "ci_browsers_ubuntu_24_04": {
+    "chromium": {
+      "engine_and_security": {
+        "browser": "chromium",
+        "provider_payload": "ea2c7777c6c3580a1011ad17fcc6a2571a92e4ed8b1cc4d784ac369208556420",
+        "host_result_schema": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "151.0.7922.34",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2008.800000000003,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 34,
+        "max_elapsed_ms": 16.5,
+        "actual_host_deadline_ms": 2000
+      },
+      "english_lesson": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "modes": [
+          "closure",
+          "keys-one",
+          "keys-all",
+          "implication-derivation",
+          "implication-counterexample",
+          "different-size-keys",
+          "empty-key"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "modeSpecificFeedback": true,
+        "alternativeKeys": true,
+        "alternativeCounterexamples": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      },
+      "german_ui": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "deckLanguage": "de",
+        "browserLocale": "en-US",
+        "presenterViewport": [
+          800,
+          500
+        ],
+        "phoneViewport": [
+          320,
+          740
+        ],
+        "keyboardPresenter": true,
+        "keyboardSubmission": true,
+        "touch": true,
+        "language": true,
+        "noHorizontalOverflow": true,
+        "realEvaluation": true,
+        "errors": []
+      }
+    },
+    "firefox": {
+      "engine_and_security": {
+        "browser": "firefox",
+        "provider_payload": "ea2c7777c6c3580a1011ad17fcc6a2571a92e4ed8b1cc4d784ac369208556420",
+        "host_result_schema": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "153.0",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2014,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 34,
+        "max_elapsed_ms": 52,
+        "actual_host_deadline_ms": 2000
+      },
+      "english_lesson": {
+        "browser": "firefox",
+        "version": "153.0",
+        "modes": [
+          "closure",
+          "keys-one",
+          "keys-all",
+          "implication-derivation",
+          "implication-counterexample",
+          "different-size-keys",
+          "empty-key"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "modeSpecificFeedback": true,
+        "alternativeKeys": true,
+        "alternativeCounterexamples": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      },
+      "german_ui": {
+        "browser": "firefox",
+        "version": "153.0",
+        "deckLanguage": "de",
+        "browserLocale": "en-US",
+        "presenterViewport": [
+          800,
+          500
+        ],
+        "phoneViewport": [
+          320,
+          740
+        ],
+        "keyboardPresenter": true,
+        "keyboardSubmission": true,
+        "touch": true,
+        "language": true,
+        "noHorizontalOverflow": true,
+        "realEvaluation": true,
+        "errors": []
+      }
+    },
+    "webkit": {
+      "engine_and_security": {
+        "browser": "webkit",
+        "provider_payload": "ea2c7777c6c3580a1011ad17fcc6a2571a92e4ed8b1cc4d784ac369208556420",
+        "host_result_schema": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "26.5",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2007,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 34,
+        "max_elapsed_ms": 16,
+        "actual_host_deadline_ms": 2000
+      },
+      "english_lesson": {
+        "browser": "webkit",
+        "version": "26.5",
+        "modes": [
+          "closure",
+          "keys-one",
+          "keys-all",
+          "implication-derivation",
+          "implication-counterexample",
+          "different-size-keys",
+          "empty-key"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "modeSpecificFeedback": true,
+        "alternativeKeys": true,
+        "alternativeCounterexamples": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      },
+      "german_ui": {
+        "browser": "webkit",
+        "version": "26.5",
+        "deckLanguage": "de",
+        "browserLocale": "en-US",
+        "presenterViewport": [
+          800,
+          500
+        ],
+        "phoneViewport": [
+          320,
+          740
+        ],
+        "keyboardPresenter": true,
+        "keyboardSubmission": true,
+        "touch": true,
+        "language": true,
+        "noHorizontalOverflow": true,
+        "realEvaluation": true,
+        "errors": []
+      }
+    }
+  },
+  "local_windows": {
+    "artifacts": {
+      "host_commit": "34d0c537135f32b0690147dbb66dd8ff155987f8",
+      "provider": {
+        "id": "io.github.stefanjdecker.fdlab",
+        "version": "0.3.0",
+        "payload": "ea2c7777c6c3580a1011ad17fcc6a2571a92e4ed8b1cc4d784ac369208556420"
+      },
+      "host_wheel": {
+        "file": "wheels/texstage-0.2.1.dev3-py3-none-any.whl",
+        "sha256": "624e389fd9e09e51c30336e3cdd7e795fd47fa6eebad5907e336bd2d0e401f63",
+        "size": 3329692
+      },
+      "plugin_wheel": {
+        "file": "wheels/texstage_fd_lab-0.3.0-py3-none-any.whl",
+        "sha256": "eecad44c1973e2f1f0f98bc0c80b8fd3349a5a2060cfdebd4f76dd5b55b7817f",
+        "size": 60564
+      },
+      "plugin_sdist": {
+        "file": "wheels/texstage_fd_lab-0.3.0.tar.gz",
+        "sha256": "4ff23c727385a9d46fcb2ca1b2ddb4c3d66b4d4f472cce7eb23388cf8ca4f461",
+        "size": 56868
+      }
+    },
+    "host_regressions": {
+      "passed": 155,
+      "skipped": 1,
+      "skip_reason": "Windows symlink permission"
+    },
+    "fd_tests": {
+      "passed": 98,
+      "skipped": 0
+    },
+    "handoff_helper_tests": {
+      "passed": 14,
+      "skipped": 0
+    },
+    "browser_checks": "Engine/security, English lesson and German release UI passed in Chromium, Firefox and WebKit.",
+    "capacity_runs": {
+      "release": {
+        "chromium": {
+          "format": 1,
+          "date": "2026-11-07T07:33:04.927Z",
+          "family": "chromium",
+          "hardware": {
+            "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+            "logical_cpus": 16,
+            "ram_bytes": 67869478912,
+            "platform": "win32",
+            "release": "10.0.19045",
+            "arch": "x64"
+          },
+          "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+          "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+          "bursts": [
+            {
+              "item": "practice",
+              "actors": 64,
+              "total_ms": 2586.4561000000003,
+              "ack_ms": {
+                "n": 64,
+                "min": 7.806599999999889,
+                "p50": 378.78530000000046,
+                "p95": 378.9233000000004,
+                "max": 378.98239999999987
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1459.1525999999994,
+                "p50": 2530.388399999999,
+                "p95": 2545.2415,
+                "max": 2548.5534000000007
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 378.7815000116825,
+                "p50": 1393.9548000097275,
+                "p95": 1829.8838999569416,
+                "max": 1861.8112999796867
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 19.84009999036789,
+                "p50": 29.005800008773804,
+                "p95": 35.856700003147125,
+                "max": 275.4767999947071
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0.29999998211860657,
+                "p50": 0.5999999940395355,
+                "p95": 77.69999998807907,
+                "max": 154.69999998807907
+              },
+              "max_participant_state_bytes": 6679,
+              "max_host_state_bytes": 22090,
+              "max_server_rss_bytes": 81129472,
+              "max_persisted_state_bytes": 25929,
+              "final_storage": {
+                "state_bytes": 26047,
+                "max_actor_slot_bytes": 406,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": true,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            },
+            {
+              "item": "keys_all",
+              "actors": 64,
+              "total_ms": 2818.0308999999997,
+              "ack_ms": {
+                "n": 64,
+                "min": 8.155500000000757,
+                "p50": 589.5356999999985,
+                "p95": 599.0905000000002,
+                "max": 600.2652999999991
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1667.8208000000013,
+                "p50": 1685.4533999999985,
+                "p95": 2784.4979999999996,
+                "max": 2787.4752000000008
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 602.9410999715328,
+                "p50": 1099.2439999878407,
+                "p95": 1831.100300014019,
+                "max": 1866.3208999931812
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 19.87900000810623,
+                "p50": 25.050300002098083,
+                "p95": 35.33680000901222,
+                "max": 37.30509999394417
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0.30000001192092896,
+                "p50": 0.5999999940395355,
+                "p95": 108.30000001192093,
+                "max": 185
+              },
+              "max_participant_state_bytes": 6725,
+              "max_host_state_bytes": 22090,
+              "max_server_rss_bytes": 81985536,
+              "max_persisted_state_bytes": 26048,
+              "final_storage": {
+                "state_bytes": 25855,
+                "max_actor_slot_bytes": 403,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": false,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            },
+            {
+              "item": "refuted",
+              "actors": 64,
+              "total_ms": 3302.3634999999995,
+              "ack_ms": {
+                "n": 64,
+                "min": 5.698400000001129,
+                "p50": 328.21680000000015,
+                "p95": 329.47890000000007,
+                "max": 329.616399999999
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1324.2399999999998,
+                "p50": 2201.6818000000003,
+                "p95": 3256.250900000001,
+                "max": 3259.0527
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 712.084900021553,
+                "p50": 1429.875500023365,
+                "p95": 2164.118600010872,
+                "max": 2197.6846999824047
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 20.339900016784668,
+                "p50": 27.20899999141693,
+                "p95": 34.64959999918938,
+                "max": 255.1865999996662
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 1.0999999940395355,
+                "p50": 1.4000000059604645,
+                "p95": 63,
+                "max": 140.7999999821186
+              },
+              "max_participant_state_bytes": 6725,
+              "max_host_state_bytes": 22090,
+              "max_server_rss_bytes": 82075648,
+              "max_persisted_state_bytes": 26048,
+              "final_storage": {
+                "state_bytes": 23039,
+                "max_actor_slot_bytes": 359,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": true,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            }
+          ],
+          "errors": [],
+          "browser": "156.0.8078.80",
+          "node": "v24.15.0",
+          "reconnect": {
+            "absent_evaluator_pending": true,
+            "same_actor_resumed": true,
+            "replay_same_receipt": true,
+            "closed_pending_completed": true,
+            "replacement_ms": 755.5112999999983,
+            "lease_generations": [
+              1,
+              2
+            ],
+            "stale_result_rejected": true,
+            "reset_late_result_rejected": true
+          },
+          "complete": true,
+          "targets_passed": false
+        }
+      },
+      "release-confirmation": {
+        "chromium": {
+          "format": 1,
+          "date": "2026-11-07T07:36:58.706Z",
+          "family": "chromium",
+          "hardware": {
+            "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+            "logical_cpus": 16,
+            "ram_bytes": 67869478912,
+            "platform": "win32",
+            "release": "10.0.19045",
+            "arch": "x64"
+          },
+          "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+          "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+          "bursts": [
+            {
+              "item": "practice",
+              "actors": 64,
+              "total_ms": 2781.9331,
+              "ack_ms": {
+                "n": 64,
+                "min": 7.348299999999654,
+                "p50": 343.8954999999987,
+                "p95": 344.34499999999935,
+                "max": 344.3689999999988
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1675.2306000000008,
+                "p50": 1691.0241999999998,
+                "p95": 2759.5264000000006,
+                "max": 2763.937
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 343.1220000088215,
+                "p50": 1131.6681000292301,
+                "p95": 1869.9501000344753,
+                "max": 1903.244999974966
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 18.86769998073578,
+                "p50": 29.45059996843338,
+                "p95": 36.07919999957085,
+                "max": 317.40379998087883
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0.30000001192092896,
+                "p50": 0.5999999940395355,
+                "p95": 62.70000001788139,
+                "max": 139.5
+              },
+              "max_participant_state_bytes": 6679,
+              "max_host_state_bytes": 22092,
+              "max_server_rss_bytes": 81129472,
+              "max_persisted_state_bytes": 25929,
+              "final_storage": {
+                "state_bytes": 26047,
+                "max_actor_slot_bytes": 406,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": true,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            },
+            {
+              "item": "keys_all",
+              "actors": 64,
+              "total_ms": 2521.3451000000005,
+              "ack_ms": {
+                "n": 64,
+                "min": 5.6744999999991705,
+                "p50": 342.91029999999955,
+                "p95": 343.5725000000002,
+                "max": 343.680699999999
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1406.2427000000007,
+                "p50": 2492.2706,
+                "p95": 2505.7659999999996,
+                "max": 2508.2096
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 342.3286999762058,
+                "p50": 1328.896899998188,
+                "p95": 1793.4591000080109,
+                "max": 1825.5163999795914
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 19.050300002098083,
+                "p50": 28.31300002336502,
+                "p95": 34.423099994659424,
+                "max": 259.9088999927044
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0.29999998211860657,
+                "p50": 0.5,
+                "p95": 225.5,
+                "max": 293.40000000596046
+              },
+              "max_participant_state_bytes": 6725,
+              "max_host_state_bytes": 22092,
+              "max_server_rss_bytes": 81997824,
+              "max_persisted_state_bytes": 26048,
+              "final_storage": {
+                "state_bytes": 25855,
+                "max_actor_slot_bytes": 403,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": false,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            },
+            {
+              "item": "refuted",
+              "actors": 64,
+              "total_ms": 2712.3266000000003,
+              "ack_ms": {
+                "n": 64,
+                "min": 8.238299999999072,
+                "p50": 347.9272000000001,
+                "p95": 349.1064000000006,
+                "max": 349.40610000000015
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1629.9679000000015,
+                "p50": 1648.3336000000018,
+                "p95": 2690.6189000000013,
+                "max": 2694.514000000001
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 346.0347999930382,
+                "p50": 1089.7442000210285,
+                "p95": 1788.9284000098705,
+                "max": 1825.7235999703407
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 19.504899978637695,
+                "p50": 28.809800028800964,
+                "p95": 264.315800011158,
+                "max": 297.86609998345375
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0.4000000059604645,
+                "p50": 1.699999988079071,
+                "p95": 158,
+                "max": 218.90000000596046
+              },
+              "max_participant_state_bytes": 6725,
+              "max_host_state_bytes": 22092,
+              "max_server_rss_bytes": 82206720,
+              "max_persisted_state_bytes": 26048,
+              "final_storage": {
+                "state_bytes": 23039,
+                "max_actor_slot_bytes": 359,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": false,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            }
+          ],
+          "errors": [],
+          "browser": "156.0.8078.80",
+          "node": "v24.15.0",
+          "reconnect": {
+            "absent_evaluator_pending": true,
+            "same_actor_resumed": true,
+            "replay_same_receipt": true,
+            "closed_pending_completed": true,
+            "replacement_ms": 728.2550999999985,
+            "lease_generations": [
+              1,
+              2
+            ],
+            "stale_result_rejected": true,
+            "reset_late_result_rejected": true
+          },
+          "complete": true,
+          "targets_passed": false
+        },
+        "firefox": {
+          "format": 1,
+          "date": "2026-11-07T07:37:22.071Z",
+          "family": "firefox",
+          "hardware": {
+            "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+            "logical_cpus": 16,
+            "ram_bytes": 67869478912,
+            "platform": "win32",
+            "release": "10.0.19045",
+            "arch": "x64"
+          },
+          "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+          "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+          "bursts": [
+            {
+              "item": "practice",
+              "actors": 64,
+              "total_ms": 3631.4125000000004,
+              "ack_ms": {
+                "n": 64,
+                "min": 8.479299999999967,
+                "p50": 230.23720000000048,
+                "p95": 339.84609999999884,
+                "max": 339.90769999999975
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1591.7531,
+                "p50": 2494.302100000001,
+                "p95": 3583.136199999999,
+                "max": 3590.188899999999
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 582.6747999787331,
+                "p50": 1478.6433999836445,
+                "p95": 2348.7797999978065,
+                "max": 2395.250500023365
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 26.849800020456314,
+                "p50": 36.74110001325607,
+                "p95": 54.852299988269806,
+                "max": 72.61100003123283
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0,
+                "p50": 0,
+                "p95": 2,
+                "max": 3
+              },
+              "max_participant_state_bytes": 6679,
+              "max_host_state_bytes": 22092,
+              "max_server_rss_bytes": 80949248,
+              "max_persisted_state_bytes": 25929,
+              "final_storage": {
+                "state_bytes": 26047,
+                "max_actor_slot_bytes": 406,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": true,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            },
+            {
+              "item": "keys_all",
+              "actors": 64,
+              "total_ms": 3686.3467,
+              "ack_ms": {
+                "n": 64,
+                "min": 6.8968000000004395,
+                "p50": 379.53719999999885,
+                "p95": 381.0667999999987,
+                "max": 381.14819999999963
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1474.3372,
+                "p50": 2575.3158999999996,
+                "p95": 3665.392899999999,
+                "max": 3670.027899999999
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 591.4297000169754,
+                "p50": 1551.009299993515,
+                "p95": 2426.2068000137806,
+                "max": 2472.2148000001907
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 27.285299986600876,
+                "p50": 37.001900017261505,
+                "p95": 86.19830000400543,
+                "max": 318.2317000031471
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0,
+                "p50": 0,
+                "p95": 5,
+                "max": 11
+              },
+              "max_participant_state_bytes": 6725,
+              "max_host_state_bytes": 22092,
+              "max_server_rss_bytes": 81596416,
+              "max_persisted_state_bytes": 26048,
+              "final_storage": {
+                "state_bytes": 25855,
+                "max_actor_slot_bytes": 403,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": true,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            },
+            {
+              "item": "refuted",
+              "actors": 64,
+              "total_ms": 2712.052599999999,
+              "ack_ms": {
+                "n": 64,
+                "min": 7.577300000000832,
+                "p50": 331.28359999999884,
+                "p95": 332.05029999999897,
+                "max": 332.1833999999981
+              },
+              "feedback_ms": {
+                "n": 64,
+                "min": 1597.706299999998,
+                "p50": 1617.7936000000009,
+                "p95": 2675.2639000000017,
+                "max": 2677.993999999999
+              },
+              "queue_ms": {
+                "n": 64,
+                "min": 560.9833000004292,
+                "p50": 1172.541799992323,
+                "p95": 1996.9587000012398,
+                "max": 2036.1330000162125
+              },
+              "leased_to_result_ms": {
+                "n": 64,
+                "min": 27.047499984502792,
+                "p50": 35.810699969530106,
+                "p95": 42.30840000510216,
+                "max": 286.9877000153065
+              },
+              "input_to_frame_ms": {
+                "n": 24,
+                "min": 0,
+                "p50": 1,
+                "p95": 1,
+                "max": 1
+              },
+              "max_participant_state_bytes": 6725,
+              "max_host_state_bytes": 22092,
+              "max_server_rss_bytes": 81784832,
+              "max_persisted_state_bytes": 26048,
+              "final_storage": {
+                "state_bytes": 23039,
+                "max_actor_slot_bytes": 359,
+                "actors": 64,
+                "pending_jobs": 0
+              },
+              "lease_order_matches_acceptance": true,
+              "targets": {
+                "input": true,
+                "feedback_p95": true,
+                "feedback_worst": true
+              }
+            }
+          ],
+          "errors": [],
+          "browser": "153.0",
+          "node": "v24.15.0",
+          "reconnect": {
+            "absent_evaluator_pending": true,
+            "same_actor_resumed": true,
+            "replay_same_receipt": true,
+            "closed_pending_completed": true,
+            "replacement_ms": 1561.7559,
+            "lease_generations": [
+              1,
+              2
+            ],
+            "stale_result_rejected": true,
+            "reset_late_result_rejected": true
+          },
+          "complete": true,
+          "targets_passed": true
+        },
+        "webkit": {
+          "format": 1,
+          "date": "2026-11-07T07:37:48.212Z",
+          "family": "webkit",
+          "hardware": {
+            "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+            "logical_cpus": 16,
+            "ram_bytes": 67869478912,
+            "platform": "win32",
+            "release": "10.0.19045",
+            "arch": "x64"
+          },
+          "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+          "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+          "bursts": [],
+          "errors": [],
+          "browser": "26.5",
+          "node": "v24.15.0",
+          "failure": "Error: Timed out: slide views"
+        }
+      }
+    }
+  },
+  "visual_inspection": [
+    "Local German handout and solution page 2: readable, no clipping.",
+    "CI German solution page 2 and WebKit phone/presenter screenshots: readable, no horizontal overflow; presenter scrolls at 800x500."
+  ],
+  "remaining": {
+    "capacity": "Not green: Chromium input p95 misses in both local runs; WebKit confirmation timed out before measurement. Diagnose before claiming 64-student readiness.",
+    "physical_phone": "Explicitly deferred: automated checks only. No physical iOS/Safari or lecture LAN coverage.",
+    "catalog": "No catalog entry, release tag, permanent wheel publication or main-branch merge.",
+    "artifact_retention": "CI artifacts expire after 14 days; inventory hashes do not make them permanent release assets.",
+    "scope": "Original repository, existing courses and private media unchanged by this work."
+  }
+}

@@ -8,16 +8,24 @@ fachliche Regeln; Eindeutigkeit in einer Beispieltabelle beweist keine solche Re
 
 Das [Beispiel](../examples/functional-dependencies/lesson.tex) verwendet
 Workshop-Anmeldungen mit Person, E-Mail, Workshop, Tutor, Raum und Gebäude.
-Version 0.3.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
+Version 0.6.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
 Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
-[English guide](fd-lesson.md) · [Validierungsbericht](design/functional-dependencies-f3-validation.md).
+[English guide](fd-lesson.md) · [Aktueller Kapazitätsbericht](design/functional-dependencies-prepared-validation.md).
 
 ## Installation und Start
 
 Verwenden Sie eine neue Python-Umgebung (Python 3.12+) und das passende
 experimentelle TeXStage-Wheel. Bestehende Kursumgebungen bleiben unverändert.
-Geprüft wurde Host-Commit `de33515`; die Entwicklungsversionsnummer allein
-identifiziert keinen kompatiblen Build. Für Quell-Builds installieren Sie zuerst
+Version 0.6.0 benötigt Manifest 4 mit `actor_records` und `scoring`,
+verfügbar im fixierten TeXStage-Build aus `main` (0.2.1.dev7). Der frühere veröffentlichte Host-Pin
+`34d0c537135f32b0690147dbb66dd8ff155987f8` kann diesen Provider nicht laden.
+Das [Release-Verfahren](fd-release.md) erklärt die Prüfung von Quellen und Artefakten.
+Der geprüfte und veröffentlichte Host-Commit ist
+`6b64828b98e9908fc67c265cab31a71a216308d5`. Die
+[Merge-Validierung](design/functional-dependencies-publication-validation.md)
+dokumentiert die Artefakte, Kapazitätsmessungen und den Host-CI-Lauf.
+Nach einem Upgrade von 0.3.0 oder 0.4.0 das Bundle neu bauen und eine neue Sitzung starten.
+Die Entwicklungsversionsnummer allein identifiziert keinen kompatiblen Build. Für Quell-Builds installieren Sie zuerst
 die mit Hashes fixierten Entwicklungsabhängigkeiten und das Wheel dieses Hosts.
 Zusätzlich werden pdfLaTeX/latexmk, Beamer, Latin Modern sowie englische und
 deutsche Babel-Unterstützung benötigt.
@@ -26,7 +34,7 @@ Im Stammverzeichnis von `texstage-plugins`, bei aktivierter Umgebung:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.3.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.6.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -34,7 +42,7 @@ Prüfen Sie das Inventar und ersetzen Sie `<printed-payload>` durch den angezeig
 Digest. Installation und explizite Freigabe sind getrennte Schritte:
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.3.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.6.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -163,19 +171,41 @@ das gewünschte PDF oder lassen Sie TeXStage das Bundle mit seinen Zugriffskontr
 ausliefern; veröffentlichen Sie nicht pauschal das gesamte Build-Verzeichnis.
 
 Grenzen: 1–8 Attribute, 0–24 FDs, höchstens 8 produktive Schritte und 256
-vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 64 aktuelle Antworten
-mit reserviertem Feedback gespeichert. Der [aktuelle Lasttest](design/functional-dependencies-f4-performance.md)
-prüft 64 synthetische Teilnehmende auf einem Windows-Rechner über Loopback.
-Chromium, Firefox und WebKit erfüllen die unveränderten Eingabe- und Feedbackziele
-in allen drei Aufgabenarten. WebKit benötigt nach allgemeinen Host-Optimierungen
-etwa 7 Sekunden für einen Antwortschub. Die [ursprünglichen F4-Messungen](design/functional-dependencies-f4-validation.md)
-mit den früheren Latenzproblemen bleiben dokumentiert. Dies ist keine
-Durchsatzgarantie für ein Vorlesungsnetz oder echte Telefone.
+vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 1.000 aktuelle Antworten
+mit je 2 KiB reserviertem Speicher abgelegt; der gemeinsame Zustand hat ein
+separates Limit von 160 KiB. **Vorherige Antworten** und **Weitere Antworten**
+blättern durch jeweils 25 Antworten. Die Zähler berücksichtigen die ganze Klasse.
+Die Speichergrenze ist keine Durchsatzgarantie. Der
+[600-Teilnehmer-Bericht](design/functional-dependencies-prepared-validation.md)
+dokumentiert Messwerte und offene Prüfschritte. Frühere F4/F5-Messungen bleiben
+für ihre jeweiligen Artefakte gültig.
 
-Verwenden Sie für einen Pilotbetrieb die dort geprüfte Host-Version mit den
-Last- und Wiederverbindungsänderungen. Ohne Presenter-Auswertung bleiben
-Antworten ausstehend. Nach einem erkannten Verbindungsabbruch kann ein neuer
-Presenter die ausstehenden Prüfungen übernehmen; verspätete alte Ergebnisse
-werden abgewiesen. Ein Dienstausfall gilt nie als fachlich falsche Antwort.
+Ab Version 0.6.0 prüft der aktivierte Provider Antworten direkt anhand der
+privaten, vorberechneten Daten. Die Prüfung umfasst begrenzte Tabellenzugriffe
+oder höchstens acht Beweisschritte und unterliegt weiter dem Zeitlimit von
+250 ms. Antwort, Rückmeldung, private Bewertung und Wiederholungsbeleg werden
+gemeinsam gespeichert. Eine Presenter-Verbindung ist dafür nicht erforderlich.
+Ein fehlgeschlagener Prüfschritt oder Speichervorgang nimmt keine Antwort an
+und vergibt keine Punkte; die Anfrage kann wiederholt werden. Die separate
+mathematische Engine behält ihre bisherigen Worker- und Netzbeschränkungen.
 Physische Telefone, vollständige Barrierefreiheit und eine unveränderliche
 öffentliche Veröffentlichung bleiben eigene Prüfschritte.
+
+## Punkte vergeben
+
+Mit `"points": 100` auf oberster Ebene der Aktivitätsdatei erhält eine korrekte
+Antwort 100 Punkte. Erlaubt sind ganze Zahlen von 0 bis 10.000. Ohne das Feld
+oder mit 0 bleibt die Aktivität unbewertet. Im Beispiel vergibt jede Aktivität
+außer `practice` 100 Punkte. Nach Änderungen das Deck neu bauen.
+
+Eine nachweislich falsche Antwort erhält 0 Punkte. Fehlgeschlagene Prüfungen
+oder Speichervorgänge vergeben keine Punkte. Es gibt keine Teilpunkte,
+Zeitboni oder Serienboni. Auch bei sofortigem Übungsfeedback werden Punkte
+erst mit **Lösung auflösen** an Telefon, Gesamtwertung, Rangliste und CSV freigegeben.
+Eine Ersatzantwort ersetzt die Bewertung; Wiederholung und Wiederverbindung
+verdoppeln keine Punkte.
+
+Eine bewertete, aufgelöste Aktivität muss vor erneutem Öffnen zurückgesetzt werden.
+**Aktivität zurücksetzen** entfernt ihre Antworten und zieht ihre vergebenen
+Punkte zurück. Navigation erhält die Punkte. Unbewertete Übungen lassen sich
+weiterhin ohne Zurücksetzen erneut öffnen.

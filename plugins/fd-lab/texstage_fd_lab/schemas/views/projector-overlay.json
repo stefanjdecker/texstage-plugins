@@ -21,7 +21,7 @@
     "count": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 64
+      "maximum": 1000
     },
     "worked": {
       "type": "object",

@@ -40,6 +40,21 @@ def feedback(public, private, slot, outcome):
     expected = {'format': 1, 'exercise': private['exercise'], 'answer': slot['digest'], 'mode': mode, 'facts': facts}
     if model.canonical(outcome.get('data')) != model.canonical(expected):
         return {'code': 'unavailable', 'detail': 'facts'}
+    return _checked_feedback(public, private, answer, facts)
+
+
+def grade(public, private, answer):
+    """Check a validated answer against private prepared data in the provider hook.
+
+    This is the same independent verification used for engine certificates.
+    It looks up bounded closure tables and replays at most eight proof steps;
+    it never evaluates student code or trusts a client-supplied grade.
+    """
+    return _checked_feedback(public, private, answer, expected_facts(public, private, answer))
+
+
+def _checked_feedback(public, private, answer, facts):
+    seed, mode = public['seed'], public['mode']
     if mode == 'keys':
         invalid = [row for row in facts['checks'] if row[0] not in private['candidate_keys']]
         missing = len(set(private['candidate_keys']) - set(answer['keys'])) if seed['task']['require'] == 'all' else 0
