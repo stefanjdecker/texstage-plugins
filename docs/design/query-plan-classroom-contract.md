@@ -1,14 +1,18 @@
 # Query-plan classroom protocol v2 (0.5.0)
 
-Version 0.6.0 extends this contract with optional [activity points](../query-plan-points.md),
-manifest revision 4 and state schema 4. The storage and cost model below remain unchanged.
+Version 0.7.0 extends this contract with optional [quiz speed points and shared
+streak bonuses](../query-plan-points.md), manifest revision 5 and state schema 5.
+It replaces 0.6.0's fixed rewards. Open/close/deactivation also control the host's
+durable scoring clock; submission receipts preserve their accepted times. The
+actor-record storage and cost model below remain unchanged. See the
+[current scoring validation](query-plan-quiz-points-validation.md).
 
 Content API 1, manifest revision 3, state schema 3. This supersedes the
 0.3.0/0.4.0 classroom storage contract; the cost engine is unchanged.
 The [engine/source contract](query-plan-challenge-contract.md) is unchanged.
 This contract specifies the server protocol, actor records and projections. See
 the [classroom guide](../query-plan-lesson.md) and
-[current validation](query-plan-600-validation.md).
+[0.5.0 capacity validation](query-plan-600-validation.md).
 The static slide remains visible until a plan is shared or a solution revealed.
 
 ## State and commands

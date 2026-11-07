@@ -2,7 +2,9 @@
 import {analyze} from "./model.mjs";
 export const local=(value,language)=>value?.[language?.startsWith("de")?"de":"en"]||"";
 const en={
- pointsTarget:"Points for meeting the target",pointsAwarded:"Points awarded",practice:"Practice activity (no points)",
+ pointsTarget:"Base points",pointsAwarded:"Points awarded",practice:"Practice activity (no points)",
+ speedWindow:"Speed window",speedPoints:"Speed points",streakBonus:"Streak bonus",
+ scoringHint:"Correct plans earn 50–100% of the base, plus quiz streak bonuses. The window does not close answers automatically.",
  title:"Query-plan challenge",dismiss:"Close controls",pendingLabel:"Pending",unavailableLabel:"Unavailable",goalBest:"Find the least expensive feasible plan.",goalBudget:"Find a feasible plan costing at most",
  units:"Teaching cost units; these are not measured database timings.",context:"Query, statistics and cost rules",query:"Fixed query",output:"Output",
  rows:"Rows",pages:"Pages",width:"Row width (bytes)",filtered:"Output rows",hashLimit:"Hash workspace limit per join",bytes:"bytes",
@@ -34,7 +36,9 @@ const en={
  baselineReset:"The baseline is now your draft.",retry:"Submit again"
 };
 const de={
- pointsTarget:"Punkte beim Erreichen des Ziels",pointsAwarded:"Vergebene Punkte",practice:"Uebungsaktivitaet (ohne Punkte)",
+ pointsTarget:"Basispunkte",pointsAwarded:"Vergebene Punkte",practice:"Übungsaktivität (ohne Punkte)",
+ speedWindow:"Zeitfenster",speedPoints:"Zeitpunkte",streakBonus:"Serienbonus",
+ scoringHint:"Richtige Pläne erhalten 50–100% der Basispunkte plus Quiz-Serienbonus. Das Zeitfenster schließt Antworten nicht automatisch.",
  title:"Anfrageplan-Challenge",dismiss:"Bedienfeld schließen",pendingLabel:"Ausstehend",unavailableLabel:"Nicht verfügbar",goalBest:"Finden Sie den günstigsten zulässigen Plan.",goalBudget:"Finden Sie einen zulässigen Plan mit Kosten von höchstens",
  units:"Lehrmodell-Kosteneinheiten; keine gemessenen Datenbanklaufzeiten.",context:"Anfrage, Statistiken und Kostenregeln",query:"Feste Anfrage",output:"Ausgabe",
  rows:"Zeilen",pages:"Seiten",width:"Zeilenbreite (Bytes)",filtered:"Ausgabezeilen",hashLimit:"Hash-Speicherlimit je Join",bytes:"Bytes",

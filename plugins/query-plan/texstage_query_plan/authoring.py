@@ -169,8 +169,8 @@ def _fragment(prepared, language, solutions):
     exercise, reference = source["exercise"], prepared["reference"]
     goal = (w["best"] if source["goal"]["kind"] == "best" else
             w["budget"] + " " + _number(source["goal"]["max_cost"]) + ".")
-    scoring = (("Live activity: " + str(source["points"]) + " points for meeting the target.") if language == "en" else
-               ("Live-Aktivitaet: " + str(source["points"]) + " Punkte beim Erreichen des Ziels.")) if source["points"] else ""
+    scoring = ((f'Live: {source["points"]} base points; {source["time"]} s speed window; quiz streak bonus.') if language == "en" else
+               (f'Live: {source["points"]} Basispunkte; {source["time"]} s Zeitfenster; Quiz-Serienbonus.')) if source["points"] else ""
     lines = [r"\begingroup",
              r"\begin{adjustbox}{max totalsize={\linewidth}{\csname queryplan@height\endcsname},center}",
              r"\begin{minipage}{\linewidth}\raggedright\scriptsize",
@@ -208,7 +208,7 @@ def prepare_lesson(source, context):
     public = {"format": 1, "exercise": copy.deepcopy(exercise),
               "baseline": copy.deepcopy(normalized["baseline"]),
               "baseline_analysis": copy.deepcopy(prepared["baseline"]),
-              "goal": copy.deepcopy(normalized["goal"]), "points": normalized["points"]}
+              "goal": copy.deepcopy(normalized["goal"]), "points": normalized["points"], "time": normalized["time"]}
     private = {"exercise": prepared["worked"]["exercise"], "reference": copy.deepcopy(prepared["reference"]),
                "worked": {"answer": copy.deepcopy(normalized["worked_answer"]),
                           "analysis": copy.deepcopy(prepared["worked"]),

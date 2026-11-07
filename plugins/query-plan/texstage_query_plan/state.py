@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Bounded classroom state; engine facts are verified before assessment."""
 import copy
-from texstage.plugin_api.v1 import CancelEvaluation, Evaluate, SaveActor, SetCredit, PublishPoints, Transition, evaluation_correlation, json_value
+from texstage.plugin_api.v1 import CancelEvaluation, Evaluate, SaveActor, SetCredit, PublishPoints, SetPointsOpen, Transition, evaluation_correlation, json_value
 from . import model
 
 MAX_ACTORS = 1000
@@ -79,7 +79,7 @@ def _record(state, old, slot, effects):
 
 
 class Lesson:
-    """State schema 4: bounded shared state plus host-owned actor records."""
+    """State schema 5: bounded shared state plus host-owned actor records."""
     def initial_state(self, item, ctx):
         return {"phase": "introduce", "phase_version": 0, "control_version": 0,
                 "active": False, "count": 0, "records_page": 0,
@@ -95,6 +95,7 @@ class Lesson:
             if kind == "deactivate":
                 state["shared"] = None
                 if state["phase"] == "open":
+                    effects.append(SetPointsOpen(False))
                     state["phase"] = "closed"
                     state["phase_version"] = min(MAX_VERSION, state["phase_version"] + 1)
                     state["control_version"] = min(MAX_VERSION, state["control_version"] + 1)
@@ -156,6 +157,8 @@ class Lesson:
                     state["phase_version"] += 1
                     if op == "reveal":
                         effects.append(PublishPoints())
+                    else:
+                        effects.append(SetPointsOpen(op == "open"))
                     if op == "open":
                         state["shared"] = None
                 elif op == "select-answer":
@@ -211,6 +214,9 @@ class Lesson:
                 scoring = ctx.get("scoring", {})
                 if released and scoring.get("released") and scoring.get("awarded") is not None:
                     view["own"]["points"] = scoring["awarded"]
+                    for name in ("base_points", "bonus", "answer_ms", "streak"):
+                        if name in scoring:
+                            view["own"][name] = scoring[name]
         if role == "presenter":
             view["control_version"] = state["control_version"]
             view["counts"] = copy.deepcopy(state["counts"])

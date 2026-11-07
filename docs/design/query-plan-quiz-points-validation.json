@@ -1,0 +1,445 @@
+{
+  "date": "2026-11-07",
+  "status": "local implementation validation; uncommitted and unpublished",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.14.4",
+  "provider": {
+    "id": "io.github.stefanjdecker.queryplan",
+    "version": "0.7.0",
+    "payload": "68bdedff0baea68b2bc3bce75329d5bd57e74c526e95ae33514a6a853d7b31ab"
+  },
+  "host_version": "0.2.1.dev6",
+  "host_resources_sha256": "1203181416b33bb521c958610dac1d068c4b66a7e8f6e6f2adc11fa5dda0286a",
+  "artifacts": {
+    "texstage-0.2.1.dev6-py3-none-any.whl": "3dced0162471c53d7cf8635e955cd854bb0ffe3e5ab6fd9278c1fe614480c034",
+    "texstage_query_plan-0.7.0-py3-none-any.whl": "fa32743605069ed03cc92c9d136878d5adee611b697581578fe69b7fe68a1ece",
+    "texstage_query_plan-0.7.0.tar.gz": "a337a63f4cf67f483c3533c396fd87da490abf1f5904e4637908b7771f591e21"
+  },
+  "tests": {
+    "host": {
+      "tests": 277,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "passed": 276
+    },
+    "query_plan": {
+      "tests": 180,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 180
+    },
+    "handoff": {
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 19
+    },
+    "transaction": {
+      "tests": 67,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 67
+    },
+    "relational": {
+      "tests": 72,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 72
+    },
+    "coordinates_distance": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 4
+    }
+  },
+  "browser_probes": [
+    "chromium-browser",
+    "chromium-ui_browser",
+    "chromium-state_browser",
+    "chromium-authoring_browser",
+    "firefox-browser",
+    "firefox-ui_browser",
+    "firefox-state_browser",
+    "firefox-authoring_browser",
+    "webkit-browser",
+    "webkit-ui_browser",
+    "webkit-state_browser",
+    "webkit-authoring_browser"
+  ],
+  "points_ui": {
+    "chromium": {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "items": 4,
+      "realWorker": true,
+      "actualControls": true,
+      "rolePrivacy": true,
+      "touch320": true,
+      "keyboard": true,
+      "zoom200": true,
+      "resize": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "undo": true,
+      "reset": true,
+      "points": {
+        "privateUntilReveal": true,
+        "quizSpeed": true,
+        "sharedStreak": true,
+        "firstAward": 989,
+        "missedTarget": 0,
+        "resetWithdraws": true,
+        "cumulativeTotal": 3297,
+        "lastStreak": 3
+      },
+      "german": true,
+      "receiptBeforeView": true,
+      "viewBeforeReceipt": true,
+      "editDuringSave": true,
+      "queueFailure": true,
+      "resetInFlight": true,
+      "pagination": true,
+      "cleanup": true,
+      "errors": []
+    },
+    "firefox": {
+      "browser": "firefox",
+      "version": "153.0",
+      "items": 4,
+      "realWorker": true,
+      "actualControls": true,
+      "rolePrivacy": true,
+      "touch320": true,
+      "keyboard": true,
+      "zoom200": true,
+      "resize": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "undo": true,
+      "reset": true,
+      "points": {
+        "privateUntilReveal": true,
+        "quizSpeed": true,
+        "sharedStreak": true,
+        "firstAward": 986,
+        "missedTarget": 0,
+        "resetWithdraws": true,
+        "cumulativeTotal": 3297,
+        "lastStreak": 3
+      },
+      "german": true,
+      "receiptBeforeView": true,
+      "viewBeforeReceipt": true,
+      "editDuringSave": true,
+      "queueFailure": true,
+      "resetInFlight": true,
+      "pagination": true,
+      "cleanup": true,
+      "errors": []
+    },
+    "webkit": {
+      "browser": "webkit",
+      "version": "26.5",
+      "items": 4,
+      "realWorker": true,
+      "actualControls": true,
+      "rolePrivacy": true,
+      "touch320": true,
+      "keyboard": true,
+      "zoom200": true,
+      "resize": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "undo": true,
+      "reset": true,
+      "points": {
+        "privateUntilReveal": true,
+        "quizSpeed": true,
+        "sharedStreak": true,
+        "firstAward": 986,
+        "missedTarget": 0,
+        "resetWithdraws": true,
+        "cumulativeTotal": 3295,
+        "lastStreak": 3
+      },
+      "german": true,
+      "receiptBeforeView": true,
+      "viewBeforeReceipt": true,
+      "editDuringSave": true,
+      "queueFailure": true,
+      "resetInFlight": true,
+      "pagination": true,
+      "cleanup": true,
+      "errors": []
+    }
+  },
+  "load": {
+    "actors": 600,
+    "rounds": 3,
+    "interval_ms": 1000,
+    "runtime": "Real host WebSockets; one real browser presenter evaluator; synthetic participants",
+    "browser": "chromium",
+    "browser_version": "156.0.8078.80",
+    "platform": "win32",
+    "limits": {
+      "receipt_ms": 180000,
+      "completion_ms": 180000,
+      "lease_recovery_ms": 200000,
+      "burst_ack_p95_ms": 5000,
+      "burst_completion_max_ms": 60000
+    },
+    "final": {
+      "count": 600,
+      "counts": {
+        "goal-met": 600,
+        "invalid": 0,
+        "pending": 0,
+        "target-missed": 0,
+        "unavailable": 0
+      },
+      "actors_with_latest_feedback": 600,
+      "actors_with_verified_points": 600,
+      "participant_bytes": 392374033,
+      "participant_pushes": 47135
+    },
+    "reset_all_actors": true,
+    "retake_after_reset": true
+  },
+  "load_scenarios": [
+    {
+      "label": "burst",
+      "offered": 600,
+      "accepted": 600,
+      "wall_ms": 53839.9306,
+      "accepted_per_second": 11.144145122653631,
+      "acknowledgement_ms": {
+        "count": 600,
+        "min": 38.590400000000955,
+        "p50": 3166.1635000000006,
+        "p95": 4618.0391,
+        "max": 4624.868699999999
+      },
+      "completion_ms": {
+        "count": 600,
+        "min": 8388.612399999998,
+        "p50": 29118.946899999995,
+        "p95": 50115.56570000001,
+        "max": 53778.4192
+      },
+      "actor_quartile_completion_ms": [
+        {
+          "count": 150,
+          "min": 8388.612399999998,
+          "p50": 13512.3164,
+          "p95": 19884.5248,
+          "max": 20500.531600000002
+        },
+        {
+          "count": 150,
+          "min": 19549.4399,
+          "p50": 23049.2359,
+          "p95": 30237.157399999996,
+          "max": 30630.1489
+        },
+        {
+          "count": 150,
+          "min": 28465.9427,
+          "p50": 35748.4858,
+          "p95": 40897.9054,
+          "max": 41473.780900000005
+        },
+        {
+          "count": 150,
+          "min": 40169.7239,
+          "p50": 46797.6644,
+          "p95": 51116.7721,
+          "max": 53778.4192
+        }
+      ]
+    },
+    {
+      "label": "paced replacements",
+      "offered": 1800,
+      "accepted": 1800,
+      "wall_ms": 87859.1054,
+      "accepted_per_second": 20.48734723401816,
+      "acknowledgement_ms": {
+        "count": 1800,
+        "min": 35.228999999992084,
+        "p50": 7518.209400000022,
+        "p95": 7692.422100000025,
+        "max": 7699.770599999989
+      },
+      "completion_ms": {
+        "count": 629,
+        "min": 8851.118799999997,
+        "p50": 38380.47210000001,
+        "p95": 63780.6605,
+        "max": 66450.93710000001
+      },
+      "actor_quartile_completion_ms": [
+        {
+          "count": 179,
+          "min": 8851.118799999997,
+          "p50": 16145.640799999994,
+          "p95": 24893.05230000001,
+          "max": 29487.6556
+        },
+        {
+          "count": 150,
+          "min": 28469.74470000001,
+          "p50": 32668.161300000007,
+          "p95": 39832.32920000001,
+          "max": 40154.55369999999
+        },
+        {
+          "count": 150,
+          "min": 37617.779500000004,
+          "p50": 46056.129400000005,
+          "p95": 53108.6581,
+          "max": 53610.8236
+        },
+        {
+          "count": 150,
+          "min": 52460.264599999995,
+          "p50": 59760.46729999999,
+          "p95": 65649.5648,
+          "max": 66450.93710000001
+        }
+      ],
+      "superseded": 1171
+    },
+    {
+      "label": "absent evaluator replacements",
+      "offered": 600,
+      "accepted": 600,
+      "wall_ms": 77365.99299999999,
+      "accepted_per_second": 7.755345426769098,
+      "acknowledgement_ms": {
+        "count": 600,
+        "min": 34.12060000002384,
+        "p50": 8112.117999999988,
+        "p95": 8135.736499999999,
+        "max": 8138.6479999999865
+      },
+      "completion_ms": {
+        "count": 600,
+        "min": 17924.870999999985,
+        "p50": 42337.12260000003,
+        "p95": 62917.48310000001,
+        "max": 66151.7762
+      },
+      "actor_quartile_completion_ms": [
+        {
+          "count": 150,
+          "min": 17924.870999999985,
+          "p50": 25078.963499999983,
+          "p95": 29700.321600000025,
+          "max": 30283.84109999999
+        },
+        {
+          "count": 150,
+          "min": 29324.703700000013,
+          "p50": 35687.159599999984,
+          "p95": 43343.88159999999,
+          "max": 43718.109999999986
+        },
+        {
+          "count": 150,
+          "min": 41565.40259999997,
+          "p50": 48520.706199999986,
+          "p95": 53225.416800000035,
+          "max": 53841.067500000034
+        },
+        {
+          "count": 150,
+          "min": 51524.34439999997,
+          "p50": 59067.65089999998,
+          "p95": 65421.948799999984,
+          "max": 66151.7762
+        }
+      ],
+      "absent_pending": 600,
+      "recovery_ms": 51400.42949999997,
+      "completed_after_close": true
+    },
+    {
+      "label": "attempt after reset",
+      "offered": 600,
+      "accepted": 600,
+      "wall_ms": 52790.37600000005,
+      "accepted_per_second": 11.365708022234953,
+      "acknowledgement_ms": {
+        "count": 600,
+        "min": 29.307399999990594,
+        "p50": 4168.596099999966,
+        "p95": 4183.045899999968,
+        "max": 4183.271599999978
+      },
+      "completion_ms": {
+        "count": 600,
+        "min": 7469.828200000047,
+        "p50": 28784.574699999997,
+        "p95": 49145.6091,
+        "max": 52712.182099999976
+      },
+      "actor_quartile_completion_ms": [
+        {
+          "count": 150,
+          "min": 7469.828200000047,
+          "p50": 11924.174600000028,
+          "p95": 18657.043799999985,
+          "max": 19229.874699999986
+        },
+        {
+          "count": 150,
+          "min": 18221.123100000026,
+          "p50": 23650.655200000037,
+          "p95": 28902.314899999998,
+          "max": 29199.5613
+        },
+        {
+          "count": 150,
+          "min": 27110.527899999986,
+          "p50": 34508.28620000003,
+          "p95": 40512.817500000005,
+          "max": 41270.942900000024
+        },
+        {
+          "count": 150,
+          "min": 40388.405099999974,
+          "p50": 45997.18469999998,
+          "p95": 51504.48299999995,
+          "max": 52712.182099999976
+        }
+      ]
+    }
+  ],
+  "lease_loss_scenarios_rerun": false,
+  "checks": [
+    "quiz speed_points and streak_bonus functions reused; shared scored-quiz/activity timeline",
+    "server submission time; latest replacement; receipt replay; pause/resume; floor after scoring window",
+    "streak cap and disabled-bonus setting; pending/unavailable neutral; incorrect/missing breaks streak",
+    "late verified results and reset recompute subsequent bonuses; private retakes avoid timeline replay",
+    "durable restart; failed persistence rolls back scores, bonuses, ranks and tie-break times",
+    "pre-reveal privacy; own speed/bonus breakdown; normal totals/ranks; extended CSV",
+    "fixed-v1 compatibility and concurrent actor/item-record and result-cache APIs preserved",
+    "production worker restrictions unchanged in all three browsers",
+    "English/German LaTeX builds; rendered activity PDF and 320px phone/presenter UI inspected",
+    "portable wheel/source-distribution payload parity"
+  ],
+  "limitations": [
+    "These exact artifacts tested locally on Windows; no new Linux or hosted CI result",
+    "600 authenticated synthetic loopback clients, not physical phones or classroom Wi-Fi",
+    "1,000 actor ceiling unchanged and unit-tested; no new 1,000-client capacity run",
+    "Long production lease expiry scenarios remain historical 0.5.0 evidence",
+    "Rebuild the deck, explicitly enable the new payload and start a fresh session; existing courses/environments unchanged"
+  ]
+}

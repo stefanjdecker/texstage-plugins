@@ -1,8 +1,8 @@
 {
-  "manifest_version": 4,
+  "manifest_version": 5,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.queryplan",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Query-plan challenge with accessible plan selectors and classroom controls.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -40,7 +40,7 @@
         "content_api": 1,
         "authoring_hook": "challenge",
         "state_hook": "lesson",
-        "state_schema": 4,
+        "state_schema": 5,
         "latex_packages": [
           "texstage_query_plan/latex/texstage-queryplan-challenge.sty"
         ],
@@ -129,8 +129,9 @@
           "summary_schema": "texstage_query_plan/schemas/actor-summary-v1.json"
         },
         "scoring": {
-          "policy": "fixed-v1",
-          "points_field": "points"
+          "policy": "quiz-v1",
+          "points_field": "points",
+          "time_field": "time"
         }
       }
     }

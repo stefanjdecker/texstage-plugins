@@ -191,7 +191,27 @@
         "points": {
           "type": "integer",
           "minimum": 0,
+          "maximum": 10500
+        },
+        "base_points": {
+          "type": "integer",
+          "minimum": 0,
           "maximum": 10000
+        },
+        "bonus": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500
+        },
+        "answer_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3600000
+        },
+        "streak": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
         }
       },
       "required": [

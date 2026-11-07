@@ -229,5 +229,6 @@
     "en": "Join the ten selected books to loans first. Build small hash tables on books, then on the 50-row result.",
     "de": "Zuerst die zehn Bücher mit Ausleihen verbinden. Kleine Hash-Tabellen für Bücher und dann für die 50 Ergebniszeilen aufbauen."
   },
-  "points": 1000
+  "points": 1000,
+  "time": 120
 }

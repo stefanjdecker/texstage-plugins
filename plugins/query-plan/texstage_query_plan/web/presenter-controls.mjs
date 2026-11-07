@@ -48,7 +48,7 @@ export function mount(ctx) {
  const solution=details(w.private+" — "+w.worked),solutionView=planView(ctx.item.exercise,ctx.language,ctx.signal),explanation=el("p"),minimum=el("p");
  const optimal=details(w.optimal),optimalView=planView(ctx.item.exercise,ctx.language,ctx.signal);optimal.append(optimalView.root);
  solution.append(explanation,minimum,solutionView.root,optimal);
- body.append(dismiss,el("h2",w.title),phase,el("p",ctx.item.points?w.pointsTarget+": "+number(ctx.item.points,ctx.language):w.practice),counts,actions,confirmBox,error,waiting,pager,field(w.select,roster),shareActions,selected,solution);
+ body.append(dismiss,el("h2",w.title),phase,el("p",ctx.item.points?w.pointsTarget+": "+number(ctx.item.points,ctx.language)+" · "+w.speedWindow+": "+ctx.item.time+" s. "+w.scoringHint:w.practice),counts,actions,confirmBox,error,waiting,pager,field(w.select,roster),shareActions,selected,solution);
  panel.append(body);root.append(panel);
  function paint(){
   const d=current?.data;

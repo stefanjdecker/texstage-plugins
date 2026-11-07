@@ -84,5 +84,6 @@
     "en": "An index is not always cheaper. Fetching 5,000 matches individually costs more than scanning the table.",
     "de": "Ein Index ist nicht immer günstiger. 5.000 einzelne Treffer kosten mehr als ein vollständiger Scan."
   },
-  "points": 1000
+  "points": 1000,
+  "time": 120
 }

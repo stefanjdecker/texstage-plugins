@@ -86,9 +86,9 @@ submission. Presenter controls support collection, private inspection, anonymous
 sharing, reveal and reset. Drafts survive unrelated updates and same-user
 conflicts require an explicit keep/reload choice.
 
-Version 0.6.0 adds [optional game points](docs/query-plan-points.md), contributing
+Version 0.7.0 adds [quiz speed points and shared streak bonuses](docs/query-plan-points.md), contributing
 to the normal total, leaderboard and CSV export. It retains bounded per-student storage and a presenter roster with 25
-answers per page. See the [points validation](docs/design/query-plan-points-validation.md)
+answers per page. See the [quiz-points validation](docs/design/query-plan-quiz-points-validation.md)
 for current checks and the [600-student validation](docs/design/query-plan-600-validation.md)
 for the earlier 0.5.0 measurements and recovery scenarios.
 

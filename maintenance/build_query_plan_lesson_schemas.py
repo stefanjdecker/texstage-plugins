@@ -57,7 +57,11 @@ def build():
                     "explanation": explanation, "minimum": COST, "ties": {"type": "integer", "minimum": 1, "maximum": 864}})
     own = obj({"version": VERSION, "answer": {"$ref": "#/$defs/answer"},
                "status": string_enum(["pending", "saved", "unavailable"]), "feedback": feedback,
-               "points": {"type": "integer", "minimum": 0, "maximum": 10000}},
+               "points": {"type": "integer", "minimum": 0, "maximum": 10500},
+               "base_points": {"type": "integer", "minimum": 0, "maximum": 10000},
+               "bonus": {"type": "integer", "minimum": 0, "maximum": 500},
+               "answer_ms": {"type": "integer", "minimum": 0, "maximum": 3600000},
+               "streak": {"type": "integer", "minimum": 0, "maximum": 1000000}},
               ["version", "answer", "status"])
     base = {"phase": string_enum(["introduce", "open", "closed", "revealed"]),
             "phase_version": VERSION, "active": {"type": "boolean"}, "count": COUNT}

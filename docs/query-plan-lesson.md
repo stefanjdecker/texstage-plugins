@@ -1,7 +1,7 @@
 # Using Query-plan Challenge
 
 Optional game points are described in [points and feedback](query-plan-points.md).
-The four new examples use 1,000 points per activity. Existing sources without
+The four examples use 1,000 base points and a 120-second speed window, with quiz streak bonuses. Existing sources without
 a `points` field remain unscored when rebuilt.
 
 Query-plan Challenge lets students choose how a fixed database query is executed:
@@ -10,10 +10,10 @@ build input. Students compare estimates, explain their choices and submit a plan
 It uses a small, explicit teaching cost model, not a database optimizer or
 measurements from a database server.
 
-The experimental 0.6.0 provider includes a phone editor, presenter controls and
+The experimental 0.7.0 provider includes a phone editor, presenter controls and
 a projector view. The [authoring guide](query-plan-authoring.md) covers installation,
 explicit enablement, all source fields, the LaTeX command and static exports.
-The [Q5 validation record](design/query-plan-release-validation.md) identifies
+The [quiz-points validation record](design/query-plan-quiz-points-validation.md) identifies
 the tested artifacts and measured classroom load. A published compatible host,
 successful hosted CI, physical-device checks and real screen-reader review
 remain release gates.
@@ -146,12 +146,12 @@ Join predicates form a connected tree. Disconnected intermediate joins are not
 offered; every feasible ordered tree and physical-method combination remains
 reachable. Duplicate output rows are retained (bag semantics).
 
-Version 0.6.0 stores up to 1,000 distinct student answers per activity, with
+Version 0.7.0 stores up to 1,000 distinct student answers per activity, with
 a 600-student classroom target. Storage capacity is separate from measured
 throughput. The presenter uses Previous answers / Next answers to browse
 25 summaries per page; a selected answer remains visible when changing pages.
-The [points validation record](design/query-plan-points-validation.md) reports
-checks on 0.6.0. The [earlier capacity record](design/query-plan-600-validation.md)
+The [points validation record](design/query-plan-quiz-points-validation.md) reports
+checks on 0.7.0. The [earlier capacity record](design/query-plan-600-validation.md)
 reports synthetic load and evaluator recovery on 0.5.0 artifacts.
 This does not guarantee performance on classroom Wi-Fi or physical phones. Review the
 [classroom contract](design/query-plan-classroom-contract.md) for protocol,

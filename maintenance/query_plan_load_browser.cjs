@@ -235,7 +235,9 @@ async function freePort(){const net=require("node:net"),s=net.createServer();ret
   students.forEach(c=>{
    const own=view(c.state).data.own;assert(own.feedback&&own.status==="saved");
    assert.equal(own.feedback.correct,digestPlan(own.answer)===digestPlan(lesson.worked_answer));
-   assert.equal(own.points,own.feedback.correct?lesson.points:0);
+   const base=own.feedback.correct?Math.round(lesson.points*(1-Math.min(own.answer_ms/(lesson.time*1000),1)/2)):0;
+   assert.equal(own.base_points,base);assert.equal(own.bonus,0);
+   assert.equal(own.streak,own.feedback.correct?1:0);assert.equal(own.points,base);
    assert.equal(c.state.me.score,own.points,"host total agrees with released award");
   });
   report.final={count:view(host.state).data.count,counts:view(host.state).data.counts,
@@ -245,7 +247,28 @@ async function freePort(){const net=require("node:net"),s=net.createServer();ret
   const epoch=view(host.state).epoch;await control("_reset");
   await until(()=>students.every(c=>view(c.state)?.epoch===epoch+1&&!view(c.state).data.own),count+"-actor reset");
   assert(students.every(c=>c.state.me.score===0),"reset withdraws all activity awards");
-  report.reset_all_actors=true;assert.deepEqual(errors,[]);report.passed=true;
+  report.reset_all_actors=true;
+  // Repeat after reset: the durable game mirror now exists. Private revisions
+  // must stay cheap and the next reveal must replace, not accumulate, awards.
+  console.log("Checking a fresh scored attempt after reset.");
+  await control("open");await until(()=>students.every(c=>view(c.state).data.phase==="open"),"retake open");
+  start=performance.now();batch=await Promise.all(students.map(c=>submit(c,lesson.worked_answer,"retake")));
+  await complete(batch,"retake evaluations");
+  const retake=summarize("attempt after reset",batch,start,performance.now());report.scenarios.push(retake);
+  assert(retake.acknowledgement_ms.p95<=5000,"retake receipt p95 exceeds 5 seconds");
+  assert(retake.completion_ms.max<=60000,"retake completion exceeds 60 seconds");
+  assert(students.every(c=>c.state.me.score===0),"retake stays private");
+  await control("close");await control("reveal");
+  await until(()=>students.every(c=>view(c.state).data.phase==="revealed"),"retake reveal");
+  students.forEach(c=>{
+   const own=view(c.state).data.own;
+   const expected=Math.round(lesson.points*(1-Math.min(own.answer_ms/(lesson.time*1000),1)/2));
+   assert.equal(own.points,expected);assert.equal(own.bonus,0);assert.equal(own.streak,1);
+   assert.equal(c.state.me.score,expected,"retake replaces original award");
+  });
+  await control("_reset");
+  await until(()=>students.every(c=>view(c.state)?.epoch===epoch+2&&!view(c.state).data.own&&c.state.me.score===0),"retake reset");
+  report.retake_after_reset=true;assert.deepEqual(errors,[]);report.passed=true;
  }catch(e){report.error=e.stack;throw e;}
  finally{
   report.finished_at=new Date().toISOString();report.errors=errors;

@@ -55,9 +55,13 @@ fabricates results or weakens the worker policy. It records:
 - Two abandoned jobs after an observable disconnect, then a silent evaluator
   that leaves its socket open; the latter exercises the unchanged 120-second lease.
 - Latest-answer feedback, role privacy and reset across all connected actors.
-- With the scored example: zero totals before reveal, the correct fixed award
-  in each phone's activity feedback and normal total after reveal, and withdrawal
-  of all these awards on reset. See [points](query-plan-points.md).
+- With the scored example: zero totals before reveal, speed points calculated
+  from the server-recorded submission time and a shared quiz streak bonus in
+  each phone's feedback and normal total after reveal, and withdrawal of these
+  awards on reset. See [points](query-plan-points.md).
+- A fresh scored attempt after reset, with the same 5-second receipt p95 and
+  60-second completion limits. Private submissions must not recalculate the
+  game timeline; reveal replaces the old award and another reset withdraws it.
 
 `report.json` includes acknowledgement/completion quantiles, completion order,
 actor quartiles, traffic, versions and bounded deadlines. Intermediate versions

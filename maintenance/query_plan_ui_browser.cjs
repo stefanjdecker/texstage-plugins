@@ -129,7 +129,12 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
   await clickControl("Reveal solution");await until(async()=>!!(await data(phone))?.solution,"revealed solution");
   await input.getByText("Worked solution",{exact:true}).click();
   assert((await input.innerText()).includes("Goal met"));
-  await until(async()=>(await data(phone))?.own?.points===1000&&await phone.evaluate(()=>window.qpState.me.score===1000),"released game points");
+  await until(async()=>Number.isInteger((await data(phone))?.own?.points),"released game points");
+  const firstAward=(await data(phone)).own;
+  assert.equal(firstAward.base_points,Math.round(1000*(1-Math.min(firstAward.answer_ms/120000,1)/2)));
+  assert.equal(firstAward.bonus,0);assert.equal(firstAward.points,firstAward.base_points);
+  assert.equal(await phone.evaluate(()=>window.qpState.me.score),firstAward.points);
+  assert((await input.innerText()).includes("Streak bonus"));
   assert.equal(await bob.evaluate(()=>window.qpState.me.score),0,"missed target earns zero");
   assert((await input.innerText()).includes("1,000"));
   await phone.screenshot({path:path.join(output,"phone-index.png"),fullPage:true});
@@ -143,7 +148,9 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
   await input.getByRole("button",{name:"Load saved plan",exact:true}).click();
   assert.equal(await method(phone,0).inputValue(),"seq");assert(!(await data(phone)).own);
   await until(()=>phone.evaluate(()=>window.qpState.me.score===0),"reset withdraws activity award");
+  assert.equal(await phone.evaluate(()=>window.qpState.me.streak),0);
   await controls.locator("summary").first().click();
+  let cumulativePoints=0;
   // All prepared activities, including both join shapes and limited workspace.
   for(const item of ["broad","library","memory"]){
    await presenter.locator("#next").click();await until(async()=>!!await data(phone,item),item+" visible");
@@ -178,8 +185,13 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
    await presenter.locator(".qp-controls").getByRole("button",{name:"Close answers",exact:true}).click();
    await presenter.locator(".qp-controls").getByRole("button",{name:"Reveal solution",exact:true}).click();
    await until(async()=>!!(await data(projector,item))?.solution,"reveal "+item);
-   const expected=1000*(["broad","library","memory"].indexOf(item)+1);
-   await until(async()=>(await data(phone,item))?.own?.points===1000&&await phone.evaluate(expected=>window.qpState.me.score===expected,expected),"cumulative game points "+item);
+   await until(async()=>Number.isInteger((await data(phone,item))?.own?.points),"activity game points "+item);
+   const award=(await data(phone,item)).own,streak=["broad","library","memory"].indexOf(item)+1;
+   assert.equal(award.streak,streak);assert.equal(award.bonus,100*(streak-1));
+   assert.equal(award.base_points,Math.round(lesson.points*(1-Math.min(award.answer_ms/(lesson.time*1000),1)/2)));
+   assert.equal(award.points,award.base_points+award.bonus);cumulativePoints+=award.points;
+   await until(()=>phone.evaluate(expected=>window.qpState.me.score===expected,cumulativePoints),"cumulative game points "+item);
+   assert.equal(await phone.evaluate(()=>window.qpState.me.streak),streak);
    if(item==="library"||item==="memory")await projector.screenshot({path:path.join(output,"projector-"+item+".png"),fullPage:true});
    await presenter.locator(".qp-controls summary").first().click();
   }
@@ -241,7 +253,8 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
   assert.deepEqual(errors,[]);
   const report={browser:family,version:browser.version(),items:4,realWorker:true,actualControls:true,rolePrivacy:true,
    touch320:true,keyboard:true,zoom200:true,resize:true,draftFocus:true,sameActorConflict:true,undo:true,reset:true,
-   points:{privateUntilReveal:true,awarded:1000,missedTarget:0,resetWithdraws:true,cumulativeTotal:3000},...races,errors};
+   points:{privateUntilReveal:true,quizSpeed:true,sharedStreak:true,firstAward:firstAward.points,missedTarget:0,
+    resetWithdraws:true,cumulativeTotal:cumulativePoints,lastStreak:3},...races,errors};
   fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify(report));
 
  }catch(error){
