@@ -1,0 +1,584 @@
+{
+  "description": "Hand-derived specification expectations; never regenerated from the checker.",
+  "cases": [
+    {
+      "id": "selective-seq",
+      "exercise": "selective",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "seq"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 20000
+      }
+    },
+    {
+      "id": "selective-index",
+      "exercise": "selective",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 5210
+      }
+    },
+    {
+      "id": "broad-seq",
+      "exercise": "broad",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "seq"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 20000
+      }
+    },
+    {
+      "id": "broad-index",
+      "exercise": "broad",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 2006200
+      }
+    },
+    {
+      "id": "empty-seq",
+      "exercise": "empty",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "seq"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 20000
+      }
+    },
+    {
+      "id": "empty-index",
+      "exercise": "empty",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 1200
+      }
+    },
+    {
+      "id": "tie-seq",
+      "exercise": "tie",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "seq"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 4810
+      }
+    },
+    {
+      "id": "tie-index",
+      "exercise": "tie",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 4810
+      }
+    },
+    {
+      "id": "tiny-nested",
+      "exercise": "tiny",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "seq"
+          },
+          {
+            "op": "scan",
+            "relation": "b",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 204
+      }
+    },
+    {
+      "id": "tiny-hash",
+      "exercise": "tiny",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "seq"
+          },
+          {
+            "op": "scan",
+            "relation": "b",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "hash-left"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 206
+      }
+    },
+    {
+      "id": "library-best",
+      "exercise": "library",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          },
+          {
+            "op": "scan",
+            "relation": "loans",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "hash-left"
+          },
+          {
+            "op": "scan",
+            "relation": "members",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 2,
+            "right": 3,
+            "method": "hash-left"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 116430
+      }
+    },
+    {
+      "id": "library-late-books",
+      "exercise": "library",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "loans",
+            "method": "seq"
+          },
+          {
+            "op": "scan",
+            "relation": "members",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "hash-right"
+          },
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          },
+          {
+            "op": "join",
+            "left": 2,
+            "right": 3,
+            "method": "hash-right"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 128280
+      }
+    },
+    {
+      "id": "library-nested",
+      "exercise": "library",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          },
+          {
+            "op": "scan",
+            "relation": "loans",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "nested"
+          },
+          {
+            "op": "scan",
+            "relation": "members",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 2,
+            "right": 3,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 259310
+      }
+    },
+    {
+      "id": "memory-best",
+      "exercise": "memory",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          },
+          {
+            "op": "scan",
+            "relation": "loans",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "hash-left"
+          },
+          {
+            "op": "scan",
+            "relation": "members",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 2,
+            "right": 3,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": true,
+        "cost": 214330
+      }
+    },
+    {
+      "id": "memory-final-hash-refused",
+      "exercise": "memory",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          },
+          {
+            "op": "scan",
+            "relation": "loans",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "hash-left"
+          },
+          {
+            "op": "scan",
+            "relation": "members",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 2,
+            "right": 3,
+            "method": "hash-left"
+          }
+        ]
+      },
+      "expect": {
+        "valid": false,
+        "reason": "hash-memory"
+      }
+    },
+    {
+      "id": "disconnected-join",
+      "exercise": "library",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "books",
+            "method": "index"
+          },
+          {
+            "op": "scan",
+            "relation": "members",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "nested"
+          },
+          {
+            "op": "scan",
+            "relation": "loans",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 2,
+            "right": 3,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": false,
+        "reason": "disconnected-join"
+      }
+    },
+    {
+      "id": "unavailable-index",
+      "exercise": "tiny",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "index"
+          },
+          {
+            "op": "scan",
+            "relation": "b",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": false,
+        "reason": "unavailable-index"
+      }
+    },
+    {
+      "id": "duplicate-relation",
+      "exercise": "tiny",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "seq"
+          },
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 1,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": false,
+        "reason": "duplicate-relation"
+      }
+    },
+    {
+      "id": "missing-relation",
+      "exercise": "tiny",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "seq"
+          }
+        ]
+      },
+      "expect": {
+        "valid": false,
+        "reason": "missing-relation"
+      }
+    },
+    {
+      "id": "shared-child",
+      "exercise": "tiny",
+      "answer": {
+        "format": 1,
+        "nodes": [
+          {
+            "op": "scan",
+            "relation": "a",
+            "method": "seq"
+          },
+          {
+            "op": "join",
+            "left": 0,
+            "right": 0,
+            "method": "nested"
+          }
+        ]
+      },
+      "expect": {
+        "valid": false,
+        "reason": "invalid-tree"
+      }
+    }
+  ],
+  "optima": {
+    "selective": {
+      "cost": 5210,
+      "count": 1,
+      "feasible": 2
+    },
+    "broad": {
+      "cost": 20000,
+      "count": 1,
+      "feasible": 2
+    },
+    "empty": {
+      "cost": 1200,
+      "count": 1,
+      "feasible": 2
+    },
+    "tie": {
+      "cost": 4810,
+      "count": 2,
+      "feasible": 2
+    },
+    "tiny": {
+      "cost": 204,
+      "count": 2,
+      "feasible": 6
+    },
+    "library": {
+      "cost": 116430,
+      "count": 4,
+      "feasible": 144
+    },
+    "memory": {
+      "cost": 214330,
+      "count": 4,
+      "feasible": 32
+    }
+  }
+}

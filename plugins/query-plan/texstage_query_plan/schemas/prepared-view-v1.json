@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": 1
+    },
+    "mode": {
+      "const": "prepared-static"
+    }
+  },
+  "required": [
+    "format",
+    "mode"
+  ],
+  "additionalProperties": false
+}

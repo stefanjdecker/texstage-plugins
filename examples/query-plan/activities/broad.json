@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        }
+      ],
+      "joins": [],
+      "output": [
+        [
+          "books",
+          "book_id"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 5000
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "baseline": {
+    "format": 1,
+    "nodes": [
+      {
+        "op": "scan",
+        "relation": "books",
+        "method": "index"
+      }
+    ]
+  },
+  "goal": {
+    "kind": "best"
+  },
+  "worked_answer": {
+    "format": 1,
+    "nodes": [
+      {
+        "op": "scan",
+        "relation": "books",
+        "method": "seq"
+      }
+    ]
+  },
+  "explanation": {
+    "en": "An index is not always cheaper. Fetching 5,000 matches individually costs more than scanning the table.",
+    "de": "Ein Index ist nicht immer günstiger. 5.000 einzelne Treffer kosten mehr als ein vollständiger Scan."
+  }
+}

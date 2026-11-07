@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "type": "string",
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "phase_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 64
+    },
+    "solution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "worked_answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "optimal_answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "explanation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "en",
+            "de"
+          ]
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3000000000000
+        },
+        "ties": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 864
+        }
+      },
+      "required": [
+        "worked_answer",
+        "optimal_answer",
+        "explanation",
+        "minimum",
+        "ties"
+      ]
+    },
+    "demonstration": {
+      "$ref": "#/$defs/answer"
+    }
+  },
+  "required": [
+    "phase",
+    "phase_version",
+    "active",
+    "count"
+  ],
+  "$defs": {
+    "answer": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "integer",
+          "const": 1
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "scan"
+                  },
+                  "relation": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 16
+                  },
+                  "method": {
+                    "enum": [
+                      "seq",
+                      "index"
+                    ]
+                  }
+                },
+                "required": [
+                  "op",
+                  "relation",
+                  "method"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "join"
+                  },
+                  "left": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "right": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "method": {
+                    "enum": [
+                      "nested",
+                      "hash-left",
+                      "hash-right"
+                    ]
+                  }
+                },
+                "required": [
+                  "op",
+                  "left",
+                  "right",
+                  "method"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "format",
+        "nodes"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "language": "en",
+  "items": [
+    {
+      "id": "selective",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/selective.json"
+    },
+    {
+      "id": "broad",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/broad.json"
+    },
+    {
+      "id": "library",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/library.json"
+    },
+    {
+      "id": "memory",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/memory.json"
+    }
+  ]
+}

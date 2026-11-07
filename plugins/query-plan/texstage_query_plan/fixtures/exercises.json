@@ -1,0 +1,630 @@
+{
+  "selective": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        }
+      ],
+      "joins": [],
+      "output": [
+        [
+          "books",
+          "book_id"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 10
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "broad": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        }
+      ],
+      "joins": [],
+      "output": [
+        [
+          "books",
+          "book_id"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 5000
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "empty": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        }
+      ],
+      "joins": [],
+      "output": [
+        [
+          "books",
+          "book_id"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 0
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "tie": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 2
+          }
+        }
+      ],
+      "joins": [],
+      "output": [
+        [
+          "books",
+          "book_id"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 810,
+          "pages": 40,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 10
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "tiny": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "a",
+          "columns": [
+            {
+              "id": "key",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "columns": [
+            {
+              "id": "key",
+              "type": "int"
+            }
+          ]
+        }
+      ],
+      "joins": [
+        {
+          "left": [
+            "a",
+            "key"
+          ],
+          "right": [
+            "b",
+            "key"
+          ]
+        }
+      ],
+      "output": [
+        [
+          "a",
+          "key"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "a",
+          "rows": 1,
+          "pages": 1,
+          "row_bytes": 8
+        },
+        {
+          "relation": "b",
+          "rows": 1,
+          "pages": 1,
+          "row_bytes": 8
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "a"
+          ],
+          "rows": 1
+        },
+        {
+          "relations": [
+            "b"
+          ],
+          "rows": 1
+        },
+        {
+          "relations": [
+            "a",
+            "b"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1024
+    }
+  },
+  "library": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        },
+        {
+          "id": "loans",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "member_id",
+              "type": "int"
+            },
+            {
+              "id": "open",
+              "type": "bool"
+            }
+          ],
+          "filter": {
+            "column": "open",
+            "value": true
+          }
+        },
+        {
+          "id": "members",
+          "columns": [
+            {
+              "id": "member_id",
+              "type": "int"
+            },
+            {
+              "id": "name",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "joins": [
+        {
+          "left": [
+            "books",
+            "book_id"
+          ],
+          "right": [
+            "loans",
+            "book_id"
+          ]
+        },
+        {
+          "left": [
+            "loans",
+            "member_id"
+          ],
+          "right": [
+            "members",
+            "member_id"
+          ]
+        }
+      ],
+      "output": [
+        [
+          "members",
+          "name"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        },
+        {
+          "relation": "loans",
+          "rows": 50000,
+          "pages": 500,
+          "row_bytes": 32
+        },
+        {
+          "relation": "members",
+          "rows": 2000,
+          "pages": 20,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 10
+        },
+        {
+          "relations": [
+            "loans"
+          ],
+          "rows": 5000
+        },
+        {
+          "relations": [
+            "members"
+          ],
+          "rows": 2000
+        },
+        {
+          "relations": [
+            "books",
+            "loans"
+          ],
+          "rows": 50
+        },
+        {
+          "relations": [
+            "loans",
+            "members"
+          ],
+          "rows": 5000
+        },
+        {
+          "relations": [
+            "books",
+            "loans",
+            "members"
+          ],
+          "rows": 50
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "memory": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        },
+        {
+          "id": "loans",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "member_id",
+              "type": "int"
+            },
+            {
+              "id": "open",
+              "type": "bool"
+            }
+          ],
+          "filter": {
+            "column": "open",
+            "value": true
+          }
+        },
+        {
+          "id": "members",
+          "columns": [
+            {
+              "id": "member_id",
+              "type": "int"
+            },
+            {
+              "id": "name",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "joins": [
+        {
+          "left": [
+            "books",
+            "book_id"
+          ],
+          "right": [
+            "loans",
+            "book_id"
+          ]
+        },
+        {
+          "left": [
+            "loans",
+            "member_id"
+          ],
+          "right": [
+            "members",
+            "member_id"
+          ]
+        }
+      ],
+      "output": [
+        [
+          "members",
+          "name"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        },
+        {
+          "relation": "loans",
+          "rows": 50000,
+          "pages": 500,
+          "row_bytes": 32
+        },
+        {
+          "relation": "members",
+          "rows": 2000,
+          "pages": 20,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 10
+        },
+        {
+          "relations": [
+            "loans"
+          ],
+          "rows": 5000
+        },
+        {
+          "relations": [
+            "members"
+          ],
+          "rows": 2000
+        },
+        {
+          "relations": [
+            "books",
+            "loans"
+          ],
+          "rows": 50
+        },
+        {
+          "relations": [
+            "loans",
+            "members"
+          ],
+          "rows": 5000
+        },
+        {
+          "relations": [
+            "books",
+            "loans",
+            "members"
+          ],
+          "rows": 50
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1024
+    }
+  }
+}

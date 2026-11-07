@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Query-plan Challenge answer-v1",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "scan"
+              },
+              "relation": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,15}(?![\\s\\S])"
+              },
+              "method": {
+                "enum": [
+                  "seq",
+                  "index"
+                ]
+              }
+            },
+            "required": [
+              "op",
+              "relation",
+              "method"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "join"
+              },
+              "left": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "right": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "method": {
+                "enum": [
+                  "nested",
+                  "hash-left",
+                  "hash-right"
+                ]
+              }
+            },
+            "required": [
+              "op",
+              "left",
+              "right",
+              "method"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 5
+    }
+  },
+  "required": [
+    "format",
+    "nodes"
+  ],
+  "additionalProperties": false
+}

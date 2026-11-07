@@ -12,6 +12,7 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
 | `texstage-transaction-engine` | Schedule analysis engine `io.github.stefanjdecker.transactionengine.schedule` (M2) | None; lesson package pending |
 | `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
+| `texstage-query-plan` | Query-plan selectors, cost inspection and classroom activity (Q0–Q4) | `\queryplanchallenge` |
 | `texstage-fd-lab` | Closure, candidate-key and implication lessons (F1-F3) | `\fdlab{id}{width}{height}` |
 
 The coordinate slide accepts a phone response, displays class points on the
@@ -75,6 +76,32 @@ phases, anonymous sharing and static exports. The
 [R3/R4 validation record](docs/design/relational-algebra-lesson-validation.md)
 records installed-wheel authoring and browser checks. Physical-phone testing
 and measured classroom load remain release gates.
+
+## Query-plan Challenge: interactive physical plans
+
+The [Query-plan package](plugins/query-plan/README.md) lets students select scans,
+join order, join methods and hash build inputs for a fixed query. Version 0.4.0
+adds phone selectors, local cost comparison and node arithmetic, undo and explicit
+submission. Presenter controls support collection, private inspection, anonymous
+sharing, reveal and reset. Drafts survive unrelated updates and same-user
+conflicts require an explicit keep/reload choice.
+
+The [classroom guide](docs/query-plan-lesson.md) explains how to run it.
+[Prepared authoring](docs/query-plan-authoring.md) generates exercises, private
+worked answers and static exports from the
+[four-activity example](examples/query-plan/lesson.tex).
+The [Q4 evidence](docs/design/query-plan-ui-validation.md) supplements the
+[engine](docs/design/query-plan-engine-validation.md),
+[authoring](docs/design/query-plan-authoring-validation.md) and
+[state](docs/design/query-plan-state-validation.md) records.
+
+The [Q5 validation record](docs/design/query-plan-release-validation.md) adds
+Windows/Linux artifact checks, measured 64-participant load and evaluator recovery.
+The [release procedure](docs/query-plan-release-checks.md) covers the dedicated CI
+workflow and remaining manual checks. Costs are teaching units, not database timings.
+This remains an experimental local candidate: physical-phone LAN and screen-reader
+checks, a published compatible host pin and successful hosted jobs are still
+[release gates](docs/design/query-plan-challenge-plan.md).
 
 ## Functional dependencies and keys: classroom lessons
 

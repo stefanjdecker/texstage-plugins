@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Query-plan analysis v1",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "query-plan-analysis-v1"
+        },
+        "model": {
+          "const": "teaching-cost-v1"
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "valid": {
+          "const": true
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3000000000000
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "node": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "subset": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 7
+              },
+              "rows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              },
+              "row_bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3072
+              },
+              "local_cost": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3000000000000
+              },
+              "total_cost": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3000000000000
+              },
+              "hash_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 16777216
+              }
+            },
+            "required": [
+              "node",
+              "subset",
+              "rows",
+              "row_bytes",
+              "local_cost",
+              "total_cost",
+              "hash_bytes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "format",
+        "model",
+        "exercise",
+        "answer",
+        "valid",
+        "cost",
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "query-plan-analysis-v1"
+        },
+        "model": {
+          "const": "teaching-cost-v1"
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "valid": {
+          "const": false
+        },
+        "node": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 4
+        },
+        "reason": {
+          "enum": [
+            "invalid-tree",
+            "unknown-relation",
+            "duplicate-relation",
+            "missing-relation",
+            "disconnected-join",
+            "unavailable-index",
+            "hash-memory"
+          ]
+        }
+      },
+      "required": [
+        "format",
+        "model",
+        "exercise",
+        "answer",
+        "valid",
+        "node",
+        "reason"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

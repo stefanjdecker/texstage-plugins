@@ -1,0 +1,53 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{texstage}
+\usepackage{texstage-queryplan-challenge}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\title{Same question, different execution plans}
+\subtitle{TeXStage Query-plan Challenge}
+\author{A fictional library database}
+\date{}
+\begin{document}
+\begin{frame}
+\titlepage
+\small Choose access paths and joins while keeping the query fixed.
+\end{frame}
+\begin{frame}{What are we optimizing?}
+\begin{itemize}
+\item Every legal plan answers the same fixed query.
+\item The displayed statistics and formulas determine the teaching cost.
+\item Compare the root total; child work is already included.
+\item Hash memory is a limit per operator. It excludes materialization storage.
+\item Equal-cost optimal plans are all acceptable.
+\end{itemize}
+\medskip
+\textbf{These costs are not measured database execution times.}
+\end{frame}
+\begin{frame}{Few matches: should we use the index?}
+\queryplanchallenge{selective}{.97\linewidth}{.82\textheight}
+\end{frame}
+\begin{frame}{Many matches: is an index still better?}
+\queryplanchallenge{broad}{.97\linewidth}{.82\textheight}
+\end{frame}
+\begin{frame}{Join order: who borrowed database books?}
+\queryplanchallenge{library}{.97\linewidth}{.82\textheight}
+\end{frame}
+\begin{frame}{A smaller hash workspace changes the plan}
+\queryplanchallenge{memory}{.97\linewidth}{.82\textheight}
+\end{frame}
+\begin{frame}{Read the plan, then explain the choice}
+\begin{itemize}
+\item Selectivity can change whether an index is useful.
+\item Joining a small filtered input early can reduce later work.
+\item Hashing is useful only when the chosen build input fits.
+\item The library query returns one row per qualifying loan.
+      A member's name can occur more than once.
+\end{itemize}
+\medskip
+This activity studies physical execution choices. The Relational Algebra Lab
+studies logical trees and uses set semantics instead.
+\end{frame}
+\end{document}

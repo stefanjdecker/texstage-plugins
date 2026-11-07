@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Draft Query-plan Challenge engine exercise (not a released contract)",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": 1
+    },
+    "model": {
+      "const": "teaching-cost-v1"
+    },
+    "query": {
+      "type": "object",
+      "properties": {
+        "relations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,15}$"
+              },
+              "columns": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                    },
+                    "type": {
+                      "enum": [
+                        "int",
+                        "text",
+                        "bool"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 8
+              },
+              "filter": {
+                "type": "object",
+                "properties": {
+                  "column": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                  },
+                  "value": {
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": -1000000,
+                        "maximum": 1000000
+                      },
+                      {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "column",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "index": {
+                "type": "object",
+                "properties": {
+                  "column": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                  },
+                  "height": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 8
+                  }
+                },
+                "required": [
+                  "column",
+                  "height"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "id",
+              "columns"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 3
+        },
+        "joins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "left": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "right": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "required": [
+              "left",
+              "right"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 2
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,15}$"
+              },
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,15}$"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "relations",
+        "joins",
+        "output"
+      ],
+      "additionalProperties": false
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,15}$"
+              },
+              "rows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              },
+              "pages": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              },
+              "row_bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              }
+            },
+            "required": [
+              "relation",
+              "rows",
+              "pages",
+              "row_bytes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 3
+        },
+        "cardinalities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "relations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]{0,15}$"
+                },
+                "minItems": 1,
+                "maxItems": 3,
+                "uniqueItems": true
+              },
+              "rows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              }
+            },
+            "required": [
+              "relations",
+              "rows"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 7
+        }
+      },
+      "required": [
+        "base",
+        "cardinalities"
+      ],
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "hash_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16777216
+        }
+      },
+      "required": [
+        "hash_bytes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "model",
+    "query",
+    "statistics",
+    "limits"
+  ],
+  "additionalProperties": false
+}

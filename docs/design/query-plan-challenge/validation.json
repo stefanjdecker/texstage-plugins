@@ -1,0 +1,206 @@
+{
+  "status": "design-fixtures-only",
+  "model": "teaching-cost-v1",
+  "date": "2026-11-06",
+  "files_sha256": {
+    "exercises.json": "b0a7cc38ab1b2292bd6e81535f1d0c218fae5fa72f5f430b08a6ae03d6846591",
+    "expected-cases.json": "c740dfe89af99cd12a085c6c5a0b9eac5cf969da8e24721f25e081084e455c45",
+    "exercise.schema.json": "8601ca4874ff7f99046d635faa9cd33a8d355a9cbe2f61c2bf4670a122a2367e",
+    "answer.schema.json": "4a68c35b82fef48fc1c84937fed632221d5bbf2edef5eec96de849e28383f0bc",
+    "maintenance/check_query_plan_design.py": "2976eb7196b6994c4f5ba762bcf1ee3bdb3b3ac208156a8539a5a4e0b0692ea2"
+  },
+  "expected_cases_passed": 20,
+  "cases": [
+    {
+      "id": "selective-seq",
+      "valid": true,
+      "cost": 20000
+    },
+    {
+      "id": "selective-index",
+      "valid": true,
+      "cost": 5210
+    },
+    {
+      "id": "broad-seq",
+      "valid": true,
+      "cost": 20000
+    },
+    {
+      "id": "broad-index",
+      "valid": true,
+      "cost": 2006200
+    },
+    {
+      "id": "empty-seq",
+      "valid": true,
+      "cost": 20000
+    },
+    {
+      "id": "empty-index",
+      "valid": true,
+      "cost": 1200
+    },
+    {
+      "id": "tie-seq",
+      "valid": true,
+      "cost": 4810
+    },
+    {
+      "id": "tie-index",
+      "valid": true,
+      "cost": 4810
+    },
+    {
+      "id": "tiny-nested",
+      "valid": true,
+      "cost": 204
+    },
+    {
+      "id": "tiny-hash",
+      "valid": true,
+      "cost": 206
+    },
+    {
+      "id": "library-best",
+      "valid": true,
+      "cost": 116430
+    },
+    {
+      "id": "library-late-books",
+      "valid": true,
+      "cost": 128280
+    },
+    {
+      "id": "library-nested",
+      "valid": true,
+      "cost": 259310
+    },
+    {
+      "id": "memory-best",
+      "valid": true,
+      "cost": 214330
+    },
+    {
+      "id": "memory-final-hash-refused",
+      "valid": false,
+      "reason": "hash-memory"
+    },
+    {
+      "id": "disconnected-join",
+      "valid": false,
+      "reason": "disconnected-join"
+    },
+    {
+      "id": "unavailable-index",
+      "valid": false,
+      "reason": "unavailable-index"
+    },
+    {
+      "id": "duplicate-relation",
+      "valid": false,
+      "reason": "duplicate-relation"
+    },
+    {
+      "id": "missing-relation",
+      "valid": false,
+      "reason": "missing-relation"
+    },
+    {
+      "id": "shared-child",
+      "valid": false,
+      "reason": "invalid-tree"
+    }
+  ],
+  "optima": {
+    "selective": {
+      "enumerated": 2,
+      "feasible": 2,
+      "cost": 5210,
+      "count": 1
+    },
+    "broad": {
+      "enumerated": 2,
+      "feasible": 2,
+      "cost": 20000,
+      "count": 1
+    },
+    "empty": {
+      "enumerated": 2,
+      "feasible": 2,
+      "cost": 1200,
+      "count": 1
+    },
+    "tie": {
+      "enumerated": 2,
+      "feasible": 2,
+      "cost": 4810,
+      "count": 2
+    },
+    "tiny": {
+      "enumerated": 6,
+      "feasible": 6,
+      "cost": 204,
+      "count": 2
+    },
+    "library": {
+      "enumerated": 216,
+      "feasible": 144,
+      "cost": 116430,
+      "count": 4
+    },
+    "memory": {
+      "enumerated": 216,
+      "feasible": 32,
+      "cost": 214330,
+      "count": 4
+    }
+  },
+  "mirrored_feasible_plans_checked": 190,
+  "memory_monotonicity": [
+    {
+      "hash_bytes": 0,
+      "cost": 259310
+    },
+    {
+      "hash_bytes": 479,
+      "cost": 259310
+    },
+    {
+      "hash_bytes": 480,
+      "cost": 214330
+    },
+    {
+      "hash_bytes": 1024,
+      "cost": 214330
+    },
+    {
+      "hash_bytes": 3999,
+      "cost": 214330
+    },
+    {
+      "hash_bytes": 4000,
+      "cost": 116430
+    },
+    {
+      "hash_bytes": 95999,
+      "cost": 116430
+    },
+    {
+      "hash_bytes": 96000,
+      "cost": 116430
+    },
+    {
+      "hash_bytes": 240000,
+      "cost": 116430
+    },
+    {
+      "hash_bytes": 1048576,
+      "cost": 116430
+    }
+  ],
+  "workspace_exact_boundary": "480 accepted; 479 rejected",
+  "invalid_statistics_checks_passed": 3,
+  "maximum_candidates_enumerated": 864,
+  "runtime_plugin_or_browser_tested": false
+}

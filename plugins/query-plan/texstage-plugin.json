@@ -1,0 +1,126 @@
+{
+  "manifest_version": 2,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.queryplan",
+  "version": "0.4.0",
+  "description": "Query-plan challenge with accessible plan selectors and classroom controls.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.queryplan.cost": {
+        "engine_api": 1,
+        "module": "texstage_query_plan/web/engine.worker.mjs",
+        "assets": [
+          "texstage_query_plan/web/identity.mjs",
+          "texstage_query_plan/web/validation.mjs",
+          "texstage_query_plan/web/parser.mjs",
+          "texstage_query_plan/web/model.mjs"
+        ],
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "Physical query plan (JSON)",
+          "tokens": [
+            "nodes",
+            "method"
+          ]
+        },
+        "canonical_format": "query-plan-analysis-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_query_plan/schemas/analysis-result-v1.json"
+      }
+    },
+    "content_types": {
+      "io.github.stefanjdecker.queryplan.challenge": {
+        "content_api": 1,
+        "authoring_hook": "challenge",
+        "state_hook": "lesson",
+        "state_schema": 2,
+        "latex_packages": [
+          "texstage_query_plan/latex/texstage-queryplan-challenge.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.queryplan.cost"
+          }
+        },
+        "views": {
+          "presenter-overlay": "texstage_query_plan/web/lesson-overlay.mjs",
+          "projector-overlay": "texstage_query_plan/web/lesson-overlay.mjs",
+          "participant-input": "texstage_query_plan/web/participant.mjs",
+          "presenter-controls": "texstage_query_plan/web/presenter-controls.mjs"
+        },
+        "view_schemas": {
+          "presenter-overlay": "texstage_query_plan/schemas/views/presenter-v1.json",
+          "projector-overlay": "texstage_query_plan/schemas/views/projector-v1.json",
+          "participant-input": "texstage_query_plan/schemas/views/participant-v1.json",
+          "presenter-controls": "texstage_query_plan/schemas/views/presenter-v1.json"
+        },
+        "messages": {
+          "submit-plan": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/submit-plan-v1.json"
+          },
+          "open": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/control-v1.json"
+          },
+          "close": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/control-v1.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/control-v1.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/select-answer-v1.json"
+          },
+          "share-selected": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/control-v1.json"
+          },
+          "clear-shared": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/control-v1.json"
+          }
+        },
+        "fallback": "static-slide"
+      }
+    }
+  },
+  "latex_namespace": "queryplan",
+  "latex_exports": {
+    "commands": [
+      "queryplanchallenge"
+    ],
+    "environments": []
+  }
+}

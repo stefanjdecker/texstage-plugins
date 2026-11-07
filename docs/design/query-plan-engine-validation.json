@@ -1,0 +1,244 @@
+{
+  "date": "2026-11-06",
+  "scope": "Frozen engine/lesson-source contracts and Q1 engine only",
+  "host_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "collection_base_commit": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "provider": {
+    "id": "io.github.stefanjdecker.queryplan",
+    "version": "0.1.0",
+    "payload": "f77808bde14ac20c08769bd3b37b5f21cecf1d4a429b4472f6f19f3d110ea335"
+  },
+  "artifacts": {
+    "wheel": "texstage_query_plan-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "742b950c8dd9e03d23df4941c117d8fc72f4fea27235f8148e43cad17dff5d53",
+    "sdist": "texstage_query_plan-0.1.0.tar.gz",
+    "sdist_sha256": "fdd7255e962af9d593182920511dda7d29c5179f5dae13721e1f7096905a08c4",
+    "sdist_payload_parity": true,
+    "host_wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "host_wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6"
+  },
+  "host_payload_sha256": "e41e8bbb8463111ee7d62f8c0b92c4dda736bc5df9ce558b9d7e813d06efcb23",
+  "result_schema_canonical_sha256": "31ef1e85ac42a5d9bd09735b4bfe37a5303e2564d614ebdea2c85187776ba36f",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "tests": {
+    "tests": 86,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "final_run_includes_exact_memory_boundary": true,
+  "node_probe_cases": 4,
+  "finite_expected_cases": 20,
+  "fixture_families": 7,
+  "maximum_family_candidates": 864,
+  "bag_semantics": {
+    "oracle": "SQLite bag query vs independent nested/hash row interpreter",
+    "library_variants": 4,
+    "feasible_plans_per_variant": 144
+  },
+  "bounds": {
+    "seed_bytes": 4764,
+    "max_answer_bytes": 315,
+    "max_data_bytes": 851,
+    "max_outcome_bytes": 1073,
+    "reference_seconds": 0.01266179999220185,
+    "candidates": 864
+  },
+  "schema_and_lesson_bounds": {
+    "schema_data_upper_bytes": 2318,
+    "schema_outcome_witness_bytes": 2533,
+    "maximum_shaped_lesson_bytes": 53474,
+    "prepare_reference_seconds": [
+      0.016803399979835376,
+      0.0359658999950625,
+      0.01878949999809265,
+      0.019727999984752387,
+      0.017891099996631965
+    ]
+  },
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "samples": 8,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "actual_host_deadline_ms": 2000,
+      "max_elapsed_ms_including_startup": 28.19999998807907,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2018.5,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "report_sha256": "2a255b1377fcc02681710c7f3afe5bbafb49ce29a025d8c5a4711a87cd259789"
+    },
+    "firefox": {
+      "version": "153.0",
+      "samples": 8,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "actual_host_deadline_ms": 2000,
+      "max_elapsed_ms_including_startup": 155,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2048,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "report_sha256": "658ee9534b3f2c80f20d59ff2db4ac11c2c9c69d65104502aee7555638b042f6"
+    },
+    "webkit": {
+      "version": "26.5",
+      "samples": 8,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "actual_host_deadline_ms": 2000,
+      "max_elapsed_ms_including_startup": 104,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2076,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "report_sha256": "1d406dd5a09cb76a5fa0a64af94ca7e41a4babafe3de3348e000165eca3ae203"
+    }
+  },
+  "regressions": {
+    "original_pair": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "relational_probe_cases": 4,
+    "transaction_probe_cases": 4,
+    "existing_worker_bytes_unchanged": {
+      "plugins/relational-lab/texstage_relational_lab/web/engine.worker.mjs": true,
+      "plugins/transaction-engine/texstage_transaction_engine/web/schedule.worker.mjs": true
+    },
+    "checked_builder_entries": [
+      "query-plan",
+      "fd-lab",
+      "relational-lab",
+      "transaction-engine"
+    ],
+    "query_plan_worker_current_after_lf_normalization": true,
+    "concurrent_plugin_changes_preserved": true
+  },
+  "not_tested_or_not_implemented": [
+    "Hosted CI",
+    "Linux artifact consumer",
+    "Published compatible host pin",
+    "PreparedAuthoring/static exports",
+    "Lesson state and audience views",
+    "Phone interface",
+    "Physical phone",
+    "Classroom load"
+  ]
+}

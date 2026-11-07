@@ -1,0 +1,393 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "type": "string",
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "phase_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 64
+    },
+    "solution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "worked_answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "optimal_answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "explanation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "en",
+            "de"
+          ]
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3000000000000
+        },
+        "ties": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 864
+        }
+      },
+      "required": [
+        "worked_answer",
+        "optimal_answer",
+        "explanation",
+        "minimum",
+        "ties"
+      ]
+    },
+    "demonstration": {
+      "$ref": "#/$defs/answer"
+    },
+    "control_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "goal-met": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "target-missed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "invalid": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "unavailable": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        }
+      },
+      "required": [
+        "pending",
+        "goal-met",
+        "target-missed",
+        "invalid",
+        "unavailable"
+      ]
+    },
+    "participants": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "actor": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "goal-met",
+              "target-missed",
+              "invalid",
+              "unavailable"
+            ]
+          }
+        },
+        "required": [
+          "actor",
+          "number",
+          "status"
+        ]
+      }
+    },
+    "selected": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "saved",
+            "unavailable"
+          ]
+        },
+        "feedback": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "const": "goal-met"
+                },
+                "correct": {
+                  "const": true
+                },
+                "cost": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3000000000000
+                }
+              },
+              "required": [
+                "code",
+                "correct",
+                "cost"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "const": "target-missed"
+                },
+                "correct": {
+                  "const": false
+                },
+                "cost": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3000000000000
+                }
+              },
+              "required": [
+                "code",
+                "correct",
+                "cost"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "const": "invalid"
+                },
+                "correct": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "enum": [
+                    "invalid-tree",
+                    "unknown-relation",
+                    "duplicate-relation",
+                    "missing-relation",
+                    "disconnected-join",
+                    "unavailable-index",
+                    "hash-memory"
+                  ]
+                },
+                "node": {
+                  "type": "integer",
+                  "minimum": -1,
+                  "maximum": 4
+                }
+              },
+              "required": [
+                "code",
+                "correct",
+                "reason",
+                "node"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "const": "unavailable"
+                },
+                "detail": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "syntax",
+                    "refused",
+                    "timeout",
+                    "cancelled",
+                    "identity",
+                    "facts",
+                    "capacity"
+                  ]
+                }
+              },
+              "required": [
+                "code",
+                "detail"
+              ]
+            }
+          ]
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "version",
+        "answer",
+        "status",
+        "actor"
+      ]
+    }
+  },
+  "required": [
+    "phase",
+    "phase_version",
+    "active",
+    "count",
+    "control_version",
+    "counts",
+    "participants",
+    "solution"
+  ],
+  "$defs": {
+    "answer": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "integer",
+          "const": 1
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "scan"
+                  },
+                  "relation": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 16
+                  },
+                  "method": {
+                    "enum": [
+                      "seq",
+                      "index"
+                    ]
+                  }
+                },
+                "required": [
+                  "op",
+                  "relation",
+                  "method"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "join"
+                  },
+                  "left": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "right": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "method": {
+                    "enum": [
+                      "nested",
+                      "hash-left",
+                      "hash-right"
+                    ]
+                  }
+                },
+                "required": [
+                  "op",
+                  "left",
+                  "right",
+                  "method"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "format",
+        "nodes"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

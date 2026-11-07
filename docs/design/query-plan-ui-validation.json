@@ -1,0 +1,389 @@
+{
+  "date": "2026-11-07",
+  "scope": "Q4 complete classroom interface; local development milestone",
+  "provider": {
+    "id": "io.github.stefanjdecker.queryplan",
+    "version": "0.4.0",
+    "payload": "c8bbe936f167fb47db93156b78ea00848420ce4d364246373eb93d9119ad732e"
+  },
+  "wheel": {
+    "file": "texstage_query_plan-0.4.0-py3-none-any.whl",
+    "sha256": "46d5c4b8e695d43afddb752b8c6f56d0606d84345679e93b409308261d00a4da"
+  },
+  "sdist": {
+    "file": "texstage_query_plan-0.4.0.tar.gz",
+    "sha256": "70c0ff8ad3c5302a5167795987722225134b52b570ba756a794f027f0a80881c",
+    "rebuilt_payload_matches": true
+  },
+  "host": {
+    "version": "0.2.1.dev3",
+    "development_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+    "wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "resource_inventory_sha256": "e41e8bbb8463111ee7d62f8c0b92c4dda736bc5df9ce558b9d7e813d06efcb23"
+  },
+  "collection_base_commit": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "tests": {
+    "passed": 158,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 98.91,
+    "editor_cases": 9,
+    "existing_cases": 149
+  },
+  "preparation": {
+    "calls": 4,
+    "ms": [
+      515.728,
+      2.892,
+      9.715,
+      13.029
+    ],
+    "checks": [
+      "live bundle privacy",
+      "exercise/solution separation",
+      "static PowerPoint",
+      "handout PDF",
+      "solutions PDF",
+      "direct pdfLaTeX editions"
+    ],
+    "q3_pdf_text_unchanged": {
+      "handout": true,
+      "solutions": true,
+      "stage": true,
+      "direct-handout": true,
+      "direct-solutions": true
+    }
+  },
+  "schemas": {
+    "texstage_query_plan/schemas/analysis-result-v1.json": "4bcb3926cf79ef1aad603c6b3c74539aa23f0e3f339d8b4e328606338c2a258f",
+    "texstage_query_plan/schemas/answer-v1.json": "8f6c2d18ad6719269678c56b63049406757c98c5725f1e3d670abab1e18f46d1",
+    "texstage_query_plan/schemas/commands/control-v1.json": "ec11e27da88fb218c4b5420af5c45f301fedde3e23be6ed33c3e430b74e32b4a",
+    "texstage_query_plan/schemas/commands/select-answer-v1.json": "c771606e24b542a953d43604f015de738d910724a320cd56e431be333cd6f733",
+    "texstage_query_plan/schemas/commands/submit-plan-v1.json": "7d845967dd3c4e316b1b7ed2be0caab8d839bdeaef8fdc3fac2d7005a5258e82",
+    "texstage_query_plan/schemas/exercise-v1.json": "94bcefdb9a2b3aeceb9089bff8035188f40b80ed7a28db6a45427646d04b974c",
+    "texstage_query_plan/schemas/lesson-v1.json": "1f47f77079d70e04fbac68775748caec49cf56b0c902d608c1cedf244cec2099",
+    "texstage_query_plan/schemas/prepared-view-v1.json": "c785c8a31331c3da4bfc0dae2447e001f24d6091dfb18f57f50aff15e3e3e9fb",
+    "texstage_query_plan/schemas/views/participant-v1.json": "e7d651bc7f1a796ac45d60d529b2d47781d32b23b34297071731dba03dce1660",
+    "texstage_query_plan/schemas/views/presenter-v1.json": "abd1afb944f71c9f7372b3261683e4429cc2f4b9ef4087184e2c16e935a25384",
+    "texstage_query_plan/schemas/views/projector-v1.json": "838d5387ca1f0f31a5de3b1dc3fbfd9f93f23231dad87043efe236ad92c67eb8"
+  },
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "ui": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "items": 4,
+        "realWorker": true,
+        "actualControls": true,
+        "rolePrivacy": true,
+        "touch320": true,
+        "keyboard": true,
+        "zoom200": true,
+        "resize": true,
+        "draftFocus": true,
+        "sameActorConflict": true,
+        "undo": true,
+        "reset": true,
+        "german": true,
+        "receiptBeforeView": true,
+        "viewBeforeReceipt": true,
+        "editDuringSave": true,
+        "queueFailure": true,
+        "resetInFlight": true,
+        "cleanup": true,
+        "errors": []
+      },
+      "protocol": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "realWorker": true,
+        "rolePrivacy": true,
+        "sameActor": true,
+        "twoParticipants": true,
+        "receiptReplay": true,
+        "staleControls": true,
+        "explicitSharing": true,
+        "reveal": true,
+        "reset": true,
+        "navigation": true,
+        "ui": "protocol probe; actual controls covered by query_plan_ui_browser.cjs",
+        "errors": []
+      },
+      "static": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "items": 4,
+        "staticExercisePreserved": true,
+        "privacy": true,
+        "teardown": true,
+        "errors": []
+      },
+      "engine_samples": 8,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2028.8999999761581,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    },
+    "firefox": {
+      "version": "153.0",
+      "ui": {
+        "browser": "firefox",
+        "version": "153.0",
+        "items": 4,
+        "realWorker": true,
+        "actualControls": true,
+        "rolePrivacy": true,
+        "touch320": true,
+        "keyboard": true,
+        "zoom200": true,
+        "resize": true,
+        "draftFocus": true,
+        "sameActorConflict": true,
+        "undo": true,
+        "reset": true,
+        "german": true,
+        "receiptBeforeView": true,
+        "viewBeforeReceipt": true,
+        "editDuringSave": true,
+        "queueFailure": true,
+        "resetInFlight": true,
+        "cleanup": true,
+        "errors": []
+      },
+      "protocol": {
+        "browser": "firefox",
+        "version": "153.0",
+        "realWorker": true,
+        "rolePrivacy": true,
+        "sameActor": true,
+        "twoParticipants": true,
+        "receiptReplay": true,
+        "staleControls": true,
+        "explicitSharing": true,
+        "reveal": true,
+        "reset": true,
+        "navigation": true,
+        "ui": "protocol probe; actual controls covered by query_plan_ui_browser.cjs",
+        "errors": []
+      },
+      "static": {
+        "browser": "firefox",
+        "version": "153.0",
+        "items": 4,
+        "staticExercisePreserved": true,
+        "privacy": true,
+        "teardown": true,
+        "errors": []
+      },
+      "engine_samples": 8,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2074,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    },
+    "webkit": {
+      "version": "26.5",
+      "ui": {
+        "browser": "webkit",
+        "version": "26.5",
+        "items": 4,
+        "realWorker": true,
+        "actualControls": true,
+        "rolePrivacy": true,
+        "touch320": true,
+        "keyboard": true,
+        "zoom200": true,
+        "resize": true,
+        "draftFocus": true,
+        "sameActorConflict": true,
+        "undo": true,
+        "reset": true,
+        "german": true,
+        "receiptBeforeView": true,
+        "viewBeforeReceipt": true,
+        "editDuringSave": true,
+        "queueFailure": true,
+        "resetInFlight": true,
+        "cleanup": true,
+        "errors": []
+      },
+      "protocol": {
+        "browser": "webkit",
+        "version": "26.5",
+        "realWorker": true,
+        "rolePrivacy": true,
+        "sameActor": true,
+        "twoParticipants": true,
+        "receiptReplay": true,
+        "staleControls": true,
+        "explicitSharing": true,
+        "reveal": true,
+        "reset": true,
+        "navigation": true,
+        "ui": "protocol probe; actual controls covered by query_plan_ui_browser.cjs",
+        "errors": []
+      },
+      "static": {
+        "browser": "webkit",
+        "version": "26.5",
+        "items": 4,
+        "staticExercisePreserved": true,
+        "privacy": true,
+        "teardown": true,
+        "errors": []
+      },
+      "engine_samples": 8,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2080,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    }
+  },
+  "screenshots": {
+    "phone": {
+      "file": "docs/images/query-plan-phone.png",
+      "sha256": "86d7192ccd14c1ec8e5a9a4fb2b9d7112a5ce1c2758bcf8dc0a9dd9da2de66b1"
+    },
+    "presenter": {
+      "file": "docs/images/query-plan-presenter.png",
+      "sha256": "cf04539bf2d9a63a9c55784e49da3b4384e9d4b63c41f1d37aad7ec8f2b9bbff"
+    },
+    "projector": {
+      "file": "docs/images/query-plan-projector.png",
+      "sha256": "dd80e4e73753c05243ff77c383002d547108af33fe683fcbe2ce60b2b17f9f56"
+    }
+  },
+  "remaining": [
+    "Physical phone/tablet on LAN HTTP",
+    "Screen-reader review",
+    "64-actor concurrent-load and fairness/latency measurements",
+    "Linux installed-artifact checks",
+    "Hosted CI against immutable compatible host artifacts",
+    "Reviewed release/catalog publication"
+  ],
+  "preserved": [
+    "Original lecture-tools and existing courses",
+    "Course environments and pins",
+    "Host source and security policy",
+    "Unrelated plugin work"
+  ],
+  "publication": "Not committed, pushed or published by this milestone"
+}

@@ -1,0 +1,10 @@
+% SPDX-License-Identifier: Apache-2.0
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texstage-queryplan-challenge}[2026/11/06 Prepared query-plan challenges]
+\RequirePackage{texstage}
+\RequirePackage{tabularx}
+\RequirePackage{adjustbox}
+\newcommand{\queryplanchallenge}[3]{%
+  \begingroup\def\queryplan@height{#3}%
+  \texstageprepared{#1}{#2}{#3}\endgroup}
+\endinput

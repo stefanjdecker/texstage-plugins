@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        }
+      ],
+      "joins": [],
+      "output": [
+        [
+          "books",
+          "book_id"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 10
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "baseline": {
+    "format": 1,
+    "nodes": [
+      {
+        "op": "scan",
+        "relation": "books",
+        "method": "seq"
+      }
+    ]
+  },
+  "goal": {
+    "kind": "best"
+  },
+  "worked_answer": {
+    "format": 1,
+    "nodes": [
+      {
+        "op": "scan",
+        "relation": "books",
+        "method": "index"
+      }
+    ]
+  },
+  "explanation": {
+    "en": "Only ten rows match. The index costs 5,210 units instead of scanning all 10,000 rows for 20,000 units.",
+    "de": "Nur zehn Zeilen passen. Der Index kostet 5.210 Einheiten, der vollständige Scan 20.000."
+  }
+}

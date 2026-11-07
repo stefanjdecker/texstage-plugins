@@ -1,0 +1,284 @@
+{
+  "date": "2026-11-06",
+  "scope": "Q2 prepared authoring; read-only host bridge, no classroom interaction",
+  "provider": {
+    "id": "io.github.stefanjdecker.queryplan",
+    "version": "0.2.0",
+    "payload": "fd98799e74f43550e1e26db942de73d853d6b2696998622ea492ee7c7a4473e6"
+  },
+  "wheel": {
+    "file": "texstage_query_plan-0.2.0-py3-none-any.whl",
+    "sha256": "ebb9eb09b18ab102d183e8899aa7b5a50adc8663eeeb6811e69d03546229d632"
+  },
+  "sdist": {
+    "file": "texstage_query_plan-0.2.0.tar.gz",
+    "sha256": "18bbcb1cb2d40f338653ab261d945e120fe20482d36d232f4c22f4655c0a00ed",
+    "rebuilt_payload_matches": true
+  },
+  "host": {
+    "version": "0.2.1.dev3",
+    "development_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+    "wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "resource_inventory_sha256": "e41e8bbb8463111ee7d62f8c0b92c4dda736bc5df9ce558b9d7e813d06efcb23"
+  },
+  "collection_base_commit": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "tests": {
+    "passed": 108,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 79.04
+  },
+  "preparation": {
+    "calls_for_four_items_all_editions": 4,
+    "milliseconds_including_first_worker_startup": [
+      438.926,
+      3.409,
+      10.282,
+      8.913
+    ],
+    "maximum_shaped_lesson": {
+      "seconds_including_startup": 0.39136779998079874,
+      "response_bytes": 105466,
+      "fragment_bytes": {
+        "exercise": 12974,
+        "solutions": 40818
+      }
+    }
+  },
+  "exports": {
+    "checks": [
+      "live bundle privacy",
+      "exercise/solution separation",
+      "static PowerPoint",
+      "handout PDF",
+      "solutions PDF",
+      "direct pdfLaTeX editions"
+    ],
+    "sha256": {
+      "handout": "a4197ae12c80b8c025ac74e35bd8802ed48a8c29c27b575d508c6fc4c1087d0e",
+      "solutions": "c41f4327868055de175094994bd0a5cada65d7932691a0caff47de776f61f865",
+      "stage": "ab61c60ea830a18e93d6430e8bce7f831e0556b434f8d123c60b84ece421ae03",
+      "powerpoint": "eaedfeedc6f710b2bf2bb62d5e56367e146d723b793c9537ef1bd03b6b2bb5c6",
+      "direct-handout": "4f5b315c8845b339949eee9b2a8a0b431cc55b92da44029d440766737195a8d1",
+      "direct-solutions": "25e8667c985187479b5b77126f9972512a00aa437261e4edfddf2e5eb6106f0e"
+    },
+    "slides": 7,
+    "activities": 4,
+    "languages": [
+      "en",
+      "de"
+    ],
+    "visual_review": "Rendered example exercises/solutions and browser projector reviewed; clipping corrected with bounded box fitting."
+  },
+  "portable_view_schema_sha256": "f70b15e3aa841bf795c7a7682c27cb2383d189d6cca1621ecb6b185a28c45ead",
+  "result_schema_sha256": "31ef1e85ac42a5d9bd09735b4bfe37a5303e2564d614ebdea2c85187776ba36f",
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "engine_samples": 8,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2030.5999999940395,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "authoring": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "items": 4,
+        "readOnly": true,
+        "privacy": true,
+        "teardown": true,
+        "errors": []
+      }
+    },
+    "firefox": {
+      "version": "153.0",
+      "engine_samples": 8,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2088,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "authoring": {
+        "browser": "firefox",
+        "version": "153.0",
+        "items": 4,
+        "readOnly": true,
+        "privacy": true,
+        "teardown": true,
+        "errors": []
+      }
+    },
+    "webkit": {
+      "version": "26.5",
+      "engine_samples": 8,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2080,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "authoring": {
+        "browser": "webkit",
+        "version": "26.5",
+        "items": 4,
+        "readOnly": true,
+        "privacy": true,
+        "teardown": true,
+        "errors": []
+      }
+    }
+  },
+  "resources": {
+    "texstage_query_plan/__init__.py": "2977c60ada6436a697ff6ab7126867265dc4f21690b72645d65e42140a1c2d44",
+    "texstage_query_plan/authoring.py": "35d6f1c8d3adac851963d607c53faec85e48fdb69a08fd1dd2e5d41c63db8fc2",
+    "texstage_query_plan/fixtures/exercises.json": "b0a7cc38ab1b2292bd6e81535f1d0c218fae5fa72f5f430b08a6ae03d6846591",
+    "texstage_query_plan/fixtures/expected-cases.json": "c740dfe89af99cd12a085c6c5a0b9eac5cf969da8e24721f25e081084e455c45",
+    "texstage_query_plan/latex/texstage-queryplan-challenge.sty": "85436027b728b35fd4f1b801f105bffe3950c4a07d7de3cb14afa8e1f9d87fdb",
+    "texstage_query_plan/model.py": "21b90268de4cb7aa527d0b6a7bc554c1d3d564d7b0f84544859e53bd504a0847",
+    "texstage_query_plan/schemas/analysis-result-v1.json": "4bcb3926cf79ef1aad603c6b3c74539aa23f0e3f339d8b4e328606338c2a258f",
+    "texstage_query_plan/schemas/answer-v1.json": "8f6c2d18ad6719269678c56b63049406757c98c5725f1e3d670abab1e18f46d1",
+    "texstage_query_plan/schemas/exercise-v1.json": "94bcefdb9a2b3aeceb9089bff8035188f40b80ed7a28db6a45427646d04b974c",
+    "texstage_query_plan/schemas/lesson-v1.json": "1f47f77079d70e04fbac68775748caec49cf56b0c902d608c1cedf244cec2099",
+    "texstage_query_plan/schemas/prepared-view-v1.json": "c785c8a31331c3da4bfc0dae2447e001f24d6091dfb18f57f50aff15e3e3e9fb",
+    "texstage_query_plan/web/engine.mjs": "b295322f1e67a416438f8f254f557cd7c8793f715afeda0f4a4852a1d350d352",
+    "texstage_query_plan/web/engine.worker.mjs": "ac3bdeaf00a8b68535ef5a2eea2a861ffe7c7a24ce50bc3a677074cc4d087c80",
+    "texstage_query_plan/web/identity.mjs": "38821654b02e4f622486fcc132fb9d0b6e13380a0883dad7d9bcc5df2337dd6b",
+    "texstage_query_plan/web/model.mjs": "993798941c79858d73082a69968b4c13aee353852bbd6e94a379058ee2971e20",
+    "texstage_query_plan/web/parser.mjs": "f3ad666921a07921cced79c16c4f18daba8ef6531790d7d876ba67fea5028de4",
+    "texstage_query_plan/web/prepared-overlay.mjs": "1e4c3867428ce2e9347ffba3339c070d25ceca62dac1f82dad2c18c9ed851b7d",
+    "texstage_query_plan/web/validation.mjs": "c30c335fc48a1321878569e030a232fc48b5c25d5606aa7804f2041467b421e3"
+  },
+  "unchanged_engine_resources_from_0_1_0": [
+    "texstage_query_plan/fixtures/exercises.json",
+    "texstage_query_plan/fixtures/expected-cases.json",
+    "texstage_query_plan/model.py",
+    "texstage_query_plan/schemas/analysis-result-v1.json",
+    "texstage_query_plan/schemas/answer-v1.json",
+    "texstage_query_plan/schemas/exercise-v1.json",
+    "texstage_query_plan/schemas/lesson-v1.json",
+    "texstage_query_plan/web/engine.mjs",
+    "texstage_query_plan/web/engine.worker.mjs",
+    "texstage_query_plan/web/identity.mjs",
+    "texstage_query_plan/web/model.mjs",
+    "texstage_query_plan/web/parser.mjs",
+    "texstage_query_plan/web/validation.mjs"
+  ],
+  "remaining": [
+    "Q3 classroom state and commands",
+    "Q4 interactive interfaces",
+    "Q5 hosted/Linux CI, release pin and classroom/accessibility/load checks"
+  ]
+}
