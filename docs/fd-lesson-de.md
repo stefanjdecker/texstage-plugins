@@ -10,7 +10,7 @@ Das [Beispiel](../examples/functional-dependencies/lesson.tex) verwendet
 Workshop-Anmeldungen mit Person, E-Mail, Workshop, Tutor, Raum und Gebäude.
 Version 0.3.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
 Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
-[English guide](fd-lesson.md) · [Validierungsbericht](design/functional-dependencies-f3-validation.md).
+[English guide](fd-lesson.md) · [Aktueller Validierungsbericht](design/functional-dependencies-f5-validation.md).
 
 ## Installation und Start
 
@@ -165,15 +165,17 @@ ausliefern; veröffentlichen Sie nicht pauschal das gesamte Build-Verzeichnis.
 
 Grenzen: 1–8 Attribute, 0–24 FDs, höchstens 8 produktive Schritte und 256
 vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 64 aktuelle Antworten
-mit reserviertem Feedback gespeichert. Der [aktuelle Lasttest](design/functional-dependencies-f4-performance.md)
-prüft 64 synthetische Teilnehmende auf einem Windows-Rechner über Loopback.
-Chromium, Firefox und WebKit erfüllen die unveränderten Eingabe- und Feedbackziele
-in allen drei Aufgabenarten. WebKit benötigt nach allgemeinen Host-Optimierungen
-etwa 7 Sekunden für einen Antwortschub. Die [ursprünglichen F4-Messungen](design/functional-dependencies-f4-validation.md)
-mit den früheren Latenzproblemen bleiben dokumentiert. Dies ist keine
-Durchsatzgarantie für ein Vorlesungsnetz oder echte Telefone.
+mit reserviertem Feedback gespeichert. Der [F4-Lasttest](design/functional-dependencies-f4-performance.md)
+dokumentiert frühere erfolgreiche Läufe mit 64 synthetischen Teilnehmenden über
+Loopback. Der [aktuelle F5-Bericht](design/functional-dependencies-f5-validation.md)
+weist erfolgreiche CI-Prüfungen einschließlich deutscher LaTeX-Ausgaben und
+Oberflächen nach. Bei den zusätzlichen lokalen Lasttests überschritt Chromium
+jedoch das Eingabelatenzziel; WebKit erreichte vor dem ersten Antwortschub ein
+Zeitlimit. Firefox bestand alle drei Aufgabenarten. Die Kapazitätsprüfung ist
+damit weiterhin offen. Frühere Messungen bleiben für ihre jeweiligen Artefakte
+dokumentiert und sind keine Durchsatzgarantie für ein Vorlesungsnetz oder Telefone.
 
-Verwenden Sie für einen Pilotbetrieb die dort geprüfte Host-Version mit den
+Verwenden Sie für weitere Prüfungen den oben genannten Host-Pin mit den
 Last- und Wiederverbindungsänderungen. Ohne Presenter-Auswertung bleiben
 Antworten ausstehend. Nach einem erkannten Verbindungsabbruch kann ein neuer
 Presenter die ausstehenden Prüfungen übernehmen; verspätete alte Ergebnisse

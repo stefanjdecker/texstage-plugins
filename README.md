@@ -94,11 +94,13 @@ by the [F3 classroom record](docs/design/functional-dependencies-f3-validation.m
 [F4 load/reconnect measurements](docs/design/functional-dependencies-f4-validation.md).
 A [German guide](docs/fd-lesson-de.md) is also available. The
 [performance follow-up](docs/design/functional-dependencies-f4-performance.md)
-passes the unchanged 64-answer targets in Chromium, Firefox and WebKit, with
-fresh isolated workers and the same security policy. Physical-phone checks are
-deferred. The [release procedure](docs/fd-release.md) pins the published host,
-requires English/German authoring and verifies identical artifacts in the
-Windows and three-browser consumers. A catalog release remains separate.
+records earlier passing 64-answer runs. The
+[F5 report](docs/design/functional-dependencies-f5-validation.md) records passing
+hosted CI with English/German authoring and identical artifacts on Windows and
+three browsers, plus unresolved local input-latency and WebKit setup checks.
+The security policy is unchanged. Physical-phone checks remain deferred.
+The [release procedure](docs/fd-release.md) pins the published host and tested
+artifacts. Classroom capacity and catalog publication remain open gates.
 
 ```sh
 python maintenance/check_fd_design.py

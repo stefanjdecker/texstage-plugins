@@ -1,17 +1,19 @@
 # FD Lab: implementation plan
 
-Status: F1-F3 implemented; F4 automated load, recovery and browser-security
-gates pass locally, 2026-11-07. The [performance follow-up](functional-dependencies-f4-performance.md)
-supersedes the open WebKit gate in the [initial F4 evidence](functional-dependencies-f4-validation.md).
+Status, 2026-11-07: F1-F3 implemented. F5 hosted functional, packaging and
+browser conformance passes against a published host pin; see the
+[F5 report](functional-dependencies-f5-validation.md). Capacity remains open:
+the latest local checks missed Chromium input targets and timed out during
+WebKit setup. Earlier [F4 performance results](functional-dependencies-f4-performance.md)
+are retained for their exact runs and artifacts.
 The package owns engine, command and four audience-view schemas, a thin LaTeX
 style, prepared exercise/solution fragments and phone/presenter controls.
 See the [F1 record](functional-dependencies-f1-validation.md),
 [F2 record](functional-dependencies-f2-validation.md) and [lesson guide](../fd-lesson.md).
 F3 adds one/all key editors, derivation/counterexample editors, the full workshop
 sequence and bilingual guides. See the [F3 record](functional-dependencies-f3-validation.md).
-F4's physical-phone check remains deferred at the user's request. The unchanged
-input/feedback targets pass in Chromium, Firefox and WebKit on the measured
-Windows machine. F5 release remains pending; these are local loopback results.
+F4's physical-phone check remains deferred at the user's request. F5 has not
+published permanent release assets or a catalog entry; CI artifacts expire.
 Privacy/race/storage checks already run in F2/F3.
 Start with [the design](functional-dependencies.md) and
 [the contract](functional-dependencies-contract.md).
@@ -29,8 +31,9 @@ Host `de33515` already provides typed facts, revision-2 views, prepared authorin
 structured errors, atomic cancellation/replacement, mount lifecycle handling and
 epoch reset. The Firefox/WebKit worker correction is already implemented under
 unchanged restrictions. Reuse and regression-test these features; do not reopen
-them as speculative prerequisites. Remaining shared gates are measured queue
-fairness/classroom throughput and a published immutable compatible host release.
+them as speculative prerequisites. The current published compatible host commit
+is `34d0c537135f32b0690147dbb66dd8ff155987f8`. Remaining shared gates are consistent
+classroom capacity measurements and immutable reviewed release assets.
 Neither the transaction lesson nor the relational visual editor blocks this plan.
 
 ## Planned files
@@ -208,13 +211,16 @@ Publishing, commits, pushes and course migration are separate requested actions.
 F5 now uses published host `34d0c537135f32b0690147dbb66dd8ff155987f8`, including the
 reviewed renderer, keyboard and language fixes. The [release procedure](../fd-release.md)
 requires real English/German authoring and byte-verified artifact transfer to
-Windows and all three browsers. Check the hosted run before treating these gates
-as complete. Catalog publication remains a later, explicit action. Recheck capacity on the intended lecture hardware and network.
-Physical-phone validation remains deferred under the automated-only scope.
+Windows and all three browsers. These gates passed in the
+[recorded hosted run](functional-dependencies-f5-validation.md). Diagnose the
+local Chromium input delays and WebKit slide-view setup timeout before claiming
+64-student readiness, then recheck capacity on the intended lecture hardware and
+network. Catalog publication remains a later, explicit action. Physical-phone
+validation remains deferred under the automated-only scope.
 
-The performance follow-up adds a bounded cache of immutable asset bytes and
-cost-aware projection coalescing. Every job retains a fresh restricted worker,
-two-job leases and the two-second evaluation deadline. The FD provider remains
-byte-identical at 0.3.0. The new record includes combined FD/relational/transaction
-security checks, full FD UI checks and exact artifact identities. Historical
+The earlier performance follow-up added a bounded cache of immutable asset bytes
+and cost-aware projection coalescing. Every job retains a fresh restricted worker,
+two-job leases and the two-second evaluation deadline. The FD provider stayed
+unchanged at 0.3.0 during that optimization. That record includes combined
+FD/relational/transaction security checks, full FD UI checks and exact artifact identities. Historical
 F1-F4 evidence is retained rather than rewritten.

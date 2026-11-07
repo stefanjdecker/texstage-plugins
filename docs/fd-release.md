@@ -6,6 +6,13 @@ The same commit is mirrored to GitLab. Use this exact commit for the current
 candidate; `main` and the version string `0.2.1.dev3` do not identify these fixes.
 This is an experimental candidate, not a catalog release or a stable API promise.
 
+[Host CI](https://github.com/stefanjdecker/texstage/actions/runs/42351229078) and
+[collection CI](https://github.com/stefanjdecker/texstage-plugins/actions/runs/42351969530)
+passed for the source revisions recorded in the
+[F5 validation report](design/functional-dependencies-f5-validation.md).
+That report includes the tested wheel hashes, downloaded artifact verification,
+and the still-open local capacity checks.
+
 ## Build and verify
 
 The collection's [conformance workflow](../.github/workflows/conformance.yml)
@@ -25,6 +32,7 @@ surrounding example slide titles remain English. It is a localization test,
 not a separately translated course.
 
 ```sh
+python -c "from pathlib import Path; Path('artifacts').mkdir(exist_ok=True)"
 FD_TEST_EXPORTS=artifacts/fd-exports python -m pytest plugins/fd-lab/tests maintenance/tests/test_fd_artifacts.py -q --basetemp=artifacts/fd-tests
 ```
 
@@ -63,7 +71,10 @@ Screenshots and JSON reports are retained in CI artifacts.
 The previous [F4 performance record](design/functional-dependencies-f4-performance.md)
 remains evidence for its exact artifacts and named Windows hardware. Rebuilt
 source-normalized artifacts have new hashes; do not reuse old wheel or payload
-pins. CI timing on shared runners is not a capacity guarantee for a lecture LAN.
+pins. The [F5 follow-up](design/functional-dependencies-f5-validation.md) records
+Chromium input-latency misses and a WebKit setup timeout; the current candidate
+does not have a passing capacity gate. CI timing on shared runners is not a
+capacity guarantee for a lecture LAN.
 
 ## Release boundary
 

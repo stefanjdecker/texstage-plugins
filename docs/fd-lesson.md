@@ -15,8 +15,10 @@ shares an anonymous response, or walks through one worked derivation.
 
 Version 0.3.0 implements closure, one/all candidate keys and FD implication.
 The deck continues with key sets, positive derivations, negative two-row witnesses,
-keys of different sizes and the empty key. The [F3 validation record](design/functional-dependencies-f3-validation.md) identifies
-the exact locally tested host and plugin artifacts. This is not a catalog release.
+keys of different sizes and the empty key. The
+[F5 validation record](design/functional-dependencies-f5-validation.md) identifies
+the current tested artifacts, hosted CI results and remaining capacity checks.
+This is not a catalog release.
 
 [Deutsche Anleitung](fd-lesson-de.md).
 
@@ -215,14 +217,15 @@ including empty determinants, cycles and redundant/trivial FDs. Keep classroom
 examples compact enough for the prepared slide box. The lesson stores one current
 answer per actor, with a 64-actor pilot ceiling, 2 KiB reserved per actor slot and
 160 KiB total state. The [performance follow-up](design/functional-dependencies-f4-performance.md)
-tests 64 synthetic actors on one Windows computer. All three modes pass the
-unchanged input and feedback targets in Chromium, Firefox and WebKit. WebKit
-finishes the measured bursts in roughly 7 seconds after generic host caching
-and scheduling fixes. The [initial F4 measurements](design/functional-dependencies-f4-validation.md)
-retain the earlier failed runs. These loopback measurements do not guarantee
-the same response times on a lecture network or physical phones.
+records earlier passing runs with 64 synthetic actors on one Windows computer.
+The [F5 follow-up](design/functional-dependencies-f5-validation.md) passed hosted
+functional CI, but the local capacity checks missed Chromium's input-latency
+target and timed out during WebKit setup. Firefox passed all three modes.
+Capacity therefore remains an open gate. Historical F4 records retain their
+exact artifacts and measurements; they do not guarantee response times on a
+lecture network or physical phones.
 
-Use the host changes pinned in that record for a classroom pilot. They preserve
+Use the published host pin above for further evaluation. Its changes preserve
 the security limits while avoiding repeated schema checks and per-answer full
 broadcasts. A replacement presenter can finish pending work when the old
 connection closes. Without a presenter evaluator, answers remain pending;
@@ -231,16 +234,20 @@ service failure is never presented as a mathematically wrong answer.
 In the isolated development environment:
 
 ```sh
-python -m pytest plugins/fd-lab/tests -q --basetemp=artifacts/fd-tests
+python -c "from pathlib import Path; Path('artifacts').mkdir(exist_ok=True)"
+FD_TEST_EXPORTS=artifacts/fd-exports python -m pytest plugins/fd-lab/tests -q --basetemp=artifacts/fd-tests
 python maintenance/fd_probe.py
 npm ci --ignore-scripts
 npx playwright install chromium firefox webkit
 node maintenance/fd_browser.cjs
-node maintenance/fd_lesson_browser.cjs artifacts/fd-tests/test_installed_authoring_all_e0/out/lesson.bundle
-node maintenance/fd_classroom_browser.cjs artifacts/fd-tests/test_installed_authoring_all_e0/out/lesson.bundle
+node maintenance/fd_lesson_browser.cjs artifacts/fd-exports/en/lesson.bundle
+node maintenance/fd_release_browser.cjs artifacts/fd-exports/de/lesson.bundle
+node maintenance/fd_classroom_browser.cjs artifacts/fd-exports/en/lesson.bundle
 ```
 
-Set `BROWSER=firefox` or `BROWSER=webkit` for the other engines (PowerShell:
+Choose a fresh `FD_TEST_EXPORTS` directory. On PowerShell set
+`$env:FD_TEST_EXPORTS='artifacts/fd-exports'` before running pytest without the
+shell assignment prefix. Set `BROWSER=firefox` or `BROWSER=webkit` for the other engines (PowerShell:
 `$env:BROWSER='firefox'`). Set `PYTHON` to the isolated interpreter. The export test
 must actually execute with TeX installed to create the browser bundle. Tests check
 installed wheels, both host validators, private transport, concurrent submissions,
@@ -253,5 +260,5 @@ timing targets fail. `TEXSTAGE_CLASSROOM_ENFORCE=0` is for collecting diagnostic
 measurements only; it does not turn failed targets into passing evidence.
 
 Desktop emulation does not establish physical-phone or full accessibility
-coverage. English and German controls are supplied; the main browser
-scenario currently exercises English.
+coverage. The complete lesson scenario exercises English; the release UI
+scenario additionally tests German with an English browser locale.
