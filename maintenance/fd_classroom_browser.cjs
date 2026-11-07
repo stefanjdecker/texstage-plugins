@@ -6,6 +6,7 @@ const fs = require('node:fs'), path = require('node:path'), os = require('node:o
 const {randomBytes} = require('node:crypto');
 const {spawn, spawnSync} = require('node:child_process');
 const playwright = require(process.env.TEXSTAGE_PLAYWRIGHT_MODULE || 'playwright');
+const {observeEvaluatorTiming,summarizeEvaluatorTiming} = require('./evaluator_timing.cjs');
 const root = path.resolve(__dirname, '..'), bundle = path.resolve(process.argv[2]);
 const family = process.env.BROWSER || 'chromium';
 const run = process.env.TEXSTAGE_CLASSROOM_RUN || new Date().toISOString().replace(/[:.]/g, '-');
@@ -107,6 +108,7 @@ let server, browser;
       ...(process.env.TEXSTAGE_BROWSER_CHANNEL ? {channel:process.env.TEXSTAGE_BROWSER_CHANNEL}: {})});
     report.browser = browser.version(); report.node = process.version;
     const desktop = await browser.newContext({viewport:{width:1440,height:1100}});
+    if (process.env.TEXSTAGE_EVALUATOR_PROFILE === '1') await desktop.addInitScript(observeEvaluatorTiming);
     await desktop.addInitScript(() => localStorage.setItem('texquiz:presenter-key','plugin-demo-key'));
     const presenter = await desktop.newPage(); presenter.on('pageerror',e => report.errors.push(e.message));
     await presenter.goto(base+'/stage?bundle='+deck.bundle);
@@ -188,6 +190,11 @@ let server, browser;
           JSON.stringify(events.filter(e=>e.event==='command').flatMap(e=>Object.values(e.receipt.jobs || {})).filter(id=>jobs.includes(id)))};
       burst.targets = {input:latency.length ? burst.input_to_frame_ms.p95<100 : null,
         feedback_p95:burst.feedback_ms.p95<10000,feedback_worst:burst.feedback_ms.max<30000};
+      if (process.env.TEXSTAGE_EVALUATOR_PROFILE === '1') {
+        const timings=await presenter.evaluate(ids=>window.__texstageEvaluationTimings.filter(r=>ids.includes(r.job)),jobs);
+        assert.equal(timings.length,jobs.length);
+        burst.evaluator_timing=summarizeEvaluatorTiming(timings,stats);
+      }
       report.bursts.push(burst); console.log(JSON.stringify(burst));
       await phone.screenshot({path:path.join(output,item+'-phone.png'),fullPage:true});
     }

@@ -1,0 +1,1742 @@
+{
+  "format": 1,
+  "completed_local_date": "2026-11-07",
+  "status": "All unchanged automated F4 timing gates pass; physical-phone validation deferred by user.",
+  "host_base_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_context": "Wheel includes the working-tree renderer/language changes as well as the classroom fixes. A development version or a partial host commit is not an equivalent artifact.",
+  "artifacts": {
+    "host": {
+      "file": "texstage-0.2.1.dev3-py3-none-any.whl",
+      "sha256": "968c94b5fb9334887904c1ad9831ee1dea617451be491602789eeb3363439cb7"
+    },
+    "fd": {
+      "file": "texstage_fd_lab-0.3.0-py3-none-any.whl",
+      "sha256": "85978a68ccc8be9f4831fd3f287efbe922cedee9192d4cdfe3bbaf3d34909c94"
+    },
+    "ui_and_security_host": {
+      "file": "texstage-0.2.1.dev3-py3-none-any.whl",
+      "sha256": "888677b3e95a4da55644fa78c2a844016ddb5f4f12cbce6926257db2724d3b66"
+    }
+  },
+  "host_source_sha256": {
+    "src/texstage/__init__.py": "a5899cf7605d556ad3803236461686842abc911bc783f301f652e7e6c09dbf05",
+    "src/texstage/addin.py": "27fa40793d4627c74465d5ebbbcf24172c281186a19c8b6401d135ac4e5a211b",
+    "src/texstage/api.py": "ea8a9007dde2f6a302b14f2a25991f922401ace02a283efddd3f1a38c7bcd268",
+    "src/texstage/builds.py": "0f2f8e9835596e3ea107b85dbd1ff5b822d5a579ad32f11094442f5f91aa437b",
+    "src/texstage/cli.py": "3aa9508a237dc3e2b3a283ec713fdef652f8accce46f72bbb696e643d6ffe6b0",
+    "src/texstage/engines.py": "8b0c9aca884f9663c90faa913373b9e294d25e782f55e757ff2285ffa760de61",
+    "src/texstage/keys.py": "43c5e4e0ccdc3d306bab1b5ea8ccceed96edc7baa0442fde1b0796c82a9382d0",
+    "src/texstage/preflight.py": "b6f9b7499aa14c9460c6b377faa66b776b618d558a96295e06a7afda2921a8d1",
+    "src/texstage/publish.py": "ceddb97fa07761b47c6691fcb9a56a729506de016f4fd77901ea3a4301557658",
+    "src/texstage/build/__init__.py": "9c84506be0f5776805e2de22a332912491b7d7cc05119d0dc7971c7fbec78085",
+    "src/texstage/build/activity.py": "d99b094e278d07931b3b7380d6807110999eda384c896b55b6555fcfbae38ef2",
+    "src/texstage/build/authoring.py": "79ba0d776034ba1835cbf6396308fb3999c9f587a34db0b2c1af39f425f77ab8",
+    "src/texstage/build/beamer.py": "9ba005f501f7d7486450939255b49046204cdf853d14833dd55490b8c5081c9a",
+    "src/texstage/build/builder.py": "082ef533f32785d55c4c1dd2e377df53983356261471565788af84b7ccbef2a9",
+    "src/texstage/build/bundle.py": "2724b99ded01b769b23d6ae04fe39b04559ddb7a99cd7f210e92df9dbe767b64",
+    "src/texstage/build/check.py": "9d177d2d6d5b5414a58ed10ad27462cc87861604188072ebe0ce4090107655a9",
+    "src/texstage/build/compiler.py": "2fe641cc388d61c9be96103fac0c2478ebbd4364ec90ce0a33a572f62cae56b2",
+    "src/texstage/build/latex.py": "ff929712ef37d61508ea9aeb10b41f6e50b990332a9d946d39c8c9c31cf11745",
+    "src/texstage/build/notes.py": "829643ba6629638440dd31c992990094652efa293730f61580a0d870349acfd7",
+    "src/texstage/build/pdf.py": "0bfa3bc1b439b29774f2e9eaa7ba8849f5629329e9e6af1b0de5a5a932a4ec25",
+    "src/texstage/build/plugins.py": "dca3dcd258307ac4cf9ba3b74b53c317de337677d263b26c49105548e0331a7a",
+    "src/texstage/build/powerpoint.py": "5cd2fefa4c9c33b7a0ddd0bc8b3433672e3c0199afa5c95fd4cf5b401f8cc011",
+    "src/texstage/build/quiz.py": "2983c901055c75f8708584e7e251e42ef6cc916fa8c6918c67552f5d0e278cab",
+    "src/texstage/build/raster.py": "ffc436bd0082e1a39b71fd785d24d36124dd328eee5f65af2521fc359d7095a0",
+    "src/texstage/build/stage.py": "0aa1c3e0ed9ec1b590cae386cc55211c82d33ffff5a7cfa31598bed171123975",
+    "src/texstage/build/tqz.py": "d29ef96db7b94f9f94dc8a8e01f9ccf8026e1f7edde89f91a1fee301d3c4c815",
+    "src/texstage/build/types.py": "5b1ecdb579ce1a5aca1605d1c4275c6311bce5b83465242376d187edbb934b67",
+    "src/texstage/build/video.py": "0fda21fb11e4bd05b4fb80749e2709fa054137df11e1aa9fa531e57f4fe562d8",
+    "src/texstage/plugin_api/__init__.py": "2037c6e230d0c4f58d3ef5cfcd0b645d477c29cb4b57ed53ec60bd0a550446f1",
+    "src/texstage/plugin_api/v1/__init__.py": "00880b2ba20f251d9c7240a028bd407795838d46a49a1ca738826bed5eb618e8",
+    "src/texstage/plugins/__init__.py": "7967035d365b1628798a0197ec7120e067e19d2912641db3696ee2eca8699107",
+    "src/texstage/plugins/assets.py": "de8560b678d3ca073b655e1d6f15ddf2e9325738e729cca4ff1405b8196737bc",
+    "src/texstage/plugins/catalog.py": "1eec8797bcd149643a5f984a2f0e90ad6297a48ee208ef85ab15d99774908f55",
+    "src/texstage/plugins/cli.py": "d63fcbad72c32c13df9c38d6d1bf8e96cbc620d71ce87a0fca0bc7ab5ee0536b",
+    "src/texstage/plugins/collection.py": "09d44137f3163a735bb509631237d9584aeb751d8afcc82c86cc781bd6a36952",
+    "src/texstage/plugins/contracts.py": "8f3c84bd932c9f5af95c1174b5f27ad92190ad5c83e54d1f80c872f4483e0735",
+    "src/texstage/plugins/lock.py": "3d5eebf11186a9197a57304449a1fa7db96f5b90b12434997d78b9abd8d19844",
+    "src/texstage/plugins/manifest.py": "9aa6aabd70c81a6fc09990771e766a1b8c9f61a339bb8131f950e9eb8905e19f",
+    "src/texstage/plugins/policy.py": "0371c5bdc400d969c7487456de94202099ed9ba9d87904c9e897105690e78972",
+    "src/texstage/plugins/runtime.py": "4bf43576dcde381d377c753a225053b6a150256465840211e55fa4a5fc5a74c0",
+    "src/texstage/plugins/sdk.py": "eb1ec6bdcc15dcf9e4cf831d78cc291fd59546ec45ab9f942c6350de5d2ccd3f",
+    "src/texstage/plugins/worker.py": "8808d094ef3c9d44bfe2f2a5f91b1e3032357cf20d759be5f0c4bc2fabd17aaa",
+    "src/texstage/plugins/schemas/engine-summary-v1.json": "f59b45ff1bc07f347d70f4958d10991773bf3779538b41b93d0504879f95f55f",
+    "src/texstage/plugins/schemas/manifest-v1.json": "6bd9bbecf363ceb51845574da293e07fd42bb2d54bf303f7c813d01b6bc13868",
+    "src/texstage/plugins/schemas/manifest-v2.json": "f676591501f61ea34f78af100b3edca6830caa4d5b1b5684399a14c31e1a25ab",
+    "src/texstage/server/__init__.py": "519bc005326af73ca0fb3f474648ff95706c3013042991a5d00d1d33e101db78",
+    "src/texstage/server/activity.py": "c8d8a5c943556e9c1bd7794ec0db068dc1a6252ddea3fa8037377fff48874e2e",
+    "src/texstage/server/app.py": "626ccfe0d2c0b275491e9349718fd78a9d81c37f6b492e3e6898cad1285ccda4",
+    "src/texstage/server/archive.py": "b43b6b32346e11f87731704c4fd614ff4843715e5ea300346fe01b0ce264cac9",
+    "src/texstage/server/bundles.py": "2ecf6fed45ee8e2b3b504f24447d00a0b7fc08ce1a30885ca39db59909b33ad8",
+    "src/texstage/server/devices.py": "08e999038293c43acaea9f9d8ba131bf61ccbb33deb92a14e7706ff0d2ed7422",
+    "src/texstage/server/game.py": "77450ff301087c488011a37b87a65cb001f2ff502868f9f91f69edcf7350e016",
+    "src/texstage/server/ink.py": "f39e21ad5d0d1cb34615d59e6b425085251008f37141fcad2fd6d3ba1c540e94",
+    "src/texstage/server/lecturers.py": "221cdca336f340d8d20bd48a3fadf15907519d0966fdf0ff27e99aeffca7ee43",
+    "src/texstage/server/library.py": "fea9801ba7844154443fb1b818d8d1928de688a5045d5b5d28252a5f70b9057d",
+    "src/texstage/server/plugins.py": "09359e909b3ec4c10dae3a0f6aef1a7b868354f09111658f22bd3d875642c1a7",
+    "src/texstage/server/polls.py": "b92334bd6722193b3d6196e2a68b775bd364e586232198d672c05f0226724819",
+    "src/texstage/server/qa.py": "56a6be835cb301fd6be1f2c9732d2cfffe874c538e908fa5cae12702970a52f0",
+    "src/texstage/server/scoring.py": "5e5e442e4a8f10f71f54050acea3bafc07f1115b816465201e945ecb9a9ebae2",
+    "src/texstage/server/store.py": "bb4d7bb4ea33940ff45436cc6fc648a4a58308a3897cb1ae8aa509564c261db7",
+    "src/texstage/server/tunnel.py": "9dce8946aadea5453863ea61d5ad6b67e80e3eee6ea41b9b69efa430e4959249",
+    "src/texstage/server/types.py": "3ae32d047737c677050a572d25fa1a50c66fdff6ec8df69bcfa734604ea654a3",
+    "src/texstage/server/video.py": "0424f54936a6aadda097446a23da01760aec4931b19d878fb86853401ca905c4",
+    "src/texstage/server/windows_loop.py": "f0f989819e9f6ab7be11337e4f5c4e2f8488a20f35f7dce6ab84df8450651cc8",
+    "src/texstage/web/addin/addin.css": "fff47377b8a228c219745c78bb5ed2210b54f767c7994317866806bb7b1271f0",
+    "src/texstage/web/addin/addin.js": "3c88e31bed08f6c687f7b061cce864de32accead587093a05eaeec913d8ee49b",
+    "src/texstage/web/addin/index.html": "9ae04e44ba4a8d582a651050b3dce9a0f301e5e90817b86f71add0c6a7557c1b",
+    "src/texstage/web/engines/common.js": "74b44c091e3e8593302673a69bb9adf0458181b149c406dac001af0583ffbcb3",
+    "src/texstage/web/engines/index.js": "7e46708b77b997bd3217b4c0a4d39ce2294e4e635548dac6fbcd35bcac2bd7b0",
+    "src/texstage/web/engines/sparql.js": "96f79bbf6e9d84d23dd71d5b7233c26fd97716e13362ff247abbbbaebdb1b968",
+    "src/texstage/web/engines/sql.js": "790407f44be4922b6b8fa0a09fe096575f28a41f6021607ed6033d68842be35f",
+    "src/texstage/web/engines/turtle.js": "7f08b4e543fd4da816ac114e6f59dcb339743b0686da44ae0398845c5a7d510a",
+    "src/texstage/web/host/host.css": "60ddc73f5230c49927a08563e4efec4dece5919367f580b12392cf2b220a6559",
+    "src/texstage/web/host/host.js": "73fece51b18fbc88f222f6c4998faabe25db5f3c3cb695e86cb19b9eb455ae88",
+    "src/texstage/web/host/index.html": "28732c0ed0de687a841204507d7d6771b8c20d325a494295814f8d2651965878",
+    "src/texstage/web/play/activity.js": "42cf4145239b546d716fa75962525fb272a2a7a41127819d43d4e9a15401e588",
+    "src/texstage/web/play/index.html": "481e047a2f1f0902a67dd0762aaa555798982660aa8a3ba4342fbb1ca04aa4c1",
+    "src/texstage/web/play/play.css": "4e632b73e7e3c34461290cae1cef014ba7a8ef7b19a22a8941b60d384d934f21",
+    "src/texstage/web/play/play.js": "4fc0b766c2375e60936644de63271d31bda8682f9c5caac37cf4d94aa9659347",
+    "src/texstage/web/shared/client.js": "a4601e5fc4528679134cec342b48dc4a3e4509d29080c33ae12ed59d1c32f445",
+    "src/texstage/web/shared/live.css": "ad6573f4624d9496bde79d97f761f653016de2232f833a1c2f06fb5ad6c8dbef",
+    "src/texstage/web/shared/live.js": "51775c1138841b32105b39591d3a6df7751226c4f5a2771a0e62f333118a691c",
+    "src/texstage/web/shared/plugins.js": "d44d7bfb78a98aa078f1f8a1d6351da00c03311316ab831c861bbfe9a9e2d918",
+    "src/texstage/web/shared/shapes.js": "872cff054df0c8d30d557d9e7d9509d4407e5758d603b5c6f0afe5e09c08703d",
+    "src/texstage/web/shared/sketch.js": "875ff4cb041cc025b4c16357f74983d82d21a4a9843875f27f0fda5189d541cf",
+    "src/texstage/web/shared/text.js": "ec1650f08282eb735f0e6423031a9db6b123e36f07e2155c953b8e9e8a584fda",
+    "src/texstage/web/shared/upload.js": "2c87d33634ff5a956400ff2d8ef76d6e07ec461684ae78cd3c6eb288609b1745",
+    "src/texstage/web/stage/activity.js": "10a605f69b3efba5663d71b8a74b496d29b2aec60e9e5fc71fe06433b074fab7",
+    "src/texstage/web/stage/ask.js": "9f5e8f579544e5fe4f7c41fb1175810bd5026a42454eeb18e9e8b47ec172fb2a",
+    "src/texstage/web/stage/evaluator-worker.js": "4d5887763933ed8f2377ace5e834f86fa2b2e5b6abe3367d02e0cc4380177881",
+    "src/texstage/web/stage/evaluator.js": "f0178926ffb0653560bd86519c7dd5fd6c4dd68fb1491dc1f35f7cebcd241f90",
+    "src/texstage/web/stage/export.js": "e8b51ea245feed96f179f0623e57758b998c1057e1842c475d24ae460bc24a5a",
+    "src/texstage/web/stage/index.html": "e9b70529b5390706a7776a55754b79979bdbff7ae7760a759aab98634eb52b0b",
+    "src/texstage/web/stage/ink.js": "649d06d8a144ea2f76f50aef997ecacbaaea384fd68e9c08ba3986a05b89e529",
+    "src/texstage/web/stage/pdfview.js": "70ec2592c09dbc1a54f5bda4e2eba056af857d3b3e6e2789e818dca53d6f396b",
+    "src/texstage/web/stage/pen.js": "a03079ad1bdb9f8ef43ad086cef74fdaa514c5f933e1718046bedce40d68adbb",
+    "src/texstage/web/stage/plugin-contracts-worker.mjs": "0257ff5a7188e7623d2d70a2237f5b25ddb71b1d9225762e94424ab236380495",
+    "src/texstage/web/stage/plugin-contracts.js": "fee23e08f0e4fc76a877d511c18701c138bcf080bb5f57e2a583308c638b7a14",
+    "src/texstage/web/stage/plugin-evaluator-worker.js": "7264a98a0874f25d15e22f3d078e05389e6886ac1c410b5fbb5f4de69bf7052f",
+    "src/texstage/web/stage/plugin-evaluator.js": "82f2d3ce0b280421a45f7836a760f14fda7829ca023223d306a5b5b0e93670b5",
+    "src/texstage/web/stage/presenter.js": "5c3eea7f8fd165d7b1bca18fca812a9a147ac5ea1cc9b082e4ba5fb72677a044",
+    "src/texstage/web/stage/projector.html": "5b2e6e9a619108df9a695b2fbab59bf863a8d58deffefbef120b82f1739305be",
+    "src/texstage/web/stage/projector.js": "f7341e0e77a1c8ddf5473028cc63d39064d07acc1c10462ab488c6b57d6e2c63",
+    "src/texstage/web/stage/record.js": "c227ea42af9fcee12dc15e0acdf79b094c4a01ba45212542482247bed62566dc",
+    "src/texstage/web/stage/split.js": "7d506ab7c2f5e1e1453cec271e627d661af62524aeea3a5c0f2265b74b2c8fd7",
+    "src/texstage/web/stage/stage.css": "e1f153b83307b67860dfbe74a140f3eceb0e9ada2e486f07ac405fc1a99c9165",
+    "src/texstage/web/stage/video.js": "53a764607509d997e32c5dffa46a6c4565f542652efcb6b2b117f4134056c356",
+    "src/texstage/web/vendor/README.md": "d535101c34e6d7d9318cdd66cea3d95f1a23a972e1e8cd341c85e91147d41548",
+    "src/texstage/web/vendor/katex/LICENSE": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3",
+    "src/texstage/web/vendor/katex/katex.min.css": "d4ab5b8ee16989b070cdb0ea24bd6ad48fc8df1b787f280f29d3ae4f959f2c00",
+    "src/texstage/web/vendor/katex/katex.min.js": "103a53763cc033bba8d175bf3f0ba597c3505c9b6747dd3f2c7bc2a6bfcc8ae7",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_AMS-Regular.woff2": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Main-Bold.woff2": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Main-Italic.woff2": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Main-Regular.woff2": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Math-Italic.woff2": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Script-Regular.woff2": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Size1-Regular.woff2": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Size2-Regular.woff2": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Size3-Regular.woff2": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Size4-Regular.woff2": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+    "src/texstage/web/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+    "src/texstage/web/vendor/oxigraph/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "src/texstage/web/vendor/oxigraph/LICENSE-MIT": "1f4f6736adc52ebfda18bb84947e0ef492bd86a408c0e83872efb75ed5e02838",
+    "src/texstage/web/vendor/oxigraph/web.js": "2fcfdcadc79c9146cee98028a273aebc93df3282eb0299c248595bc529deca41",
+    "src/texstage/web/vendor/oxigraph/web_bg.wasm": "b95b15accb6b789667b8d8b0b8f139d5de588e572499672ff37ce9ba01c4a428",
+    "src/texstage/web/vendor/pdf-lib/LICENSE.md": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb",
+    "src/texstage/web/vendor/pdf-lib/pdf-lib.esm.min.js": "72c052d97b4d5d9fa6cdbdcb7ad709f03d4ddb1122390cb3afeba4d88651d969",
+    "src/texstage/web/vendor/pdfjs/LICENSE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "src/texstage/web/vendor/pdfjs/pdf.min.mjs": "57456c8e0c81e46be31174b499ef77f2b9f5ee46d04412ba627320a36755d4c2",
+    "src/texstage/web/vendor/pdfjs/pdf.worker.min.mjs": "9536359f1b8367850d485731ca1d5e45c159a7b7a0912325e539937aa21ceb18",
+    "src/texstage/web/vendor/perfect-freehand/LICENSE": "6a5ac82b42ce0af6a1e5fe39b46f0b52f1368e81e437175e8d9ae21569c8688e",
+    "src/texstage/web/vendor/perfect-freehand/index.mjs": "a02e221f71a757e46915a51d8f5ffc8d1788d9134e063b3edd21f429c973d46c",
+    "src/texstage/web/vendor/sqljs/AUTHORS": "2bb11c65286bd0f2919022e119671036ff8d85c6cd1522b6ebcc1362e67f2ce5",
+    "src/texstage/web/vendor/sqljs/LICENSE": "60a3f6e4d7b29b4321359e683b36cf198d24f58e24582070f56e6fa89d5ee2be",
+    "src/texstage/web/vendor/sqljs/sql-wasm-browser.js": "35e39a73b2e0bc1c2202a4cadb23bcf7a3a77071a39c270f014402968785b95f",
+    "src/texstage/web/vendor/sqljs/sql-wasm-browser.wasm": "38c14f6e379210bc942bdc4ebca44e7bfdb4318ecc1c72ca666a28fdce96670a"
+  },
+  "tests": {
+    "windows_host": {
+      "passed": 154,
+      "skipped": 1,
+      "skip_reason": "Windows symlink creation is not permitted."
+    },
+    "ui_security_to_final_runtime_difference": [
+      "texstage/plugins/manifest.py"
+    ],
+    "identical_browser_evaluator_worker_and_contract_bytes": true,
+    "final_schema_isolation_coverage": "Host tests and final installed-wheel Linux provider tests; final 3-browser load/reconnect matrix.",
+    "linux_consumer": {
+      "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+      "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "node_archive_sha256": "472655581fb851559730c48763e0c9d3bc25975c59d518003fc0849d3e4ba0f6",
+      "host_sha256": "968c94b5fb9334887904c1ad9831ee1dea617451be491602789eeb3363439cb7",
+      "fd_sha256": "85978a68ccc8be9f4831fd3f287efbe922cedee9192d4cdfe3bbaf3d34909c94",
+      "authoring": "Not tested: this isolated Linux environment has no TeX installation.",
+      "browser": "Not tested on Linux in this local consumer check.",
+      "installed_resource_bytes_match_wheels": true,
+      "provider_tests": {
+        "tests": 97,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1,
+        "passed": 96
+      },
+      "probe": {
+        "provider": {
+          "id": "io.github.stefanjdecker.fdlab",
+          "version": "0.3.0",
+          "payload": "d7cdd50ed7f1c79a8ac6501cc62d544a4bc0ada935c86c4f904a87952aba1f4c"
+        },
+        "host_version": "0.2.1.dev3",
+        "result_schema_sha256": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+        "python": "3.12.3",
+        "node": "v24.15.0",
+        "cases": 30,
+        "max_evaluation_ms": 13.336926000000005,
+        "scope": "Engine facts and validators; see fd_lesson_browser.cjs and test_lesson.py for classroom coverage"
+      }
+    }
+  },
+  "providers": {
+    "fd": {
+      "id": "io.github.stefanjdecker.fdlab",
+      "version": "0.3.0",
+      "payload": "d7cdd50ed7f1c79a8ac6501cc62d544a4bc0ada935c86c4f904a87952aba1f4c"
+    },
+    "relational": {
+      "id": "io.github.stefanjdecker.relationallab",
+      "version": "0.1.0",
+      "payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d"
+    },
+    "transaction": {
+      "id": "io.github.stefanjdecker.transactionengine",
+      "version": "0.1.0",
+      "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc"
+    }
+  },
+  "engine_security": {
+    "fd": {
+      "chromium": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 34,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2037.5,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "firefox": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 34,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2046,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "webkit": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 34,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2071,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    },
+    "relational": {
+      "chromium": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2018.800000011921,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "firefox": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2039,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "webkit": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2074,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    },
+    "transaction": {
+      "chromium": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2022.199999988079,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "firefox": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2087,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "webkit": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2034,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    }
+  },
+  "full_lesson_ui": {
+    "chromium": {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "modes": [
+        "closure",
+        "keys-one",
+        "keys-all",
+        "implication-derivation",
+        "implication-counterexample",
+        "different-size-keys",
+        "empty-key"
+      ],
+      "feedbackPolicies": [
+        "after-reveal",
+        "practice"
+      ],
+      "viewport": 320,
+      "realWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboard": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "modeSpecificFeedback": true,
+      "alternativeKeys": true,
+      "alternativeCounterexamples": true,
+      "walkthrough": true,
+      "reset": true,
+      "teardown": true,
+      "errors": []
+    },
+    "firefox": {
+      "browser": "firefox",
+      "version": "153.0",
+      "modes": [
+        "closure",
+        "keys-one",
+        "keys-all",
+        "implication-derivation",
+        "implication-counterexample",
+        "different-size-keys",
+        "empty-key"
+      ],
+      "feedbackPolicies": [
+        "after-reveal",
+        "practice"
+      ],
+      "viewport": 320,
+      "realWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboard": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "modeSpecificFeedback": true,
+      "alternativeKeys": true,
+      "alternativeCounterexamples": true,
+      "walkthrough": true,
+      "reset": true,
+      "teardown": true,
+      "errors": []
+    },
+    "webkit": {
+      "browser": "webkit",
+      "version": "26.5",
+      "modes": [
+        "closure",
+        "keys-one",
+        "keys-all",
+        "implication-derivation",
+        "implication-counterexample",
+        "different-size-keys",
+        "empty-key"
+      ],
+      "feedbackPolicies": [
+        "after-reveal",
+        "practice"
+      ],
+      "viewport": 320,
+      "realWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboard": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "modeSpecificFeedback": true,
+      "alternativeKeys": true,
+      "alternativeCounterexamples": true,
+      "walkthrough": true,
+      "reset": true,
+      "teardown": true,
+      "errors": []
+    }
+  },
+  "classroom": {
+    "chromium": {
+      "format": 1,
+      "date": "2026-11-07T00:09:53.892Z",
+      "family": "chromium",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 3799.1337000000003,
+          "ack_ms": {
+            "n": 64,
+            "min": 9.887500000000728,
+            "p50": 274.0211999999992,
+            "p95": 365.8023000000012,
+            "max": 365.9455999999991
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1365.8492999999999,
+            "p50": 2464.2721,
+            "p95": 3753.2045,
+            "max": 3768.5537999999997
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 366.3756999671459,
+            "p50": 1306.1448999643326,
+            "p95": 1808.8210999667645,
+            "max": 2170.5293999910355
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 19.32260000705719,
+            "p50": 29.834300011396408,
+            "p95": 266.72250002622604,
+            "max": 354.85390001535416
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.29999998211860657,
+            "p50": 0.5,
+            "p95": 1.300000011920929,
+            "max": 5.5
+          },
+          "max_participant_state_bytes": 6679,
+          "max_host_state_bytes": 22090,
+          "max_server_rss_bytes": 81063936,
+          "max_persisted_state_bytes": 25929,
+          "final_storage": {
+            "state_bytes": 26047,
+            "max_actor_slot_bytes": 406,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 3826.4506,
+          "ack_ms": {
+            "n": 64,
+            "min": 6.819600000000719,
+            "p50": 320.92739999999867,
+            "p95": 380.32230000000163,
+            "max": 380.4269000000004
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1430.7200000000012,
+            "p50": 2538.7932,
+            "p95": 3791.862799999999,
+            "max": 3802.1453999999994
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 642.1074000000954,
+            "p50": 1432.8096999824047,
+            "p95": 2228.5952000021935,
+            "max": 2272.1761000156403
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 21.858000010252,
+            "p50": 32.020400017499924,
+            "p95": 276.7630999982357,
+            "max": 342.41749998927116
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.3999999761581421,
+            "p50": 0.5,
+            "p95": 0.699999988079071,
+            "max": 11.900000005960464
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22090,
+          "max_server_rss_bytes": 81502208,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 3014.285499999998,
+          "ack_ms": {
+            "n": 64,
+            "min": 7.618500000000495,
+            "p50": 336.78329999999914,
+            "p95": 337.4282999999996,
+            "max": 337.52739999999903
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1335.902399999999,
+            "p50": 2144.470799999999,
+            "p95": 2985.5483999999997,
+            "max": 2988.7585999999974
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 746.2229999899864,
+            "p50": 1430.0051000118256,
+            "p95": 2084.1804000139236,
+            "max": 2121.741500020027
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 20.022399991750717,
+            "p50": 23.369000017642975,
+            "p95": 33.338100016117096,
+            "max": 247.38119998574257
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 1.0999999940395355,
+            "p50": 1.4000000059604645,
+            "p95": 2,
+            "max": 7.5
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22090,
+          "max_server_rss_bytes": 81518592,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 23039,
+            "max_actor_slot_bytes": 359,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "156.0.8078.80",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 741.1075999999994,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": true
+    },
+    "firefox": {
+      "format": 1,
+      "date": "2026-11-07T00:10:22.225Z",
+      "family": "firefox",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 3922.732,
+          "ack_ms": {
+            "n": 64,
+            "min": 94.54099999999926,
+            "p50": 443.33730000000105,
+            "p95": 444.5056999999997,
+            "max": 444.5632999999998
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1759.7727999999988,
+            "p50": 2801.7887999999984,
+            "p95": 3871.8372,
+            "max": 3877.498099999999
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 334.7525999844074,
+            "p50": 1755.237399995327,
+            "p95": 2621.142899990082,
+            "max": 2676.8889999985695
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 29.241899996995926,
+            "p50": 40.893399983644485,
+            "p95": 304.2513000071049,
+            "max": 337.3222000300884
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0,
+            "p50": 1,
+            "p95": 2,
+            "max": 2
+          },
+          "max_participant_state_bytes": 6679,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 81534976,
+          "max_persisted_state_bytes": 25929,
+          "final_storage": {
+            "state_bytes": 26047,
+            "max_actor_slot_bytes": 406,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 3303.2595,
+          "ack_ms": {
+            "n": 64,
+            "min": 7.235099999999875,
+            "p50": 341.84549999999945,
+            "p95": 342.03470000000016,
+            "max": 342.09120000000075
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1356.5648999999994,
+            "p50": 2231.0811000000012,
+            "p95": 3272.0589999999993,
+            "max": 3274.2659999999996
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 537.7466000020504,
+            "p50": 1511.4880999922752,
+            "p95": 2443.4880999922752,
+            "max": 2489.043399989605
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 28.49310004711151,
+            "p50": 40.762100011110306,
+            "p95": 91.68370002508163,
+            "max": 306.76969999074936
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0,
+            "p50": 1,
+            "p95": 1,
+            "max": 1
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 82505728,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 3148.2991999999977,
+          "ack_ms": {
+            "n": 64,
+            "min": 98.23749999999927,
+            "p50": 459.02900000000227,
+            "p95": 459.49909999999727,
+            "max": 459.5633999999991
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1454.8382999999994,
+            "p50": 2265.285600000003,
+            "p95": 3113.9460999999974,
+            "max": 3119.5085
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 318.3327000141144,
+            "p50": 1361.2962000072002,
+            "p95": 2146.6940999925137,
+            "max": 2196.5409000217915
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 28.460799992084503,
+            "p50": 39.27649998664856,
+            "p95": 245.78469997644424,
+            "max": 264.509299993515
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0,
+            "p50": 1,
+            "p95": 1,
+            "max": 2
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 82534400,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 23039,
+            "max_actor_slot_bytes": 359,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "153.0",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 1768.294600000001,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": true
+    },
+    "webkit": {
+      "format": 1,
+      "date": "2026-11-07T00:10:50.434Z",
+      "family": "webkit",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 7005.887900000001,
+          "ack_ms": {
+            "n": 64,
+            "min": 7.270499999999629,
+            "p50": 324.3123000000005,
+            "p95": 325.3633,
+            "max": 325.45690000000013
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1324.9508000000005,
+            "p50": 3814.821099999999,
+            "p95": 6942.662799999999,
+            "max": 6951.019199999999
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 320.5668000280857,
+            "p50": 3078.134100019932,
+            "p95": 5720.1920999884605,
+            "max": 5851.964899986982
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 59.421900033950806,
+            "p50": 72.34420001506805,
+            "p95": 302.9695000052452,
+            "max": 314.59659999608994
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 2,
+            "p50": 3,
+            "p95": 9,
+            "max": 15
+          },
+          "max_participant_state_bytes": 6679,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 80257024,
+          "max_persisted_state_bytes": 25929,
+          "final_storage": {
+            "state_bytes": 26047,
+            "max_actor_slot_bytes": 406,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 6523.5177,
+          "ack_ms": {
+            "n": 64,
+            "min": 6.384999999998399,
+            "p50": 354.1785,
+            "p95": 354.78570000000036,
+            "max": 354.96690000000126
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1374.2188999999998,
+            "p50": 4370.2837,
+            "p95": 6473.588600000001,
+            "max": 6477.751899999999
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 557.826299995184,
+            "p50": 3184.7633000016212,
+            "p95": 5549.385500013828,
+            "max": 5653.081200003624
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 55.747500002384186,
+            "p50": 72.56549999117851,
+            "p95": 110.36390000581741,
+            "max": 335.97849997878075
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 2,
+            "p50": 3,
+            "p95": 6,
+            "max": 9
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 80297984,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 6906.011899999998,
+          "ack_ms": {
+            "n": 64,
+            "min": 5.474500000000262,
+            "p50": 328.2479999999996,
+            "p95": 329.1827999999987,
+            "max": 329.3106000000007
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1326.0697,
+            "p50": 3780.833599999998,
+            "p95": 5849.7827,
+            "max": 6883.342499999999
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 327.2179999947548,
+            "p50": 2966.6034000217915,
+            "p95": 5189.298299998045,
+            "max": 5292.465299993753
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 57.8822999894619,
+            "p50": 70.7698999941349,
+            "p95": 269.20089998841286,
+            "max": 306.3416000008583
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 2,
+            "p50": 3,
+            "p95": 10,
+            "max": 13
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 80945152,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 23039,
+            "max_actor_slot_bytes": 359,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "26.5",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 983.9625000000015,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": true
+    }
+  },
+  "diagnostic_profiles": {
+    "startup-profile": {
+      "format": 1,
+      "date": "2026-11-06T23:41:41.905Z",
+      "family": "webkit",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 22562.901100000003,
+          "ack_ms": {
+            "n": 64,
+            "min": 16.40430000000015,
+            "p50": 490.3243000000002,
+            "p95": 1063.8745,
+            "max": 1064.7540000000008
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1722.6237999999994,
+            "p50": 11919.001400000001,
+            "p95": 21865.9508,
+            "max": 22504.1619
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 623.8493999838829,
+            "p50": 11016.144800007343,
+            "p95": 20140.219999998808,
+            "max": 20734.375
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 99.03130000829697,
+            "p50": 480.6423999965191,
+            "p95": 639.8740000128746,
+            "max": 673.6502999961376
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 3,
+            "p50": 4,
+            "p95": 13,
+            "max": 15
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22079,
+          "max_server_rss_bytes": 80330752,
+          "max_persisted_state_bytes": 25721,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": false,
+            "feedback_worst": true
+          },
+          "evaluator_timing": {
+            "constructor_ms": {
+              "n": 64,
+              "min": 0,
+              "p50": 0,
+              "p95": 1,
+              "max": 6
+            },
+            "before_init_ms": {
+              "n": 64,
+              "min": 37,
+              "p50": 44,
+              "p95": 535,
+              "max": 544
+            },
+            "init_ms": {
+              "n": 64,
+              "min": 10,
+              "p50": 29,
+              "p95": 62,
+              "max": 552
+            },
+            "evaluate_ms": {
+              "n": 64,
+              "min": 13,
+              "p50": 16,
+              "p95": 34,
+              "max": 50
+            },
+            "total_ms": {
+              "n": 64,
+              "min": 70,
+              "p50": 91,
+              "p95": 573,
+              "max": 629
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "26.5",
+      "node": "v24.15.0",
+      "complete": true,
+      "targets_passed": false
+    },
+    "asset-cache-profile": {
+      "format": 1,
+      "date": "2026-11-06T23:46:57.811Z",
+      "family": "webkit",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 12649.917100000002,
+          "ack_ms": {
+            "n": 64,
+            "min": 8.70850000000064,
+            "p50": 405.3804,
+            "p95": 406.6658000000007,
+            "max": 406.96880000000056
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1269.1021,
+            "p50": 6460.306500000001,
+            "p95": 12117.4287,
+            "max": 12613.384399999999
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 690.9217000007629,
+            "p50": 5890.258699983358,
+            "p95": 10931.309399992228,
+            "max": 11311.389899969101
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 59.119799971580505,
+            "p50": 310.7620000243187,
+            "p95": 388.71489998698235,
+            "max": 449.5929000079632
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 3,
+            "p50": 4,
+            "p95": 8,
+            "max": 10
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22079,
+          "max_server_rss_bytes": 80211968,
+          "max_persisted_state_bytes": 25721,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": false,
+            "feedback_worst": true
+          },
+          "evaluator_timing": {
+            "constructor_ms": {
+              "n": 64,
+              "min": 0,
+              "p50": 0,
+              "p95": 1,
+              "max": 1
+            },
+            "before_init_ms": {
+              "n": 64,
+              "min": 0,
+              "p50": 0,
+              "p95": 1,
+              "max": 45
+            },
+            "init_ms": {
+              "n": 64,
+              "min": 21,
+              "p50": 45,
+              "p95": 320,
+              "max": 368
+            },
+            "evaluate_ms": {
+              "n": 64,
+              "min": 8,
+              "p50": 15,
+              "p95": 18,
+              "max": 30
+            },
+            "total_ms": {
+              "n": 64,
+              "min": 32,
+              "p50": 61,
+              "p95": 334,
+              "max": 383
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "26.5",
+      "node": "v24.15.0",
+      "complete": true,
+      "targets_passed": false
+    },
+    "scheduled-profile": {
+      "format": 1,
+      "date": "2026-11-06T23:49:13.695Z",
+      "family": "webkit",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 6746.9869,
+          "ack_ms": {
+            "n": 64,
+            "min": 10.608700000000681,
+            "p50": 417.02509999999893,
+            "p95": 417.71930000000066,
+            "max": 429.02800000000025
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1740.0613999999987,
+            "p50": 3610.053600000001,
+            "p95": 6712.016799999999,
+            "max": 6716.2098000000005
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 687.5338999927044,
+            "p50": 2994.8037999868393,
+            "p95": 5595.769299983978,
+            "max": 5711.068399995565
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 59.09330001473427,
+            "p50": 71.7291000187397,
+            "p95": 315.2242999970913,
+            "max": 338.3240999877453
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 2,
+            "p50": 3,
+            "p95": 6,
+            "max": 16
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22079,
+          "max_server_rss_bytes": 80498688,
+          "max_persisted_state_bytes": 25721,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          },
+          "evaluator_timing": {
+            "constructor_ms": {
+              "n": 64,
+              "min": 0,
+              "p50": 0,
+              "p95": 1,
+              "max": 1
+            },
+            "before_init_ms": {
+              "n": 64,
+              "min": 0,
+              "p50": 0,
+              "p95": 1,
+              "max": 45
+            },
+            "init_ms": {
+              "n": 64,
+              "min": 17,
+              "p50": 28,
+              "p95": 275,
+              "max": 291
+            },
+            "evaluate_ms": {
+              "n": 64,
+              "min": 5,
+              "p50": 15,
+              "p95": 18,
+              "max": 20
+            },
+            "total_ms": {
+              "n": 64,
+              "min": 28,
+              "p50": 44,
+              "p95": 291,
+              "max": 306
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "26.5",
+      "node": "v24.15.0",
+      "complete": true,
+      "targets_passed": true
+    }
+  },
+  "remaining": {
+    "physical_phone": "Deferred by user: automated checks only for now.",
+    "linux_authoring_and_browser": "Not run in this local consumer. Linux has no TeX installation; CI must execute both-language authoring and browser consumers.",
+    "published_host_pin": "Commit the remaining reviewed renderer context, publish the compatible host and pin it in FD CI.",
+    "release": "No push, hosted workflow run, catalog entry or publication in this round."
+  },
+  "local_commits": {
+    "host-prerequisites": {
+      "repository": "texstage-public",
+      "commit": "6e799fcc7f91b53faec4cdc6cb0a29f51aea2162",
+      "parent": "de3351550f3553ca63023554521fbe84806ec94e",
+      "files": 9
+    },
+    "host-performance": {
+      "repository": "texstage-public",
+      "commit": "9d663cfc4940fac624143b20a2338ab5429bc2c8",
+      "parent": "6e799fcc7f91b53faec4cdc6cb0a29f51aea2162",
+      "files": 9
+    },
+    "fd-prerequisites": {
+      "repository": "texstage-plugins",
+      "commit": "760ec044c59b4c09ccf01bf137b78630a46c1fe1",
+      "parent": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+      "files": 84
+    }
+  }
+}

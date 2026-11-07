@@ -164,12 +164,13 @@ ausliefern; veröffentlichen Sie nicht pauschal das gesamte Build-Verzeichnis.
 
 Grenzen: 1–8 Attribute, 0–24 FDs, höchstens 8 produktive Schritte und 256
 vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 64 aktuelle Antworten
-mit reserviertem Feedback gespeichert. Die [F4-Messungen](design/functional-dependencies-f4-validation.md)
-prüfen 64 synthetische Teilnehmende auf einem Windows-Rechner über Loopback.
-Firefox erfüllte die vorläufigen Latenzziele; WebKit benötigte etwa 15–18 Sekunden
-für alle Antworten und verfehlte das p95-Ziel von zehn Sekunden. Auch die
-Chromium-Ergebnisse und ein Lauf mit erhöhter Eingabelatenz sind dokumentiert.
-Dies ist keine Durchsatzgarantie für ein Vorlesungsnetz oder echte Telefone.
+mit reserviertem Feedback gespeichert. Der [aktuelle Lasttest](design/functional-dependencies-f4-performance.md)
+prüft 64 synthetische Teilnehmende auf einem Windows-Rechner über Loopback.
+Chromium, Firefox und WebKit erfüllen die unveränderten Eingabe- und Feedbackziele
+in allen drei Aufgabenarten. WebKit benötigt nach allgemeinen Host-Optimierungen
+etwa 7 Sekunden für einen Antwortschub. Die [ursprünglichen F4-Messungen](design/functional-dependencies-f4-validation.md)
+mit den früheren Latenzproblemen bleiben dokumentiert. Dies ist keine
+Durchsatzgarantie für ein Vorlesungsnetz oder echte Telefone.
 
 Verwenden Sie für einen Pilotbetrieb die dort geprüfte Host-Version mit den
 Last- und Wiederverbindungsänderungen. Ohne Presenter-Auswertung bleiben

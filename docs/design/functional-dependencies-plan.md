@@ -1,16 +1,17 @@
 # FD Lab: implementation plan
 
-Status: F1-F3 implemented; F4 automated load and recovery measured locally,
-2026-11-07. See the [F4 evidence](functional-dependencies-f4-validation.md).
+Status: F1-F3 implemented; F4 automated load, recovery and browser-security
+gates pass locally, 2026-11-07. The [performance follow-up](functional-dependencies-f4-performance.md)
+supersedes the open WebKit gate in the [initial F4 evidence](functional-dependencies-f4-validation.md).
 The package owns engine, command and four audience-view schemas, a thin LaTeX
 style, prepared exercise/solution fragments and phone/presenter controls.
 See the [F1 record](functional-dependencies-f1-validation.md),
 [F2 record](functional-dependencies-f2-validation.md) and [lesson guide](../fd-lesson.md).
 F3 adds one/all key editors, derivation/counterexample editors, the full workshop
 sequence and bilingual guides. See the [F3 record](functional-dependencies-f3-validation.md).
-F4's physical-phone check is deferred at the user's request. Full performance
-acceptance remains open: WebKit misses the provisional 10-second feedback p95
-target. F5 release remains pending.
+F4's physical-phone check remains deferred at the user's request. The unchanged
+input/feedback targets pass in Chromium, Firefox and WebKit on the measured
+Windows machine. F5 release remains pending; these are local loopback results.
 Privacy/race/storage checks already run in F2/F3.
 Start with [the design](functional-dependencies.md) and
 [the contract](functional-dependencies-contract.md).
@@ -204,14 +205,16 @@ Publishing, commits, pushes and course migration are separate requested actions.
 
 ## Recommended next step
 
-Complete the remaining F4 gates: investigate WebKit's measured 64-answer queue
-latency and test a physical phone over LAN HTTP. Retain the 10-second feedback
-p95 target until an explicit reviewed capacity decision changes it; do not
-equate a successful completion with a performance pass. Recheck timing on the
-intended lecture hardware and network.
+Proceed with F5: finalize a compatible host commit including the reviewed
+renderer changes, publish and pin that immutable host, then run the existing
+Linux producer / Windows consumer CI and its three-browser matrix. Verify that
+TeX authoring executes with both language packs. Catalog publication is a later,
+explicit action. Recheck capacity on the intended lecture hardware and network.
+Physical-phone validation remains deferred under the automated-only scope.
 
-F4 added generic host schema caching, coalesced projections, busy-queue polling
-and disconnect lease release. The provider remains byte-identical at 0.3.0.
-Combined FD/relational/transaction engine checks and the F1-F3 regression gates
-are recorded in the F4 evidence. F5 still requires a published immutable host
-pin, identical-artifact Linux/Windows evidence and an explicit release request.
+The performance follow-up adds a bounded cache of immutable asset bytes and
+cost-aware projection coalescing. Every job retains a fresh restricted worker,
+two-job leases and the two-second evaluation deadline. The FD provider remains
+byte-identical at 0.3.0. The new record includes combined FD/relational/transaction
+security checks, full FD UI checks and exact artifact identities. Historical
+F1-F4 evidence is retained rather than rewritten.

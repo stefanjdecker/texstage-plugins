@@ -92,9 +92,11 @@ installation, authoring and static editions. See the [F1 engine record](docs/des
 and [F2 closure record](docs/design/functional-dependencies-f2-validation.md), followed
 by the [F3 classroom record](docs/design/functional-dependencies-f3-validation.md) and
 [F4 load/reconnect measurements](docs/design/functional-dependencies-f4-validation.md).
-A [German guide](docs/fd-lesson-de.md) is also available. The 64-answer pilot
-exposes a remaining WebKit latency gate. Physical-phone checks are deferred;
-a published catalog release remains a separate step.
+A [German guide](docs/fd-lesson-de.md) is also available. The
+[performance follow-up](docs/design/functional-dependencies-f4-performance.md)
+passes the unchanged 64-answer targets in Chromium, Firefox and WebKit, with
+fresh isolated workers and the same security policy. Physical-phone checks are
+deferred; compatible published host pins and release CI remain separate gates.
 
 ```sh
 python maintenance/check_fd_design.py

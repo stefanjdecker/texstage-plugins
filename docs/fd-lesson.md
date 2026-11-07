@@ -213,12 +213,13 @@ The engine supports 1-8 attributes, 0-24 FDs, up to 256 proposed key sets and 8 
 including empty determinants, cycles and redundant/trivial FDs. Keep classroom
 examples compact enough for the prepared slide box. The lesson stores one current
 answer per actor, with a 64-actor pilot ceiling, 2 KiB reserved per actor slot and
-160 KiB total state. The [F4 measurements](design/functional-dependencies-f4-validation.md)
-exercise 64 synthetic actors on one Windows computer. Firefox met the provisional
-latency targets; WebKit's roughly 15-18 second burst completion missed the
-10-second feedback p95 target. Chromium results and a contended input-latency
-failure are recorded there too. These are loopback measurements, not a guarantee
-for a lecture network or physical phones.
+160 KiB total state. The [performance follow-up](design/functional-dependencies-f4-performance.md)
+tests 64 synthetic actors on one Windows computer. All three modes pass the
+unchanged input and feedback targets in Chromium, Firefox and WebKit. WebKit
+finishes the measured bursts in roughly 7 seconds after generic host caching
+and scheduling fixes. The [initial F4 measurements](design/functional-dependencies-f4-validation.md)
+retain the earlier failed runs. These loopback measurements do not guarantee
+the same response times on a lecture network or physical phones.
 
 Use the host changes pinned in that record for a classroom pilot. They preserve
 the security limits while avoiding repeated schema checks and per-answer full
