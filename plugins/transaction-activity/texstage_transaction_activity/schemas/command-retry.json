@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","properties":{"phase_token":{"type":"integer","minimum":0,"maximum":1000000000},"answer_version":{"type":"integer","minimum":0,"maximum":1000000000}},"required":["phase_token","answer_version"],"additionalProperties":false}

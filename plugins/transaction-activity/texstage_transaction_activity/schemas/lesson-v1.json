@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "exercise",
+    "worked_repairs",
+    "explanation"
+  ],
+  "properties": {
+    "format": {
+      "const": 1
+    },
+    "exercise": {
+      "title": "Proposed transaction teaching exercise, format 1",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "id",
+        "language",
+        "title",
+        "prompt",
+        "initial",
+        "transactions",
+        "schedule",
+        "task"
+      ],
+      "properties": {
+        "format": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "language": {
+          "enum": [
+            "de",
+            "en"
+          ]
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "prompt": {
+          "$ref": "#/$defs/localized"
+        },
+        "initial": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 3,
+          "propertyNames": {
+            "$ref": "#/$defs/id"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/value"
+          }
+        },
+        "transactions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "operations"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^T[123]$"
+              },
+              "operations": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 13,
+                "items": {
+                  "$ref": "#/$defs/operation"
+                }
+              }
+            }
+          }
+        },
+        "schedule": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 15,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "task": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repair",
+            "feedback"
+          ],
+          "properties": {
+            "repair": {
+              "const": "conflict-serializable"
+            },
+            "feedback": {
+              "const": "staged"
+            }
+          }
+        }
+      }
+    },
+    "worked_repairs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 15,
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "explanation": {
+      "$ref": "#/$defs/localized"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,11}$"
+    },
+    "value": {
+      "type": "integer",
+      "minimum": -1000000,
+      "maximum": 1000000
+    },
+    "localized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "de",
+        "en"
+      ],
+      "properties": {
+        "de": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        }
+      }
+    },
+    "writeValue": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "constant"
+          ],
+          "properties": {
+            "constant": {
+              "$ref": "#/$defs/value"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "read",
+            "add"
+          ],
+          "properties": {
+            "read": {
+              "$ref": "#/$defs/id"
+            },
+            "add": {
+              "type": "integer",
+              "minimum": -10000,
+              "maximum": 10000
+            }
+          }
+        }
+      ]
+    },
+    "operation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "kind",
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/id"
+            },
+            "kind": {
+              "const": "read"
+            },
+            "object": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "kind",
+            "object",
+            "value"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/id"
+            },
+            "kind": {
+              "const": "write"
+            },
+            "object": {
+              "$ref": "#/$defs/id"
+            },
+            "value": {
+              "$ref": "#/$defs/writeValue"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "kind"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/id"
+            },
+            "kind": {
+              "const": "commit"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

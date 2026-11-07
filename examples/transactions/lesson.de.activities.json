@@ -1,0 +1,36 @@
+{
+  "format": 1,
+  "language": "de",
+  "items": [
+    {
+      "id": "counter",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/counter.lesson.json"
+    },
+    {
+      "id": "independent",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/independent.lesson.json"
+    },
+    {
+      "id": "read_read",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/read_read.lesson.json"
+    },
+    {
+      "id": "write_write",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/write_write.lesson.json"
+    },
+    {
+      "id": "chain",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/chain.lesson.json"
+    },
+    {
+      "id": "blind_write",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/blind_write.lesson.json"
+    }
+  ]
+}

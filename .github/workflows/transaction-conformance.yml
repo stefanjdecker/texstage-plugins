@@ -1,0 +1,145 @@
+# SPDX-License-Identifier: Apache-2.0
+name: Transaction classroom conformance
+on:
+  workflow_dispatch:
+    inputs:
+      texstage_ref:
+        description: Published compatible host commit including projector archives (40-character SHA)
+        required: true
+        type: string
+      capacity:
+        description: Also measure 600 and 1000 students, burst and 30-second waves
+        type: boolean
+        default: false
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+jobs:
+  producer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Require an immutable host revision
+        env: {HOST_REF: '${{ inputs.texstage_ref }}'}
+        run: '[[ "$HOST_REF" =~ ^[0-9a-f]{40}$ ]]'
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with: {persist-credentials: false}
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          repository: stefanjdecker/texstage
+          ref: ${{ inputs.texstage_ref }}
+          path: host-source
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '24'}
+      - name: Install locked dependencies and build the host
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-lang-german lmodern latexmk
+          python -m pip install --require-hashes --only-binary=:all: -r host-source/requirements/dev.txt
+          python -m build --wheel --no-isolation --outdir host-dist host-source
+          python -m pip install --no-deps host-dist/*.whl
+          python -c "from texstage.plugins.runtime import Runtime; assert hasattr(Runtime,'public_archive')"
+          npm ci --ignore-scripts
+      - name: Preserve the independent engine test environment
+        run: |
+          python maintenance/build_wheels.py --package transaction-engine
+          python -m pip install --no-deps dist/texstage_transaction_engine-*.whl
+          mkdir -p artifacts
+          python -m pytest plugins/transaction-engine/tests -q --basetemp=artifacts/engine --junitxml=artifacts/engine.xml
+      - name: Build the activity and validate source-distribution parity
+        run: |
+          python maintenance/build_transaction_schemas.py --check
+          python maintenance/build_wheels.py --package transaction-activity
+          python -m pip install --no-deps dist/texstage_transaction_activity-*.whl
+          python -m pytest plugins/transaction-activity/tests -q --basetemp=artifacts/pair --junitxml=artifacts/pair.xml
+          python maintenance/transaction_authoring_probe.py --output artifacts/prepared
+      - name: Stage identical wheels and authored bundles
+        run: |
+          mkdir -p handoff
+          cp -r host-dist handoff/host
+          cp -r dist handoff/plugins
+          cp -r host-source/requirements handoff/requirements
+          cp -r artifacts/prepared handoff/prepared
+          git rev-parse HEAD > handoff/plugin-commit.txt
+          git -C host-source rev-parse HEAD > handoff/host-commit.txt
+          sha256sum host-dist/*.whl dist/*.whl > handoff/wheel-hashes.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with: {name: transactions-handoff, path: handoff/, retention-days: 14}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: transactions-producer, path: artifacts/, retention-days: 14}
+  browsers:
+    needs: producer
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025]
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.14'}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '24'}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with: {name: transactions-handoff, path: handoff}
+      - name: Install identical artifacts
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
+          python -m pip install --no-deps handoff/host/*.whl handoff/plugins/*.whl
+          npm ci --ignore-scripts
+          npx playwright install --with-deps ${{ matrix.browser }}
+      - name: All six lessons, both languages and real evaluator
+        env: {BROWSER: '${{ matrix.browser }}'}
+        run: |
+          TRANSACTION_LANGUAGE=en node maintenance/transaction_ui_browser.cjs handoff/prepared/lesson-en/out/lesson.bundle artifacts/ui
+          TRANSACTION_LANGUAGE=de node maintenance/transaction_ui_browser.cjs handoff/prepared/lesson-de/out/lesson-de.bundle artifacts/ui
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: 'transactions-${{ matrix.os }}-${{ matrix.browser }}', path: artifacts/, retention-days: 14}
+  capacity:
+    if: inputs.capacity
+    needs: producer
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025]
+        browser: [chromium, firefox, webkit]
+        actors: [600, 1000]
+        wave: [0, 30]
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.14'}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '24'}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with: {name: transactions-handoff, path: handoff}
+      - run: |
+          python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
+          python -m pip install --no-deps handoff/host/*.whl handoff/plugins/*.whl
+          npm ci --ignore-scripts
+          npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Preserve predeclared latency and correctness gates
+        env:
+          BROWSER: ${{ matrix.browser }}
+          TRANSACTION_ACTORS: ${{ matrix.actors }}
+          TRANSACTION_WAVE_SECONDS: ${{ matrix.wave }}
+        run: node maintenance/transaction_load_browser.cjs handoff/prepared/lesson-en/out/lesson.bundle artifacts/load
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: 'transactions-load-${{ matrix.os }}-${{ matrix.browser }}-${{ matrix.actors }}-${{ matrix.wave }}', path: artifacts/, retention-days: 14}

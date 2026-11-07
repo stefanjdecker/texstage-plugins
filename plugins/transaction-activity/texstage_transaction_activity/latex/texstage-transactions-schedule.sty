@@ -1,0 +1,14 @@
+% SPDX-License-Identifier: Apache-2.0
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesExplPackage{texstage-transactions-schedule}{2026-11-07}{0.1.0}{Prepared transaction schedules}
+\RequirePackage{texstage}
+\tl_new:N \l__transactions_id_tl
+\keys_define:nn { transactions } { id .tl_set:N = \l__transactions_id_tl }
+\NewDocumentEnvironment { transactionsschedule } { O{} m m }
+  {
+    \group_begin:
+    \keys_set:nn { transactions } { id=counter, #1 }
+    \texstageprepared{\l__transactions_id_tl}{#2}{#3}
+  }
+  { \group_end: }
+\endinput

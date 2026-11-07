@@ -1,0 +1,2 @@
+include texstage-plugin.json LICENSE README.md
+recursive-include texstage_transaction_activity *.py *.json *.mjs *.sty

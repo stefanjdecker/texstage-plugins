@@ -17,7 +17,7 @@ for (const request of requests) {
   const began = performance.now();
   try {
     const job = {...config.job, namespace: request.namespace, binding: {
-      ...config.job.binding, seed: request.seed, options: request.options ?? {}}};
+      ...config.job.binding, ...request.binding, seed: request.seed, options: request.options ?? {}}};
     state = await engine.load(library, request.seed, Object.hasOwn(request, "options") ? request.options : {});
     const result = validateResult(await engine.evaluate(state, request.text, request.context || {}), job);
     const outcome = makeOutcome(result, [], job);

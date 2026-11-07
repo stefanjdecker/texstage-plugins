@@ -74,7 +74,7 @@ def request(exercise, order=None, **extra):
 
 def bound_requests(provider, engine, requests):
     return [row if "hash" in row else row | {"namespace": namespace(provider, ENGINE, engine,
-            {"seed": row["seed"], "options": row.get("options", {}), "references": []})}
+            row.get("binding") or {"seed": row["seed"], "options": row.get("options", {}), "references": []})}
             for row in requests]
 
 
@@ -112,7 +112,7 @@ def main():
         "result_schema_sha256": config["job"]["engine"]["result_contract"]["data_schema_digest"],
         "python": platform.python_version(), "node": subprocess.check_output(["node", "--version"], text=True).strip(),
         "cases": len(results), "max_evaluation_ms": max(row["milliseconds"] for row in results),
-        "scope": "M2 engine only; authoring, lesson state and interfaces remain pending",
+        "scope": "Independent engine conformance; classroom activity is tested separately",
     }
     (args.output / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     (args.output / "browser-config.json").write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")

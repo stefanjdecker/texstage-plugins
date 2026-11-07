@@ -1,12 +1,22 @@
 # Transaction schedules: plugin design
 
-Status: design reviewed against Texstage's experimental plugin host on
-2026-11-05; M2's independent analysis engine implemented on 2026-11-06.
-The lesson state, authoring and interfaces below remain planned.
-See the [implementation plan](transaction-schedules-plan.md) and the
-[host contract review](https://github.com/stefanjdecker/texstage/blob/codex/plugin-system/docs/architecture/transaction-plugin-review.md).
-The host review is supplied in the active Texstage code checkout; that branch
-must be published before the remote link becomes available. Code is maintained
+> Implementation update: the classroom package, prepared authoring, four views,
+> actor records, private feedback and generic host archive integration are now
+> implemented on `codex/transactions-classroom`. See the
+> [validation record](transaction-classroom-validation.md) for measured results
+> and remaining classroom/release gates. The planning text below preserves the
+> original acceptance criteria; it is not a claim that every gate has passed.
+
+
+Planning baseline: M2's independent engine was implemented on 2026-11-06. The classroom
+completion plan was revised on 2026-11-07 against the published host
+`f612a366ddde07b79a6d5f70160d7ac9db8bd880`. Lesson state, authoring and interfaces
+below were planned at that revision; see the implementation update above for
+current status. The [completion plan](transaction-schedules-plan.md)
+defines current dependencies, actor-record storage, a 600-student target and
+1,000-student ceiling, implementation order and release gates.
+The [original host contract review](https://github.com/stefanjdecker/texstage/blob/f612a366ddde07b79a6d5f70160d7ac9db8bd880/docs/architecture/transaction-plugin-review.md)
+is historical context; many of its prerequisites now exist. Host code is maintained
 once and mirrored to GitHub and GitLab; the legacy checkout is archived.
 
 ## 1. Purpose and first release
@@ -71,6 +81,8 @@ packages are an additional, more demanding conformance example.
 A typical activity takes approximately five to eight minutes; the lecturer
 controls its pace. Initial implementation has one live frame and a monotonic
 phase sequence. Navigating away pauses participation without resetting it.
+Returning preserves the phase and answers; a paused answer phase resumes only
+on the presenter's explicit command. Previously revealed phases stay closed.
 
 ```mermaid
 stateDiagram-v2
@@ -98,7 +110,10 @@ reopened after their answers have been shown.
 | Reveal | Own current answers and explanations | Select a synthetic or explicitly anonymized example | Answer distributions, graph certificates and multiple valid repairs |
 
 At Inspect, executing the final write necessarily reveals the original final
-values. Graph correctness is withheld until Reveal. Receipt acknowledgements and
+values. Graph correctness is withheld until Reveal. A monotonic
+`prediction_revealed` flag releases final-value feedback when the final inspection
+step is reached or Diagnose begins; rewinding the cursor cannot retract it.
+Receipt acknowledgements and
 input-structure errors are always visible; the configured teaching policy
 controls when correctness and explanations appear.
 
@@ -154,8 +169,9 @@ Presenter overlay, presenter controls, projector overlay and participant input
 are separate mounts. Controls include phase transitions, cursor stepping,
 counts, pending-work status and reset. Projector data has no participant IDs,
 request IDs, names, pending submission text or private feedback.
-The proposed revision-2 manifest declares a separate closed `view_schemas`
-resource for each surface, so accidental extra fields fail host validation.
+The planned activity uses a revision-3 manifest with actor records and a
+separate closed `view_schemas` resource for each surface, so accidental extra
+fields fail host validation. The independent engine remains revision 2.
 
 Support German and English labels and explanations. Engine facts and persisted
 reason codes are language-neutral. Use native focusable controls, visible focus,
@@ -257,18 +273,24 @@ canonical cache/grouping keys are not used as a correctness decision here.
 ## 7. State, messages and races
 
 Shared persisted state contains the phase, `phase_token`, `control_version`,
-inspection cursor, public aggregates and bounded per-actor answer slots.
-An answer slot is indexed by actor and answer phase, with `answer_version`,
-normalized answer, evaluation correlation and outcome status.
-The actor is supplied by authentication, never by the phone payload.
+active/paused flags, inspection cursor, prediction-release flag, bounded
+aggregates, roster page and explicitly selected/shared snapshots. Host-owned actor records hold each
+participant's latest answer for each phase, with `answer_version`, normalized
+answer, evaluation correlation and compact outcome status. The actor is supplied
+by authentication, never by the phone payload. Use `SaveActor` and the current
+record/context API; no full-class answer map travels through every hook.
 
 | Operation | Role | Concurrency guard and effect |
 | --- | --- | --- |
 | `advance-phase` | presenter | `latest` host policy; compare expected control_version; follow the declared phase transition |
 | `seek-step` | presenter | `latest`; compare control_version; only within Inspect and a valid step range |
+| `resume-phase` | presenter | `latest`; resume the current paused answer phase, with new phase/control guards; never reopen a revealed phase |
+| `roster-page`, `select-answer` | presenter | Bounded roster/record selection with control_version guard |
+| `share-answer`, `clear-share` | presenter | Deliberate anonymous snapshot sharing in Reveal, with control_version guard |
 | `submit-prediction` | participant | `latest`; compare phase_token and that actor's answer_version; replace only that slot |
 | `submit-diagnosis` | participant | Same guards; validate edges, witnesses and certificate |
 | `submit-repair` | participant | Same guards; save candidate and enqueue analysis atomically; cancel an older pending repair |
+| `retry-analysis` | participant | Retry only the unchanged accepted repair after operational failure, including after closure; preserve answer version and replace its correlation |
 | `_reset` | presenter, core-owned | Durable reset of the current epoch; revised epoch guard is implemented by the H1 host |
 
 Transport revision orders whole-item snapshots. It is not the version of an
@@ -292,15 +314,24 @@ Derive correlation IDs from the immutable actor/request identity and a local
 effect slot using a deterministic digest. Do not use a request ID alone:
 different actors may legitimately use the same request string.
 
-Keep one current answer per actor per phase in live plugin state. Previous
-attempts are not accumulated there. Receipts and durable jobs remain host-owned.
-Start with a tested limit of 200 participants only if the measured budget permits:
-at most 768 serialized bytes per actor across all slots plus 48 KiB shared state,
-below the host's 256-KiB transition limit. Store compact answers and small
-certificates, not a full trace per actor. Reconstruct detailed feedback from
-bounded facts; do not rerun expensive analysis in every audience view. Version 1
-steps only the shared original trace. Personal repair feedback shows final
-values and a small certificate, keeping full per-repair traces out of live state.
+Keep one current answer per actor per phase in one host actor record. Previous
+attempts are not accumulated there; receipts and durable jobs remain host-owned.
+The revised target is 600 answering students with a 1,000-record ceiling and
+25-row presenter pages, subject to the transaction-specific load gates in the
+completion plan. The proposed actor-value budget is 3 KiB including reserved
+feedback (host ceiling 4,096 canonical JSON bytes), with a 256-byte summary and
+32-KiB shared-state target. The complete transition remains within 64 KiB,
+below the unchanged host limit of 256 KiB. Prove these targets with worst-case
+fixtures before implementation is declared complete.
+
+Store compact answers and small certificates, not a full trace per actor.
+Reconstruct detailed feedback from bounded facts; do not rerun analysis in every
+audience view. Version 1 steps only the shared original trace. Personal repair
+feedback shows final values and a small certificate. Use actor-scoped updates
+with explicit broadcast fields for phase, phase token, active/paused flags,
+cursor, prediction-release flag and shared example. Participant views omit
+per-class counts and rosters.
+Every actor must still receive shared phase/reveal/cursor changes.
 
 ## 8. Authoring and static outputs
 
@@ -308,8 +339,11 @@ One exercise JSON must determine the simulation, live prompt, static worksheet
 and worked solution. It must not require an independent hand-written diagram
 and answer table inside a style file.
 
-The proposed generic authoring prepass reads an explicit sidecar, before LaTeX
-compilation. These commands and helpers are design targets, not current CLI:
+The current host's generic authoring prepass reads an explicit sidecar before
+LaTeX compilation. The transaction hook/style below are now implemented in
+`transaction-activity`. A lesson
+envelope wraps the existing exercise with checked worked repairs and explanations;
+it does not change the engine's exercise-v1 seed contract:
 
 ```json
 {
@@ -317,7 +351,7 @@ compilation. These commands and helpers are design targets, not current CLI:
   "items": [{
     "id": "counter",
     "type": "io.github.stefanjdecker.transactionactivity.schedule",
-    "source": "activities/counter.exercise.json"
+    "source": "activities/counter.lesson.json"
   }]
 }
 ```
@@ -371,10 +405,12 @@ Participant views contain that actor's submitted answers and permitted feedback.
 The presenter may inspect current submissions with opaque identifiers; displaying
 names or publishing an individual answer requires a separate deliberate feature.
 
-The host must expose pending/unavailable evaluation status, avoid the prototype's
-fixed poll-delay throughput bottleneck, and enforce fair bounded queues. A
-disconnected evaluator cannot turn pending work into a wrong answer. Cheap
-answer acknowledgement and phase closure must remain responsive during a burst.
+The host already provides bounded queues, adaptive evaluation batches and
+reassignment after an observed evaluator disconnect. The lesson must expose
+pending/unavailable status, and transaction-specific measurements must establish
+throughput and fairness for diverse repairs. A disconnected evaluator cannot
+turn pending work into a wrong answer. Cheap answer acknowledgement and phase
+closure must remain responsive during a burst.
 
 Archive integration should preserve pins, exercise, accepted answer versions,
 outcome codes and a static worked example. A lecturer archive is private.
@@ -400,6 +436,8 @@ oracle, not the plugin implementation and not evidence of browser integration.
 Before classroom use, require installed-wheel tests on both platforms, a real
 presenter/projector/phone cycle in Chromium, Firefox and WebKit, keyboard/touch
 completion, late results after closure, two devices for one actor, two presenters,
-reset/reconnect races, bounded 200-participant load, static outputs and authorized
-archive/recording checks. The [plan](transaction-schedules-plan.md) separates host
-prerequisites, package work and those acceptance gates.
+reset/reconnect races, measured 600-participant load and a separately reported
+1,000-student ceiling, static outputs and authorized archive/recording checks.
+The [plan](transaction-schedules-plan.md) separates existing host mechanisms,
+remaining package/core work and those acceptance gates. The existing formative
+scope is unchanged; automatic scoreboard points remain a separate follow-up.

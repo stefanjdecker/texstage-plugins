@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "language": "de",
+  "items": [
+    {
+      "id": "maximum",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/maximum.lesson.json"
+    }
+  ]
+}

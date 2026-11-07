@@ -10,7 +10,8 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | --- | --- | --- |
 | `texstage-example-distance` | Browser engine `org.example.distance.euclidean` | None |
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
-| `texstage-transaction-engine` | Schedule analysis engine `io.github.stefanjdecker.transactionengine.schedule` (M2) | None; lesson package pending |
+| `texstage-transaction-engine` | Independent schedule analysis engine | None |
+| `texstage-transaction-activity` | Prepared prediction, diagnosis and repair lesson | `texstage-transactions-schedule.sty` / `transactionsschedule` |
 | `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
 | `texstage-bplus-lab` | B+ operations, prepared lessons and up to 1,000 student answers | `texstage-bplus-tree.sty` / `\bplustree` |
 | `texstage-er-decisions` | ER registration activity: phone decisions, model preview and discussion | `texstage-er-decisions.sty` / `\erdecisions` |
@@ -19,8 +20,7 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-normalization-workshop` | Normalization, comparison and evidence | `texstage-normalization-workshop.sty` / `\normalizationworkshop` |
 
 The [collection validation record](docs/design/plugin-collection-validation-2026-11-07.md)
-lists all nine packages, their implemented scope and the compatible host needed
-to run them together.
+records the previous nine-package baseline. The [transaction validation](docs/design/transaction-classroom-validation.md) adds the tenth package and the compatible host changes.
 
 The coordinate slide accepts a phone response, displays class points on the
 projector, gives distance feedback from the presenter browser, and supports reveal
@@ -56,33 +56,24 @@ discussion workflow and remaining usability, classroom and release gates.
 The independent design checker remains available:
 `python maintenance/check_normalization_design.py`.
 
-## Transaction schedules: implemented engine, planned lesson
+## Transaction schedules: classroom activity
 
-The [transaction-schedule design](docs/design/transaction-schedules.md) specifies
-prediction, stepped execution, conflict-graph construction and schedule repair.
-The [implementation plan](docs/design/transaction-schedules-plan.md) identifies
-package files, host prerequisites and acceptance gates. A draft exercise schema,
-nine synthetic expected cases and an independent design checker accompany it:
+The [lesson guide](docs/transactions-lesson.md) covers installation of the engine
+and activity wheels, prepared LaTeX, the six bilingual examples, and the phone,
+presenter and projector flow. Students predict values, inspect remembered reads,
+diagnose direct conflicts with witnesses and certificates, and reorder operation
+cards to repair a schedule. Different valid repairs are accepted. Feedback is
+released in stages; version 1 awards no scoreboard points.
+
+The [contract](docs/design/transaction-classroom-contract.md) describes actor
+records, privacy, guarded commands and recovery. The [validation record](docs/design/transaction-classroom-validation.md)
+distinguishes implemented behavior, measured capacity and remaining release gates.
+The [completion plan](docs/design/transaction-schedules-plan.md) remains the
+acceptance checklist. The standalone engine still works without the activity.
 
 ```sh
 python maintenance/check_transaction_design.py
 ```
-
-Run the checker after installing the compatible host's locked development
-dependencies. The [independent transaction engine](plugins/transaction-engine/README.md)
-is now implemented as a third installable wheel. It computes remembered reads,
-final values, direct conflict witnesses, and cycle or serial-order certificates.
-Its installed-wheel tests cover all 1,742 legal interleavings of the six small
-exercise programs. An isolated probe writes results for a lost update and repairs.
-The lesson package, LaTeX command, staged feedback and phone/presenter interfaces
-remain pending.
-
-The matching local host branch now implements typed results, revision-2 view schemas
-and epoch-guarded reset. Its H2 follow-up now prepares explicit activity JSON
-before LaTeX, generates live/static editions together, and exports local
-direct-pdfLaTeX entry points.
-Use its updated wheel: the coordinate example now uses the SDK's
-`evaluation_correlation` helper to keep different participants' jobs separate.
 
 ## Relational algebra: prepared lessons and checked answers
 

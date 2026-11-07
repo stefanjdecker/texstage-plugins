@@ -1,0 +1,195 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "maximum",
+    "language": "de",
+    "title": {
+      "en": "Three transactions, remembered reads and conflicting writes",
+      "de": "Drei Transaktionen, gespeicherte Lesewerte und Konflikte"
+    },
+    "prompt": {
+      "en": "Follow all twelve reads and writes. A transaction keeps its own read value even when another transaction writes the same object. Explain each direct edge with an operation pair.",
+      "de": "Verfolgen Sie alle zwölf Lese- und Schreibschritte. Ein gelesener Wert bleibt lokal gespeichert, auch wenn eine andere Transaktion das Objekt verändert. Begründen Sie jede direkte Kante mit einem Operationspaar."
+    },
+    "initial": {
+      "balance_long": -1000000,
+      "credit_total": 1000000,
+      "count_shared": 1000000
+    },
+    "transactions": [
+      {
+        "id": "T1",
+        "operations": [
+          {
+            "id": "t1_read_long",
+            "kind": "read",
+            "object": "balance_long"
+          },
+          {
+            "id": "t1_write_one",
+            "kind": "write",
+            "object": "balance_long",
+            "value": {
+              "read": "t1_read_long",
+              "add": 10000
+            }
+          },
+          {
+            "id": "t1_read_next",
+            "kind": "read",
+            "object": "balance_long"
+          },
+          {
+            "id": "t1_write_two",
+            "kind": "write",
+            "object": "count_shared",
+            "value": {
+              "read": "t1_read_next",
+              "add": -10000
+            }
+          },
+          {
+            "id": "t1_committed",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "operations": [
+          {
+            "id": "t2_read_long",
+            "kind": "read",
+            "object": "credit_total"
+          },
+          {
+            "id": "t2_write_one",
+            "kind": "write",
+            "object": "credit_total",
+            "value": {
+              "read": "t2_read_long",
+              "add": 10000
+            }
+          },
+          {
+            "id": "t2_read_next",
+            "kind": "read",
+            "object": "credit_total"
+          },
+          {
+            "id": "t2_write_two",
+            "kind": "write",
+            "object": "count_shared",
+            "value": {
+              "read": "t2_read_next",
+              "add": -10000
+            }
+          },
+          {
+            "id": "t2_committed",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "operations": [
+          {
+            "id": "t3_read_long",
+            "kind": "read",
+            "object": "count_shared"
+          },
+          {
+            "id": "t3_write_one",
+            "kind": "write",
+            "object": "count_shared",
+            "value": {
+              "read": "t3_read_long",
+              "add": 10000
+            }
+          },
+          {
+            "id": "t3_read_next",
+            "kind": "read",
+            "object": "count_shared"
+          },
+          {
+            "id": "t3_write_two",
+            "kind": "write",
+            "object": "count_shared",
+            "value": {
+              "read": "t3_read_next",
+              "add": -10000
+            }
+          },
+          {
+            "id": "t3_committed",
+            "kind": "commit"
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      "t1_read_long",
+      "t2_read_long",
+      "t3_read_long",
+      "t1_write_one",
+      "t2_write_one",
+      "t3_write_one",
+      "t1_read_next",
+      "t2_read_next",
+      "t3_read_next",
+      "t1_write_two",
+      "t2_write_two",
+      "t3_write_two",
+      "t1_committed",
+      "t2_committed",
+      "t3_committed"
+    ],
+    "task": {
+      "repair": "conflict-serializable",
+      "feedback": "staged"
+    }
+  },
+  "worked_repairs": [
+    [
+      "t1_read_long",
+      "t1_write_one",
+      "t1_read_next",
+      "t1_write_two",
+      "t1_committed",
+      "t2_read_long",
+      "t2_write_one",
+      "t2_read_next",
+      "t2_write_two",
+      "t2_committed",
+      "t3_read_long",
+      "t3_write_one",
+      "t3_read_next",
+      "t3_write_two",
+      "t3_committed"
+    ],
+    [
+      "t3_read_long",
+      "t3_write_one",
+      "t3_read_next",
+      "t3_write_two",
+      "t3_committed",
+      "t2_read_long",
+      "t2_write_one",
+      "t2_read_next",
+      "t2_write_two",
+      "t2_committed",
+      "t1_read_long",
+      "t1_write_one",
+      "t1_read_next",
+      "t1_write_two",
+      "t1_committed"
+    ]
+  ],
+  "explanation": {
+    "en": "Preserve each transaction’s program order. A repair is accepted when its direct conflict graph is acyclic; several orders can work.",
+    "de": "Die Programmreihenfolge jeder Transaktion bleibt erhalten. Eine Reparatur ist gültig, wenn ihr direkter Konfliktgraph azyklisch ist; mehrere Abläufe können passen."
+  }
+}

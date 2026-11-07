@@ -1,0 +1,43 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{texstage}
+\usepackage{texstage-transactions-schedule}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\begin{document}
+\begin{frame}{Transaktionsabläufe: Verzahnungen verstehen}
+\begin{enumerate}
+\item Endwerte vorhersagen.
+\item Gespeicherte Lesewerte und Schreibschritte verfolgen.
+\item Direkte Konflikte mit Zeugen erklären.
+\item Den Ablauf unter Erhalt der Programmreihenfolge reparieren.
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\begin{transactionsschedule}[id=counter]{.98\linewidth}{.90\textheight}
+\end{transactionsschedule}
+\end{frame}
+\begin{frame}
+\begin{transactionsschedule}[id=independent]{.98\linewidth}{.90\textheight}
+\end{transactionsschedule}
+\end{frame}
+\begin{frame}
+\begin{transactionsschedule}[id=read_read]{.98\linewidth}{.90\textheight}
+\end{transactionsschedule}
+\end{frame}
+\begin{frame}
+\begin{transactionsschedule}[id=write_write]{.98\linewidth}{.90\textheight}
+\end{transactionsschedule}
+\end{frame}
+\begin{frame}
+\begin{transactionsschedule}[id=chain]{.98\linewidth}{.90\textheight}
+\end{transactionsschedule}
+\end{frame}
+\begin{frame}
+\begin{transactionsschedule}[id=blind_write]{.98\linewidth}{.90\textheight}
+\end{transactionsschedule}
+\end{frame}
+\end{document}

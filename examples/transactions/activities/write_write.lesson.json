@@ -1,0 +1,83 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "write_write",
+    "language": "de",
+    "title": {
+      "de": "Transaktionen untersuchen",
+      "en": "Investigating transactions"
+    },
+    "prompt": {
+      "de": "Bestimmen Sie die Endwerte und untersuchen Sie die Konflikte.",
+      "en": "Predict the final values and examine the conflicts."
+    },
+    "initial": {
+      "x": 100
+    },
+    "transactions": [
+      {
+        "id": "T1",
+        "operations": [
+          {
+            "id": "a1",
+            "kind": "write",
+            "object": "x",
+            "value": {
+              "constant": 10
+            }
+          },
+          {
+            "id": "a2",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "operations": [
+          {
+            "id": "b1",
+            "kind": "write",
+            "object": "x",
+            "value": {
+              "constant": 20
+            }
+          },
+          {
+            "id": "b2",
+            "kind": "commit"
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      "a1",
+      "b1",
+      "b2",
+      "a2"
+    ],
+    "task": {
+      "repair": "conflict-serializable",
+      "feedback": "staged"
+    }
+  },
+  "worked_repairs": [
+    [
+      "a1",
+      "a2",
+      "b1",
+      "b2"
+    ],
+    [
+      "b1",
+      "b2",
+      "a1",
+      "a2"
+    ]
+  ],
+  "explanation": {
+    "en": "Preserve each transaction’s program order. A repair is accepted when its direct conflict graph is acyclic; several orders can work.",
+    "de": "Die Programmreihenfolge jeder Transaktion bleibt erhalten. Eine Reparatur ist gültig, wenn ihr direkter Konfliktgraph azyklisch ist; mehrere Abläufe können passen."
+  }
+}

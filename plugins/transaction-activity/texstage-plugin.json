@@ -1,0 +1,144 @@
+{
+  "manifest_version": 3,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.transactionactivity",
+  "version": "0.1.0",
+  "description": "Phased transaction lessons: prediction, trace inspection, direct conflicts and schedule repair.",
+  "license": "Apache-2.0",
+  "latex_namespace": "transactions",
+  "latex_exports": {
+    "commands": [],
+    "environments": [
+      "transactionsschedule"
+    ]
+  },
+  "capabilities": {
+    "content_types": {
+      "io.github.stefanjdecker.transactionactivity.schedule": {
+        "content_api": 1,
+        "authoring_hook": "schedule",
+        "state_hook": "schedule",
+        "state_schema": 1,
+        "latex_packages": [
+          "texstage_transaction_activity/latex/texstage-transactions-schedule.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.transactionengine.schedule"
+          }
+        },
+        "views": {
+          "participant-input": "texstage_transaction_activity/web/participant.mjs",
+          "presenter-controls": "texstage_transaction_activity/web/presenter-controls.mjs",
+          "presenter-overlay": "texstage_transaction_activity/web/presenter-overlay.mjs",
+          "projector-overlay": "texstage_transaction_activity/web/projector-overlay.mjs"
+        },
+        "view_schemas": {
+          "participant-input": "texstage_transaction_activity/schemas/participant-input-view-v1.json",
+          "presenter-controls": "texstage_transaction_activity/schemas/presenter-controls-view-v1.json",
+          "presenter-overlay": "texstage_transaction_activity/schemas/presenter-overlay-view-v1.json",
+          "projector-overlay": "texstage_transaction_activity/schemas/projector-overlay-view-v1.json"
+        },
+        "messages": {
+          "submit-prediction": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-prediction.json"
+          },
+          "submit-diagnosis": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-diagnosis.json"
+          },
+          "submit-repair": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-repair.json"
+          },
+          "retry-analysis": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-retry.json"
+          },
+          "advance-phase": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-control.json"
+          },
+          "seek-step": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-cursor.json"
+          },
+          "resume-phase": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-control.json"
+          },
+          "roster-page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-page.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-selection.json",
+            "record_actor_field": "actor"
+          },
+          "share-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-selection.json",
+            "record_actor_field": "actor"
+          },
+          "clear-share": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_transaction_activity/schemas/command-control.json"
+          }
+        },
+        "fallback": "static-slide",
+        "actor_records": {
+          "capacity": 1000,
+          "page_size": 25,
+          "page_field": "records_page",
+          "value_schema": "texstage_transaction_activity/schemas/actor-value-v1.json",
+          "summary_schema": "texstage_transaction_activity/schemas/actor-summary-v1.json"
+        },
+        "participant_updates": "actor",
+        "broadcast_fields": [
+          "phase",
+          "phase_token",
+          "active",
+          "paused",
+          "cursor",
+          "prediction_revealed",
+          "shared"
+        ]
+      }
+    }
+  }
+}
