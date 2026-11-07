@@ -1,0 +1,367 @@
+{
+  "date": "2026-11-06",
+  "milestone": "E4 registration classroom pilot",
+  "host_base_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_uncommitted_patch": [
+    "src/texstage/server/plugins.py",
+    "tests/test_plugin_language.py",
+    "docs/plugins.md"
+  ],
+  "host_wheel_sha256": "e5f07e8042db968486fe6411ddc84e91535fb3b63133ddb7dce7a9a591dfbf81",
+  "host_payload_sha256": "191c38576fc772cfe4039b30782bdf66a708380846f7f14a7d41a0ba54807f04",
+  "host_changed_runtime_files": [
+    "server/plugins.py"
+  ],
+  "collection_base_commit": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "branch": "codex/plugin-system",
+  "provider": {
+    "id": "io.github.stefanjdecker.erdecisions",
+    "version": "0.4.0",
+    "payload": "fefb99982fc201506a41ed7a5ee6013b6dba73e46016936aaabe4a1056614ab1"
+  },
+  "build": {
+    "wheel": "texstage_er_decisions-0.4.0-py3-none-any.whl",
+    "sha256": "8d1d18b690879e326d957c7f4b14b18d15f894ae4505a9184368144c3e633490",
+    "id": "io.github.stefanjdecker.erdecisions",
+    "sdist_parity": true
+  },
+  "provider_sdist_sha256": "89a0ad5d3612258e8cb5956e748c876b20eda35fd65e9a296ef6dec17595b734",
+  "provider_pytest": {
+    "passed": 110,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 147.61
+  },
+  "host_pytest": {
+    "passed": 92,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 1,
+    "seconds": 15.51,
+    "warning": "Existing Starlette TestClient/httpx deprecation"
+  },
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "platform": "Windows",
+  "state_schema": 2,
+  "model_preview_combinations": 27,
+  "browsers": {
+    "chromium": {
+      "classroom": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "viewport": 320,
+        "realWorker": true,
+        "twoDevicesOneActor": true,
+        "distinctLearners": true,
+        "keyboard": true,
+        "touch": true,
+        "draftAndFocus": true,
+        "preview": true,
+        "repair": true,
+        "sharing": true,
+        "privacy": true,
+        "resetExistingMount": true,
+        "navigation": true,
+        "textZoom": 2,
+        "projectorFits": {
+          "height": 671,
+          "scroll": 671,
+          "width": 1235,
+          "scrollWidth": 1235
+        },
+        "germanProjection": {
+          "height": 680,
+          "scroll": 680,
+          "font": "16.6615px"
+        },
+        "rendererChecks": {
+          "operationalError": true,
+          "lateRejection": true,
+          "inFlightDraft": true,
+          "paging": true,
+          "german": true,
+          "teardown": true
+        },
+        "errors": []
+      },
+      "native_german": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "language": "de",
+        "viewport": 320,
+        "nativeUnicode": true,
+        "nonBmpRationale": true,
+        "submitReveal": true,
+        "errors": []
+      },
+      "worker_security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2027.7999999821186,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "engine_samples": 31
+    },
+    "firefox": {
+      "classroom": {
+        "browser": "firefox",
+        "version": "153.0",
+        "viewport": 320,
+        "realWorker": true,
+        "twoDevicesOneActor": true,
+        "distinctLearners": true,
+        "keyboard": true,
+        "touch": true,
+        "draftAndFocus": true,
+        "preview": true,
+        "repair": true,
+        "sharing": true,
+        "privacy": true,
+        "resetExistingMount": true,
+        "navigation": true,
+        "textZoom": 2,
+        "projectorFits": {
+          "height": 671,
+          "scroll": 671,
+          "width": 1235,
+          "scrollWidth": 1235
+        },
+        "germanProjection": {
+          "height": 680,
+          "scroll": 680,
+          "font": "16.6615px"
+        },
+        "rendererChecks": {
+          "operationalError": true,
+          "lateRejection": true,
+          "inFlightDraft": true,
+          "paging": true,
+          "german": true,
+          "teardown": true
+        },
+        "errors": []
+      },
+      "native_german": {
+        "browser": "firefox",
+        "version": "153.0",
+        "language": "de",
+        "viewport": 320,
+        "nativeUnicode": true,
+        "nonBmpRationale": true,
+        "submitReveal": true,
+        "errors": []
+      },
+      "worker_security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2030,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "engine_samples": 31
+    },
+    "webkit": {
+      "classroom": {
+        "browser": "webkit",
+        "version": "26.5",
+        "viewport": 320,
+        "realWorker": true,
+        "twoDevicesOneActor": true,
+        "distinctLearners": true,
+        "keyboard": true,
+        "touch": true,
+        "draftAndFocus": true,
+        "preview": true,
+        "repair": true,
+        "sharing": true,
+        "privacy": true,
+        "resetExistingMount": true,
+        "navigation": true,
+        "textZoom": 2,
+        "projectorFits": {
+          "height": 671,
+          "scroll": 671,
+          "width": 1235,
+          "scrollWidth": 1235
+        },
+        "germanProjection": {
+          "height": 680,
+          "scroll": 680,
+          "font": "16.661537px"
+        },
+        "rendererChecks": {
+          "operationalError": true,
+          "lateRejection": true,
+          "inFlightDraft": true,
+          "paging": true,
+          "german": true,
+          "teardown": true
+        },
+        "errors": []
+      },
+      "native_german": {
+        "browser": "webkit",
+        "version": "26.5",
+        "language": "de",
+        "viewport": 320,
+        "nativeUnicode": true,
+        "nonBmpRationale": true,
+        "submitReveal": true,
+        "errors": []
+      },
+      "worker_security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2051,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "engine_samples": 31
+    }
+  },
+  "not_claimed": [
+    "physical phones",
+    "screen-reader review",
+    "64 simultaneous learners",
+    "Linux wheel consumer",
+    "all-provider release CI",
+    "published host pin",
+    "catalog publication"
+  ],
+  "screenshots": {
+    "browser-verified/chromium/german-decisions.png": "f37cf618ecfa5c206f212d5dc14e01bb7956c920060629e8fbb8896e8418ffe8",
+    "browser-verified/chromium/german-projector.png": "41bbff7f2a299acc41e87f3fe7e757d2cc0a965ff543127d0c4c377ffb07ab18",
+    "browser-verified/chromium/phone-model.png": "0ed1fb84a88cac54e6584c649cff111d3d5212ff047e50c26e3776aafbb4d926",
+    "browser-verified/chromium/phone-text-zoom.png": "be07374ab33ae06d8509b331e4176de0a4979ddae1d0f25128d44f82eee04cda",
+    "browser-verified/chromium/phone.png": "aa821ec628f9e0bb5fbacc5ba684565a70de76925ad50e8ab1ee79cf8b5ca003",
+    "browser-verified/chromium/presenter.png": "3f158028e18479eb51d3ae38168819e06fa27bfcd3e168ac1f33a9af8dc3cff8",
+    "browser-verified/chromium/projector.png": "71909c21374e138038a23a448817e054a913809003f759e0b020f80daf6a19f1",
+    "browser-verified/firefox/german-decisions.png": "760234480cc931797aac7ecb294103fcd31bbe3c9e3abf71a922071037b309e6",
+    "browser-verified/firefox/german-projector.png": "99522721cfd5a69f2256f55c789fe297b36fd246f6a5fb36b252990227d0ddbf",
+    "browser-verified/firefox/phone-model.png": "4136ff2fc84f711274631d96d736b3ff50dcf12b0fee59c2cd1c3da451832683",
+    "browser-verified/firefox/phone-text-zoom.png": "659718d58ce90ec9f8233f457189c3b7af0e4134d107191b3609de94e63a4c72",
+    "browser-verified/firefox/phone.png": "e993c25aeebd762a81e379ca9df684b73dab180b0de8140e31c66b245cbebbe5",
+    "browser-verified/firefox/presenter.png": "3a9507f4d2d83a20b3fe05ddbae709a858292599d2e22ad5b8aa1fd218f1f08d",
+    "browser-verified/firefox/projector.png": "41b2be85eeb7d1f0c165260fbef8d97044998fd0225e9cdab39fa2c24dd39d3d",
+    "browser-verified/webkit/german-decisions.png": "cd7afd877d9da40641d3a0193e0bb93de7e4fd3a60fc22cdc450eb0e887bdcd0",
+    "browser-verified/webkit/german-projector.png": "ab5ee298b7ca0e009f12a9d75a9f8c9b4393eacadf7f5f6f5178388b41cc1a52",
+    "browser-verified/webkit/phone-model.png": "b8351e89aa8bb00fa2b7c2841d45b42de4e598d27eab03f8459d3fe06f83ef04",
+    "browser-verified/webkit/phone-text-zoom.png": "ae22ca4859d656451eec7da5ecd599a2e4a9a5b36714d0c7879703b9a02e4937",
+    "browser-verified/webkit/phone.png": "2b6fefe51d91387b64507df76873b4ee09f3936ee7a7c61b432856749f090a0e",
+    "browser-verified/webkit/presenter.png": "10cc788c6a3ccf80283cdcef41d3f655f7f6b7644bea838492f6b7ef18bde7bd",
+    "browser-verified/webkit/projector.png": "de471b487c9ebb729b3f24f394a59459b805101cb513e6d60ac39573d3a230cf",
+    "german-verified/chromium/phone.png": "24f63f9df56566c285c4c2d610b4ce1569b3412f2a2a7cb07a9dfe862f83ab53",
+    "german-verified/chromium/presenter.png": "41df144454ea30e0008d7a1526975333fd95205557ea6a7269ffc92d9da5a7bf",
+    "german-verified/firefox/phone.png": "600489a42b6ce43515b7eaa9067c06e1f2d2d2d10e9639aebeca7de30507686b",
+    "german-verified/firefox/presenter.png": "bdf349d3dd420f4c3706c5bfa556e7c03c26d1a2adfb189315116802179293b2",
+    "german-verified/webkit/phone.png": "8258b785f09a69c477a414f106794968f63af4d4b9b73c40e8acfb8dc7613189",
+    "german-verified/webkit/presenter.png": "861f0e40100accc338b3f6eda893ba435c89677d5dc249d9a074e6e4a32a3454"
+  }
+}

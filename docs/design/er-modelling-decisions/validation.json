@@ -1,0 +1,1608 @@
+{
+  "format": 1,
+  "scope": "trusted finite design examples only",
+  "limitations": [
+    "not a general model compiler",
+    "not an equivalence proof",
+    "no production schema, host, browser, UI, privacy or capacity validation"
+  ],
+  "hashes": {
+    "docs/design/er-modelling-decisions/registrations.json": "70c4b53a4e3e2694ee5d408676d5f32386ba52ee8840ac6b571dd46025a7c46d",
+    "docs/design/er-modelling-decisions/rooms.json": "3227da9f4938684bcd4a7fb8c596d7fbf845f7934bfe4eab395ffd7a6cc1defa",
+    "docs/design/er-modelling-decisions/mentoring.json": "4de18fb59997e8f8a5b2bf968d42ec88716a625711b4cdd5fe6fd1b028148072",
+    "docs/design/er-modelling-decisions/expected-cases.json": "e8416152078fc51c334c9fa4d442780b4905e953282c5f22293df93cd987e18f",
+    "maintenance/check_er_design.py": "5015869a63cf8ea6d88f6f4d32ab9cd6fa8df37250ef32f4ff4ccf5676df9544"
+  },
+  "combinations": 37,
+  "snapshot_evaluations": 183,
+  "named_counterexamples": 7,
+  "results": {
+    "registrations": [
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "relationship",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "relationship",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "checked",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "relationship",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "entity-pair-key",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "entity-pair-key",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "checked",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "entity-pair-key",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "entity-id-only",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "duplicate-pair",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "entity-id-only",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "duplicate-pair",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-many",
+          "registration-form": "entity-id-only",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "duplicate-pair",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "relationship",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "relationship",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "relationship",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "entity-pair-key",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "entity-pair-key",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "entity-pair-key",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "entity-id-only",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "duplicate-pair",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "entity-id-only",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "duplicate-pair",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "one-many",
+          "registration-form": "entity-id-only",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "no-registration",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "duplicate-pair",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "relationship",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "relationship",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "relationship",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "entity-pair-key",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "entity-pair-key",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "entity-pair-key",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "entity-id-only",
+          "status-owner": "person"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "entity-id-only",
+          "status-owner": "registration"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "person-links": "zero-one",
+          "registration-form": "entity-id-only",
+          "status-owner": "workshop"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "no-registration",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-workshops",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "two-people",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-pair",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "two-workshops",
+            "direction": "excludes-allowed"
+          },
+          {
+            "world": "two-people",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      }
+    ],
+    "rooms": [
+      {
+        "choices": {
+          "identity": "owner-number"
+        },
+        "assumption": null,
+        "outcome": "checked",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "reused-number",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-local",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "identity": "surrogate-scoped"
+        },
+        "assumption": null,
+        "outcome": "checked",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "reused-number",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-local",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "identity": "global-number"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "reused-number",
+            "expected": "allow",
+            "admits": false
+          },
+          {
+            "id": "duplicate-local",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "reused-number",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "identity": "surrogate-only"
+        },
+        "assumption": null,
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "reused-number",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "duplicate-local",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "duplicate-local",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      }
+    ],
+    "mentoring": [
+      {
+        "choices": {
+          "mentor-links": "zero-many"
+        },
+        "assumption": null,
+        "outcome": "needs-clarification",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-students",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "empty",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "student-without-mentor",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "student-two-mentors",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "unused-mentor",
+            "expected": null,
+            "admits": true
+          }
+        ],
+        "violations": [],
+        "unresolved": [
+          "unused-mentor"
+        ]
+      },
+      {
+        "choices": {
+          "mentor-links": "zero-many"
+        },
+        "assumption": "unused-allowed",
+        "outcome": "conditional",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-students",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "empty",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "student-without-mentor",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "student-two-mentors",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "unused-mentor",
+            "expected": "allow",
+            "admits": true
+          }
+        ],
+        "violations": [],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "mentor-links": "zero-many"
+        },
+        "assumption": "all-assigned",
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-students",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "empty",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "student-without-mentor",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "student-two-mentors",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "unused-mentor",
+            "expected": "forbid",
+            "admits": true
+          }
+        ],
+        "violations": [
+          {
+            "world": "unused-mentor",
+            "direction": "admits-forbidden"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "mentor-links": "one-many"
+        },
+        "assumption": null,
+        "outcome": "needs-clarification",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-students",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "empty",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "student-without-mentor",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "student-two-mentors",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "unused-mentor",
+            "expected": null,
+            "admits": false
+          }
+        ],
+        "violations": [],
+        "unresolved": [
+          "unused-mentor"
+        ]
+      },
+      {
+        "choices": {
+          "mentor-links": "one-many"
+        },
+        "assumption": "unused-allowed",
+        "outcome": "contradiction",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-students",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "empty",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "student-without-mentor",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "student-two-mentors",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "unused-mentor",
+            "expected": "allow",
+            "admits": false
+          }
+        ],
+        "violations": [
+          {
+            "world": "unused-mentor",
+            "direction": "excludes-allowed"
+          }
+        ],
+        "unresolved": []
+      },
+      {
+        "choices": {
+          "mentor-links": "one-many"
+        },
+        "assumption": "all-assigned",
+        "outcome": "conditional",
+        "checks": [
+          {
+            "id": "intro",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "two-students",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "empty",
+            "expected": "allow",
+            "admits": true
+          },
+          {
+            "id": "student-without-mentor",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "student-two-mentors",
+            "expected": "forbid",
+            "admits": false
+          },
+          {
+            "id": "unused-mentor",
+            "expected": "forbid",
+            "admits": false
+          }
+        ],
+        "violations": [],
+        "unresolved": []
+      }
+    ]
+  }
+}

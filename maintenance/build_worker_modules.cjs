@@ -16,6 +16,10 @@ const entries = [
     "plugins/bplus-lab/texstage_bplus_lab/web/engine.worker.mjs"
   ],
   [
+    "plugins/er-decisions/texstage_er_decisions/web/engine.mjs",
+    "plugins/er-decisions/texstage_er_decisions/web/engine.worker.mjs"
+  ],
+  [
     "plugins/query-plan/texstage_query_plan/web/engine.mjs",
     "plugins/query-plan/texstage_query_plan/web/engine.worker.mjs"
   ],

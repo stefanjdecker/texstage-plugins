@@ -1,0 +1,99 @@
+{
+  "format": "er-design-fixture-1",
+  "id": "rooms",
+  "brief": "Each room belongs to one building. Room numbers are unique inside a building.",
+  "requirements": {
+    "owner": "Every room has exactly one existing building.",
+    "local-number": "A building has at most one room with a given number; different buildings may reuse numbers."
+  },
+  "choices": {
+    "identity": [
+      "owner-number",
+      "surrogate-scoped",
+      "global-number",
+      "surrogate-only"
+    ]
+  },
+  "worlds": [
+    {
+      "id": "intro",
+      "expected": "allow",
+      "requirements": [
+        "owner",
+        "local-number"
+      ],
+      "visibility": "public",
+      "tables": {
+        "buildings": [
+          {
+            "id": "b1"
+          }
+        ],
+        "rooms": [
+          {
+            "id": "r1",
+            "building": "b1",
+            "number": 101
+          }
+        ]
+      }
+    },
+    {
+      "id": "reused-number",
+      "expected": "allow",
+      "requirements": [
+        "local-number"
+      ],
+      "visibility": "private",
+      "tables": {
+        "buildings": [
+          {
+            "id": "b1"
+          },
+          {
+            "id": "b2"
+          }
+        ],
+        "rooms": [
+          {
+            "id": "r1",
+            "building": "b1",
+            "number": 101
+          },
+          {
+            "id": "r2",
+            "building": "b2",
+            "number": 101
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-local",
+      "expected": "forbid",
+      "requirements": [
+        "local-number"
+      ],
+      "visibility": "private",
+      "tables": {
+        "buildings": [
+          {
+            "id": "b1"
+          }
+        ],
+        "rooms": [
+          {
+            "id": "r1",
+            "building": "b1",
+            "number": 101
+          },
+          {
+            "id": "r2",
+            "building": "b1",
+            "number": 101
+          }
+        ]
+      }
+    }
+  ]
+}

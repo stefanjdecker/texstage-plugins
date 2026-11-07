@@ -1,0 +1,243 @@
+{
+  "date": "2026-11-06",
+  "milestone": "E3 registration lesson-state protocol",
+  "host_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+  "host_payload_sha256": "e41e8bbb8463111ee7d62f8c0b92c4dda736bc5df9ce558b9d7e813d06efcb23",
+  "collection_base_commit": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "branch": "codex/plugin-system",
+  "provider": {
+    "id": "io.github.stefanjdecker.erdecisions",
+    "version": "0.3.0",
+    "payload": "ff1d171bc77d66ae55f04b3c94574c8a9e6e8bb54ff2fc9b5baf662a4081bdf8"
+  },
+  "build": {
+    "wheel": "texstage_er_decisions-0.3.0-py3-none-any.whl",
+    "sha256": "39e3d9b014ea234d364c332880db596664ae6aa8cb16c4626d2be25c762ee23d",
+    "id": "io.github.stefanjdecker.erdecisions",
+    "sdist_parity": true
+  },
+  "pytest": {
+    "passed": 109,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 127.25
+  },
+  "budgets": {
+    "slot_bytes": 2032,
+    "state_bytes": 130643,
+    "transition_bytes": 130468,
+    "view_bytes": {
+      "participant-input": 18194,
+      "presenter-controls": 26505,
+      "presenter-overlay": 19005,
+      "projector-overlay": 18477
+    },
+    "validator_cases": 24
+  },
+  "browsers": {
+    "chromium": {
+      "protocol": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "bundle": "6dea1f8d3c17babd",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "open_submit_evaluate": true,
+          "private_until_reveal": true,
+          "anonymous_sharing": true,
+          "two_worked_alternatives": true,
+          "epoch_reset": true,
+          "method": "protocol clients; no editor UI"
+        }
+      },
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2017.2000000178814,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "samples": 31
+    },
+    "firefox": {
+      "protocol": {
+        "browser": "firefox",
+        "version": "153.0",
+        "bundle": "6dea1f8d3c17babd",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "open_submit_evaluate": true,
+          "private_until_reveal": true,
+          "anonymous_sharing": true,
+          "two_worked_alternatives": true,
+          "epoch_reset": true,
+          "method": "protocol clients; no editor UI"
+        }
+      },
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2032,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "samples": 31
+    },
+    "webkit": {
+      "protocol": {
+        "browser": "webkit",
+        "version": "26.5",
+        "bundle": "6dea1f8d3c17babd",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "open_submit_evaluate": true,
+          "private_until_reveal": true,
+          "anonymous_sharing": true,
+          "two_worked_alternatives": true,
+          "epoch_reset": true,
+          "method": "protocol clients; no editor UI"
+        }
+      },
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2066,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "samples": 31
+    }
+  },
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "limits": {
+    "actors": 64,
+    "slot_bytes": 2560,
+    "state_bytes": 196608,
+    "transition_bytes": 229376,
+    "view_bytes": 98304
+  },
+  "not_claimed": [
+    "phone editor",
+    "presenter buttons",
+    "classroom throughput",
+    "physical phones",
+    "screen readers",
+    "public CI release"
+  ]
+}

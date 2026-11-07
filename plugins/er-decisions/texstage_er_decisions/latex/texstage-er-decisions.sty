@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texstage-er-decisions}[2026/11/06 Prepared ER modelling decisions]
+\RequirePackage{texstage}
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\newsavebox{\erdecisionsbox}
+\newcommand{\erdecisions}[3]{%
+  \begingroup
+  \def\erdecisionsheight{#3}%
+  \texstageprepared{#1}{#2}{#3}%
+  \endgroup}
+\endinput

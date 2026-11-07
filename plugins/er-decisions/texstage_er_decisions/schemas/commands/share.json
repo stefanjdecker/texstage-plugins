@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "control_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "answer_version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000000
+    },
+    "include_rationale": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "control_version",
+    "actor",
+    "answer_version",
+    "include_rationale"
+  ]
+}

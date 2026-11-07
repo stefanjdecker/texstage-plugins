@@ -12,6 +12,8 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
 | `texstage-transaction-engine` | Schedule analysis engine `io.github.stefanjdecker.transactionengine.schedule` (M2) | None; lesson package pending |
 | `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
+| `texstage-bplus-lab` | B+ operation engine and bilingual prepared lessons | `texstage-bplus-tree.sty` / `\bplustree` |
+| `texstage-er-decisions` | ER registration activity: phone decisions, model preview and discussion | `texstage-er-decisions.sty` / `\erdecisions` |
 | `texstage-query-plan` | Query-plan selectors, cost inspection and classroom activity (Q0–Q4) | `\queryplanchallenge` |
 | `texstage-fd-lab` | Closure, candidate-key and implication lessons (F1-F3) | `\fdlab{id}{width}{height}` |
 | `texstage-normalization-workshop` | Normalization, comparison and evidence | `texstage-normalization-workshop.sty` / `\normalizationworkshop` |
@@ -30,6 +32,7 @@ Students classify relations or propose decompositions; the analyzer checks
 normal form, lossless joins and FD preservation independently. Valid answers
 need not match the worked example. Presenters can compare two saved answers,
 share checked evidence and reveal the solution.
+Chase playback and concrete counterexamples explain lossless joins and lost FDs.
 
 Start with the [seven-slide example](examples/normalization/lesson.tex).
 Version 0.5.0 adds configurable fixed activity points, published on reveal.
@@ -41,6 +44,13 @@ and [capacity record](docs/design/normalization-workshop-600-validation.md)
 separate correctness for 600 students and a 1,000-answer ceiling from measured
 latency and classroom acceptance.
 No catalog release is published.
+
+The [discussion contract](docs/design/normalization-workshop-discussion-contract.md),
+[N4 validation record](docs/design/normalization-workshop-n4-validation.md) and
+[implementation plan](docs/design/normalization-workshop-plan.md) describe the
+discussion workflow and remaining usability, classroom and release gates.
+The independent design checker remains available:
+`python maintenance/check_normalization_design.py`.
 
 ## Transaction schedules: implemented engine, planned lesson
 
@@ -172,6 +182,33 @@ python maintenance/check_fd_design.py
 The checker needs `jsonschema` from the compatible host's development lock.
 It verifies design fixtures and tiny theories; it is not plugin conformance.
 
+## ER Modelling Decisions: interactive registration pilot
+
+The [ER provider](plugins/er-decisions/README.md) combines the registration
+engine, [bilingual prepared authoring](docs/er-decisions-authoring.md) and an
+interactive [classroom workflow](docs/er-decisions-lesson.md). Students make
+modelling decisions, preview the constraints, save and repair their answers.
+Presenters inspect privately, share anonymously with optional reasons, and
+reveal both accepted models and selected counterexamples.
+
+Version 0.6.0 supports 600 answering students with [bounded records and guarded
+lesson state](docs/er-decisions-state.md), retaining field-error focus, visible
+conflict recovery and stable status messages. It requires the matching TeXStage
+0.2.1.dev5 or newer, with these contracts and a fresh session; the current
+validation covers 0.2.1.dev6 and the compatible 0.2.1.dev7 handoff.
+The [keyboard/accessibility guide](docs/er-decisions-accessibility.md) and
+[validation record](docs/design/er-accessibility-validation.md) cover both
+languages in Chromium, Firefox and WebKit, with the worker restrictions intact.
+The [600-student validation](docs/design/er-600-validation.md) records earlier
+artifacts and synthetic load results; the [release checklist](docs/er-decisions-release.md)
+distinguishes these from deployment validation. Physical phones, screen-reader speech output, deployment tests
+and hosted CI remain open. Room identity and open assumptions require later
+engine profiles; see the [implementation plan](docs/design/er-modelling-decisions-plan.md).
+
+Optional `"points": 1000` awards a fully correct model on reveal, using the
+normal game total and rankings. Practice remains the default. See the
+[scoring guide](docs/er-decisions-authoring.md#optional-game-points) and
+[current points validation](docs/design/er-points-validation.md).
 
 ## B+ tree operations: interactive classroom activities
 

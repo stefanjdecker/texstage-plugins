@@ -1,0 +1,139 @@
+{
+  "manifest_version": 4,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.erdecisions",
+  "version": "0.6.0",
+  "description": "ER registration engine and interactive prepared lesson.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.erdecisions.model": {
+        "engine_api": 1,
+        "module": "texstage_er_decisions/web/engine.worker.mjs",
+        "assets": [
+          "texstage_er_decisions/web/identity.mjs",
+          "texstage_er_decisions/web/validation.mjs",
+          "texstage_er_decisions/web/model.mjs"
+        ],
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "ER modelling choices (JSON)",
+          "tokens": [
+            "format",
+            "choices"
+          ]
+        },
+        "canonical_format": "er-decisions-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_er_decisions/schemas/analysis-v1.json",
+        "result_cache": "by-input"
+      }
+    },
+    "content_types": {
+      "io.github.stefanjdecker.erdecisions.lesson": {
+        "content_api": 1,
+        "authoring_hook": "lesson",
+        "state_hook": "lesson",
+        "state_schema": 4,
+        "latex_packages": [
+          "texstage_er_decisions/latex/texstage-er-decisions.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.erdecisions.model"
+          }
+        },
+        "views": {
+          "presenter-overlay": "texstage_er_decisions/web/lesson-overlay.mjs",
+          "projector-overlay": "texstage_er_decisions/web/lesson-overlay.mjs",
+          "participant-input": "texstage_er_decisions/web/participant.mjs",
+          "presenter-controls": "texstage_er_decisions/web/presenter-controls.mjs"
+        },
+        "view_schemas": {
+          "presenter-overlay": "texstage_er_decisions/schemas/views/presenter-overlay.json",
+          "projector-overlay": "texstage_er_decisions/schemas/views/projector-overlay.json",
+          "participant-input": "texstage_er_decisions/schemas/views/participant-input.json",
+          "presenter-controls": "texstage_er_decisions/schemas/views/presenter-controls.json"
+        },
+        "messages": {
+          "submit": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/submit.json"
+          },
+          "open": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/control.json"
+          },
+          "close": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/control.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/control.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/select.json"
+          },
+          "share-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/share.json"
+          },
+          "clear-share": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/control.json"
+          },
+          "set-page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_er_decisions/schemas/commands/page.json"
+          }
+        },
+        "fallback": "static-slide",
+        "state_records": true,
+        "participant_updates": "actor",
+        "scoring": {
+          "policy": "fixed-v1",
+          "points_field": "points"
+        }
+      }
+    }
+  },
+  "latex_namespace": "er",
+  "latex_exports": {
+    "commands": [
+      "erdecisions"
+    ],
+    "environments": []
+  }
+}

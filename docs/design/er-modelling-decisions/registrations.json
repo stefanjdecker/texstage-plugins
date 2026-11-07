@@ -1,0 +1,191 @@
+{
+  "format": "er-design-fixture-1",
+  "id": "registrations",
+  "brief": "A community centre records people, workshops and registration status.",
+  "requirements": {
+    "person-many": "A person may register for zero or more workshops.",
+    "workshop-many": "A workshop may have zero or more people.",
+    "pair-unique": "There is at most one registration for each person/workshop pair.",
+    "status-pair": "Each registration has one status, independently of other registrations."
+  },
+  "choices": {
+    "person-links": [
+      "zero-many",
+      "one-many",
+      "zero-one"
+    ],
+    "status-owner": [
+      "person",
+      "registration",
+      "workshop"
+    ],
+    "registration-form": [
+      "relationship",
+      "entity-pair-key",
+      "entity-id-only"
+    ]
+  },
+  "worlds": [
+    {
+      "id": "intro",
+      "expected": "allow",
+      "requirements": [
+        "pair-unique",
+        "status-pair"
+      ],
+      "visibility": "public",
+      "tables": {
+        "people": [
+          {
+            "id": "p1"
+          }
+        ],
+        "workshops": [
+          {
+            "id": "w1"
+          }
+        ],
+        "registrations": [
+          {
+            "id": "r1",
+            "person": "p1",
+            "workshop": "w1",
+            "status": "confirmed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "no-registration",
+      "expected": "allow",
+      "requirements": [
+        "person-many",
+        "workshop-many"
+      ],
+      "visibility": "private",
+      "tables": {
+        "people": [
+          {
+            "id": "p1"
+          }
+        ],
+        "workshops": [
+          {
+            "id": "w1"
+          }
+        ],
+        "registrations": []
+      }
+    },
+    {
+      "id": "two-workshops",
+      "expected": "allow",
+      "requirements": [
+        "person-many",
+        "status-pair"
+      ],
+      "visibility": "private",
+      "tables": {
+        "people": [
+          {
+            "id": "p1"
+          }
+        ],
+        "workshops": [
+          {
+            "id": "w1"
+          },
+          {
+            "id": "w2"
+          }
+        ],
+        "registrations": [
+          {
+            "id": "r1",
+            "person": "p1",
+            "workshop": "w1",
+            "status": "confirmed"
+          },
+          {
+            "id": "r2",
+            "person": "p1",
+            "workshop": "w2",
+            "status": "waitlisted"
+          }
+        ]
+      }
+    },
+    {
+      "id": "two-people",
+      "expected": "allow",
+      "requirements": [
+        "workshop-many",
+        "status-pair"
+      ],
+      "visibility": "private",
+      "tables": {
+        "people": [
+          {
+            "id": "p1"
+          },
+          {
+            "id": "p2"
+          }
+        ],
+        "workshops": [
+          {
+            "id": "w1"
+          }
+        ],
+        "registrations": [
+          {
+            "id": "r1",
+            "person": "p1",
+            "workshop": "w1",
+            "status": "confirmed"
+          },
+          {
+            "id": "r2",
+            "person": "p2",
+            "workshop": "w1",
+            "status": "waitlisted"
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-pair",
+      "expected": "forbid",
+      "requirements": [
+        "pair-unique"
+      ],
+      "visibility": "private",
+      "tables": {
+        "people": [
+          {
+            "id": "p1"
+          }
+        ],
+        "workshops": [
+          {
+            "id": "w1"
+          }
+        ],
+        "registrations": [
+          {
+            "id": "r1",
+            "person": "p1",
+            "workshop": "w1",
+            "status": "confirmed"
+          },
+          {
+            "id": "r2",
+            "person": "p1",
+            "workshop": "w1",
+            "status": "confirmed"
+          }
+        ]
+      }
+    }
+  ]
+}

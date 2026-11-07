@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "language": "de",
+  "items": [
+    {
+      "id": "registrations",
+      "type": "io.github.stefanjdecker.erdecisions.lesson",
+      "source": "activities/registrations.json"
+    }
+  ]
+}

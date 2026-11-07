@@ -1,0 +1,431 @@
+{
+  "format": "er-registration-v1",
+  "id": "registrations",
+  "brief": {
+    "en": "A community centre records people, workshops and registration status.",
+    "de": "Ein Lernzentrum erfasst Personen, Workshops und den Anmeldestatus."
+  },
+  "requirements": [
+    {
+      "id": "person-many",
+      "text": "A person may register for zero or more workshops."
+    },
+    {
+      "id": "workshop-many",
+      "text": "A workshop may have zero or more people."
+    },
+    {
+      "id": "pair-unique",
+      "text": "There is at most one registration for each person/workshop pair."
+    },
+    {
+      "id": "status-pair",
+      "text": "Each registration has one status, independently of other registrations."
+    }
+  ],
+  "model": {
+    "entities": [
+      "person",
+      "workshop"
+    ],
+    "relationship": {
+      "id": "registration",
+      "roles": [
+        {
+          "id": "person",
+          "entity": "person",
+          "min": 0,
+          "max": "many"
+        },
+        {
+          "id": "workshop",
+          "entity": "workshop",
+          "min": 0,
+          "max": "many"
+        }
+      ],
+      "attributes": [
+        {
+          "id": "status",
+          "type": "text",
+          "owner": "relationship"
+        }
+      ],
+      "form": "relationship",
+      "pair_unique": true
+    }
+  },
+  "decisions": [
+    {
+      "id": "person-links",
+      "kind": "role-bounds",
+      "target": "person",
+      "options": [
+        {
+          "id": "zero-many",
+          "value": {
+            "min": 0,
+            "max": "many"
+          }
+        },
+        {
+          "id": "one-many",
+          "value": {
+            "min": 1,
+            "max": "many"
+          }
+        },
+        {
+          "id": "zero-one",
+          "value": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "status-owner",
+      "kind": "attribute-owner",
+      "target": "status",
+      "options": [
+        {
+          "id": "person",
+          "value": "person"
+        },
+        {
+          "id": "registration",
+          "value": "relationship"
+        },
+        {
+          "id": "workshop",
+          "value": "workshop"
+        }
+      ]
+    },
+    {
+      "id": "registration-form",
+      "kind": "relationship-form",
+      "target": "registration",
+      "options": [
+        {
+          "id": "relationship",
+          "value": {
+            "form": "relationship",
+            "pair_unique": true
+          }
+        },
+        {
+          "id": "entity-pair-key",
+          "value": {
+            "form": "association-entity",
+            "pair_unique": true
+          }
+        },
+        {
+          "id": "entity-id-only",
+          "value": {
+            "form": "association-entity",
+            "pair_unique": false
+          }
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "intro",
+      "visibility": "public",
+      "expected": "allow",
+      "requirements": [
+        "pair-unique",
+        "status-pair"
+      ],
+      "entities": [
+        {
+          "entity": "person",
+          "ids": [
+            "p1"
+          ]
+        },
+        {
+          "entity": "workshop",
+          "ids": [
+            "w1"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "r1",
+          "roles": [
+            [
+              "person",
+              "p1"
+            ],
+            [
+              "workshop",
+              "w1"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "confirmed"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-registration",
+      "visibility": "private",
+      "expected": "allow",
+      "requirements": [
+        "person-many",
+        "workshop-many"
+      ],
+      "entities": [
+        {
+          "entity": "person",
+          "ids": [
+            "p1"
+          ]
+        },
+        {
+          "entity": "workshop",
+          "ids": [
+            "w1"
+          ]
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "two-workshops",
+      "visibility": "private",
+      "expected": "allow",
+      "requirements": [
+        "person-many",
+        "status-pair"
+      ],
+      "entities": [
+        {
+          "entity": "person",
+          "ids": [
+            "p1"
+          ]
+        },
+        {
+          "entity": "workshop",
+          "ids": [
+            "w1",
+            "w2"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "r1",
+          "roles": [
+            [
+              "person",
+              "p1"
+            ],
+            [
+              "workshop",
+              "w1"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "confirmed"
+            ]
+          ]
+        },
+        {
+          "id": "r2",
+          "roles": [
+            [
+              "person",
+              "p1"
+            ],
+            [
+              "workshop",
+              "w2"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "waitlisted"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-people",
+      "visibility": "private",
+      "expected": "allow",
+      "requirements": [
+        "workshop-many",
+        "status-pair"
+      ],
+      "entities": [
+        {
+          "entity": "person",
+          "ids": [
+            "p1",
+            "p2"
+          ]
+        },
+        {
+          "entity": "workshop",
+          "ids": [
+            "w1"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "r1",
+          "roles": [
+            [
+              "person",
+              "p1"
+            ],
+            [
+              "workshop",
+              "w1"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "confirmed"
+            ]
+          ]
+        },
+        {
+          "id": "r2",
+          "roles": [
+            [
+              "person",
+              "p2"
+            ],
+            [
+              "workshop",
+              "w1"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "waitlisted"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicate-pair",
+      "visibility": "private",
+      "expected": "forbid",
+      "requirements": [
+        "pair-unique"
+      ],
+      "entities": [
+        {
+          "entity": "person",
+          "ids": [
+            "p1"
+          ]
+        },
+        {
+          "entity": "workshop",
+          "ids": [
+            "w1"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "r1",
+          "roles": [
+            [
+              "person",
+              "p1"
+            ],
+            [
+              "workshop",
+              "w1"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "confirmed"
+            ]
+          ]
+        },
+        {
+          "id": "r2",
+          "roles": [
+            [
+              "person",
+              "p1"
+            ],
+            [
+              "workshop",
+              "w1"
+            ]
+          ],
+          "values": [
+            [
+              "status",
+              "confirmed"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "worked_answers": [
+    {
+      "format": 1,
+      "choices": [
+        [
+          "person-links",
+          "zero-many"
+        ],
+        [
+          "registration-form",
+          "relationship"
+        ],
+        [
+          "status-owner",
+          "registration"
+        ]
+      ]
+    },
+    {
+      "format": 1,
+      "choices": [
+        [
+          "person-links",
+          "zero-many"
+        ],
+        [
+          "registration-form",
+          "entity-pair-key"
+        ],
+        [
+          "status-owner",
+          "registration"
+        ]
+      ]
+    }
+  ]
+}

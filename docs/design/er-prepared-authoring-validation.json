@@ -1,0 +1,274 @@
+{
+  "date": "2026-11-06",
+  "scope": "E2 prepared registration authoring; not interactive classroom release",
+  "collection_branch": "codex/plugin-system",
+  "collection_base_commit": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "host_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_version": "0.2.1.dev3",
+  "host_wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+  "host_payload_sha256": "e41e8bbb8463111ee7d62f8c0b92c4dda736bc5df9ce558b9d7e813d06efcb23",
+  "provider": {
+    "id": "io.github.stefanjdecker.erdecisions",
+    "version": "0.2.0",
+    "payload": "a44f87ecd753ccdeb75b885e7088185818fc7674d2a30763b4b7dc4cf6252b47"
+  },
+  "build": {
+    "wheel": "texstage_er_decisions-0.2.0-py3-none-any.whl",
+    "sha256": "ff3a3b1562ade858368839dae1cfc0a4b9821a0fffbdc151122469ca9d1d7ce3",
+    "id": "io.github.stefanjdecker.erdecisions",
+    "sdist_parity": true
+  },
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "pytest": {
+    "passed": 77,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 84.72
+  },
+  "authoring_measurements": {
+    "en": {
+      "in_process_prepare_ms": 29.02,
+      "complete_response_ascii_bytes": 15943,
+      "public_ascii_bytes": 2588,
+      "private_ascii_bytes": 3329,
+      "evaluation_binding_ascii_bytes": 4229,
+      "fragments_utf8_bytes": {
+        "exercise": 2222,
+        "solutions": 3065
+      }
+    },
+    "de": {
+      "in_process_prepare_ms": 26.795,
+      "complete_response_ascii_bytes": 16134,
+      "public_ascii_bytes": 2588,
+      "private_ascii_bytes": 3329,
+      "evaluation_binding_ascii_bytes": 4229,
+      "fragments_utf8_bytes": {
+        "exercise": 2299,
+        "solutions": 3127
+      }
+    }
+  },
+  "browsers": {
+    "chromium": {
+      "static": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "bundle": "79dbe5b98ee64bf2",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "private_role_leaks": 0,
+        "page_errors": []
+      },
+      "engine": {
+        "version": "151.0.7922.34",
+        "samples": 31,
+        "passed": true,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2019.0999999940395,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "max_engine_elapsed_ms": 33.79999998211861
+    },
+    "firefox": {
+      "static": {
+        "browser": "firefox",
+        "version": "153.0",
+        "bundle": "79dbe5b98ee64bf2",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "private_role_leaks": 0,
+        "page_errors": []
+      },
+      "engine": {
+        "version": "153.0",
+        "samples": 31,
+        "passed": true,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2038,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "max_engine_elapsed_ms": 198
+    },
+    "webkit": {
+      "static": {
+        "browser": "webkit",
+        "version": "26.5",
+        "bundle": "79dbe5b98ee64bf2",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "private_role_leaks": 0,
+        "page_errors": []
+      },
+      "engine": {
+        "version": "26.5",
+        "samples": 31,
+        "passed": true,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2055,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "max_engine_elapsed_ms": 107
+    }
+  },
+  "pdfs": {
+    "er-registrations-en-exercise.pdf": {
+      "sha256": "0101536febca5ad2643502ae4afa31c46e0a9204d5cc9513a7614eccc5c2c36d",
+      "pages": 1
+    },
+    "er-registrations-en-solutions.pdf": {
+      "sha256": "5492fed7be792db4466b6e6c0b39b6ce73caef2e28119b1b6f3b99db76893b7e",
+      "pages": 1
+    },
+    "er-registrations-de-exercise.pdf": {
+      "sha256": "2d605a2d6379afdc7711276482d7cf15d2bcff7dcb6e6e07ce868acfc37afc43",
+      "pages": 1
+    },
+    "er-registrations-de-solutions.pdf": {
+      "sha256": "d8fff063522bb3eea3f86d992ecde155bae886ad01d32e714d0750a6d74cfec2",
+      "pages": 1
+    }
+  },
+  "visual_review": [
+    "English exercise and solutions",
+    "German exercise and solutions",
+    "Long German label exercise and solutions",
+    "Real presenter/projector screenshots"
+  ],
+  "unchanged": [
+    "frozen engine/model schemas and implementation",
+    "host code and CSP",
+    "original repository",
+    "existing courses",
+    "private media"
+  ],
+  "not_claimed": [
+    "student editor or submissions",
+    "presenter lesson controls",
+    "classroom state/capacity",
+    "room identity or open assumptions",
+    "physical-phone or screen-reader validation",
+    "Linux install or public CI release"
+  ]
+}

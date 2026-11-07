@@ -1,0 +1,1303 @@
+{
+  "date": "2026-11-07",
+  "scope": "ER registration 0.5.0, state schema 3, 600 synthetic authenticated protocol clients with a real presenter evaluator; Windows loopback.",
+  "artifacts": {
+    "provider": {
+      "id": "io.github.stefanjdecker.erdecisions",
+      "version": "0.5.0",
+      "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437"
+    },
+    "provider_wheel": {
+      "file": "texstage_er_decisions-0.5.0-py3-none-any.whl",
+      "sha256": "2f2844bcdc2c4e80feef3e6e8cad3ed610d4058573ab66944b033987adc8e16d"
+    },
+    "provider_sdist": {
+      "file": "texstage_er_decisions-0.5.0.tar.gz",
+      "sha256": "c1d5f4dbadd07f2437902c31554d78f63fec00a4cedbe1973d885b729b7ec69e"
+    },
+    "host_wheel": {
+      "file": "texstage-0.2.1.dev4-py3-none-any.whl",
+      "sha256": "ba6c78c6e0b0d70c6e982d61ec9c08f1f4cdfe57d0b9fa416d42319f79034f41"
+    },
+    "host_version": "0.2.1.dev4",
+    "host_installed_payload_sha256": "ad4136bef0e7e2c29494a8f72573b9463ecc8b3035666ad8e5874ff353078b39",
+    "host_base_commit": "34d0c537135f32b0690147dbb66dd8ff155987f8",
+    "host_has_uncommitted_changes": true
+  },
+  "tests": {
+    "host": {
+      "passed": 197,
+      "failed": 0,
+      "skipped": 1
+    },
+    "provider_and_handoff": {
+      "passed": 119,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pair": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "transaction": {
+      "passed": 67,
+      "failed": 0,
+      "skipped": 0
+    },
+    "relational": {
+      "passed": 72,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "engine": {
+    "provider": {
+      "id": "io.github.stefanjdecker.erdecisions",
+      "version": "0.5.0",
+      "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437"
+    },
+    "host_version": "0.2.1.dev4",
+    "host_payload_sha256": "ad4136bef0e7e2c29494a8f72573b9463ecc8b3035666ad8e5874ff353078b39",
+    "result_schema_sha256": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+    "python": "3.14.4",
+    "node": "v24.15.0",
+    "cases": 27,
+    "max_evaluation_ms": 11.106200000000001,
+    "max_data_bytes": 797,
+    "max_outcome_bytes": 1037,
+    "scope": "Registration-profile engine only; no authoring, lesson state, UI or classroom-capacity claim"
+  },
+  "regression_artifacts": [
+    {
+      "group": "pair",
+      "wheels": {
+        "texstage_example_distance-0.1.0-py3-none-any.whl": "41ff392ec60089e7d57e217e203e713717d519d64b5d2a5917ee9e7b51f18ded",
+        "texstage_example_coordinates-0.1.0-py3-none-any.whl": "5c4ea6f19f640de91e2843e1a784b7416c82a198e788f608be92f9677aaac5fc"
+      }
+    },
+    {
+      "group": "transaction",
+      "wheels": {
+        "texstage_transaction_engine-0.1.0-py3-none-any.whl": "6f06262b52b81b447ac3c650e07c231cc6b34826f2af627ccae5b20358405bbc"
+      }
+    },
+    {
+      "group": "relational",
+      "wheels": {
+        "texstage_relational_lab-0.1.0-py3-none-any.whl": "5dff8fe63e3dff6727bedea60501f7b9fe217cb3c270567ba598181f6ab34edd"
+      }
+    }
+  ],
+  "capacity": [
+    {
+      "date": "2026-11-07T08:44:09.078Z",
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "node": "v24.15.0",
+      "platform": "win32",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+      "logical_cpus": 16,
+      "total_memory_bytes": 67869478912,
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "answer_combinations": 27,
+      "result": {
+        "waves": [
+          {
+            "label": "cold-evaluation",
+            "actors": 600,
+            "send_window_ms": 24.129000000000815,
+            "acknowledged_ms": {
+              "min": 25.05779999999504,
+              "median": 2381.3259000000035,
+              "p95": 2694.3632,
+              "max": 2695.320899999999
+            },
+            "evaluated_ms": {
+              "min": 5678.441300000006,
+              "median": 8303.055500000002,
+              "p95": 10185.091700000004,
+              "max": 10302.775300000001
+            },
+            "elapsed_ms": 10340.635800000004,
+            "unavailable": 0,
+            "target_pass": false
+          },
+          {
+            "label": "warm-replacement",
+            "actors": 600,
+            "send_window_ms": 28.8211999999985,
+            "acknowledged_ms": {
+              "min": 29.95010000000184,
+              "median": 5221.6515,
+              "p95": 5300.395499999999,
+              "max": 5300.755500000007
+            },
+            "evaluated_ms": {
+              "min": 5305.367099999996,
+              "median": 6303.973099999996,
+              "p95": 7157.534400000004,
+              "max": 7238.973299999998
+            },
+            "elapsed_ms": 7266.277500000004,
+            "unavailable": 0,
+            "target_pass": true
+          }
+        ],
+        "recovery": {
+          "reset_before_recovery": true,
+          "abandoned_jobs": 2,
+          "actors": 600,
+          "unleased_jobs_completed_ms": 6105.499200000006,
+          "all_completed_ms": 7612.789100000009,
+          "all_saved": true,
+          "lease_policy_seconds": 120
+        },
+        "capacity": {
+          "refused": true,
+          "code": "capacity"
+        },
+        "receiptReplay": true,
+        "privacy": true,
+        "state_samples": 5410,
+        "max_participant_view_utf8_bytes": 8129,
+        "target_pass": true,
+        "measurement": "Protocol clients; latency from each send to observed saved status, before feedback reveal."
+      },
+      "page_errors": [],
+      "stored": {
+        "records": 600,
+        "largest_record_bytes": 409,
+        "aggregate_state_bytes": 211,
+        "jobs_by_epoch_generation": [
+          {
+            "epoch": 1,
+            "generation": 0,
+            "count": 1172
+          },
+          {
+            "epoch": 1,
+            "generation": 1,
+            "count": 28
+          },
+          {
+            "epoch": 2,
+            "generation": 0,
+            "count": 572
+          },
+          {
+            "epoch": 2,
+            "generation": 1,
+            "count": 26
+          },
+          {
+            "epoch": 2,
+            "generation": 2,
+            "count": 2
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-07T08:45:16.739Z",
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "node": "v24.15.0",
+      "platform": "win32",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+      "logical_cpus": 16,
+      "total_memory_bytes": 67869478912,
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "answer_combinations": 27,
+      "result": {
+        "waves": [
+          {
+            "label": "cold-evaluation",
+            "actors": 600,
+            "send_window_ms": 26.21429999999964,
+            "acknowledged_ms": {
+              "min": 26.93789999999717,
+              "median": 2513.852399999996,
+              "p95": 2881.5357000000004,
+              "max": 2891.212800000001
+            },
+            "evaluated_ms": {
+              "min": 5834.951500000003,
+              "median": 8519.994700000003,
+              "p95": 10627.466,
+              "max": 10730.948400000001
+            },
+            "elapsed_ms": 10756.713900000002,
+            "unavailable": 0,
+            "target_pass": false
+          },
+          {
+            "label": "warm-replacement",
+            "actors": 600,
+            "send_window_ms": 27.991199999996752,
+            "acknowledged_ms": {
+              "min": 29.226699999999255,
+              "median": 3026.6394,
+              "p95": 5578.512699999999,
+              "max": 5579.150699999998
+            },
+            "evaluated_ms": {
+              "min": 5583.431700000001,
+              "median": 6537.414899999996,
+              "p95": 7457.180099999998,
+              "max": 7537.143900000003
+            },
+            "elapsed_ms": 7578.044900000001,
+            "unavailable": 0,
+            "target_pass": true
+          }
+        ],
+        "recovery": {
+          "reset_before_recovery": true,
+          "abandoned_jobs": 2,
+          "actors": 600,
+          "unleased_jobs_completed_ms": 8047.692300000002,
+          "all_completed_ms": 8510.4977,
+          "all_saved": true,
+          "lease_policy_seconds": 120
+        },
+        "capacity": {
+          "refused": true,
+          "code": "capacity"
+        },
+        "receiptReplay": true,
+        "privacy": true,
+        "state_samples": 5408,
+        "max_participant_view_utf8_bytes": 8129,
+        "target_pass": true,
+        "measurement": "Protocol clients; latency from each send to observed saved status, before feedback reveal."
+      },
+      "page_errors": [],
+      "stored": {
+        "records": 600,
+        "largest_record_bytes": 409,
+        "aggregate_state_bytes": 211,
+        "jobs_by_epoch_generation": [
+          {
+            "epoch": 1,
+            "generation": 0,
+            "count": 1172
+          },
+          {
+            "epoch": 1,
+            "generation": 1,
+            "count": 28
+          },
+          {
+            "epoch": 2,
+            "generation": 0,
+            "count": 572
+          },
+          {
+            "epoch": 2,
+            "generation": 1,
+            "count": 26
+          },
+          {
+            "epoch": 2,
+            "generation": 2,
+            "count": 2
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-07T08:46:21.001Z",
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "node": "v24.15.0",
+      "platform": "win32",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+      "logical_cpus": 16,
+      "total_memory_bytes": 67869478912,
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "answer_combinations": 27,
+      "result": {
+        "waves": [
+          {
+            "label": "cold-evaluation",
+            "actors": 600,
+            "send_window_ms": 27.68239999999787,
+            "acknowledged_ms": {
+              "min": 28.22309999999925,
+              "median": 1852.0485999999983,
+              "p95": 2782.486200000003,
+              "max": 2785.3736000000026
+            },
+            "evaluated_ms": {
+              "min": 5669.6646999999975,
+              "median": 9137.3259,
+              "p95": 10967.021100000002,
+              "max": 11057.945199999998
+            },
+            "elapsed_ms": 11108.1695,
+            "unavailable": 0,
+            "target_pass": false
+          },
+          {
+            "label": "warm-replacement",
+            "actors": 600,
+            "send_window_ms": 28.155900000005204,
+            "acknowledged_ms": {
+              "min": 29.961999999999534,
+              "median": 4831.009100000003,
+              "p95": 4882.078999999998,
+              "max": 4882.7045
+            },
+            "evaluated_ms": {
+              "min": 4883.826699999998,
+              "median": 5777.030599999998,
+              "p95": 6586.577799999999,
+              "max": 6675.311399999999
+            },
+            "elapsed_ms": 6697.241700000006,
+            "unavailable": 0,
+            "target_pass": true
+          }
+        ],
+        "recovery": {
+          "reset_before_recovery": true,
+          "abandoned_jobs": 2,
+          "actors": 600,
+          "unleased_jobs_completed_ms": 8216.720499999996,
+          "all_completed_ms": 8492.9237,
+          "all_saved": true,
+          "lease_policy_seconds": 120
+        },
+        "capacity": {
+          "refused": true,
+          "code": "capacity"
+        },
+        "receiptReplay": true,
+        "privacy": true,
+        "state_samples": 5419,
+        "max_participant_view_utf8_bytes": 8129,
+        "target_pass": true,
+        "measurement": "Protocol clients; latency from each send to observed saved status, before feedback reveal."
+      },
+      "page_errors": [],
+      "stored": {
+        "records": 600,
+        "largest_record_bytes": 409,
+        "aggregate_state_bytes": 211,
+        "jobs_by_epoch_generation": [
+          {
+            "epoch": 1,
+            "generation": 0,
+            "count": 1172
+          },
+          {
+            "epoch": 1,
+            "generation": 1,
+            "count": 28
+          },
+          {
+            "epoch": 2,
+            "generation": 0,
+            "count": 572
+          },
+          {
+            "epoch": 2,
+            "generation": 1,
+            "count": 26
+          },
+          {
+            "epoch": 2,
+            "generation": 2,
+            "count": 2
+          }
+        ]
+      }
+    }
+  ],
+  "browser_checks": [
+    {
+      "browser": "chromium",
+      "provider_payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+      "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "151.0.7922.34",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2024.5,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 31,
+      "max_elapsed_ms": 33.29999998211861,
+      "actual_host_deadline_ms": 2000,
+      "check": "engine and worker confinement"
+    },
+    {
+      "check": "lesson",
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "viewport": 320,
+      "realWorker": true,
+      "twoDevicesOneActor": true,
+      "distinctLearners": true,
+      "keyboard": true,
+      "touch": true,
+      "draftAndFocus": true,
+      "preview": true,
+      "repair": true,
+      "sharing": true,
+      "privacy": true,
+      "resetExistingMount": true,
+      "navigation": true,
+      "textZoom": 2,
+      "projectorFits": {
+        "height": 671,
+        "scroll": 671,
+        "width": 1235,
+        "scrollWidth": 1235
+      },
+      "germanProjection": {
+        "height": 680,
+        "scroll": 680,
+        "font": "16.6615px"
+      },
+      "rendererChecks": {
+        "operationalError": true,
+        "lateRejection": true,
+        "inFlightDraft": true,
+        "paging": true,
+        "german": true,
+        "teardown": true
+      },
+      "errors": []
+    },
+    {
+      "check": "german",
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "language": "de",
+      "viewport": 320,
+      "nativeUnicode": true,
+      "nonBmpRationale": true,
+      "submitReveal": true,
+      "errors": []
+    },
+    {
+      "check": "keyboard and CSS text enlargement",
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "language": "en",
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 320,
+      "metrics": {
+        "presenter": {
+          "width": 1440,
+          "height": 1100,
+          "dpr": 1,
+          "scale": 1
+        },
+        "participant": {
+          "width": 320,
+          "height": 740,
+          "dpr": 1,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 1,
+      "zoomBaselines": [],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": false,
+        "overflow": "visible",
+        "noPageOverflow": true
+      },
+      "zoomControls": null,
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 2,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "check": "keyboard and CSS text enlargement",
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "language": "de",
+      "bundle": "f7e1e29e80b6bf76",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 320,
+      "metrics": {
+        "presenter": {
+          "width": 1440,
+          "height": 1100,
+          "dpr": 1,
+          "scale": 1
+        },
+        "participant": {
+          "width": 320,
+          "height": 740,
+          "dpr": 1,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 1,
+      "zoomBaselines": [],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": false,
+        "overflow": "visible",
+        "noPageOverflow": true
+      },
+      "zoomControls": null,
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 2,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "browser": "firefox",
+      "provider_payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+      "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "153.0",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2036,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 31,
+      "max_elapsed_ms": 143,
+      "actual_host_deadline_ms": 2000,
+      "check": "engine and worker confinement"
+    },
+    {
+      "check": "lesson",
+      "browser": "firefox",
+      "version": "153.0",
+      "viewport": 320,
+      "realWorker": true,
+      "twoDevicesOneActor": true,
+      "distinctLearners": true,
+      "keyboard": true,
+      "touch": true,
+      "draftAndFocus": true,
+      "preview": true,
+      "repair": true,
+      "sharing": true,
+      "privacy": true,
+      "resetExistingMount": true,
+      "navigation": true,
+      "textZoom": 2,
+      "projectorFits": {
+        "height": 671,
+        "scroll": 671,
+        "width": 1235,
+        "scrollWidth": 1235
+      },
+      "germanProjection": {
+        "height": 680,
+        "scroll": 680,
+        "font": "16.6615px"
+      },
+      "rendererChecks": {
+        "operationalError": true,
+        "lateRejection": true,
+        "inFlightDraft": true,
+        "paging": true,
+        "german": true,
+        "teardown": true
+      },
+      "errors": []
+    },
+    {
+      "check": "german",
+      "browser": "firefox",
+      "version": "153.0",
+      "language": "de",
+      "viewport": 320,
+      "nativeUnicode": true,
+      "nonBmpRationale": true,
+      "submitReveal": true,
+      "errors": []
+    },
+    {
+      "check": "keyboard and CSS text enlargement",
+      "browser": "firefox",
+      "version": "153.0",
+      "language": "en",
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 320,
+      "metrics": {
+        "presenter": {
+          "width": 1440,
+          "height": 1100,
+          "dpr": 1,
+          "scale": 1
+        },
+        "participant": {
+          "width": 320,
+          "height": 740,
+          "dpr": 1,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 1,
+      "zoomBaselines": [],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": false,
+        "overflow": "visible",
+        "noPageOverflow": true
+      },
+      "zoomControls": null,
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 2,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "check": "keyboard and CSS text enlargement",
+      "browser": "firefox",
+      "version": "153.0",
+      "language": "de",
+      "bundle": "f7e1e29e80b6bf76",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 320,
+      "metrics": {
+        "presenter": {
+          "width": 1440,
+          "height": 1100,
+          "dpr": 1,
+          "scale": 1
+        },
+        "participant": {
+          "width": 320,
+          "height": 740,
+          "dpr": 1,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 1,
+      "zoomBaselines": [],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": false,
+        "overflow": "visible",
+        "noPageOverflow": true
+      },
+      "zoomControls": null,
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 2,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "browser": "webkit",
+      "provider_payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+      "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "26.5",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2060,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 31,
+      "max_elapsed_ms": 78,
+      "actual_host_deadline_ms": 2000,
+      "check": "engine and worker confinement"
+    },
+    {
+      "check": "lesson",
+      "browser": "webkit",
+      "version": "26.5",
+      "viewport": 320,
+      "realWorker": true,
+      "twoDevicesOneActor": true,
+      "distinctLearners": true,
+      "keyboard": true,
+      "touch": true,
+      "draftAndFocus": true,
+      "preview": true,
+      "repair": true,
+      "sharing": true,
+      "privacy": true,
+      "resetExistingMount": true,
+      "navigation": true,
+      "textZoom": 2,
+      "projectorFits": {
+        "height": 671,
+        "scroll": 671,
+        "width": 1235,
+        "scrollWidth": 1235
+      },
+      "germanProjection": {
+        "height": 680,
+        "scroll": 680,
+        "font": "16.661537px"
+      },
+      "rendererChecks": {
+        "operationalError": true,
+        "lateRejection": true,
+        "inFlightDraft": true,
+        "paging": true,
+        "german": true,
+        "teardown": true
+      },
+      "errors": []
+    },
+    {
+      "check": "german",
+      "browser": "webkit",
+      "version": "26.5",
+      "language": "de",
+      "viewport": 320,
+      "nativeUnicode": true,
+      "nonBmpRationale": true,
+      "submitReveal": true,
+      "errors": []
+    },
+    {
+      "check": "keyboard and CSS text enlargement",
+      "browser": "webkit",
+      "version": "26.5",
+      "language": "en",
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 320,
+      "metrics": {
+        "presenter": {
+          "width": 1440,
+          "height": 1100,
+          "dpr": 1,
+          "scale": 1
+        },
+        "participant": {
+          "width": 320,
+          "height": 740,
+          "dpr": 1,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 1,
+      "zoomBaselines": [],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": false,
+        "overflow": "visible",
+        "noPageOverflow": true
+      },
+      "zoomControls": null,
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 2,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "check": "keyboard and CSS text enlargement",
+      "browser": "webkit",
+      "version": "26.5",
+      "language": "de",
+      "bundle": "f7e1e29e80b6bf76",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 320,
+      "metrics": {
+        "presenter": {
+          "width": 1440,
+          "height": 1100,
+          "dpr": 1,
+          "scale": 1
+        },
+        "participant": {
+          "width": 320,
+          "height": 740,
+          "dpr": 1,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 1,
+      "zoomBaselines": [],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": false,
+        "overflow": "visible",
+        "noPageOverflow": true
+      },
+      "zoomControls": null,
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 2,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "check": "native 200 percent Chrome zoom",
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "language": "en",
+      "bundle": "73238ad9403c4e22",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 711,
+      "metrics": {
+        "presenter": {
+          "width": 711,
+          "height": 452,
+          "dpr": 2,
+          "scale": 1
+        },
+        "participant": {
+          "width": 711,
+          "height": 452,
+          "dpr": 2,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 2,
+      "zoomBaselines": [
+        {
+          "width": 1422,
+          "height": 904,
+          "dpr": 1,
+          "scale": 1
+        },
+        {
+          "width": 1422,
+          "height": 904,
+          "dpr": 1,
+          "scale": 1
+        }
+      ],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": true,
+        "overflow": "auto",
+        "noPageOverflow": true
+      },
+      "zoomControls": {
+        "privateInspection": true,
+        "sharingControlReachable": true,
+        "projectorKeyboardScroll": true
+      },
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 1,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    },
+    {
+      "check": "native 200 percent Chrome zoom",
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "language": "de",
+      "bundle": "f7e1e29e80b6bf76",
+      "provider": [
+        {
+          "id": "io.github.stefanjdecker.erdecisions",
+          "version": "0.5.0",
+          "payload": "37c35929aa258dbdf05353778cd857a496f7c01773e5c50b1a443dbc17ef3437",
+          "capabilities": [
+            "io.github.stefanjdecker.erdecisions.lesson",
+            "io.github.stefanjdecker.erdecisions.model"
+          ]
+        }
+      ],
+      "viewport": 711,
+      "metrics": {
+        "presenter": {
+          "width": 711,
+          "height": 452,
+          "dpr": 2,
+          "scale": 1
+        },
+        "participant": {
+          "width": 711,
+          "height": 452,
+          "dpr": 2,
+          "scale": 1
+        }
+      },
+      "nativeZoom": 2,
+      "zoomBaselines": [
+        {
+          "width": 1422,
+          "height": 904,
+          "dpr": 1,
+          "scale": 1
+        },
+        {
+          "width": 1422,
+          "height": 904,
+          "dpr": 1,
+          "scale": 1
+        }
+      ],
+      "presenterLayout": {
+        "separate": true,
+        "scrollable": true,
+        "overflow": "auto",
+        "noPageOverflow": true
+      },
+      "zoomControls": {
+        "privateInspection": true,
+        "sharingControlReachable": true,
+        "projectorKeyboardScroll": true
+      },
+      "keyboardOnly": true,
+      "fieldErrors": true,
+      "previewConflictFocus": true,
+      "phaseAndFeedbackSemantics": true,
+      "privateUntilReveal": true,
+      "modelTextAlternative": true,
+      "accessibleNames": true,
+      "textZoom": 1,
+      "contracts": {
+        "isolatedRadioGroups": true,
+        "uniqueIds": true,
+        "stableAnnouncements": true,
+        "phaseAnnouncement": true,
+        "focusPreserved": true,
+        "stablePreviewNodes": true,
+        "conflictFocus": true,
+        "noAutomaticSubmission": true
+      },
+      "errors": [],
+      "scope": "Installed-wheel keyboard and accessibility-tree/DOM checks; no physical phone or screen-reader speech output verified."
+    }
+  ],
+  "unverified": [
+    "600 physical rendered phones",
+    "actual teaching host and classroom LAN",
+    "screen-reader speech output",
+    "hosted CI",
+    "Linux execution of these new artifacts",
+    "publication/catalog release"
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "format": "er-design-fixture-1",
+  "id": "mentoring",
+  "brief": "Each student has exactly one mentor. A mentor may advise several students. Whether unused mentors can exist is unspecified.",
+  "requirements": {
+    "one-mentor": "Every student has exactly one mentor.",
+    "mentor-many": "A mentor may advise more than one student.",
+    "mentor-minimum": "Open question: may a mentor currently have no students?"
+  },
+  "choices": {
+    "mentor-links": [
+      "zero-many",
+      "one-many"
+    ]
+  },
+  "assumptions": [
+    null,
+    "unused-allowed",
+    "all-assigned"
+  ],
+  "worlds": [
+    {
+      "id": "intro",
+      "expected": "allow",
+      "requirements": [
+        "one-mentor"
+      ],
+      "visibility": "public",
+      "tables": {
+        "students": [
+          {
+            "id": "s1"
+          }
+        ],
+        "mentors": [
+          {
+            "id": "m1"
+          }
+        ],
+        "links": [
+          {
+            "id": "l1",
+            "student": "s1",
+            "mentor": "m1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "two-students",
+      "expected": "allow",
+      "requirements": [
+        "one-mentor",
+        "mentor-many"
+      ],
+      "visibility": "private",
+      "tables": {
+        "students": [
+          {
+            "id": "s1"
+          },
+          {
+            "id": "s2"
+          }
+        ],
+        "mentors": [
+          {
+            "id": "m1"
+          }
+        ],
+        "links": [
+          {
+            "id": "l1",
+            "student": "s1",
+            "mentor": "m1"
+          },
+          {
+            "id": "l2",
+            "student": "s2",
+            "mentor": "m1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "expected": "allow",
+      "requirements": [
+        "one-mentor",
+        "mentor-many"
+      ],
+      "visibility": "private",
+      "tables": {
+        "students": [],
+        "mentors": [],
+        "links": []
+      }
+    },
+    {
+      "id": "student-without-mentor",
+      "expected": "forbid",
+      "requirements": [
+        "one-mentor"
+      ],
+      "visibility": "private",
+      "tables": {
+        "students": [
+          {
+            "id": "s1"
+          }
+        ],
+        "mentors": [
+          {
+            "id": "m1"
+          }
+        ],
+        "links": []
+      }
+    },
+    {
+      "id": "student-two-mentors",
+      "expected": "forbid",
+      "requirements": [
+        "one-mentor"
+      ],
+      "visibility": "private",
+      "tables": {
+        "students": [
+          {
+            "id": "s1"
+          }
+        ],
+        "mentors": [
+          {
+            "id": "m1"
+          },
+          {
+            "id": "m2"
+          }
+        ],
+        "links": [
+          {
+            "id": "l1",
+            "student": "s1",
+            "mentor": "m1"
+          },
+          {
+            "id": "l2",
+            "student": "s1",
+            "mentor": "m2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unused-mentor",
+      "expected": {
+        "unresolved": null,
+        "unused-allowed": "allow",
+        "all-assigned": "forbid"
+      },
+      "requirements": [
+        "mentor-minimum"
+      ],
+      "visibility": "private",
+      "tables": {
+        "students": [
+          {
+            "id": "s1"
+          }
+        ],
+        "mentors": [
+          {
+            "id": "m1"
+          },
+          {
+            "id": "m2"
+          }
+        ],
+        "links": [
+          {
+            "id": "l1",
+            "student": "s1",
+            "mentor": "m1"
+          }
+        ]
+      }
+    }
+  ]
+}

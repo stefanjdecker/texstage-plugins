@@ -1,0 +1,142 @@
+{
+  "format": "er-design-expectations-1",
+  "counts": {
+    "registrations": 27,
+    "rooms": 4,
+    "mentoring": 6
+  },
+  "checked_models": {
+    "registrations": [
+      {
+        "person-links": "zero-many",
+        "status-owner": "registration",
+        "registration-form": "relationship"
+      },
+      {
+        "person-links": "zero-many",
+        "status-owner": "registration",
+        "registration-form": "entity-pair-key"
+      }
+    ],
+    "rooms": [
+      {
+        "identity": "owner-number"
+      },
+      {
+        "identity": "surrogate-scoped"
+      }
+    ]
+  },
+  "mentoring": [
+    {
+      "choices": {
+        "mentor-links": "zero-many"
+      },
+      "assumption": null,
+      "outcome": "needs-clarification"
+    },
+    {
+      "choices": {
+        "mentor-links": "one-many"
+      },
+      "assumption": null,
+      "outcome": "needs-clarification"
+    },
+    {
+      "choices": {
+        "mentor-links": "zero-many"
+      },
+      "assumption": "unused-allowed",
+      "outcome": "conditional"
+    },
+    {
+      "choices": {
+        "mentor-links": "one-many"
+      },
+      "assumption": "unused-allowed",
+      "outcome": "contradiction"
+    },
+    {
+      "choices": {
+        "mentor-links": "zero-many"
+      },
+      "assumption": "all-assigned",
+      "outcome": "contradiction"
+    },
+    {
+      "choices": {
+        "mentor-links": "one-many"
+      },
+      "assumption": "all-assigned",
+      "outcome": "conditional"
+    }
+  ],
+  "counterexamples": [
+    {
+      "fixture": "registrations",
+      "choices": {
+        "person-links": "zero-one",
+        "status-owner": "registration",
+        "registration-form": "relationship"
+      },
+      "world": "two-workshops",
+      "direction": "excludes-allowed"
+    },
+    {
+      "fixture": "registrations",
+      "choices": {
+        "person-links": "one-many",
+        "status-owner": "registration",
+        "registration-form": "relationship"
+      },
+      "world": "no-registration",
+      "direction": "excludes-allowed"
+    },
+    {
+      "fixture": "registrations",
+      "choices": {
+        "person-links": "zero-many",
+        "status-owner": "person",
+        "registration-form": "relationship"
+      },
+      "world": "two-workshops",
+      "direction": "excludes-allowed"
+    },
+    {
+      "fixture": "registrations",
+      "choices": {
+        "person-links": "zero-many",
+        "status-owner": "workshop",
+        "registration-form": "relationship"
+      },
+      "world": "two-people",
+      "direction": "excludes-allowed"
+    },
+    {
+      "fixture": "registrations",
+      "choices": {
+        "person-links": "zero-many",
+        "status-owner": "registration",
+        "registration-form": "entity-id-only"
+      },
+      "world": "duplicate-pair",
+      "direction": "admits-forbidden"
+    },
+    {
+      "fixture": "rooms",
+      "choices": {
+        "identity": "global-number"
+      },
+      "world": "reused-number",
+      "direction": "excludes-allowed"
+    },
+    {
+      "fixture": "rooms",
+      "choices": {
+        "identity": "surrogate-only"
+      },
+      "world": "duplicate-local",
+      "direction": "admits-forbidden"
+    }
+  ]
+}

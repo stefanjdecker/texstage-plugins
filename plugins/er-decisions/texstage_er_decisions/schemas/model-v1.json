@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$ref": "#/$defs/model",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entities",
+        "relationship"
+      ],
+      "properties": {
+        "entities": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "relationship": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "roles",
+            "attributes",
+            "form",
+            "pair_unique"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/id"
+            },
+            "roles": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "entity",
+                  "min",
+                  "max"
+                ],
+                "properties": {
+                  "id": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "entity": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "min": {
+                    "type": "integer",
+                    "enum": [
+                      0,
+                      1
+                    ]
+                  },
+                  "max": {
+                    "enum": [
+                      1,
+                      "many"
+                    ]
+                  }
+                }
+              }
+            },
+            "attributes": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "type",
+                  "owner"
+                ],
+                "properties": {
+                  "id": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "type": {
+                    "enum": [
+                      "int",
+                      "bool",
+                      "text"
+                    ]
+                  },
+                  "owner": {
+                    "$ref": "#/$defs/id"
+                  }
+                }
+              }
+            },
+            "form": {
+              "enum": [
+                "relationship",
+                "association-entity"
+              ]
+            },
+            "pair_unique": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "exercise_digest",
+    "answer_digest",
+    "model_valid",
+    "structural_issues",
+    "checks",
+    "unresolved"
+  ],
+  "properties": {
+    "format": {
+      "type": "integer",
+      "const": 1
+    },
+    "exercise_digest": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "answer_digest": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "model_valid": {
+      "type": "boolean"
+    },
+    "structural_issues": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "target",
+          "occurrences"
+        ],
+        "properties": {
+          "code": {
+            "enum": [
+              "role-minimum",
+              "role-maximum",
+              "pair-unique",
+              "attribute-dependency",
+              "unknown-decision",
+              "duplicate-decision",
+              "missing-decision",
+              "unknown-option"
+            ]
+          },
+          "target": {
+            "$ref": "#/$defs/id"
+          },
+          "occurrences": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 2,
+            "items": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "expected",
+          "admits",
+          "reason"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "expected": {
+            "enum": [
+              "allow",
+              "forbid"
+            ]
+          },
+          "admits": {
+            "type": "boolean"
+          },
+          "reason": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "code",
+                  "target",
+                  "occurrences"
+                ],
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "role-minimum",
+                      "role-maximum",
+                      "pair-unique",
+                      "attribute-dependency",
+                      "unknown-decision",
+                      "duplicate-decision",
+                      "missing-decision",
+                      "unknown-option"
+                    ]
+                  },
+                  "target": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "occurrences": {
+                    "type": "array",
+                    "minItems": 0,
+                    "maxItems": 2,
+                    "items": {
+                      "$ref": "#/$defs/id"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 0,
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "model_valid": {
+          "const": true
+        },
+        "structural_issues": {
+          "maxItems": 0
+        },
+        "checks": {
+          "minItems": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "model_valid": {
+          "const": false
+        },
+        "structural_issues": {
+          "minItems": 1
+        },
+        "checks": {
+          "maxItems": 0
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24
+    }
+  }
+}

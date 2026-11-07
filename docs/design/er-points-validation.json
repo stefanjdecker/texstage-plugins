@@ -1,0 +1,1157 @@
+{
+  "date": "2026-11-07",
+  "provider": {
+    "id": "io.github.stefanjdecker.erdecisions",
+    "version": "0.6.0",
+    "payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6"
+  },
+  "host_version": "0.2.1.dev6",
+  "host_payload_sha256": "efc5f8a7d2c0fbdcfb6f24685a78fd1bfe5231f3439a4b31d624903182d56c9a",
+  "artifacts": {
+    "texstage-0.2.1.dev6-py3-none-any.whl": "e0448016f40ea516fc132d28db02f8c35e24e02694ca814746a55a18803d6013",
+    "texstage_er_decisions-0.6.0-py3-none-any.whl": "66c7f24e6f7139ec3d1ea63f99a3493f29ef138c6fdd35e6f28ca2eb1225bd76",
+    "texstage_er_decisions-0.6.0.tar.gz": "8c466045b0571071063c77c4ef2d38f239c03eff9e7b44a0d00fe28f1d374a89",
+    "texstage-0.2.1.dev7-py3-none-any.whl": "4374f2ef0cf5b98101be5a6e84e0a2c664bb3d625c0e8644fe231bfbdc7e03a8"
+  },
+  "host_base_commit": "34d0c537135f32b0690147dbb66dd8ff155987f8",
+  "collection_base_commit": "c05cc9e080b330cc2822a3bbc17ba80acb67de0d",
+  "working_tree_changes": true,
+  "tests": {
+    "host": {
+      "tests": 132,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "provider_and_artifacts": {
+      "tests": 135,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "engine": {
+    "provider": {
+      "id": "io.github.stefanjdecker.erdecisions",
+      "version": "0.6.0",
+      "payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6"
+    },
+    "host_version": "0.2.1.dev6",
+    "host_payload_sha256": "efc5f8a7d2c0fbdcfb6f24685a78fd1bfe5231f3439a4b31d624903182d56c9a",
+    "result_schema_sha256": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+    "python": "3.14.4",
+    "node": "v24.15.0",
+    "cases": 27,
+    "max_evaluation_ms": 14.902000000000001,
+    "max_data_bytes": 797,
+    "max_outcome_bytes": 1037,
+    "scope": "Registration-profile engine only; no authoring, lesson state, UI or classroom-capacity claim"
+  },
+  "scored_ui": {
+    "en": {
+      "chromium": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "language": "en",
+        "maximum": 1000,
+        "awards": [
+          1000,
+          1000,
+          0
+        ],
+        "bothValidModels": true,
+        "incorrectZero": true,
+        "hiddenUntilReveal": true,
+        "gameTotals": true,
+        "csvAndRanks": true,
+        "scoredReopenDisabled": true,
+        "navigation": true,
+        "resetWithdraws": true,
+        "viewport": 320,
+        "errors": []
+      },
+      "firefox": {
+        "browser": "firefox",
+        "version": "153.0",
+        "language": "en",
+        "maximum": 1000,
+        "awards": [
+          1000,
+          1000,
+          0
+        ],
+        "bothValidModels": true,
+        "incorrectZero": true,
+        "hiddenUntilReveal": true,
+        "gameTotals": true,
+        "csvAndRanks": true,
+        "scoredReopenDisabled": true,
+        "navigation": true,
+        "resetWithdraws": true,
+        "viewport": 320,
+        "errors": []
+      },
+      "webkit": {
+        "browser": "webkit",
+        "version": "26.5",
+        "language": "en",
+        "maximum": 1000,
+        "awards": [
+          1000,
+          1000,
+          0
+        ],
+        "bothValidModels": true,
+        "incorrectZero": true,
+        "hiddenUntilReveal": true,
+        "gameTotals": true,
+        "csvAndRanks": true,
+        "scoredReopenDisabled": true,
+        "navigation": true,
+        "resetWithdraws": true,
+        "viewport": 320,
+        "errors": []
+      }
+    },
+    "de": {
+      "chromium": {
+        "browser": "chromium",
+        "version": "151.0.7922.34",
+        "language": "de",
+        "maximum": 1000,
+        "awards": [
+          1000,
+          1000,
+          0
+        ],
+        "bothValidModels": true,
+        "incorrectZero": true,
+        "hiddenUntilReveal": true,
+        "gameTotals": true,
+        "csvAndRanks": true,
+        "scoredReopenDisabled": true,
+        "navigation": true,
+        "resetWithdraws": true,
+        "viewport": 320,
+        "errors": []
+      },
+      "firefox": {
+        "browser": "firefox",
+        "version": "153.0",
+        "language": "de",
+        "maximum": 1000,
+        "awards": [
+          1000,
+          1000,
+          0
+        ],
+        "bothValidModels": true,
+        "incorrectZero": true,
+        "hiddenUntilReveal": true,
+        "gameTotals": true,
+        "csvAndRanks": true,
+        "scoredReopenDisabled": true,
+        "navigation": true,
+        "resetWithdraws": true,
+        "viewport": 320,
+        "errors": []
+      },
+      "webkit": {
+        "browser": "webkit",
+        "version": "26.5",
+        "language": "de",
+        "maximum": 1000,
+        "awards": [
+          1000,
+          1000,
+          0
+        ],
+        "bothValidModels": true,
+        "incorrectZero": true,
+        "hiddenUntilReveal": true,
+        "gameTotals": true,
+        "csvAndRanks": true,
+        "scoredReopenDisabled": true,
+        "navigation": true,
+        "resetWithdraws": true,
+        "viewport": 320,
+        "errors": []
+      }
+    }
+  },
+  "practice_ui": {
+    "chromium": {
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "viewport": 320,
+      "realWorker": true,
+      "twoDevicesOneActor": true,
+      "distinctLearners": true,
+      "keyboard": true,
+      "touch": true,
+      "draftAndFocus": true,
+      "preview": true,
+      "repair": true,
+      "sharing": true,
+      "privacy": true,
+      "resetExistingMount": true,
+      "navigation": true,
+      "textZoom": 2,
+      "projectorFits": {
+        "height": 671,
+        "scroll": 671,
+        "width": 1235,
+        "scrollWidth": 1235
+      },
+      "germanProjection": {
+        "height": 680,
+        "scroll": 680,
+        "font": "16.6615px"
+      },
+      "rendererChecks": {
+        "operationalError": true,
+        "lateRejection": true,
+        "inFlightDraft": true,
+        "paging": true,
+        "german": true,
+        "teardown": true
+      },
+      "errors": []
+    },
+    "firefox": {
+      "browser": "firefox",
+      "version": "153.0",
+      "viewport": 320,
+      "realWorker": true,
+      "twoDevicesOneActor": true,
+      "distinctLearners": true,
+      "keyboard": true,
+      "touch": true,
+      "draftAndFocus": true,
+      "preview": true,
+      "repair": true,
+      "sharing": true,
+      "privacy": true,
+      "resetExistingMount": true,
+      "navigation": true,
+      "textZoom": 2,
+      "projectorFits": {
+        "height": 671,
+        "scroll": 671,
+        "width": 1235,
+        "scrollWidth": 1235
+      },
+      "germanProjection": {
+        "height": 680,
+        "scroll": 680,
+        "font": "16.6615px"
+      },
+      "rendererChecks": {
+        "operationalError": true,
+        "lateRejection": true,
+        "inFlightDraft": true,
+        "paging": true,
+        "german": true,
+        "teardown": true
+      },
+      "errors": []
+    },
+    "webkit": {
+      "browser": "webkit",
+      "version": "26.5",
+      "viewport": 320,
+      "realWorker": true,
+      "twoDevicesOneActor": true,
+      "distinctLearners": true,
+      "keyboard": true,
+      "touch": true,
+      "draftAndFocus": true,
+      "preview": true,
+      "repair": true,
+      "sharing": true,
+      "privacy": true,
+      "resetExistingMount": true,
+      "navigation": true,
+      "textZoom": 2,
+      "projectorFits": {
+        "height": 671,
+        "scroll": 671,
+        "width": 1235,
+        "scrollWidth": 1235
+      },
+      "germanProjection": {
+        "height": 680,
+        "scroll": 680,
+        "font": "16.661537px"
+      },
+      "rendererChecks": {
+        "operationalError": true,
+        "lateRejection": true,
+        "inFlightDraft": true,
+        "paging": true,
+        "german": true,
+        "teardown": true
+      },
+      "errors": []
+    }
+  },
+  "worker_security": {
+    "chromium": {
+      "browser": "chromium",
+      "provider_payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+      "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "151.0.7922.34",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2026,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 31,
+      "max_elapsed_ms": 30.299999982118607,
+      "actual_host_deadline_ms": 2000
+    },
+    "firefox": {
+      "browser": "firefox",
+      "provider_payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+      "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "153.0",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2033,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 31,
+      "max_elapsed_ms": 217,
+      "actual_host_deadline_ms": 2000
+    },
+    "webkit": {
+      "browser": "webkit",
+      "provider_payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+      "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "version": "26.5",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2052,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 31,
+      "max_elapsed_ms": 82,
+      "actual_host_deadline_ms": 2000
+    }
+  },
+  "classroom_runs": {
+    "chromium": {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "date": "2026-11-07T12:41:57.100Z",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+      "logical_cpus": 16,
+      "total_memory_bytes": 67869478912,
+      "node": "v24.15.0",
+      "platform": "win32",
+      "result": {
+        "waves": [
+          {
+            "label": "cold-evaluation",
+            "actors": 600,
+            "send_window_ms": 34.563099999999395,
+            "acknowledged_ms": {
+              "min": 67.60740000000078,
+              "median": 2964.3220999999976,
+              "p95": 2984.3365000000013,
+              "max": 3012.4997000000003
+            },
+            "evaluated_ms": {
+              "min": 5929.861300000004,
+              "median": 9069.8599,
+              "p95": 10785.6852,
+              "max": 10871.405100000004
+            },
+            "elapsed_ms": 10914.510999999999,
+            "unavailable": 0,
+            "target_pass": false
+          },
+          {
+            "label": "warm-replacement",
+            "actors": 600,
+            "send_window_ms": 24.072699999996985,
+            "acknowledged_ms": {
+              "min": 24.875700000004144,
+              "median": 3130.9532000000036,
+              "p95": 5508.639200000005,
+              "max": 5508.7600999999995
+            },
+            "evaluated_ms": {
+              "min": 5516.307099999998,
+              "median": 6229.4605999999985,
+              "p95": 6900.691599999998,
+              "max": 6979.9974
+            },
+            "elapsed_ms": 7012.273399999998,
+            "unavailable": 0,
+            "target_pass": true
+          }
+        ],
+        "recovery": {
+          "reset_before_recovery": true,
+          "abandoned_jobs": 2,
+          "actors": 600,
+          "unleased_jobs_completed_ms": 8129.7209,
+          "all_completed_ms": 8381.849700000006,
+          "all_saved": true,
+          "lease_policy_seconds": 120
+        },
+        "capacity": {
+          "refused": true,
+          "code": "capacity"
+        },
+        "points": [
+          {
+            "maximum": 1000,
+            "actors": 600,
+            "correct": 46,
+            "publication_ms": 6633.971400000002,
+            "all_totals_match": true,
+            "replay_idempotent": true,
+            "reopen_refused": true
+          },
+          {
+            "maximum": 1000,
+            "actors": 600,
+            "correct": 46,
+            "publication_ms": 8805.971399999995,
+            "all_totals_match": true,
+            "replay_idempotent": true,
+            "reopen_refused": true
+          }
+        ],
+        "receiptReplay": true,
+        "privacy": true,
+        "state_samples": 9672,
+        "max_participant_view_utf8_bytes": 10808,
+        "target_pass": true,
+        "measurement": "Protocol clients; latency from each send to observed saved status, before feedback reveal."
+      }
+    },
+    "firefox": {
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "date": "2026-11-07T12:43:29.398Z",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+      "logical_cpus": 16,
+      "total_memory_bytes": 67869478912,
+      "node": "v24.15.0",
+      "platform": "win32",
+      "result": {
+        "waves": [
+          {
+            "label": "cold-evaluation",
+            "actors": 600,
+            "send_window_ms": 47.22089999999298,
+            "acknowledged_ms": {
+              "min": 48.306700000001,
+              "median": 4311.254699999998,
+              "p95": 4329.037600000003,
+              "max": 4330.754000000001
+            },
+            "evaluated_ms": {
+              "min": 7502.540999999997,
+              "median": 11024.399400000002,
+              "p95": 13246.3214,
+              "max": 13360.036400000005
+            },
+            "elapsed_ms": 13427.596999999994,
+            "unavailable": 0,
+            "target_pass": false
+          },
+          {
+            "label": "warm-replacement",
+            "actors": 600,
+            "send_window_ms": 37.94059999999445,
+            "acknowledged_ms": {
+              "min": 39.22780000000057,
+              "median": 6358.651600000005,
+              "p95": 6453.792500000003,
+              "max": 6521.0527
+            },
+            "evaluated_ms": {
+              "min": 6469.0193,
+              "median": 7435.8331000000035,
+              "p95": 8266.46,
+              "max": 8367.702700000002
+            },
+            "elapsed_ms": 8407.792099999999,
+            "unavailable": 0,
+            "target_pass": true
+          }
+        ],
+        "recovery": {
+          "reset_before_recovery": true,
+          "abandoned_jobs": 2,
+          "actors": 600,
+          "unleased_jobs_completed_ms": 7266.468100000013,
+          "all_completed_ms": 8544.790200000003,
+          "all_saved": true,
+          "lease_policy_seconds": 120
+        },
+        "capacity": {
+          "refused": true,
+          "code": "capacity"
+        },
+        "points": [
+          {
+            "maximum": 1000,
+            "actors": 600,
+            "correct": 46,
+            "publication_ms": 9271.455399999999,
+            "all_totals_match": true,
+            "replay_idempotent": true,
+            "reopen_refused": true
+          },
+          {
+            "maximum": 1000,
+            "actors": 600,
+            "correct": 46,
+            "publication_ms": 8740.37950000001,
+            "all_totals_match": true,
+            "replay_idempotent": true,
+            "reopen_refused": true
+          }
+        ],
+        "receiptReplay": true,
+        "privacy": true,
+        "state_samples": 10219,
+        "max_participant_view_utf8_bytes": 10808,
+        "target_pass": true,
+        "measurement": "Protocol clients; latency from each send to observed saved status, before feedback reveal."
+      }
+    },
+    "webkit": {
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "date": "2026-11-07T12:44:59.258Z",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+      "logical_cpus": 16,
+      "total_memory_bytes": 67869478912,
+      "node": "v24.15.0",
+      "platform": "win32",
+      "result": {
+        "waves": [
+          {
+            "label": "cold-evaluation",
+            "actors": 600,
+            "send_window_ms": 36.17710000000079,
+            "acknowledged_ms": {
+              "min": 37.70850000000064,
+              "median": 2596.771400000005,
+              "p95": 3448.455099999999,
+              "max": 3451.9191999999966
+            },
+            "evaluated_ms": {
+              "min": 6269.452400000002,
+              "median": 10504.2673,
+              "p95": 12556.798199999997,
+              "max": 12648.447399999997
+            },
+            "elapsed_ms": 12685.2673,
+            "unavailable": 0,
+            "target_pass": false
+          },
+          {
+            "label": "warm-replacement",
+            "actors": 600,
+            "send_window_ms": 33.809000000001106,
+            "acknowledged_ms": {
+              "min": 36.17349999999715,
+              "median": 5831.639799999997,
+              "p95": 5905.2238,
+              "max": 5905.526700000002
+            },
+            "evaluated_ms": {
+              "min": 5918.6610999999975,
+              "median": 6766.431400000001,
+              "p95": 7530.722900000001,
+              "max": 7612.681899999996
+            },
+            "elapsed_ms": 7637.932500000003,
+            "unavailable": 0,
+            "target_pass": true
+          }
+        ],
+        "recovery": {
+          "reset_before_recovery": true,
+          "abandoned_jobs": 2,
+          "actors": 600,
+          "unleased_jobs_completed_ms": 8972.401400000002,
+          "all_completed_ms": 9739.732200000013,
+          "all_saved": true,
+          "lease_policy_seconds": 120
+        },
+        "capacity": {
+          "refused": true,
+          "code": "capacity"
+        },
+        "points": [
+          {
+            "maximum": 1000,
+            "actors": 600,
+            "correct": 46,
+            "publication_ms": 7576.5936,
+            "all_totals_match": true,
+            "replay_idempotent": true,
+            "reopen_refused": true
+          },
+          {
+            "maximum": 1000,
+            "actors": 600,
+            "correct": 46,
+            "publication_ms": 8535.511200000008,
+            "all_totals_match": true,
+            "replay_idempotent": true,
+            "reopen_refused": true
+          }
+        ],
+        "receiptReplay": true,
+        "privacy": true,
+        "state_samples": 9695,
+        "max_participant_view_utf8_bytes": 10808,
+        "target_pass": true,
+        "measurement": "Protocol clients; latency from each send to observed saved status, before feedback reveal."
+      }
+    }
+  },
+  "source_wheel_sdist_parity": [
+    {
+      "wheel": "texstage_er_decisions-0.6.0-py3-none-any.whl",
+      "sha256": "66c7f24e6f7139ec3d1ea63f99a3493f29ef138c6fdd35e6f28ca2eb1225bd76",
+      "id": "io.github.stefanjdecker.erdecisions",
+      "sdist_parity": true
+    }
+  ],
+  "host_source_wheel_installed_parity_resources": 156,
+  "earlier_dev5_runs": {
+    "chromium": {
+      "date": "2026-11-07T12:16:17.919Z",
+      "host_version": "0.2.1.dev5",
+      "host_wheel_sha256": "56b98339fb0e7fc3cba719e4414eec7c9021e492d21d898588335ec69bc109df",
+      "warm_ms": {
+        "min": 7651.356700000004,
+        "median": 9207.5481,
+        "p95": 11019.463299999996,
+        "max": 11151.237399999998
+      },
+      "target_pass": false
+    },
+    "firefox": {
+      "date": "2026-11-07T12:18:46.051Z",
+      "host_version": "0.2.1.dev5",
+      "host_wheel_sha256": "56b98339fb0e7fc3cba719e4414eec7c9021e492d21d898588335ec69bc109df",
+      "warm_ms": {
+        "min": 5877.448199999999,
+        "median": 6877.170599999998,
+        "p95": 7717.0049,
+        "max": 7811.061299999994
+      },
+      "target_pass": true
+    },
+    "webkit": {
+      "date": "2026-11-07T12:20:27.884Z",
+      "host_version": "0.2.1.dev5",
+      "host_wheel_sha256": "56b98339fb0e7fc3cba719e4414eec7c9021e492d21d898588335ec69bc109df",
+      "warm_ms": {
+        "min": 7369.401700000002,
+        "median": 8397.325099999995,
+        "p95": 9340.1987,
+        "max": 9429.1642
+      },
+      "target_pass": true
+    },
+    "chromium-repeat": {
+      "date": "2026-11-07T12:22:25.875Z",
+      "host_version": "0.2.1.dev5",
+      "host_wheel_sha256": "56b98339fb0e7fc3cba719e4414eec7c9021e492d21d898588335ec69bc109df",
+      "warm_ms": {
+        "min": 6706.836199999998,
+        "median": 7620.881300000001,
+        "p95": 8456.0631,
+        "max": 8538.767
+      },
+      "target_pass": true
+    }
+  },
+  "schema_generation_followup": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "prepared_bundle_producer_host": "0.2.1.dev5",
+  "prepared_bundle_consumer_host": "0.2.1.dev6",
+  "static_pdf_visual_review": [
+    "en exercise",
+    "en solutions",
+    "de exercise",
+    "de solutions"
+  ],
+  "limits": [
+    "600 protocol clients on Windows loopback, not 600 physical phones",
+    "Warm latency varied: retain the failed Chromium run as well as the passing repeat",
+    "No hosted CI, Linux consumer, physical phone, screen-reader speech or classroom LAN claim",
+    "Fresh pinned bundle/session required; existing courses and original repository unchanged"
+  ],
+  "handoff": {
+    "host_version": "0.2.1.dev7",
+    "engine": {
+      "provider": {
+        "id": "io.github.stefanjdecker.erdecisions",
+        "version": "0.6.0",
+        "payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6"
+      },
+      "host_version": "0.2.1.dev7",
+      "host_payload_sha256": "b246603df4e7cc8a84d79ffbc5658781b1767895382286cfae9fc37775d27fe1",
+      "result_schema_sha256": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+      "python": "3.14.4",
+      "node": "v24.15.0",
+      "cases": 27,
+      "max_evaluation_ms": 11.607399999999998,
+      "max_data_bytes": 797,
+      "max_outcome_bytes": 1037,
+      "scope": "Registration-profile engine only; no authoring, lesson state, UI or classroom-capacity claim"
+    },
+    "equivalence": {
+      "resources": 156,
+      "changed": [
+        "texstage/__init__.py",
+        "texstage/plugins/schemas/manifest-v3.json",
+        "texstage/plugins/schemas/manifest-v4.json",
+        "texstage/plugins/schemas/manifest-v5.json"
+      ],
+      "runtime_and_browser_bytes_identical": true,
+      "source_wheel_installed_parity": true,
+      "manifest_v4_contract_equivalent": true,
+      "init_change_only_version": true
+    },
+    "host_tests": {
+      "tests": 144,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "er_points_state_artifact_tests": {
+      "tests": 57,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "scored_ui": {
+      "en": {
+        "chromium": {
+          "browser": "chromium",
+          "version": "151.0.7922.34",
+          "language": "en",
+          "maximum": 1000,
+          "awards": [
+            1000,
+            1000,
+            0
+          ],
+          "bothValidModels": true,
+          "incorrectZero": true,
+          "hiddenUntilReveal": true,
+          "gameTotals": true,
+          "csvAndRanks": true,
+          "scoredReopenDisabled": true,
+          "navigation": true,
+          "resetWithdraws": true,
+          "viewport": 320,
+          "errors": []
+        },
+        "firefox": {
+          "browser": "firefox",
+          "version": "153.0",
+          "language": "en",
+          "maximum": 1000,
+          "awards": [
+            1000,
+            1000,
+            0
+          ],
+          "bothValidModels": true,
+          "incorrectZero": true,
+          "hiddenUntilReveal": true,
+          "gameTotals": true,
+          "csvAndRanks": true,
+          "scoredReopenDisabled": true,
+          "navigation": true,
+          "resetWithdraws": true,
+          "viewport": 320,
+          "errors": []
+        },
+        "webkit": {
+          "browser": "webkit",
+          "version": "26.5",
+          "language": "en",
+          "maximum": 1000,
+          "awards": [
+            1000,
+            1000,
+            0
+          ],
+          "bothValidModels": true,
+          "incorrectZero": true,
+          "hiddenUntilReveal": true,
+          "gameTotals": true,
+          "csvAndRanks": true,
+          "scoredReopenDisabled": true,
+          "navigation": true,
+          "resetWithdraws": true,
+          "viewport": 320,
+          "errors": []
+        }
+      },
+      "de": {
+        "chromium": {
+          "browser": "chromium",
+          "version": "151.0.7922.34",
+          "language": "de",
+          "maximum": 1000,
+          "awards": [
+            1000,
+            1000,
+            0
+          ],
+          "bothValidModels": true,
+          "incorrectZero": true,
+          "hiddenUntilReveal": true,
+          "gameTotals": true,
+          "csvAndRanks": true,
+          "scoredReopenDisabled": true,
+          "navigation": true,
+          "resetWithdraws": true,
+          "viewport": 320,
+          "errors": []
+        },
+        "firefox": {
+          "browser": "firefox",
+          "version": "153.0",
+          "language": "de",
+          "maximum": 1000,
+          "awards": [
+            1000,
+            1000,
+            0
+          ],
+          "bothValidModels": true,
+          "incorrectZero": true,
+          "hiddenUntilReveal": true,
+          "gameTotals": true,
+          "csvAndRanks": true,
+          "scoredReopenDisabled": true,
+          "navigation": true,
+          "resetWithdraws": true,
+          "viewport": 320,
+          "errors": []
+        },
+        "webkit": {
+          "browser": "webkit",
+          "version": "26.5",
+          "language": "de",
+          "maximum": 1000,
+          "awards": [
+            1000,
+            1000,
+            0
+          ],
+          "bothValidModels": true,
+          "incorrectZero": true,
+          "hiddenUntilReveal": true,
+          "gameTotals": true,
+          "csvAndRanks": true,
+          "scoredReopenDisabled": true,
+          "navigation": true,
+          "resetWithdraws": true,
+          "viewport": 320,
+          "errors": []
+        }
+      }
+    },
+    "worker_security": {
+      "chromium": {
+        "browser": "chromium",
+        "provider_payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+        "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "151.0.7922.34",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2027.0999999940395,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 31,
+        "max_elapsed_ms": 42,
+        "actual_host_deadline_ms": 2000
+      },
+      "firefox": {
+        "browser": "firefox",
+        "provider_payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+        "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "153.0",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2031,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 31,
+        "max_elapsed_ms": 169,
+        "actual_host_deadline_ms": 2000
+      },
+      "webkit": {
+        "browser": "webkit",
+        "provider_payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+        "host_result_schema": "6e67b9b4af0407e58b6689c66d2e4dd72c302bed57a87bccb7c975ec145ede2e",
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "version": "26.5",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2061,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        "passed": true,
+        "samples": 31,
+        "max_elapsed_ms": 87,
+        "actual_host_deadline_ms": 2000
+      }
+    }
+  }
+}
