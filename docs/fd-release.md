@@ -9,6 +9,11 @@ the collection's CI can fetch it. Use the host and provider artifacts recorded i
 the previous host pin for this version. Rebuild bundles and start new sessions.
 The package version `0.2.1.dev3` alone does not identify a compatible host.
 
+Before merging or publishing this candidate, complete the
+[parallel storage integration review](design/functional-dependencies-capacity-integration.md).
+The shared checkout's newer uncommitted actor-record API overlaps this isolated
+branch; it was preserved and is not included in the measurements below.
+
 The **previous 0.3.0 candidate** used the published TeXStage `codex/plugin-system` commit:
 [`34d0c537135f32b0690147dbb66dd8ff155987f8`](https://github.com/stefanjdecker/texstage/commit/34d0c537135f32b0690147dbb66dd8ff155987f8).
 The same historical commit is mirrored to GitLab. It does not support 0.4.0.

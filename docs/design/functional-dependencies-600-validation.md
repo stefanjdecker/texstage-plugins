@@ -7,6 +7,12 @@ in every burst. Chromium narrowly misses one burst; Firefox and WebKit miss it
 more substantially. These measurements do not establish production readiness
 for a 600-person lecture network.
 
+There is also a merge prerequisite: newer uncommitted actor-record work appeared
+in the shared host during this task. The
+[integration review](functional-dependencies-capacity-integration.md) maps this
+candidate onto that common API. The shared checkout was preserved; these are
+isolated tested branches, not a merged or published release.
+
 ## What changed
 
 - The generic host provides authenticated `actor-slots-v1` storage. Shared state,
@@ -124,7 +130,8 @@ separate headroom scenario. The manual CI capacity option runs the same checks
 against the producer's immutable artifact handoff and retains failed timing
 reports. Shared CI runners are not lecture-hardware benchmarks.
 
-Before release: improve presenter evaluation throughput and repeat the unchanged
+Before release: reconcile the parallel actor-record APIs, improve presenter
+evaluation throughput and repeat the unchanged
 10-second gate, publish the compatible host before the collection CI pin, run
 hosted conformance against those published revisions, then measure the intended
 deployment/network. Physical-phone checks remain deferred under the automated-only

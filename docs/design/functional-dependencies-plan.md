@@ -220,6 +220,11 @@ are unchanged.
 
 ## Recommended next step
 
+First reconcile the parallel host actor-record APIs as described in the
+[integration review](functional-dependencies-capacity-integration.md). The shared
+host now contains newer uncommitted record/points work; preserve it and use a
+stable combined revision for the next FD candidate.
+
 Improve presenter evaluation throughput, especially in Firefox and WebKit, and
 repeat the unchanged latency gates. Publish the compatible host before using
 the new collection CI pin, then run hosted conformance with identical artifacts.
