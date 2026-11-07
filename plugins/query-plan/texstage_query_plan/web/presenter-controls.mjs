@@ -37,12 +37,18 @@ export function mount(ctx) {
  buttons.share=button(w.share,()=>send("share-selected"),ctx.signal);
  buttons.clear=button(w.clear,()=>send("clear-shared"),ctx.signal);
  const shareActions=el("div",undefined,{class:"qp-actions"});shareActions.append(buttons.inspect,buttons.share,buttons.clear);
+ const de=String(ctx.language).startsWith("de");
+ const pager=el("div",undefined,{class:"qp-actions"});
+ const pageLabel=el("span",undefined,{"aria-live":"polite","data-qp":"page"});
+ buttons.previous=button(de?"Vorherige Antworten":"Previous answers",()=>send("roster-page",{page:current.data.page-1}),ctx.signal);
+ buttons.next=button(de?"Weitere Antworten":"Next answers",()=>send("roster-page",{page:current.data.page+1}),ctx.signal);
+ pager.append(buttons.previous,pageLabel,buttons.next);
  const selected=el("section",undefined,{class:"qp-private","aria-label":w.inspect}),selectedStatus=el("p");
  const selectedView=planView(ctx.item.exercise,ctx.language,ctx.signal);selected.append(selectedStatus,selectedView.root);selected.hidden=true;
  const solution=details(w.private+" — "+w.worked),solutionView=planView(ctx.item.exercise,ctx.language,ctx.signal),explanation=el("p"),minimum=el("p");
  const optimal=details(w.optimal),optimalView=planView(ctx.item.exercise,ctx.language,ctx.signal);optimal.append(optimalView.root);
  solution.append(explanation,minimum,solutionView.root,optimal);
- body.append(dismiss,el("h2",w.title),phase,counts,actions,confirmBox,error,waiting,field(w.select,roster),shareActions,selected,solution);
+ body.append(dismiss,el("h2",w.title),phase,el("p",ctx.item.points?w.pointsTarget+": "+number(ctx.item.points,ctx.language):w.practice),counts,actions,confirmBox,error,waiting,pager,field(w.select,roster),shareActions,selected,solution);
  panel.append(body);root.append(panel);
  function paint(){
   const d=current?.data;
@@ -51,6 +57,9 @@ export function mount(ctx) {
    counts.textContent=Object.entries(d.counts).map(([k,n])=>(k==="pending"?w.pendingLabel:k==="unavailable"?w.unavailableLabel:w[k])+": "+n).join(" · ");
   }
   const lock=!d?.active||busy||confirming;
+  pageLabel.textContent=d?(de?"Seite ":"Page ")+(d.page+1)+" / "+d.pages:"";
+  buttons.previous.disabled=lock||!d||d.page===0;
+  buttons.next.disabled=lock||!d||d.page+1>=d.pages;
   buttons.open.disabled=lock||!["introduce","closed"].includes(d?.phase);
   buttons.close.disabled=lock||d?.phase!=="open";
   buttons.reveal.disabled=lock||d?.phase!=="closed";

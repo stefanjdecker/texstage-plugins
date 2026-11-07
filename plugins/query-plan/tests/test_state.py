@@ -25,15 +25,56 @@ from test_engine import PROVIDER, probe, EXERCISES, maximum_exercise
 ROOT = Path(__file__).resolve().parents[3]
 
 
+class Snapshot(dict):
+    """Test fixture keeps host records OUTSIDE the serialized shared state.
+
+    Existing semantic assertions access answers through this test-only lookup.
+    Hooks always receive plain shared dictionaries and one actor context, never
+    this full fixture. Actual SQLite authorization/atomicity is tested separately.
+    """
+    def __init__(self, shared=(), records=None):
+        super().__init__(shared)
+        self.records = records if records is not None else {}
+    def __getitem__(self, key):
+        return self.records if key == "answers" else super().__getitem__(key)
+
+
+def hook_context(state, ctx, *, actor=None, role=None):
+    role = role or ctx["role"]
+    rows = getattr(state, "records", {})
+    own = rows.get(actor)
+    result = ctx | {"records": {"actor": actor, "value": copy.deepcopy(own),
+                                "number": own["number"] if own else len(rows)+1, "count": len(rows)}}
+    if role == "presenter":
+        ordered = sorted(rows.items(), key=lambda row: row[1]["number"])
+        pages = max(1, (len(rows)+24)//25)
+        page = min(state.get("records_page", 0), pages-1)
+        result["record_page"] = {"page": page, "pages": pages, "total": len(rows),
+            "rows": [{"actor":a,"number":r["number"],"summary":{"status":r["status"] if r["status"] in ("pending","unavailable") else r["feedback"]["code"]}}
+                     for a,r in ordered[page*25:(page+1)*25]]}
+    return result
+
+
+def transition(state, event, ctx):
+    actor = event.get("actor")
+    if event.get("operation") == "select-answer":
+        actor = event["payload"]["actor"]
+    return Lesson().transition(dict(state), event, hook_context(state, ctx, actor=actor))
+
+
 def context(name="library", value=None):
     return {"item": json_value(prepare_lesson(value or source(name), {}))["prepared"],
             "epoch": 1, "role": "participant"}
 
 
 def advance(state, event, ctx):
-    result = json_value(Lesson().transition(state, event, ctx))
+    result = json_value(transition(state, event, ctx))
     assert "refusal" not in result, result
-    return result["state"], result["effects"]
+    records = copy.deepcopy(getattr(state, "records", {}))
+    for effect in result["effects"]:
+        if effect["kind"] == "save-actor":
+            records[event["actor"]] = copy.deepcopy(effect["value"])
+    return Snapshot(result["state"], records), result["effects"]
 
 
 def command(op, payload, actor="alice", request="request00001"):
@@ -66,7 +107,7 @@ def complete(state, ctx, actor="alice", outcome=None, **changes):
 
 
 def view(state, ctx, role, actor="alice"):
-    return Lesson().view(state, {"role": role, "actor": actor}, ctx)
+    return Lesson().view(dict(state), {"role": role, "actor": actor}, hook_context(state, ctx, actor=actor, role=role))
 
 
 def validate_views(state, ctx):
@@ -175,19 +216,19 @@ def test_actor_versions_control_versions_navigation_and_irreversible_reveal():
     state,_=submit(state,ctx,actor="bob")  # same request, distinct actor/correlation
     assert state["answers"]["alice"]["correlation"]!=state["answers"]["bob"]["correlation"]
     late=command("submit-plan",{"phase":state["phase_version"],"version":0,"answer":source()["worked_answer"]})
-    assert Lesson().transition(state,late,ctx)=={"refusal":"stale-answer"}
+    assert transition(state,late,ctx)=={"refusal":"stale-answer"}
     state=control(state,ctx,"close")
-    assert Lesson().transition(state,command("reveal",{"control":stale_control}),ctx|{"role":"presenter"})=={"refusal":"stale-control"}
+    assert transition(state,command("reveal",{"control":stale_control}),ctx|{"role":"presenter"})=={"refusal":"stale-control"}
     state=complete(state,ctx)  # closing retains accepted work
     state=control(state,ctx,"open")
-    assert Lesson().transition(state,late,ctx)=={"refusal":"stale-phase"}
+    assert transition(state,late,ctx)=={"refusal":"stale-phase"}
     state,_=advance(state,{"kind":"deactivate"},ctx)
     assert state["phase"]=="closed" and not state["active"]
-    assert Lesson().transition(state,late,ctx)=={"refusal":"closed"}
+    assert transition(state,late,ctx)=={"refusal":"closed"}
     state,_=advance(state,{"kind":"activate"},ctx)
     assert state["phase"]=="closed"
     state=control(state,ctx,"reveal")
-    assert Lesson().transition(state,command("open",{"control":state["control_version"]}),ctx|{"role":"presenter"})=={"refusal":"reset-required"}
+    assert transition(state,command("open",{"control":state["control_version"]}),ctx|{"role":"presenter"})=={"refusal":"reset-required"}
     assert "solution" in view(state,ctx,"projector")
 
 
@@ -215,7 +256,7 @@ def test_selection_is_private_and_sharing_is_explicit_anonymous_and_versioned():
     state=complete(state,ctx)
     state=control(state,ctx,"select-answer",actor="alice")
     assert "selected" in view(state,ctx,"presenter") and "demonstration" not in view(state,ctx,"projector")
-    assert Lesson().transition(state,command("share-selected",{"control":state["control_version"]}),ctx|{"role":"presenter"})=={"refusal":"phase"}
+    assert transition(state,command("share-selected",{"control":state["control_version"]}),ctx|{"role":"presenter"})=={"refusal":"phase"}
     state=control(control(state,ctx,"close"),ctx,"share-selected")
     projection=view(state,ctx,"projector")
     assert projection["demonstration"]==source()["worked_answer"]
@@ -234,27 +275,50 @@ def test_selection_is_private_and_sharing_is_explicit_anonymous_and_versioned():
 def test_roster_numbers_survive_canonical_persistence_and_new_actors():
     state,ctx=opened()
     state,_=submit(state,ctx,actor="zzz")
-    state=json.loads(model.canonical(state))
+    state=Snapshot(json.loads(model.canonical(state)),json.loads(model.canonical(state.records)))
     state,_=submit(state,ctx,actor="aaa")
-    state=json.loads(model.canonical(state))
+    state=Snapshot(json.loads(model.canonical(state)),json.loads(model.canonical(state.records)))
     state,_=submit(state,ctx,actor="zzz",request="replace00001")
     roster=view(state,ctx,"presenter")["participants"]
     assert [(r["actor"],r["number"]) for r in roster]==[("zzz",1),("aaa",2)]
+
+
+def test_paginated_selection_tracks_completion_and_replacement():
+    state,ctx=opened()
+    for i in range(26):
+        state,_=submit(state,ctx,actor=f"student{i}")
+    first=view(state,ctx,"presenter")
+    assert first["page"]==0 and first["pages"]==2 and len(first["participants"])==25
+    state=control(state,ctx,"roster-page",page=1)
+    last=view(state,ctx,"presenter")
+    assert last["participants"]==[{"actor":"student25","number":26,"status":"pending"}]
+    state=control(state,ctx,"select-answer",actor="student25")
+    state=control(state,ctx,"roster-page",page=0)
+    assert view(state,ctx,"presenter")["selected"]["actor"]=="student25"
+    state=complete(state,ctx,actor="student25")
+    assert view(state,ctx,"presenter")["selected"]["feedback"]["correct"]
+    assert state["counts"]["pending"]==25 and state["counts"]["goal-met"]==1
+    state,_=submit(state,ctx,actor="student25",request="replacement1")
+    assert "selected" not in view(state,ctx,"presenter")
+    assert state["counts"]["pending"]==26 and state["counts"]["goal-met"]==0
+    bad=command("roster-page",{"control":state["control_version"],"page":2})
+    assert transition(state,bad,ctx|{"role":"presenter"})=={"refusal":"page"}
+    validate_views(state,ctx)
 
 
 def test_refusals_and_counter_bounds():
     state,ctx=opened()
     bad=source()["worked_answer"]
     bad["nodes"][0]["relation"]="illegal-name"
-    result=Lesson().transition(state,command("submit-plan",{"phase":1,"version":0,"answer":bad}),ctx)
+    result=transition(state,command("submit-plan",{"phase":1,"version":0,"answer":bad}),ctx)
     assert result=={"refusal":"invalid-answer"}
     event=command("submit-plan",{"phase":True,"version":0,"answer":source()["worked_answer"]})
-    assert Lesson().transition(state,event,ctx)=={"refusal":"stale-phase"}
-    assert Lesson().transition(state,event,ctx|{"role":"presenter"})=={"refusal":"role"}
+    assert transition(state,event,ctx)=={"refusal":"stale-phase"}
+    assert transition(state,event,ctx|{"role":"presenter"})=={"refusal":"role"}
     event=command("open",{"control":1})
-    assert Lesson().transition(state,event,ctx)=={"refusal":"role"}
+    assert transition(state,event,ctx)=={"refusal":"role"}
     state["control_version"]=state["phase_version"]=MAX_VERSION
-    assert Lesson().transition(state,command("close",{"control":MAX_VERSION}),ctx|{"role":"presenter"})=={"refusal":"reset-required"}
+    assert transition(state,command("close",{"control":MAX_VERSION}),ctx|{"role":"presenter"})=={"refusal":"reset-required"}
     state,_=advance(state,{"kind":"deactivate"},ctx)
     assert state["phase"]=="closed" and state["control_version"]==MAX_VERSION
     state["active"]=True
@@ -262,10 +326,10 @@ def test_refusals_and_counter_bounds():
     state,_=submit(state,ctx)
     state["answers"]["alice"]["version"]=MAX_VERSION
     event=command("submit-plan",{"phase":1,"version":MAX_VERSION,"answer":source()["worked_answer"]})
-    assert Lesson().transition(state,event,ctx)=={"refusal":"reset-required"}
+    assert transition(state,event,ctx)=={"refusal":"reset-required"}
 
 
-def test_64_full_slots_views_effects_and_both_host_schema_validators(tmp_path):
+def test_1000_partitioned_slots_views_effects_and_both_host_schema_validators(tmp_path):
     value=source()
     value["exercise"]=maximum_exercise()
     reference=model.optimum(value["exercise"])
@@ -281,9 +345,9 @@ def test_64_full_slots_views_effects_and_both_host_schema_validators(tmp_path):
         state=complete(state,ctx,actor=actor)
         assert len(model.canonical({actor:state["answers"][actor]}))<=SLOT_BYTES
     event=command("submit-plan",{"phase":1,"version":0,"answer":largest},actor="extra")
-    assert Lesson().transition(state,event,ctx)=={"refusal":"capacity"}
+    assert transition(state,event,ctx)=={"refusal":"capacity"}
     state,effects=submit(state,ctx,largest,actor=actors[0],request="replacement01")
-    assert len(state["answers"])==64
+    assert len(state["answers"])==MAX_ACTORS
     state=control(state,ctx,"select-answer",actor=actors[0])
     state=control(control(state,ctx,"close"),ctx,"share-selected")
     state=control(state,ctx,"reveal")
@@ -293,7 +357,7 @@ def test_64_full_slots_views_effects_and_both_host_schema_validators(tmp_path):
     cases=[]
     try:
         for role in ("participant","presenter","projector"):
-            data=workers.call(TYPE,"view",state,{"role":role,"actor":actors[0]},ctx)
+            data=workers.call(TYPE,"view",dict(state),{"role":role,"actor":actors[0]},hook_context(state,ctx,actor=actors[0],role=role))
             schema=resource_schema(PROVIDER,"texstage_query_plan/schemas/views/"+role+"-v1.json")
             cases.append({"schema":schema,"value":data})
     finally:workers.close()
@@ -302,12 +366,12 @@ def test_64_full_slots_views_effects_and_both_host_schema_validators(tmp_path):
     subprocess.run(["node","--input-type=module","-e",javascript,host],input=json.dumps(cases),text=True,check=True)
     record={"state_bytes":len(model.canonical(state)),"max_transition_bytes":largest_transition,
             "view_bytes":{r:len(model.canonical(view(state,ctx,r,actors[0]))) for r in ("participant","presenter","projector")},
-            "slot_bytes":max(len(model.canonical({a:s})) for a,s in state["answers"].items()),"actors":64}
+            "slot_bytes":max(len(model.canonical({a:s})) for a,s in state["answers"].items()),"actors":MAX_ACTORS}
     (tmp_path/"state-budget.json").write_text(json.dumps(record,indent=2),encoding="utf-8")
     # A huge authenticated ID must be rejected instead of truncated or exhausting the view.
     fresh,ctx=opened(value=value)
     event=command("submit-plan",{"phase":1,"version":0,"answer":largest},actor="🙂"*256)
-    assert Lesson().transition(fresh,event,ctx)=={"refusal":"capacity"}
+    assert transition(fresh,event,ctx)=={"refusal":"capacity"}
 
 
 @pytest.fixture

@@ -139,7 +139,7 @@ jobs:
     timeout-minutes: 20
     env:
       BROWSER: chromium
-      QUERY_PLAN_LOAD_ACTORS: '64'
+      QUERY_PLAN_LOAD_ACTORS: '600'
       QUERY_PLAN_LOAD_ROUNDS: '3'
       QUERY_PLAN_LOAD_LEASE_LOSS: '1'
     steps:

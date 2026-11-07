@@ -1,5 +1,9 @@
 # Query-plan Challenge v1: frozen engine and lesson-source contracts
 
+Current storage/scalability extension: [600-student plan](query-plan-600-plan.md)
+and [validation](query-plan-600-validation.md). Earlier milestone bounds below
+record their original scope.
+
 Status: implemented locally, 2026-11-06. Scope: frozen Q0/Q1 engine/source
 contracts, plus Q2 authoring and Q3 classroom state in package 0.3.0. See the
 [design](query-plan-challenge.md), [plan](query-plan-challenge-plan.md),

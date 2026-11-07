@@ -228,5 +228,6 @@
   "explanation": {
     "en": "Hashing ten books needs 480 bytes and fits. The later 50-row build needs 4,000 bytes, so use a nested loop there.",
     "de": "Hashing der zehn Bücher benötigt 480 Bytes. Später wären 4.000 Bytes nötig; dort ist ein Nested Loop zulässig."
-  }
+  },
+  "points": 1000
 }

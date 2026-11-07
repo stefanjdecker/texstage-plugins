@@ -1,5 +1,9 @@
 # Query-plan Challenge: implementation plan
 
+Current storage/scalability extension: [600-student plan](query-plan-600-plan.md)
+and [validation](query-plan-600-validation.md). Earlier milestone bounds below
+record their original scope.
+
 Status: Q0–Q4 implemented locally, 2026-11-07. Version 0.4.0 adds selectors,
 local cost inspection and presenter controls to the frozen classroom protocol.
 See the [classroom protocol](query-plan-classroom-contract.md),

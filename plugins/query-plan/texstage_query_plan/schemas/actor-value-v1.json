@@ -1,0 +1,237 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "number": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "answer": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "integer",
+          "const": 1
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "scan"
+                  },
+                  "relation": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 16
+                  },
+                  "method": {
+                    "enum": [
+                      "seq",
+                      "index"
+                    ]
+                  }
+                },
+                "required": [
+                  "op",
+                  "relation",
+                  "method"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "join"
+                  },
+                  "left": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "right": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "method": {
+                    "enum": [
+                      "nested",
+                      "hash-left",
+                      "hash-right"
+                    ]
+                  }
+                },
+                "required": [
+                  "op",
+                  "left",
+                  "right",
+                  "method"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "format",
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    "digest": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "correlation": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "saved",
+        "unavailable"
+      ]
+    },
+    "feedback": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "const": "goal-met"
+            },
+            "correct": {
+              "const": true
+            },
+            "cost": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3000000000000
+            }
+          },
+          "required": [
+            "code",
+            "correct",
+            "cost"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "const": "target-missed"
+            },
+            "correct": {
+              "const": false
+            },
+            "cost": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3000000000000
+            }
+          },
+          "required": [
+            "code",
+            "correct",
+            "cost"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "const": "invalid"
+            },
+            "correct": {
+              "const": false
+            },
+            "reason": {
+              "type": "string",
+              "enum": [
+                "invalid-tree",
+                "unknown-relation",
+                "duplicate-relation",
+                "missing-relation",
+                "disconnected-join",
+                "unavailable-index",
+                "hash-memory"
+              ]
+            },
+            "node": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "code",
+            "correct",
+            "reason",
+            "node"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "const": "unavailable"
+            },
+            "detail": {
+              "type": "string",
+              "enum": [
+                "error",
+                "syntax",
+                "refused",
+                "timeout",
+                "cancelled",
+                "identity",
+                "facts",
+                "capacity"
+              ]
+            }
+          },
+          "required": [
+            "code",
+            "detail"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "epoch",
+    "number",
+    "answer",
+    "digest",
+    "correlation",
+    "status"
+  ]
+}

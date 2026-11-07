@@ -1,6 +1,10 @@
 # Authoring Query-plan Challenge lessons
 
-Version 0.4.0 adds the phone editor and presenter controls. One JSON lesson source produces a
+Optional game points are described in [points and feedback](query-plan-points.md).
+The four new examples use 1,000 points per activity. Existing sources without
+a `points` field remain unscored when rebuilt.
+
+Version 0.6.0 adds per-student storage and a paginated presenter roster. One JSON lesson source produces a
 prepared TeXStage slide, a student exercise, a worked solution and static exports.
 The independent cost engine from 0.1.0 is unchanged. This is an experimental
 development package, not a published plugin-catalog release.
@@ -10,14 +14,14 @@ inspect local costs and submit a plan. Presenter controls open/close answers,
 inspect and anonymously share submissions, reveal solutions and reset.
 See the [classroom guide](query-plan-lesson.md),
 [classroom contract](design/query-plan-classroom-contract.md) and
-[Q4 validation record](design/query-plan-ui-validation.md).
+[current validation record](design/query-plan-600-validation.md).
 
 ## Install in a separate development environment
 
 Use Python 3.12 or newer, a compatible development TeXStage wheel, and TeX Live
 with pdfLaTeX, latexmk, Beamer, babel (English/German), tabularx and adjustbox.
-The [validation record](design/query-plan-ui-validation.md) identifies
-the exact tested host and provider. The version number 0.2.1.dev3 alone is not a
+The [validation record](design/query-plan-600-validation.md) identifies
+the exact tested host and provider. The version number 0.2.1.dev5 alone is not a
 sufficient host pin. Obtain/build the approved development wheel before installing
 this plugin; do not assume an older public host provides these APIs.
 Build from a clean checkout: the wheel helper deliberately rejects mixed
@@ -34,7 +38,7 @@ python -m venv artifacts/query-plan-env
 python -m pip install --require-hashes --only-binary=:all: -r ../texstage-public/requirements/dev.txt -r ../texstage-public/requirements/build.txt
 python -m pip install --no-deps <approved-host-wheel>
 python maintenance/build_wheels.py --package query-plan
-python -m pip install --no-deps dist/texstage_query_plan-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_query_plan-0.6.0-py3-none-any.whl
 texstage plugins --data artifacts/query-plan-profile inspect io.github.stefanjdecker.queryplan
 ```
 
@@ -42,14 +46,14 @@ Replace `<approved-host-wheel>` with its path. After reviewing the inspection
 output, replace `<payload>` below with the displayed SHA-256 provider payload:
 
 ```powershell
-texstage plugins --data artifacts/query-plan-profile enable io.github.stefanjdecker.queryplan --version 0.4.0 --payload <payload>
+texstage plugins --data artifacts/query-plan-profile enable io.github.stefanjdecker.queryplan --version 0.6.0 --payload <payload>
 texstage build examples/query-plan/lesson.tex --activities examples/query-plan/lesson.activities.json --data artifacts/query-plan-profile --key local-demo-key -o artifacts/query-plan-lesson
 ```
 
 These commands affect only the new environment and profile. Installing a wheel
 does not enable it, and uploading a deck never installs code. Do not reuse an
 existing course profile for development. Version/payload pins from 0.1.0 must be
-explicitly reviewed and replaced in a new profile for this 0.4.0 capability.
+explicitly reviewed and replaced in a new profile for this 0.6.0 capability.
 
 The build emits a live lesson bundle, the stage PDF, a static PowerPoint and
 a checked solutions PDF under the output's build directory. Static PowerPoint
@@ -215,9 +219,11 @@ BROWSER to chromium, firefox or webkit; set TEXSTAGE_BROWSER_CHANNEL=chrome only
 for an installed Chrome. The helper serves a disposable loopback session.
 The separate cost-engine browser probe retains the existing restrictive worker CSP.
 
-Q3 now implements bounded learner state, independent server checks, retries,
-explicit sharing, irreversible reveal and reset. State schema 2 requires a new
-profile/session; existing Q2 sessions stay in their original environment.
-Q4 supplies selectors, local cost inspection and presenter controls without changing
-state schema 2. Q5 covers release, load and physical-device/accessibility gates. See the
+The classroom implements bounded learner state, independent server checks, retries,
+explicit sharing, irreversible reveal and reset. Version 0.6.0 uses manifest
+revision 4 and state schema 4: answers live in host-owned records, and presenter
+roster pages contain at most 25 summaries. Install the matching host, explicitly
+enable the new provider payload, rebuild the bundle and create a new session.
+Keep existing sessions in their original environment; there is no automatic
+state migration. See the
 [implementation plan](design/query-plan-challenge-plan.md).

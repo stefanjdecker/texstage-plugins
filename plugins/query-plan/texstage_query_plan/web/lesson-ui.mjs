@@ -2,12 +2,13 @@
 import {analyze} from "./model.mjs";
 export const local=(value,language)=>value?.[language?.startsWith("de")?"de":"en"]||"";
 const en={
+ pointsTarget:"Points for meeting the target",pointsAwarded:"Points awarded",practice:"Practice activity (no points)",
  title:"Query-plan challenge",dismiss:"Close controls",pendingLabel:"Pending",unavailableLabel:"Unavailable",goalBest:"Find the least expensive feasible plan.",goalBudget:"Find a feasible plan costing at most",
  units:"Teaching cost units; these are not measured database timings.",context:"Query, statistics and cost rules",query:"Fixed query",output:"Output",
  rows:"Rows",pages:"Pages",width:"Row width (bytes)",filtered:"Output rows",hashLimit:"Hash workspace limit per join",bytes:"bytes",
  seq:"Sequential scan",index:"Index scan",nested:"Nested loop",hash:"Hash join",left:"Left input",right:"Right input",
  order:"Join order",scan:"Scan",join:"Join",method:"Method",build:"Build hash table from",noIndex:"No eligible index",tooLarge:"exceeds the workspace limit",
- estimate:"Estimate my plan",preview:"Local estimate",previewHint:"Estimate the draft before submitting. This does not save or grade it.",
+ estimate:"Estimate my plan",preview:"Local estimate",previewHint:"Estimate the draft before submitting. This does not submit it or award points.",
  stalePreview:"Plan changed; estimate again to inspect its costs.",baseline:"Baseline cost",draftCost:"Draft cost",difference:"Difference from baseline",
  tree:"Plan tree",inspectNode:"Inspect node",node:"Node",localCost:"Operator cost",totalCost:"Subtree cost",workspace:"Hash workspace",
  arithmetic:"Arithmetic",children:"Inputs",root:"Result",undo:"Undo edit",resetDraft:"Reset draft to baseline",save:"Submit plan",
@@ -23,7 +24,7 @@ const en={
  introduce:"Introduction",open:"Open",closed:"Closed",revealed:"Revealed",phase:"Phase",count:"Plans submitted",
  notice:"Only your latest submitted plan is kept. The presenter may share it anonymously. Feedback is released with the solution.",
  openButton:"Open answers",closeButton:"Close answers",reveal:"Reveal solution",reset:"Reset activity",
- resetConfirm:"Clear every submitted plan and start a new round?",confirm:"Yes, reset activity",cancel:"Cancel",
+ resetConfirm:"Clear every submitted plan, withdraw this activity's points and start a new round?",confirm:"Yes, reset activity",cancel:"Cancel",
  inspect:"Inspect privately",select:"Choose a submitted plan",none:"No selection",response:"Plan",share:"Share selected plan anonymously",clear:"Clear shared plan",
  private:"Private presenter view",shared:"Anonymously shared plan",worked:"Worked solution",optimal:"Optimal plan",minimum:"Minimum cost",ties:"Optimal plans",
  error:"The action failed. Your draft is preserved; please retry.",stale:"The activity changed. Review the current view before retrying.",
@@ -33,6 +34,7 @@ const en={
  baselineReset:"The baseline is now your draft.",retry:"Submit again"
 };
 const de={
+ pointsTarget:"Punkte beim Erreichen des Ziels",pointsAwarded:"Vergebene Punkte",practice:"Uebungsaktivitaet (ohne Punkte)",
  title:"Anfrageplan-Challenge",dismiss:"Bedienfeld schließen",pendingLabel:"Ausstehend",unavailableLabel:"Nicht verfügbar",goalBest:"Finden Sie den günstigsten zulässigen Plan.",goalBudget:"Finden Sie einen zulässigen Plan mit Kosten von höchstens",
  units:"Lehrmodell-Kosteneinheiten; keine gemessenen Datenbanklaufzeiten.",context:"Anfrage, Statistiken und Kostenregeln",query:"Feste Anfrage",output:"Ausgabe",
  rows:"Zeilen",pages:"Seiten",width:"Zeilenbreite (Bytes)",filtered:"Ausgabezeilen",hashLimit:"Hash-Speicherlimit je Join",bytes:"Bytes",
@@ -54,7 +56,7 @@ const de={
  introduce:"Einführung",open:"Offen",closed:"Geschlossen",revealed:"Aufgelöst",phase:"Phase",count:"Abgesendete Pläne",
  notice:"Nur Ihr zuletzt abgesendeter Plan bleibt gespeichert. Die Lehrperson kann ihn anonym teilen. Feedback erscheint mit der Lösung.",
  openButton:"Antworten öffnen",closeButton:"Antworten schließen",reveal:"Lösung zeigen",reset:"Aktivität zurücksetzen",
- resetConfirm:"Alle abgesendeten Pläne löschen und eine neue Runde starten?",confirm:"Ja, Aktivität zurücksetzen",cancel:"Abbrechen",
+ resetConfirm:"Alle abgesendeten Pläne löschen, die Punkte dieser Aktivität zurücknehmen und eine neue Runde starten?",confirm:"Ja, Aktivität zurücksetzen",cancel:"Abbrechen",
  inspect:"Privat ansehen",select:"Abgesendeten Plan auswählen",none:"Keine Auswahl",response:"Plan",share:"Gewählten Plan anonym teilen",clear:"Geteilten Plan entfernen",
  private:"Private Präsentationsansicht",shared:"Anonym geteilter Plan",worked:"Beispiellösung",optimal:"Optimaler Plan",minimum:"Minimale Kosten",ties:"Optimale Pläne",
  error:"Die Aktion ist fehlgeschlagen. Ihr Entwurf bleibt erhalten; bitte erneut versuchen.",stale:"Die Aktivität hat sich geändert. Prüfen Sie den aktuellen Stand.",

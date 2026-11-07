@@ -169,11 +169,13 @@ def _fragment(prepared, language, solutions):
     exercise, reference = source["exercise"], prepared["reference"]
     goal = (w["best"] if source["goal"]["kind"] == "best" else
             w["budget"] + " " + _number(source["goal"]["max_cost"]) + ".")
+    scoring = (("Live activity: " + str(source["points"]) + " points for meeting the target.") if language == "en" else
+               ("Live-Aktivitaet: " + str(source["points"]) + " Punkte beim Erreichen des Ziels.")) if source["points"] else ""
     lines = [r"\begingroup",
              r"\begin{adjustbox}{max totalsize={\linewidth}{\csname queryplan@height\endcsname},center}",
              r"\begin{minipage}{\linewidth}\raggedright\scriptsize",
              r"\textbf{" + _pdf_text(goal) + r"}\par",
-             _pdf_text(w["units"]) + r"\par\smallskip",
+             _pdf_text(w["units"]) + r"\par " + (_pdf_text(scoring) + r"\par " if scoring else "") + r"\smallskip",
              r"\begin{minipage}[t]{.58\linewidth}\raggedright\vspace{0pt}",
              _query(exercise, w), _statistics(exercise, w),
              _heading(w["rules"]), _pdf_text(w["formula"]) + r"\par",
@@ -206,7 +208,7 @@ def prepare_lesson(source, context):
     public = {"format": 1, "exercise": copy.deepcopy(exercise),
               "baseline": copy.deepcopy(normalized["baseline"]),
               "baseline_analysis": copy.deepcopy(prepared["baseline"]),
-              "goal": copy.deepcopy(normalized["goal"])}
+              "goal": copy.deepcopy(normalized["goal"]), "points": normalized["points"]}
     private = {"exercise": prepared["worked"]["exercise"], "reference": copy.deepcopy(prepared["reference"]),
                "worked": {"answer": copy.deepcopy(normalized["worked_answer"]),
                           "analysis": copy.deepcopy(prepared["worked"]),

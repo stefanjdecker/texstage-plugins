@@ -4,10 +4,10 @@
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path"),os=require("node:os");
 const {spawn}=require("node:child_process"),{performance}=require("node:perf_hooks"),pw=require("playwright");
 const bundle=path.resolve(process.argv[2]),output=path.resolve(process.argv[3]||"artifacts/query-plan-load");
-const count=Number(process.env.QUERY_PLAN_LOAD_ACTORS||64),rounds=Number(process.env.QUERY_PLAN_LOAD_ROUNDS||3);
+const count=Number(process.env.QUERY_PLAN_LOAD_ACTORS||600),rounds=Number(process.env.QUERY_PLAN_LOAD_ROUNDS||3);
 const interval=Number(process.env.QUERY_PLAN_LOAD_INTERVAL_MS||1000);
 const leasedLoss=process.env.QUERY_PLAN_LOAD_LEASE_LOSS!=="0";
-assert(Number.isInteger(count)&&count>=2&&count<=64);assert(Number.isInteger(rounds)&&rounds>=1&&rounds<=10);
+assert(Number.isInteger(count)&&count>=2&&count<=1000);assert(Number.isInteger(rounds)&&rounds>=1&&rounds<=10);
 assert(Number.isInteger(interval)&&interval>=0&&interval<=30000);
 const family=process.env.BROWSER||"chromium",root=path.resolve(__dirname,"..");
 const deck=JSON.parse(fs.readFileSync(path.join(bundle,"deck.json")));
@@ -132,7 +132,7 @@ async function freePort(){const net=require("node:net"),s=net.createServer();ret
  const report={format:1,started_at:new Date().toISOString(),passed:false,actors:count,rounds,interval_ms:interval,
   runtime:"Real host WebSockets; one real browser presenter evaluator; synthetic participants",
   browser:family,node:process.version,platform:os.platform(),release:os.release(),cpus:os.cpus().length,
-  scenarios:[],limits:{receipt_ms:180000,completion_ms:180000,lease_recovery_ms:200000},
+  scenarios:[],limits:{receipt_ms:180000,completion_ms:180000,lease_recovery_ms:200000,burst_ack_p95_ms:5000,burst_completion_max_ms:60000},
   interpretation:"Observed loopback workload, not a physical-device/LAN capacity guarantee."};
  try{
   const port=await freePort();base="http://127.0.0.1:"+port;
@@ -158,11 +158,31 @@ async function freePort(){const net=require("node:net"),s=net.createServer();ret
   let start=performance.now(),batch=await Promise.all(students.map((c,i)=>submit(c,i%2?lesson.baseline:lesson.worked_answer,"burst")));
   await complete(batch,"burst evaluations");report.scenarios.push(summarize("burst",batch,start,performance.now()));
   assert.equal(view(host.state).data.count,count);
-  if(count===64){
+  const burst=report.scenarios[0];
+  assert(burst.acknowledgement_ms.p95<=5000,"burst receipt p95 exceeds 5 seconds");
+  assert(burst.completion_ms.max<=60000,"burst completion exceeds 60 seconds");
+  // Every roster page is bounded; selection is private and can address the last page.
+  const roster=[];
+  for(let page=0;page<Math.ceil(count/25);page++){
+   if(page){
+    const r=await dispatch(host,"roster-page",{control:view(host.state).data.control_version,page});
+    assert(r.receipt.accepted);
+    await until(()=>view(host.state).data.page===page,"roster page "+page);
+   }
+   const rows=view(host.state).data.participants;assert(rows.length<=25);roster.push(...rows);
+  }
+  assert.equal(new Set(roster.map(r=>r.actor)).size,count);
+  assert.deepEqual(roster.map(r=>r.number),Array.from({length:count},(_,i)=>i+1));
+  const selected=roster.at(-1).actor;
+  const selection=await dispatch(host,"select-answer",{control:view(host.state).data.control_version,actor:selected});
+  assert(selection.receipt.accepted);
+  await until(()=>!!view(host.state).data.selected,"last-page selection");
+  report.roster={pages:Math.ceil(count/25),page_size:25,unique_actors:count,last_page_selection:true};
+  if(count===1000){
    const extra=new Client(count);await extra.login({t:"join",pin,nickname:"Capacity check",join_nonce:require("node:crypto").randomBytes(16).toString("hex")});
    await until(()=>!!view(extra.state),"capacity actor");
    await submit(extra,lesson.baseline,"capacity","capacity");assert(!view(extra.state).data.own);
-   extra.close();report.capacity_65th_refused=true;
+   extra.close();report.capacity_1001st_refused=true;
   }
   console.log("Burst complete; starting paced replacement rounds.");
   start=performance.now();const replacement=[];
@@ -209,18 +229,22 @@ async function freePort(){const net=require("node:net"),s=net.createServer();ret
    }
   }
   if(view(host.state).data.phase==="open")await control("close");
+  assert(students.every(c=>c.state.me.score===0),"no points before reveal");
   await control("reveal");
   await until(()=>students.every(c=>view(c.state).data.phase==="revealed"),"final feedback");
   students.forEach(c=>{
    const own=view(c.state).data.own;assert(own.feedback&&own.status==="saved");
    assert.equal(own.feedback.correct,digestPlan(own.answer)===digestPlan(lesson.worked_answer));
+   assert.equal(own.points,own.feedback.correct?lesson.points:0);
+   assert.equal(c.state.me.score,own.points,"host total agrees with released award");
   });
   report.final={count:view(host.state).data.count,counts:view(host.state).data.counts,
-   actors_with_latest_feedback:students.length,participant_bytes:students.reduce((n,c)=>n+c.bytes,0),
+   actors_with_latest_feedback:students.length,actors_with_verified_points:students.length,participant_bytes:students.reduce((n,c)=>n+c.bytes,0),
    participant_pushes:students.reduce((n,c)=>n+c.pushes,0)};
   // Reset while everyone remains connected: no old answer/solution may survive.
   const epoch=view(host.state).epoch;await control("_reset");
-  await until(()=>students.every(c=>view(c.state)?.epoch===epoch+1&&!view(c.state).data.own),"64-actor reset");
+  await until(()=>students.every(c=>view(c.state)?.epoch===epoch+1&&!view(c.state).data.own),count+"-actor reset");
+  assert(students.every(c=>c.state.me.score===0),"reset withdraws all activity awards");
   report.reset_all_actors=true;assert.deepEqual(errors,[]);report.passed=true;
  }catch(e){report.error=e.stack;throw e;}
  finally{

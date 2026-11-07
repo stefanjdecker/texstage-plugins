@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "goal-met",
+        "target-missed",
+        "invalid",
+        "unavailable"
+      ]
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

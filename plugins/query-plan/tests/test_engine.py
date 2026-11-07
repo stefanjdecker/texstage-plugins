@@ -45,11 +45,11 @@ def test_installed_wheel_and_metadata_discovery():
     assert {p.id for p in discover()} == {probe.PROVIDER}
     assert set(PROVIDER.manifest["capabilities"]["content_types"]) == {probe.PROVIDER + ".challenge"}
     spec = PROVIDER.manifest["capabilities"]["content_types"][probe.PROVIDER + ".challenge"]
-    assert spec["authoring_hook"] == "challenge" and spec["state_schema"] == 2
+    assert spec["authoring_hook"] == "challenge" and spec["state_schema"] == 4
     assert "participant-input" in spec["views"]
     assert "texstage_query_plan.model" not in PROVIDER.manifest.get("resources", {})
     PROVIDER.verify()
-    assert importlib.metadata.version("texstage-query-plan") == "0.4.0"
+    assert importlib.metadata.version("texstage-query-plan") == "0.6.0"
     for resource in PROVIDER.resources:
         assert not resource.startswith(("/", "C:", "../"))
     for name in ("exercise", "answer", "lesson", "analysis-result"):

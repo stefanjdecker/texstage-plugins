@@ -1,5 +1,9 @@
 # Query-plan Challenge: plugin design
 
+Current storage/scalability extension: [600-student plan](query-plan-600-plan.md)
+and [validation](query-plan-600-validation.md). Earlier milestone bounds below
+record their original scope.
+
 Status: Q0–Q4 implemented locally in 0.4.0, 2026-11-07. The [frozen v1 contract](query-plan-challenge-contract.md) and
 [Q0/Q1 validation record](query-plan-engine-validation.md) cover the independent
 cost engine and Python enumerator. The [Q2 record](query-plan-authoring-validation.md)

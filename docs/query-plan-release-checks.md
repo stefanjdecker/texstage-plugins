@@ -17,7 +17,7 @@ LaTeX editions. Its tests must have no skips.
 Windows and three independent browser jobs consume those exact wheels and the
 Linux-authored bundle. The handoff helper rejects missing, added or changed files,
 checks the expected host commit and verifies the installed host resource inventory
-and provider payload. A fourth consumer measures 64 synthetic participants.
+and provider payload. A fourth consumer measures 600 synthetic participants.
 The existing other-provider conformance workflow remains separate.
 
 An available workflow file is not evidence of a successful hosted run. Record its
@@ -33,7 +33,7 @@ Build the prepared example once in a new output directory:
 python maintenance/query_plan_authoring_probe.py --output artifacts/query-plan-editions
 $env:PYTHON=(Get-Command python).Source
 $env:BROWSER='chromium'
-$env:QUERY_PLAN_LOAD_ACTORS='64'
+$env:QUERY_PLAN_LOAD_ACTORS='600'
 $env:QUERY_PLAN_LOAD_ROUNDS='3'
 $env:QUERY_PLAN_LOAD_LEASE_LOSS='1'
 node maintenance/query_plan_load_browser.cjs artifacts/query-plan-editions/out/lesson.bundle artifacts/query-plan-load
@@ -43,14 +43,21 @@ Install the selected Playwright browser first. The probe uses real authenticated
 WebSockets, a disposable host profile and one real presenter evaluator. It never
 fabricates results or weakens the worker policy. It records:
 
-- A simultaneous answer burst and refusal of a 65th actor.
+- A simultaneous 600-answer burst, with receipt p95 at most 5 seconds and
+  final completion at most 60 seconds on the measured machine.
+- Every presenter roster page and selection from the last page. The default
+  workload does not fill storage; a separate 1,000-actor run checks refusal of
+  actor 1,001. Unit tests also verify replacement at storage capacity.
 - Three rounds of replacements, separated by one second after each round's
   acknowledgements. This is a finite burst workload, not a fixed arrival-rate
   or hours-long soak test.
-- Replacements while the evaluator is absent, followed by grading after close.
+- Replacements while the evaluator is absent, followed by feedback after close.
 - Two abandoned jobs after an observable disconnect, then a silent evaluator
   that leaves its socket open; the latter exercises the unchanged 120-second lease.
 - Latest-answer feedback, role privacy and reset across all connected actors.
+- With the scored example: zero totals before reveal, the correct fixed award
+  in each phone's activity feedback and normal total after reveal, and withdrawal
+  of all these awards on reset. See [points](query-plan-points.md).
 
 `report.json` includes acknowledgement/completion quantiles, completion order,
 actor quartiles, traffic, versions and bounded deadlines. Intermediate versions

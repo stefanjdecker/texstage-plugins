@@ -22,7 +22,7 @@
     "count": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 64
+      "maximum": 1000
     },
     "solution": {
       "type": "object",
@@ -187,6 +187,11 @@
               ]
             }
           ]
+        },
+        "points": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
         }
       },
       "required": [

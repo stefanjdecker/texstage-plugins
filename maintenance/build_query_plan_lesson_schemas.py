@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "plugins/query-plan/texstage_query_plan/schemas"
 VERSION = {"type": "integer", "minimum": 0, "maximum": 1000000000}
-COUNT = {"type": "integer", "minimum": 0, "maximum": 64}
+COUNT = {"type": "integer", "minimum": 0, "maximum": 1000}
 COST = {"type": "integer", "minimum": 0, "maximum": 3000000000000}
 ACTOR = {"type": "string", "minLength": 1, "maxLength": 256}
 REASONS = ["invalid-tree", "unknown-relation", "duplicate-relation", "missing-relation",
@@ -34,6 +34,7 @@ def build():
     write("commands/submit-plan-v1.json", obj({"phase": VERSION, "version": VERSION, "answer": answer}))
     write("commands/control-v1.json", obj({"control": VERSION}))
     write("commands/select-answer-v1.json", obj({"control": VERSION, "actor": {"oneOf": [ACTOR, {"type": "null"}]}}))
+    write("commands/roster-page-v1.json", obj({"control": VERSION, "page": {"type": "integer", "minimum": 0, "maximum": 39}}))
     feedback = {"oneOf": [
         obj({"code": {"const": "goal-met"}, "correct": {"const": True}, "cost": COST}),
         obj({"code": {"const": "target-missed"}, "correct": {"const": False}, "cost": COST}),
@@ -43,11 +44,20 @@ def build():
     private_feedback = copy.deepcopy(feedback)
     private_feedback["oneOf"][-1] = obj({"code": {"const": "unavailable"},
         "detail": string_enum(["error", "syntax", "refused", "timeout", "cancelled", "identity", "facts", "capacity"])})
+    slot = obj({"version": VERSION, "epoch": VERSION,
+        "number": {"type": "integer", "minimum": 1, "maximum": 1000},
+        "answer": answer, "digest": {"type": "string", "minLength": 64, "maxLength": 64},
+        "correlation": {"type": "string", "minLength": 64, "maxLength": 64},
+        "status": string_enum(["pending", "saved", "unavailable"]), "feedback": private_feedback},
+        ["version", "epoch", "number", "answer", "digest", "correlation", "status"])
+    write("actor-value-v1.json", slot)
+    write("actor-summary-v1.json", obj({"status": string_enum(CODES)}))
     explanation = obj({language: {"type": "string", "minLength": 1, "maxLength": 2000} for language in ("en", "de")})
     solution = obj({"worked_answer": {"$ref": "#/$defs/answer"}, "optimal_answer": {"$ref": "#/$defs/answer"},
                     "explanation": explanation, "minimum": COST, "ties": {"type": "integer", "minimum": 1, "maximum": 864}})
     own = obj({"version": VERSION, "answer": {"$ref": "#/$defs/answer"},
-               "status": string_enum(["pending", "saved", "unavailable"]), "feedback": feedback},
+               "status": string_enum(["pending", "saved", "unavailable"]), "feedback": feedback,
+               "points": {"type": "integer", "minimum": 0, "maximum": 10000}},
               ["version", "answer", "status"])
     base = {"phase": string_enum(["introduce", "open", "closed", "revealed"]),
             "phase_version": VERSION, "active": {"type": "boolean"}, "count": COUNT}
@@ -62,15 +72,17 @@ def build():
         if role == "presenter":
             fields["control_version"] = VERSION
             fields["counts"] = obj({k: COUNT for k in CODES})
-            fields["participants"] = {"type": "array", "minItems": 0, "maxItems": 64,
-                "items": obj({"actor": ACTOR, "number": {"type": "integer", "minimum": 1, "maximum": 64},
+            fields["page"] = {"type": "integer", "minimum": 0, "maximum": 39}
+            fields["pages"] = {"type": "integer", "minimum": 1, "maximum": 40}
+            fields["participants"] = {"type": "array", "minItems": 0, "maxItems": 25,
+                "items": obj({"actor": ACTOR, "number": {"type": "integer", "minimum": 1, "maximum": 1000},
                               "status": string_enum(CODES)})}
             selected = copy.deepcopy(own)
             selected["properties"]["actor"] = ACTOR
             selected["properties"]["feedback"] = private_feedback
             selected["required"].append("actor")
             fields["selected"] = selected
-            required += ["control_version", "counts", "participants", "solution"]
+            required += ["control_version", "counts", "participants", "solution", "page", "pages"]
         schema = obj(fields, required)
         schema["$defs"] = {"answer": answer}
         write("views/" + role + "-v1.json", schema)

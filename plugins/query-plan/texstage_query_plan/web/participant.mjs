@@ -36,7 +36,7 @@ export function mount(ctx) {
  conflict.append(el("p",w.conflict),reload,keep);
  actions.append(undo,reset,estimateButton,save);
  preview.append(previewStatus,comparison,viewer.root);viewer.root.hidden=true;
- root.append(el("h2",w.title),phase,problem(ctx.item,ctx.language),el("p",w.notice,{class:"qp-note"}),conflict,fields,actions,error,draftStatus,ownStatus,preview,solution);
+ root.append(el("h2",w.title),phase,el("p",ctx.item.points?w.pointsTarget+": "+number(ctx.item.points,ctx.language):w.practice,{"data-qp":"points-policy"}),problem(ctx.item,ctx.language),el("p",w.notice,{class:"qp-note"}),conflict,fields,actions,error,draftStatus,ownStatus,preview,solution);
  function canSave(){return current?.data.active&&current.data.phase==="open"&&!busy&&!hasConflict&&supported(exercise,draft);}
  function invalidate(){previewStatus.textContent=w.stalePreview;comparison.textContent="";viewer.root.hidden=true;}
  function changed(){
@@ -94,7 +94,8 @@ export function mount(ctx) {
  function paint(){
   conflict.hidden=!hasConflict;undo.disabled=!history.length;save.disabled=!canSave();
   draftStatus.textContent=busy?(receipt?w.waiting:w.saving):dirty?w.dirty:"";
-  ownStatus.textContent=feedback(current?.data.own,w,ctx.language);
+  const own=current?.data.own;
+  ownStatus.textContent=feedback(own,w,ctx.language)+(own?.points!==undefined?" · "+w.pointsAwarded+": "+number(own.points,ctx.language):"");
   if(current){const d=current.data;phase.textContent=w.phase+": "+w[d.phase]+" · "+w.count+": "+d.count;}
  }
  async function submit(){

@@ -416,7 +416,8 @@ def optimum(exercise):
 def prepare_reference(value):
     """Validate the frozen future lesson source, without declaring a lesson hook."""
     _budget(value, LESSON_MAX)
-    _fields(value, ("format", "exercise", "baseline", "goal", "worked_answer", "explanation"))
+    _fields(value, ("format", "exercise", "baseline", "goal", "worked_answer", "explanation"), ("points",))
+    require(_integer(value.get("points", 0), 0, 10000), "Activity points must be 0–10000")
     require(_integer(value["format"], 1, 1))
     exercise = source(value["exercise"])
     baseline, worked = answer(value["baseline"]), answer(value["worked_answer"])
@@ -439,5 +440,5 @@ def prepare_reference(value):
             "Worked answer misses goal")
     return {"source": {"format": 1, "exercise": exercise, "baseline": baseline,
                       "goal": copy.deepcopy(goal), "worked_answer": worked,
-                      "explanation": copy.deepcopy(value["explanation"])},
+                      "explanation": copy.deepcopy(value["explanation"]), "points": value.get("points", 0)},
             "reference": reference, "baseline": baseline_facts, "worked": worked_facts}

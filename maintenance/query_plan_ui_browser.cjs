@@ -98,6 +98,8 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
   assert.equal(await method(phone,0).inputValue(),"seq");
   assert(await method(phone,0).evaluate(n=>n===document.activeElement));
   assert(!(await data(phone)).own.feedback);
+  assert.equal(await phone.evaluate(()=>window.qpState.me.score),0,"points stay private before reveal");
+  assert.equal((await data(phone)).own.points,undefined);
   // A second device saving the same actor forces an explicit decision.
   await until(async()=>(await data(second))?.own?.version===1,"second device synchronized");
   await submit(second);await settled(second,"selective",2);
@@ -127,6 +129,9 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
   await clickControl("Reveal solution");await until(async()=>!!(await data(phone))?.solution,"revealed solution");
   await input.getByText("Worked solution",{exact:true}).click();
   assert((await input.innerText()).includes("Goal met"));
+  await until(async()=>(await data(phone))?.own?.points===1000&&await phone.evaluate(()=>window.qpState.me.score===1000),"released game points");
+  assert.equal(await bob.evaluate(()=>window.qpState.me.score),0,"missed target earns zero");
+  assert((await input.innerText()).includes("1,000"));
   await phone.screenshot({path:path.join(output,"phone-index.png"),fullPage:true});
   await presenter.screenshot({path:path.join(output,"presenter-controls.png"),fullPage:true});
   await projector.screenshot({path:path.join(output,"projector-revealed.png"),fullPage:true});
@@ -137,6 +142,7 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
   assert.equal(await method(phone,0).inputValue(),"seq");
   await input.getByRole("button",{name:"Load saved plan",exact:true}).click();
   assert.equal(await method(phone,0).inputValue(),"seq");assert(!(await data(phone)).own);
+  await until(()=>phone.evaluate(()=>window.qpState.me.score===0),"reset withdraws activity award");
   await controls.locator("summary").first().click();
   // All prepared activities, including both join shapes and limited workspace.
   for(const item of ["broad","library","memory"]){
@@ -172,6 +178,8 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
    await presenter.locator(".qp-controls").getByRole("button",{name:"Close answers",exact:true}).click();
    await presenter.locator(".qp-controls").getByRole("button",{name:"Reveal solution",exact:true}).click();
    await until(async()=>!!(await data(projector,item))?.solution,"reveal "+item);
+   const expected=1000*(["broad","library","memory"].indexOf(item)+1);
+   await until(async()=>(await data(phone,item))?.own?.points===1000&&await phone.evaluate(expected=>window.qpState.me.score===expected,expected),"cumulative game points "+item);
    if(item==="library"||item==="memory")await projector.screenshot({path:path.join(output,"projector-"+item+".png"),fullPage:true});
    await presenter.locator(".qp-controls summary").first().click();
   }
@@ -209,22 +217,31 @@ async function data(page,item="selective"){const d=await descriptor(page,item);r
    resolve({accepted:true,epoch:1,revision:2});await Promise.resolve();await Promise.resolve();
    if(!container.textContent.includes("Meinen Entwurf behalten")||select.value!==value)throw Error("reset lost draft");
    m.destroy();signal.abort();if(container.children.length)throw Error("participant leaked mount");
-   const pcSignal=new AbortController();let pcResolve;
-   const pc=presenterModule.mount({...ctx,language:"en",signal:pcSignal.signal,item:{id:pd.item,...pd.public},dispatch:()=>new Promise(r=>{pcResolve=r;})});
+   const pcSignal=new AbortController();let pcResolve,pcCommand;
+   const pc=presenterModule.mount({...ctx,language:"en",signal:pcSignal.signal,item:{id:pd.item,...pd.public},dispatch:(op,payload)=>{pcCommand={op,payload};return new Promise(r=>{pcResolve=r;});}});
    const data={...Object.values(pd.views)[0].data,phase:"introduce",control_version:0,count:0,participants:[]};delete data.selected;delete data.demonstration;
    pc.update({epoch:1,revision:0,data});button("Open answers").click();pcResolve({accepted:true,epoch:1,revision:1});await Promise.resolve();await Promise.resolve();
    if(!button("Close answers").disabled)throw Error("presenter receipt unlocked old control");
    pc.update({epoch:1,revision:1,data:{...data,phase:"open",control_version:1}});
    if(button("Close answers").disabled)throw Error("presenter new control stayed locked");
+   pc.update({epoch:1,revision:2,data:{...data,phase:"open",control_version:1,count:26,page:0,pages:2}});
+   if(!button("Previous answers").disabled||button("Next answers").disabled)throw Error("first page boundary");
+   button("Next answers").click();
+   if(pcCommand.op!=="roster-page"||pcCommand.payload.page!==1||pcCommand.payload.control!==1)throw Error("page command");
+   pcResolve({accepted:true,epoch:1,revision:3});await Promise.resolve();await Promise.resolve();
+   if(!button("Next answers").disabled)throw Error("page receipt unlocked stale view");
+   pc.update({epoch:1,revision:3,data:{...data,phase:"open",control_version:2,count:26,page:1,pages:2}});
+   if(button("Previous answers").disabled||!button("Next answers").disabled||!container.textContent.includes("Page 2 / 2"))throw Error("last page boundary");
    pc.destroy();pcSignal.abort();if(container.children.length)throw Error("presenter leaked mount");
-   return {german,receiptBeforeView:true,viewBeforeReceipt:true,editDuringSave:true,queueFailure:true,resetInFlight:true,cleanup:true};
+   return {german,receiptBeforeView:true,viewBeforeReceipt:true,editDuringSave:true,queueFailure:true,resetInFlight:true,pagination:true,cleanup:true};
   },{d,pd});
   assert(races.german);
   await presenter.locator("#next").click();await presenter.locator(".presenter-controls").waitFor({state:"detached"});
   await projector.locator(".projector-overlay").waitFor({state:"detached"});
   assert.deepEqual(errors,[]);
   const report={browser:family,version:browser.version(),items:4,realWorker:true,actualControls:true,rolePrivacy:true,
-   touch320:true,keyboard:true,zoom200:true,resize:true,draftFocus:true,sameActorConflict:true,undo:true,reset:true,...races,errors};
+   touch320:true,keyboard:true,zoom200:true,resize:true,draftFocus:true,sameActorConflict:true,undo:true,reset:true,
+   points:{privateUntilReveal:true,awarded:1000,missedTarget:0,resetWithdraws:true,cumulativeTotal:3000},...races,errors};
   fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify(report));
 
  }catch(error){

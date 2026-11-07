@@ -80,11 +80,17 @@ and measured classroom load remain release gates.
 ## Query-plan Challenge: interactive physical plans
 
 The [Query-plan package](plugins/query-plan/README.md) lets students select scans,
-join order, join methods and hash build inputs for a fixed query. Version 0.4.0
-adds phone selectors, local cost comparison and node arithmetic, undo and explicit
+join order, join methods and hash build inputs for a fixed query. It offers
+phone selectors, local cost comparison and node arithmetic, undo and explicit
 submission. Presenter controls support collection, private inspection, anonymous
 sharing, reveal and reset. Drafts survive unrelated updates and same-user
 conflicts require an explicit keep/reload choice.
+
+Version 0.6.0 adds [optional game points](docs/query-plan-points.md), contributing
+to the normal total, leaderboard and CSV export. It retains bounded per-student storage and a presenter roster with 25
+answers per page. See the [points validation](docs/design/query-plan-points-validation.md)
+for current checks and the [600-student validation](docs/design/query-plan-600-validation.md)
+for the earlier 0.5.0 measurements and recovery scenarios.
 
 The [classroom guide](docs/query-plan-lesson.md) explains how to run it.
 [Prepared authoring](docs/query-plan-authoring.md) generates exercises, private
@@ -95,7 +101,7 @@ The [Q4 evidence](docs/design/query-plan-ui-validation.md) supplements the
 [authoring](docs/design/query-plan-authoring-validation.md) and
 [state](docs/design/query-plan-state-validation.md) records.
 
-The [Q5 validation record](docs/design/query-plan-release-validation.md) adds
+The historical [Q5 validation record](docs/design/query-plan-release-validation.md) adds
 Windows/Linux artifact checks, measured 64-participant load and evaluator recovery.
 The [release procedure](docs/query-plan-release-checks.md) covers the dedicated CI
 workflow and remaining manual checks. Costs are teaching units, not database timings.

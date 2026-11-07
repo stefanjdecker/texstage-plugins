@@ -1,10 +1,14 @@
-# Query-plan classroom protocol v1 (Q3)
+# Query-plan classroom protocol v2 (0.5.0)
 
-Frozen in provider 0.3.0 and unchanged in 0.4.0: content API 1, manifest revision 2, state schema 2.
+Version 0.6.0 extends this contract with optional [activity points](../query-plan-points.md),
+manifest revision 4 and state schema 4. The storage and cost model below remain unchanged.
+
+Content API 1, manifest revision 3, state schema 3. This supersedes the
+0.3.0/0.4.0 classroom storage contract; the cost engine is unchanged.
 The [engine/source contract](query-plan-challenge-contract.md) is unchanged.
-This contract specifies the server protocol and projections. Provider 0.4.0 adds
-selectors and presenter controls using this protocol; see the
-[classroom guide](../query-plan-lesson.md) and [Q4 validation](query-plan-ui-validation.md).
+This contract specifies the server protocol, actor records and projections. See
+the [classroom guide](../query-plan-lesson.md) and
+[current validation](query-plan-600-validation.md).
 The static slide remains visible until a plan is shared or a solution revealed.
 
 ## State and commands
@@ -30,6 +34,7 @@ a claimed actor field in a participant payload.
 | select-answer | Presenter | control, actor (or null) | Select a version privately, or clear selection |
 | share-selected | Presenter | control | In closed/revealed, project that selected version anonymously |
 | clear-shared | Presenter | control | Remove the public demonstration |
+| roster-page | Presenter | control, page (0–39) | Select an existing page of at most 25 summaries |
 | _reset | Presenter, host-owned | empty object | New epoch, introduce phase, no answers/jobs/selection |
 
 Open after reveal returns reset-required. Revealing cannot make information
@@ -75,7 +80,8 @@ Canonical equality with the worked answer is never assessment. Every tied optimu
 passes best. A budget can accept a nonoptimal plan. A forged invalid result for a
 valid plan is unavailable, not an incorrect grade.
 
-State retains the plan, a stable roster number, answer version/digest, epoch/correlation, status and compact
+Each host-owned actor record retains the plan, a stable roster number, answer
+version/digest, epoch/correlation, status and compact
 feedback. Full node traces are neither stored per actor nor exposed by these views.
 Pending results may complete after close, reveal or navigation; replacements,
 duplicate deliveries, cancelled old jobs and resets cannot overwrite newer work.
@@ -91,7 +97,8 @@ All include phase, phase_version, active and answer count.
   is absent. After reveal, compact goal/invalid/unavailable feedback appears;
   operational diagnostic details remain private.
 - Presenter: control_version, aggregate pending/goal-met/target-missed/invalid/
-  unavailable counts, bounded roster with actor/number/status, and explicitly
+  unavailable counts, page/pages and at most 25 roster summaries with
+  actor/number/status, and explicitly
   selected answer with private diagnostics. Roster numbers follow first accepted
   submission and survive canonical persistence, replacement and new arrivals.
 - Projector: no roster, selection, individual status or assessment counts.
@@ -108,20 +115,27 @@ The host separately transports approved public exercise data and view epochs.
 
 ## Bounds and upgrade boundary
 
-At most 64 distinct actors may save. Existing actors can replace at capacity.
+At most 1,000 distinct actors may save; the performance target is 600. Existing actors can replace at capacity.
 Actor IDs have at most 256 code points and at most 1024 canonical ASCII JSON bytes;
 these are authenticated host IDs, not display names. Oversized IDs are refused,
 never truncated. A slot including its escaped actor key reserves at most 3072
 bytes for the answer, metadata and maximum compact feedback before acceptance.
 
-Whole state is limited to 208 KiB; complete transition remains below the host's
+Shared state is limited to 16 KiB. Each actor value is bounded by the host's
+4-KiB record limit, and its status summary by 512 bytes. The hook receives only
+the current actor record (or the explicitly selected presenter target), never
+the full class. Shared state contains counts and at most one selected/shared
+snapshot. The save, counters, jobs and receipt commit atomically. Reset removes
+the records and invalidates old jobs in the same transaction.
+
+The complete transition remains below the host's
 256-KiB cap, and each audience view below 128 KiB. Answer-v1's 1024-byte bound,
 engine result bounds and preparation limits are unchanged. The worst-case tests
 include escaped actor IDs, five-node plans, maximum versions/costs, bilingual
 2000-character explanations, selection/sharing and evaluation effects.
 Serialized capacity is not a measured classroom-throughput claim.
 
-State schema 2 replaces Q2's empty read-only state. Provider version/payload pins
+State schema 3 replaces the previous shared answer map. Provider version/payload pins
 also change. Use a new enabled profile and new session/bundle. The host rejects
 resuming an old session in a changed provider environment; no automatic in-place
 state or course migration is provided.

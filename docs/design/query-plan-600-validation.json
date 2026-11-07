@@ -1,0 +1,499 @@
+{
+  "format": 1,
+  "date": "2026-11-07",
+  "scope": "Local Windows 600-student milestone; not a published release",
+  "provider": {
+    "id": "io.github.stefanjdecker.queryplan",
+    "version": "0.5.0",
+    "payload": "52a0109da9c688fe6b05db41ea5311cf8c47fdcd844363e0f67e5bfb0666fa9c"
+  },
+  "host_version": "0.2.1.dev4",
+  "host_resources_sha256": "d6b64b94756b5ec521dcdac2800ffa77b49eb37f1ef512efe8e8ee620ee14ff1",
+  "artifacts": {
+    "host_wheel": {
+      "file": "texstage-0.2.1.dev4-py3-none-any.whl",
+      "sha256": "478c039faadad5eb2bf68e5d7d810604adb54544419bfecbe7efb158888fd772"
+    },
+    "provider_wheel": {
+      "file": "texstage_query_plan-0.5.0-py3-none-any.whl",
+      "sha256": "f2834d62150f5a90a219806d40bc043d38fd8375002028c561588403bc4d8b7f"
+    },
+    "provider_sdist": {
+      "file": "texstage_query_plan-0.5.0.tar.gz",
+      "sha256": "5b4279607f57ca24f1cf1bc1c9637c3f8bf61b309c7e543247bce3352ce201b7"
+    }
+  },
+  "tests": {
+    "query_plan_and_handoff": {
+      "tests": 178,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "host_and_server": {
+      "tests": 198,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "transaction": {
+      "tests": 67,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "relational": {
+      "tests": 72,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "pair": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "browser_checks": [
+    "chromium-browser",
+    "chromium-ui_browser",
+    "chromium-state_browser",
+    "chromium-authoring_browser",
+    "firefox-browser",
+    "firefox-ui_browser",
+    "firefox-state_browser",
+    "firefox-authoring_browser",
+    "webkit-browser",
+    "webkit-ui_browser",
+    "webkit-state_browser",
+    "webkit-authoring_browser"
+  ],
+  "browser_ui": {
+    "chromium": {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "items": 4,
+      "realWorker": true,
+      "actualControls": true,
+      "rolePrivacy": true,
+      "touch320": true,
+      "keyboard": true,
+      "zoom200": true,
+      "resize": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "undo": true,
+      "reset": true,
+      "german": true,
+      "receiptBeforeView": true,
+      "viewBeforeReceipt": true,
+      "editDuringSave": true,
+      "queueFailure": true,
+      "resetInFlight": true,
+      "pagination": true,
+      "cleanup": true,
+      "errors": []
+    },
+    "firefox": {
+      "browser": "firefox",
+      "version": "153.0",
+      "items": 4,
+      "realWorker": true,
+      "actualControls": true,
+      "rolePrivacy": true,
+      "touch320": true,
+      "keyboard": true,
+      "zoom200": true,
+      "resize": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "undo": true,
+      "reset": true,
+      "german": true,
+      "receiptBeforeView": true,
+      "viewBeforeReceipt": true,
+      "editDuringSave": true,
+      "queueFailure": true,
+      "resetInFlight": true,
+      "pagination": true,
+      "cleanup": true,
+      "errors": []
+    },
+    "webkit": {
+      "browser": "webkit",
+      "version": "26.5",
+      "items": 4,
+      "realWorker": true,
+      "actualControls": true,
+      "rolePrivacy": true,
+      "touch320": true,
+      "keyboard": true,
+      "zoom200": true,
+      "resize": true,
+      "draftFocus": true,
+      "sameActorConflict": true,
+      "undo": true,
+      "reset": true,
+      "german": true,
+      "receiptBeforeView": true,
+      "viewBeforeReceipt": true,
+      "editDuringSave": true,
+      "queueFailure": true,
+      "resetInFlight": true,
+      "pagination": true,
+      "cleanup": true,
+      "errors": []
+    }
+  },
+  "regression_browsers": {
+    "transaction": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "relational": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "pair": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ]
+  },
+  "state_budget": {
+    "state_bytes": 3134,
+    "max_transition_bytes": 1348,
+    "view_bytes": {
+      "participant": 49144,
+      "presenter": 77010,
+      "projector": 49112
+    },
+    "slot_bytes": 1630,
+    "actors": 1000
+  },
+  "load": {
+    "format": 1,
+    "started_at": "2026-11-07T08:10:14.703Z",
+    "passed": true,
+    "actors": 600,
+    "rounds": 3,
+    "interval_ms": 1000,
+    "runtime": "Real host WebSockets; one real browser presenter evaluator; synthetic participants",
+    "browser": "chromium",
+    "node": "v24.15.0",
+    "platform": "win32",
+    "release": "10.0.19045",
+    "cpus": 16,
+    "scenarios": [
+      {
+        "label": "burst",
+        "offered": 600,
+        "accepted": 600,
+        "wall_ms": 44070.2361,
+        "accepted_per_second": 13.61463094135772,
+        "acknowledgement_ms": {
+          "count": 600,
+          "min": 37.75120000000061,
+          "p50": 1671.0650000000005,
+          "p95": 3496.2908000000007,
+          "max": 3498.6852
+        },
+        "completion_ms": {
+          "count": 600,
+          "min": 6324.600199999999,
+          "p50": 25452.2805,
+          "p95": 42533.916600000004,
+          "max": 43981.9923
+        },
+        "actor_quartile_completion_ms": [
+          {
+            "count": 150,
+            "min": 6324.600199999999,
+            "p50": 10287.1944,
+            "p95": 16471.0835,
+            "max": 17100.817199999998
+          },
+          {
+            "count": 150,
+            "min": 15303.888100000002,
+            "p50": 19426.9208,
+            "p95": 25289.874999999996,
+            "max": 26249.0942
+          },
+          {
+            "count": 150,
+            "min": 24253.257400000002,
+            "p50": 30428.6975,
+            "p95": 34816.308099999995,
+            "max": 35191.924
+          },
+          {
+            "count": 150,
+            "min": 33307.172699999996,
+            "p50": 39960.4259,
+            "p95": 43696.9798,
+            "max": 43981.9923
+          }
+        ]
+      },
+      {
+        "label": "paced replacements",
+        "offered": 1800,
+        "accepted": 1800,
+        "wall_ms": 83960.18449999999,
+        "accepted_per_second": 21.438733260525414,
+        "acknowledgement_ms": {
+          "count": 1800,
+          "min": 29.340700000000652,
+          "p50": 9175.8272,
+          "p95": 10946.340299999996,
+          "max": 10947.343500000003
+        },
+        "completion_ms": {
+          "count": 602,
+          "min": 12100.927299999996,
+          "p50": 36956.9479,
+          "p95": 61676.3851,
+          "max": 64864.384999999995
+        },
+        "actor_quartile_completion_ms": [
+          {
+            "count": 152,
+            "min": 12100.927299999996,
+            "p50": 18360.966300000015,
+            "p95": 24491.369499999986,
+            "max": 24786.372900000002
+          },
+          {
+            "count": 150,
+            "min": 24662.25140000001,
+            "p50": 32004.666499999992,
+            "p95": 36402.66289999998,
+            "max": 39056.17330000001
+          },
+          {
+            "count": 150,
+            "min": 38070.21430000001,
+            "p50": 44485.9457,
+            "p95": 49452.13470000001,
+            "max": 52052.20890000001
+          },
+          {
+            "count": 150,
+            "min": 50647.92390000001,
+            "p50": 58047.09730000001,
+            "p95": 64277.383,
+            "max": 64864.384999999995
+          }
+        ],
+        "superseded": 1198
+      },
+      {
+        "label": "absent evaluator replacements",
+        "offered": 600,
+        "accepted": 600,
+        "wall_ms": 99973.55069999999,
+        "accepted_per_second": 6.00158737785033,
+        "acknowledgement_ms": {
+          "count": 600,
+          "min": 25.825299999996787,
+          "p50": 19071.62579999998,
+          "p95": 19089.298899999994,
+          "max": 19254.238799999992
+        },
+        "completion_ms": {
+          "count": 600,
+          "min": 23292.811000000016,
+          "p50": 53515.39070000002,
+          "p95": 81205.69030000002,
+          "max": 82762.9768
+        },
+        "actor_quartile_completion_ms": [
+          {
+            "count": 150,
+            "min": 23292.811000000016,
+            "p50": 32345.69530000002,
+            "p95": 39003.955600000016,
+            "max": 39398.07340000002
+          },
+          {
+            "count": 150,
+            "min": 37578.432900000014,
+            "p50": 45657.015400000004,
+            "p95": 53107.55540000001,
+            "max": 53562.90099999998
+          },
+          {
+            "count": 150,
+            "min": 53471.48700000002,
+            "p50": 60426.624299999996,
+            "p95": 66692.27410000001,
+            "max": 67044.89110000001
+          },
+          {
+            "count": 150,
+            "min": 66580.36610000001,
+            "p50": 75790.27169999998,
+            "p95": 82439.72210000001,
+            "max": 82762.9768
+          }
+        ],
+        "absent_pending": 600,
+        "recovery_ms": 61387.471700000024,
+        "completed_after_close": true
+      },
+      {
+        "label": "disconnected evaluator lease",
+        "offered": 6,
+        "accepted": 6,
+        "wall_ms": 3454.0825000000186,
+        "accepted_per_second": 1.7370748961554818,
+        "acknowledgement_ms": {
+          "count": 6,
+          "min": 321.7196999999578,
+          "p50": 321.7265999999945,
+          "p95": 321.8411999999662,
+          "max": 321.8411999999662
+        },
+        "completion_ms": {
+          "count": 6,
+          "min": 5786.315899999987,
+          "p50": 6144.627500000002,
+          "p95": 7196.380700000038,
+          "max": 7196.380700000038
+        },
+        "actor_quartile_completion_ms": [
+          {
+            "count": 6,
+            "min": 5786.315899999987,
+            "p50": 6144.627500000002,
+            "p95": 7196.380700000038,
+            "max": 7196.380700000038
+          },
+          {
+            "count": 0,
+            "min": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          {
+            "count": 0,
+            "min": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          {
+            "count": 0,
+            "min": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          }
+        ],
+        "abandoned_jobs": 2,
+        "recovery_ms": 3454.1896000000415,
+        "production_lease_seconds": 120,
+        "observed_disconnect": true
+      },
+      {
+        "label": "silent evaluator lease",
+        "offered": 6,
+        "accepted": 6,
+        "wall_ms": 120928.35629999998,
+        "accepted_per_second": 0.04961615442051618,
+        "acknowledgement_ms": {
+          "count": 6,
+          "min": 281.28819999995176,
+          "p50": 281.4845000000205,
+          "p95": 281.5358000000124,
+          "max": 281.5358000000124
+        },
+        "completion_ms": {
+          "count": 6,
+          "min": 4313.3831000000355,
+          "p50": 5275.210299999977,
+          "p95": 123974.6555,
+          "max": 123974.6555
+        },
+        "actor_quartile_completion_ms": [
+          {
+            "count": 6,
+            "min": 4313.3831000000355,
+            "p50": 5275.210299999977,
+            "p95": 123974.6555,
+            "max": 123974.6555
+          },
+          {
+            "count": 0,
+            "min": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          {
+            "count": 0,
+            "min": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          {
+            "count": 0,
+            "min": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          }
+        ],
+        "abandoned_jobs": 2,
+        "recovery_ms": 120928.40649999998,
+        "production_lease_seconds": 120,
+        "observed_disconnect": false
+      }
+    ],
+    "limits": {
+      "receipt_ms": 180000,
+      "completion_ms": 180000,
+      "lease_recovery_ms": 200000,
+      "burst_ack_p95_ms": 5000,
+      "burst_completion_max_ms": 60000
+    },
+    "interpretation": "Observed loopback workload, not a physical-device/LAN capacity guarantee.",
+    "browser_version": "156.0.8078.80",
+    "provider": "52a0109da9c688fe6b05db41ea5311cf8c47fdcd844363e0f67e5bfb0666fa9c",
+    "roster": {
+      "pages": 24,
+      "page_size": 25,
+      "unique_actors": 600,
+      "last_page_selection": true
+    },
+    "final": {
+      "count": 600,
+      "counts": {
+        "goal-met": 594,
+        "invalid": 0,
+        "pending": 0,
+        "target-missed": 6,
+        "unavailable": 0
+      },
+      "actors_with_latest_feedback": 600,
+      "participant_bytes": 454766199,
+      "participant_pushes": 54816
+    },
+    "reset_all_actors": true,
+    "finished_at": "2026-11-07T08:17:17.197Z"
+  },
+  "artifact_note": "The full load run and final packages have identical inventoried host and provider runtime resources; the provider README/metadata was finalized after that run. Final-wheel Python and browser checks followed rebuilding.",
+  "remaining": [
+    "Physical phones and classroom Wi-Fi with 600 students",
+    "Screen-reader review",
+    "Published compatible host commit and successful hosted CI",
+    "Linux validation of the new 0.5.0 milestone",
+    "600-client hours-long soak and adversarial network loss"
+  ]
+}

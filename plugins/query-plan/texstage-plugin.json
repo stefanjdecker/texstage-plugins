@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 4,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.queryplan",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "description": "Query-plan challenge with accessible plan selectors and classroom controls.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -40,7 +40,7 @@
         "content_api": 1,
         "authoring_hook": "challenge",
         "state_hook": "lesson",
-        "state_schema": 2,
+        "state_schema": 4,
         "latex_packages": [
           "texstage_query_plan/latex/texstage-queryplan-challenge.sty"
         ],
@@ -95,7 +95,8 @@
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_query_plan/schemas/commands/select-answer-v1.json"
+            "schema": "texstage_query_plan/schemas/commands/select-answer-v1.json",
+            "record_actor_field": "actor"
           },
           "share-selected": {
             "from": [
@@ -110,9 +111,27 @@
             ],
             "revision_policy": "latest",
             "schema": "texstage_query_plan/schemas/commands/control-v1.json"
+          },
+          "roster-page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_query_plan/schemas/commands/roster-page-v1.json"
           }
         },
-        "fallback": "static-slide"
+        "fallback": "static-slide",
+        "actor_records": {
+          "capacity": 1000,
+          "page_size": 25,
+          "page_field": "records_page",
+          "value_schema": "texstage_query_plan/schemas/actor-value-v1.json",
+          "summary_schema": "texstage_query_plan/schemas/actor-summary-v1.json"
+        },
+        "scoring": {
+          "policy": "fixed-v1",
+          "points_field": "points"
+        }
       }
     }
   },
