@@ -1,0 +1,1100 @@
+{
+  "browser": "chromium",
+  "provider_payload": "267754ba099babd5cd1082151f3a22b00f5fecda68167bf39145d89a5590b3cc",
+  "host_result_schema": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+  "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+  "version": "151.0.7922.34",
+  "security": {
+    "passed": true,
+    "checks": {
+      "fetch_same": "blocked",
+      "fetch_cross": "blocked",
+      "xhr": "blocked",
+      "websocket": "blocked",
+      "eventsource": "blocked",
+      "child_worker": "blocked",
+      "blob_worker": "blocked",
+      "external_module": "blocked",
+      "eval": "blocked",
+      "function_constructor": "blocked"
+    },
+    "forbidden_requests": [],
+    "control": {
+      "fetch_same": "allowed",
+      "fetch_cross": "allowed",
+      "xhr": "allowed",
+      "websocket": "allowed",
+      "eventsource": "allowed",
+      "child_worker": "allowed",
+      "blob_worker": "allowed",
+      "external_module": "allowed",
+      "eval": "allowed",
+      "function_constructor": "allowed"
+    },
+    "control_requests": [
+      "/__worker_probe__/fetch",
+      "/__worker_probe__/xhr",
+      "/__worker_probe__/fetch",
+      "/__worker_probe__/child.js",
+      "/__worker_probe__/socket",
+      "/__worker_probe__/module.mjs",
+      "/__worker_probe__/events"
+    ],
+    "invalid_result_status": "error",
+    "loop_status": "timeout",
+    "loop_elapsed_ms": 2014.800000011921,
+    "recovery_status": "ok",
+    "remaining_workers": 0
+  },
+  "passed": true,
+  "samples": 34,
+  "max_elapsed_ms": 28.80000001192093,
+  "actual_host_deadline_ms": 2000,
+  "rows": [
+    {
+      "result": {
+        "status": "ok",
+        "key": "b1bbaa60834eecc0",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "f5651cb4703bdaed2fd02f8d7399542a8f2f140857e903a878ba75361491661e",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 60,
+              "steps": [
+                [
+                  2,
+                  24
+                ],
+                [
+                  3,
+                  32
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 28.80000001192093,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "21bf776521a67d3e",
+        "namespace": "f95cb61e7c9a4d9f8fc7980aa4dd045540e9199b726fcda33844abf28b5480da",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "86ed1be6a78f43b085cf59b1091178c40328bc02e1d33f0e5171a1f8b66d9639",
+          "answer": "6ba1fd3978dd9af00aa7abebea75eaf1c612595b311820c577fb0915e0527ee3",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                5,
+                63,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 19,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "ae1592ef507c2222",
+        "namespace": "844cc93130f9e9b269c5982a207981bfa6f1017871d91ac60bc5e59a2bab337a",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "522541a8525f6dac6468c03a99c127d00728dd01674287f7e3c86e987a18d5e4",
+          "answer": "fdd8364ab471924f17af38dee1d61207a44158e4374cc79f6d9277eca2d97318",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                5,
+                63,
+                0
+              ],
+              [
+                6,
+                63,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15.900000005960464,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "6aafde19293ec6bf",
+        "namespace": "bfc74a0d6cc641b14bdb6336fef696bd2bb54044f1b6ea7113860f59e60fc2c9",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "d779ab93b51ad39705d3807710ddd18e3955b495e6c9ba7ff3be755a2720120e",
+          "answer": "af82a8a14fa0aa63bab2a7c276dc349406c998caa9bd3093fc01d4b3d57ae029",
+          "mode": "implication",
+          "facts": {
+            "closure": 60,
+            "implied": true,
+            "proof": {
+              "kind": "derivation",
+              "reached": 60,
+              "steps": [
+                [
+                  2,
+                  24
+                ],
+                [
+                  3,
+                  32
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 15.299999982118607,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "d999db055e6a4785",
+        "namespace": "f404c9510c0851445d9a10340738d806fba172f1450c71c920a008c4b790bdb5",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "cf1c15b572881d4e232ca4a0baae1d64a27d1d035f64254b98d57ed02efe2ca8",
+          "answer": "e7953a8783be0cc708ecf58068949100fc62ab10f5363ea4a88a5b360cdc2375",
+          "mode": "implication",
+          "facts": {
+            "closure": 8,
+            "implied": false,
+            "proof": {
+              "kind": "pair",
+              "agree": 8,
+              "violated_fds": [],
+              "violates_target": true
+            }
+          }
+        }
+      },
+      "elapsed_ms": 14.600000023841858,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "4deec1a5dbfc9ba7",
+        "namespace": "cf5e80912591993ea465b8b0b7d72046551b0741eba6accffa3fbfc718d1b549",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "c697f8abab29d71eed281ca83360ff88d18c9de88237ac3c4b6831c87dc1ae0e",
+          "answer": "fd17b70da94700baa717f1f53d0b7d437c3d4ae93170634f694af081f5a953a0",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              1,
+              6
+            ],
+            "checks": [
+              [
+                1,
+                7,
+                0
+              ],
+              [
+                6,
+                7,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 14.799999982118607,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "edd153e8b17c20a3",
+        "namespace": "02f03a0f6f132dca43f46e084431f5f5941c7ca3c88f0650ba1b41ad0d9c10f1",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "eb91938e899f89fcab58878b3c72e16d8aa59cdf07e367439f9f54891d436c34",
+          "answer": "b9a9ee8523f106e56d511e4a608e1aeb0f965f541fa930f7139146405386c877",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              7
+            ],
+            "checks": [
+              [
+                7,
+                7,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 14.200000017881393,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "385fb6c5f5077dd0",
+        "namespace": "511e67613a3af3df2fe88a9d73b601dcb4152de6250dd7654405a7b116939d18",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "c59be90645e6103b562b9b07e1e8918852a87894343808f6237cbd860fb2577b",
+          "answer": "890a85f5f74972002e2447452d21e0217853aed7fae831312c83006024d8b1ac",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              0
+            ],
+            "checks": [
+              [
+                0,
+                3,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 14.899999976158142,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "3d1559ce5a0e7726",
+        "namespace": "9cc7df1b00827d709e7a178d0d2742e6f290970801f56b69e5dcd184d5a45dbc",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "27f8f0656f9212596a3a1bda952a8c34748dc6571e9385405c20d13b6b3bc628",
+          "answer": "fdd8364ab471924f17af38dee1d61207a44158e4374cc79f6d9277eca2d97318",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                5,
+                7,
+                0
+              ],
+              [
+                6,
+                7,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "b1bbaa60834eecc0",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "f5651cb4703bdaed2fd02f8d7399542a8f2f140857e903a878ba75361491661e",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 60,
+              "steps": [
+                [
+                  2,
+                  24
+                ],
+                [
+                  3,
+                  32
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 15.600000023841858,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "d5a0dfa6be074171",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "d0377d97285f63186cbf920ba80cd773dfbd284ad0ff8588d6da281d2d53221c",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 28,
+              "steps": [
+                [
+                  2,
+                  24
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 14.699999988079071,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "6900f5fd4628c221",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "54b15eb68229eba4b91c933c052a948f4eeecdf65aac81d8a56232480d174640",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 60,
+              "steps": [
+                [
+                  2,
+                  24
+                ],
+                [
+                  3,
+                  32
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 14.199999988079071,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "412f5bb91ab708b2",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "b946491f9310f163060018c5a2908d451426e1b4edd545b1fd54091f57c69257",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 4,
+              "steps": [],
+              "error": {
+                "kind": "unmet-lhs",
+                "step": 0,
+                "missing": 16
+              }
+            }
+          }
+        }
+      },
+      "elapsed_ms": 15.600000023841858,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "45f5c8b4bfbb21a8",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "a9386e8379a8ec2d50ff5ba8c35322d64510f3d2d396b15012238544c704d10c",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 28,
+              "steps": [
+                [
+                  2,
+                  24
+                ]
+              ],
+              "error": {
+                "kind": "no-progress",
+                "step": 1,
+                "missing": 0
+              }
+            }
+          }
+        }
+      },
+      "elapsed_ms": 15,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "b89f366c92e47e68",
+        "namespace": "f95cb61e7c9a4d9f8fc7980aa4dd045540e9199b726fcda33844abf28b5480da",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "86ed1be6a78f43b085cf59b1091178c40328bc02e1d33f0e5171a1f8b66d9639",
+          "answer": "8b5b4d462de053b3b8821842059ad96dd1e35271f406bbc3a2a0eb17d48b0dcc",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                6,
+                63,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 16.099999994039536,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "e1596accbb09bcac",
+        "namespace": "f95cb61e7c9a4d9f8fc7980aa4dd045540e9199b726fcda33844abf28b5480da",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "86ed1be6a78f43b085cf59b1091178c40328bc02e1d33f0e5171a1f8b66d9639",
+          "answer": "b9a9ee8523f106e56d511e4a608e1aeb0f965f541fa930f7139146405386c877",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                7,
+                63,
+                3
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15.199999988079071,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "825112df38da89c2",
+        "namespace": "f95cb61e7c9a4d9f8fc7980aa4dd045540e9199b726fcda33844abf28b5480da",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "86ed1be6a78f43b085cf59b1091178c40328bc02e1d33f0e5171a1f8b66d9639",
+          "answer": "9cfba2138675e81c6cd19a67a759f052c4fdb66ae830cad374da00f1293a5ff9",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                9,
+                11,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15.5,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "ae66e3e1ef8df48b",
+        "namespace": "844cc93130f9e9b269c5982a207981bfa6f1017871d91ac60bc5e59a2bab337a",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "522541a8525f6dac6468c03a99c127d00728dd01674287f7e3c86e987a18d5e4",
+          "answer": "6ba1fd3978dd9af00aa7abebea75eaf1c612595b311820c577fb0915e0527ee3",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                5,
+                63,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "ae1592ef507c2222",
+        "namespace": "844cc93130f9e9b269c5982a207981bfa6f1017871d91ac60bc5e59a2bab337a",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "522541a8525f6dac6468c03a99c127d00728dd01674287f7e3c86e987a18d5e4",
+          "answer": "fdd8364ab471924f17af38dee1d61207a44158e4374cc79f6d9277eca2d97318",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              5,
+              6
+            ],
+            "checks": [
+              [
+                5,
+                63,
+                0
+              ],
+              [
+                6,
+                63,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 16,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "4deec1a5dbfc9ba7",
+        "namespace": "cf5e80912591993ea465b8b0b7d72046551b0741eba6accffa3fbfc718d1b549",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "c697f8abab29d71eed281ca83360ff88d18c9de88237ac3c4b6831c87dc1ae0e",
+          "answer": "fd17b70da94700baa717f1f53d0b7d437c3d4ae93170634f694af081f5a953a0",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              1,
+              6
+            ],
+            "checks": [
+              [
+                1,
+                7,
+                0
+              ],
+              [
+                6,
+                7,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15.099999994039536,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "e8b7a008d022f382",
+        "namespace": "cf5e80912591993ea465b8b0b7d72046551b0741eba6accffa3fbfc718d1b549",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "c697f8abab29d71eed281ca83360ff88d18c9de88237ac3c4b6831c87dc1ae0e",
+          "answer": "03d0d359eccb02875d54fa8c856d968e36dcbeaa3ca1e6e3f021fa9ea4762591",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              1,
+              6
+            ],
+            "checks": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 15.200000017881393,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "385fb6c5f5077dd0",
+        "namespace": "511e67613a3af3df2fe88a9d73b601dcb4152de6250dd7654405a7b116939d18",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "c59be90645e6103b562b9b07e1e8918852a87894343808f6237cbd860fb2577b",
+          "answer": "890a85f5f74972002e2447452d21e0217853aed7fae831312c83006024d8b1ac",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              0
+            ],
+            "checks": [
+              [
+                0,
+                3,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "elapsed_ms": 14.099999994039536,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "3e0bc1958f2ebbba",
+        "namespace": "511e67613a3af3df2fe88a9d73b601dcb4152de6250dd7654405a7b116939d18",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "c59be90645e6103b562b9b07e1e8918852a87894343808f6237cbd860fb2577b",
+          "answer": "05f714ee8a1cf0a253a7b3844f1bb277fda42950854c3ad1033cbdd6e0af323a",
+          "mode": "keys",
+          "facts": {
+            "candidate_keys": [
+              0
+            ],
+            "checks": []
+          }
+        }
+      },
+      "elapsed_ms": 15.300000011920929,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "6aafde19293ec6bf",
+        "namespace": "bfc74a0d6cc641b14bdb6336fef696bd2bb54044f1b6ea7113860f59e60fc2c9",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "d779ab93b51ad39705d3807710ddd18e3955b495e6c9ba7ff3be755a2720120e",
+          "answer": "af82a8a14fa0aa63bab2a7c276dc349406c998caa9bd3093fc01d4b3d57ae029",
+          "mode": "implication",
+          "facts": {
+            "closure": 60,
+            "implied": true,
+            "proof": {
+              "kind": "derivation",
+              "reached": 60,
+              "steps": [
+                [
+                  2,
+                  24
+                ],
+                [
+                  3,
+                  32
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 14.699999988079071,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "a519cca709354633",
+        "namespace": "bfc74a0d6cc641b14bdb6336fef696bd2bb54044f1b6ea7113860f59e60fc2c9",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "d779ab93b51ad39705d3807710ddd18e3955b495e6c9ba7ff3be755a2720120e",
+          "answer": "182bef1acccc819841c1613c4ae39fe6563768db3b816a6de5b2d06098d7ef9b",
+          "mode": "implication",
+          "facts": {
+            "closure": 60,
+            "implied": true,
+            "proof": {
+              "kind": "derivation",
+              "reached": 28,
+              "steps": [
+                [
+                  2,
+                  24
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 13.800000011920929,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "d999db055e6a4785",
+        "namespace": "f404c9510c0851445d9a10340738d806fba172f1450c71c920a008c4b790bdb5",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "cf1c15b572881d4e232ca4a0baae1d64a27d1d035f64254b98d57ed02efe2ca8",
+          "answer": "e7953a8783be0cc708ecf58068949100fc62ab10f5363ea4a88a5b360cdc2375",
+          "mode": "implication",
+          "facts": {
+            "closure": 8,
+            "implied": false,
+            "proof": {
+              "kind": "pair",
+              "agree": 8,
+              "violated_fds": [],
+              "violates_target": true
+            }
+          }
+        }
+      },
+      "elapsed_ms": 12.699999988079071,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "f44da1a2196b4906",
+        "namespace": "f404c9510c0851445d9a10340738d806fba172f1450c71c920a008c4b790bdb5",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "cf1c15b572881d4e232ca4a0baae1d64a27d1d035f64254b98d57ed02efe2ca8",
+          "answer": "a699fb528705bc97738aa735c6cbb2fcf486fb98b7f819424fe51b1133713050",
+          "mode": "implication",
+          "facts": {
+            "closure": 8,
+            "implied": false,
+            "proof": {
+              "kind": "pair",
+              "agree": 40,
+              "violated_fds": [],
+              "violates_target": true
+            }
+          }
+        }
+      },
+      "elapsed_ms": 13.300000011920929,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "77170bb40fe5d108",
+        "namespace": "f404c9510c0851445d9a10340738d806fba172f1450c71c920a008c4b790bdb5",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "cf1c15b572881d4e232ca4a0baae1d64a27d1d035f64254b98d57ed02efe2ca8",
+          "answer": "3547064c4e62ab1acb3e0d7fa5aa6ee47cbe32e8cccdca7d9bc405803290434d",
+          "mode": "implication",
+          "facts": {
+            "closure": 8,
+            "implied": false,
+            "proof": {
+              "kind": "pair",
+              "agree": 24,
+              "violated_fds": [
+                3
+              ],
+              "violates_target": true
+            }
+          }
+        }
+      },
+      "elapsed_ms": 15.599999994039536,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "2ab304b7a2cde0d6",
+        "namespace": "f404c9510c0851445d9a10340738d806fba172f1450c71c920a008c4b790bdb5",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "cf1c15b572881d4e232ca4a0baae1d64a27d1d035f64254b98d57ed02efe2ca8",
+          "answer": "0309ae514491e32b6c16ae80e7e104fb581f039da0994e21854b1220526b5b7a",
+          "mode": "implication",
+          "facts": {
+            "closure": 8,
+            "implied": false,
+            "proof": {
+              "kind": "pair",
+              "agree": 63,
+              "violated_fds": [],
+              "violates_target": false
+            }
+          }
+        }
+      },
+      "elapsed_ms": 14.5,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "b478f93c24508447",
+        "namespace": "bfc74a0d6cc641b14bdb6336fef696bd2bb54044f1b6ea7113860f59e60fc2c9",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "d779ab93b51ad39705d3807710ddd18e3955b495e6c9ba7ff3be755a2720120e",
+          "answer": "9fe1c79f528f38b21deecae0f4f51e1e6bf4d683dc2a5275001f50184bb4ea3d",
+          "mode": "implication",
+          "facts": {
+            "closure": 60,
+            "implied": true,
+            "proof": {
+              "kind": "pair",
+              "agree": 60,
+              "violated_fds": [],
+              "violates_target": false
+            }
+          }
+        }
+      },
+      "elapsed_ms": 15.799999982118607,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "syntax"
+      },
+      "elapsed_ms": 12.900000005960464,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "refused"
+      },
+      "elapsed_ms": 12.400000005960464,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "error"
+      },
+      "elapsed_ms": 11.800000011920929,
+      "remaining_workers": 0
+    },
+    {
+      "result": {
+        "status": "ok",
+        "key": "b1bbaa60834eecc0",
+        "namespace": "ee8408f3077dafa24340a91a6ef892a7708d371747eb525bb65bcec214c5ee86",
+        "summary": {
+          "kind": "text",
+          "text": "Dependency analysis completed; facts are not a grade."
+        },
+        "data": {
+          "format": 1,
+          "exercise": "32a46a8817f148b6159b590a3035f129135bca5ca682a589c7672ec642d6554b",
+          "answer": "f5651cb4703bdaed2fd02f8d7399542a8f2f140857e903a878ba75361491661e",
+          "mode": "closure",
+          "facts": {
+            "closure": 60,
+            "trace": {
+              "reached": 60,
+              "steps": [
+                [
+                  2,
+                  24
+                ],
+                [
+                  3,
+                  32
+                ]
+              ],
+              "error": null
+            }
+          }
+        }
+      },
+      "elapsed_ms": 13.599999994039536,
+      "remaining_workers": 0
+    }
+  ]
+}

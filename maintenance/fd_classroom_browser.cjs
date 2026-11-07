@@ -123,6 +123,8 @@ let server, browser;
     const phone = await mobile.newPage(); phone.on('pageerror',e => report.errors.push(e.message));
     await phone.goto(base+'/play?pin='+hello.pin);
     const modes = (process.env.TEXSTAGE_CLASSROOM_MODES ?? 'practice,keys_all,refuted').split(',').filter(Boolean);
+    let expectedScore = 0;
+    report.points = [];
     for (const item of modes) {
       console.log(`Starting ${actors}-answer burst: ${item}`);
       const slide = deck.slides.find(s => s.live?.some(l => l.item === item)); assert(slide);
@@ -209,8 +211,34 @@ let server, browser;
         report.bursts.push(burst); console.log(JSON.stringify(burst));
         await phone.screenshot({path:path.join(output,item+'-v'+version+'-phone.png'),fullPage:true});
       }
-      if (actors > 100) {
-        const pages = Math.ceil(actors/100);
+      assert(students.every(p => p.state.me.score === expectedScore && p.view().data.own.points === undefined), 'unreleased points remain private');
+      const maximum = JSON.parse(fs.readFileSync(path.join(root,'examples/functional-dependencies/activities',item+'.json'))).points || 0;
+      const publicationStart = performance.now();
+      const publication = host.envelope('reveal',{control:host.view().data.control_version});
+      const receipt = await host.send({t:'plugin.command',command:publication});
+      assert(receipt.receipt.accepted);
+      expectedScore += maximum;
+      await until(() => students.every(p => p.state.me.score === expectedScore &&
+        (!maximum || p.view().data.own.points === maximum)), 'all participant awards');
+      const publicationMs = performance.now() - publicationStart;
+      const replay = await host.send({t:'plugin.command',command:publication});
+      assert.deepEqual(replay.receipt, receipt.receipt);
+      assert(students.every(p => p.state.me.score === expectedScore));
+      assert(host.state.players.every(p => p.score === expectedScore));
+      const csvResponse = await fetch(base+'/api/results/'+host.state.session.id+'.csv', {headers:{'x-texquiz-key':'plugin-demo-key'}});
+      assert(csvResponse.ok, 'presenter results CSV');
+      const csv = await csvResponse.text();
+      const rows = csv.replace(/^\uFEFF/, '').trim().split(/\r?\n/).map(line => line.split(','));
+      assert.equal(rows.length, actors+1);
+      assert(rows.slice(1).every(row => Number(row[2]) === expectedScore), 'CSV totals match every actor');
+      if (maximum) {
+        const pointsColumn = rows[0].indexOf(`${item} activity points`);
+        assert(pointsColumn >= 0);
+        assert(rows.slice(1).every(row => Number(row[pointsColumn]) === maximum));
+      }
+      report.points.push({item,maximum,actors,total:expectedScore,publication_ms:publicationMs,replay:true,withheld:true,csv:true});
+      if (actors > 25) {
+        const pages = Math.ceil(actors/25);
         for (let page=1;page<pages;page++) {
           await presenter.getByRole('button',{name:'More answers',exact:true}).click();
           await until(()=>host.view().data.roster_page===page,'presenter answer page');
@@ -218,7 +246,7 @@ let server, browser;
         }
         const roster = host.view().data.participants;
         assert.equal(roster.at(-1).number,actors);
-        assert(roster.length<=100);
+        assert(roster.length<=25);
         const select=presenter.getByRole('combobox',{name:'Inspect an answer privately',exact:true});
         await select.selectOption(roster.at(-1).actor);
         await presenter.getByRole('button',{name:'Inspect an answer privately',exact:true}).click();
@@ -229,6 +257,12 @@ let server, browser;
         await presenter.screenshot({path:path.join(output,item+'-last-page.png'),fullPage:true});
         report.roster = {pages,last_student:actors,last_answer_inspected:true};
       }
+    }
+    const lastAward = report.points.at(-1);
+    if (lastAward?.maximum) {
+      await host.command('_reset',{}); expectedScore -= lastAward.maximum;
+      await until(() => students.every(p => p.state.me.score === expectedScore && !p.view().data.own), 'reset withdraws all latest activity awards');
+      report.pointsReset = {actors,remaining_score:expectedScore,other_activities_preserved:true};
     }
     if (process.env.TEXSTAGE_CLASSROOM_RECONNECT === '1') {
       console.log('Testing evaluator loss, same-actor resume, replay and reset races');

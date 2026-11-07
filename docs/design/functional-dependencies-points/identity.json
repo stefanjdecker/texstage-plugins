@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "host_commit": "7b9934d91f3affcc54e2ab6573c8c662cc87348a",
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.5.0",
+    "payload": "267754ba099babd5cd1082151f3a22b00f5fecda68167bf39145d89a5590b3cc"
+  },
+  "artifacts": {
+    "wheels/texstage-0.2.1.dev5-py3-none-any.whl": {
+      "sha256": "f33ef9953344ae9f776fe74aa21cafa28b5677eb98de63e37064da4155c4afc4",
+      "size": 3342763
+    },
+    "wheels/texstage_fd_lab-0.5.0-py3-none-any.whl": {
+      "sha256": "eddb31c188fbdf134bcbf6e111f7e7d13786b73f43ead99677f738330a6b4744",
+      "size": 64084
+    },
+    "wheels/texstage_fd_lab-0.5.0.tar.gz": {
+      "sha256": "e698689007a1188e98d871d87c58253901503ca45491003e8aef2be2a799e5e1",
+      "size": 62811
+    }
+  },
+  "checks": {
+    "fd_and_artifact_tests_passed": 141,
+    "host_distinct_tests_passed": 220,
+    "host_skipped": 1,
+    "host_skip_reason": "Windows test symlink creation not permitted",
+    "engine_probe_cases": 30,
+    "browser_worker_samples_each": 34,
+    "handoff_files_verified": 42,
+    "hosted_ci": "NOT_RUN",
+    "physical_phones": "DEFERRED",
+    "classroom": {
+      "actors": 600,
+      "evaluations": 2400,
+      "functional_passed": true,
+      "feedback_p95_under_10s": false,
+      "feedback_max_under_30s": true,
+      "input_p95_under_100ms": true,
+      "browser": "Chromium 151.0.7922.34",
+      "physical_phones": false,
+      "result_cache": false
+    }
+  }
+}

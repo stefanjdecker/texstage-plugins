@@ -1,22 +1,17 @@
 # FD Lab release conformance
 
-FD Lab 0.4.0 uses the new `actor-slots-v1` host contract on the paired
-`codex/600-participant-capacity` branches. The exact local host commit is
-`a67229a353b5b7bd3e058618ae71dfef619b0f81`. Functional checks passed locally;
-the feedback-latency gate remains open. This commit must be published before
-the collection's CI can fetch it. Use the host and provider artifacts recorded in the
-[capacity report](design/functional-dependencies-600-validation.md); do not use
-the previous host pin for this version. Rebuild bundles and start new sessions.
-The package version `0.2.1.dev3` alone does not identify a compatible host.
-
-Before merging or publishing this candidate, complete the
-[parallel storage integration review](design/functional-dependencies-capacity-integration.md).
-The shared checkout's newer uncommitted actor-record API overlaps this isolated
-branch; it was preserved and is not included in the measurements below.
+FD Lab 0.5.0 integrates typed actor records and fixed activity points using
+TeXStage 0.2.1.dev5, manifest revision 4. The isolated integration branch pins
+`7b9934d91f3affcc54e2ab6573c8c662cc87348a`. This commit snapshots the shared host API
+work without modifying its original checkout. See the
+[integration and scoring record](design/functional-dependencies-points-validation.md).
+Publish the compatible host commit before the collection CI can fetch this pin.
+Local validation is not a hosted CI run. Rebuild bundles and start new sessions.
+Earlier 0.4.0 capacity timings remain historical evidence for their own artifacts.
 
 The **previous 0.3.0 candidate** used the published TeXStage `codex/plugin-system` commit:
 [`34d0c537135f32b0690147dbb66dd8ff155987f8`](https://github.com/stefanjdecker/texstage/commit/34d0c537135f32b0690147dbb66dd8ff155987f8).
-The same historical commit is mirrored to GitLab. It does not support 0.4.0.
+The same historical commit is mirrored to GitLab. It does not support 0.5.0.
 This is an experimental candidate, not a catalog release or a stable API promise.
 
 [Host CI](https://github.com/stefanjdecker/texstage/actions/runs/42351229078) and
@@ -24,12 +19,12 @@ This is an experimental candidate, not a catalog release or a stable API promise
 passed for the earlier 0.3.0 source revisions recorded in the
 [F5 validation report](design/functional-dependencies-f5-validation.md).
 That report includes the tested wheel hashes, downloaded artifact verification,
-and its local capacity checks. Those hosted results are not evidence for 0.4.0.
+and its local capacity checks. Those hosted results are not evidence for 0.5.0.
 
 ## Build and verify
 
 The collection's [conformance workflow](../.github/workflows/conformance.yml)
-uses that immutable capacity host pin. Publish the host before pushing this
+uses that immutable integration host pin. Publish the host before pushing this
 collection branch, and retain the resulting hosted run evidence separately.
 Manual runs accept another full reviewed host SHA; the FD producer rejects
 floating refs and verifies that its checkout matches the requested commit.
@@ -71,10 +66,10 @@ required authoring evidence. Browser jobs run the restricted engine checks,
 the full English lesson sequence and the German UI checks.
 
 ```sh
-python maintenance/fd_artifacts.py verify handoff --host-commit a67229a353b5b7bd3e058618ae71dfef619b0f81
+python maintenance/fd_artifacts.py verify handoff --host-commit 7b9934d91f3affcc54e2ab6573c8c662cc87348a
 python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
 python -m pip install --no-deps handoff/wheels/*.whl
-python maintenance/fd_artifacts.py installed handoff --host-commit a67229a353b5b7bd3e058618ae71dfef619b0f81
+python maintenance/fd_artifacts.py installed handoff --host-commit 7b9934d91f3affcc54e2ab6573c8c662cc87348a
 ```
 
 The German UI test deliberately uses English browser locales. It exercises
@@ -91,8 +86,8 @@ remains evidence for its exact artifacts and named Windows hardware. Rebuilt
 source-normalized artifacts have new hashes; do not reuse old wheel or payload
 pins. The [F5 follow-up](design/functional-dependencies-f5-validation.md) records
 Chromium input-latency misses and a WebKit setup timeout for 0.3.0. The new
-[capacity record](design/functional-dependencies-600-validation.md) supersedes
-those measurements for 0.4.0. CI timing on shared runners is not a
+[capacity record](design/functional-dependencies-600-validation.md) records
+measurements for the historical 0.4.0 candidate. CI timing on shared runners is not a
 capacity guarantee for a lecture LAN.
 
 ## Release boundary

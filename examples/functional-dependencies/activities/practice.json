@@ -51,7 +51,7 @@
         "id": "building",
         "label": {
           "en": "Building",
-          "de": "Geb\u00e4ude"
+          "de": "Gebäude"
         }
       }
     ],
@@ -120,7 +120,8 @@
   },
   "explanation": {
     "en": "The person determines email; the workshop determines tutor and room; the room determines building.",
-    "de": "Die Person bestimmt die E-Mail, der Workshop Tutor und Raum und der Raum das Geb\u00e4ude."
+    "de": "Die Person bestimmt die E-Mail, der Workshop Tutor und Raum und der Raum das Gebäude."
   },
-  "feedback": "practice"
+  "feedback": "practice",
+  "points": 0
 }

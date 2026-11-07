@@ -26,6 +26,8 @@ def _fragment(public, worked, language, solutions):
     rows = [r'\begingroup\raggedright\small',
             r'\textbf{' + latex_escape(localized(public['title'], language)) + r'}\par',
             latex_escape(localized(public['prompt'], language)) + r'\par\smallskip']
+    if public['points']:
+        rows.append(label('Maximum points', 'Maximale Punkte') + ': ' + str(public['points']) + r'\par')
     if mode != 'keys':
         start = task['start' if mode == 'closure' else 'lhs']
         rows.append(r'\textbf{' + label('Starting set', 'Startmenge') + '}: ' + _set(seed, start) + r'\par')
@@ -83,6 +85,7 @@ def prepare_lesson(source, context):
     public.update(mode=seed['task']['mode'], seed=seed, feedback=source['feedback'], sharing_notice={
         'en': 'The presenter can share a saved answer with the class without your name.',
         'de': 'Die Lehrperson kann eine gespeicherte Antwort ohne Ihren Namen mit der Gruppe teilen.'})
+    public['points'] = source.get('points', 0)
     worked = {'answer': answer, 'explanation': copy.deepcopy(source['explanation'])}
     private = {'exercise': facts['exercise'], 'worked': worked}
     if public['mode'] == 'keys':

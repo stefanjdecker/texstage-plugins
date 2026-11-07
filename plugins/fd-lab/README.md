@@ -1,6 +1,6 @@
 # TeXStage Functional Dependencies and Keys Lab
 
-Experimental engine and prepared classroom lessons (F1-F3), version 0.4.0. This wheel computes attribute
+Experimental engine and prepared classroom lessons with fixed activity points, version 0.5.0. This wheel computes attribute
 closures, checks derivation steps, enumerates candidate keys exactly and checks
 FD implication using derivations or two-row counterexamples. It returns typed
 mathematical facts, not grades. The lesson adds LaTeX exercise/solution editions,
@@ -25,7 +25,7 @@ From the collection root:
 npm ci --ignore-scripts
 npm run check:workers
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.5.0-py3-none-any.whl
 python -m pytest plugins/fd-lab/tests -q --basetemp=artifacts/fd-tests
 python maintenance/fd_probe.py --output artifacts/fd-lab
 npx playwright install chromium firefox webkit
@@ -92,9 +92,9 @@ Malformed answers return `syntax`; mathematical mistakes return analysis facts;
 resource limits return `refused`. Each loaded state accepts one evaluation.
 The host supervises startup, the two-second execution deadline and disposal.
 
-Version 0.4.0 requires the matching host's `actor-slots-v1` contract. Answers are
-stored separately, with a 1,000-student storage ceiling and 100-answer presenter
-pages. Rebuild the deck and start a fresh session when upgrading from 0.3.0.
+Version 0.5.0 requires the matching host's manifest-4 `actor_records` and `scoring` contract. Answers are
+stored separately, with a 1,000-student storage ceiling and 25-answer presenter
+pages. Rebuild the deck and start a fresh session when upgrading from 0.3.0 or 0.4.0.
 The [600-participant record](../../docs/design/functional-dependencies-600-validation.md)
 documents measurements and remaining gates; storage capacity alone is not a
 response-time guarantee. Physical-phone validation remains deferred.
@@ -104,3 +104,10 @@ exact displayed payload with `texstage plugins --data ./fd-profile enable` and
 its ID, `--version` and `--payload`; then create a plugin lock. An uploaded deck
 or style never installs or enables code. Do not add this prototype to the public
 release catalog until immutable artifacts and host compatibility are published.
+
+Scoring is opt-in: top-level `"points": 100` awards 100 for a verified correct
+answer, zero for an incorrect answer. Omitted/zero means unscored. Points become
+public only on presenter reveal, including later completions of accepted answers.
+Replacement and retry never accumulate awards. Reset withdraws the award; scored
+rounds cannot reopen after reveal without reset. See the [lesson guide](../../docs/fd-lesson.md#awarding-points)
+and [current validation](../../docs/design/functional-dependencies-points-validation.md).

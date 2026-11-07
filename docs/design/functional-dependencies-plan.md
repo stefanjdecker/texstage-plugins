@@ -1,5 +1,15 @@
 # FD Lab: implementation plan
 
+Current integration, 2026-11-07: FD Lab 0.5.0 uses manifest revision 4, state
+schema 3, typed `SaveActor` records (25 summaries per page) and host-owned
+`SetCredit` / `PublishPoints` scoring. The old `ActorTransition` API is no longer
+used by this candidate. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+See the [integration and scoring record](functional-dependencies-points-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). The earlier development and
+capacity history below describes its original versions; those timings do not
+establish performance for this integration. Engine seed/answer/result formats
+remain v1. Upgrades require new bundles and sessions.
+
 Status, 2026-11-07: F1-F3 implemented; F5 hosted conformance passed for 0.3.0.
 FD Lab 0.4.0 now uses shared host actor slots, paginated presenter views and
 bounded evaluator batches. The [600-participant record](functional-dependencies-600-validation.md)
@@ -220,10 +230,10 @@ are unchanged.
 
 ## Recommended next step
 
-First reconcile the parallel host actor-record APIs as described in the
-[integration review](functional-dependencies-capacity-integration.md). The shared
-host now contains newer uncommitted record/points work; preserve it and use a
-stable combined revision for the next FD candidate.
+The parallel host storage APIs are reconciled in FD Lab 0.5.0 on the isolated
+`codex/fd-points-integration` branch. The shared working checkout was preserved;
+the common API snapshot has an exact local commit. See the
+[integration and scoring record](functional-dependencies-points-validation.md).
 
 Improve presenter evaluation throughput, especially in Firefox and WebKit, and
 repeat the unchanged latency gates. Publish the compatible host before using

@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 4,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.fdlab",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "FD reasoning and prepared closure, candidate-key and implication lessons.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -41,7 +41,8 @@
         "content_api": 1,
         "authoring_hook": "exercise",
         "state_hook": "exercise",
-        "state_schema": 2,
+        "state_schema": 3,
+        "participant_updates": "actor",
         "latex_packages": [
           "texstage_fd_lab/latex/texstage-fd-lab.sty"
         ],
@@ -96,14 +97,16 @@
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_fd_lab/schemas/commands/select.json"
+            "schema": "texstage_fd_lab/schemas/commands/select.json",
+            "record_actor_field": "actor"
           },
           "select-demonstration": {
             "from": [
               "presenter"
             ],
             "revision_policy": "latest",
-            "schema": "texstage_fd_lab/schemas/commands/select.json"
+            "schema": "texstage_fd_lab/schemas/commands/select.json",
+            "record_actor_field": "actor"
           },
           "demonstrate": {
             "from": [
@@ -121,7 +124,17 @@
           }
         },
         "fallback": "static-slide",
-        "state_model": "actor-slots-v1"
+        "actor_records": {
+          "capacity": 1000,
+          "page_size": 25,
+          "page_field": "actor_page",
+          "value_schema": "texstage_fd_lab/schemas/actor-value-v1.json",
+          "summary_schema": "texstage_fd_lab/schemas/actor-summary-v1.json"
+        },
+        "scoring": {
+          "policy": "fixed-v1",
+          "points_field": "points"
+        }
       }
     }
   },

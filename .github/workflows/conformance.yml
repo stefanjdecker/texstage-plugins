@@ -6,7 +6,7 @@ on:
     inputs:
       texstage_ref:
         description: Exact compatible Texstage commit SHA
-        default: a67229a353b5b7bd3e058618ae71dfef619b0f81
+        default: 7b9934d91f3affcc54e2ab6573c8c662cc87348a
         required: true
       capacity:
         description: Run the measured 600-student bursts and separate Chromium headroom check
@@ -20,7 +20,7 @@ defaults:
 env:
   PYTHONDONTWRITEBYTECODE: '1'
   PIP_DISABLE_PIP_VERSION_CHECK: '1'
-  HOST_COMMIT: ${{ inputs.texstage_ref || 'a67229a353b5b7bd3e058618ae71dfef619b0f81' }}
+  HOST_COMMIT: ${{ inputs.texstage_ref || '7b9934d91f3affcc54e2ab6573c8c662cc87348a' }}
 jobs:
   worker-bundles:
     runs-on: ${{ matrix.os }}
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'a67229a353b5b7bd3e058618ae71dfef619b0f81' }}
+          ref: ${{ inputs.texstage_ref || '7b9934d91f3affcc54e2ab6573c8c662cc87348a' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -112,7 +112,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'a67229a353b5b7bd3e058618ae71dfef619b0f81' }}
+          ref: ${{ inputs.texstage_ref || '7b9934d91f3affcc54e2ab6573c8c662cc87348a' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -208,7 +208,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'a67229a353b5b7bd3e058618ae71dfef619b0f81' }}
+          ref: ${{ inputs.texstage_ref || '7b9934d91f3affcc54e2ab6573c8c662cc87348a' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -310,7 +310,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'a67229a353b5b7bd3e058618ae71dfef619b0f81' }}
+          ref: ${{ inputs.texstage_ref || '7b9934d91f3affcc54e2ab6573c8c662cc87348a' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -347,7 +347,7 @@ jobs:
           git -C host-source rev-parse HEAD > artifacts/fd-lab/host-commit.txt
       - name: Stage identical wheels and prepared bundle for consumers
         run: |
-          python maintenance/fd_artifacts.py create --host-wheel host-source/dist/texstage-0.2.1.dev3-py3-none-any.whl --plugin-wheel dist/texstage_fd_lab-0.4.0-py3-none-any.whl --plugin-sdist dist/texstage_fd_lab-0.4.0.tar.gz --requirements host-source/requirements --bundles artifacts/fd-exports --host-commit "$HOST_COMMIT" --output engine-handoff
+          python maintenance/fd_artifacts.py create --host-wheel host-source/dist/texstage-0.2.1.dev5-py3-none-any.whl --plugin-wheel dist/texstage_fd_lab-0.5.0-py3-none-any.whl --plugin-sdist dist/texstage_fd_lab-0.5.0.tar.gz --requirements host-source/requirements --bundles artifacts/fd-exports --host-commit "$HOST_COMMIT" --output engine-handoff
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with: {name: fd-lab-wheels, path: engine-handoff/, retention-days: 14, if-no-files-found: error}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

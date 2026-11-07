@@ -1,0 +1,21 @@
+{
+  "browser": "firefox",
+  "version": "153.0",
+  "deckLanguage": "de",
+  "browserLocale": "en-US",
+  "presenterViewport": [
+    800,
+    500
+  ],
+  "phoneViewport": [
+    320,
+    740
+  ],
+  "keyboardPresenter": true,
+  "keyboardSubmission": true,
+  "touch": true,
+  "language": true,
+  "noHorizontalOverflow": true,
+  "realEvaluation": true,
+  "errors": []
+}

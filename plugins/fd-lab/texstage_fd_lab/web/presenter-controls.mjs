@@ -19,15 +19,16 @@ export function mount(ctx) {
   const previousPage = button(w.previousPage, () => send("roster-page", {page:current.data.roster_page - 1}), ctx.signal);
   const nextPage = button(w.nextPage, () => send("roster-page", {page:current.data.roster_page + 1}), ctx.signal);
   const pageLabel = el("span");
-  const inspect = button(w.inspect, () => send("select-answer", {actor:select.value}), ctx.signal);
+  const inspect = button(w.inspect, () => send("select-answer", {actor:select.value || null}), ctx.signal);
   const share = button(w.share, () => send("select-demonstration", {actor:select.value}), ctx.signal);
-  const clear = button(w.clear, () => send("select-demonstration", {actor:""}), ctx.signal);
+  const clear = button(w.clear, () => send("select-demonstration", {actor:null}), ctx.signal);
   const begin = button(w.beginWalk, () => send("demonstrate", {step:0}), ctx.signal);
   const prev = button(w.prev, () => send("demonstrate", {step:current.data.demo_step - 1}), ctx.signal);
   const next = button(w.nextStep, () => send("demonstrate", {step:current.data.demo_step + 1}), ctx.signal);
   const progress = el("p"), saved = el("div"), result = el("p");
   root.append(phase, open, close, reveal, reset, counts, previousPage, pageLabel, nextPage, select, inspect, share, clear,
     saved, result, begin, prev, next, progress, error);
+  root.append(el("p", ctx.item.points ? `${w.maximumPoints}: ${ctx.item.points}. ${w.pointsOnReveal}` : w.noPoints));
   const worked = workedPanel(root, w, seed);
   select.addEventListener("change", () => draw(), {signal:ctx.signal});
   function draw() {
@@ -41,7 +42,7 @@ export function mount(ctx) {
     pageLabel.textContent = ` ${w.page} ${d.roster_page + 1} / ${d.roster_pages} `;
     previousPage.disabled = busy || d.roster_page === 0;
     nextPage.disabled = busy || d.roster_page + 1 >= d.roster_pages;
-    open.disabled = busy || d.phase === "open";
+    open.disabled = busy || d.phase === "open" || (d.phase === "revealed" && ctx.item.points > 0);
     close.disabled = busy || d.phase !== "open";
     reveal.disabled = busy || !["open", "closed"].includes(d.phase);
     reset.disabled = busy; inspect.disabled = busy;

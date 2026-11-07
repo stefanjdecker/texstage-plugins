@@ -1,5 +1,15 @@
 # FD Lab: v1 contract
 
+Current integration, 2026-11-07: FD Lab 0.5.0 uses manifest revision 4, state
+schema 3, typed `SaveActor` records (25 summaries per page) and host-owned
+`SetCredit` / `PublishPoints` scoring. The old `ActorTransition` API is no longer
+used by this candidate. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+See the [integration and scoring record](functional-dependencies-points-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). The earlier development and
+capacity history below describes its original versions; those timings do not
+establish performance for this integration. Engine seed/answer/result formats
+remain v1. Upgrades require new bundles and sessions.
+
 Engine v1 implemented locally, 2026-11-06. See the
 [package](../../plugins/fd-lab/README.md), [F1 validation](functional-dependencies-f1-validation.md),
 [design](functional-dependencies.md) and [plan](functional-dependencies-plan.md).
@@ -14,10 +24,10 @@ and four audience view schemas in the package. Its commands include a guarded
 See the [lesson guide](../fd-lesson.md) and [F2 validation](functional-dependencies-f2-validation.md).
 F3 adds keys and implication to the same content capability and frozen answer
 variants. See the [F3 record](functional-dependencies-f3-validation.md). Owned package
-schemas define all implemented command/view variants. FD Lab 0.4.0 uses state
-schema 2 and the host's `actor-slots-v1` storage contract. Engine seed, answer
+schemas define all implemented command/view variants. FD Lab 0.5.0 uses state
+schema 3 and the host's typed actor records and fixed points. Engine seed, answer
 and result formats remain v1. See the
-[capacity record](functional-dependencies-600-validation.md) for exact artifacts
+[integration record](functional-dependencies-points-validation.md) for exact artifacts
 and the still-open feedback latency gate. Upgrades require a new bundle/session.
 
 ## Capability identities

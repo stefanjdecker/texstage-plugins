@@ -51,7 +51,7 @@
         "id": "building",
         "label": {
           "en": "Building",
-          "de": "Geb\u00e4ude"
+          "de": "Gebäude"
         }
       }
     ],
@@ -116,7 +116,8 @@
   },
   "explanation": {
     "en": "The workshop fixes its tutor and room; the room fixes the building.",
-    "de": "Der Workshop bestimmt Tutor und Raum; der Raum bestimmt das Geb\u00e4ude."
+    "de": "Der Workshop bestimmt Tutor und Raum; der Raum bestimmt das Gebäude."
   },
-  "feedback": "after-reveal"
+  "feedback": "after-reveal",
+  "points": 100
 }

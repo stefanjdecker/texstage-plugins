@@ -112,5 +112,6 @@
     "en": "A workshop and either a person or email are sufficient; neither member is removable.",
     "de": "Ein Workshop und entweder Person oder E-Mail genügen; kein Bestandteil ist entbehrlich."
   },
-  "feedback": "practice"
+  "feedback": "practice",
+  "points": 100
 }

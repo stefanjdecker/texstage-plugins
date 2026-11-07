@@ -13,7 +13,7 @@ from texstage.plugins.catalog import Catalog, discover
 from texstage.plugins.runtime import Runtime
 from texstage_fd_lab import model
 from texstage_fd_lab.authoring import prepare_lesson, TYPE, ENGINE
-from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES, MAX_ACTORS
+from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES, MAX_ACTORS, PAGE_SIZE, _category
 from test_engine import probe
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -54,28 +54,31 @@ def shared_state(state):
 def hook_context(state, ctx, actor=None, role=None):
     answers = state.get("answers", {})
     role = role or ctx["role"]
-    value = ctx | {"role": role, "actor": actor, "actor_state": copy.deepcopy(answers.get(actor)),
-                   "actor_count": len(answers)}
+    value = ctx | {"role": role, "actor": actor, "records": {"actor": actor,
+                   "value": copy.deepcopy(answers.get(actor)), "count": len(answers),
+                   "number": list(answers).index(actor)+1 if actor in answers else len(answers)+1}}
     if role == "presenter":
-        pages = max(1, (len(answers) + 99) // 100)
+        pages = max(1, (len(answers) + PAGE_SIZE - 1) // PAGE_SIZE)
         page = min(state.get("actor_page", 0), pages - 1)
-        value |= {"actor_pages": pages, "actor_page": page,
-                  "actors": copy.deepcopy(dict(list(answers.items())[page * 100:(page + 1) * 100]))}
+        value['record_page'] = {"pages": pages, "page": page, "total": len(answers),
+            "rows": [{"actor": a, "number": i, "summary": {"status": _category(s)}} for i,(a,s) in
+                     enumerate(list(answers.items())[page*PAGE_SIZE:(page+1)*PAGE_SIZE], page*PAGE_SIZE+1)]}
     return value
 
 
 def transition(state, event, ctx):
-    return Lesson().transition(shared_state(state), event, hook_context(state, ctx, event.get("actor")))
+    actor = event.get("actor")
+    if event.get("operation") in ('select-answer', 'select-demonstration'):
+        actor = event['payload']['actor']
+    return Lesson().transition(shared_state(state), event, hook_context(state, ctx, actor))
 
 
 def advance(state, event, ctx):
     result = json_value(transition(state, event, ctx))
     assert "refusal" not in result, result
     answers = dict(state.get("answers", {}))
-    if "actor_state" in result:
-        actor = event["actor"]
-        if result["actor_state"] is None: answers.pop(actor, None)
-        else: answers[actor] = result["actor_state"]
+    for effect in result['effects']:
+        if effect['kind'] == 'save-actor': answers[event['actor']] = effect['value']
     # A test-only aggregate for readable assertions; never passed to the hook.
     return result["state"] | {"answers": answers}, result["effects"]
 
@@ -232,7 +235,7 @@ def test_bounded_state_actor_versions_and_correlations(provider):
     for i in range(MAX_ACTORS):
         actor = 'actor' + str(i).zfill(3) + 'x' * 248
         state, effects = submit(state, ctx, actor=actor, answer=answer)
-        correlations.append(effects[-1]['correlation_id'])
+        correlations.append(next(e['correlation_id'] for e in effects if e['kind'] == 'evaluate'))
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
     assert len(set(correlations)) == MAX_ACTORS
     for actor, slot in list(state['answers'].items()):
@@ -245,22 +248,22 @@ def test_bounded_state_actor_versions_and_correlations(provider):
     assert refused == {'refusal': 'capacity'}
     actor = next(iter(state['answers']))
     state, effects = submit(state, ctx, actor=actor, version=1, answer=worked(), request='replacement1')
-    assert len(effects) == 1 and state['answers'][actor]['version'] == 2
+    assert {e['kind'] for e in effects} == {'evaluate', 'save-actor', 'set-credit'} and state['answers'][actor]['version'] == 2
     assert len(model.canonical(shared_state(state))) < STATE_BYTES
     assert len(model.canonical({'state': shared_state(state), 'effects': effects})) < 256 * 1024
     for role in ('participant', 'projector', 'presenter'):
         assert len(model.canonical(view(state, ctx, role, actor))) < 128 * 1024
     teacher = ctx | {'role': 'presenter'}
-    state, _ = advance(state, command('roster-page', {'control': state['control_version'], 'page': 9}), teacher)
+    state, _ = advance(state, command('roster-page', {'control': state['control_version'], 'page': 39}), teacher)
     roster = view(state, ctx, 'presenter')
-    assert roster['roster_pages'] == 10 and len(roster['participants']) == 100
-    assert [p['number'] for p in roster['participants']] == list(range(901, 1001))
+    assert roster['roster_pages'] == 40 and len(roster['participants']) == 25
+    assert [p['number'] for p in roster['participants']] == list(range(976, 1001))
     last = roster['participants'][-1]['actor']
     state, _ = advance(state, command('select-answer', {'control': state['control_version'], 'actor': last}), teacher)
     assert view(state, ctx, 'presenter')['selected']['answer'] == state['answers'][last]['answer']
     assert 'participants' not in view(state, ctx, 'participant', last)
     assert 'selected' not in view(state, ctx, 'projector')
-    assert transition(state, command('roster-page', {'control': state['control_version'], 'page': 10}), teacher) == {'refusal': 'invalid-page'}
+    assert transition(state, command('roster-page', {'control': state['control_version'], 'page': 40}), teacher) == {'refusal': 'invalid-page'}
 
 
 @pytest.fixture

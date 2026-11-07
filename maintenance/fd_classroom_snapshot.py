@@ -14,7 +14,7 @@ if 'answers' in shared:  # Retain the harness for historical 0.3.0 comparisons.
     actors = shared['answers']
 else:
     actors = {a: json.loads(s) for a, s in db.execute(
-        'SELECT actor,state FROM actor_states WHERE sid=? AND kind=? AND item=? AND epoch=?',
+        'SELECT actor,value FROM actor_records WHERE sid=? AND kind=? AND item=? AND epoch=?',
         (row[0], row[1], sys.argv[2], row[2]))}
 sizes = [len(canonical({a: s})) for a, s in actors.items()]
 print(json.dumps({'state_bytes': len(row[3].encode()), 'max_actor_slot_bytes': max(sizes, default=0),

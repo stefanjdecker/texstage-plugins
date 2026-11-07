@@ -87,6 +87,8 @@ async function until(check, label) {
     await until(async () => phoneView().own?.version === 2 && phoneView().own?.status === "saved", "saved replacement");
     await until(async () => (await controls.innerText()).includes("0 / 1 / 0 / 0"), "authoritative result");
     assert.equal(await phone.getByText("Your closure and derivation are correct.",{exact:true}).count(),0);
+    assert.equal(sockets.phone.at(-1).me.score,0);
+    assert.equal(phoneView().own.points,undefined);
     for (const role of ["phone","projector"]) {
       const d = latest(role), v = Object.values(d.views)[0].data;
       assert(!v.worked && !v.demonstration && !v.own?.feedback);
@@ -101,6 +103,10 @@ async function until(check, label) {
     assert(await controls.getByRole("button",{name:"Share selected answer anonymously",exact:true}).isDisabled());
     await controls.getByRole("button",{name:"Reveal solution",exact:true}).click();
     await phone.getByText("Your closure and derivation are correct.",{exact:true}).waitFor();
+    await phone.getByText("Points awarded: 100 / 100",{exact:true}).waitFor();
+    await until(() => sockets.phone.at(-1).me.score === 100, "released game score");
+    assert.equal(sockets.phone.at(-1).me.rank,1);
+    assert(await controls.getByRole("button",{name:"Open answers",exact:true}).isDisabled());
     await phone.getByText("One worked answer",{exact:true}).click();
     assert.equal(await history(phone).locator("li").count(),2);
     assert(!await phone.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), "320px overflow");
@@ -123,6 +129,8 @@ async function until(check, label) {
     await add(phone,"f1").click();
     presenter.once("dialog", dialog => dialog.accept());
     await controls.getByRole("button",{name:"Reset activity",exact:true}).click();
+    await until(() => sockets.phone.at(-1).me.score === 0, "reset withdraws activity points");
+    assert.equal(phoneView().own?.points,undefined);
     await phone.getByRole("button",{name:"Reload saved answer",exact:true}).waitFor();
     await phone.getByRole("button",{name:"Reload saved answer",exact:true}).click();
     assert.equal(await history(phone).locator("li").count(),0);
@@ -142,6 +150,8 @@ async function until(check, label) {
     await save(phone).tap();
     await phone.getByText("Your closure and derivation are correct.",{exact:true}).waitFor();
     assert(!phoneView().worked);
+    assert.equal(phoneView().own.points,undefined);
+    assert.equal(sockets.phone.at(-1).me.score,0);
     await presenter.locator("#next").click();
     async function enter(name) {
       await phone.getByRole("heading", {name:source(name).exercise.title.en, exact:true}).waitFor();
@@ -165,8 +175,12 @@ async function until(check, label) {
     }
     async function revealMode(name, proof = false) {
       assert(!phoneView().worked && !Object.values(latest("projector").views)[0].data.worked);
+      const previousScore = sockets.phone.at(-1).me.score;
+      assert.equal(phoneView().own.points,undefined);
       await controls.getByRole("button", {name:"Reveal solution",exact:true}).click();
       await until(() => Boolean(phoneView().worked), "worked answer revealed");
+      await phone.getByText("Points awarded: 100 / 100",{exact:true}).waitFor();
+      await until(() => sockets.phone.at(-1).me.score === previousScore + 100, "points added once for this mode");
       const roster = controls.getByLabel("Inspect an answer privately"); await roster.selectOption({index:1});
       await controls.getByRole("button", {name:"Inspect an answer privately",exact:true}).click();
       await controls.getByRole("button", {name:"Share selected answer anonymously",exact:true}).click();
@@ -242,7 +256,7 @@ async function until(check, label) {
     assert.deepEqual(errors,[]);
     const report = {browser:family,version:browser.version(),modes:["closure","keys-one","keys-all","implication-derivation","implication-counterexample","different-size-keys","empty-key"],feedbackPolicies:["after-reveal","practice"],viewport:320,
       realWorker:true,privacy:true,draftAndFocus:true,keyboard:true,touch:true,sameActorConflict:true,sharing:true,modeSpecificFeedback:true,alternativeKeys:true,alternativeCounterexamples:true,
-      walkthrough:true,reset:true,teardown:true,errors};
+      walkthrough:true,reset:true,teardown:true,points:true,pointsWithheld:true,pointsReset:true,errors};
     fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2)+"\n");
     console.log(JSON.stringify(report));
   } catch (error) {

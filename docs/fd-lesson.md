@@ -13,11 +13,11 @@ person. Students use FD buttons and attribute toggles; no JSON editing is needed
 The presenter opens submissions, inspects answers privately, reveals feedback,
 shares an anonymous response, or walks through one worked derivation.
 
-Version 0.4.0 implements closure, one/all candidate keys and FD implication.
+Version 0.5.0 implements closure, one/all candidate keys and FD implication.
 The deck continues with key sets, positive derivations, negative two-row witnesses,
 keys of different sizes and the empty key. The
-[600-participant record](design/functional-dependencies-600-validation.md) identifies
-the current capacity work. The F5 record describes the earlier 0.3.0 artifacts.
+[integration record](design/functional-dependencies-points-validation.md) identifies
+the current points and capacity checks. The F5 record describes the earlier 0.3.0 artifacts.
 This is not a catalog release.
 
 [Deutsche Anleitung](fd-lesson-de.md).
@@ -28,13 +28,13 @@ Use Python 3.12+, a matching experimental TeXStage host wheel, and a TeX install
 with pdfLaTeX/latexmk, Beamer, Latin Modern fonts, and English/German Babel support.
 The host must include prepared authoring, typed facts, structured command errors,
 atomic replacement of queued evaluations, and renderer mount reconciliation.
-Version 0.4.0 also requires `actor-slots-v1` support from the matching TeXStage
-`codex/600-participant-capacity` branch. The earlier published host pin
+Version 0.5.0 also requires manifest-4 `actor_records` and `scoring` support from the matching TeXStage
+`codex/fd-points-integration` branch. The earlier published host pin
 `34d0c537135f32b0690147dbb66dd8ff155987f8` cannot load this provider.
 See the [release procedure](fd-release.md) for source and artifact verification.
-The local tested host commit is `a67229a353b5b7bd3e058618ae71dfef619b0f81`;
+The local tested host commit is `7b9934d91f3affcc54e2ab6573c8c662cc87348a`;
 its publication and hosted CI checks are separate pending steps.
-Rebuild the bundle and start a new session when upgrading from 0.3.0.
+Rebuild the bundle and start a new session when upgrading from 0.3.0 or 0.4.0.
 A development version string alone does not identify a compatible build. Install into a fresh virtual environment,
 leaving existing course environments intact.
 
@@ -44,7 +44,7 @@ From the plugin collection root, with that environment activated:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.5.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -52,7 +52,7 @@ Review the inventory and replace `<printed-payload>` below with its displayed
 payload digest. Installation and explicit enablement are separate actions.
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.4.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.5.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -221,9 +221,11 @@ The engine supports 1-8 attributes, 0-24 FDs, up to 256 proposed key sets and 8 
 including empty determinants, cycles and redundant/trivial FDs. Keep classroom
 examples compact enough for the prepared slide box. The lesson stores one current
 answer per actor, with a 1,000-actor storage ceiling and 2 KiB reserved per slot.
-Shared state has a separate 160 KiB limit. The presenter browses 100 answers per
+Shared state has a separate 160 KiB limit. The presenter browses 25 answers per
 page using **Previous answers** and **More answers**, then selects an answer to
 inspect or share. Counts cover the whole class, including off-screen pages.
+Class counts appear on the presenter/projector views. Each phone receives its
+own answer updates, avoiding a class-wide refresh for every submission.
 The storage ceiling is not a throughput guarantee. The
 [600-participant record](design/functional-dependencies-600-validation.md)
 reports measured response times and remaining gates. Historical F4/F5 records
@@ -270,3 +272,28 @@ measurements only; it does not turn failed targets into passing evidence.
 Desktop emulation does not establish physical-phone or full accessibility
 coverage. The complete lesson scenario exercises English; the release UI
 scenario additionally tests German with an English browser locale.
+
+## Awarding points
+
+Add an optional top-level `"points": 100` to a lesson's activity JSON. The allowed
+range is 0–10,000. Omitting it or setting zero gives an unscored activity, preserving
+existing lesson sources. The example deck awards 100 points on every activity
+except `practice`, which awards none. The same field appears in prepared slides
+and handouts; rebuild the deck after changing it.
+
+A verified correct answer earns the full maximum. A verified incorrect answer
+earns zero. Pending, timed-out or unverifiable results remain ungraded and add
+no points. There is no partial credit, speed multiplier or streak bonus.
+The `feedback` setting controls when mathematical feedback appears; even with
+`"feedback": "practice"`, points are released only by **Reveal solution**.
+
+Before reveal, credits remain private and cannot alter totals or rankings.
+Reveal publishes awards to the student's phone, normal game total, ranking and
+results CSV. Accepted submissions that finish later receive their award then.
+Replacing an answer before reveal replaces its credit; resending a command or
+reconnecting cannot earn it twice. Navigation keeps earned points.
+
+After revealing a scored round, reset the activity before opening it again.
+**Reset activity** withdraws that activity's awards and clears its answers.
+A new round can earn a replacement award. Unscored activities can still reopen
+without reset. Students see their own award, never another student's private credit.

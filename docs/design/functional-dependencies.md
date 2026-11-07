@@ -1,5 +1,15 @@
 # Functional Dependencies and Keys Lab
 
+Current integration, 2026-11-07: FD Lab 0.5.0 uses manifest revision 4, state
+schema 3, typed `SaveActor` records (25 summaries per page) and host-owned
+`SetCredit` / `PublishPoints` scoring. The old `ActorTransition` API is no longer
+used by this candidate. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+See the [integration and scoring record](functional-dependencies-points-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). The earlier development and
+capacity history below describes its original versions; those timings do not
+establish performance for this integration. Engine seed/answer/result formats
+remain v1. Upgrades require new bundles and sessions.
+
 Status: F1 engine and F2/F3 prepared classroom modes implemented locally, 2026-11-06.
 The [package](../../plugins/fd-lab/README.md) supplies reasoning for all three modes
 and classroom editors for all three modes. See the [English guide](../fd-lesson.md),
@@ -9,9 +19,9 @@ Physical-phone, load and release gates remain separate work. The [implementation
 [checked examples](functional-dependencies/README.md) make the next work concrete.
 Reviewed against local host commit `de33515` and collection commit `5f00b62`.
 
-The 2026-11-07 capacity extension is implemented in FD Lab 0.4.0 with state
-schema 2. See the [current contract](functional-dependencies-contract.md) and
-[600-participant measurements](functional-dependencies-600-validation.md).
+The 2026-11-07 integration is implemented in FD Lab 0.5.0 with state
+schema 3. See the [current contract](functional-dependencies-contract.md) and
+[integration record](functional-dependencies-points-validation.md).
 The original domain design below remains applicable; storage capacity and
 measured feedback throughput are separate claims.
 

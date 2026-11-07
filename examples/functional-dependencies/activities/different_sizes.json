@@ -77,5 +77,6 @@
     "en": "Both {a} and {b,c} are minimal by inclusion, even though their sizes differ.",
     "de": "Sowohl {a} als auch {b,c} sind inklusionsminimal, obwohl sie verschieden groß sind."
   },
-  "feedback": "practice"
+  "feedback": "practice",
+  "points": 100
 }

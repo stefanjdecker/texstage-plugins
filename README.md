@@ -98,11 +98,13 @@ records earlier passing 64-answer runs. The
 [F5 report](docs/design/functional-dependencies-f5-validation.md) records passing
 hosted CI with English/German authoring and identical artifacts on Windows and
 three browsers, plus unresolved local input-latency and WebKit setup checks.
-The newer FD Lab 0.4.0 capacity branch adds separate student storage, 100-answer
-presenter pages and 1,000 storage slots. It requires the matching host capacity
-branch; rebuild bundles and start new sessions. See the
-[600-participant record](docs/design/functional-dependencies-600-validation.md)
-and [release procedure](docs/fd-release.md) for measured coverage and compatibility.
+FD Lab 0.5.0 uses the common typed actor records and points APIs, with 25-answer
+presenter pages and a 1,000-student storage ceiling. Optional fixed points are
+released on reveal and appear in totals, rankings and CSV exports. It requires
+the matching integration host; rebuild bundles and start fresh sessions.
+See the [integration record](docs/design/functional-dependencies-points-validation.md)
+and [release procedure](docs/fd-release.md). Earlier capacity reports retain their
+own artifact identities and timing limits.
 The security policy is unchanged. Physical-phone checks and catalog publication
 remain separate gates.
 
@@ -186,7 +188,7 @@ touch input, reset, teardown, blocked evaluator network access and timeouts.
 test, instead of compiling it locally.
 
 The CI workflows require a full reviewed host commit in `texstage_ref`. This
-capacity branch pins `a67229a353b5b7bd3e058618ae71dfef619b0f81`; publish that host
+integration branch pins `7b9934d91f3affcc54e2ab6573c8c662cc87348a`; publish that host
 commit before pushing this collection branch. Local checks do not establish a
 passing hosted run. Transaction CI has a
 separate engine-only Linux job (including Chromium, Firefox and WebKit) and a

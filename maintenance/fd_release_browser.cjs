@@ -54,6 +54,7 @@ const watch = page => {pages.push(page);page.on('pageerror',e=>errors.push(e.mes
   await phone.getByText('Antwort gespeichert; Feedback noch nicht freigegeben.',{exact:true}).waitFor();
   const reveal=controls.getByRole('button',{name:'Lösung auflösen',exact:true});
   await reveal.focus();await presenter.keyboard.press('Enter');
+  await phone.getByText('Vergebene Punkte: 100 / 100',{exact:true}).waitFor();
   await phone.getByText('Ihr Abschluss und Ihre Herleitung sind korrekt.',{exact:true}).waitFor();
   await controls.getByRole('button',{name:'Herleitung beginnen',exact:true}).scrollIntoViewIfNeeded();
   const presenterBounds=await controls.boundingBox();

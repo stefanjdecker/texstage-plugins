@@ -8,7 +8,7 @@ fachliche Regeln; Eindeutigkeit in einer Beispieltabelle beweist keine solche Re
 
 Das [Beispiel](../examples/functional-dependencies/lesson.tex) verwendet
 Workshop-Anmeldungen mit Person, E-Mail, Workshop, Tutor, Raum und Gebäude.
-Version 0.4.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
+Version 0.5.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
 Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
 [English guide](fd-lesson.md) · [Aktueller Kapazitätsbericht](design/functional-dependencies-600-validation.md).
 
@@ -16,13 +16,13 @@ Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
 
 Verwenden Sie eine neue Python-Umgebung (Python 3.12+) und das passende
 experimentelle TeXStage-Wheel. Bestehende Kursumgebungen bleiben unverändert.
-Version 0.4.0 benötigt `actor-slots-v1` aus dem passenden TeXStage-Branch
-`codex/600-participant-capacity`. Der frühere veröffentlichte Host-Pin
+Version 0.5.0 benötigt Manifest 4 mit `actor_records` und `scoring` aus dem passenden TeXStage-Branch
+`codex/fd-points-integration`. Der frühere veröffentlichte Host-Pin
 `34d0c537135f32b0690147dbb66dd8ff155987f8` kann diesen Provider nicht laden.
 Das [Release-Verfahren](fd-release.md) erklärt die Prüfung von Quellen und Artefakten.
-Der lokal geprüfte Host-Commit ist `a67229a353b5b7bd3e058618ae71dfef619b0f81`;
+Der lokal geprüfte Host-Commit ist `7b9934d91f3affcc54e2ab6573c8c662cc87348a`;
 seine Veröffentlichung und die gehosteten CI-Prüfungen stehen noch aus.
-Nach einem Upgrade von 0.3.0 das Bundle neu bauen und eine neue Sitzung starten.
+Nach einem Upgrade von 0.3.0 oder 0.4.0 das Bundle neu bauen und eine neue Sitzung starten.
 Die Entwicklungsversionsnummer allein identifiziert keinen kompatiblen Build. Für Quell-Builds installieren Sie zuerst
 die mit Hashes fixierten Entwicklungsabhängigkeiten und das Wheel dieses Hosts.
 Zusätzlich werden pdfLaTeX/latexmk, Beamer, Latin Modern sowie englische und
@@ -32,7 +32,7 @@ Im Stammverzeichnis von `texstage-plugins`, bei aktivierter Umgebung:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.5.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -40,7 +40,7 @@ Prüfen Sie das Inventar und ersetzen Sie `<printed-payload>` durch den angezeig
 Digest. Installation und explizite Freigabe sind getrennte Schritte:
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.4.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.5.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -172,7 +172,7 @@ Grenzen: 1–8 Attribute, 0–24 FDs, höchstens 8 produktive Schritte und 256
 vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 1.000 aktuelle Antworten
 mit je 2 KiB reserviertem Speicher abgelegt; der gemeinsame Zustand hat ein
 separates Limit von 160 KiB. **Vorherige Antworten** und **Weitere Antworten**
-blättern durch jeweils 100 Antworten. Die Zähler berücksichtigen die ganze Klasse.
+blättern durch jeweils 25 Antworten. Die Zähler berücksichtigen die ganze Klasse.
 Die Speichergrenze ist keine Durchsatzgarantie. Der
 [600-Teilnehmer-Bericht](design/functional-dependencies-600-validation.md)
 dokumentiert Messwerte und offene Prüfschritte. Frühere F4/F5-Messungen bleiben
@@ -185,3 +185,23 @@ Presenter die ausstehenden Prüfungen übernehmen; verspätete alte Ergebnisse
 werden abgewiesen. Ein Dienstausfall gilt nie als fachlich falsche Antwort.
 Physische Telefone, vollständige Barrierefreiheit und eine unveränderliche
 öffentliche Veröffentlichung bleiben eigene Prüfschritte.
+
+## Punkte vergeben
+
+Mit `"points": 100` auf oberster Ebene der Aktivitätsdatei erhält eine korrekte
+Antwort 100 Punkte. Erlaubt sind ganze Zahlen von 0 bis 10.000. Ohne das Feld
+oder mit 0 bleibt die Aktivität unbewertet. Im Beispiel vergibt jede Aktivität
+außer `practice` 100 Punkte. Nach Änderungen das Deck neu bauen.
+
+Eine nachweislich falsche Antwort erhält 0 Punkte. Ausstehende oder nicht
+verifizierbare Auswertungen bleiben unbewertet. Es gibt keine Teilpunkte,
+Zeitboni oder Serienboni. Auch bei sofortigem Übungsfeedback werden Punkte
+erst mit **Lösung auflösen** an Telefon, Gesamtwertung, Rangliste und CSV freigegeben.
+Später abgeschlossene, bereits angenommene Antworten erhalten ihre Punkte danach.
+Eine Ersatzantwort ersetzt die Bewertung; Wiederholung und Wiederverbindung
+verdoppeln keine Punkte.
+
+Eine bewertete, aufgelöste Aktivität muss vor erneutem Öffnen zurückgesetzt werden.
+**Aktivität zurücksetzen** entfernt ihre Antworten und zieht ihre vergebenen
+Punkte zurück. Navigation erhält die Punkte. Unbewertete Übungen lassen sich
+weiterhin ohne Zurücksetzen erneut öffnen.

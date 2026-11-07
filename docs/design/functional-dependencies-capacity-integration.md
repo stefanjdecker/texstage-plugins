@@ -1,5 +1,15 @@
 # Reconcile the parallel host storage work before release
 
+Current integration, 2026-11-07: FD Lab 0.5.0 uses manifest revision 4, state
+schema 3, typed `SaveActor` records (25 summaries per page) and host-owned
+`SetCredit` / `PublishPoints` scoring. The old `ActorTransition` API is no longer
+used by this candidate. Host pin: `7b9934d91f3affcc54e2ab6573c8c662cc87348a`.
+See the [integration and scoring record](functional-dependencies-points-validation.md)
+and [points guide](../fd-lesson.md#awarding-points). The earlier development and
+capacity history below describes its original versions; those timings do not
+establish performance for this integration. Engine seed/answer/result formats
+remain v1. Upgrades require new bundles and sessions.
+
 During the final 2026-11-07 comparison, the shared TeXStage checkout acquired
 additional uncommitted work based on `34d0c537135f32b0690147dbb66dd8ff155987f8`.
 It reports version `0.2.1.dev5` and includes manifest revisions 3/4, typed actor

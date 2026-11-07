@@ -156,7 +156,7 @@ def test_largest_key_submissions_fit_completed_slots(provider):
         actor = str(i).zfill(3) + 'x' * 253
         state, effects = submit(state, ctx, actor=actor, answer=answer)
         state, _ = advance(state, {'kind': 'evaluation.finished', 'actor': actor, 'binding': 'analysis',
-            'correlation_id': effects[-1]['correlation_id'], 'outcome': {'status': 'ok', 'data': facts}}, ctx)
+            'correlation_id': next(e['correlation_id'] for e in effects if e['kind'] == 'evaluate'), 'outcome': {'status': 'ok', 'data': facts}}, ctx)
         assert state['answers'][actor]['status'] == 'saved'
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
     assert len(model.canonical(shared_state(state))) < STATE_BYTES

@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 export const local = (value, language) => value?.[language?.startsWith("de") ? "de" : "en"] || "";
 export const words = language => language?.startsWith("de") ? {
+  maximumPoints:"Maximale Punkte", awardedPoints:"Vergebene Punkte", noPoints:"Übung ohne Punkte.",
+  pointsOnReveal:"Eine korrekte Antwort erhält die volle Punktzahl bei der Auflösung. Danach ist ein Zurücksetzen erforderlich.",
   previousPage:"Vorherige Antworten", nextPage:"Weitere Antworten", page:"Seite",
   rosterStatus:{pending:"ausstehend",correct:"korrekt",incorrect:"nicht korrekt",unavailable:"nicht verfügbar"},
   keysHelp:"Wählen Sie eine Menge und fügen Sie sie Ihrer Antwort hinzu. Ein Kandidatenschlüssel bestimmt alle Attribute und hat kein entfernbares Mitglied.",
@@ -60,6 +62,8 @@ export const words = language => language?.startsWith("de") ? {
   stale:"Der Stand hat sich geändert. Prüfen Sie die aktuelle Ansicht und versuchen Sie es erneut.",
   capacity:"Die Kapazität ist erreicht. Ihre Antwort bleibt erhalten.", queue:"Die Auswertung ist ausgelastet. Bitte erneut versuchen."
 } : {
+  maximumPoints:"Maximum points", awardedPoints:"Points awarded", noPoints:"Practice without points.",
+  pointsOnReveal:"A correct answer earns full points when results are revealed. Reset before another scored round.",
   previousPage:"Previous answers", nextPage:"More answers", page:"Page",
   rosterStatus:{pending:"pending",correct:"correct",incorrect:"incorrect",unavailable:"unavailable"},
   keysHelp:"Select a set and add it to your answer. A candidate key determines all attributes and has no removable member.",

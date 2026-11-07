@@ -351,7 +351,7 @@
     },
     "participants": {
       "type": "array",
-      "maxItems": 100,
+      "maxItems": 25,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -628,12 +628,12 @@
     "roster_page": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 9
+      "maximum": 39
     },
     "roster_pages": {
       "type": "integer",
       "minimum": 1,
-      "maximum": 10
+      "maximum": 40
     }
   },
   "required": [

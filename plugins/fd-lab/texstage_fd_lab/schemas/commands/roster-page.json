@@ -10,7 +10,7 @@
     "page": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 9
+      "maximum": 39
     }
   },
   "required": [

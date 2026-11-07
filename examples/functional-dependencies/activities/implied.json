@@ -116,5 +116,6 @@
     "en": "The two FD applications derive the building.",
     "de": "Die beiden FD-Anwendungen leiten das Gebäude her."
   },
-  "feedback": "practice"
+  "feedback": "practice",
+  "points": 100
 }
