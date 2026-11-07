@@ -32,9 +32,14 @@ need not match the worked example. Presenters can compare two saved answers,
 share checked evidence and reveal the solution.
 
 Start with the [seven-slide example](examples/normalization/lesson.tex).
-Version 0.4.0 supports bounded records for a 600-student target and a 1,000-answer
-ceiling. The [capacity record](docs/design/normalization-workshop-600-validation.md)
-separates correctness from measured latency and classroom acceptance.
+Version 0.5.0 adds configurable fixed activity points, published on reveal.
+Only the latest verified answer counts; repeated saves never accumulate points
+and reset withdraws the activity's award. The examples award 1,000 points each;
+older lessons remain practice. Use TeXStage 0.2.1.dev7 or newer with these contracts.
+The [points validation](docs/design/normalization-workshop-points-validation.md)
+and [capacity record](docs/design/normalization-workshop-600-validation.md)
+separate correctness for 600 students and a 1,000-answer ceiling from measured
+latency and classroom acceptance.
 No catalog release is published.
 
 ## Transaction schedules: implemented engine, planned lesson

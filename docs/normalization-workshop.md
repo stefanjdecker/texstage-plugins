@@ -18,9 +18,9 @@ explore a lossless BCNF decomposition that loses an FD. Its data are synthetic.
 
 Use Python 3.12+ and pdfLaTeX/latexmk. Start with an isolated environment and a
 compatible experimental TeXStage wheel. The tested host revision and artifact
-hashes are in the [600-student validation record](design/normalization-workshop-600-validation.md).
-Version 0.4.0 requires the host's bounded item records, actor-scoped updates and
-deterministic result reuse. The dependency version `texstage>=0.2.1.dev4`
+hashes are in the [points validation record](design/normalization-workshop-points-validation.md).
+Version 0.5.0 requires host points plus bounded item records, actor-scoped updates
+and deterministic result reuse. The dependency version `texstage>=0.2.1.dev7`
 alone does not identify unpublished
 host changes. No catalog release of this workshop is published yet.
 
@@ -29,14 +29,14 @@ requirements and host wheel first. From the plugin collection root:
 
 ```sh
 python maintenance/build_wheels.py --package normalization-workshop
-python -m pip install --no-deps dist/texstage_normalization_workshop-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_normalization_workshop-0.5.0-py3-none-any.whl
 texstage plugins --data ./normalization-profile inspect io.github.stefanjdecker.normalizationworkshop
 ```
 
 Review the provider and use its printed payload digest below:
 
 ```sh
-texstage plugins --data ./normalization-profile enable io.github.stefanjdecker.normalizationworkshop --version 0.4.0 --payload <printed-payload>
+texstage plugins --data ./normalization-profile enable io.github.stefanjdecker.normalizationworkshop --version 0.5.0 --payload <printed-payload>
 texstage plugins --data ./normalization-profile lock --output ./normalization.lock.json
 texstage present examples/normalization/lesson.tex --activities examples/normalization/lesson.activities.json --data ./normalization-profile --plugins-lock ./normalization.lock.json --no-tunnel
 ```
@@ -90,6 +90,50 @@ trust model. Each activity stores at most 1,000 pseudonymous answers.
 Existing students can replace their answers at the ceiling. Capacity and measured
 response time are separate; see the classroom-size guidance below.
 
+## Points
+
+The example activities each award **1,000 points** when the latest saved answer
+meets the task criteria. Points become public only when the presenter selects
+**Reveal answer**. Closing, inspecting or sharing an answer does not publish them.
+
+To configure an activity, change the top-level fields in its lesson JSON:
+
+```json
+{
+  "format": 2,
+  "points": 1000,
+  "exercise": { "...": "keep the existing exercise with format 1" },
+  "worked_answer": { "...": "keep the existing answer" },
+  "explanation": { "en": "...", "de": "..." }
+}
+```
+
+This is an abbreviated structure; retain the full existing exercise, worked
+answer and bilingual explanation. `points` must be an integer from 0 to 10,000.
+Use zero for practice. Existing `"format": 1` lessons without a points field
+continue as practice. Adding points requires changing the lesson envelope to
+format 2; the nested exercise stays format 1.
+
+- Classification earns the full award for the correct highest normal form and
+  the required valid FD witness.
+- Decomposition earns the full award when it covers the attributes, reaches the
+  requested normal form, is lossless and preserves FDs when the task requires it.
+  A different valid decomposition can earn full points.
+- A verified answer that misses the criteria earns zero. Pending, unavailable
+  or unverified results have no confirmed award; they are not marked incorrect.
+- Only the latest saved answer counts. Repeated saves replace its contribution;
+  they never accumulate more points. There is no speed or streak bonus.
+- Results from already accepted current submissions can arrive after reveal
+  and then update that student's points. Superseded answers cannot earn points.
+- Reset clears the activity's answers and withdraws its previous awards.
+  Repeating a round can earn one replacement award. Other activities and quizzes
+  keep their points; ordinary navigation also preserves them.
+
+After reveal, phones show their own activity points. TeXStage adds released
+awards to the usual total/ranking and CSV export. Before reveal, neither totals
+nor ranks expose private correctness. These are formative game points, not an
+automatic university grading scheme.
+
 ## Keyboard and language
 
 Use Tab and Shift+Tab to move, Space to toggle an attribute, and Enter to activate
@@ -115,10 +159,10 @@ the TeXStage phone-language fix identified in the accessibility validation
 record. A provider version alone cannot fix an older host. The worked explanation
 still follows the authored sidecar language.
 
-Version 0.4.0 uses state v3 and paginated presenter/projector views.
-Participant, engine and authoring formats are unchanged; all frozen v1/v2
-schema resources remain available. Existing v2 sessions stay in their original
-pinned environment; there is no automatic session migration.
+Version 0.5.0 uses manifest revision 4, state v3, participant view v3 and
+paginated presenter/projector views v3. Authoring v2 adds points. Engine schemas
+and all 25 previous schema resources remain unchanged. Existing sessions stay
+in their original pinned environments; there is no automatic migration.
 Review/enable the new payload, update the lock and rebuild the bundle in an
 isolated profile. Use a fresh session when changing the pinned environment.
 
@@ -289,7 +333,9 @@ new answer; keep the draft and retry after pending work drains. Do not raise
 worker, state or queue safety budgets to hide overload.
 
 The [600-student validation record](design/normalization-workshop-600-validation.md)
-reports the exact tested artifacts, workloads and observed timings. All three
+reports the earlier unscored 0.4.0 artifacts and timings. Scoring adds ledger work;
+see the [0.5.0 points record](design/normalization-workshop-points-validation.md)
+for the current checks. All three
 600-student runs preserved correct answers, with feedback p95 below 13.1 seconds.
 The final WebKit run reached 5.43 seconds at acknowledgement p95, slightly over
 the five-second target; this timing gate remains open. Synthetic

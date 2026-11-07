@@ -66,13 +66,19 @@ export function mount(ctx){
     catch(e){pending=null;error.textContent=errorText(e,w);if(["stale-answer","stale-epoch"].includes(e?.code))hasConflict=true;}
     finally{busy=false;draw();}
   },ctx.signal);
-  root.append(phase,notice,editor,conflict,save,message,error);
+  const points=el("p","",{class:"nw-points",role:"status","aria-live":"polite"});
+  root.append(phase,notice,points,editor,conflict,save,message,error);
   const evidence=el("section",undefined,{class:"nw-saved-evidence"}),t=discussionWords(ctx.language);
   root.append(evidence);
   let evidenceKey="";
   const worked=workedPanel(root,ctx.item,w);
   function draw(){
     if(!current)return;const d=current.data;
+    const maximum=ctx.item.points||0;
+    points.textContent=maximum===0?w.pointsPractice:d.points!==null&&d.points!==undefined?
+      w.points+": "+d.points+" / "+maximum:
+      d.phase==="revealed"?(d.status==="pending"?w.pointsPending:d.status==="unavailable"?w.pointsUnavailable:w.empty):
+      w.pointsMaximum+": "+maximum+". "+w.pointsReveal;
     phase.textContent=w.phase+": "+w[d.phase];conflict.hidden=!hasConflict;
     save.disabled=busy||pending!==null||hasConflict||!d.active||d.phase!=="open";
     message.textContent=dirty?w.draft:d.feedback?feedback(d.feedback,ctx.item,w):w[d.status||"empty"];

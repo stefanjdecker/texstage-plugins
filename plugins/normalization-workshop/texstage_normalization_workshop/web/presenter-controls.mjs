@@ -45,7 +45,8 @@ export function mount(ctx){
   function draw(){
     if(!current)return;const d=current.data;
     summary.textContent=w.phase+": "+w[d.phase]+". "+w.received+": "+d.counts.received+" · "+
-      t.pending+": "+d.counts.pending+" · "+t.checked+": "+d.counts.checked+" · "+t.unavailable+": "+d.counts.unavailable;
+      t.pending+": "+d.counts.pending+" · "+t.checked+": "+d.counts.checked+" · "+t.unavailable+": "+d.counts.unavailable+" · "+
+      (ctx.item.points?w.pointsMaximum+": "+ctx.item.points+". "+w.pointsReveal:w.pointsPractice);
     for(const [op,b]of Object.entries(buttons)){
       const legal=op==="open"?["introduce","closed"].includes(d.phase):op==="close"?d.phase==="open":op==="reveal"?d.phase==="closed":
         op==="unshare"?d.shared.length>0:op==="clear-selection"?d.selected.length>0:true;

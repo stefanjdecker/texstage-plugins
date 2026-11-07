@@ -1,5 +1,12 @@
 # Normalization Workshop: plugin design
 
+Version 0.5.0 connects verified answers to the host points ledger: configurable
+fixed awards, publication on reveal, one current contribution per actor/item,
+and withdrawal on reset. Format-1 lessons remain practice; format 2 declares
+points. See the [points evidence](normalization-workshop-points-validation.md)
+and [user guide](../normalization-workshop.md#points). Capacity measurements below
+identify their original unscored artifacts and are not silently relabelled.
+
 Status: N1–N3 and the N4 comparison/evidence slice implemented locally.
 The [workshop guide](../normalization-workshop.md),
 [N4 validation record](normalization-workshop-n4-validation.md) and

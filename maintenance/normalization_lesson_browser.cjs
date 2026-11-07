@@ -4,7 +4,7 @@ const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("n
 const {spawn}=require("node:child_process");
 const playwright=require(process.env.TEXSTAGE_PLAYWRIGHT_MODULE||"playwright");
 const root=path.resolve(__dirname,".."),bundle=path.resolve(process.argv[2]),family=process.env.BROWSER||"chromium";
-const output=path.join(root,"artifacts","normalization-discussion",family);fs.mkdirSync(output,{recursive:true});
+const output=process.env.NORMALIZATION_LESSON_OUTPUT?path.resolve(process.env.NORMALIZATION_LESSON_OUTPUT):path.join(root,"artifacts","normalization-discussion",family);fs.mkdirSync(output,{recursive:true});
 const profile=fs.mkdtempSync(path.join(output,"profile-")),port=Number(process.env.TEXSTAGE_TEST_PORT||18759),base="http://127.0.0.1:"+port;
 const deck=JSON.parse(fs.readFileSync(path.join(bundle,"deck.json")));
 const server=spawn(process.env.PYTHON||"python",[path.join(__dirname,"serve_lesson.py"),"--bundle",bundle,"--data",profile,"--port",String(port)],
@@ -26,6 +26,7 @@ async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await
    }));
   };
   const descriptor=role=>sockets[role].at(-1)?.plugins?.items?.[0];
+  const score=role=>sockets[role].at(-1)?.me?.score;
   const view=(role,surface)=>{const d=descriptor(role);return surface?d?.views?.[surface]?.data:Object.values(d?.views||{})[0]?.data;};
   const presenter=await desktop.newPage();watch(presenter,"presenter");
   await presenter.goto(base+"/stage?bundle="+deck.bundle);
@@ -73,6 +74,8 @@ async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await
    assert(!s.includes('"private":')&&!s.includes('"explanation":')&&!s.includes('"evaluations":'));
   }
 
+  assert.equal(view("phone").points,null);
+  assert.equal(score("phone"),0,"replacement saves cannot publish points");
   const bobContext=await browser.newContext({viewport:{width:320,height:740},hasTouch:true,isMobile:family!=="firefox"});
   const bob=await bobContext.newPage();watch(bob,"bob");await bob.goto(base+"/play?pin="+pin);
   await bob.locator("#nick").fill("Second learner");await bob.locator("#join button[type=submit]").click();
@@ -113,8 +116,22 @@ async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await
   await projector.getByText("The final relation satisfies every stated FD.",{exact:true}).waitFor();
   await projector.screenshot({path:path.join(output,"comparison-lossy.png"),fullPage:true});
   assert.equal(view("bob").analysis,null,"private phone evidence before reveal");
+  assert.equal(view("phone").points,null);assert.equal(view("bob").points,null);
+  assert.equal(score("phone"),0,"sharing checks cannot publish points");
+  assert.equal(score("bob"),0,"a replaced correct answer cannot leak points");
   await action("Stop sharing");await action("Clear selection");await action("Reveal answer");
   await until(()=>view("phone")?.feedback?.accepted===true,"reveal feedback");
+  await until(()=>view("phone")?.points===1000&&score("phone")===1000&&view("bob")?.points===0&&score("bob")===0,"released points from latest answers");
+  await phone.locator(".nw-points").filter({hasText:"1000 / 1000"}).waitFor();
+  await bob.locator(".nw-points").filter({hasText:"0 / 1000"}).waitFor();
+  assert.equal(sockets.phone.at(-1).me.rank,1);
+  const download=presenter.waitForEvent("download");
+  await presenter.locator("#csv").click();
+  const csvFile=path.join(output,"points-results.csv");await (await download).saveAs(csvFile);
+  const csv=fs.readFileSync(csvFile,"utf8");
+  assert(csv.includes("registration activity points")&&csv.includes("registration activity credit"),"released points exported to CSV");
+  assert(csv.split(/\r?\n/).some(line=>line.includes("Test learner")&&line.endsWith(",1.0,1000")),"CSV latest correct answer award");
+  assert(csv.split(/\r?\n/).some(line=>line.includes("Second learner")&&line.endsWith(",0.0,0")),"CSV replaced answer earns zero");
   await phone.getByText("One worked answer",{exact:true}).waitFor();
   await until(()=>view("bob")?.analysis?.facts?.join?.lossless===false,"own lossy proof");
   await bob.locator("summary").filter({hasText:/^Explain lossless join$/}).click();
@@ -144,12 +161,14 @@ async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await
   await phone.getByRole("button",{name:"Load saved answer",exact:true}).click();
   assert.equal(await phone.locator(".nw-editor input:checked").count(),0);
   assert.equal(view("phone").answer_version,0);
+  await until(()=>score("phone")===0&&view("phone").points===null,"reset withdraws score");
   // Classification with a checked FD witness.
   await presenter.locator("#next").click();await phone.getByLabel("Highest normal form").waitFor();await action("Open answers");
   await phone.getByLabel("Highest normal form").selectOption("3nf");await phone.locator("fieldset").getByLabel("U",{exact:true}).check();
   await phone.getByLabel("Right side",{exact:true}).selectOption("2");await save.tap();
   await until(()=>view("phone")?.status==="checked","classification result");
   await action("Close answers");await action("Reveal answer");await until(()=>view("phone")?.feedback?.accepted===true,"classification reveal");
+  await until(()=>view("phone")?.points===1000&&score("phone")===1000,"classification points");
   await phone.screenshot({path:path.join(output,"phone-classification.png"),fullPage:true});
   // Navigation/remount retains the authoritative saved answer.
   await presenter.locator("#next").click();await phone.getByRole("heading",{name:"A BCNF trade-off",exact:true}).waitFor();
@@ -159,6 +178,7 @@ async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await
   await setRelations(phone,[["S","U"],["T","U"]]);await save.tap();await until(()=>view("phone")?.status==="checked","tradeoff result");
   await action("Close answers");await action("Reveal answer");await until(()=>view("phone")?.feedback?.accepted===true,"tradeoff reveal");
   assert.equal(view("phone").feedback.preserved,false);
+  await until(()=>view("phone").points===1000&&score("phone")===2000,"tradeoff award without required FD preservation");
   await phone.locator("summary").filter({hasText:/^Explain FD preservation$/}).click();
   await phone.getByText("These two rows violate the original FD. Their projections still satisfy every component's projected FDs.",{exact:true}).waitFor();
   await phone.screenshot({path:path.join(output,"phone-lost-fd.png"),fullPage:true});
@@ -170,7 +190,8 @@ async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await
   assert.deepEqual(errors,[]);
   const report={browser:family,version:browser.version(),modes:["classify","decompose"],viewport:320,
     installedWorker:true,privacy:true,draftAndFocus:true,keyboardActivation:true,touch:true,sameActorConflict:true,
-     sharing:true,reset:true,navigationRestoresSaved:true,teardown:true,comparison:true,explicitChecksSharing:true,lossyCounterexample:true,lostFDExample:true,chasePlayback:true,proofFocusPreserved:true,errors};
+     sharing:true,reset:true,navigationRestoresSaved:true,teardown:true,comparison:true,explicitChecksSharing:true,lossyCounterexample:true,lostFDExample:true,chasePlayback:true,proofFocusPreserved:true,
+     points:{privateUntilReveal:true,correct:1000,latestIncorrect:0,resetWithdraws:true,classification:1000,totalAfterTradeoff:2000,csv:true},errors};
   fs.writeFileSync(path.join(output,"report.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify(report));
  }catch(error){
   console.error(error.stack);fs.writeFileSync(path.join(output,"failure-error.txt"),String(error.stack));

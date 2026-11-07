@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "exercise": {
     "format": 1,
     "id": "tutor_tradeoff",
@@ -69,5 +69,6 @@
   "explanation": {
     "en": "The keys are ST and SU, so every attribute is prime. U -> T violates BCNF but not 3NF. SU and TU give a lossless BCNF decomposition. They do not preserve ST -> U; different tutors for the same student/topic can satisfy both local schemas.",
     "de": "ST und SU sind Kandidatenschlüssel; alle Attribute sind prim. U -> T verletzt BCNF, aber nicht 3NF. SU und TU liefern eine verlustlose BCNF-Zerlegung. ST -> U bleibt nicht erhalten; beide Teilrelationen können lokal gültig sein, obwohl eine Person mehrere Betreuungspersonen für ein Thema hat."
-  }
+  },
+  "points": 1000
 }

@@ -1,5 +1,12 @@
 # Normalization Workshop: implementation plan
 
+Version 0.5.0 connects verified answers to the host points ledger: configurable
+fixed awards, publication on reveal, one current contribution per actor/item,
+and withdrawal on reset. Format-1 lessons remain practice; format 2 declares
+points. See the [points evidence](normalization-workshop-points-validation.md)
+and [user guide](../normalization-workshop.md#points). Capacity measurements below
+identify their original unscored artifacts and are not silently relabelled.
+
 Status: N1–N3 and the N4 comparison/evidence slice implemented locally.
 Version 0.4.0 adds bounded item records and paginated state/views v3 for a
 600-student target and 1,000-answer ceiling. The nineteen old schemas remain

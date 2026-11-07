@@ -1,15 +1,15 @@
 [build-system]
-requires = ["setuptools>=77", "texstage>=0.2.1.dev4"]
+requires = ["setuptools>=77", "texstage>=0.2.1.dev7"]
 build-backend = "texstage.plugins.sdk"
 
 [project]
 name = "texstage-normalization-workshop"
-version = "0.4.0"
+version = "0.5.0"
 description = "Bounded normalization analysis with checked FD and lossless-join evidence"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
-dependencies = ["texstage>=0.2.1.dev4"]
+dependencies = ["texstage>=0.2.1.dev7"]
 
 [project.entry-points."texstage.plugins.v1"]
 "io.github.stefanjdecker.normalizationworkshop" = "texstage_normalization_workshop:create_plugin"

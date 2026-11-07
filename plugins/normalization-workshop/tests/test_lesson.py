@@ -29,7 +29,7 @@ def provider():
 
 
 def schema2(name):
-    version = 2 if name == "views/participant-input" else 3
+    version = 3
     return json.loads((Path(model.__file__).parent / "schemas" / (name + f"-v{version}.json")).read_text(encoding="utf-8"))
 
 
@@ -173,7 +173,7 @@ def test_actor_versions_control_guards_replacement_and_navigation():
     assert result == {"refusal":"stale-phase"}
     state = control(state,ctx,"select-answer",handle=handle("alice"),version=1)
     state, effects = submit(state,ctx,request="replace00001")
-    assert [e["kind"] for e in effects] == ["cancel-evaluation","put-record","evaluate"]
+    assert [e["kind"] for e in effects] == ["cancel-evaluation","put-record","set-credit","evaluate"]
     assert state["selected"] == []
     before = copy.deepcopy(state)
     state, _ = advance(state,late,ctx)

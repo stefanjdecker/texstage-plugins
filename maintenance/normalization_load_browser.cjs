@@ -5,6 +5,8 @@ const {spawn}=require("node:child_process"),{randomBytes}=require("node:crypto")
 const playwright=require(process.env.TEXSTAGE_PLAYWRIGHT_MODULE||"playwright");
 const {verifyWorkload}=require("./normalization_load_checks.cjs");
 const bundle=path.resolve(process.argv[2]||""),family=process.env.BROWSER||"chromium";
+const pointsExperiment=process.env.NORMALIZATION_POINTS==="1";
+let pointsResult=null;
 const actors=Number(process.env.NORMALIZATION_ACTORS||600);
 assert(Number.isInteger(actors)&&actors>=2&&actors<=1000,"actors must be 2..1000");
 const output=path.resolve(process.env.NORMALIZATION_LOAD_OUTPUT||path.join(__dirname,"../artifacts/normalization-load",family));
@@ -39,7 +41,7 @@ class Student {
     if(m.plugins?.error)errors.push(m.plugins.error);
     for(const d of m.plugins?.items||[]){
      const v=d.views?.["participant-input"]?.data;
-     if(v&&(v.feedback!==null||v.analysis!==null||v.worked!==null))errors.push("Private feedback before reveal");
+     if(v&&v.phase!=="revealed"&&(v.feedback!==null||v.analysis!==null||v.worked!==null||v.points!=null))errors.push("Private feedback before reveal");
      const target=this.targets.get(d.item);
      if(target&&v?.answer_version===target.version&&v.status==="checked"&&target.checked_ms===undefined){
       try{assert.deepEqual(v.answer,target.expectedAnswer);}
@@ -67,8 +69,9 @@ class Student {
  async command(item,operation,payload){
   const d=this.descriptor(item),view=Object.values(d.views)[0];
   const request="load-"+randomBytes(12).toString("hex");
-  return this.send({t:"plugin.command",command:{type:d.type,item,operation,payload,epoch:view.epoch,
-   expected_revision:view.revision,request_id:request}});
+  this.lastEnvelope={type:d.type,item,operation,payload,epoch:view.epoch,
+   expected_revision:view.revision,request_id:request};
+  return this.send({t:"plugin.command",command:this.lastEnvelope});
  }
  async submit(item,answer,phase,label){
   const v=this.descriptor(item).views["participant-input"].data;
@@ -200,6 +203,25 @@ class Student {
    await completed(pending.rows,"lease recovery after presenter reconnect");
    phases.push({name:"reconnect",duration_ms:now()-reconnectStart});
   }
+  if(pointsExperiment){
+   const pointRound=await batch("registration",correct,"points-correct");
+   await completed(pointRound.rows,"scored latest answers");
+   assert(students.every(s=>s.state.me.score===0&&s.descriptor("registration").views["participant-input"].data.points===null));
+   async function control(op){
+    const d=teacher.descriptor("registration").views["presenter-controls"].data;
+    assert((await teacher.command("registration",op,{control:d.control_version})).receipt.accepted);
+    await until(()=>teacher.descriptor("registration").views["presenter-controls"].data.phase===(op==="close"?"closed":"revealed"),op);
+   }
+   await control("close");await control("reveal");
+   const revealEnvelope=teacher.lastEnvelope;
+   await until(()=>students.every(s=>s.state.me.score===1000&&s.descriptor("registration").views["participant-input"].data.points===1000),"published one award each");
+   const replay=await teacher.send({t:"plugin.command",command:revealEnvelope});
+   assert(replay.receipt.accepted);
+   assert(students.every(s=>s.state.me.score===1000),"receipt replay cannot add another award");
+   assert((await teacher.command("registration","_reset",{})).receipt.accepted);
+   await until(()=>students.every(s=>s.state.me.score===0&&s.descriptor("registration").views["participant-input"].data.answer_version===0),"reset withdraws full class awards");
+   pointsResult={actors,maximum:1000,privateBeforeReveal:true,publishedOnReveal:true,noReplayBonus:true,resetWithdraws:true};
+  }
   workerTimes.push(...await page.evaluate(()=>window.__loadWorker));
   assert.deepEqual(errors,[]);
  }catch(e){failure=String(e.stack);console.error(failure);}
@@ -240,9 +262,9 @@ class Student {
     queue_wait:summary(waits.filter(r=>ids.has(r.id)&&r.generation===1).map(r=>r.ms)),
     worker:summary(workerTimes.filter(r=>ids.has(r.job)&&r.kind==="eval").map(r=>r.duration_ms))};
   }
-  const workload=verifyWorkload({actors,submissions,events,reconnect:process.env.NORMALIZATION_SKIP_RECONNECT!=="1"});
+  const workload=verifyWorkload({actors,submissions,events,points:pointsExperiment,reconnect:process.env.NORMALIZATION_SKIP_RECONNECT!=="1"});
   errors.push(...workload.failures);
-  const report={format:3,synthetic:true,harness_sha256:harnessHash,deck_sha256:deckHash,actors,browser:family,browser_version:browser?.version(),phases,groups,hooks,workload,
+  const report={format:4,synthetic:true,points:pointsResult,harness_sha256:harnessHash,deck_sha256:deckHash,actors,browser:family,browser_version:browser?.version(),phases,groups,hooks,workload,
    worker_startup:summary(workerTimes.filter(r=>r.kind==="init").map(r=>r.duration_ms)),
    leased_to_accepted_result:summary(completion.map(r=>r.ms)),releases:waits.filter(r=>r.generation>1),
    outcome_counts:finishStatus,errors,failure,graceful_shutdown:stopped,

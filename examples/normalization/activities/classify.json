@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "exercise": {
     "format": 1,
     "id": "tutor_classify",
@@ -68,5 +68,6 @@
   "explanation": {
     "en": "ST and SU are candidate keys, so every attribute is prime. The relation is in 3NF. U -> T violates BCNF: U is not a superkey. A prime right-hand side explains why this dependency does not violate 3NF.",
     "de": "ST und SU sind Kandidatenschlüssel; alle Attribute sind prim. Die Relation ist in 3NF. U -> T verletzt BCNF, da U kein Superschlüssel ist. Die prime rechte Seite erklärt, warum diese Abhängigkeit die 3NF nicht verletzt."
-  }
+  },
+  "points": 1000
 }

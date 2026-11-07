@@ -61,6 +61,10 @@ def _fragment(public, worked, language, *, solutions):
                  r"\smallskip\scriptsize " + latex_escape(
                      "Alle Attribute haben atomare Werte (1NF)." if de else
                      "All attributes have atomic values (1NF).") + r"\par"]
+    if public["points"]:
+        note = (f'Live-Aktivität: {public["points"]} Punkte für eine richtige Antwort.' if de else
+                f'Live activity: {public["points"]} points for a correct answer.')
+        rows.append(r"\smallskip\scriptsize " + latex_escape(note) + r"\par")
     return "\n".join(rows + [r"\endgroup"])
 
 
@@ -70,6 +74,7 @@ def prepare_lesson(source, context):
     public = {key: copy.deepcopy(source["exercise"][key])
               for key in ("id", "title", "prompt", "attributes", "task")}
     public["fds"] = checked["seed"]["fds"]
+    public["points"] = source.get("points", 0)
     public["sharing_notice"] = {
         "en": "Your saved answer may be shared with the class without your name. Feedback appears after reveal.",
         "de": "Ihre gespeicherte Antwort kann ohne Ihren Namen geteilt werden. Rückmeldung erscheint nach der Auflösung."}

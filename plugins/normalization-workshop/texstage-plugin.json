@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 4,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.normalizationworkshop",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Normalization analyzer with checked LaTeX authoring and phased classroom workshops.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -54,7 +54,7 @@
           "projector-overlay": "texstage_normalization_workshop/web/lesson-overlay.mjs"
         },
         "view_schemas": {
-          "participant-input": "texstage_normalization_workshop/schemas/views/participant-input-v2.json",
+          "participant-input": "texstage_normalization_workshop/schemas/views/participant-input-v3.json",
           "presenter-controls": "texstage_normalization_workshop/schemas/views/presenter-controls-v3.json",
           "presenter-overlay": "texstage_normalization_workshop/schemas/views/presenter-overlay-v3.json",
           "projector-overlay": "texstage_normalization_workshop/schemas/views/projector-overlay-v3.json"
@@ -154,7 +154,11 @@
         },
         "fallback": "static-slide",
         "state_records": true,
-        "participant_updates": "actor"
+        "participant_updates": "actor",
+        "scoring": {
+          "policy": "fixed-v1",
+          "points_field": "points"
+        }
       }
     }
   },

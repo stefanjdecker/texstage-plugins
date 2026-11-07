@@ -2,7 +2,7 @@
 """Bounded classroom reducer; only independently verified facts become feedback."""
 import copy
 
-from texstage.plugin_api.v1 import CancelEvaluation, Evaluate, PutRecord, evaluation_correlation, json_value
+from texstage.plugin_api.v1 import CancelEvaluation, Evaluate, PutRecord, SetCredit, PublishPoints, evaluation_correlation, json_value
 from . import model
 from .authoring import local
 from .validation import InputError, ResourceLimit, answer, canonical, identity
@@ -134,6 +134,7 @@ class Workshop:
                     state["counts"]["received"] += 1
                 state["counts"]["pending"] += 1
                 effects.append(PutRecord(actor_handle, row))
+                effects.append(SetCredit(None))
                 for key in ("selected", "shared"):
                     if any(ref["handle"] == actor_handle for ref in state[key]):
                         state[key] = []
@@ -155,6 +156,8 @@ class Workshop:
                         return _refuse("reset-required" if state["phase"] == "revealed" else "phase")
                     state["phase"] = {"open": "open", "close": "closed", "reveal": "revealed"}[operation]
                     state["phase_version"] += 1
+                    if operation == "reveal":
+                        effects.append(PublishPoints())
                     if operation == "open":
                         state.update(selected=[], shared=[], share_checks=False, topic="summary")
                 elif operation in ("select-answer", "share-answer", "share-analysis", "compare-answers", "share-comparison"):
@@ -206,6 +209,8 @@ class Workshop:
                 state["counts"]["pending"] -= 1
                 state["counts"][row["status"]] += 1
                 effects.append(PutRecord(row["handle"], row))
+                effects.append(SetCredit((1000 if row["feedback"]["accepted"] else 0)
+                                         if row["status"] == "checked" else None))
         return _finish(state, effects)
 
     def view(self, state, audience, ctx):
@@ -220,6 +225,8 @@ class Workshop:
             row = _slot(ctx, handle(audience["actor"]))
             return {"phase": state["phase"], "active": state["active"], "phase_version": state["phase_version"],
                     "answer_version": row["version"] if row else 0,
+                    "points": ctx.get("scoring", {}).get("awarded")
+                    if revealed and ctx.get("scoring", {}).get("released") else None,
                     "answer": copy.deepcopy(row["answer"]) if row else None, "status": row["status"] if row else None,
                     "feedback": copy.deepcopy(row["feedback"]) if row and revealed else None, "worked": worked,
                     "analysis": model.analyze(ctx["item"]["private"]["seed"], row["answer"])

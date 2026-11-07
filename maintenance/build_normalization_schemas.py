@@ -122,6 +122,17 @@ schemas.update({
         shared=A(SHARED_DETAIL,0,2),worked=N(R("worked"))) | {"$defs":DEFS_VIEW},
 })
 
+# Optional scoring uses a new authoring envelope and participant projection.
+# Previously shipped schemas, including the unscored v1 envelope, stay frozen.
+schemas.update({
+    "lesson-v2.json": O(format={"type":"integer","const":2}, exercise=EXERCISE,
+        worked_answer=ANSWER, explanation=LABEL(4000), points=I(0,10000)),
+    "views/participant-input-v3.json": O(phase=PHASE, active={"type":"boolean"}, phase_version=VERSION,
+        answer_version=VERSION, points=N(I(0,10000)), answer=N(R("answer")),
+        status=N(E("pending","checked","unavailable")), feedback=N(R("feedback")),
+        worked=N(R("worked")), analysis=N(R("analysis"))) | {"$defs":DEFS_VIEW},
+})
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

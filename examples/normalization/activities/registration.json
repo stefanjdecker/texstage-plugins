@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "exercise": {
     "format": 1,
     "id": "registration_repair",
@@ -100,5 +100,6 @@
   "explanation": {
     "en": "SC is the only candidate key. SN, CTI, IO and SC are in BCNF. The first three retain each stated FD. Keeping SC also retains which student registered for which course. Removing SC preserves the FDs but makes the join lossy.",
     "de": "SC ist der einzige Kandidatenschlüssel. SN, CTI, IO und SC sind in BCNF. Die ersten drei Relationen erhalten die angegebenen Abhängigkeiten. SC erhält zusätzlich, wer welchen Kurs belegt. Ohne SC bleiben die Abhängigkeiten erhalten, aber die Zerlegung ist nicht verbundtreu."
-  }
+  },
+  "points": 1000
 }

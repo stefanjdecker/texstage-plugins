@@ -61,7 +61,7 @@ def test_portable_views_state_and_result_budgets():
         if "/schemas/" not in name or not name.endswith(".json"): continue
         schema = json.loads(raw)
         Draft202012Validator.check_schema(schema)
-        if name.endswith(("lesson-v1.json", "seed-v1.json")): continue
+        if name.endswith(("lesson-v1.json", "lesson-v2.json", "seed-v1.json")): continue
         validate_portable_schema(schema)
         largest = maximum(schema, schema)
         assert not list(Draft202012Validator(schema).iter_errors(largest)), name

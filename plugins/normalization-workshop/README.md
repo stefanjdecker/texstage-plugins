@@ -1,10 +1,10 @@
 # TeXStage Normalization Workshop
 
 Experimental analyzer and prepared classroom workshop with an independent
-Python verifier. Version 0.4.0 targets 600 students with a ceiling of 1,000 saved
-answers per activity, transactional answer records and 16-entry presenter pages.
-Private two-answer comparison works across pages. Engine, participant and
-authoring formats remain unchanged; state and presenter/projector views use v3.
+Python verifier. Version 0.5.0 adds optional reveal-time game points and targets
+600 students with a ceiling of 1,000 saved answers per activity, transactional answer records and 16-entry presenter pages.
+Private two-answer comparison works across pages. Engine formats remain unchanged; state and all active role views use v3.
+Authoring v2 adds a required `points` field; v1 sources remain unscored practice.
 Start with the [workshop guide](../../docs/normalization-workshop.md)
 and [seven-slide example](../../examples/normalization/lesson.tex).
 
@@ -22,8 +22,9 @@ execution, sample-based FD inference, NULLs, MVDs or higher normal forms.
 ## Build and install
 
 Use the experimental host artifact identified in the
-[600-student validation record](../../docs/design/normalization-workshop-600-validation.md).
-The minimum dependency is `texstage>=0.2.1.dev4`; it must include bounded item
+[points validation record](../../docs/design/normalization-workshop-points-validation.md).
+Earlier 0.4.0 load timings remain historical measurements.
+The minimum dependency is `texstage>=0.2.1.dev7`; it must include bounded item
 records, actor-scoped updates and deterministic successful-result reuse.
 A development version alone does not identify these unpublished contracts.
 Create a disposable environment; do not upgrade a course environment.
@@ -36,7 +37,7 @@ python maintenance/build_normalization_schemas.py --check
 npm ci --ignore-scripts
 npm run check:workers
 python maintenance/build_wheels.py --package normalization-workshop
-python -m pip install --no-deps dist/texstage_normalization_workshop-0.4.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_normalization_workshop-0.5.0-py3-none-any.whl
 python -m pytest plugins/normalization-workshop/tests -q
 python maintenance/normalization_probe.py --output artifacts/normalization
 node maintenance/normalization_browser.cjs artifacts/normalization
@@ -52,7 +53,7 @@ provider and use the exact reported version/payload when enabling it:
 
 ```sh
 texstage plugins --data ./normalization-profile inspect io.github.stefanjdecker.normalizationworkshop
-texstage plugins --data ./normalization-profile enable io.github.stefanjdecker.normalizationworkshop --version 0.4.0 --payload <reviewed-payload>
+texstage plugins --data ./normalization-profile enable io.github.stefanjdecker.normalizationworkshop --version 0.5.0 --payload <reviewed-payload>
 texstage plugins --data ./normalization-profile lock --output ./normalization.lock.json
 ```
 
@@ -107,9 +108,10 @@ The independent verifier checks exact facts for the submitted answer, including
 identities and certificates. The host must additionally verify the binding
 namespace, lease, epoch and current answer version.
 
-The content capability declares versioned command/view schemas. Version 0.4.0
-requires a newly built bundle and fresh session; it does not migrate v1/v2 state.
-All nineteen frozen v1/v2 schema files remain unchanged. The reducer
+The content capability declares versioned command/view schemas. Version 0.5.0
+requires a newly built bundle and fresh session. It does not migrate sessions
+from an older pinned provider, including unscored 0.4.0 sessions.
+All twenty-five previously shipped schema files remain unchanged. The reducer
 stores at most 1,000 pseudonymous records outside the small shared state, checks
 evaluation facts independently,
 and withholds personal feedback until reveal. Handouts, solutions and local
@@ -130,3 +132,23 @@ cache, while every actor retains a separate guarded job and verification.
 Do not submit two whole-class activities at once: the session queue remains
 bounded at 1,000 pending jobs. See the guide for overload, restart and migration
 instructions and the validation record for measured limits.
+
+
+## Optional activity points
+
+Use authoring `"format": 2` with `"points": 1000` in the lesson JSON to award
+1,000 points for meeting the task's criteria. The maximum is configurable from
+0 to 10,000; zero is practice. Old format-1 lessons also remain practice.
+The example deck uses 1,000 points per activity.
+
+Only the latest verified saved answer counts. A correct answer receives the
+full award, a verified incorrect answer receives zero, and a pending/unavailable
+check has no confirmed award. Alternative valid decompositions qualify.
+The presenter publishes points with **Reveal answer**, not with Close or Share.
+Late results for accepted current answers can finish after reveal. Retries,
+replacement submissions, reconnects and result replay never add duplicate
+awards. Reset withdraws this activity's contribution; other activities remain.
+
+The phone shows its own host-calculated points after reveal; totals, ranks and
+CSV use TeXStage's common ledger. There is no speed or streak bonus. See the
+[workshop guide](../../docs/normalization-workshop.md#points) for authoring details.

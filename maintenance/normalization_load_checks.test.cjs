@@ -51,3 +51,16 @@ test("guarded cached deliveries count, incomplete or failed deliveries do not",(
  event.delivered=true;event.status="failed";assert(verifyWorkload(value).failures.length);
  event.status="succeeded";event.outcome="timeout";assert(verifyWorkload(value).failures.length);
 });
+
+
+test("a claimed scoring run must contain every latest scored answer and result",()=>{
+ const value=complete();value.points=true;
+ assert(verifyWorkload(value).failures.some(s=>s.startsWith("points-correct")));
+ for(let actor=0;actor<2;actor++){
+  const id="points-correct-"+actor;
+  value.submissions.push({phase:"points-correct",actor,accepted:true,jobs:[id],checked_ms:50});
+  value.events.push({event:"delivery",id,delivered:true,status:"succeeded",outcome:"ok"});
+ }
+ assert.deepEqual(verifyWorkload(value).failures,[]);
+ value.events.pop();assert(verifyWorkload(value).failures.length);
+});

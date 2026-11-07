@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 export const local = (value, language) => value?.[String(language).startsWith("de") ? "de" : "en"] || "";
 export const words = language => String(language).startsWith("de") ? {
+points:"Aktivitätspunkte",pointsMaximum:"Mögliche Punkte",pointsReveal:"Punkte erscheinen nach der Auflösung.",
+pointsPractice:"Übung ohne Punkte.",pointsPending:"Punkte warten auf die Prüfung.",pointsUnavailable:"Keine Punkte bestätigt: Antwort nicht geprüft.",
 phase:"Phase",introduce:"Einführung",open:"Offen",closed:"Geschlossen",revealed:"Aufgelöst",save:"Antwort speichern",
 draft:"Lokaler Entwurf (noch nicht gespeichert).",empty:"Noch keine gespeicherte Antwort.",pending:"Gespeichert; Prüfung läuft.",
 checked:"Gespeichert und geprüft. Rückmeldung nach Auflösung.",unavailable:"Gespeichert; Prüfung nicht verfügbar. Bei geöffneter Aufgabe erneut speichern.",
@@ -17,6 +19,8 @@ yes:"Ja",no:"Nein",unknown:"Nicht geprüft",weakest:"Schwächste Normalform der 
 keys:"Kandidatenschlüssel",notice:"Alle Attribute haben atomare Werte (1NF).",private:"Nur die Lehrperson sieht diese Auswahl.",
 help:"Die linke Seite einer FD darf leer sein. Eine einzelne rechte Seite wählen."
 }:{
+points:"Activity points",pointsMaximum:"Available points",pointsReveal:"Points are published on reveal.",
+pointsPractice:"Practice activity: no points.",pointsPending:"Points pending verification.",pointsUnavailable:"No confirmed points: answer not verified.",
 phase:"Phase",introduce:"Introduction",open:"Open",closed:"Closed",revealed:"Revealed",save:"Save answer",
 draft:"Local draft (not saved yet).",empty:"No saved answer yet.",pending:"Saved; checking is pending.",
 checked:"Saved and checked. Feedback follows reveal.",unavailable:"Saved; checking unavailable. Save again when the activity is open.",

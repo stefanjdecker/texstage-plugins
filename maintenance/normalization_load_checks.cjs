@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Evidence checks for the synthetic workload; never changes runtime behavior.
 const phases=["initial","replacement-old","replacement-latest","multi-registration","multi-classify"];
-function verifyWorkload({actors,submissions,events,reconnect}){
- const failures=[],required=[...phases,...(reconnect?["reconnect"]:[])];
+function verifyWorkload({actors,submissions,events,reconnect,points=false}){
+ const failures=[],required=[...phases,...(reconnect?["reconnect"]:[]),...(points?["points-correct"]:[])];
  for(const phase of required){
   const rows=submissions.filter(r=>r.phase===phase);
   if(rows.length!==actors||new Set(rows.map(r=>r.actor)).size!==actors)

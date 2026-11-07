@@ -147,19 +147,22 @@ def answer(value, exercise):
     return value
 
 
-def schema(name):
-    return json.loads((Path(__file__).parent / "schemas" / f"{name}-v1.json").read_text(encoding="utf-8"))
+def schema(name, version=1):
+    return json.loads((Path(__file__).parent / "schemas" / f"{name}-v{version}.json").read_text(encoding="utf-8"))
 
 
 def compile_lesson(value):
     """Validate named author data and compile it; not a TeX authoring hook."""
     from jsonschema import Draft202012Validator
     value = bounded(value)
+    require(type(value) is dict, "lesson-schema")
     if len(canonical(value).encode("utf-8")) > 65536:
         raise ResourceLimit("lesson-bytes")
-    require(not list(Draft202012Validator(schema("lesson")).iter_errors(value)), "lesson-schema")
+    require(not list(Draft202012Validator(schema("lesson", 2 if value.get("format") == 2 else 1)).iter_errors(value)), "lesson-schema")
     # bool is a JSON Schema non-integer, but Python direct callers also get strict checking.
     require(type(value["format"]) is int and type(value["exercise"]["format"]) is int)
+    if value["format"] == 2:
+        require(type(value["points"]) is int, "points")
     exercise = value["exercise"]
     attributes = [row["id"] for row in exercise["attributes"]]
     require(len(set(attributes)) == len(attributes), "attribute-ids")
