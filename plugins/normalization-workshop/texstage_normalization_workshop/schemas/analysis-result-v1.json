@@ -1,0 +1,397 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop analysis-result-v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "exercise",
+        "answer",
+        "mode",
+        "facts"
+      ],
+      "properties": {
+        "format": {
+          "const": 1,
+          "type": "integer"
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "mode": {
+          "enum": [
+            "classify"
+          ]
+        },
+        "facts": {
+          "$ref": "#/$defs/class"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "exercise",
+        "answer",
+        "mode",
+        "facts"
+      ],
+      "properties": {
+        "format": {
+          "const": 1,
+          "type": "integer"
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "mode": {
+          "enum": [
+            "decompose"
+          ]
+        },
+        "facts": {
+          "$ref": "#/$defs/decompose"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "witnesses": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "2nf",
+        "3nf",
+        "bcnf"
+      ],
+      "properties": {
+        "2nf": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "3nf": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        },
+        "bcnf": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                {
+                  "enum": [
+                    1,
+                    2,
+                    4,
+                    8,
+                    16,
+                    32,
+                    64,
+                    128
+                  ]
+                }
+              ],
+              "items": false
+            }
+          ]
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "normal_form",
+        "prime",
+        "witnesses"
+      ],
+      "properties": {
+        "relation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 255
+        },
+        "normal_form": {
+          "enum": [
+            "1nf",
+            "2nf",
+            "3nf",
+            "bcnf"
+          ]
+        },
+        "prime": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "witnesses": {
+          "$ref": "#/$defs/witnesses"
+        }
+      }
+    },
+    "class": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normal_form",
+        "prime",
+        "keys",
+        "witnesses",
+        "witness_valid"
+      ],
+      "properties": {
+        "normal_form": {
+          "enum": [
+            "1nf",
+            "2nf",
+            "3nf",
+            "bcnf"
+          ]
+        },
+        "prime": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 70,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "uniqueItems": true
+        },
+        "witnesses": {
+          "$ref": "#/$defs/witnesses"
+        },
+        "witness_valid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "decompose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "covered",
+        "missing",
+        "components",
+        "preservation",
+        "join"
+      ],
+      "properties": {
+        "covered": {
+          "type": "boolean"
+        },
+        "missing": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "components": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/component"
+          }
+        },
+        "preservation": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "preserved",
+                "fd",
+                "closure"
+              ],
+              "properties": {
+                "preserved": {
+                  "type": "boolean"
+                },
+                "fd": {
+                  "type": "integer",
+                  "minimum": -1,
+                  "maximum": 31
+                },
+                "closure": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              }
+            }
+          ]
+        },
+        "join": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "lossless",
+                "rows",
+                "columns",
+                "merges",
+                "tableau"
+              ],
+              "properties": {
+                "lossless": {
+                  "type": "boolean"
+                },
+                "rows": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                },
+                "columns": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                },
+                "merges": {
+                  "type": "array",
+                  "minItems": 0,
+                  "maxItems": 56,
+                  "items": {
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "prefixItems": [
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 31
+                      },
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 7
+                      },
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 7
+                      }
+                    ],
+                    "items": false
+                  }
+                },
+                "tableau": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 8,
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 71
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

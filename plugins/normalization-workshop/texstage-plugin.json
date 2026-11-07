@@ -1,0 +1,168 @@
+{
+  "manifest_version": 2,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.normalizationworkshop",
+  "version": "0.4.0",
+  "description": "Normalization analyzer with checked LaTeX authoring and phased classroom workshops.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.normalizationworkshop.analyze": {
+        "engine_api": 1,
+        "module": "texstage_normalization_workshop/web/engine.worker.mjs",
+        "assets": [
+          "texstage_normalization_workshop/web/identity.mjs"
+        ],
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "Classification or decomposition (JSON)",
+          "tokens": [
+            "normal_form",
+            "relations"
+          ]
+        },
+        "canonical_format": "normalization-analysis-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_normalization_workshop/schemas/analysis-result-v1.json",
+        "result_cache": "by-input"
+      }
+    },
+    "content_types": {
+      "io.github.stefanjdecker.normalizationworkshop.workshop": {
+        "content_api": 1,
+        "authoring_hook": "workshop",
+        "state_hook": "workshop",
+        "state_schema": 3,
+        "latex_packages": [
+          "texstage_normalization_workshop/latex/texstage-normalization-workshop.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.normalizationworkshop.analyze"
+          }
+        },
+        "views": {
+          "participant-input": "texstage_normalization_workshop/web/participant.mjs",
+          "presenter-controls": "texstage_normalization_workshop/web/presenter-controls.mjs",
+          "presenter-overlay": "texstage_normalization_workshop/web/lesson-overlay.mjs",
+          "projector-overlay": "texstage_normalization_workshop/web/lesson-overlay.mjs"
+        },
+        "view_schemas": {
+          "participant-input": "texstage_normalization_workshop/schemas/views/participant-input-v2.json",
+          "presenter-controls": "texstage_normalization_workshop/schemas/views/presenter-controls-v3.json",
+          "presenter-overlay": "texstage_normalization_workshop/schemas/views/presenter-overlay-v3.json",
+          "projector-overlay": "texstage_normalization_workshop/schemas/views/projector-overlay-v3.json"
+        },
+        "messages": {
+          "submit": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/submit-v1.json"
+          },
+          "open": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/control-v1.json"
+          },
+          "close": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/control-v1.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/control-v1.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/select-v1.json"
+          },
+          "share-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/select-v1.json"
+          },
+          "unshare": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/control-v1.json"
+          },
+          "clear-selection": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/control-v1.json"
+          },
+          "compare-answers": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/compare-v1.json"
+          },
+          "share-comparison": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/compare-v1.json"
+          },
+          "share-analysis": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/select-v1.json"
+          },
+          "show-evidence": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/topic-v1.json"
+          },
+          "page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_normalization_workshop/schemas/commands/page-v1.json"
+          }
+        },
+        "fallback": "static-slide",
+        "state_records": true,
+        "participant_updates": "actor"
+      }
+    }
+  },
+  "latex_namespace": "normalization",
+  "latex_exports": {
+    "commands": [
+      "normalizationworkshop"
+    ],
+    "environments": []
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "tutor_classify",
+    "title": {
+      "en": "How normalized is the tutor relation?",
+      "de": "Wie normalisiert ist die Betreuungsrelation?"
+    },
+    "prompt": {
+      "en": "A student has one tutor per topic. Each tutor teaches one topic. Find the highest normal form of R(S,T,U) and justify why the next normal form fails.",
+      "de": "Jede Person hat pro Thema eine Betreuungsperson. Jede Betreuungsperson betreut ein Thema. Bestimmen Sie die höchste Normalform von R(S,T,U) und begründen Sie, warum die nächste Normalform nicht gilt."
+    },
+    "attributes": [
+      {
+        "id": "S",
+        "label": {
+          "en": "Student",
+          "de": "Studierende"
+        }
+      },
+      {
+        "id": "T",
+        "label": {
+          "en": "Topic",
+          "de": "Thema"
+        }
+      },
+      {
+        "id": "U",
+        "label": {
+          "en": "Tutor",
+          "de": "Betreuungsperson"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "lhs": [
+          "S",
+          "T"
+        ],
+        "rhs": [
+          "U"
+        ]
+      },
+      {
+        "lhs": [
+          "U"
+        ],
+        "rhs": [
+          "T"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "classify"
+    }
+  },
+  "worked_answer": {
+    "mode": "classify",
+    "normal_form": "3nf",
+    "witness": [
+      4,
+      2
+    ]
+  },
+  "explanation": {
+    "en": "ST and SU are candidate keys, so every attribute is prime. The relation is in 3NF. U -> T violates BCNF: U is not a superkey. A prime right-hand side explains why this dependency does not violate 3NF.",
+    "de": "ST und SU sind Kandidatenschlüssel; alle Attribute sind prim. Die Relation ist in 3NF. U -> T verletzt BCNF, da U kein Superschlüssel ist. Die prime rechte Seite erklärt, warum diese Abhängigkeit die 3NF nicht verletzt."
+  }
+}

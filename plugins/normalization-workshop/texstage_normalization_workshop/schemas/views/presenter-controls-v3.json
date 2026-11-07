@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop views/presenter-controls-v3.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "active",
+    "control_version",
+    "phase_version",
+    "counts",
+    "page",
+    "pages",
+    "answers",
+    "pinned",
+    "selected",
+    "shared",
+    "share_checks",
+    "topic"
+  ],
+  "properties": {
+    "phase": {
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "control_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "phase_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "received",
+        "pending",
+        "checked",
+        "unavailable"
+      ],
+      "properties": {
+        "received": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "checked": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "unavailable": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        }
+      }
+    },
+    "page": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 62
+    },
+    "pages": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 63
+    },
+    "answers": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "handle",
+          "number",
+          "version",
+          "status"
+        ],
+        "properties": {
+          "handle": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "checked",
+              "unavailable"
+            ]
+          }
+        }
+      }
+    },
+    "pinned": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "handle",
+          "number",
+          "version",
+          "status"
+        ],
+        "properties": {
+          "handle": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "checked",
+              "unavailable"
+            ]
+          }
+        }
+      }
+    },
+    "selected": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "handle",
+          "version"
+        ],
+        "properties": {
+          "handle": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      }
+    },
+    "shared": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "handle",
+          "version"
+        ],
+        "properties": {
+          "handle": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      }
+    },
+    "share_checks": {
+      "type": "boolean"
+    },
+    "topic": {
+      "enum": [
+        "summary",
+        "lossless",
+        "preservation"
+      ]
+    }
+  }
+}

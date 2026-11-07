@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalization Workshop commands/page-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "control",
+    "page"
+  ],
+  "properties": {
+    "control": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "page": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 62
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "registration_repair",
+    "title": {
+      "en": "Keep the registration facts",
+      "de": "Anmeldedaten erhalten"
+    },
+    "prompt": {
+      "en": "One course has one instructor in this term. An instructor has one office and may teach several courses. A student may register for several courses; names are not unique. Decompose into BCNF, preserving every FD and the student/course associations.",
+      "de": "Ein Kurs hat in diesem Semester eine Lehrperson. Diese hat ein Büro und kann mehrere Kurse halten. Studierende können mehrere Kurse belegen; Namen sind nicht eindeutig. Zerlegen Sie in BCNF, ohne Abhängigkeiten oder Anmeldungsinformationen zu verlieren."
+    },
+    "attributes": [
+      {
+        "id": "S",
+        "label": {
+          "en": "Student",
+          "de": "Studierende"
+        }
+      },
+      {
+        "id": "N",
+        "label": {
+          "en": "Student name",
+          "de": "Name"
+        }
+      },
+      {
+        "id": "C",
+        "label": {
+          "en": "Course",
+          "de": "Kurs"
+        }
+      },
+      {
+        "id": "T",
+        "label": {
+          "en": "Course title",
+          "de": "Kurstitel"
+        }
+      },
+      {
+        "id": "I",
+        "label": {
+          "en": "Instructor",
+          "de": "Lehrperson"
+        }
+      },
+      {
+        "id": "O",
+        "label": {
+          "en": "Office",
+          "de": "Büro"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "lhs": [
+          "S"
+        ],
+        "rhs": [
+          "N"
+        ]
+      },
+      {
+        "lhs": [
+          "C"
+        ],
+        "rhs": [
+          "T",
+          "I"
+        ]
+      },
+      {
+        "lhs": [
+          "I"
+        ],
+        "rhs": [
+          "O"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "decompose",
+      "target": "bcnf",
+      "preserve": true
+    }
+  },
+  "worked_answer": {
+    "mode": "decompose",
+    "relations": [
+      3,
+      5,
+      28,
+      48
+    ]
+  },
+  "explanation": {
+    "en": "SC is the only candidate key. SN, CTI, IO and SC are in BCNF. The first three retain each stated FD. Keeping SC also retains which student registered for which course. Removing SC preserves the FDs but makes the join lossy.",
+    "de": "SC ist der einzige Kandidatenschlüssel. SN, CTI, IO und SC sind in BCNF. Die ersten drei Relationen erhalten die angegebenen Abhängigkeiten. SC erhält zusätzlich, wer welchen Kurs belegt. Ohne SC bleiben die Abhängigkeiten erhalten, aber die Zerlegung ist nicht verbundtreu."
+  }
+}

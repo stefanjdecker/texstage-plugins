@@ -14,12 +14,28 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
 | `texstage-query-plan` | Query-plan selectors, cost inspection and classroom activity (Q0–Q4) | `\queryplanchallenge` |
 | `texstage-fd-lab` | Closure, candidate-key and implication lessons (F1-F3) | `\fdlab{id}{width}{height}` |
+| `texstage-normalization-workshop` | Normalization, comparison and evidence | `texstage-normalization-workshop.sty` / `\normalizationworkshop` |
 
 The coordinate slide accepts a phone response, displays class points on the
 projector, gives distance feedback from the presenter browser, and supports reveal
 and reset. Distance is supplementary: `(0,5)` and `(3,4)` have the same distance,
 but correctness compares both coordinates. PDFs and PowerPoint retain a static
 diagram. The two packages have their own manifests, versions and portable wheels.
+
+## Normalization Workshop
+
+The [workshop guide](docs/normalization-workshop.md) explains installation,
+checked LaTeX authoring, native phone editing and presenter-led discussion.
+Students classify relations or propose decompositions; the analyzer checks
+normal form, lossless joins and FD preservation independently. Valid answers
+need not match the worked example. Presenters can compare two saved answers,
+share checked evidence and reveal the solution.
+
+Start with the [seven-slide example](examples/normalization/lesson.tex).
+Version 0.4.0 supports bounded records for a 600-student target and a 1,000-answer
+ceiling. The [capacity record](docs/design/normalization-workshop-600-validation.md)
+separates correctness from measured latency and classroom acceptance.
+No catalog release is published.
 
 ## Transaction schedules: implemented engine, planned lesson
 

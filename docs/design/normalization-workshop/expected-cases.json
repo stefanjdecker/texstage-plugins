@@ -1,0 +1,550 @@
+{
+  "format": 1,
+  "cases": [
+    {
+      "id": "registration-good",
+      "attributes": "SNCTIO",
+      "fds": [
+        [
+          "S",
+          "N"
+        ],
+        [
+          "C",
+          "TI"
+        ],
+        [
+          "I",
+          "O"
+        ]
+      ],
+      "relations": [
+        "SN",
+        "CTI",
+        "IO",
+        "SC"
+      ],
+      "expected": {
+        "keys": [
+          "SC"
+        ],
+        "normal_form": "1nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf",
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {
+          "C": "CTIO",
+          "SC": "SNCTIO"
+        }
+      }
+    },
+    {
+      "id": "registration-missing-link",
+      "attributes": "SNCTIO",
+      "fds": [
+        [
+          "S",
+          "N"
+        ],
+        [
+          "C",
+          "TI"
+        ],
+        [
+          "I",
+          "O"
+        ]
+      ],
+      "relations": [
+        "SN",
+        "CTI",
+        "IO"
+      ],
+      "expected": {
+        "keys": [
+          "SC"
+        ],
+        "normal_form": "1nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": false,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "chain-good",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "BC"
+      ],
+      "expected": {
+        "keys": [
+          "A"
+        ],
+        "normal_form": "2nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "chain-lost-fd",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "AC"
+      ],
+      "expected": {
+        "keys": [
+          "A"
+        ],
+        "normal_form": "2nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": false,
+        "closures": {}
+      }
+    },
+    {
+      "id": "projection-hidden",
+      "attributes": "ABCD",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "ACD"
+      ],
+      "expected": {
+        "keys": [
+          "AD"
+        ],
+        "normal_form": "1nf",
+        "component_forms": [
+          "bcnf",
+          "1nf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": false,
+        "closures": {}
+      }
+    },
+    {
+      "id": "preserved-by-combination",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ],
+        [
+          "A",
+          "C"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "BC"
+      ],
+      "expected": {
+        "keys": [
+          "A"
+        ],
+        "normal_form": "2nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "tutor-bcnf-tradeoff",
+      "attributes": "STU",
+      "fds": [
+        [
+          "ST",
+          "U"
+        ],
+        [
+          "U",
+          "T"
+        ]
+      ],
+      "relations": [
+        "TU",
+        "SU"
+      ],
+      "expected": {
+        "keys": [
+          "ST",
+          "SU"
+        ],
+        "normal_form": "3nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": false,
+        "closures": {}
+      }
+    },
+    {
+      "id": "tutor-keep-3nf",
+      "attributes": "STU",
+      "fds": [
+        [
+          "ST",
+          "U"
+        ],
+        [
+          "U",
+          "T"
+        ]
+      ],
+      "relations": [
+        "STU"
+      ],
+      "expected": {
+        "keys": [
+          "ST",
+          "SU"
+        ],
+        "normal_form": "3nf",
+        "component_forms": [
+          "3nf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "no-fds-whole",
+      "attributes": "ABC",
+      "fds": [],
+      "relations": [
+        "ABC"
+      ],
+      "expected": {
+        "keys": [
+          "ABC"
+        ],
+        "normal_form": "bcnf",
+        "component_forms": [
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "no-fds-split",
+      "attributes": "ABC",
+      "fds": [],
+      "relations": [
+        "AB",
+        "BC"
+      ],
+      "expected": {
+        "keys": [
+          "ABC"
+        ],
+        "normal_form": "bcnf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": false,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "all-constant-empty-key",
+      "attributes": "AB",
+      "fds": [
+        [
+          "",
+          "AB"
+        ]
+      ],
+      "relations": [
+        "A",
+        "B"
+      ],
+      "expected": {
+        "keys": [
+          ""
+        ],
+        "normal_form": "bcnf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {
+          "": "AB"
+        }
+      }
+    },
+    {
+      "id": "constant-partial",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "",
+          "A"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "relations": [
+        "A",
+        "BC"
+      ],
+      "expected": {
+        "keys": [
+          "B"
+        ],
+        "normal_form": "1nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {
+          "": "A"
+        }
+      }
+    },
+    {
+      "id": "multiway-chain",
+      "attributes": "ABCD",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "BC",
+        "CD"
+      ],
+      "expected": {
+        "keys": [
+          "A"
+        ],
+        "normal_form": "2nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "cycle-multiple-keys",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "A"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "AC"
+      ],
+      "expected": {
+        "keys": [
+          "AC",
+          "BC"
+        ],
+        "normal_form": "3nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "multiway-lossy",
+      "attributes": "ABC",
+      "fds": [],
+      "relations": [
+        "AB",
+        "AC",
+        "BC"
+      ],
+      "expected": {
+        "keys": [
+          "ABC"
+        ],
+        "normal_form": "bcnf",
+        "component_forms": [
+          "bcnf",
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": false,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "contained-component",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "relations": [
+        "AB",
+        "BC",
+        "B"
+      ],
+      "expected": {
+        "keys": [
+          "A"
+        ],
+        "normal_form": "2nf",
+        "component_forms": [
+          "bcnf",
+          "bcnf",
+          "bcnf"
+        ],
+        "covered": true,
+        "lossless": true,
+        "preserved": true,
+        "closures": {}
+      }
+    },
+    {
+      "id": "missing-coverage",
+      "attributes": "ABC",
+      "fds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "relations": [
+        "AB"
+      ],
+      "expected": {
+        "keys": [
+          "A"
+        ],
+        "normal_form": "2nf",
+        "component_forms": [
+          "bcnf"
+        ],
+        "covered": false,
+        "lossless": null,
+        "preserved": null,
+        "closures": {}
+      }
+    }
+  ]
+}

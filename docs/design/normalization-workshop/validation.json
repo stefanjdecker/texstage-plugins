@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "scope": "trusted finite design examples; no runtime conformance",
+  "cases": [
+    {
+      "id": "registration-good",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 5
+    },
+    {
+      "id": "registration-missing-link",
+      "passed": true,
+      "lossless": false,
+      "preserved": true,
+      "chase_merges": 1
+    },
+    {
+      "id": "chain-good",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 1
+    },
+    {
+      "id": "chain-lost-fd",
+      "passed": true,
+      "lossless": true,
+      "preserved": false,
+      "chase_merges": 2
+    },
+    {
+      "id": "projection-hidden",
+      "passed": true,
+      "lossless": true,
+      "preserved": false,
+      "chase_merges": 2
+    },
+    {
+      "id": "preserved-by-combination",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 1
+    },
+    {
+      "id": "tutor-bcnf-tradeoff",
+      "passed": true,
+      "lossless": true,
+      "preserved": false,
+      "chase_merges": 1
+    },
+    {
+      "id": "tutor-keep-3nf",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 0
+    },
+    {
+      "id": "no-fds-whole",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 0
+    },
+    {
+      "id": "no-fds-split",
+      "passed": true,
+      "lossless": false,
+      "preserved": true,
+      "chase_merges": 0
+    },
+    {
+      "id": "all-constant-empty-key",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 2
+    },
+    {
+      "id": "constant-partial",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 1
+    },
+    {
+      "id": "multiway-chain",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 3
+    },
+    {
+      "id": "cycle-multiple-keys",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 1
+    },
+    {
+      "id": "multiway-lossy",
+      "passed": true,
+      "lossless": false,
+      "preserved": true,
+      "chase_merges": 0
+    },
+    {
+      "id": "contained-component",
+      "passed": true,
+      "lossless": true,
+      "preserved": true,
+      "chase_merges": 2
+    },
+    {
+      "id": "missing-coverage",
+      "passed": true,
+      "lossless": null,
+      "preserved": null,
+      "chase_merges": 0
+    }
+  ],
+  "lessons": [
+    {
+      "file": "registration.lesson.draft.json",
+      "worked_answer_checked": true
+    },
+    {
+      "file": "tutor.lesson.draft.json",
+      "worked_answer_checked": true
+    }
+  ],
+  "exhaustive_binary": {
+    "attributes": 3,
+    "fd_sets": 4096,
+    "covered_binary_decompositions_per_set": 12,
+    "comparisons": 49152
+  },
+  "inputs": {
+    "expected-cases.json": "7ee9bf42381aeb015bf4b135f512589cd99d7ff804219dba5c0c91296c9ce0b2",
+    "registration.lesson.draft.json": "51106f1eb471c5916082b0b8f9254720e2005c1ff7fcf8de0129f9b0f6aca2c7",
+    "tutor.lesson.draft.json": "0efdc428b71c89e13efae41033d3810e2d01b90c9ea1fa11fa8a9056c52c5f7b"
+  },
+  "checker_sha256": "559a15f568b7ac14c939f6bed5b69a72b57df8d5f8b2849cf7ffb65e0ac9dccd"
+}

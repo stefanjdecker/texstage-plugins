@@ -1,0 +1,3 @@
+include texstage-plugin.json README.md LICENSE
+recursive-include texstage_normalization_workshop *.mjs *.json *.sty *.sty
+recursive-include tests *.py

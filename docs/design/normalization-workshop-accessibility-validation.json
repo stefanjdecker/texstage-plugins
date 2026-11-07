@@ -1,0 +1,329 @@
+{
+  "date": "2026-11-07",
+  "milestone": "N4 keyboard, German and native zoom accessibility slice",
+  "committed": false,
+  "published": false,
+  "provider": {
+    "id": "io.github.stefanjdecker.normalizationworkshop",
+    "version": "0.3.1",
+    "payload": "8b97cd83a1cb0130762ac18cb195dc3147c221fe7390f93306f92ba5cfad94a1",
+    "wheel": "texstage_normalization_workshop-0.3.1-py3-none-any.whl",
+    "wheel_sha256": "d6594541e56cb9c1c21e87c2f3d63330a8d2df04bb3848069a560ba1b24bbecc",
+    "sdist": "texstage_normalization_workshop-0.3.1.tar.gz",
+    "sdist_sha256": "41faf6d1f6aa74f143ae6268627f5cf1fca404c177a25bb5c05dfd1cc95799e4",
+    "sdist_payload_parity": true
+  },
+  "host": {
+    "base_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+    "working_tree_fixes": true,
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "wheel_sha256": "730b6f76e8c263f19e9410e6baac5d9bdb93b5d417c1790233f84411b8ed26f7",
+    "changed_source_sha256": {
+      "docs/plugins.md": "34349b3e06dc8be9576f4e949dc8e9fa178f4f10dd18f66a3b7a7e82f455f27c",
+      "src/texstage/web/play/play.js": "4fc0b766c2375e60936644de63271d31bda8682f9c5caac37cf4d94aa9659347",
+      "src/texstage/web/shared/plugins.js": "d44d7bfb78a98aa078f1f8a1d6351da00c03311316ab831c861bbfe9a9e2d918",
+      "src/texstage/web/stage/presenter.js": "5c3eea7f8fd165d7b1bca18fca812a9a147ac5ea1cc9b082e4ba5fb72677a044",
+      "src/texstage/web/stage/projector.js": "f7341e0e77a1c8ddf5473028cc63d39064d07acc1c10462ab488c6b57d6e2c63",
+      "src/texstage/web/stage/stage.css": "e1f153b83307b67860dfbe74a140f3eceb0e9ada2e486f07ac405fc1a99c9165",
+      "tests/web-plugin-lifecycle.test.mjs": "ef5bed831fec14527f95e6de48d38ae0382918dcbe14d7221b2af79e03f52aad",
+      "tests/web-keyboard-controls.test.cjs": "3a2dacdb43b59d8e4a9da3dc6f38e410d1f43bbd9a9ec9c8f7bc98ed71b7faf0"
+    },
+    "note": "Requires these local host fixes or a verified compatible successor; baseline commit/version alone is insufficient."
+  },
+  "environment": {
+    "os": "Windows",
+    "python": "3.14.4",
+    "node": "24.15.0",
+    "playwright": "1.62.1",
+    "host_locks": {
+      "dev.txt": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+      "build.txt": "9c482fa721548dd14edba2f2a7ec98b2dda4b7b27950a6e437a10eae88580f1e"
+    },
+    "collection_package_lock": "25c32f3fef6cda39c5c43b55205a8b24355a2a67a4bbbdd6b88af86bbeea5330"
+  },
+  "baseline_findings": {
+    "participant_language": "0.3.0 plus baseline host rendered phone plugin in English in a German browser/deck",
+    "presenter_enter": "Enter activated a plugin button and also advanced the deck",
+    "projector_tab": "Projector forwarding consumed Tab before focus reached plugin controls",
+    "focus": {
+      "removedFocus": false,
+      "language": null,
+      "metrics": {
+        "width": 320,
+        "dpr": 1,
+        "scale": 1
+      }
+    },
+    "zoom": "Short/narrow presenter squeezed notes into activity toolbar; workspace now scrolls with minimum pane heights."
+  },
+  "tests": {
+    "provider": {
+      "tests": "52",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "129.193",
+      "sha256": "23e70390c624cdcafc59a0356a41e8b31e92c7d109e00d26d06ee35f0841d139",
+      "report": "tests.xml"
+    },
+    "host_python": {
+      "tests": "77",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1",
+      "time": "35.866",
+      "sha256": "5b9326136a64415a94edcac8e61c6c181828a15ba9dd0418de7b606c3542fff5",
+      "report": "host-tests.xml"
+    },
+    "host_web": {
+      "passed": 80,
+      "failed": 0,
+      "report": "host-web-tests.log",
+      "sha256": "ea64afa4a523a9efe176b3fdcedd18a337392561824c7538917cb0a477cecc78"
+    },
+    "host_skip": "test_asset_content_and_parent_symlinks_are_checked: symlink creation not permitted on this Windows host",
+    "artifact_followup": "Final host-only CSS adjustment followed these tests; affected native-zoom flow reran on the final host wheel. Earlier tested Python and JS bytes were unchanged."
+  },
+  "accessibility_browsers": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "language": "de",
+      "metrics": {
+        "width": 320,
+        "dpr": 1,
+        "scale": 1
+      },
+      "nativeZoom": 1,
+      "keyboardOnlyLearner": true,
+      "keyboardPresenterActions": true,
+      "addRemoveFocus": true,
+      "conflictChoiceFocus": true,
+      "noImplicitSubmit": true,
+      "chaseBoundariesKeepFocus": true,
+      "projectorKeyboardProof": true,
+      "proofFocusAcrossUpdates": true,
+      "localizedAttributeDescription": true,
+      "emptyKey": true,
+      "accessibleNamesSnapshot": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "language": "de",
+      "metrics": {
+        "width": 320,
+        "dpr": 1,
+        "scale": 1
+      },
+      "nativeZoom": 1,
+      "keyboardOnlyLearner": true,
+      "keyboardPresenterActions": true,
+      "addRemoveFocus": true,
+      "conflictChoiceFocus": true,
+      "noImplicitSubmit": true,
+      "chaseBoundariesKeepFocus": true,
+      "projectorKeyboardProof": true,
+      "proofFocusAcrossUpdates": true,
+      "localizedAttributeDescription": true,
+      "emptyKey": true,
+      "accessibleNamesSnapshot": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "language": "de",
+      "metrics": {
+        "width": 320,
+        "dpr": 1,
+        "scale": 1
+      },
+      "nativeZoom": 1,
+      "keyboardOnlyLearner": true,
+      "keyboardPresenterActions": true,
+      "addRemoveFocus": true,
+      "conflictChoiceFocus": true,
+      "noImplicitSubmit": true,
+      "chaseBoundariesKeepFocus": true,
+      "projectorKeyboardProof": true,
+      "proofFocusAcrossUpdates": true,
+      "localizedAttributeDescription": true,
+      "emptyKey": true,
+      "accessibleNamesSnapshot": true,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "language": "de",
+      "metrics": {
+        "width": 711,
+        "height": 452,
+        "dpr": 2,
+        "scale": 1
+      },
+      "nativeZoom": 2,
+      "keyboardOnlyLearner": true,
+      "keyboardPresenterActions": true,
+      "addRemoveFocus": true,
+      "conflictChoiceFocus": true,
+      "noImplicitSubmit": true,
+      "chaseBoundariesKeepFocus": true,
+      "projectorKeyboardProof": true,
+      "proofFocusAcrossUpdates": true,
+      "localizedAttributeDescription": true,
+      "emptyKey": true,
+      "accessibleNamesSnapshot": true,
+      "errors": []
+    }
+  ],
+  "english_workshop_regression": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "comparison": true,
+      "explicitChecksSharing": true,
+      "lossyCounterexample": true,
+      "lostFDExample": true,
+      "chasePlayback": true,
+      "proofFocusPreserved": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "comparison": true,
+      "explicitChecksSharing": true,
+      "lossyCounterexample": true,
+      "lostFDExample": true,
+      "chasePlayback": true,
+      "proofFocusPreserved": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "modes": [
+        "classify",
+        "decompose"
+      ],
+      "viewport": 320,
+      "installedWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboardActivation": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "reset": true,
+      "navigationRestoresSaved": true,
+      "teardown": true,
+      "comparison": true,
+      "explicitChecksSharing": true,
+      "lossyCounterexample": true,
+      "lostFDExample": true,
+      "chasePlayback": true,
+      "proofFocusPreserved": true,
+      "errors": []
+    }
+  ],
+  "visual_review": {
+    "german_stage_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "german_solution_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "screenshots": [
+      "webkit/phone-chase-de.png",
+      "chromium-zoom2/presenter-de.png",
+      "chromium-zoom2/projector-de.png",
+      "chromium-zoom2/phone-empty-key-de.png"
+    ],
+    "result": "German static material fits. Narrow tables scroll locally. At native 200% zoom presenter panes scroll vertically without overlapping; proof overlays retain internal scrolling.",
+    "native_zoom_capture": "Chrome settings API setDefaultZoom(2), verified DPR=2, CSS width=711 and visualViewport.scale=1. CDP compositor capture avoids Playwright CSS-clip scaling."
+  },
+  "unchanged": {
+    "schema_hashes": {
+      "schemas/analysis-result-v1.json": "1a4616042f0af3d34e024b0b38ba3f4af58b5510022578f1d5f7e9a1f28f00c0",
+      "schemas/answer-v1.json": "bc37cf8e330d561629bbb7eded058524d731e59ee63a0d763afc203c6bfe54cd",
+      "schemas/commands/compare-v1.json": "fddc31f5ad5f8cefb1d86bcfbd8926d3718344fd77816af7f1c2fe387835ded4",
+      "schemas/commands/control-v1.json": "bfeefc4194827b393f2fffccb0e9111963f51805e076fffae5f9bb9431d3a7a9",
+      "schemas/commands/select-v1.json": "7f7dfce80daa395408722d3de08803353afb8e7bbf24450cd620dee4b7204871",
+      "schemas/commands/submit-v1.json": "daf15d56b3be7fc17c6d74f54043325abef5192086e4a9be29f8e42e660d2668",
+      "schemas/commands/topic-v1.json": "a554d940205ee1b80dd5890f8e83846730a955418a781ba9c4448b6b5aeb7714",
+      "schemas/lesson-v1.json": "42c20057546e5e3dc24120c7076fcdf546467de487daf8d36019a38bc06cbe8e",
+      "schemas/seed-v1.json": "c9943dd1e58822916cbc2922f1c5a22a931025af6186b0666d19dd03473d36d1",
+      "schemas/state-v1.json": "3b4997e7971bed58580f7712378438a4605007b6f894260541277cdab7583475",
+      "schemas/state-v2.json": "7f731129cffb42fcbb8454342cdd520a89fa1aaff26450e8416904785fbe7e5b",
+      "schemas/views/participant-input-v1.json": "bfe088b55d7253e50d4fc5f5a9beebfcf9540cf2880f5e2404d372654c391c55",
+      "schemas/views/participant-input-v2.json": "f7cc42810a44860cb7c5b28fd8b1001aedaa4e61d5820b09eb633a8209f79fb3",
+      "schemas/views/presenter-controls-v1.json": "96120e228b59c35a693fa369b9c1522a6f207524feef017ca96b94748e42b7de",
+      "schemas/views/presenter-controls-v2.json": "6414653a2ce8900de63841fb5ced108e2f351f3fd21cefa481e79707ea479b65",
+      "schemas/views/presenter-overlay-v1.json": "329d9b54696056acd3446d2fb7b8f6008bb4ce45986d71fbb5cc579e4790050f",
+      "schemas/views/presenter-overlay-v2.json": "42f24f6c9a306cf6d3ef90915e8aa3ceec45900fb84aa4fb7c56107cff9b9f91",
+      "schemas/views/projector-overlay-v1.json": "60eb4ed6cf32e8cb9c8b48118237005e020a4918a070dd3f3c65bc2b34ced71b",
+      "schemas/views/projector-overlay-v2.json": "9f6193471c0c2abc9664f26cac12681861dd185d21d214eb8d284ae865cff82b"
+    },
+    "engine_modules": {
+      "model.py": "d9e8b4369a9f4abe17944c6c5fc692a08e5338094002dbad4232b7541ad6c6e2",
+      "validation.py": "db7af7ce8b762473277ca7bae02053495b0aca94b8d88af3fc3c8f9bf97a8342",
+      "web/fd.mjs": "1ed7fe2da0e2fd9d6e6eff0c97e23d59349d90dad7e42c0cd926f5792d93ac76",
+      "web/chase.mjs": "231d259af8b5ded4ea292e19ec98b6380a780fdfcae207d8b8c1e0d33c31b7a8",
+      "web/engine.mjs": "97e5c0715fd7fbacd207bd4ab671f7c9d12735fc20dfa2fb93d945ac510567b7",
+      "web/engine.worker.mjs": "8fe298bef2a9628ec34f6e6b6d93e1d7e6930cc5227282c8174aaab727c57eca",
+      "web/identity.mjs": "38821654b02e4f622486fcc132fb9d0b6e13380a0883dad7d9bcc5df2337dd6b",
+      "web/validation.mjs": "bd43f34b77e5280bdb2d56b010feac9b4092032042b0443afc0eef3dfdee9038"
+    },
+    "state_reducer": true,
+    "authoring_code": true,
+    "existing_example_sources": true,
+    "worker_policy": true,
+    "security_probes": "Not rerun: workers and CSP unchanged; prior N2 evidence retained."
+  },
+  "remaining": [
+    "human screen-reader/learner review",
+    "physical Android/iPhone classroom LAN tests",
+    "measured classroom load",
+    "cross-platform hosted CI against a reproducible published host artifact",
+    "catalog release"
+  ]
+}
