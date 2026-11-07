@@ -2,7 +2,7 @@
 
 Date: 2026-11-07. The scoring branches now include TeXStage `main` at
 `6b64828b98e9908fc67c265cab31a71a216308d5` and the plugin collection's default
-`codex/plugin-system` at `10ae0b4d4627c9fe916b108deeb1c262857fe152`. The collection has no `main` branch.
+`codex/plugin-system` at `10ae0b4d4627c9fe916b108deeb1c262857fe152`. At the time of this rebase, the collection had no `main` branch. Its new `main` now points to the same base; see the [collection validation](plugin-collection-validation-2026-11-07.md) for the subsequent compatibility correction.
 
 The compatible host commit is [`9fa37afda69f1cacc0d12ff2933214cf4598f79f`](https://github.com/stefanjdecker/texstage/commit/9fa37afda69f1cacc0d12ff2933214cf4598f79f).
 B+ conformance uses this immutable pin by default; an explicit dispatch input or

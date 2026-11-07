@@ -18,6 +18,10 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-fd-lab` | Closure, candidate-key and implication lessons (F1-F3) | `\fdlab{id}{width}{height}` |
 | `texstage-normalization-workshop` | Normalization, comparison and evidence | `texstage-normalization-workshop.sty` / `\normalizationworkshop` |
 
+The [collection validation record](docs/design/plugin-collection-validation-2026-11-07.md)
+lists all nine packages, their implemented scope and the compatible host needed
+to run them together.
+
 The coordinate slide accepts a phone response, displays class points on the
 projector, gives distance feedback from the presenter browser, and supports reveal
 and reset. Distance is supplementary: `(0,5)` and `(3,4)` have the same distance,

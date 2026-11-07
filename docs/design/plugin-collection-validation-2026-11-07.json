@@ -1,0 +1,379 @@
+{
+  "date": "2026-11-07",
+  "platform": "Windows / Python 3.14.4 / Node 24.15.0 / Playwright 1.62.1",
+  "branches": {
+    "host": {
+      "head": "9fa37afda69f1cacc0d12ff2933214cf4598f79f",
+      "branch": "codex/bplus-scoring",
+      "upstream": "6b64828b98e9908fc67c265cab31a71a216308d5"
+    },
+    "collection": {
+      "head": "b0f1136e9a8a18ee2caabd4823dab2876622ddb7",
+      "branch": "codex/bplus-scoring",
+      "upstream": "10ae0b4d4627c9fe916b108deeb1c262857fe152"
+    }
+  },
+  "host": {
+    "wheel": "texstage-0.2.1.dev7-py3-none-any.whl",
+    "sha256": "a8fd533abf3e2261dcf26e400a56fd849a3254544681bb49209fffe2dc377ace",
+    "runtime_files": 156,
+    "verified_environments": [
+      "pair",
+      "transaction-engine",
+      "relational-lab",
+      "fd-lab",
+      "er-decisions",
+      "normalization-workshop",
+      "query-plan",
+      "bplus-lab",
+      "combined",
+      "host-fixed"
+    ],
+    "source_and_installed_identical": true,
+    "package_inventory_sha256": "125bdf75a5eab1934dac43b01090bbc7b4b639aea0ab56164666cee2455f4ff4",
+    "base_commit": "9fa37afda69f1cacc0d12ff2933214cf4598f79f",
+    "patch_sha256": "f4634dcf14a7e2044fabc8d86d3d66849340b36238214d26b60c8a11675a32c8",
+    "runtime_sha256": "7a4195700dc9ce3d6865948c01799d5b27065c0b448b3739d639ecf904d7b4ea",
+    "commit": "f612a366ddde07b79a6d5f70160d7ac9db8bd880"
+  },
+  "providers": [
+    {
+      "id": "io.github.stefanjdecker.bpluslab",
+      "version": "0.7.0",
+      "payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27",
+      "package": "bplus-lab",
+      "wheel": "texstage_bplus_lab-0.7.0-py3-none-any.whl",
+      "wheel_sha256": "a971432e5dc88a100f75c633516d73cbcb9c61e99ce65b705d3f4d66b8e99221",
+      "verified_source_wheel_installed_files": 38,
+      "engines": [
+        "io.github.stefanjdecker.bpluslab.operations"
+      ],
+      "content_types": [
+        "io.github.stefanjdecker.bpluslab.tree"
+      ]
+    },
+    {
+      "id": "io.github.stefanjdecker.erdecisions",
+      "version": "0.6.0",
+      "payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6",
+      "package": "er-decisions",
+      "wheel": "texstage_er_decisions-0.6.0-py3-none-any.whl",
+      "wheel_sha256": "66c7f24e6f7139ec3d1ea63f99a3493f29ef138c6fdd35e6f28ca2eb1225bd76",
+      "verified_source_wheel_installed_files": 34,
+      "engines": [
+        "io.github.stefanjdecker.erdecisions.model"
+      ],
+      "content_types": [
+        "io.github.stefanjdecker.erdecisions.lesson"
+      ]
+    },
+    {
+      "id": "io.github.stefanjdecker.fdlab",
+      "version": "0.6.0",
+      "payload": "17e3efd1a57c9500f6a2debfd36b2647d93e0b419817acc849559012920a6c63",
+      "package": "fd-lab",
+      "wheel": "texstage_fd_lab-0.6.0-py3-none-any.whl",
+      "wheel_sha256": "86be26ee668d971f26b660442664bdd4cb9550d120af398f0fce963752600348",
+      "verified_source_wheel_installed_files": 37,
+      "engines": [
+        "io.github.stefanjdecker.fdlab.dependencies"
+      ],
+      "content_types": [
+        "io.github.stefanjdecker.fdlab.exercise"
+      ]
+    },
+    {
+      "id": "io.github.stefanjdecker.normalizationworkshop",
+      "version": "0.5.0",
+      "payload": "5cb0a3a4252e9b39c6d272bbd6e92658650a561fcc17dec31a494e38d50ecd06",
+      "package": "normalization-workshop",
+      "wheel": "texstage_normalization_workshop-0.5.0-py3-none-any.whl",
+      "wheel_sha256": "0419c7e80b257a9e7276313e51b8f2a70b824b622c59df8f80fd9df52a3ef81b",
+      "verified_source_wheel_installed_files": 50,
+      "engines": [
+        "io.github.stefanjdecker.normalizationworkshop.analyze"
+      ],
+      "content_types": [
+        "io.github.stefanjdecker.normalizationworkshop.workshop"
+      ]
+    },
+    {
+      "id": "io.github.stefanjdecker.queryplan",
+      "version": "0.7.0",
+      "payload": "68bdedff0baea68b2bc3bce75329d5bd57e74c526e95ae33514a6a853d7b31ab",
+      "package": "query-plan",
+      "wheel": "texstage_query_plan-0.7.0-py3-none-any.whl",
+      "wheel_sha256": "fa32743605069ed03cc92c9d136878d5adee611b697581578fe69b7fe68a1ece",
+      "verified_source_wheel_installed_files": 34,
+      "engines": [
+        "io.github.stefanjdecker.queryplan.cost"
+      ],
+      "content_types": [
+        "io.github.stefanjdecker.queryplan.challenge"
+      ]
+    },
+    {
+      "id": "io.github.stefanjdecker.relationallab",
+      "version": "0.1.0",
+      "payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d",
+      "package": "relational-lab",
+      "wheel": "texstage_relational_lab-0.1.0-py3-none-any.whl",
+      "wheel_sha256": "5dff8fe63e3dff6727bedea60501f7b9fe217cb3c270567ba598181f6ab34edd",
+      "verified_source_wheel_installed_files": 29,
+      "engines": [
+        "io.github.stefanjdecker.relationallab.algebra"
+      ],
+      "content_types": [
+        "io.github.stefanjdecker.relationallab.tree"
+      ]
+    },
+    {
+      "id": "io.github.stefanjdecker.transactionengine",
+      "version": "0.1.0",
+      "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc",
+      "package": "transaction-engine",
+      "wheel": "texstage_transaction_engine-0.1.0-py3-none-any.whl",
+      "wheel_sha256": "6f06262b52b81b447ac3c650e07c231cc6b34826f2af627ccae5b20358405bbc",
+      "verified_source_wheel_installed_files": 9,
+      "engines": [
+        "io.github.stefanjdecker.transactionengine.schedule"
+      ],
+      "content_types": []
+    },
+    {
+      "id": "org.example.coordinates",
+      "version": "0.1.0",
+      "payload": "9125ee1b9e7219b09b0ae373b4b208b57d0d06c3c5b87a04111493815317cf3c",
+      "package": "coordinates",
+      "wheel": "texstage_example_coordinates-0.1.0-py3-none-any.whl",
+      "wheel_sha256": "5c4ea6f19f640de91e2843e1a784b7416c82a198e788f608be92f9677aaac5fc",
+      "verified_source_wheel_installed_files": 8,
+      "engines": [],
+      "content_types": [
+        "org.example.coordinates.plane"
+      ]
+    },
+    {
+      "id": "org.example.distance",
+      "version": "0.1.0",
+      "payload": "461488b4dd540fb9c7e5527ce7487c1357ada41c8ecbd0df5a19b2997d11b6ab",
+      "package": "distance",
+      "wheel": "texstage_example_distance-0.1.0-py3-none-any.whl",
+      "wheel_sha256": "41ff392ec60089e7d57e217e203e713717d519d64b5d2a5917ee9e7b51f18ded",
+      "verified_source_wheel_installed_files": 2,
+      "engines": [
+        "org.example.distance.euclidean"
+      ],
+      "content_types": []
+    }
+  ],
+  "sdist_payload_parity": true,
+  "tests": {
+    "plugins": {
+      "pair": 4,
+      "transaction-engine": 67,
+      "relational-lab": 72,
+      "fd-lab": 153,
+      "er-decisions": 135,
+      "normalization-workshop": 80,
+      "query-plan": 199,
+      "bplus-lab": 145
+    },
+    "plugin_tests_total": 855,
+    "host_baseline_passed": 590,
+    "host_baseline_skipped": 1,
+    "host_baseline_subtests_passed": 2,
+    "fixed_host_regressions_passed": 241,
+    "fd_followup_passed": 28,
+    "note": "The full baseline found one FD notification failure; the fixed host passes all 28 FD points tests, including that case. Other passing tests were retained."
+  },
+  "engines": {
+    "transaction-engine": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "relational-lab": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "fd-lab": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "er-decisions": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "normalization-workshop": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "query-plan": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "bplus-lab": {
+      "chromium": "156.0.8078.80",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    }
+  },
+  "distance_coordinate_browsers": {
+    "chromium": "156.0.8078.80",
+    "firefox": "153.0",
+    "webkit": "26.5"
+  },
+  "lesson_runs": {
+    "browser_conformance": 0,
+    "relational_lesson_browser": 0,
+    "fd_lesson_browser": 0,
+    "er_lesson_browser": 0,
+    "er_points_browser": 0,
+    "normalization_lesson_browser": 0,
+    "query_plan_ui_browser": 0,
+    "query_plan_state_browser": 0,
+    "bplus_ui_browser": 0
+  },
+  "mixed_deck": {
+    "browser": "chromium",
+    "version": "156.0.8078.80",
+    "allNineProvidersEnabled": true,
+    "types": [
+      {
+        "slide": 1,
+        "type": "org.example.coordinates.plane",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      },
+      {
+        "slide": 2,
+        "type": "io.github.stefanjdecker.relationallab.tree",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      },
+      {
+        "slide": 3,
+        "type": "io.github.stefanjdecker.bpluslab.tree",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      },
+      {
+        "slide": 4,
+        "type": "io.github.stefanjdecker.erdecisions.lesson",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      },
+      {
+        "slide": 5,
+        "type": "io.github.stefanjdecker.fdlab.exercise",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      },
+      {
+        "slide": 6,
+        "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      },
+      {
+        "slide": 7,
+        "type": "io.github.stefanjdecker.queryplan.challenge",
+        "presenter": true,
+        "projector": true,
+        "phone": true
+      }
+    ],
+    "teardown": true,
+    "pageErrors": []
+  },
+  "limitations": [
+    "Transactions provides an engine only; no lesson/phone UI.",
+    "Relational algebra uses a JSON answer editor; the graphical editor remains pending.",
+    "Capacity and physical-phone/campus-network testing were not repeated.",
+    "The previously observed Windows WebKit B+ presenter instability at 1000 students remains open."
+  ],
+  "publication": {
+    "host_compatibility_fix_committed": true,
+    "host_compatibility_fix_pushed": true,
+    "host_destinations": [
+      "GitHub",
+      "GitLab"
+    ],
+    "hosted_ci_claimed": false
+  },
+  "protected_repositories_unchanged": [
+    "host",
+    "collection",
+    "lecture-tools",
+    "lecture-tools-next",
+    "dbis2027",
+    "PETs4DS",
+    "texstage",
+    "texstage-media",
+    "texstage-public",
+    "texstage-plugins"
+  ],
+  "evidence_sha256": {
+    "artifacts/tests-bplus-lab.xml": "9ddaf5b2b6caf5009e69684e4a6e53ac46e23d3a9fb80f505f8856cdca5ce44a",
+    "artifacts/tests-er-decisions.xml": "7a99ad321edfbdbb6c27c00a398d1d6d315a832819ec4f4a6db5b4507834de69",
+    "artifacts/tests-fd-fixed.xml": "f91738322774246fa4350fb268968dbed92f068f347e7f61285811e3079612f3",
+    "artifacts/tests-fd-lab.xml": "2db000d1ff558f5eb05b88609227dca34a7df85d9f6fb8bfc823878bb0368127",
+    "artifacts/tests-host-fixed.xml": "c6d61323c60990cf6be6d729fb464b50865cf67a3dd9c7d9af57d55765b63f36",
+    "artifacts/tests-host.xml": "a217ffda1a59e364e95a43dbaea19bef6b15c126d538b8a677f3792c010926d8",
+    "artifacts/tests-normalization-workshop.xml": "cc129237eeefeecffba87e7841f3714d4960cd76d95e77c490f501fe52510190",
+    "artifacts/tests-pair.xml": "611a5e3cf693fff11eb038d07e10cbed30ccd5a6adfcc80b578c02b311bb58d3",
+    "artifacts/tests-query-plan.xml": "0bd2e32beb7b5c655ade1203f07055b4b972daa6bf32a37c29bcb50d560b61cd",
+    "artifacts/tests-relational-lab.xml": "129b01c8d5055083cbb81458791a3494f780bc7e69c7f292d8a82ada0b265f5e",
+    "artifacts/tests-transaction-engine.xml": "285c7d76e4cd531231d1c7afeefab976be3cd3fb4368813626067013fbd81da5",
+    "artifacts/engines/bplus-lab/browser-chromium.json": "97f1068d5b7c79bb54bc19025d8a640373631557b5c14713e3fc76e7c0237032",
+    "artifacts/engines/bplus-lab/browser-config.json": "ffb409290270c34f3fc748483dea1d55ec0aea29ecdd660398d9581ffdf52453",
+    "artifacts/engines/bplus-lab/browser-firefox.json": "b89bf923b3c64f57cd65ad93b7c2758b4720f28afc236c7ffb930fdc073aba22",
+    "artifacts/engines/bplus-lab/browser-requests.json": "97f323e6b20bc76719ee6ab96b0aa8121494176398e088953b743b24ba17ece3",
+    "artifacts/engines/bplus-lab/browser-webkit.json": "c0a602768c09a88aa61393bcda624a2405da9d7031f66c29338de42f830c4516",
+    "artifacts/engines/er-decisions/browser-chromium.json": "231ddd43f98f966fd5bd9c78264447aa475841cbcf2057692345cfd8c5ce98f1",
+    "artifacts/engines/er-decisions/browser-config.json": "8e2b0fd5af44085ec2de7b342bb40d3a953ff347299b07dd96f44711577ed549",
+    "artifacts/engines/er-decisions/browser-firefox.json": "997dca14c7efb9057ba9ad4ad49d85e1107c44b38049ea8b1cbec044f051e428",
+    "artifacts/engines/er-decisions/browser-requests.json": "243456005ff38fdca47e96f77dbc4b9a1ffc33bec158e89e092270960a8dec44",
+    "artifacts/engines/er-decisions/browser-webkit.json": "b4960054fa978110aa289b9e1e0c90017ac4b7531be953bf4a9720263a0e22c2",
+    "artifacts/engines/fd-lab/browser-chromium.json": "df0f9520d5ff8e3c0c1e79791a81f5715349711d246f2a07f21a948d0aa4e4ad",
+    "artifacts/engines/fd-lab/browser-config.json": "9050b8db9abc6a320e36fb5393419d247f9eed96f30d3f3258fddcddd2570b42",
+    "artifacts/engines/fd-lab/browser-firefox.json": "d441dee4f6b37f0e0e3ef9ed9cd128cbd045d5d54f43876893cf9137b7c7133f",
+    "artifacts/engines/fd-lab/browser-requests.json": "81aa1faf93e80cb3a84de429f7546a54c83985fc24907c688d146709170b1bb5",
+    "artifacts/engines/fd-lab/browser-webkit.json": "e2b54d5aaead0f9249957d5da850ce88347801c06ed21008681998756aae206c",
+    "artifacts/engines/normalization-workshop/browser-chromium.json": "5735d5a17b4d33371dfc492fa3a1e03318fa408f0fed159559fdda84c4376e67",
+    "artifacts/engines/normalization-workshop/browser-config.json": "5361e4fb1c85d0422ce8ac553c1ae1f60f1993c39c71540edc38519b68fbfbe3",
+    "artifacts/engines/normalization-workshop/browser-expected.json": "de16e8389c10dd1db8a5d4e2aac4277a6fcb4a472eefc7c823ee4fa8439c22e1",
+    "artifacts/engines/normalization-workshop/browser-firefox.json": "35827a81d5bb8857177d4056601fe5e12480892494d21f0616c9fc16a79b1fe4",
+    "artifacts/engines/normalization-workshop/browser-requests.json": "777939121380dc2674b7e394d71ed3e733164cdfe0a81ad9d6fdf541c3d727cd",
+    "artifacts/engines/normalization-workshop/browser-webkit.json": "2e0cc1deeccb46faaf0c956d099b54486e9a6d6c637cfe31d27157d6ea8db14f",
+    "artifacts/engines/query-plan/browser-chromium.json": "1c802bc278444936f2c1cc8c461c749238f88d59b3af9e6f1b39d8418cbb5128",
+    "artifacts/engines/query-plan/browser-config.json": "70b6fcbf6fd855c1b54266aca0c16f4e9b8c49275eca84610c3ba00011d081d1",
+    "artifacts/engines/query-plan/browser-firefox.json": "20d4c4fb6048182daa1240863289aa4b61d7d470ef69a6a479c1f53799e46b54",
+    "artifacts/engines/query-plan/browser-requests.json": "3ee5dfecb5291343beccc5532c286cb69bbd72477fbfd506e17336d7e4040c6b",
+    "artifacts/engines/query-plan/browser-webkit.json": "b9b0b626517252cf627a538ba7486311385c24c7fe8fd9c5c78eb0dcdf1cee0d",
+    "artifacts/engines/relational-lab/browser-chromium.json": "ea5d078923d16af5af98af5c9d2a3cbaffdf79068bffef24bd752e0ed3a06bda",
+    "artifacts/engines/relational-lab/browser-config.json": "1f4bdf202da35cef5376dfe2f60666c9500456a7ca8865f571b191a1b4c08da7",
+    "artifacts/engines/relational-lab/browser-firefox.json": "b55cd0437c3b0977fe0ca2a3464717a9761083a8d3f8792d1259aa2dccbc639a",
+    "artifacts/engines/relational-lab/browser-requests.json": "0dc110d3cd25682b0798c4857042878ef3f2e19b3d988a5190394756d846233d",
+    "artifacts/engines/relational-lab/browser-webkit.json": "aca2d881963a7da972ed860dd92a329328d978aa4263c66c3618f68f3fab99ca",
+    "artifacts/engines/transaction-engine/browser-chromium.json": "552e8a0cdf148f7510fde7bf2f9dc92f64c669055be8ce0dc67f3e3ea862b442",
+    "artifacts/engines/transaction-engine/browser-config.json": "4a0369fe37cec20eb55dd5af30ded22ad3d7348d584f9bf25524045618e311d2",
+    "artifacts/engines/transaction-engine/browser-firefox.json": "a7fac8a9284915f2f5fddca8d9585ecb8dc344a912d6ae882b29ff6b0730a1c7",
+    "artifacts/engines/transaction-engine/browser-requests.json": "31e03f46d5afa103ff9111a33110cbc5f361140057cc109e2bc683de73e3d323",
+    "artifacts/engines/transaction-engine/browser-webkit.json": "9bf310b0479f14003d198e276888297b04ad171c6630f230ccedb76aaf91d5d9",
+    "artifacts/combined/browser/report.json": "3806e98136ec60d1a413273f10e9b39c469d113f269040bd2aa675d079f6e2e7"
+  },
+  "branches_note": "Source bases at validation start; host.commit identifies the published compatibility fix. Provider payloads are unchanged."
+}
