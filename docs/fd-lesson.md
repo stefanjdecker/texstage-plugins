@@ -26,8 +26,9 @@ Use Python 3.12+, a matching experimental TeXStage host wheel, and a TeX install
 with pdfLaTeX/latexmk, Beamer, Latin Modern fonts, and English/German Babel support.
 The host must include prepared authoring, typed facts, structured command errors,
 atomic replacement of queued evaluations, and renderer mount reconciliation.
-Host commit `de33515` is the tested baseline; a development version string alone
-does not identify a compatible build. Install into a fresh virtual environment,
+The current published host pin is `34d0c537135f32b0690147dbb66dd8ff155987f8`; see the
+[release procedure](fd-release.md) for source and artifact verification.
+A development version string alone does not identify a compatible build. Install into a fresh virtual environment,
 leaving existing course environments intact.
 
 For a source build, first install the matching host's hash-locked development

@@ -16,8 +16,9 @@ Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
 
 Verwenden Sie eine neue Python-Umgebung (Python 3.12+) und das passende
 experimentelle TeXStage-Wheel. Bestehende Kursumgebungen bleiben unverändert.
-Geprüft wurde Host-Commit `de33515`; die Entwicklungsversionsnummer allein
-identifiziert keinen kompatiblen Build. Für Quell-Builds installieren Sie zuerst
+Der aktuelle veröffentlichte Host-Pin lautet `34d0c537135f32b0690147dbb66dd8ff155987f8`;
+das [Release-Verfahren](fd-release.md) erklärt die Prüfung von Quellen und Artefakten.
+Die Entwicklungsversionsnummer allein identifiziert keinen kompatiblen Build. Für Quell-Builds installieren Sie zuerst
 die mit Hashes fixierten Entwicklungsabhängigkeiten und das Wheel dieses Hosts.
 Zusätzlich werden pdfLaTeX/latexmk, Beamer, Latin Modern sowie englische und
 deutsche Babel-Unterstützung benötigt.

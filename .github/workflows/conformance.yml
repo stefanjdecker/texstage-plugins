@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
     inputs:
       texstage_ref:
-        description: Compatible Texstage commit or branch to test
-        default: main
+        description: Exact compatible Texstage commit SHA
+        default: 34d0c537135f32b0690147dbb66dd8ff155987f8
         required: true
 permissions:
   contents: read
@@ -16,6 +16,7 @@ defaults:
 env:
   PYTHONDONTWRITEBYTECODE: '1'
   PIP_DISABLE_PIP_VERSION_CHECK: '1'
+  HOST_COMMIT: ${{ inputs.texstage_ref || '34d0c537135f32b0690147dbb66dd8ff155987f8' }}
 jobs:
   worker-bundles:
     runs-on: ${{ matrix.os }}
@@ -40,7 +41,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'main' }}
+          ref: ${{ inputs.texstage_ref || '34d0c537135f32b0690147dbb66dd8ff155987f8' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -107,7 +108,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'main' }}
+          ref: ${{ inputs.texstage_ref || '34d0c537135f32b0690147dbb66dd8ff155987f8' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -203,7 +204,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'main' }}
+          ref: ${{ inputs.texstage_ref || '34d0c537135f32b0690147dbb66dd8ff155987f8' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -304,35 +305,45 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || 'main' }}
+          ref: ${{ inputs.texstage_ref || '34d0c537135f32b0690147dbb66dd8ff155987f8' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with: {python-version: '3.12'}
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with: {node-version: '24'}
+      - name: Verify the immutable host checkout
+        run: |
+          [[ "$HOST_COMMIT" =~ ^[a-f0-9]{40}$ ]]
+          test "$(git -C host-source rev-parse HEAD)" = "$HOST_COMMIT"
       - name: Install the matching host wheel
         run: |
-          python -m pip install --require-hashes --only-binary=:all: -r host-source/requirements/dev.txt
+          python -m pip install --require-hashes --only-binary=:all: -r host-source/requirements/dev.txt -r host-source/requirements/build.txt
           cd host-source
           python -m build --wheel --no-isolation
           python -m pip install --no-deps dist/*.whl
           python -c "from texstage.plugins.contracts import CONTRACT_VERSION; assert CONTRACT_VERSION == 2, 'Select a host with typed plugin contracts'"
       - name: Install TeX and both lesson languages
         run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-extra texlive-fonts-recommended texlive-lang-german lmodern
-      - name: Build and test the isolated engine and closure lesson
+      - name: Check generated provider workers
+        run: |
+          npm ci --ignore-scripts
+          npm run check:workers
+      - name: Build and test all modes and both authoring languages
         run: |
           python maintenance/build_wheels.py --package fd-lab
           python -m pip install --no-deps dist/*.whl
-          python -m pytest plugins/fd-lab/tests -q --basetemp=artifacts/fd-tests --junitxml=artifacts/fd-lab-tests.xml
-          test -f artifacts/fd-tests/test_installed_authoring_all_e0/out/lesson.bundle/deck.json
+          FD_TEST_EXPORTS=artifacts/fd-exports python -m pytest plugins/fd-lab/tests maintenance/tests/test_fd_artifacts.py -q --basetemp=artifacts/fd-tests --junitxml=artifacts/fd-lab-tests.xml
+          python -c "import xml.etree.ElementTree as E; assert not E.parse('artifacts/fd-lab-tests.xml').findall('.//skipped'), 'Linux producer must execute both TeX authoring cases'"
+          test -f artifacts/fd-exports/en/lesson.bundle/deck.json
+          test -f artifacts/fd-exports/de/lesson.bundle/deck.json
           python maintenance/fd_probe.py
           git -C host-source rev-parse HEAD > artifacts/fd-lab/host-commit.txt
       - name: Stage identical wheels and prepared bundle for consumers
         run: |
-          python -c "from pathlib import Path; import shutil; p=Path('engine-handoff'); p.mkdir(); shutil.copytree('dist',p/'plugins'); shutil.copytree('host-source/dist',p/'host'); shutil.copytree('host-source/requirements',p/'requirements'); shutil.copytree('artifacts/fd-tests/test_installed_authoring_all_e0/out/lesson.bundle',p/'lesson.bundle')"
+          python maintenance/fd_artifacts.py create --host-wheel host-source/dist/texstage-0.2.1.dev3-py3-none-any.whl --plugin-wheel dist/texstage_fd_lab-0.3.0-py3-none-any.whl --plugin-sdist dist/texstage_fd_lab-0.3.0.tar.gz --requirements host-source/requirements --bundles artifacts/fd-exports --host-commit "$HOST_COMMIT" --output engine-handoff
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with: {name: fd-lab-wheels, path: engine-handoff/, retention-days: 14}
+        with: {name: fd-lab-wheels, path: engine-handoff/, retention-days: 14, if-no-files-found: error}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with: {name: fd-lab-linux, path: artifacts/, retention-days: 14}
@@ -358,13 +369,16 @@ jobs:
         env:
           BROWSER: ${{ matrix.browser }}
         run: |
+          python maintenance/fd_artifacts.py verify handoff --host-commit "$HOST_COMMIT"
           python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
-          python -m pip install --no-deps handoff/host/*.whl handoff/plugins/*.whl
+          python -m pip install --no-deps handoff/wheels/*.whl
+          python maintenance/fd_artifacts.py installed handoff --host-commit "$HOST_COMMIT"
           python maintenance/fd_probe.py
           npm ci --ignore-scripts
           npx playwright install --with-deps "$BROWSER"
           node maintenance/fd_browser.cjs
-          node maintenance/fd_lesson_browser.cjs handoff/lesson.bundle
+          node maintenance/fd_lesson_browser.cjs handoff/bundles/en/lesson.bundle
+          node maintenance/fd_release_browser.cjs handoff/bundles/de/lesson.bundle
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -387,9 +401,11 @@ jobs:
         with: {name: fd-lab-wheels, path: handoff}
       - name: Test the identical Linux-built wheel (static TeX exports covered in Linux job)
         run: |
+          python maintenance/fd_artifacts.py verify handoff --host-commit "$HOST_COMMIT"
           python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
-          python -m pip install --no-deps handoff/host/*.whl handoff/plugins/*.whl
-          python -m pytest plugins/fd-lab/tests -q --basetemp=artifacts/fd-tests --junitxml=artifacts/fd-lab-tests.xml
+          python -m pip install --no-deps handoff/wheels/*.whl
+          python maintenance/fd_artifacts.py installed handoff --host-commit "$HOST_COMMIT"
+          python -m pytest plugins/fd-lab/tests maintenance/tests/test_fd_artifacts.py -q --basetemp=artifacts/fd-tests --junitxml=artifacts/fd-lab-tests.xml
           python maintenance/fd_probe.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

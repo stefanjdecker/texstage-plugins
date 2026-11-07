@@ -2,6 +2,7 @@
 """Installed closure lesson: authoring, facts, races, privacy and real exports."""
 import copy
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -271,7 +272,8 @@ def test_installed_runtime_replay_replacement_reset_and_validated_views(runtime,
 
 
 @pytest.mark.skipif(shutil.which("pdflatex") is None, reason="needs pdfLaTeX")
-def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
+@pytest.mark.parametrize("language", ["en", "de"])
+def test_installed_authoring_all_editions_and_freshness(tmp_path, provider, language):
     from texstage.build.builder import BuildOptions, build
     from texstage.build.latex import compile_deck
     from texstage.build.compiler import compile_latex
@@ -280,6 +282,14 @@ def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
     from texstage.server.bundles import load_bundle
     deck = tmp_path / "deck"
     shutil.copytree(ROOT / "examples/functional-dependencies", deck)
+    if language == "de":
+        source = deck / "lesson.tex"
+        source.write_text(source.read_text(encoding="utf-8").replace(
+            "[ngerman,english]{babel}", "[english,ngerman]{babel}"), encoding="utf-8")
+        sidecar = deck / "lesson.activities.json"
+        data = json.loads(sidecar.read_text(encoding="utf-8"))
+        data["language"] = "de"
+        sidecar.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     catalog = Catalog([provider])
     profile = tmp_path / "profile"
     enable(profile, provider.id, provider.version, provider.payload)
@@ -289,6 +299,7 @@ def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
     result = build(deck / "lesson.tex", out, options)
     assert not result.problems
     bundle = load_bundle(result.bundle, catalog=catalog)
+    assert bundle.deck_json["language"] == language
     assert set(bundle.items[TYPE]) == {"closure", "practice", "keys_one", "keys_all", "implied", "refuted", "different_sizes", "empty_key"}
     public = model.canonical(bundle.deck_json)
     assert '"expected"' not in public and '"worked"' not in public and '"evaluations"' not in public
@@ -297,14 +308,21 @@ def test_installed_authoring_all_editions_and_freshness(tmp_path, provider):
     def text(path):
         with Pdf(path) as pdf: return " ".join(page.text() for page in pdf)
     handout = compile_deck(deck / "lesson.tex", "handout", out, plugins=catalog, preparation=options.preparation)
-    assert "One worked answer" not in text(handout.pdf)
-    assert "One worked answer" not in text(result.stage.pdf)
-    assert "One worked answer" in text(out / "build/lesson-solutions.pdf")
+    heading = "One worked answer" if language == "en" else "Eine mögliche Lösung"
+    assert heading not in text(handout.pdf)
+    assert heading not in text(result.stage.pdf)
+    assert heading in text(out / "build/lesson-solutions.pdf")
     exported = options.preparation.export(deck / "lesson.tex", catalog)
     for edition in ("handout", "solutions"):
         direct = compile_latex(exported[edition], output_dir=out / ("direct-" + edition), passes=2)
         assert direct.returncode == 0, direct.stdout[-3000:]
-        assert ("One worked answer" in text(direct.pdf)) == (edition == "solutions")
+        assert (heading in text(direct.pdf)) == (edition == "solutions")
+    if os.environ.get("FD_TEST_EXPORTS"):
+        export = Path(os.environ["FD_TEST_EXPORTS"]) / language
+        export.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(result.bundle, export / "lesson.bundle")
+        shutil.copyfile(handout.pdf, export / "handout.pdf")
+        shutil.copyfile(out / "build/lesson-solutions.pdf", export / "solutions.pdf")
     path = deck / "activities/closure.json"
     path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
     stale = compile_latex(exported["handout"], output_dir=out / "stale")

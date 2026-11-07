@@ -205,11 +205,11 @@ Publishing, commits, pushes and course migration are separate requested actions.
 
 ## Recommended next step
 
-Proceed with F5: finalize a compatible host commit including the reviewed
-renderer changes, publish and pin that immutable host, then run the existing
-Linux producer / Windows consumer CI and its three-browser matrix. Verify that
-TeX authoring executes with both language packs. Catalog publication is a later,
-explicit action. Recheck capacity on the intended lecture hardware and network.
+F5 now uses published host `34d0c537135f32b0690147dbb66dd8ff155987f8`, including the
+reviewed renderer, keyboard and language fixes. The [release procedure](../fd-release.md)
+requires real English/German authoring and byte-verified artifact transfer to
+Windows and all three browsers. Check the hosted run before treating these gates
+as complete. Catalog publication remains a later, explicit action. Recheck capacity on the intended lecture hardware and network.
 Physical-phone validation remains deferred under the automated-only scope.
 
 The performance follow-up adds a bounded cache of immutable asset bytes and

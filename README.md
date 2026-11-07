@@ -96,7 +96,9 @@ A [German guide](docs/fd-lesson-de.md) is also available. The
 [performance follow-up](docs/design/functional-dependencies-f4-performance.md)
 passes the unchanged 64-answer targets in Chromium, Firefox and WebKit, with
 fresh isolated workers and the same security policy. Physical-phone checks are
-deferred; compatible published host pins and release CI remain separate gates.
+deferred. The [release procedure](docs/fd-release.md) pins the published host,
+requires English/German authoring and verifies identical artifacts in the
+Windows and three-browser consumers. A catalog release remains separate.
 
 ```sh
 python maintenance/check_fd_design.py
