@@ -1,0 +1,36 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{texstage}
+\usepackage{texstage-bplus-tree}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\begin{document}
+\begin{frame}{B+-Bäume: den Seiten folgen}
+Ein Index findet Katalogeinträge, ohne jeden Eintrag zu durchsuchen.
+\begin{itemize}\item Blätter speichern Einträge; innere Trennschlüssel steuern die Suche.
+\item Kapazitäten zählen Blatteinträge oder innere Kindzeiger.
+\item Jede Aufgabe beginnt mit ihrem eigenen Baum. Seiten-IDs bleiben bei Reparaturen erhalten.
+\item Mehrere Reparaturen können korrekt sein. Begründen Sie Ihr Ergebnis.\end{itemize}
+\end{frame}
+\begin{frame}
+\bplustree{lookup}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{range}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{insert}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{delete}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{cascade}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{shrink}{.98\linewidth}{.90\textheight}
+\end{frame}
+\end{document}

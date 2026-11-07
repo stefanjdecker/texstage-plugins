@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Find catalogue entry 20",
+    "de": "Finde Katalogeintrag 20"
+  },
+  "prompt": {
+    "en": "Follow the separators to find entry 20. Which pages are read?",
+    "de": "Folge den Trennschlüsseln zu Eintrag 20. Welche Seiten werden gelesen?"
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            20,
+            40
+          ],
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "leaf",
+          "keys": [
+            5,
+            10
+          ],
+          "next": 2
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            20,
+            25,
+            30
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            40,
+            45
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "lookup",
+      "key": 20
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        2
+      ],
+      "keys": [
+        20
+      ]
+    },
+    "explanation": {
+      "en": "Equality routes right. The separator 20 is a copy; the actual entry is in leaf P2.",
+      "de": "Gleichheit führt nach rechts. Der Trennschlüssel 20 ist eine Kopie; der Eintrag liegt in Blatt P2."
+    }
+  },
+  "feedback": "on-reveal"
+}

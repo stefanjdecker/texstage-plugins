@@ -1,0 +1,268 @@
+{
+  "format": 1,
+  "title": {
+    "en": "When a split reaches the root",
+    "de": "Wenn eine Teilung die Wurzel erreicht"
+  },
+  "prompt": {
+    "en": "Insert 22. Repair the overflows from the leaf upwards.",
+    "de": "Füge 22 ein. Repariere die Überläufe vom Blatt nach oben."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            5,
+            9,
+            13
+          ],
+          "children": [
+            1,
+            4,
+            7,
+            10
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "internal",
+          "keys": [
+            3
+          ],
+          "children": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            1,
+            2
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            3,
+            4
+          ],
+          "next": 5
+        },
+        {
+          "id": 4,
+          "kind": "internal",
+          "keys": [
+            7
+          ],
+          "children": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "leaf",
+          "keys": [
+            5,
+            6
+          ],
+          "next": 6
+        },
+        {
+          "id": 6,
+          "kind": "leaf",
+          "keys": [
+            7,
+            8
+          ],
+          "next": 8
+        },
+        {
+          "id": 7,
+          "kind": "internal",
+          "keys": [
+            11
+          ],
+          "children": [
+            8,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "kind": "leaf",
+          "keys": [
+            9,
+            10
+          ],
+          "next": 9
+        },
+        {
+          "id": 9,
+          "kind": "leaf",
+          "keys": [
+            11,
+            12
+          ],
+          "next": 11
+        },
+        {
+          "id": 10,
+          "kind": "internal",
+          "keys": [
+            15,
+            17,
+            19
+          ],
+          "children": [
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "id": 11,
+          "kind": "leaf",
+          "keys": [
+            13,
+            14
+          ],
+          "next": 12
+        },
+        {
+          "id": 12,
+          "kind": "leaf",
+          "keys": [
+            15,
+            16
+          ],
+          "next": 13
+        },
+        {
+          "id": 13,
+          "kind": "leaf",
+          "keys": [
+            17,
+            18
+          ],
+          "next": 14
+        },
+        {
+          "id": 14,
+          "kind": "leaf",
+          "keys": [
+            19,
+            20,
+            21
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "insert",
+      "key": 22
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        10,
+        14
+      ],
+      "repairs": [
+        {
+          "op": "split",
+          "node": 14,
+          "left_count": 2,
+          "separator": 21
+        },
+        {
+          "op": "split",
+          "node": 10,
+          "left_count": 2,
+          "separator": 17
+        },
+        {
+          "op": "split",
+          "node": 0,
+          "left_count": 2,
+          "separator": 9
+        }
+      ],
+      "separators": [
+        {
+          "node": 0,
+          "keys": [
+            5
+          ]
+        },
+        {
+          "node": 1,
+          "keys": [
+            3
+          ]
+        },
+        {
+          "node": 4,
+          "keys": [
+            7
+          ]
+        },
+        {
+          "node": 7,
+          "keys": [
+            11
+          ]
+        },
+        {
+          "node": 10,
+          "keys": [
+            15
+          ]
+        },
+        {
+          "node": 16,
+          "keys": [
+            19,
+            21
+          ]
+        },
+        {
+          "node": 17,
+          "keys": [
+            13,
+            17
+          ]
+        },
+        {
+          "node": 18,
+          "keys": [
+            9
+          ]
+        }
+      ],
+      "height": 3
+    },
+    "explanation": {
+      "en": "A leaf split copies an entry; an internal split promotes a separator. A new root increases the height from two to three edges.",
+      "de": "Eine Blattteilung kopiert einen Eintrag; eine innere Teilung verschiebt einen Trennschlüssel. Die neue Wurzel erhöht die Höhe von zwei auf drei Kanten."
+    }
+  },
+  "feedback": "on-reveal"
+}

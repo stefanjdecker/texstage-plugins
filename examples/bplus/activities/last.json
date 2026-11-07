@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Delete the last entry",
+    "de": "Den letzten Eintrag löschen"
+  },
+  "prompt": {
+    "en": "Delete the only entry. Is an empty tree valid?",
+    "de": "Lösche den einzigen Eintrag. Ist ein leerer Baum erlaubt?"
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "leaf",
+          "keys": [
+            5
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "delete",
+      "key": 5
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0
+      ],
+      "repairs": [],
+      "separators": [],
+      "height": 0
+    },
+    "explanation": {
+      "en": "The root remains as an empty leaf. Height is zero and no merge is needed.",
+      "de": "Die Wurzel bleibt als leeres Blatt. Die Höhe ist null; keine Vereinigung ist nötig."
+    }
+  },
+  "feedback": "on-reveal"
+}

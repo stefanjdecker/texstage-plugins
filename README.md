@@ -106,6 +106,29 @@ The checker needs `jsonschema` from the compatible host's development lock.
 It verifies design fixtures and tiny theories; it is not plugin conformance.
 
 
+## B+ tree operations: interactive classroom activities
+
+The [B+ provider](plugins/bplus-lab/README.md) version 0.4.0 combines its checked
+lookup/range/insert/delete engine with [prepared LaTeX authoring](docs/bplus-lesson.md)
+and [phone and presenter views](docs/bplus-classroom.md).
+One JSON source generates English/German exercises, diagrams and checked solutions.
+The [example decks](examples/bplus/README.md) cover all four operations,
+cascading splits, root shrink and layout boundaries.
+
+Students build answers with structured fields, undo/redo and local replay
+preview, then submit explicitly. Presenters inspect privately, share anonymously,
+reveal/reset and step through attempts or worked solutions. Saved feedback stays
+separate from local preview; drafts survive peer updates and expose device/reset
+conflicts. The physical-phone pilot and release/load measurements remain open.
+
+See the [B1 engine record](docs/design/bplus-tree-b1-validation.md),
+[B2 authoring record](docs/design/bplus-tree-b2-validation.md),
+[B3 classroom record](docs/design/bplus-tree-b3-validation.md),
+[B4 visual UI record](docs/design/bplus-tree-b4-validation.md),
+[contract](docs/design/bplus-tree-contract.md) and [plan](docs/design/bplus-tree-plan.md).
+The [original 30 design examples](docs/design/bplus-tree/README.md) remain
+independent finite evidence alongside installed-wheel and real-browser checks.
+
 ## Worker browser compatibility
 
 The transaction and relational engines now use generated, self-contained ES module

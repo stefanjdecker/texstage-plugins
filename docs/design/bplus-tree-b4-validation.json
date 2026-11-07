@@ -1,0 +1,1157 @@
+{
+  "format": 1,
+  "date": "2026-11-07",
+  "milestone": "B4 visual classroom UI",
+  "provider": {
+    "id": "io.github.stefanjdecker.bpluslab",
+    "version": "0.4.0",
+    "payload": "250a44245e0a64750bcd002bda37de14352aa87205a2b7ea3b983a6115383bdb"
+  },
+  "state_schema": 2,
+  "engine_semantics": "bplus-operations-v1",
+  "wheel": {
+    "filename": "texstage_bplus_lab-0.4.0-py3-none-any.whl",
+    "sha256": "f5d3b39c787eb4195c523dab54c15d619d90fc3778db8aa1c722f9d4bae1c26c",
+    "portable": true,
+    "sdist_payload_parity": true
+  },
+  "host": {
+    "source_head": "de3351550f3553ca63023554521fbe84806ec94e",
+    "source": "frozen snapshot of the active working tree, including unpublished changes",
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "sha256": "fcf39dae8e6304cdb4d713102d89145b7bcf3d32faf00b43b31fb1d22bb3feb9",
+    "matched_files": 150,
+    "working_tree_runtime_changes_included": [
+      "src/texstage/plugins/manifest.py",
+      "src/texstage/plugins/runtime.py",
+      "src/texstage/server/app.py",
+      "src/texstage/server/plugins.py",
+      "src/texstage/web/play/play.js",
+      "src/texstage/web/shared/plugins.js",
+      "src/texstage/web/stage/plugin-evaluator.js",
+      "src/texstage/web/stage/presenter.js",
+      "src/texstage/web/stage/projector.js",
+      "src/texstage/web/stage/stage.css"
+    ],
+    "files": {
+      "texstage/__init__.py": "a5899cf7605d556ad3803236461686842abc911bc783f301f652e7e6c09dbf05",
+      "texstage/addin.py": "27fa40793d4627c74465d5ebbbcf24172c281186a19c8b6401d135ac4e5a211b",
+      "texstage/api.py": "ea8a9007dde2f6a302b14f2a25991f922401ace02a283efddd3f1a38c7bcd268",
+      "texstage/builds.py": "0f2f8e9835596e3ea107b85dbd1ff5b822d5a579ad32f11094442f5f91aa437b",
+      "texstage/cli.py": "3aa9508a237dc3e2b3a283ec713fdef652f8accce46f72bbb696e643d6ffe6b0",
+      "texstage/engines.py": "8b0c9aca884f9663c90faa913373b9e294d25e782f55e757ff2285ffa760de61",
+      "texstage/keys.py": "43c5e4e0ccdc3d306bab1b5ea8ccceed96edc7baa0442fde1b0796c82a9382d0",
+      "texstage/preflight.py": "b6f9b7499aa14c9460c6b377faa66b776b618d558a96295e06a7afda2921a8d1",
+      "texstage/publish.py": "ceddb97fa07761b47c6691fcb9a56a729506de016f4fd77901ea3a4301557658",
+      "texstage/build/__init__.py": "9c84506be0f5776805e2de22a332912491b7d7cc05119d0dc7971c7fbec78085",
+      "texstage/build/activity.py": "d99b094e278d07931b3b7380d6807110999eda384c896b55b6555fcfbae38ef2",
+      "texstage/build/authoring.py": "79ba0d776034ba1835cbf6396308fb3999c9f587a34db0b2c1af39f425f77ab8",
+      "texstage/build/beamer.py": "9ba005f501f7d7486450939255b49046204cdf853d14833dd55490b8c5081c9a",
+      "texstage/build/builder.py": "082ef533f32785d55c4c1dd2e377df53983356261471565788af84b7ccbef2a9",
+      "texstage/build/bundle.py": "2724b99ded01b769b23d6ae04fe39b04559ddb7a99cd7f210e92df9dbe767b64",
+      "texstage/build/check.py": "9d177d2d6d5b5414a58ed10ad27462cc87861604188072ebe0ce4090107655a9",
+      "texstage/build/compiler.py": "2fe641cc388d61c9be96103fac0c2478ebbd4364ec90ce0a33a572f62cae56b2",
+      "texstage/build/latex.py": "ff929712ef37d61508ea9aeb10b41f6e50b990332a9d946d39c8c9c31cf11745",
+      "texstage/build/notes.py": "829643ba6629638440dd31c992990094652efa293730f61580a0d870349acfd7",
+      "texstage/build/pdf.py": "0bfa3bc1b439b29774f2e9eaa7ba8849f5629329e9e6af1b0de5a5a932a4ec25",
+      "texstage/build/plugins.py": "dca3dcd258307ac4cf9ba3b74b53c317de337677d263b26c49105548e0331a7a",
+      "texstage/build/powerpoint.py": "5cd2fefa4c9c33b7a0ddd0bc8b3433672e3c0199afa5c95fd4cf5b401f8cc011",
+      "texstage/build/quiz.py": "2983c901055c75f8708584e7e251e42ef6cc916fa8c6918c67552f5d0e278cab",
+      "texstage/build/raster.py": "ffc436bd0082e1a39b71fd785d24d36124dd328eee5f65af2521fc359d7095a0",
+      "texstage/build/stage.py": "0aa1c3e0ed9ec1b590cae386cc55211c82d33ffff5a7cfa31598bed171123975",
+      "texstage/build/tqz.py": "d29ef96db7b94f9f94dc8a8e01f9ccf8026e1f7edde89f91a1fee301d3c4c815",
+      "texstage/build/types.py": "5b1ecdb579ce1a5aca1605d1c4275c6311bce5b83465242376d187edbb934b67",
+      "texstage/build/video.py": "0fda21fb11e4bd05b4fb80749e2709fa054137df11e1aa9fa531e57f4fe562d8",
+      "texstage/latex/texactivity.sty": "5a71fa9d1850ef7509a009dd6dd922e6d631ce4a9d8b40a8d8270cffac80dfac",
+      "texstage/latex/texquiz.sty": "cf7c62135566589cd4f1fa3d158bc4c4de2456d2882b83a6f4c2dc9a391f50a7",
+      "texstage/latex/texstage.sty": "277e84495de1b58a92d15d2612de8d78233cbeab4a3fb5e7f86029c6f497db5c",
+      "texstage/latex/texvideo.sty": "68105ae1a224b28f3f01fee6603668335b13d96bc6f65ec31c9ad9751ecd4eab",
+      "texstage/plugin_api/__init__.py": "2037c6e230d0c4f58d3ef5cfcd0b645d477c29cb4b57ed53ec60bd0a550446f1",
+      "texstage/plugin_api/v1/__init__.py": "00880b2ba20f251d9c7240a028bd407795838d46a49a1ca738826bed5eb618e8",
+      "texstage/plugins/__init__.py": "7967035d365b1628798a0197ec7120e067e19d2912641db3696ee2eca8699107",
+      "texstage/plugins/assets.py": "de8560b678d3ca073b655e1d6f15ddf2e9325738e729cca4ff1405b8196737bc",
+      "texstage/plugins/catalog.py": "1eec8797bcd149643a5f984a2f0e90ad6297a48ee208ef85ab15d99774908f55",
+      "texstage/plugins/cli.py": "d63fcbad72c32c13df9c38d6d1bf8e96cbc620d71ce87a0fca0bc7ab5ee0536b",
+      "texstage/plugins/collection.py": "09d44137f3163a735bb509631237d9584aeb751d8afcc82c86cc781bd6a36952",
+      "texstage/plugins/contracts.py": "8f3c84bd932c9f5af95c1174b5f27ad92190ad5c83e54d1f80c872f4483e0735",
+      "texstage/plugins/lock.py": "3d5eebf11186a9197a57304449a1fa7db96f5b90b12434997d78b9abd8d19844",
+      "texstage/plugins/manifest.py": "9aa6aabd70c81a6fc09990771e766a1b8c9f61a339bb8131f950e9eb8905e19f",
+      "texstage/plugins/policy.py": "0371c5bdc400d969c7487456de94202099ed9ba9d87904c9e897105690e78972",
+      "texstage/plugins/runtime.py": "4bf43576dcde381d377c753a225053b6a150256465840211e55fa4a5fc5a74c0",
+      "texstage/plugins/sdk.py": "eb1ec6bdcc15dcf9e4cf831d78cc291fd59546ec45ab9f942c6350de5d2ccd3f",
+      "texstage/plugins/worker.py": "8808d094ef3c9d44bfe2f2a5f91b1e3032357cf20d759be5f0c4bc2fabd17aaa",
+      "texstage/plugins/schemas/engine-summary-v1.json": "f59b45ff1bc07f347d70f4958d10991773bf3779538b41b93d0504879f95f55f",
+      "texstage/plugins/schemas/manifest-v1.json": "6bd9bbecf363ceb51845574da293e07fd42bb2d54bf303f7c813d01b6bc13868",
+      "texstage/plugins/schemas/manifest-v2.json": "f676591501f61ea34f78af100b3edca6830caa4d5b1b5684399a14c31e1a25ab",
+      "texstage/server/__init__.py": "519bc005326af73ca0fb3f474648ff95706c3013042991a5d00d1d33e101db78",
+      "texstage/server/activity.py": "c8d8a5c943556e9c1bd7794ec0db068dc1a6252ddea3fa8037377fff48874e2e",
+      "texstage/server/app.py": "86f830d7d6c3dc08da1c517404f2e9f601774be2a3fc35a423db0e611fc78234",
+      "texstage/server/archive.py": "b43b6b32346e11f87731704c4fd614ff4843715e5ea300346fe01b0ce264cac9",
+      "texstage/server/bundles.py": "2ecf6fed45ee8e2b3b504f24447d00a0b7fc08ce1a30885ca39db59909b33ad8",
+      "texstage/server/devices.py": "08e999038293c43acaea9f9d8ba131bf61ccbb33deb92a14e7706ff0d2ed7422",
+      "texstage/server/game.py": "77450ff301087c488011a37b87a65cb001f2ff502868f9f91f69edcf7350e016",
+      "texstage/server/ink.py": "f39e21ad5d0d1cb34615d59e6b425085251008f37141fcad2fd6d3ba1c540e94",
+      "texstage/server/lecturers.py": "221cdca336f340d8d20bd48a3fadf15907519d0966fdf0ff27e99aeffca7ee43",
+      "texstage/server/library.py": "fea9801ba7844154443fb1b818d8d1928de688a5045d5b5d28252a5f70b9057d",
+      "texstage/server/plugins.py": "09359e909b3ec4c10dae3a0f6aef1a7b868354f09111658f22bd3d875642c1a7",
+      "texstage/server/polls.py": "b92334bd6722193b3d6196e2a68b775bd364e586232198d672c05f0226724819",
+      "texstage/server/qa.py": "56a6be835cb301fd6be1f2c9732d2cfffe874c538e908fa5cae12702970a52f0",
+      "texstage/server/scoring.py": "5e5e442e4a8f10f71f54050acea3bafc07f1115b816465201e945ecb9a9ebae2",
+      "texstage/server/store.py": "bb4d7bb4ea33940ff45436cc6fc648a4a58308a3897cb1ae8aa509564c261db7",
+      "texstage/server/tunnel.py": "9dce8946aadea5453863ea61d5ad6b67e80e3eee6ea41b9b69efa430e4959249",
+      "texstage/server/types.py": "3ae32d047737c677050a572d25fa1a50c66fdff6ec8df69bcfa734604ea654a3",
+      "texstage/server/video.py": "0424f54936a6aadda097446a23da01760aec4931b19d878fb86853401ca905c4",
+      "texstage/server/windows_loop.py": "f0f989819e9f6ab7be11337e4f5c4e2f8488a20f35f7dce6ab84df8450651cc8",
+      "texstage/web/addin/addin.css": "fff47377b8a228c219745c78bb5ed2210b54f767c7994317866806bb7b1271f0",
+      "texstage/web/addin/addin.js": "3c88e31bed08f6c687f7b061cce864de32accead587093a05eaeec913d8ee49b",
+      "texstage/web/addin/index.html": "9ae04e44ba4a8d582a651050b3dce9a0f301e5e90817b86f71add0c6a7557c1b",
+      "texstage/web/engines/common.js": "74b44c091e3e8593302673a69bb9adf0458181b149c406dac001af0583ffbcb3",
+      "texstage/web/engines/index.js": "7e46708b77b997bd3217b4c0a4d39ce2294e4e635548dac6fbcd35bcac2bd7b0",
+      "texstage/web/engines/sparql.js": "96f79bbf6e9d84d23dd71d5b7233c26fd97716e13362ff247abbbbaebdb1b968",
+      "texstage/web/engines/sql.js": "790407f44be4922b6b8fa0a09fe096575f28a41f6021607ed6033d68842be35f",
+      "texstage/web/engines/turtle.js": "7f08b4e543fd4da816ac114e6f59dcb339743b0686da44ae0398845c5a7d510a",
+      "texstage/web/host/host.css": "60ddc73f5230c49927a08563e4efec4dece5919367f580b12392cf2b220a6559",
+      "texstage/web/host/host.js": "73fece51b18fbc88f222f6c4998faabe25db5f3c3cb695e86cb19b9eb455ae88",
+      "texstage/web/host/index.html": "28732c0ed0de687a841204507d7d6771b8c20d325a494295814f8d2651965878",
+      "texstage/web/play/activity.js": "42cf4145239b546d716fa75962525fb272a2a7a41127819d43d4e9a15401e588",
+      "texstage/web/play/index.html": "481e047a2f1f0902a67dd0762aaa555798982660aa8a3ba4342fbb1ca04aa4c1",
+      "texstage/web/play/play.css": "4e632b73e7e3c34461290cae1cef014ba7a8ef7b19a22a8941b60d384d934f21",
+      "texstage/web/play/play.js": "4fc0b766c2375e60936644de63271d31bda8682f9c5caac37cf4d94aa9659347",
+      "texstage/web/shared/client.js": "a4601e5fc4528679134cec342b48dc4a3e4509d29080c33ae12ed59d1c32f445",
+      "texstage/web/shared/live.css": "ad6573f4624d9496bde79d97f761f653016de2232f833a1c2f06fb5ad6c8dbef",
+      "texstage/web/shared/live.js": "51775c1138841b32105b39591d3a6df7751226c4f5a2771a0e62f333118a691c",
+      "texstage/web/shared/plugins.js": "d44d7bfb78a98aa078f1f8a1d6351da00c03311316ab831c861bbfe9a9e2d918",
+      "texstage/web/shared/shapes.js": "872cff054df0c8d30d557d9e7d9509d4407e5758d603b5c6f0afe5e09c08703d",
+      "texstage/web/shared/sketch.js": "875ff4cb041cc025b4c16357f74983d82d21a4a9843875f27f0fda5189d541cf",
+      "texstage/web/shared/text.js": "ec1650f08282eb735f0e6423031a9db6b123e36f07e2155c953b8e9e8a584fda",
+      "texstage/web/shared/upload.js": "2c87d33634ff5a956400ff2d8ef76d6e07ec461684ae78cd3c6eb288609b1745",
+      "texstage/web/stage/activity.js": "10a605f69b3efba5663d71b8a74b496d29b2aec60e9e5fc71fe06433b074fab7",
+      "texstage/web/stage/ask.js": "9f5e8f579544e5fe4f7c41fb1175810bd5026a42454eeb18e9e8b47ec172fb2a",
+      "texstage/web/stage/evaluator-worker.js": "4d5887763933ed8f2377ace5e834f86fa2b2e5b6abe3367d02e0cc4380177881",
+      "texstage/web/stage/evaluator.js": "f0178926ffb0653560bd86519c7dd5fd6c4dd68fb1491dc1f35f7cebcd241f90",
+      "texstage/web/stage/export.js": "e8b51ea245feed96f179f0623e57758b998c1057e1842c475d24ae460bc24a5a",
+      "texstage/web/stage/index.html": "e9b70529b5390706a7776a55754b79979bdbff7ae7760a759aab98634eb52b0b",
+      "texstage/web/stage/ink.js": "649d06d8a144ea2f76f50aef997ecacbaaea384fd68e9c08ba3986a05b89e529",
+      "texstage/web/stage/pdfview.js": "70ec2592c09dbc1a54f5bda4e2eba056af857d3b3e6e2789e818dca53d6f396b",
+      "texstage/web/stage/pen.js": "a03079ad1bdb9f8ef43ad086cef74fdaa514c5f933e1718046bedce40d68adbb",
+      "texstage/web/stage/plugin-contracts-worker.mjs": "0257ff5a7188e7623d2d70a2237f5b25ddb71b1d9225762e94424ab236380495",
+      "texstage/web/stage/plugin-contracts.js": "fee23e08f0e4fc76a877d511c18701c138bcf080bb5f57e2a583308c638b7a14",
+      "texstage/web/stage/plugin-evaluator-worker.js": "7264a98a0874f25d15e22f3d078e05389e6886ac1c410b5fbb5f4de69bf7052f",
+      "texstage/web/stage/plugin-evaluator.js": "29ad251b09b26081fe6a7f9f68e3c0abdad2970c24979b5e231904641781ceec",
+      "texstage/web/stage/presenter.js": "5c3eea7f8fd165d7b1bca18fca812a9a147ac5ea1cc9b082e4ba5fb72677a044",
+      "texstage/web/stage/projector.html": "5b2e6e9a619108df9a695b2fbab59bf863a8d58deffefbef120b82f1739305be",
+      "texstage/web/stage/projector.js": "f7341e0e77a1c8ddf5473028cc63d39064d07acc1c10462ab488c6b57d6e2c63",
+      "texstage/web/stage/record.js": "c227ea42af9fcee12dc15e0acdf79b094c4a01ba45212542482247bed62566dc",
+      "texstage/web/stage/split.js": "7d506ab7c2f5e1e1453cec271e627d661af62524aeea3a5c0f2265b74b2c8fd7",
+      "texstage/web/stage/stage.css": "e1f153b83307b67860dfbe74a140f3eceb0e9ada2e486f07ac405fc1a99c9165",
+      "texstage/web/stage/video.js": "53a764607509d997e32c5dffa46a6c4565f542652efcb6b2b117f4134056c356",
+      "texstage/web/vendor/README.md": "d535101c34e6d7d9318cdd66cea3d95f1a23a972e1e8cd341c85e91147d41548",
+      "texstage/web/vendor/katex/LICENSE": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3",
+      "texstage/web/vendor/katex/katex.min.css": "d4ab5b8ee16989b070cdb0ea24bd6ad48fc8df1b787f280f29d3ae4f959f2c00",
+      "texstage/web/vendor/katex/katex.min.js": "103a53763cc033bba8d175bf3f0ba597c3505c9b6747dd3f2c7bc2a6bfcc8ae7",
+      "texstage/web/vendor/katex/fonts/KaTeX_AMS-Regular.woff2": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+      "texstage/web/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+      "texstage/web/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+      "texstage/web/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+      "texstage/web/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+      "texstage/web/vendor/katex/fonts/KaTeX_Main-Bold.woff2": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+      "texstage/web/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+      "texstage/web/vendor/katex/fonts/KaTeX_Main-Italic.woff2": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+      "texstage/web/vendor/katex/fonts/KaTeX_Main-Regular.woff2": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+      "texstage/web/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+      "texstage/web/vendor/katex/fonts/KaTeX_Math-Italic.woff2": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+      "texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+      "texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+      "texstage/web/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+      "texstage/web/vendor/katex/fonts/KaTeX_Script-Regular.woff2": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+      "texstage/web/vendor/katex/fonts/KaTeX_Size1-Regular.woff2": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+      "texstage/web/vendor/katex/fonts/KaTeX_Size2-Regular.woff2": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+      "texstage/web/vendor/katex/fonts/KaTeX_Size3-Regular.woff2": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+      "texstage/web/vendor/katex/fonts/KaTeX_Size4-Regular.woff2": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+      "texstage/web/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+      "texstage/web/vendor/oxigraph/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "texstage/web/vendor/oxigraph/LICENSE-MIT": "1f4f6736adc52ebfda18bb84947e0ef492bd86a408c0e83872efb75ed5e02838",
+      "texstage/web/vendor/oxigraph/web.js": "2fcfdcadc79c9146cee98028a273aebc93df3282eb0299c248595bc529deca41",
+      "texstage/web/vendor/oxigraph/web_bg.wasm": "b95b15accb6b789667b8d8b0b8f139d5de588e572499672ff37ce9ba01c4a428",
+      "texstage/web/vendor/pdf-lib/LICENSE.md": "f2c9fc00fdb66eb99ac156ba52d734af66d8d309f65753ae809ad34ee2883bcb",
+      "texstage/web/vendor/pdf-lib/pdf-lib.esm.min.js": "72c052d97b4d5d9fa6cdbdcb7ad709f03d4ddb1122390cb3afeba4d88651d969",
+      "texstage/web/vendor/pdfjs/LICENSE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "texstage/web/vendor/pdfjs/pdf.min.mjs": "57456c8e0c81e46be31174b499ef77f2b9f5ee46d04412ba627320a36755d4c2",
+      "texstage/web/vendor/pdfjs/pdf.worker.min.mjs": "9536359f1b8367850d485731ca1d5e45c159a7b7a0912325e539937aa21ceb18",
+      "texstage/web/vendor/perfect-freehand/LICENSE": "6a5ac82b42ce0af6a1e5fe39b46f0b52f1368e81e437175e8d9ae21569c8688e",
+      "texstage/web/vendor/perfect-freehand/index.mjs": "a02e221f71a757e46915a51d8f5ffc8d1788d9134e063b3edd21f429c973d46c",
+      "texstage/web/vendor/sqljs/AUTHORS": "2bb11c65286bd0f2919022e119671036ff8d85c6cd1522b6ebcc1362e67f2ce5",
+      "texstage/web/vendor/sqljs/LICENSE": "60a3f6e4d7b29b4321359e683b36cf198d24f58e24582070f56e6fa89d5ee2be",
+      "texstage/web/vendor/sqljs/sql-wasm-browser.js": "35e39a73b2e0bc1c2202a4cadb23bcf7a3a77071a39c270f014402968785b95f",
+      "texstage/web/vendor/sqljs/sql-wasm-browser.wasm": "38c14f6e379210bc942bdc4ebca44e7bfdb4318ecc1c72ca666a28fdce96670a"
+    },
+    "compatibility_note": "Requires the recorded host snapshot, including locale propagation, keyboard routing and classroom evaluator/broadcast fixes; no published host pin is claimed."
+  },
+  "collection_source_head": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.14.4",
+    "node": "v24.15.0"
+  },
+  "tests": {
+    "total": 123,
+    "by_module": {
+      "test_authoring": 32,
+      "test_engine": 30,
+      "test_state": 60,
+      "test_ui": 1
+    },
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 47.767,
+    "warnings": [
+      "Pytest could not write its optional scratch cache; all tests completed."
+    ]
+  },
+  "unchanged_files": [
+    "model.py",
+    "state.py",
+    "layout.py",
+    "latex/texstage-bplus-tree.sty",
+    "web/validation.mjs",
+    "web/tree.mjs",
+    "web/identity.mjs",
+    "web/engine.mjs",
+    "schemas/exercise-v1.json",
+    "schemas/answer-v1.json",
+    "schemas/analysis-result-v1.json",
+    "schemas/lesson-v1.json",
+    "fixtures/design-cases.json"
+  ],
+  "unchanged_example_sources": [
+    "examples/bplus/layout-stress-de.tex",
+    "examples/bplus/layout-stress.de.activities.json",
+    "examples/bplus/layout-stress.en.activities.json",
+    "examples/bplus/layout-stress.tex",
+    "examples/bplus/lesson-de.tex",
+    "examples/bplus/lesson.de.activities.json",
+    "examples/bplus/lesson.en.activities.json",
+    "examples/bplus/lesson.tex",
+    "examples/bplus/activities/cascade.json",
+    "examples/bplus/activities/delete.json",
+    "examples/bplus/activities/empty.json",
+    "examples/bplus/activities/insert.json",
+    "examples/bplus/activities/large.json",
+    "examples/bplus/activities/last.json",
+    "examples/bplus/activities/lookup.json",
+    "examples/bplus/activities/range.json",
+    "examples/bplus/activities/shrink.json"
+  ],
+  "schemas": {
+    "analysis-result-v1.json": "749ccbf4c1663fb2938d731fd18a68effc1478e5b91ca4e3c4224f5549735bbd",
+    "answer-v1.json": "9a24633af34362b855b45688f80a92f328d23d0359ff377cf5dd64c614fb1717",
+    "command-control-v2.json": "bb170f081ad0135108ec7eeddc9e6e7b9cf658be99dfa5f89c20177088ec76d9",
+    "command-replay-v2.json": "c2d2a2e48a35904f1d35ef34d0071f67fa7334a3859f2351ffb84e0f25641099",
+    "command-selection-v2.json": "8c9b4b2d4af39a7f8605d0ec68249e9edd53fe6a4b50a92c20aeab6e3a39e2bc",
+    "command-submit-v2.json": "5cecdacd306acee3d1816c53df84ff2385b6aeb2a3179ca9c3f799f8284c3b77",
+    "exercise-v1.json": "33bb92c0c05d38c6758465af528bf332981b287e55186ee77088d62cdfd5616e",
+    "lesson-v1.json": "46a69aead175a52d13e7b4c249452dfc12213cf1da2ff990252806cc0e46ae31",
+    "participant-input-v2.json": "770d5d1041d3d702d6482cf4b51877e7d0c235c355c7e7e7d274335f965fb917",
+    "presenter-controls-v2.json": "94a7e3c7b5138c3f001f1cde0a6beec5bcff16334f9a214a732d3073ca6a7b95",
+    "presenter-overlay-v2.json": "f3f96cc917d30535a6a3ad8c1a534d5eddbbbf4b7528b920eceac80f77c3b1aa",
+    "projector-overlay-v2.json": "99d535103152fa1c242370c1276d9a1b60896b601a46e849d5081884bba5ddaf"
+  },
+  "editor_helpers": {
+    "roundtrips": 35,
+    "replays": 35,
+    "frames": 91,
+    "maximumChunkMs": 2.096900000000005
+  },
+  "storage": {
+    "actors": 48,
+    "answer_bytes": 752,
+    "reserved_slot_bytes": 2169,
+    "state_bytes": 59397,
+    "transition_bytes": 60499,
+    "view_bytes": {
+      "participant-input": 33211,
+      "presenter-controls": 38860,
+      "presenter-overlay": 32300,
+      "projector-overlay": 32300
+    },
+    "validator_cases": 16,
+    "capacity_claim": "storage only; no throughput measurement"
+  },
+  "exports": {
+    "lesson-en": {
+      "language": "en",
+      "pages": {
+        "handout": 7,
+        "solutions": 7,
+        "stage": 7,
+        "direct-handout": 7,
+        "direct-solutions": 7,
+        "direct-present": 7
+      },
+      "prepare_calls": 6,
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    },
+    "lesson-de": {
+      "language": "de",
+      "pages": {
+        "handout": 7,
+        "solutions": 7,
+        "stage": 7,
+        "direct-handout": 7,
+        "direct-solutions": 7,
+        "direct-present": 7
+      },
+      "prepare_calls": 6,
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    },
+    "stress-en": {
+      "language": "en",
+      "pages": {
+        "handout": 3,
+        "solutions": 3,
+        "stage": 3,
+        "direct-handout": 3,
+        "direct-solutions": 3,
+        "direct-present": 3
+      },
+      "prepare_calls": 3,
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    },
+    "stress-de": {
+      "language": "de",
+      "pages": {
+        "handout": 3,
+        "solutions": 3,
+        "stage": 3,
+        "direct-handout": 3,
+        "direct-solutions": 3,
+        "direct-present": 3
+      },
+      "prepare_calls": 3,
+      "checks": [
+        "single preparation",
+        "live bundle privacy",
+        "exercise/solution separation",
+        "static PowerPoint media",
+        "three direct pdfLaTeX editions",
+        "same item identities",
+        "no clipped PDF text",
+        "changed source refused",
+        "PNG renders saved for visual review"
+      ]
+    }
+  },
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "engine_samples": 34,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2024.0999999940395,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "prepared": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "bundle": "a217d1d5cecd13b7",
+        "static_slide_visible": true,
+        "initial_overlays_hidden": 2,
+        "navigation_remount": true,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "presenter": true,
+          "projector": true,
+          "participant": true,
+          "private_fields_absent": true,
+          "participant_protocol_declared": true,
+          "visual_controls_implemented": true
+        }
+      },
+      "protocol": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "operations": [
+          "lookup",
+          "range",
+          "insert",
+          "delete"
+        ],
+        "actualEvaluator": true,
+        "twoActors": true,
+        "sameActorDevices": true,
+        "receiptRetry": true,
+        "staleControl": true,
+        "privateInspection": true,
+        "predictionOnlySharing": true,
+        "feedbackRelease": true,
+        "replacement": true,
+        "reset": true,
+        "replay": true,
+        "navigation": true,
+        "pageErrors": [],
+        "scope": "Classroom protocol regression; visual editing covered separately"
+      },
+      "ui": {
+        "en": {
+          "browser": "chromium",
+          "version": "156.0.8078.80",
+          "language": "en",
+          "operations": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ],
+          "actualUI": true,
+          "touch": true,
+          "keyboard": true,
+          "undoRedo": true,
+          "preview": true,
+          "draftFocus": true,
+          "sameActorConflict": true,
+          "resetConflict": true,
+          "privateInspection": true,
+          "predictionOnlySharing": true,
+          "replay": true,
+          "reveal": true,
+          "navigation": true,
+          "layout": {
+            "viewport": 320,
+            "width": 320,
+            "minimumTouch": 44,
+            "unlabeled": 0
+          },
+          "reducedMotion": true,
+          "ariaSnapshot": true,
+          "physicalPhone": false,
+          "lifecycle": {
+            "viewBeforeReceipt": true,
+            "editWhileSaving": true,
+            "lateReceiptAfterReset": true,
+            "lateReceiptAfterDestroy": true,
+            "refusalKeepsDraft": true,
+            "staleAnswerConflict": true,
+            "structuralFocus": true,
+            "obsoletePreview": true,
+            "disposedPreview": true,
+            "presenterReset": true,
+            "overlayTeardown": true,
+            "largeTreeFocus": true
+          },
+          "timings": [
+            {
+              "operation": "lookup",
+              "saveToFeedbackStateMs": 469
+            },
+            {
+              "operation": "range",
+              "saveToFeedbackStateMs": 705
+            },
+            {
+              "operation": "insert",
+              "saveToFeedbackStateMs": 373
+            },
+            {
+              "operation": "delete",
+              "saveToFeedbackStateMs": 698
+            },
+            {
+              "operation": "cascade",
+              "saveToFeedbackStateMs": 615
+            },
+            {
+              "operation": "shrink",
+              "saveToFeedbackStateMs": 496
+            }
+          ],
+          "pageErrors": []
+        },
+        "de": {
+          "browser": "chromium",
+          "version": "156.0.8078.80",
+          "language": "de",
+          "operations": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ],
+          "actualUI": true,
+          "touch": true,
+          "keyboard": true,
+          "undoRedo": true,
+          "preview": true,
+          "draftFocus": true,
+          "sameActorConflict": true,
+          "resetConflict": true,
+          "privateInspection": true,
+          "predictionOnlySharing": true,
+          "replay": true,
+          "reveal": true,
+          "navigation": true,
+          "layout": {
+            "viewport": 320,
+            "width": 320,
+            "minimumTouch": 44,
+            "unlabeled": 0
+          },
+          "reducedMotion": true,
+          "ariaSnapshot": true,
+          "physicalPhone": false,
+          "lifecycle": {
+            "viewBeforeReceipt": true,
+            "editWhileSaving": true,
+            "lateReceiptAfterReset": true,
+            "lateReceiptAfterDestroy": true,
+            "refusalKeepsDraft": true,
+            "staleAnswerConflict": true,
+            "structuralFocus": true,
+            "obsoletePreview": true,
+            "disposedPreview": true,
+            "presenterReset": true,
+            "overlayTeardown": true,
+            "largeTreeFocus": true
+          },
+          "timings": [
+            {
+              "operation": "lookup",
+              "saveToFeedbackStateMs": 239
+            },
+            {
+              "operation": "range",
+              "saveToFeedbackStateMs": 600
+            },
+            {
+              "operation": "insert",
+              "saveToFeedbackStateMs": 602
+            },
+            {
+              "operation": "delete",
+              "saveToFeedbackStateMs": 487
+            },
+            {
+              "operation": "cascade",
+              "saveToFeedbackStateMs": 718
+            },
+            {
+              "operation": "shrink",
+              "saveToFeedbackStateMs": 725
+            }
+          ],
+          "pageErrors": []
+        }
+      }
+    },
+    "firefox": {
+      "version": "153.0",
+      "engine_samples": 34,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2075,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "prepared": {
+        "browser": "firefox",
+        "version": "153.0",
+        "bundle": "a217d1d5cecd13b7",
+        "static_slide_visible": true,
+        "initial_overlays_hidden": 2,
+        "navigation_remount": true,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "presenter": true,
+          "projector": true,
+          "participant": true,
+          "private_fields_absent": true,
+          "participant_protocol_declared": true,
+          "visual_controls_implemented": true
+        }
+      },
+      "protocol": {
+        "browser": "firefox",
+        "version": "153.0",
+        "operations": [
+          "lookup",
+          "range",
+          "insert",
+          "delete"
+        ],
+        "actualEvaluator": true,
+        "twoActors": true,
+        "sameActorDevices": true,
+        "receiptRetry": true,
+        "staleControl": true,
+        "privateInspection": true,
+        "predictionOnlySharing": true,
+        "feedbackRelease": true,
+        "replacement": true,
+        "reset": true,
+        "replay": true,
+        "navigation": true,
+        "pageErrors": [],
+        "scope": "Classroom protocol regression; visual editing covered separately"
+      },
+      "ui": {
+        "en": {
+          "browser": "firefox",
+          "version": "153.0",
+          "language": "en",
+          "operations": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ],
+          "actualUI": true,
+          "touch": true,
+          "keyboard": true,
+          "undoRedo": true,
+          "preview": true,
+          "draftFocus": true,
+          "sameActorConflict": true,
+          "resetConflict": true,
+          "privateInspection": true,
+          "predictionOnlySharing": true,
+          "replay": true,
+          "reveal": true,
+          "navigation": true,
+          "layout": {
+            "viewport": 320,
+            "width": 320,
+            "minimumTouch": 44,
+            "unlabeled": 0
+          },
+          "reducedMotion": true,
+          "ariaSnapshot": true,
+          "physicalPhone": false,
+          "lifecycle": {
+            "viewBeforeReceipt": true,
+            "editWhileSaving": true,
+            "lateReceiptAfterReset": true,
+            "lateReceiptAfterDestroy": true,
+            "refusalKeepsDraft": true,
+            "staleAnswerConflict": true,
+            "structuralFocus": true,
+            "obsoletePreview": true,
+            "disposedPreview": true,
+            "presenterReset": true,
+            "overlayTeardown": true,
+            "largeTreeFocus": true
+          },
+          "timings": [
+            {
+              "operation": "lookup",
+              "saveToFeedbackStateMs": 354
+            },
+            {
+              "operation": "range",
+              "saveToFeedbackStateMs": 581
+            },
+            {
+              "operation": "insert",
+              "saveToFeedbackStateMs": 783
+            },
+            {
+              "operation": "delete",
+              "saveToFeedbackStateMs": 785
+            },
+            {
+              "operation": "cascade",
+              "saveToFeedbackStateMs": 782
+            },
+            {
+              "operation": "shrink",
+              "saveToFeedbackStateMs": 463
+            }
+          ],
+          "pageErrors": []
+        },
+        "de": {
+          "browser": "firefox",
+          "version": "153.0",
+          "language": "de",
+          "operations": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ],
+          "actualUI": true,
+          "touch": true,
+          "keyboard": true,
+          "undoRedo": true,
+          "preview": true,
+          "draftFocus": true,
+          "sameActorConflict": true,
+          "resetConflict": true,
+          "privateInspection": true,
+          "predictionOnlySharing": true,
+          "replay": true,
+          "reveal": true,
+          "navigation": true,
+          "layout": {
+            "viewport": 320,
+            "width": 320,
+            "minimumTouch": 44,
+            "unlabeled": 0
+          },
+          "reducedMotion": true,
+          "ariaSnapshot": true,
+          "physicalPhone": false,
+          "lifecycle": {
+            "viewBeforeReceipt": true,
+            "editWhileSaving": true,
+            "lateReceiptAfterReset": true,
+            "lateReceiptAfterDestroy": true,
+            "refusalKeepsDraft": true,
+            "staleAnswerConflict": true,
+            "structuralFocus": true,
+            "obsoletePreview": true,
+            "disposedPreview": true,
+            "presenterReset": true,
+            "overlayTeardown": true,
+            "largeTreeFocus": true
+          },
+          "timings": [
+            {
+              "operation": "lookup",
+              "saveToFeedbackStateMs": 473
+            },
+            {
+              "operation": "range",
+              "saveToFeedbackStateMs": 791
+            },
+            {
+              "operation": "insert",
+              "saveToFeedbackStateMs": 467
+            },
+            {
+              "operation": "delete",
+              "saveToFeedbackStateMs": 581
+            },
+            {
+              "operation": "cascade",
+              "saveToFeedbackStateMs": 452
+            },
+            {
+              "operation": "shrink",
+              "saveToFeedbackStateMs": 676
+            }
+          ],
+          "pageErrors": []
+        }
+      }
+    },
+    "webkit": {
+      "version": "26.5",
+      "engine_samples": 34,
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2069,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "prepared": {
+        "browser": "webkit",
+        "version": "26.5",
+        "bundle": "a217d1d5cecd13b7",
+        "static_slide_visible": true,
+        "initial_overlays_hidden": 2,
+        "navigation_remount": true,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "presenter": true,
+          "projector": true,
+          "participant": true,
+          "private_fields_absent": true,
+          "participant_protocol_declared": true,
+          "visual_controls_implemented": true
+        }
+      },
+      "protocol": {
+        "browser": "webkit",
+        "version": "26.5",
+        "operations": [
+          "lookup",
+          "range",
+          "insert",
+          "delete"
+        ],
+        "actualEvaluator": true,
+        "twoActors": true,
+        "sameActorDevices": true,
+        "receiptRetry": true,
+        "staleControl": true,
+        "privateInspection": true,
+        "predictionOnlySharing": true,
+        "feedbackRelease": true,
+        "replacement": true,
+        "reset": true,
+        "replay": true,
+        "navigation": true,
+        "pageErrors": [],
+        "scope": "Classroom protocol regression; visual editing covered separately"
+      },
+      "ui": {
+        "en": {
+          "browser": "webkit",
+          "version": "26.5",
+          "language": "en",
+          "operations": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ],
+          "actualUI": true,
+          "touch": true,
+          "keyboard": true,
+          "undoRedo": true,
+          "preview": true,
+          "draftFocus": true,
+          "sameActorConflict": true,
+          "resetConflict": true,
+          "privateInspection": true,
+          "predictionOnlySharing": true,
+          "replay": true,
+          "reveal": true,
+          "navigation": true,
+          "layout": {
+            "viewport": 320,
+            "width": 320,
+            "minimumTouch": 44,
+            "unlabeled": 0
+          },
+          "reducedMotion": true,
+          "ariaSnapshot": true,
+          "physicalPhone": false,
+          "lifecycle": {
+            "viewBeforeReceipt": true,
+            "editWhileSaving": true,
+            "lateReceiptAfterReset": true,
+            "lateReceiptAfterDestroy": true,
+            "refusalKeepsDraft": true,
+            "staleAnswerConflict": true,
+            "structuralFocus": true,
+            "obsoletePreview": true,
+            "disposedPreview": true,
+            "presenterReset": true,
+            "overlayTeardown": true,
+            "largeTreeFocus": true
+          },
+          "timings": [
+            {
+              "operation": "lookup",
+              "saveToFeedbackStateMs": 703
+            },
+            {
+              "operation": "range",
+              "saveToFeedbackStateMs": 748
+            },
+            {
+              "operation": "insert",
+              "saveToFeedbackStateMs": 661
+            },
+            {
+              "operation": "delete",
+              "saveToFeedbackStateMs": 754
+            },
+            {
+              "operation": "cascade",
+              "saveToFeedbackStateMs": 547
+            },
+            {
+              "operation": "shrink",
+              "saveToFeedbackStateMs": 658
+            }
+          ],
+          "pageErrors": []
+        },
+        "de": {
+          "browser": "webkit",
+          "version": "26.5",
+          "language": "de",
+          "operations": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ],
+          "actualUI": true,
+          "touch": true,
+          "keyboard": true,
+          "undoRedo": true,
+          "preview": true,
+          "draftFocus": true,
+          "sameActorConflict": true,
+          "resetConflict": true,
+          "privateInspection": true,
+          "predictionOnlySharing": true,
+          "replay": true,
+          "reveal": true,
+          "navigation": true,
+          "layout": {
+            "viewport": 320,
+            "width": 320,
+            "minimumTouch": 44,
+            "unlabeled": 0
+          },
+          "reducedMotion": true,
+          "ariaSnapshot": true,
+          "physicalPhone": false,
+          "lifecycle": {
+            "viewBeforeReceipt": true,
+            "editWhileSaving": true,
+            "lateReceiptAfterReset": true,
+            "lateReceiptAfterDestroy": true,
+            "refusalKeepsDraft": true,
+            "staleAnswerConflict": true,
+            "structuralFocus": true,
+            "obsoletePreview": true,
+            "disposedPreview": true,
+            "presenterReset": true,
+            "overlayTeardown": true,
+            "largeTreeFocus": true
+          },
+          "timings": [
+            {
+              "operation": "lookup",
+              "saveToFeedbackStateMs": 651
+            },
+            {
+              "operation": "range",
+              "saveToFeedbackStateMs": 561
+            },
+            {
+              "operation": "insert",
+              "saveToFeedbackStateMs": 686
+            },
+            {
+              "operation": "delete",
+              "saveToFeedbackStateMs": 858
+            },
+            {
+              "operation": "cascade",
+              "saveToFeedbackStateMs": 856
+            },
+            {
+              "operation": "shrink",
+              "saveToFeedbackStateMs": 568
+            }
+          ],
+          "pageErrors": []
+        }
+      }
+    }
+  },
+  "screenshots": {
+    "bplus-phone.png": {
+      "sha256": "31ec23bea342ec2fd1230015ab18a741bfe912bf45be8557e636777e8093bc72",
+      "browser": "Firefox 153.0",
+      "language": "en"
+    },
+    "bplus-projector.png": {
+      "sha256": "9edb214b6757ba61b4c8d1eed0cf1c7a83853643a86ff4bccd54ed4ef24f619e",
+      "browser": "Firefox 153.0",
+      "language": "en"
+    }
+  },
+  "scope": [
+    "structured answer fields",
+    "local undo/redo",
+    "shared cooperative replay semantics",
+    "page selector and keyboard outline",
+    "touch/keyboard entry",
+    "English/German",
+    "saved feedback distinct from local preview",
+    "device/reset conflict choices",
+    "private inspection",
+    "prediction-only sharing before reveal",
+    "worked replay after reveal",
+    "large-tree focus region",
+    "late receipt and stale preview lifecycle",
+    "initial static fallback",
+    "installed artifact inventory/sdist parity"
+  ],
+  "remaining_gates": [
+    "physical phone over ordinary LAN HTTP",
+    "screen-reader usability with assistive technology",
+    "48-participant load/fairness and evaluator failure measurement",
+    "real-projector pilot",
+    "published compatible host pin",
+    "hosted CI and identical Windows/Linux artifact transfer",
+    "release/catalog publication"
+  ],
+  "notes": [
+    "Local Windows installed-wheel evidence, not a release or hosted-CI claim.",
+    "This host wheel includes pre-existing unpublished runtime, language, keyboard and layout fixes; the dependency version alone is insufficient.",
+    "All six UI examples ran through actual controls in three browser families and two languages. Synthetic identities only.",
+    "Lifecycle ordering uses installed renderer modules and controlled dispatch promises; the separate UI/protocol flows use authenticated host commands.",
+    "A prepared-probe fixed-port collision during parallel verification was fixed by allocating one local port per run; all three prepared checks were rerun.",
+    "Firefox ran outside the Windows process sandbox to create browser pages. The production worker CSP and active forbidden-operation checks stayed unchanged.",
+    "Local preview work yields between bounded generator chunks and does not spawn a child worker. Timing from 35 helper cases is not a worst-case hardware guarantee.",
+    "Single-response save timings are recorded for diagnosis, not classroom throughput. Test families ran concurrently.",
+    "ARIA snapshots, native labels and reflow were checked; no physical device or assistive-technology session was performed.",
+    "Unsubmitted drafts and undo are mount-local; saved responses restore from the host after reload/navigation.",
+    "No host source, original repository, course environment, private media, catalog or remote publication was changed by this task."
+  ]
+}

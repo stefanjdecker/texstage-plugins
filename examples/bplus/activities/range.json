@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Read catalogue entries 22 through 40",
+    "de": "Lies Katalogeinträge von 22 bis 40"
+  },
+  "prompt": {
+    "en": "Find all entries in [22, 40], including both endpoints.",
+    "de": "Finde alle Einträge in [22, 40], einschließlich beider Grenzen."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            20,
+            40
+          ],
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "leaf",
+          "keys": [
+            5,
+            10
+          ],
+          "next": 2
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            20,
+            25,
+            30
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            40,
+            45
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "range",
+      "lower": 22,
+      "upper": 40
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        2
+      ],
+      "keys": [
+        25,
+        30,
+        40
+      ],
+      "leaves": [
+        2,
+        3
+      ]
+    },
+    "explanation": {
+      "en": "Descend once, then follow the leaf links. Stop at P3 because its maximum reaches the upper bound.",
+      "de": "Steige einmal ab, dann folge den Blattzeigern. Stoppe bei P3, dessen Maximum die obere Grenze erreicht."
+    }
+  },
+  "feedback": "on-reveal"
+}

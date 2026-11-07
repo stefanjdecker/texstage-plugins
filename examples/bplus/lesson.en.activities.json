@@ -1,0 +1,36 @@
+{
+  "format": 1,
+  "language": "en",
+  "items": [
+    {
+      "id": "lookup",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/lookup.json"
+    },
+    {
+      "id": "range",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/range.json"
+    },
+    {
+      "id": "insert",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/insert.json"
+    },
+    {
+      "id": "delete",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/delete.json"
+    },
+    {
+      "id": "cascade",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/cascade.json"
+    },
+    {
+      "id": "shrink",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/shrink.json"
+    }
+  ]
+}

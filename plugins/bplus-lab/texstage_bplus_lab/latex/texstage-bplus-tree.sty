@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texstage-bplus-tree}[2026/11/06 Prepared B+ tree exercises]
+\RequirePackage{texstage}
+\RequirePackage{tikz}
+\newsavebox{\bplusbox}
+\newdimen\bplusheight
+\newcommand{\bplustree}[3]{%
+  \begingroup
+  \bplusheight=#3\relax
+  \texstageprepared{#1}{#2}{#3}%
+  \endgroup}
+\endinput

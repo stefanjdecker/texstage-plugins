@@ -1,0 +1,3 @@
+include texstage-plugin.json README.md LICENSE
+recursive-include texstage_bplus_lab *.mjs *.json *.sty
+recursive-include tests *.py

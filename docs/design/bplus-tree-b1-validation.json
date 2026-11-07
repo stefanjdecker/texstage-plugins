@@ -1,0 +1,277 @@
+{
+  "format": 1,
+  "date": "2026-11-06",
+  "status": "local-engine-validation-passed",
+  "scope": "Engine only: source/answer/result/lesson schemas, independent replay model, installed worker and conformance.",
+  "host": {
+    "host_wheel_sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "host_runtime_text_files_matching_checkout": 119,
+    "comparison": "normalised LF",
+    "host_commit": "de3351550f3553ca63023554521fbe84806ec94e"
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.bpluslab",
+    "version": "0.1.0",
+    "payload": "f6d91fe6d4e6c3e1f1c899ea0ab07c58e11719ec56dd345c08466e6653b8a73b"
+  },
+  "wheel": {
+    "name": "texstage_bplus_lab-0.1.0-py3-none-any.whl",
+    "sha256": "9d5a20462866c7f8fb9473330074345bcf107cfbe63e32257d7896a3c4173ad5",
+    "portable": true,
+    "sdist_payload_parity": true
+  },
+  "schemas": {
+    "analysis-result-v1.json": "749ccbf4c1663fb2938d731fd18a68effc1478e5b91ca4e3c4224f5549735bbd",
+    "answer-v1.json": "9a24633af34362b855b45688f80a92f328d23d0359ff377cf5dd64c614fb1717",
+    "exercise-v1.json": "33bb92c0c05d38c6758465af528bf332981b287e55186ee77088d62cdfd5616e",
+    "lesson-v1.json": "d46203ac783abffa1dd2d3eb028dc242643342fe04ba934a09a21060a86dea9f"
+  },
+  "host_result_schema_digest": "7e5ae204c3226b03ed4ca1250b5f1aa5d63b808256ec14f13b16e826a5fdd6c2",
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.14.4",
+    "node": "v24.15.0"
+  },
+  "engine_tests": {
+    "tests": 30,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 186.354,
+    "properties": {
+      "exhaustive_operation_cases": "1800",
+      "distinct_terminal_shapes": "2",
+      "seeded_operation_cases": "1440",
+      "large_valid_facts_bytes": "2162",
+      "large_valid_outcome_bytes": "2375"
+    }
+  },
+  "existing_pair_tests": {
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 10.688,
+    "properties": {}
+  },
+  "probe": {
+    "worked_cases": 30,
+    "max_node_evaluation_ms": 7.2669,
+    "both_host_validators": true,
+    "metadata_only_discovery": true,
+    "schema_and_bundle_freshness": true
+  },
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "samples": 34,
+      "max_elapsed_ms": 25.900000005960464,
+      "actual_host_deadline_ms": 2000,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "forbidden_requests": [],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    },
+    "firefox": {
+      "version": "153.0",
+      "samples": 34,
+      "max_elapsed_ms": 93,
+      "actual_host_deadline_ms": 2000,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "forbidden_requests": [],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    },
+    "webkit": {
+      "version": "26.5",
+      "samples": 34,
+      "max_elapsed_ms": 94,
+      "actual_host_deadline_ms": 2000,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "forbidden_requests": [],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    }
+  },
+  "coexistence": {
+    "status": "passed",
+    "scope": "Nine-provider metadata discovery, integrity and enabled catalog; B+ probe is separate.",
+    "provider_count": 9,
+    "providers": [
+      {
+        "id": "io.github.stefanjdecker.bpluslab",
+        "version": "0.1.0",
+        "payload": "f6d91fe6d4e6c3e1f1c899ea0ab07c58e11719ec56dd345c08466e6653b8a73b"
+      },
+      {
+        "id": "io.github.stefanjdecker.erdecisions",
+        "version": "0.1.0",
+        "payload": "ce846ab75fdbff8375ce3c728e1dbf904f0d36ff33ac59c8be3ce3716d1d398f"
+      },
+      {
+        "id": "io.github.stefanjdecker.fdlab",
+        "version": "0.1.0",
+        "payload": "1a45adefd8163af466666a792bc3a25078139ae07d1b68e99d25cbc62d9827c2"
+      },
+      {
+        "id": "io.github.stefanjdecker.normalizationworkshop",
+        "version": "0.1.0",
+        "payload": "b42b55309c59fa41ce2d603c8edae723280d7b1197c04afaa1d3e9b6c5653761"
+      },
+      {
+        "id": "io.github.stefanjdecker.queryplan",
+        "version": "0.1.0",
+        "payload": "f77808bde14ac20c08769bd3b37b5f21cecf1d4a429b4472f6f19f3d110ea335"
+      },
+      {
+        "id": "io.github.stefanjdecker.relationallab",
+        "version": "0.1.0",
+        "payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d"
+      },
+      {
+        "id": "io.github.stefanjdecker.transactionengine",
+        "version": "0.1.0",
+        "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc"
+      },
+      {
+        "id": "org.example.coordinates",
+        "version": "0.1.0",
+        "payload": "9125ee1b9e7219b09b0ae373b4b208b57d0d06c3c5b87a04111493815317cf3c"
+      },
+      {
+        "id": "org.example.distance",
+        "version": "0.1.0",
+        "payload": "461488b4dd540fb9c7e5527ce7487c1357ada41c8ecbd0df5a19b2997d11b6ab"
+      }
+    ],
+    "capability_count": 10,
+    "factories_imported_by_discovery": false,
+    "bplus_worked_cases": 30
+  },
+  "run_notes": [
+    "Firefox initially failed at newPage inside the process sandbox before any module loaded; unchanged elevated retry passed.",
+    "The original pair retains its exact-two-provider assertion in a separate environment.",
+    "Coexistence uses a local source snapshot of all nine providers, including concurrent uncommitted work; it does not replace their own domain tests.",
+    "The original finite design record remains historical snapshot-check evidence; this record adds runtime certificate checks."
+  ],
+  "not_claimed": [
+    "Prepared LaTeX/live/static authoring, content-type state, phone/presenter UI",
+    "Physical phone/LAN and classroom capacity/fairness measurements",
+    "Hosted CI execution and identical-wheel Windows/Linux transfer",
+    "Published compatible host pin, immutable release or catalog entry"
+  ]
+}

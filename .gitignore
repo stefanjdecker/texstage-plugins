@@ -16,3 +16,6 @@ relational.lock.json
 examples/functional-dependencies/texquiz-out/
 fd-profile/
 fd.lock.json
+examples/bplus/texquiz-out/
+bplus-profile/
+bplus.lock.json

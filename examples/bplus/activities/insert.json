@@ -1,0 +1,100 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Make room for catalogue entry 27",
+    "de": "Platz für Katalogeintrag 27"
+  },
+  "prompt": {
+    "en": "Insert 27 into this starting tree. Repair the overflow.",
+    "de": "Füge 27 in diesen Ausgangsbaum ein. Repariere den Überlauf."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            20,
+            40
+          ],
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "leaf",
+          "keys": [
+            5,
+            10
+          ],
+          "next": 2
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            20,
+            25,
+            30
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            40,
+            45
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "insert",
+      "key": 27
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        2
+      ],
+      "repairs": [
+        {
+          "op": "split",
+          "node": 2,
+          "left_count": 2,
+          "separator": 27
+        }
+      ],
+      "separators": [
+        {
+          "node": 0,
+          "keys": [
+            20,
+            27,
+            40
+          ]
+        }
+      ],
+      "height": 1
+    },
+    "explanation": {
+      "en": "Copy 27 into the parent. It remains in the new right leaf P4. Leaf order is P1, P2, P4, P3, not numeric page order.",
+      "de": "Kopiere 27 in den Elternknoten. Der Eintrag bleibt im neuen rechten Blatt P4. Die Blattfolge P1, P2, P4, P3 ist keine numerische Seitenfolge."
+    }
+  },
+  "feedback": "on-reveal"
+}

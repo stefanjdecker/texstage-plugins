@@ -1,0 +1,434 @@
+{
+  "format": 1,
+  "date": "2026-11-07",
+  "milestone": "B3 classroom submissions and feedback",
+  "provider": {
+    "id": "io.github.stefanjdecker.bpluslab",
+    "version": "0.3.0",
+    "payload": "3f6864fe3f4c07753e76a3a1ea79e82a4eed890d18e62d0728e061614e8d0e16"
+  },
+  "state_schema": 2,
+  "wheel": {
+    "filename": "texstage_bplus_lab-0.3.0-py3-none-any.whl",
+    "sha256": "565fe7b6e1030db65e13cf4cdbb347e6d90f3d92b5ee7ad378874078070d1a86",
+    "portable": true,
+    "sdist_payload_parity": true
+  },
+  "host": {
+    "source_head": "de3351550f3553ca63023554521fbe84806ec94e",
+    "wheel": "texstage-0.2.1.dev3-py3-none-any.whl",
+    "sha256": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "matched_files": 119,
+    "concurrent_working_tree_changes_excluded": [
+      "src/texstage/plugins/manifest.py",
+      "src/texstage/plugins/runtime.py",
+      "src/texstage/server/app.py",
+      "src/texstage/server/plugins.py",
+      "src/texstage/web/play/play.js",
+      "src/texstage/web/shared/plugins.js",
+      "src/texstage/web/stage/plugin-evaluator.js",
+      "src/texstage/web/stage/presenter.js",
+      "src/texstage/web/stage/projector.js",
+      "src/texstage/web/stage/stage.css"
+    ]
+  },
+  "collection_source_head": "5f00b62f6292de01e4eca067c8acd96dddf67eb9",
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.14.4",
+    "node": "v24.15.0"
+  },
+  "tests": {
+    "total": 122,
+    "by_module": {
+      "test_authoring": 32,
+      "test_engine": 30,
+      "test_state": 60
+    },
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 321.677,
+    "properties": {
+      "exhaustive_operation_cases": "1800",
+      "distinct_terminal_shapes": "2",
+      "seeded_operation_cases": "1440",
+      "large_valid_facts_bytes": "2162",
+      "large_valid_outcome_bytes": "2375"
+    }
+  },
+  "engine_contract_unchanged": {
+    "frozen_files": [
+      "model.py",
+      "web/identity.mjs",
+      "web/validation.mjs",
+      "web/tree.mjs",
+      "web/operations.mjs",
+      "web/engine.mjs",
+      "web/engine.worker.mjs",
+      "schemas/exercise-v1.json",
+      "schemas/answer-v1.json",
+      "schemas/analysis-result-v1.json",
+      "fixtures/design-cases.json"
+    ],
+    "result_schema_digest": "7e5ae204c3226b03ed4ca1250b5f1aa5d63b808256ec14f13b16e826a5fdd6c2"
+  },
+  "schemas": {
+    "analysis-result-v1.json": "749ccbf4c1663fb2938d731fd18a68effc1478e5b91ca4e3c4224f5549735bbd",
+    "answer-v1.json": "9a24633af34362b855b45688f80a92f328d23d0359ff377cf5dd64c614fb1717",
+    "command-control-v2.json": "bb170f081ad0135108ec7eeddc9e6e7b9cf658be99dfa5f89c20177088ec76d9",
+    "command-replay-v2.json": "c2d2a2e48a35904f1d35ef34d0071f67fa7334a3859f2351ffb84e0f25641099",
+    "command-selection-v2.json": "8c9b4b2d4af39a7f8605d0ec68249e9edd53fe6a4b50a92c20aeab6e3a39e2bc",
+    "command-submit-v2.json": "5cecdacd306acee3d1816c53df84ff2385b6aeb2a3179ca9c3f799f8284c3b77",
+    "exercise-v1.json": "33bb92c0c05d38c6758465af528bf332981b287e55186ee77088d62cdfd5616e",
+    "lesson-v1.json": "46a69aead175a52d13e7b4c249452dfc12213cf1da2ff990252806cc0e46ae31",
+    "participant-input-v2.json": "770d5d1041d3d702d6482cf4b51877e7d0c235c355c7e7e7d274335f965fb917",
+    "presenter-controls-v2.json": "94a7e3c7b5138c3f001f1cde0a6beec5bcff16334f9a214a732d3073ca6a7b95",
+    "presenter-overlay-v2.json": "f3f96cc917d30535a6a3ad8c1a534d5eddbbbf4b7528b920eceac80f77c3b1aa",
+    "projector-overlay-v2.json": "99d535103152fa1c242370c1276d9a1b60896b601a46e849d5081884bba5ddaf"
+  },
+  "storage": {
+    "actors": 48,
+    "answer_bytes": 752,
+    "reserved_slot_bytes": 2169,
+    "state_bytes": 59397,
+    "transition_bytes": 60499,
+    "view_bytes": {
+      "participant-input": 33211,
+      "presenter-controls": 38860,
+      "presenter-overlay": 32300,
+      "projector-overlay": 32300
+    },
+    "validator_cases": 16,
+    "capacity_claim": "storage only; no throughput measurement"
+  },
+  "authoring_regression": {
+    "scenario": "lesson-en",
+    "pages": {
+      "handout": 7,
+      "solutions": 7,
+      "stage": 7,
+      "direct-handout": 7,
+      "direct-solutions": 7,
+      "direct-present": 7
+    },
+    "prepare_calls": 6,
+    "checks": [
+      "single preparation",
+      "live bundle privacy",
+      "exercise/solution separation",
+      "static PowerPoint media",
+      "three direct pdfLaTeX editions",
+      "same item identities",
+      "no clipped PDF text",
+      "changed source refused",
+      "PNG renders saved for visual review"
+    ],
+    "bilingual_unit_tests": true,
+    "unchanged_layout_and_style": true
+  },
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "classroom": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "operations": [
+          "lookup",
+          "range",
+          "insert",
+          "delete"
+        ],
+        "actualEvaluator": true,
+        "twoActors": true,
+        "sameActorDevices": true,
+        "receiptRetry": true,
+        "staleControl": true,
+        "privateInspection": true,
+        "predictionOnlySharing": true,
+        "feedbackRelease": true,
+        "replacement": true,
+        "reset": true,
+        "replay": true,
+        "navigation": true,
+        "pageErrors": [],
+        "scope": "B3 protocol; visual editor remains B4"
+      },
+      "prepared": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "bundle": "54498a87d32c549e",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "navigation_remount": true,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "presenter": true,
+          "projector": true,
+          "participant": true,
+          "private_fields_absent": true,
+          "participant_protocol_declared": true,
+          "visual_controls_implemented": false
+        }
+      },
+      "engine": {
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2019.2000000178814,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    },
+    "firefox": {
+      "version": "153.0",
+      "classroom": {
+        "browser": "firefox",
+        "version": "153.0",
+        "operations": [
+          "lookup",
+          "range",
+          "insert",
+          "delete"
+        ],
+        "actualEvaluator": true,
+        "twoActors": true,
+        "sameActorDevices": true,
+        "receiptRetry": true,
+        "staleControl": true,
+        "privateInspection": true,
+        "predictionOnlySharing": true,
+        "feedbackRelease": true,
+        "replacement": true,
+        "reset": true,
+        "replay": true,
+        "navigation": true,
+        "pageErrors": [],
+        "scope": "B3 protocol; visual editor remains B4"
+      },
+      "prepared": {
+        "browser": "firefox",
+        "version": "153.0",
+        "bundle": "54498a87d32c549e",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "navigation_remount": true,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "presenter": true,
+          "projector": true,
+          "participant": true,
+          "private_fields_absent": true,
+          "participant_protocol_declared": true,
+          "visual_controls_implemented": false
+        }
+      },
+      "engine": {
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2162,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    },
+    "webkit": {
+      "version": "26.5",
+      "classroom": {
+        "browser": "webkit",
+        "version": "26.5",
+        "operations": [
+          "lookup",
+          "range",
+          "insert",
+          "delete"
+        ],
+        "actualEvaluator": true,
+        "twoActors": true,
+        "sameActorDevices": true,
+        "receiptRetry": true,
+        "staleControl": true,
+        "privateInspection": true,
+        "predictionOnlySharing": true,
+        "feedbackRelease": true,
+        "replacement": true,
+        "reset": true,
+        "replay": true,
+        "navigation": true,
+        "pageErrors": [],
+        "scope": "B3 protocol; visual editor remains B4"
+      },
+      "prepared": {
+        "browser": "webkit",
+        "version": "26.5",
+        "bundle": "54498a87d32c549e",
+        "static_slide_visible": true,
+        "transparent_overlays": 2,
+        "navigation_remount": true,
+        "private_role_leaks": 0,
+        "page_errors": [],
+        "protocol": {
+          "presenter": true,
+          "projector": true,
+          "participant": true,
+          "private_fields_absent": true,
+          "participant_protocol_declared": true,
+          "visual_controls_implemented": false
+        }
+      },
+      "engine": {
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2090,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    }
+  },
+  "notes": [
+    "Windows local installed-wheel evidence; no hosted CI or cross-OS transfer claim.",
+    "Classroom and authoring bundles use the exact final runtime payload. Final wheel metadata/documentation was refreshed without changing this payload.",
+    "Firefox could not create its first page in the Windows process sandbox; unchanged probes passed with scoped process escalation. Host CSP was not relaxed.",
+    "Storage tests include 48 actors, 256-character non-BMP actor IDs, maximal structural answer arrays, maximum versions, feedback reservations and escaped bilingual explanations.",
+    "No visual phone editor or presenter buttons yet; four surfaces retain transparent placeholders until B4.",
+    "No physical-phone, throughput, fairness or latency-capacity measurement.",
+    "No host code, original repositories, course pins, media, catalog or remote publication changed by this task."
+  ],
+  "scope": [
+    "latest answer replacement",
+    "full-class/full-queue replacement",
+    "duplicate/lost-ack receipts",
+    "same-actor devices",
+    "two-presenter stale controls",
+    "pending completion after close",
+    "old correlation/epoch/binding guards",
+    "coherent typed-fact verification",
+    "alternative valid certificates",
+    "feedback release policy",
+    "operational failure without incorrect grade",
+    "private selection",
+    "prediction-only sharing",
+    "replay focus",
+    "reset/navigation/restart"
+  ]
+}

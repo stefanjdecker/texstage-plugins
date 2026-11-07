@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "title": {
+    "en": "An empty catalogue",
+    "de": "Ein leerer Katalog"
+  },
+  "prompt": {
+    "en": "Look up entry 5 in the empty tree.",
+    "de": "Suche Eintrag 5 im leeren Baum."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "leaf",
+          "keys": [],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "lookup",
+      "key": 5
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0
+      ],
+      "keys": []
+    },
+    "explanation": {
+      "en": "The root is an empty leaf. It is read once; no entry is returned.",
+      "de": "Die Wurzel ist ein leeres Blatt. Sie wird einmal gelesen; das Ergebnis ist leer."
+    }
+  },
+  "feedback": "on-reveal"
+}

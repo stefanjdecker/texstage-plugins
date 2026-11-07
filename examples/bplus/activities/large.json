@@ -1,0 +1,391 @@
+{
+  "format": 1,
+  "title": {
+    "en": "A full index: 40 entries",
+    "de": "Ein voller Index: 40 Einträge"
+  },
+  "prompt": {
+    "en": "Insert -9959. Follow the child page IDs in the page map.",
+    "de": "Füge -9959 ein. Folge den Kindseiten-IDs im Seitenplan."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 5,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            -9992,
+            -9986,
+            -9980,
+            -9970
+          ],
+          "children": [
+            1,
+            5,
+            9,
+            13,
+            19
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "internal",
+          "keys": [
+            -9996,
+            -9994
+          ],
+          "children": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            -9999,
+            -9998,
+            -9997
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            -9996,
+            -9995
+          ],
+          "next": 4
+        },
+        {
+          "id": 4,
+          "kind": "leaf",
+          "keys": [
+            -9994,
+            -9993
+          ],
+          "next": 6
+        },
+        {
+          "id": 5,
+          "kind": "internal",
+          "keys": [
+            -9990,
+            -9988
+          ],
+          "children": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "leaf",
+          "keys": [
+            -9992,
+            -9991
+          ],
+          "next": 7
+        },
+        {
+          "id": 7,
+          "kind": "leaf",
+          "keys": [
+            -9990,
+            -9989
+          ],
+          "next": 8
+        },
+        {
+          "id": 8,
+          "kind": "leaf",
+          "keys": [
+            -9988,
+            -9987
+          ],
+          "next": 10
+        },
+        {
+          "id": 9,
+          "kind": "internal",
+          "keys": [
+            -9984,
+            -9982
+          ],
+          "children": [
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "id": 10,
+          "kind": "leaf",
+          "keys": [
+            -9986,
+            -9985
+          ],
+          "next": 11
+        },
+        {
+          "id": 11,
+          "kind": "leaf",
+          "keys": [
+            -9984,
+            -9983
+          ],
+          "next": 12
+        },
+        {
+          "id": 12,
+          "kind": "leaf",
+          "keys": [
+            -9982,
+            -9981
+          ],
+          "next": 14
+        },
+        {
+          "id": 13,
+          "kind": "internal",
+          "keys": [
+            -9978,
+            -9976,
+            -9974,
+            -9972
+          ],
+          "children": [
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        {
+          "id": 14,
+          "kind": "leaf",
+          "keys": [
+            -9980,
+            -9979
+          ],
+          "next": 15
+        },
+        {
+          "id": 15,
+          "kind": "leaf",
+          "keys": [
+            -9978,
+            -9977
+          ],
+          "next": 16
+        },
+        {
+          "id": 16,
+          "kind": "leaf",
+          "keys": [
+            -9976,
+            -9975
+          ],
+          "next": 17
+        },
+        {
+          "id": 17,
+          "kind": "leaf",
+          "keys": [
+            -9974,
+            -9973
+          ],
+          "next": 18
+        },
+        {
+          "id": 18,
+          "kind": "leaf",
+          "keys": [
+            -9972,
+            -9971
+          ],
+          "next": 20
+        },
+        {
+          "id": 19,
+          "kind": "internal",
+          "keys": [
+            -9968,
+            -9966,
+            -9964,
+            -9962
+          ],
+          "children": [
+            20,
+            21,
+            22,
+            23,
+            24
+          ]
+        },
+        {
+          "id": 20,
+          "kind": "leaf",
+          "keys": [
+            -9970,
+            -9969
+          ],
+          "next": 21
+        },
+        {
+          "id": 21,
+          "kind": "leaf",
+          "keys": [
+            -9968,
+            -9967
+          ],
+          "next": 22
+        },
+        {
+          "id": 22,
+          "kind": "leaf",
+          "keys": [
+            -9966,
+            -9965
+          ],
+          "next": 23
+        },
+        {
+          "id": 23,
+          "kind": "leaf",
+          "keys": [
+            -9964,
+            -9963
+          ],
+          "next": 24
+        },
+        {
+          "id": 24,
+          "kind": "leaf",
+          "keys": [
+            -9962,
+            -9961,
+            -9960
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "insert",
+      "key": -9959
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        19,
+        24
+      ],
+      "repairs": [
+        {
+          "op": "split",
+          "node": 24,
+          "left_count": 2,
+          "separator": -9960
+        },
+        {
+          "op": "split",
+          "node": 19,
+          "left_count": 3,
+          "separator": -9964
+        },
+        {
+          "op": "split",
+          "node": 0,
+          "left_count": 3,
+          "separator": -9980
+        }
+      ],
+      "separators": [
+        {
+          "node": 0,
+          "keys": [
+            -9992,
+            -9986
+          ]
+        },
+        {
+          "node": 1,
+          "keys": [
+            -9996,
+            -9994
+          ]
+        },
+        {
+          "node": 5,
+          "keys": [
+            -9990,
+            -9988
+          ]
+        },
+        {
+          "node": 9,
+          "keys": [
+            -9984,
+            -9982
+          ]
+        },
+        {
+          "node": 13,
+          "keys": [
+            -9978,
+            -9976,
+            -9974,
+            -9972
+          ]
+        },
+        {
+          "node": 19,
+          "keys": [
+            -9968,
+            -9966
+          ]
+        },
+        {
+          "node": 26,
+          "keys": [
+            -9962,
+            -9960
+          ]
+        },
+        {
+          "node": 27,
+          "keys": [
+            -9970,
+            -9964
+          ]
+        },
+        {
+          "node": 28,
+          "keys": [
+            -9980
+          ]
+        }
+      ],
+      "height": 3
+    },
+    "explanation": {
+      "en": "All three splits are checked. The result has 41 entries, 29 pages and height three.",
+      "de": "Alle drei Teilungen sind geprüft. Das Ergebnis hat 41 Einträge, 29 Seiten und Höhe drei."
+    }
+  },
+  "feedback": "on-reveal"
+}

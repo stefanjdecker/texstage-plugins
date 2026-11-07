@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "B+ submit command v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase_version",
+    "answer_version",
+    "answer"
+  ],
+  "properties": {
+    "phase_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "answer_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "answer": {
+      "$ref": "#/$defs/answer"
+    }
+  },
+  "$defs": {
+    "lookup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "path",
+        "keys"
+      ],
+      "properties": {
+        "format": {
+          "type": "integer",
+          "const": 1
+        },
+        "path": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 63
+          }
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 1,
+          "items": {
+            "type": "integer",
+            "minimum": -9999,
+            "maximum": 9999
+          }
+        }
+      }
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "path",
+        "keys",
+        "leaves"
+      ],
+      "properties": {
+        "format": {
+          "type": "integer",
+          "const": 1
+        },
+        "path": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 63
+          }
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 40,
+          "items": {
+            "type": "integer",
+            "minimum": -9999,
+            "maximum": 9999
+          }
+        },
+        "leaves": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 63
+          }
+        }
+      }
+    },
+    "update": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "path",
+        "repairs",
+        "separators",
+        "height"
+      ],
+      "properties": {
+        "format": {
+          "type": "integer",
+          "const": 1
+        },
+        "path": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 63
+          }
+        },
+        "repairs": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 3,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "node",
+                  "left_count",
+                  "separator"
+                ],
+                "properties": {
+                  "op": {
+                    "const": "split"
+                  },
+                  "node": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 63
+                  },
+                  "left_count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 6
+                  },
+                  "separator": {
+                    "type": "integer",
+                    "minimum": -9999,
+                    "maximum": 9999
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "node",
+                  "sibling"
+                ],
+                "properties": {
+                  "op": {
+                    "enum": [
+                      "borrow",
+                      "merge"
+                    ]
+                  },
+                  "node": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 63
+                  },
+                  "sibling": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 63
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "separators": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "node",
+              "keys"
+            ],
+            "properties": {
+              "node": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 63
+              },
+              "keys": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 5,
+                "items": {
+                  "type": "integer",
+                  "minimum": -9999,
+                  "maximum": 9999
+                }
+              }
+            }
+          }
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        }
+      }
+    },
+    "answer": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/lookup"
+        },
+        {
+          "$ref": "#/$defs/range"
+        },
+        {
+          "$ref": "#/$defs/update"
+        }
+      ]
+    }
+  }
+}

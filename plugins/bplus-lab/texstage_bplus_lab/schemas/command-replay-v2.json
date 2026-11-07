@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "B+ replay command v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "control_version",
+    "source",
+    "step"
+  ],
+  "properties": {
+    "control_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "source": {
+      "enum": [
+        "shared",
+        "worked"
+      ]
+    },
+    "step": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 24
+    }
+  }
+}

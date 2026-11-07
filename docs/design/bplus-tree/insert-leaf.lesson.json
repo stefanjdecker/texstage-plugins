@@ -1,0 +1,100 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Make room for catalogue entry 27",
+    "de": "Platz fuer Katalogeintrag 27"
+  },
+  "prompt": {
+    "en": "Insert 27. Choose repairs, then predict all separators and the height.",
+    "de": "Fuege 27 ein. Waehle die Reparaturen und bestimme dann alle Trennschluessel und die Hoehe."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            20,
+            40
+          ],
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "leaf",
+          "keys": [
+            5,
+            10
+          ],
+          "next": 2
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            20,
+            25,
+            30
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            40,
+            45
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "insert",
+      "key": 27
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        2
+      ],
+      "repairs": [
+        {
+          "op": "split",
+          "node": 2,
+          "left_count": 2,
+          "separator": 27
+        }
+      ],
+      "separators": [
+        {
+          "node": 0,
+          "keys": [
+            20,
+            27,
+            40
+          ]
+        }
+      ],
+      "height": 1
+    },
+    "explanation": {
+      "en": "Split the full leaf; 27 is copied into its parent and stays in the right leaf.",
+      "de": "Teile das volle Blatt. 27 wird in den Elternknoten kopiert und bleibt im rechten Blatt."
+    }
+  },
+  "feedback": "on-reveal"
+}

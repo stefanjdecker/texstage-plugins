@@ -1,0 +1,36 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{texstage}
+\usepackage{texstage-bplus-tree}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\begin{document}
+\begin{frame}{B+ trees: follow the pages}
+An index helps find catalogue entries without scanning every entry.
+\begin{itemize}\item Leaves store the entries; internal separators route the search.
+\item Capacities count leaf entries or internal child pointers.
+\item Each exercise starts from its own printed tree. Page IDs survive repairs.
+\item More than one repair can be correct. Explain why your result is valid.\end{itemize}
+\end{frame}
+\begin{frame}
+\bplustree{lookup}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{range}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{insert}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{delete}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{cascade}{.98\linewidth}{.90\textheight}
+\end{frame}
+\begin{frame}
+\bplustree{shrink}{.98\linewidth}{.90\textheight}
+\end{frame}
+\end{document}

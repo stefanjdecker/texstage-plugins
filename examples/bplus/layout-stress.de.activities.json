@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "language": "de",
+  "items": [
+    {
+      "id": "empty",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/empty.json"
+    },
+    {
+      "id": "last",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/last.json"
+    },
+    {
+      "id": "large",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/large.json"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Delete an entry and borrow from a neighbour",
+    "de": "Eintrag löschen und vom Nachbarn leihen"
+  },
+  "prompt": {
+    "en": "Delete 5. Restore minimum occupancy by borrowing.",
+    "de": "Lösche 5. Stelle die Mindestbelegung durch Leihen wieder her."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            20,
+            40
+          ],
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "leaf",
+          "keys": [
+            5,
+            10
+          ],
+          "next": 2
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            20,
+            25,
+            30
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            40,
+            45
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "delete",
+      "key": 5
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        1
+      ],
+      "repairs": [
+        {
+          "op": "borrow",
+          "node": 1,
+          "sibling": 2
+        }
+      ],
+      "separators": [
+        {
+          "node": 0,
+          "keys": [
+            25,
+            40
+          ]
+        }
+      ],
+      "height": 1
+    },
+    "explanation": {
+      "en": "Borrow from an adjacent sibling with spare capacity. The parent separator must follow the new right-subtree minimum.",
+      "de": "Leihe von einem direkten Nachbarn mit freiem Spielraum. Der Trennschlüssel folgt dem neuen Minimum des rechten Teilbaums."
+    }
+  },
+  "feedback": "on-reveal"
+}

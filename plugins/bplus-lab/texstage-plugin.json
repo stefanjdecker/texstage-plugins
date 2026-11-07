@@ -1,0 +1,135 @@
+{
+  "manifest_version": 2,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.bpluslab",
+  "version": "0.4.0",
+  "description": "B+ operation certificates, prepared LaTeX lessons and structured classroom editing.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.bpluslab.operations": {
+        "engine_api": 1,
+        "module": "texstage_bplus_lab/web/engine.worker.mjs",
+        "assets": [
+          "texstage_bplus_lab/web/identity.mjs",
+          "texstage_bplus_lab/web/validation.mjs",
+          "texstage_bplus_lab/web/tree.mjs",
+          "texstage_bplus_lab/web/operations.mjs"
+        ],
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "B+ tree path and repair certificate (JSON)",
+          "tokens": [
+            "path",
+            "repairs",
+            "separators",
+            "height"
+          ]
+        },
+        "canonical_format": "bplus-operations-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_bplus_lab/schemas/analysis-result-v1.json"
+      }
+    },
+    "content_types": {
+      "io.github.stefanjdecker.bpluslab.tree": {
+        "content_api": 1,
+        "authoring_hook": "tree",
+        "state_hook": "tree",
+        "state_schema": 2,
+        "latex_packages": [
+          "texstage_bplus_lab/latex/texstage-bplus-tree.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.bpluslab.operations"
+          }
+        },
+        "views": {
+          "participant-input": "texstage_bplus_lab/web/participant.mjs",
+          "presenter-controls": "texstage_bplus_lab/web/presenter-controls.mjs",
+          "presenter-overlay": "texstage_bplus_lab/web/lesson-overlay.mjs",
+          "projector-overlay": "texstage_bplus_lab/web/lesson-overlay.mjs"
+        },
+        "view_schemas": {
+          "participant-input": "texstage_bplus_lab/schemas/participant-input-v2.json",
+          "presenter-controls": "texstage_bplus_lab/schemas/presenter-controls-v2.json",
+          "presenter-overlay": "texstage_bplus_lab/schemas/presenter-overlay-v2.json",
+          "projector-overlay": "texstage_bplus_lab/schemas/projector-overlay-v2.json"
+        },
+        "messages": {
+          "submit-answer": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-submit-v2.json"
+          },
+          "open": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-control-v2.json"
+          },
+          "close": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-control-v2.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-control-v2.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-selection-v2.json"
+          },
+          "share-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-selection-v2.json"
+          },
+          "clear-share": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-control-v2.json"
+          },
+          "replay-step": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_bplus_lab/schemas/command-replay-v2.json"
+          }
+        },
+        "fallback": "static-slide"
+      }
+    }
+  },
+  "latex_namespace": "bplus",
+  "latex_exports": {
+    "commands": [
+      "bplustree"
+    ],
+    "environments": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "status": "design-checks-passed",
+  "coverage": {
+    "initial_models": 13,
+    "worked_cases": 30,
+    "read_cases": 8,
+    "invalid_trees_rejected": 8,
+    "update_certificate_replay": false,
+    "production_schemas": false,
+    "installed_wheel": false,
+    "browser_or_classroom_capacity": false
+  },
+  "case_ids": [
+    "lookup-separator-equality",
+    "lookup-missing",
+    "range-cross-leaves",
+    "range-gap-visits-extra-leaf",
+    "range-upper-equals-last-entry",
+    "range-beyond-tree",
+    "empty-lookup",
+    "empty-range",
+    "insert-with-space",
+    "insert-duplicate-noop",
+    "delete-absent-noop",
+    "insert-leaf-split",
+    "insert-root-leaf-split",
+    "insert-empty-root",
+    "delete-separator-without-underflow",
+    "delete-borrow-left",
+    "delete-borrow-right",
+    "delete-merge-left",
+    "delete-merge-right-alternative",
+    "delete-root-collapse",
+    "delete-last-entry",
+    "insert-internal-root-split",
+    "insert-internal-root-alternative",
+    "insert-three-level-cascade",
+    "delete-internal-borrow-right",
+    "delete-internal-borrow-left",
+    "delete-internal-merge-and-root-shrink",
+    "delete-ancestor-separator-only",
+    "leaf-capacity-four-split-two",
+    "leaf-capacity-four-split-three"
+  ],
+  "largest_fixture_answer_bytes": 420,
+  "encoding_probes": {
+    "conservative_answer_bytes": 752,
+    "conservative_typed_facts_bytes": 3861,
+    "conservative_complete_result_bytes": 4233,
+    "actor_slot_with_digest_and_feedback_reserve_bytes": 2005,
+    "raw_non_bmp_actor_json_bytes": 3074,
+    "proposed_max_state_bytes": 212992,
+    "note": "Shape encodings only; final runtime state/effects, valid maximum results and host validators remain untested."
+  },
+  "source_sha256": {
+    "docs/design/bplus-tree/fixtures.json": "b26effe4568111da57a9bf5f4f2769dea57995c6185d4d1141856a23742a4ee8",
+    "docs/design/bplus-tree/insert-leaf.lesson.json": "d0919b333aac9eeb229830011c4be39c3fa376d4e7083668e4e7204a959fc372",
+    "maintenance/check_bplus_design.py": "3c50a1d5a77d25c3d2a9d55fd55b2444e68ea287fb426893da508b0b42cdc79a"
+  }
+}
