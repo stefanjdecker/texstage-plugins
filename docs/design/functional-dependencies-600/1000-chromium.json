@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "date": "2026-11-07T09:16:37.745Z",
+  "family": "chromium",
+  "hardware": {
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+    "logical_cpus": 16,
+    "ram_bytes": 67869478912,
+    "platform": "win32",
+    "release": "10.0.19045",
+    "arch": "x64"
+  },
+  "scope": "Loopback: 1000 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+  "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+  "bursts": [
+    {
+      "item": "practice",
+      "version": 1,
+      "actors": 1000,
+      "total_ms": 18866.935599999997,
+      "ack_ms": {
+        "n": 1000,
+        "min": 75.88880000000063,
+        "p50": 4160.061400000006,
+        "p95": 4178.390800000001,
+        "max": 4267.821599999996
+      },
+      "feedback_ms": {
+        "n": 1000,
+        "min": 5917.089199999995,
+        "p50": 12366.750300000007,
+        "p95": 17723.502399999998,
+        "max": 18737.633400000006
+      },
+      "queue_ms": {
+        "n": 1000,
+        "min": 4268.509299993515,
+        "p50": 10126.665499985218,
+        "p95": 13360.122999995947,
+        "max": 13532.333299994469
+      },
+      "leased_to_result_ms": {
+        "n": 1000,
+        "min": 24.870700031518936,
+        "p50": 52.29309996962547,
+        "p95": 297.86990001797676,
+        "max": 2170.260600030422
+      },
+      "input_to_frame_ms": {
+        "n": 278,
+        "min": 0.29999998211860657,
+        "p50": 0.4000000059604645,
+        "p95": 0.5999999940395355,
+        "max": 11.200000017881393
+      },
+      "max_participant_state_bytes": 6864,
+      "max_host_state_bytes": 123048,
+      "max_server_rss_bytes": 384741376,
+      "max_persisted_state_bytes": 201,
+      "final_storage": {
+        "state_bytes": 198,
+        "max_actor_slot_bytes": 406,
+        "total_actor_bytes": 406000,
+        "actors": 1000,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": false,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "practice",
+      "version": 2,
+      "actors": 1000,
+      "total_ms": 17948.1431,
+      "ack_ms": {
+        "n": 1000,
+        "min": 56.759500000000116,
+        "p50": 4004.3061000000016,
+        "p95": 4021.6242000000057,
+        "max": 4072.549600000013
+      },
+      "feedback_ms": {
+        "n": 1000,
+        "min": 5433.298200000005,
+        "p50": 12303.960099999997,
+        "p95": 17716.55780000001,
+        "max": 17818.390700000004
+      },
+      "queue_ms": {
+        "n": 1000,
+        "min": 4145.110400021076,
+        "p50": 9585.501399993896,
+        "p95": 13102.386200010777,
+        "max": 13337.24559995532
+      },
+      "leased_to_result_ms": {
+        "n": 1000,
+        "min": 23.628100007772446,
+        "p50": 51.99889999628067,
+        "p95": 301.11029997467995,
+        "max": 2024.175999969244
+      },
+      "input_to_frame_ms": {
+        "n": 266,
+        "min": 0.29999998211860657,
+        "p50": 0.4000000059604645,
+        "p95": 0.5999999940395355,
+        "max": 3.5
+      },
+      "max_participant_state_bytes": 6864,
+      "max_host_state_bytes": 123048,
+      "max_server_rss_bytes": 402239488,
+      "max_persisted_state_bytes": 201,
+      "final_storage": {
+        "state_bytes": 198,
+        "max_actor_slot_bytes": 406,
+        "total_actor_bytes": 406000,
+        "actors": 1000,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": false,
+        "feedback_worst": true
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "151.0.7922.34",
+  "node": "v24.15.0",
+  "roster": {
+    "pages": 10,
+    "last_student": 1000,
+    "last_answer_inspected": true
+  },
+  "reconnect": {
+    "absent_evaluator_pending": true,
+    "same_actor_resumed": true,
+    "replay_same_receipt": true,
+    "closed_pending_completed": true,
+    "replacement_ms": 1331.3891000000003,
+    "lease_generations": [
+      1,
+      2
+    ],
+    "stale_result_rejected": true,
+    "reset_late_result_rejected": true
+  },
+  "complete": true,
+  "targets_passed": false
+}

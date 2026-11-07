@@ -10,7 +10,7 @@ from texstage_fd_lab import model
 from texstage_fd_lab.authoring import prepare_lesson, TYPE, ENGINE
 from texstage_fd_lab.grading import expected_facts
 from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES
-from test_lesson import provider, source, prepared, opened, submit, complete, view, advance, command, envelope
+from test_lesson import provider, source, prepared, opened, submit, complete, view, advance, command, envelope, transition, shared_state
 from test_engine import probe
 
 
@@ -152,16 +152,16 @@ def test_largest_key_submissions_fit_completed_slots(provider):
     state, _ = advance(state, command('open', {'control': 0}), ctx | {'role': 'presenter'})
     answer = {'format': 1, 'mode': 'keys', 'keys': list(range(256))}
     facts = model.analyze(spec['public']['seed'], answer)
-    for i in range(64):
+    for i in range(600):
         actor = str(i).zfill(3) + 'x' * 253
         state, effects = submit(state, ctx, actor=actor, answer=answer)
         state, _ = advance(state, {'kind': 'evaluation.finished', 'actor': actor, 'binding': 'analysis',
             'correlation_id': effects[-1]['correlation_id'], 'outcome': {'status': 'ok', 'data': facts}}, ctx)
         assert state['answers'][actor]['status'] == 'saved'
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
-    assert len(model.canonical(state)) < STATE_BYTES
+    assert len(model.canonical(shared_state(state))) < STATE_BYTES
     state, effects = submit(state, ctx, actor=actor, version=1, answer=answer, request='replace00001')
-    assert len(model.canonical({'state': state, 'effects': effects})) < 256 * 1024
+    assert len(model.canonical({'state': shared_state(state), 'effects': effects})) < 256 * 1024
     for role in ('participant', 'projector', 'presenter'):
         assert len(model.canonical(view(state, ctx, role, actor))) < 128 * 1024
 
@@ -170,5 +170,5 @@ def test_one_key_shape_and_mode_guards(provider):
     state, ctx = opened('keys_one')
     for answer in ({'format': 1, 'mode': 'keys', 'keys': []}, {'format': 1, 'mode': 'keys', 'keys': [5, 6]},
                    {'format': 1, 'mode': 'implication', 'implied': False, 'agree': 8}):
-        result = Lesson().transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}), ctx)
+        result = transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}), ctx)
         assert result == {'refusal': 'invalid-answer'}

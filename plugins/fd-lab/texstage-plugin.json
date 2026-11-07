@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.fdlab",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "FD reasoning and prepared closure, candidate-key and implication lessons.",
   "license": "Apache-2.0",
   "capabilities": {
@@ -41,7 +41,7 @@
         "content_api": 1,
         "authoring_hook": "exercise",
         "state_hook": "exercise",
-        "state_schema": 1,
+        "state_schema": 2,
         "latex_packages": [
           "texstage_fd_lab/latex/texstage-fd-lab.sty"
         ],
@@ -111,9 +111,17 @@
             ],
             "revision_policy": "latest",
             "schema": "texstage_fd_lab/schemas/commands/demonstrate.json"
+          },
+          "roster-page": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/roster-page.json"
           }
         },
-        "fallback": "static-slide"
+        "fallback": "static-slide",
+        "state_model": "actor-slots-v1"
       }
     }
   },

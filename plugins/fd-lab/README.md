@@ -1,6 +1,6 @@
 # TeXStage Functional Dependencies and Keys Lab
 
-Experimental engine and prepared classroom lessons (F1-F3), version 0.3.0. This wheel computes attribute
+Experimental engine and prepared classroom lessons (F1-F3), version 0.4.0. This wheel computes attribute
 closures, checks derivation steps, enumerates candidate keys exactly and checks
 FD implication using derivations or two-row counterexamples. It returns typed
 mathematical facts, not grades. The lesson adds LaTeX exercise/solution editions,
@@ -25,7 +25,7 @@ From the collection root:
 npm ci --ignore-scripts
 npm run check:workers
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.3.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.4.0-py3-none-any.whl
 python -m pytest plugins/fd-lab/tests -q --basetemp=artifacts/fd-tests
 python maintenance/fd_probe.py --output artifacts/fd-lab
 npx playwright install chromium firefox webkit
@@ -92,11 +92,12 @@ Malformed answers return `syntax`; mathematical mistakes return analysis facts;
 resource limits return `refused`. Each loaded state accepts one evaluation.
 The host supervises startup, the two-second execution deadline and disposal.
 
-The [F4 classroom record](../../docs/design/functional-dependencies-f4-validation.md)
-measures 64-answer bursts and evaluator replacement using this unchanged 0.3.0
-provider and a newer host build. It documents the remaining WebKit latency gate;
-physical-phone validation is still pending. Use its exact host artifact pin for
-a pilot rather than relying on the development version string alone.
+Version 0.4.0 requires the matching host's `actor-slots-v1` contract. Answers are
+stored separately, with a 1,000-student storage ceiling and 100-answer presenter
+pages. Rebuild the deck and start a fresh session when upgrading from 0.3.0.
+The [600-participant record](../../docs/design/functional-dependencies-600-validation.md)
+documents measurements and remaining gates; storage capacity alone is not a
+response-time guarantee. Physical-phone validation remains deferred.
 
 To use an engine in an operator profile, inspect it and explicitly enable the
 exact displayed payload with `texstage plugins --data ./fd-profile enable` and

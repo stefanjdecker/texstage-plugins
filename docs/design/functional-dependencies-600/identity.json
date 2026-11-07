@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "date": "2026-11-07",
+  "host_branch": "codex/600-participant-capacity",
+  "host_commit": "a67229a353b5b7bd3e058618ae71dfef619b0f81",
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.4.0",
+    "payload": "d0a3bad1a48aae54122874cc9db5886a101a54e583837f8c0fc316d209ac5355"
+  },
+  "artifacts": [
+    {
+      "purpose": "capacity",
+      "file": "texstage-0.2.1.dev3-py3-none-any.whl",
+      "sha256": "663eff956a66191eb1691a4d5de31664409ee1a8da5e60990073a0a8911a9dbb"
+    },
+    {
+      "purpose": "capacity",
+      "file": "texstage_fd_lab-0.4.0-py3-none-any.whl",
+      "sha256": "c51d3f9b110485842a847f22050ca731da867d99821f407f24f0fc18c5fdc48c"
+    },
+    {
+      "purpose": "final",
+      "file": "texstage-0.2.1.dev3-py3-none-any.whl",
+      "sha256": "663eff956a66191eb1691a4d5de31664409ee1a8da5e60990073a0a8911a9dbb"
+    },
+    {
+      "purpose": "final",
+      "file": "texstage_fd_lab-0.4.0-py3-none-any.whl",
+      "sha256": "523fb27dae5139118ef80c513ec4b0a5c073a6b30db82104ca86df9ce1cd2d03"
+    },
+    {
+      "purpose": "final",
+      "file": "texstage_fd_lab-0.4.0.tar.gz",
+      "sha256": "aaed4b03d8cbd826d28afaa55b401d90d0de1bf505de9f02d5c9ecc3c781103c"
+    }
+  ],
+  "reports": [
+    {
+      "file": "600-chromium.json",
+      "sha256": "e7445f416914690338bfa4492a55c1b67b841709217188f21ff7a0d24782a89f",
+      "timing_gate_passed": false
+    },
+    {
+      "file": "600-firefox.json",
+      "sha256": "ec48cf93dca501b5b6a57f1f4e73b8d2189d9a049b89ab97c319dc2e8c61198f",
+      "timing_gate_passed": false
+    },
+    {
+      "file": "600-webkit.json",
+      "sha256": "50b162d0f1e342d036ef34e1ffa96bb9e0e366900bc186f9425b5202767af290",
+      "timing_gate_passed": false
+    },
+    {
+      "file": "1000-chromium.json",
+      "sha256": "f02f1908572f90e537b2c1e9efe1e1bf2e3f2ff672797ccb0e2a8682b73a7194",
+      "timing_gate_passed": false
+    }
+  ],
+  "notes": [
+    "Capacity and final FD wheels have identical provider payloads; final wheel also contains the updated README metadata.",
+    "All capacity runs retain the strict 100 ms input p95, 10 s feedback p95 and 30 s maximum feedback targets.",
+    "No hosted CI or physical-device claim is made for this local candidate."
+  ]
+}

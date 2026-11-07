@@ -13,7 +13,7 @@ from texstage.plugins.catalog import Catalog, discover
 from texstage.plugins.runtime import Runtime
 from texstage_fd_lab import model
 from texstage_fd_lab.authoring import prepare_lesson, TYPE, ENGINE
-from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES
+from texstage_fd_lab.state import Lesson, SLOT_BYTES, STATE_BYTES, MAX_ACTORS
 from test_engine import probe
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -47,10 +47,37 @@ def command(op, payload, *, actor="alice", request="request00001"):
     return {"kind": "command", "operation": op, "payload": payload, "actor": actor, "request_id": request}
 
 
+def shared_state(state):
+    return {k: v for k, v in state.items() if k != "answers"}
+
+
+def hook_context(state, ctx, actor=None, role=None):
+    answers = state.get("answers", {})
+    role = role or ctx["role"]
+    value = ctx | {"role": role, "actor": actor, "actor_state": copy.deepcopy(answers.get(actor)),
+                   "actor_count": len(answers)}
+    if role == "presenter":
+        pages = max(1, (len(answers) + 99) // 100)
+        page = min(state.get("actor_page", 0), pages - 1)
+        value |= {"actor_pages": pages, "actor_page": page,
+                  "actors": copy.deepcopy(dict(list(answers.items())[page * 100:(page + 1) * 100]))}
+    return value
+
+
+def transition(state, event, ctx):
+    return Lesson().transition(shared_state(state), event, hook_context(state, ctx, event.get("actor")))
+
+
 def advance(state, event, ctx):
-    result = json_value(Lesson().transition(state, event, ctx))
+    result = json_value(transition(state, event, ctx))
     assert "refusal" not in result, result
-    return result["state"], result["effects"]
+    answers = dict(state.get("answers", {}))
+    if "actor_state" in result:
+        actor = event["actor"]
+        if result["actor_state"] is None: answers.pop(actor, None)
+        else: answers[actor] = result["actor_state"]
+    # A test-only aggregate for readable assertions; never passed to the hook.
+    return result["state"] | {"answers": answers}, result["effects"]
 
 
 def opened(mode="closure"):
@@ -75,7 +102,7 @@ def complete(state, ctx, outcome=None, **changes):
 
 
 def view(state, ctx, role, actor="alice"):
-    return Lesson().view(state, {"role": role, "actor": actor}, ctx)
+    return Lesson().view(shared_state(state), {"role": role, "actor": actor}, hook_context(state, ctx, actor, role))
 
 
 @pytest.mark.parametrize('policy', ['closure', 'practice'])
@@ -141,10 +168,10 @@ def test_alternative_proof_and_guarded_classroom_controls(provider):
     state = complete(state, ctx)
     assert state['answers']['alice']['feedback']['correct']
     teacher = ctx | {'role': 'presenter'}
-    assert Lesson().transition(state, command('close', {'control': 0}), teacher) == {'refusal': 'stale-control'}
-    assert Lesson().transition(state, command('close', {'control': 1}), ctx) == {'refusal': 'role'}
-    assert Lesson().transition(state, command('select-demonstration', {'control': 1, 'actor': 'alice'}), teacher) == {'refusal': 'phase'}
-    assert Lesson().transition(state, command('demonstrate', {'control': 1, 'step': 0}), teacher) == {'refusal': 'phase'}
+    assert transition(state, command('close', {'control': 0}), teacher) == {'refusal': 'stale-control'}
+    assert transition(state, command('close', {'control': 1}), ctx) == {'refusal': 'role'}
+    assert transition(state, command('select-demonstration', {'control': 1, 'actor': 'alice'}), teacher) == {'refusal': 'phase'}
+    assert transition(state, command('demonstrate', {'control': 1, 'step': 0}), teacher) == {'refusal': 'phase'}
     state, _ = advance(state, command('reveal', {'control': 1}), teacher)
     state, _ = advance(state, command('select-demonstration', {'control': 2, 'actor': 'alice'}), teacher)
     assert view(state, ctx, 'projector')['demonstration'] == answer
@@ -153,7 +180,7 @@ def test_alternative_proof_and_guarded_classroom_controls(provider):
     projected = view(state, ctx, 'projector')
     assert projected['walkthrough'] and projected['demonstration']['closure'] == 7
     assert projected['demonstration']['steps'] == [0]
-    assert Lesson().transition(state, command('demonstrate', {'control': 4, 'step': 8}), teacher) == {'refusal': 'invalid-step'}
+    assert transition(state, command('demonstrate', {'control': 4, 'step': 8}), teacher) == {'refusal': 'invalid-step'}
     state, _ = advance(state, command('open', {'control': 4}), teacher)
     assert 'demonstration' not in view(state, ctx, 'projector') and state['demo_step'] is None
     assert 'worked' not in view(state, ctx, 'participant')
@@ -202,27 +229,38 @@ def test_bounded_state_actor_versions_and_correlations(provider):
     state, ctx = opened()
     answer = worked() | {'steps': [2] * 8, 'closure': 63}
     correlations = []
-    for i in range(64):
+    for i in range(MAX_ACTORS):
         actor = 'actor' + str(i).zfill(3) + 'x' * 248
         state, effects = submit(state, ctx, actor=actor, answer=answer)
         correlations.append(effects[-1]['correlation_id'])
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
-    assert len(set(correlations)) == 64
+    assert len(set(correlations)) == MAX_ACTORS
     for actor, slot in list(state['answers'].items()):
         state, _ = advance(state, {'kind': 'evaluation.finished', 'actor': actor, 'binding': 'analysis',
             'correlation_id': slot['correlation'], 'outcome': {'status': 'ok',
             'data': model.analyze(ctx['item']['public']['seed'], slot['answer'])}}, ctx)
         assert state['answers'][actor]['status'] == 'saved'
         assert len(model.canonical({actor: state['answers'][actor]})) < SLOT_BYTES
-    refused = Lesson().transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}, actor='extra'), ctx)
+    refused = transition(state, command('submit', {'phase': 1, 'version': 0, 'answer': answer}, actor='extra'), ctx)
     assert refused == {'refusal': 'capacity'}
     actor = next(iter(state['answers']))
     state, effects = submit(state, ctx, actor=actor, version=1, answer=worked(), request='replacement1')
     assert len(effects) == 1 and state['answers'][actor]['version'] == 2
-    assert len(model.canonical(state)) < STATE_BYTES
-    assert len(model.canonical({'state': state, 'effects': effects})) < 256 * 1024
+    assert len(model.canonical(shared_state(state))) < STATE_BYTES
+    assert len(model.canonical({'state': shared_state(state), 'effects': effects})) < 256 * 1024
     for role in ('participant', 'projector', 'presenter'):
         assert len(model.canonical(view(state, ctx, role, actor))) < 128 * 1024
+    teacher = ctx | {'role': 'presenter'}
+    state, _ = advance(state, command('roster-page', {'control': state['control_version'], 'page': 9}), teacher)
+    roster = view(state, ctx, 'presenter')
+    assert roster['roster_pages'] == 10 and len(roster['participants']) == 100
+    assert [p['number'] for p in roster['participants']] == list(range(901, 1001))
+    last = roster['participants'][-1]['actor']
+    state, _ = advance(state, command('select-answer', {'control': state['control_version'], 'actor': last}), teacher)
+    assert view(state, ctx, 'presenter')['selected']['answer'] == state['answers'][last]['answer']
+    assert 'participants' not in view(state, ctx, 'participant', last)
+    assert 'selected' not in view(state, ctx, 'projector')
+    assert transition(state, command('roster-page', {'control': state['control_version'], 'page': 10}), teacher) == {'refusal': 'invalid-page'}
 
 
 @pytest.fixture
@@ -234,6 +272,32 @@ def runtime(tmp_path, provider):
     r.activate("lesson", {(TYPE, "closure")})
     yield r
     r.close()
+
+
+def test_incremental_counts_and_selected_snapshot_follow_replacements(provider):
+    state, ctx = opened('practice')
+    state, _ = submit(state, ctx)
+    state, _ = submit(state, ctx, actor='bob')
+    assert state['counts'] == {'pending': 2, 'correct': 0, 'incorrect': 0, 'unavailable': 0}
+    state = complete(state, ctx)
+    teacher = ctx | {'role': 'presenter'}
+    state, _ = advance(state, command('select-answer', {'control': state['control_version'], 'actor': 'alice'}), teacher)
+    assert view(state, ctx, 'presenter')['selected']['feedback']['correct']
+    old = copy.deepcopy(state['answers']['alice'])
+    state, _ = submit(state, ctx, version=1, request='replacement001')
+    assert state['counts'] == {'pending': 2, 'correct': 0, 'incorrect': 0, 'unavailable': 0}
+    assert view(state, ctx, 'presenter')['selected']['version'] == 2
+    assert view(state, ctx, 'presenter')['selected']['status'] == 'pending'
+    before = copy.deepcopy(state)
+    state = complete(state, ctx, correlation_id=old['correlation'])
+    assert state == before
+    state = complete(state, ctx, outcome={'status': 'timeout'})
+    assert state['counts'] == {'pending': 1, 'correct': 0, 'incorrect': 0, 'unavailable': 1}
+    assert view(state, ctx, 'presenter')['selected']['status'] == 'unavailable'
+    state = complete(state, ctx, outcome={'status': 'timeout'})
+    assert sum(state['counts'].values()) == len(state['answers']) == 2
+    for role in ('participant', 'projector'):
+        assert 'selected' not in view(state, ctx, role, 'bob')
 
 
 def envelope(operation, payload, request="request00001", epoch=1):

@@ -1,0 +1,388 @@
+{
+  "format": 1,
+  "date": "2026-11-07T09:11:25.626Z",
+  "family": "chromium",
+  "hardware": {
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+    "logical_cpus": 16,
+    "ram_bytes": 67869478912,
+    "platform": "win32",
+    "release": "10.0.19045",
+    "arch": "x64"
+  },
+  "scope": "Loopback: 600 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+  "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+  "bursts": [
+    {
+      "item": "practice",
+      "version": 1,
+      "actors": 600,
+      "total_ms": 9812.564600000005,
+      "ack_ms": {
+        "n": 600,
+        "min": 43.165500000002794,
+        "p50": 2012.1361000000034,
+        "p95": 2012.6568000000043,
+        "max": 2072.888500000001
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 4186.233,
+        "p50": 6473.6379000000015,
+        "p95": 9682.646500000003,
+        "max": 9724.380400000002
+      },
+      "queue_ms": {
+        "n": 600,
+        "min": 2058.177299976349,
+        "p50": 4964.967699974775,
+        "p95": 7119.322200030088,
+        "max": 7325.576200008392
+      },
+      "leased_to_result_ms": {
+        "n": 600,
+        "min": 25.60130000114441,
+        "p50": 48.91200000047684,
+        "p95": 238.10789999365807,
+        "max": 1096.3759000003338
+      },
+      "input_to_frame_ms": {
+        "n": 146,
+        "min": 0.19999998807907104,
+        "p50": 0.4000000059604645,
+        "p95": 0.800000011920929,
+        "max": 8.199999988079071
+      },
+      "max_participant_state_bytes": 6861,
+      "max_host_state_bytes": 81841,
+      "max_server_rss_bytes": 258682880,
+      "max_persisted_state_bytes": 201,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 406,
+        "total_actor_bytes": 243600,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "practice",
+      "version": 2,
+      "actors": 600,
+      "total_ms": 10079.848099999996,
+      "ack_ms": {
+        "n": 600,
+        "min": 24.30179999999382,
+        "p50": 1748.1618999999992,
+        "p95": 2090.049700000003,
+        "max": 2128.5674
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3096.5976999999984,
+        "p50": 6586.9870999999985,
+        "p95": 9291.364300000001,
+        "max": 10014.578099999999
+      },
+      "queue_ms": {
+        "n": 600,
+        "min": 2001.1033999919891,
+        "p50": 4952.279499977827,
+        "p95": 6985.418500006199,
+        "max": 7108.121799975634
+      },
+      "leased_to_result_ms": {
+        "n": 600,
+        "min": 23.175599992275238,
+        "p50": 47.85480001568794,
+        "p95": 236.26629999279976,
+        "max": 1143.9702000021935
+      },
+      "input_to_frame_ms": {
+        "n": 150,
+        "min": 0.19999998807907104,
+        "p50": 0.4000000059604645,
+        "p95": 0.7000000178813934,
+        "max": 12.199999988079071
+      },
+      "max_participant_state_bytes": 6861,
+      "max_host_state_bytes": 81841,
+      "max_server_rss_bytes": 260911104,
+      "max_persisted_state_bytes": 201,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 406,
+        "total_actor_bytes": 243600,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "keys_all",
+      "version": 1,
+      "actors": 600,
+      "total_ms": 10722.573300000004,
+      "ack_ms": {
+        "n": 600,
+        "min": 23.427999999999884,
+        "p50": 2150.379799999995,
+        "p95": 2164.159200000009,
+        "max": 2294.8592000000062
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3416.5801999999967,
+        "p50": 7415.970300000001,
+        "p95": 9685.5815,
+        "max": 10650.36589999999
+      },
+      "queue_ms": {
+        "n": 600,
+        "min": 2213.168500036001,
+        "p50": 5384.798600018024,
+        "p95": 7130.243200004101,
+        "max": 7233.458999961615
+      },
+      "leased_to_result_ms": {
+        "n": 600,
+        "min": 24.29670000076294,
+        "p50": 49.32159999012947,
+        "p95": 191.65449997782707,
+        "max": 1270.8504000008106
+      },
+      "input_to_frame_ms": {
+        "n": 159,
+        "min": 0.19999998807907104,
+        "p50": 0.5,
+        "p95": 0.800000011920929,
+        "max": 13.399999976158142
+      },
+      "max_participant_state_bytes": 6907,
+      "max_host_state_bytes": 82513,
+      "max_server_rss_bytes": 263077888,
+      "max_persisted_state_bytes": 615,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 403,
+        "total_actor_bytes": 241800,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "keys_all",
+      "version": 2,
+      "actors": 600,
+      "total_ms": 10461.727499999994,
+      "ack_ms": {
+        "n": 600,
+        "min": 24.250800000008894,
+        "p50": 2222.270199999999,
+        "p95": 2245.615300000005,
+        "max": 2247.811300000001
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3421.9753999999957,
+        "p50": 7151.433600000004,
+        "p95": 10365.412299999996,
+        "max": 10410.455699999991
+      },
+      "queue_ms": {
+        "n": 600,
+        "min": 2344.0190999805927,
+        "p50": 5415.757100015879,
+        "p95": 7378.426999986172,
+        "max": 7695.402200013399
+      },
+      "leased_to_result_ms": {
+        "n": 600,
+        "min": 25.895699948072433,
+        "p50": 51.81290000677109,
+        "p95": 228.43490001559258,
+        "max": 1136.5263000130653
+      },
+      "input_to_frame_ms": {
+        "n": 156,
+        "min": 0.19999998807907104,
+        "p50": 0.4000000059604645,
+        "p95": 0.7000000178813934,
+        "max": 14.200000017881393
+      },
+      "max_participant_state_bytes": 6907,
+      "max_host_state_bytes": 82513,
+      "max_server_rss_bytes": 263077888,
+      "max_persisted_state_bytes": 615,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 403,
+        "total_actor_bytes": 241800,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": false,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "refuted",
+      "version": 1,
+      "actors": 600,
+      "total_ms": 9850.574399999998,
+      "ack_ms": {
+        "n": 600,
+        "min": 37.36009999999078,
+        "p50": 2299.731599999999,
+        "p95": 2311.275800000003,
+        "max": 2312.693499999994
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3514.1495999999897,
+        "p50": 7169.059699999998,
+        "p95": 9689.068200000009,
+        "max": 9739.835200000001
+      },
+      "queue_ms": {
+        "n": 600,
+        "min": 2202.3630000054836,
+        "p50": 5336.516800016165,
+        "p95": 7133.423099994659,
+        "max": 7269.254099994898
+      },
+      "leased_to_result_ms": {
+        "n": 600,
+        "min": 23.883199989795685,
+        "p50": 47.96439999341965,
+        "p95": 231.47020000219345,
+        "max": 1366.2292000055313
+      },
+      "input_to_frame_ms": {
+        "n": 145,
+        "min": 0.9000000059604645,
+        "p50": 1.2000000178813934,
+        "p95": 1.600000023841858,
+        "max": 7.5999999940395355
+      },
+      "max_participant_state_bytes": 6907,
+      "max_host_state_bytes": 82513,
+      "max_server_rss_bytes": 263077888,
+      "max_persisted_state_bytes": 615,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 359,
+        "total_actor_bytes": 215400,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    },
+    {
+      "item": "refuted",
+      "version": 2,
+      "actors": 600,
+      "total_ms": 10079.560800000007,
+      "ack_ms": {
+        "n": 600,
+        "min": 28.756099999998696,
+        "p50": 2237.401899999997,
+        "p95": 2253.6696999999986,
+        "max": 2338.8322999999946
+      },
+      "feedback_ms": {
+        "n": 600,
+        "min": 3478.4150999999983,
+        "p50": 6731.855899999995,
+        "p95": 9946.179499999998,
+        "max": 10001.625800000009
+      },
+      "queue_ms": {
+        "n": 600,
+        "min": 2245.202099978924,
+        "p50": 5393.420900017023,
+        "p95": 7394.212300002575,
+        "max": 7536.875199973583
+      },
+      "leased_to_result_ms": {
+        "n": 600,
+        "min": 26.615699976682663,
+        "p50": 49.47999995946884,
+        "p95": 241.287299990654,
+        "max": 1308.5852999985218
+      },
+      "input_to_frame_ms": {
+        "n": 147,
+        "min": 0.30000001192092896,
+        "p50": 1.300000011920929,
+        "p95": 1.600000023841858,
+        "max": 3.0999999940395355
+      },
+      "max_participant_state_bytes": 6907,
+      "max_host_state_bytes": 82513,
+      "max_server_rss_bytes": 265781248,
+      "max_persisted_state_bytes": 615,
+      "final_storage": {
+        "state_bytes": 197,
+        "max_actor_slot_bytes": 359,
+        "total_actor_bytes": 215400,
+        "actors": 600,
+        "pending_jobs": 0
+      },
+      "lease_order_matches_acceptance": true,
+      "targets": {
+        "input": true,
+        "feedback_p95": true,
+        "feedback_worst": true
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "151.0.7922.34",
+  "node": "v24.15.0",
+  "roster": {
+    "pages": 6,
+    "last_student": 600,
+    "last_answer_inspected": true
+  },
+  "reconnect": {
+    "absent_evaluator_pending": true,
+    "same_actor_resumed": true,
+    "replay_same_receipt": true,
+    "closed_pending_completed": true,
+    "replacement_ms": 1207.537100000016,
+    "lease_generations": [
+      1,
+      2
+    ],
+    "stale_result_rejected": true,
+    "reset_late_result_rejected": true
+  },
+  "complete": true,
+  "targets_passed": false
+}

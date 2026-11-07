@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Actual installed host, installed provider, role-filtered sockets and worker CSP.
 const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path");
-const {spawn} = require("node:child_process");
+const {spawn, spawnSync} = require("node:child_process");
 const playwright = require(process.env.TEXSTAGE_PLAYWRIGHT_MODULE || "playwright");
 const root = path.resolve(__dirname, ".."), bundle = path.resolve(process.argv[2]);
 const family = process.env.BROWSER || "chromium";
@@ -133,5 +133,10 @@ async function until(check, label) {
     console.error("Browser errors:",errors);
     throw error;
   } finally { await browser?.close(); }
-})().catch(e=>{console.error(e.stack);process.exitCode=1;}).finally(()=>{server.kill();log.end();});
+})().catch(e=>{console.error(e.stack);process.exitCode=1;}).finally(()=>{
+  if (server.pid && process.platform === "win32")
+    spawnSync("taskkill",["/PID",String(server.pid),"/T","/F"],{windowsHide:true,stdio:"ignore"});
+  else server.kill();
+  log.end();
+});
 

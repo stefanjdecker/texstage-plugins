@@ -9,6 +9,12 @@ Physical-phone, load and release gates remain separate work. The [implementation
 [checked examples](functional-dependencies/README.md) make the next work concrete.
 Reviewed against local host commit `de33515` and collection commit `5f00b62`.
 
+The 2026-11-07 capacity extension is implemented in FD Lab 0.4.0 with state
+schema 2. See the [current contract](functional-dependencies-contract.md) and
+[600-participant measurements](functional-dependencies-600-validation.md).
+The original domain design below remains applicable; storage capacity and
+measured feedback throughput are separate claims.
+
 ## Purpose and teaching sequence
 
 Help students explain what follows from a stated set of functional dependencies

@@ -98,9 +98,13 @@ records earlier passing 64-answer runs. The
 [F5 report](docs/design/functional-dependencies-f5-validation.md) records passing
 hosted CI with English/German authoring and identical artifacts on Windows and
 three browsers, plus unresolved local input-latency and WebKit setup checks.
-The security policy is unchanged. Physical-phone checks remain deferred.
-The [release procedure](docs/fd-release.md) pins the published host and tested
-artifacts. Classroom capacity and catalog publication remain open gates.
+The newer FD Lab 0.4.0 capacity branch adds separate student storage, 100-answer
+presenter pages and 1,000 storage slots. It requires the matching host capacity
+branch; rebuild bundles and start new sessions. See the
+[600-participant record](docs/design/functional-dependencies-600-validation.md)
+and [release procedure](docs/fd-release.md) for measured coverage and compatibility.
+The security policy is unchanged. Physical-phone checks and catalog publication
+remain separate gates.
 
 ```sh
 python maintenance/check_fd_design.py
@@ -181,13 +185,14 @@ touch input, reset, teardown, blocked evaluator network access and timeouts.
 `TEXSTAGE_TEST_BUNDLE` selects a bundle built on another machine for the portability
 test, instead of compiling it locally.
 
-The CI workflows require a host revision containing the experimental API. Until
-that revision reaches Texstage's default branch, run the workflow manually with
-its compatible branch or commit in `texstage_ref`. The default-branch CI runs
-become usable once the host implementation is published. Transaction CI has a
+The CI workflows require a full reviewed host commit in `texstage_ref`. This
+capacity branch pins `a67229a353b5b7bd3e058618ae71dfef619b0f81`; publish that host
+commit before pushing this collection branch. Local checks do not establish a
+passing hosted run. Transaction CI has a
 separate engine-only Linux job (including Chromium, Firefox and WebKit) and a
 Windows job consuming the identical Linux-built wheels. A compatible H1/H2 host
-commit still needs publishing and pinning; local passes do not mean hosted CI ran.
+commit is included in the newer capacity host; release evidence still needs
+the actual hosted run for the selected revisions.
 
 ## Collection layout
 

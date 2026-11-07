@@ -13,11 +13,11 @@ person. Students use FD buttons and attribute toggles; no JSON editing is needed
 The presenter opens submissions, inspects answers privately, reveals feedback,
 shares an anonymous response, or walks through one worked derivation.
 
-Version 0.3.0 implements closure, one/all candidate keys and FD implication.
+Version 0.4.0 implements closure, one/all candidate keys and FD implication.
 The deck continues with key sets, positive derivations, negative two-row witnesses,
 keys of different sizes and the empty key. The
-[F5 validation record](design/functional-dependencies-f5-validation.md) identifies
-the current tested artifacts, hosted CI results and remaining capacity checks.
+[600-participant record](design/functional-dependencies-600-validation.md) identifies
+the current capacity work. The F5 record describes the earlier 0.3.0 artifacts.
 This is not a catalog release.
 
 [Deutsche Anleitung](fd-lesson-de.md).
@@ -28,8 +28,13 @@ Use Python 3.12+, a matching experimental TeXStage host wheel, and a TeX install
 with pdfLaTeX/latexmk, Beamer, Latin Modern fonts, and English/German Babel support.
 The host must include prepared authoring, typed facts, structured command errors,
 atomic replacement of queued evaluations, and renderer mount reconciliation.
-The current published host pin is `34d0c537135f32b0690147dbb66dd8ff155987f8`; see the
-[release procedure](fd-release.md) for source and artifact verification.
+Version 0.4.0 also requires `actor-slots-v1` support from the matching TeXStage
+`codex/600-participant-capacity` branch. The earlier published host pin
+`34d0c537135f32b0690147dbb66dd8ff155987f8` cannot load this provider.
+See the [release procedure](fd-release.md) for source and artifact verification.
+The local tested host commit is `a67229a353b5b7bd3e058618ae71dfef619b0f81`;
+its publication and hosted CI checks are separate pending steps.
+Rebuild the bundle and start a new session when upgrading from 0.3.0.
 A development version string alone does not identify a compatible build. Install into a fresh virtual environment,
 leaving existing course environments intact.
 
@@ -39,7 +44,7 @@ From the plugin collection root, with that environment activated:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.3.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.4.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -47,7 +52,7 @@ Review the inventory and replace `<printed-payload>` below with its displayed
 payload digest. Installation and explicit enablement are separate actions.
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.3.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.4.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -215,17 +220,16 @@ ability of a student to solve a public mathematical task independently.
 The engine supports 1-8 attributes, 0-24 FDs, up to 256 proposed key sets and 8 productive proof steps,
 including empty determinants, cycles and redundant/trivial FDs. Keep classroom
 examples compact enough for the prepared slide box. The lesson stores one current
-answer per actor, with a 64-actor pilot ceiling, 2 KiB reserved per actor slot and
-160 KiB total state. The [performance follow-up](design/functional-dependencies-f4-performance.md)
-records earlier passing runs with 64 synthetic actors on one Windows computer.
-The [F5 follow-up](design/functional-dependencies-f5-validation.md) passed hosted
-functional CI, but the local capacity checks missed Chromium's input-latency
-target and timed out during WebKit setup. Firefox passed all three modes.
-Capacity therefore remains an open gate. Historical F4 records retain their
-exact artifacts and measurements; they do not guarantee response times on a
-lecture network or physical phones.
+answer per actor, with a 1,000-actor storage ceiling and 2 KiB reserved per slot.
+Shared state has a separate 160 KiB limit. The presenter browses 100 answers per
+page using **Previous answers** and **More answers**, then selects an answer to
+inspect or share. Counts cover the whole class, including off-screen pages.
+The storage ceiling is not a throughput guarantee. The
+[600-participant record](design/functional-dependencies-600-validation.md)
+reports measured response times and remaining gates. Historical F4/F5 records
+retain their exact artifacts and measurements.
 
-Use the published host pin above for further evaluation. Its changes preserve
+Use the matching host described above for further evaluation. Its changes preserve
 the security limits while avoiding repeated schema checks and per-answer full
 broadcasts. A replacement presenter can finish pending work when the old
 connection closes. Without a presenter evaluator, answers remain pending;
@@ -252,8 +256,12 @@ shell assignment prefix. Set `BROWSER=firefox` or `BROWSER=webkit` for the other
 must actually execute with TeX installed to create the browser bundle. Tests check
 installed wheels, both host validators, private transport, concurrent submissions,
 reset, keyboard/touch controls at 320 px, and the unchanged restricted worker policy.
-The classroom harness adds 64 protocol actors, one rendered participant and a real
-presenter evaluator. Set `TEXSTAGE_CLASSROOM_RECONNECT=1` to include evaluator loss,
+The classroom harness defaults to 64 protocol actors, one rendered participant
+and a real presenter evaluator. Set `TEXSTAGE_CLASSROOM_ACTORS=600` for the
+capacity target, or `1000` for a separate headroom measurement. Set
+`TEXSTAGE_CLASSROOM_REPLACE=1` for a second answer from every student; typing is
+sampled throughout each burst and large presenter pages are exercised.
+Set `TEXSTAGE_CLASSROOM_RECONNECT=1` to include evaluator loss,
 same-actor resume, receipt replay and reset/late-result checks. It records JSON
 reports under `artifacts/fd-classroom/`, and exits nonzero when the provisional
 timing targets fail. `TEXSTAGE_CLASSROOM_ENFORCE=0` is for collecting diagnostic

@@ -1,11 +1,12 @@
 # FD Lab: implementation plan
 
-Status, 2026-11-07: F1-F3 implemented. F5 hosted functional, packaging and
-browser conformance passes against a published host pin; see the
-[F5 report](functional-dependencies-f5-validation.md). Capacity remains open:
-the latest local checks missed Chromium input targets and timed out during
-WebKit setup. Earlier [F4 performance results](functional-dependencies-f4-performance.md)
-are retained for their exact runs and artifacts.
+Status, 2026-11-07: F1-F3 implemented; F5 hosted conformance passed for 0.3.0.
+FD Lab 0.4.0 now uses shared host actor slots, paginated presenter views and
+bounded evaluator batches. The [600-participant record](functional-dependencies-600-validation.md)
+reports completed load, replacement, reconnect and browser checks. The original
+10-second feedback p95 gate remains open; input responsiveness now passes in
+all three browsers. Earlier [F5](functional-dependencies-f5-validation.md) and
+[F4](functional-dependencies-f4-performance.md) evidence remains tied to its own artifacts.
 The package owns engine, command and four audience-view schemas, a thin LaTeX
 style, prepared exercise/solution fragments and phone/presenter controls.
 See the [F1 record](functional-dependencies-f1-validation.md),
@@ -206,21 +207,41 @@ Retain existing provider and no-plugin behavior. Add a reviewed catalog entry
 only when immutable release artifacts and matching published host pins exist.
 Publishing, commits, pushes and course migration are separate requested actions.
 
+## F6 — 600-participant capacity
+
+Implemented in the paired `codex/600-participant-capacity` branches: generic
+host storage and targeted notifications, atomic result delivery, bounded
+concurrency, FD state schema 2, 100-answer pages, and automated 600-participant
+bursts in all three modes/browsers with a separate 1,000-participant headroom run.
+The [validation report](functional-dependencies-600-validation.md) distinguishes
+correctness from the unmet feedback p95 target. Old providers retain their
+existing storage model and capacity limits. The original repositories and courses
+are unchanged.
+
 ## Recommended next step
 
-F5 now uses published host `34d0c537135f32b0690147dbb66dd8ff155987f8`, including the
+Improve presenter evaluation throughput, especially in Firefox and WebKit, and
+repeat the unchanged latency gates. Publish the compatible host before using
+the new collection CI pin, then run hosted conformance with identical artifacts.
+Measure the intended deployment/network before advertising lecture capacity.
+Physical-phone validation remains deferred; catalog publication is a later action.
+
+## Historical F5 follow-up
+
+F5 used published host `34d0c537135f32b0690147dbb66dd8ff155987f8`, including the
 reviewed renderer, keyboard and language fixes. The [release procedure](../fd-release.md)
 requires real English/German authoring and byte-verified artifact transfer to
 Windows and all three browsers. These gates passed in the
-[recorded hosted run](functional-dependencies-f5-validation.md). Diagnose the
-local Chromium input delays and WebKit slide-view setup timeout before claiming
-64-student readiness, then recheck capacity on the intended lecture hardware and
+[recorded hosted run](functional-dependencies-f5-validation.md). Local
+Chromium input delays and the WebKit slide-view setup timeout were still open before claiming
+64-student readiness. F6 supersedes those local checks for its exact artifacts;
+recheck capacity on the intended lecture hardware and
 network. Catalog publication remains a later, explicit action. Physical-phone
 validation remains deferred under the automated-only scope.
 
 The earlier performance follow-up added a bounded cache of immutable asset bytes
-and cost-aware projection coalescing. Every job retains a fresh restricted worker,
-two-job leases and the two-second evaluation deadline. The FD provider stayed
+and cost-aware projection coalescing. It retained a fresh restricted worker per
+job, two-job leases and the two-second evaluation deadline. The FD provider stayed
 unchanged at 0.3.0 during that optimization. That record includes combined
 FD/relational/transaction security checks, full FD UI checks and exact artifact identities. Historical
 F1-F4 evidence is retained rather than rewritten.

@@ -14,9 +14,11 @@ and four audience view schemas in the package. Its commands include a guarded
 See the [lesson guide](../fd-lesson.md) and [F2 validation](functional-dependencies-f2-validation.md).
 F3 adds keys and implication to the same content capability and frozen answer
 variants. See the [F3 record](functional-dependencies-f3-validation.md). Owned package
-schemas define all implemented command/view variants. The state schema remains 1:
-the phase/actor structure is unchanged, with mode-specific saved answers and
-feedback. A new 0.3.0 payload and explicit profile enablement identify the expansion.
+schemas define all implemented command/view variants. FD Lab 0.4.0 uses state
+schema 2 and the host's `actor-slots-v1` storage contract. Engine seed, answer
+and result formats remain v1. See the
+[capacity record](functional-dependencies-600-validation.md) for exact artifacts
+and the still-open feedback latency gate. Upgrades require a new bundle/session.
 
 ## Capability identities
 
@@ -27,7 +29,7 @@ feedback. A new 0.3.0 payload and explicit profile enablement identify the expan
 | Engine | `io.github.stefanjdecker.fdlab.dependencies` |
 | Content type | `io.github.stefanjdecker.fdlab.exercise` |
 | Manifest / plugin API / engine API / content API | 2 / 1 / 1 / 1 |
-| Authoring hook / state hook / state schema | `exercise` / `exercise` / 1 |
+| Authoring hook / state hook / state schema | `exercise` / `exercise` / 2 |
 | Binding / canonical format | `analysis` / `fd-analysis-v1` |
 | Style / exported command | `texstage-fd-lab.sty` / `\fdlab` |
 
@@ -166,13 +168,20 @@ complete outcome, using the host's ASCII escaping. No truncation of facts.
 Portable schemas use closed bounded objects/arrays and acyclic local references,
 without `pattern`, `$id`, remote references or other unsupported keywords.
 
-Provisional classroom limits: 64 actors, 2 KiB per actor including actor key and
-reserved compact feedback, 16 KiB shared state and 160 KiB complete state.
+Storage limits: 1,000 actors, 2 KiB per actor including actor key and reserved
+compact feedback, and 160 KiB shared state. Shared state stores phase/control
+versions, incremental counts, a bounded selected snapshot, an explicitly shared
+demonstration and the reserved `actor_page` cursor. Actor slots are separate
+durable records, not an `answers` map inside shared state.
 Store neither full key-check arrays nor trace histories per actor. The selected
 inspection view can derive details from the private table and one saved answer.
 Include effects in the 256 KiB host transition limit; every view stays below
 128 KiB. These provider limits must pass worst-case serialization tests before
-being advertised. Replacement remains possible at capacity. A full classroom
+being advertised. The presenter receives at most 100 slots per context/page;
+participant/evaluation hooks receive only their authenticated actor's slot.
+`ActorTransition(..., audience="actor")` atomically replaces that slot and shared
+state, and targets the actor's devices plus hosts. Global controls use `Transition`.
+Replacement remains possible at capacity. A full classroom
 is an operational refusal, not an incorrect mathematical answer.
 
 ## Messages, lifecycle and views
@@ -192,6 +201,12 @@ are closed; selected answers/shares refer to server-known slots and versions.
 Public `select-demonstration` and `demonstrate` require the revealed phase. Private
 presenter selection may occur earlier. Practice mode releases only the actor's
 own permitted feedback; it does not open public solution projections.
+
+`roster-page` takes `{control,page}`, with page in 0–9 and below the current page
+count. Presenter views include `roster_page`, `roster_pages` and at most 100
+participants; class totals cover all pages. Selection/share commands resolve
+only actors on the current page. Selected private snapshots follow later answer
+replacements and results even if the presenter browses another page.
 
 One correlation per actor/request/analysis slot via SDK `evaluation_correlation`.
 Cancel a superseded evaluation and submit its replacement atomically. Preserve

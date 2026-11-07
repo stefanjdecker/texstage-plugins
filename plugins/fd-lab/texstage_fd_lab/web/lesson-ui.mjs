@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 export const local = (value, language) => value?.[language?.startsWith("de") ? "de" : "en"] || "";
 export const words = language => language?.startsWith("de") ? {
+  previousPage:"Vorherige Antworten", nextPage:"Weitere Antworten", page:"Seite",
   rosterStatus:{pending:"ausstehend",correct:"korrekt",incorrect:"nicht korrekt",unavailable:"nicht verfügbar"},
   keysHelp:"Wählen Sie eine Menge und fügen Sie sie Ihrer Antwort hinzu. Ein Kandidatenschlüssel bestimmt alle Attribute und hat kein entfernbares Mitglied.",
   implicationHelp:"Entscheiden Sie, ob die Ziel-FD folgt. Geben Sie bei Ja FD-Schritte an, bei Nein ein Gegenbeispiel mit zwei Zeilen.",
@@ -59,6 +60,7 @@ export const words = language => language?.startsWith("de") ? {
   stale:"Der Stand hat sich geändert. Prüfen Sie die aktuelle Ansicht und versuchen Sie es erneut.",
   capacity:"Die Kapazität ist erreicht. Ihre Antwort bleibt erhalten.", queue:"Die Auswertung ist ausgelastet. Bitte erneut versuchen."
 } : {
+  previousPage:"Previous answers", nextPage:"More answers", page:"Page",
   rosterStatus:{pending:"pending",correct:"correct",incorrect:"incorrect",unavailable:"unavailable"},
   keysHelp:"Select a set and add it to your answer. A candidate key determines all attributes and has no removable member.",
   implicationHelp:"Choose whether the target follows. Supply FD steps for yes, or a two-row counterexample for no.",
@@ -212,7 +214,7 @@ export function errorText(error, w) {
   const code = error?.code || "";
   if (["closed", "item-closed"].includes(code)) return w.closedError;
   if (["stale-answer", "stale-phase", "stale-control", "stale-epoch", "stale-revision", "concurrent-update"].includes(code)) return w.stale;
-  if (["capacity", "session-capacity", "reset-required"].includes(code)) return w.capacity;
+  if (["capacity", "actor-capacity", "session-capacity", "reset-required"].includes(code)) return w.capacity;
   if (code === "queue-full") return w.queue;
   if (code === "invalid-answer") return w.bad;
   if (["worker-timeout", "worker-unavailable", "environment-changed"].includes(code)) return w.unavailable;

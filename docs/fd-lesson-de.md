@@ -8,16 +8,21 @@ fachliche Regeln; Eindeutigkeit in einer Beispieltabelle beweist keine solche Re
 
 Das [Beispiel](../examples/functional-dependencies/lesson.tex) verwendet
 Workshop-Anmeldungen mit Person, E-Mail, Workshop, Tutor, Raum und Gebäude.
-Version 0.3.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
+Version 0.4.0 enthält alle drei Unterrichtsmodi, eine englische und deutsche
 Oberfläche sowie LaTeX-Ausgaben für Aufgaben und Lösungen.
-[English guide](fd-lesson.md) · [Aktueller Validierungsbericht](design/functional-dependencies-f5-validation.md).
+[English guide](fd-lesson.md) · [Aktueller Kapazitätsbericht](design/functional-dependencies-600-validation.md).
 
 ## Installation und Start
 
 Verwenden Sie eine neue Python-Umgebung (Python 3.12+) und das passende
 experimentelle TeXStage-Wheel. Bestehende Kursumgebungen bleiben unverändert.
-Der aktuelle veröffentlichte Host-Pin lautet `34d0c537135f32b0690147dbb66dd8ff155987f8`;
-das [Release-Verfahren](fd-release.md) erklärt die Prüfung von Quellen und Artefakten.
+Version 0.4.0 benötigt `actor-slots-v1` aus dem passenden TeXStage-Branch
+`codex/600-participant-capacity`. Der frühere veröffentlichte Host-Pin
+`34d0c537135f32b0690147dbb66dd8ff155987f8` kann diesen Provider nicht laden.
+Das [Release-Verfahren](fd-release.md) erklärt die Prüfung von Quellen und Artefakten.
+Der lokal geprüfte Host-Commit ist `a67229a353b5b7bd3e058618ae71dfef619b0f81`;
+seine Veröffentlichung und die gehosteten CI-Prüfungen stehen noch aus.
+Nach einem Upgrade von 0.3.0 das Bundle neu bauen und eine neue Sitzung starten.
 Die Entwicklungsversionsnummer allein identifiziert keinen kompatiblen Build. Für Quell-Builds installieren Sie zuerst
 die mit Hashes fixierten Entwicklungsabhängigkeiten und das Wheel dieses Hosts.
 Zusätzlich werden pdfLaTeX/latexmk, Beamer, Latin Modern sowie englische und
@@ -27,7 +32,7 @@ Im Stammverzeichnis von `texstage-plugins`, bei aktivierter Umgebung:
 
 ```sh
 python maintenance/build_wheels.py --package fd-lab
-python -m pip install --no-deps dist/texstage_fd_lab-0.3.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_fd_lab-0.4.0-py3-none-any.whl
 texstage plugins --data ./fd-profile inspect io.github.stefanjdecker.fdlab
 ```
 
@@ -35,7 +40,7 @@ Prüfen Sie das Inventar und ersetzen Sie `<printed-payload>` durch den angezeig
 Digest. Installation und explizite Freigabe sind getrennte Schritte:
 
 ```sh
-texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.3.0 --payload <printed-payload>
+texstage plugins --data ./fd-profile enable io.github.stefanjdecker.fdlab --version 0.4.0 --payload <printed-payload>
 texstage plugins --data ./fd-profile lock --output ./fd.lock.json
 texstage present examples/functional-dependencies/lesson.tex --activities examples/functional-dependencies/lesson.activities.json --data ./fd-profile --plugins-lock ./fd.lock.json --no-tunnel
 ```
@@ -164,18 +169,16 @@ das gewünschte PDF oder lassen Sie TeXStage das Bundle mit seinen Zugriffskontr
 ausliefern; veröffentlichen Sie nicht pauschal das gesamte Build-Verzeichnis.
 
 Grenzen: 1–8 Attribute, 0–24 FDs, höchstens 8 produktive Schritte und 256
-vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 64 aktuelle Antworten
-mit reserviertem Feedback gespeichert. Der [F4-Lasttest](design/functional-dependencies-f4-performance.md)
-dokumentiert frühere erfolgreiche Läufe mit 64 synthetischen Teilnehmenden über
-Loopback. Der [aktuelle F5-Bericht](design/functional-dependencies-f5-validation.md)
-weist erfolgreiche CI-Prüfungen einschließlich deutscher LaTeX-Ausgaben und
-Oberflächen nach. Bei den zusätzlichen lokalen Lasttests überschritt Chromium
-jedoch das Eingabelatenzziel; WebKit erreichte vor dem ersten Antwortschub ein
-Zeitlimit. Firefox bestand alle drei Aufgabenarten. Die Kapazitätsprüfung ist
-damit weiterhin offen. Frühere Messungen bleiben für ihre jeweiligen Artefakte
-dokumentiert und sind keine Durchsatzgarantie für ein Vorlesungsnetz oder Telefone.
+vorgeschlagene Schlüsselmengen. Pro Aufgabe werden bis zu 1.000 aktuelle Antworten
+mit je 2 KiB reserviertem Speicher abgelegt; der gemeinsame Zustand hat ein
+separates Limit von 160 KiB. **Vorherige Antworten** und **Weitere Antworten**
+blättern durch jeweils 100 Antworten. Die Zähler berücksichtigen die ganze Klasse.
+Die Speichergrenze ist keine Durchsatzgarantie. Der
+[600-Teilnehmer-Bericht](design/functional-dependencies-600-validation.md)
+dokumentiert Messwerte und offene Prüfschritte. Frühere F4/F5-Messungen bleiben
+für ihre jeweiligen Artefakte gültig.
 
-Verwenden Sie für weitere Prüfungen den oben genannten Host-Pin mit den
+Verwenden Sie für weitere Prüfungen den oben genannten passenden Host mit den
 Last- und Wiederverbindungsänderungen. Ohne Presenter-Auswertung bleiben
 Antworten ausstehend. Nach einem erkannten Verbindungsabbruch kann ein neuer
 Presenter die ausstehenden Prüfungen übernehmen; verspätete alte Ergebnisse

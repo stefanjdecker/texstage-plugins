@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// 64 synthetic protocol participants, one real phone viewport and presenter.
+// Configurable synthetic protocol participants, one real phone viewport and presenter.
 // Timing gates report failures without discarding the measurements.
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), os = require('node:os');
@@ -9,6 +9,8 @@ const playwright = require(process.env.TEXSTAGE_PLAYWRIGHT_MODULE || 'playwright
 const {observeEvaluatorTiming,summarizeEvaluatorTiming} = require('./evaluator_timing.cjs');
 const root = path.resolve(__dirname, '..'), bundle = path.resolve(process.argv[2]);
 const family = process.env.BROWSER || 'chromium';
+const actors = Number(process.env.TEXSTAGE_CLASSROOM_ACTORS || 64);
+assert(Number.isInteger(actors) && actors >= 1 && actors <= 1000);
 const run = process.env.TEXSTAGE_CLASSROOM_RUN || new Date().toISOString().replace(/[:.]/g, '-');
 const output = path.join(root, 'artifacts', 'fd-classroom', run, family);
 fs.mkdirSync(output, {recursive:true});
@@ -79,7 +81,7 @@ class Peer {
 const report = {format:1, date:new Date().toISOString(), family,
   hardware:{cpu:os.cpus()[0].model,logical_cpus:os.cpus().length,ram_bytes:os.totalmem(),
     platform:os.platform(),release:os.release(),arch:os.arch()},
-  scope:'Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.',
+  scope:`Loopback: ${actors} protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.`,
   quantiles:'Nearest rank; timings in milliseconds unless the field says bytes.', bursts:[], errors:[]};
 let server, browser;
 (async () => {
@@ -99,7 +101,7 @@ let server, browser;
     const host = new Peer(wsURL); await host.ready();
     const hello = await host.send({t:'hello',role:'host',key:'plugin-demo-key',deck:deck.deck,bundle:deck.bundle});
     const students = [];
-    for (let i=0;i<64;i++) {
+    for (let i=0;i<actors;i++) {
       const p = new Peer(wsURL); await p.ready();
       p.welcome = await p.send({t:'join',pin:hello.pin,nickname:'Synthetic '+(i+1),join_nonce:randomBytes(16).toString('hex')});
       students.push(p);
@@ -112,6 +114,9 @@ let server, browser;
     await desktop.addInitScript(() => localStorage.setItem('texquiz:presenter-key','plugin-demo-key'));
     const presenter = await desktop.newPage(); presenter.on('pageerror',e => report.errors.push(e.message));
     await presenter.goto(base+'/stage?bundle='+deck.bundle);
+    // A new presenter chooses the first slide asynchronously after login. Do not
+    // race that navigation with the protocol host's first activity selection.
+    await until(() => host.state?.session?.slide === deck.slides[0].id, 'presenter initial slide');
     const mobile = await browser.newContext({viewport:{width:320,height:740},hasTouch:true,isMobile:family!=='firefox'});
     await mobile.addInitScript(saved => localStorage.setItem('texquiz:player',JSON.stringify(saved)),
       {pin:hello.pin,token:students[0].welcome.token,nickname:students[0].welcome.nickname});
@@ -119,7 +124,7 @@ let server, browser;
     await phone.goto(base+'/play?pin='+hello.pin);
     const modes = (process.env.TEXSTAGE_CLASSROOM_MODES ?? 'practice,keys_all,refuted').split(',').filter(Boolean);
     for (const item of modes) {
-      console.log('Starting 64-answer burst: '+item);
+      console.log(`Starting ${actors}-answer burst: ${item}`);
       const slide = deck.slides.find(s => s.live?.some(l => l.item === item)); assert(slide);
       await host.send({t:'slide',slide:slide.id});
       await until(() => host.descriptor()?.item === item && students.every(p => p.descriptor()?.item === item),'slide views');
@@ -131,72 +136,99 @@ let server, browser;
         'import json,sys; from texstage_fd_lab.model import compile_lesson; print(json.dumps(compile_lesson(json.load(open(sys.argv[1],encoding="utf-8")))[1]))',
         path.join(root,'examples','functional-dependencies','activities',item+'.json')],{encoding:'utf8',windowsHide:true});
       assert.equal(compiled.status,0,compiled.stderr); const answer = JSON.parse(compiled.stdout);
-      const start = performance.now();
-      const submissions = students.map(async p => {
-        const key = item + ':1'; p.sent.set(key, performance.now());
-        const r = await p.command('submit',{phase:p.view().data.phase_version,version:0,answer});
-        p.acks.set(key,performance.now()); return r;
-      });
-      // Trusted keyboard input through Playwright, measured from the browser's
-      // keydown timestamp to the first animation frame after DOM feedback.
-      const latency = [];
-      const toggle = phone.getByRole('button',{name:item==='refuted' ? 'Same in both rows: person' : 'Attribute person',exact:true});
-      if (await toggle.count()) {
-        await toggle.focus();
-        await phone.evaluate(() => {
-          window.__fdInputTimes = [];
-          if (window.__fdInputListener) document.removeEventListener('keydown',window.__fdInputListener);
-          window.__fdInputListener = e => {
-            if (e.key === 'Enter' && e.isTrusted) { const t=e.timeStamp; requestAnimationFrame(() => window.__fdInputTimes.push(performance.now()-t)); }
-          };
-          document.addEventListener('keydown',window.__fdInputListener);
+      for (const version of (process.env.TEXSTAGE_CLASSROOM_REPLACE === '1' ? [1, 2] : [1])) {
+        const answerKey = item + ':' + version;
+        const start = performance.now();
+        const submissions = students.map(async p => {
+          p.sent.set(answerKey, performance.now());
+          const r = await p.command('submit',{phase:p.view().data.phase_version,version:version-1,answer});
+          p.acks.set(answerKey,performance.now()); return r;
         });
-        for (let i=0;i<24;i++) { await phone.keyboard.press('Enter'); await delay(60); }
-        await until(async () => (await phone.evaluate(() => window.__fdInputTimes.length))===24,'24 rendered input samples');
-        latency.push(...await phone.evaluate(() => window.__fdInputTimes));
+        // Trusted keyboard input through Playwright, measured from the browser's
+        // keydown timestamp to the first animation frame after DOM feedback.
+        const latency = [];
+        const toggle = phone.getByRole('button',{name:item==='refuted' ? 'Same in both rows: person' : 'Attribute person',exact:true});
+        if (await toggle.count()) {
+          await toggle.focus();
+          await phone.evaluate(() => {
+            window.__fdInputTimes = [];
+            if (window.__fdInputListener) document.removeEventListener('keydown',window.__fdInputListener);
+            window.__fdInputListener = e => {
+              if (e.key === 'Enter' && e.isTrusted) { const t=e.timeStamp; requestAnimationFrame(() => window.__fdInputTimes.push(performance.now()-t)); }
+            };
+            document.addEventListener('keydown',window.__fdInputListener);
+          });
+          let samples = 0;
+          do {
+            assert(performance.now()-start < 240000, 'burst did not finish while sampling input');
+            await phone.keyboard.press('Enter'); samples++; await delay(60);
+          } while (samples < 24 || !students.every(p => p.feedback.has(answerKey)));
+          await until(async () => (await phone.evaluate(() => window.__fdInputTimes.length))===samples,'rendered input samples');
+          latency.push(...await phone.evaluate(() => window.__fdInputTimes));
+        }
+        const receipts = await Promise.all(submissions);
+        await until(() => students.every(p => p.feedback.has(answerKey)),`${actors} checked answers`,240000);
+        const end = performance.now();
+        for (const p of students) {
+          assert.equal(p.view().data.own.feedback.correct,true);
+          assert(!p.view().data.worked && !p.view().data.participants);
+          assert(!JSON.stringify(p.descriptor()).includes('"evaluations":'));
+        }
+        const events = fs.readFileSync(path.join(profile,'classroom-events.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
+        const snapshot=spawnSync(python,[path.join(__dirname,'fd_classroom_snapshot.py'),
+          path.join(profile,'plugins.sqlite3'),item],{encoding:'utf8',windowsHide:true});
+        assert.equal(snapshot.status,0,snapshot.stderr);
+        const finalState=JSON.parse(snapshot.stdout); assert.equal(finalState.actors,actors); assert.equal(finalState.pending_jobs,0);
+        const jobs = receipts.flatMap(r => Object.values(r.jobs));
+        const queue = [], evaluation = [];
+        for (const id of jobs) {
+          const created = events.find(e => e.event==='command' && Object.values(e.receipt.jobs || {}).includes(id));
+          const leased = events.find(e => e.event==='lease' && e.jobs.some(j => j.id===id));
+          const finished = events.find(e => e.event==='finish' && e.job===id && e.accepted);
+          assert(created && leased && finished); queue.push(leased.ms-created.ms); evaluation.push(finished.ms-leased.ms);
+        }
+        const burst = {item,version,actors,total_ms:end-start,
+          ack_ms:stats(students.map(p => p.acks.get(answerKey)-p.sent.get(answerKey))),
+          feedback_ms:stats(students.map(p => p.feedback.get(answerKey)-p.sent.get(answerKey))),
+          queue_ms:stats(queue),leased_to_result_ms:stats(evaluation),input_to_frame_ms:stats(latency),
+          max_participant_state_bytes:Math.max(...students.map(p => p.maxBytes)),
+          max_host_state_bytes:host.maxBytes,
+          max_server_rss_bytes:events.some(e=>e.rss_bytes!==null) ? Math.max(...events.map(e=>e.rss_bytes || 0)) : null,
+          max_persisted_state_bytes:Math.max(...events.map(e=>e.state_bytes || 0)),
+          final_storage:finalState,
+          lease_order_matches_acceptance:JSON.stringify(events.filter(e=>e.event==='lease').flatMap(e=>e.jobs.map(j=>j.id)).filter(id=>jobs.includes(id))) ===
+            JSON.stringify(events.filter(e=>e.event==='command').flatMap(e=>Object.values(e.receipt.jobs || {})).filter(id=>jobs.includes(id)))};
+        burst.targets = {input:latency.length ? burst.input_to_frame_ms.p95<100 : null,
+          feedback_p95:burst.feedback_ms.p95<10000,feedback_worst:burst.feedback_ms.max<30000};
+        if (process.env.TEXSTAGE_EVALUATOR_PROFILE === '1') {
+          const timings=await presenter.evaluate(ids=>window.__texstageEvaluationTimings.filter(r=>ids.includes(r.job)),jobs);
+          assert.equal(timings.length,jobs.length);
+          burst.evaluator_timing=summarizeEvaluatorTiming(timings,stats);
+        }
+        assert(burst.lease_order_matches_acceptance, 'leases must preserve acceptance order');
+        report.bursts.push(burst); console.log(JSON.stringify(burst));
+        await phone.screenshot({path:path.join(output,item+'-v'+version+'-phone.png'),fullPage:true});
       }
-      const receipts = await Promise.all(submissions);
-      await until(() => students.every(p => p.feedback.has(item+':1')),'64 checked answers',240000);
-      const end = performance.now();
-      for (const p of students) {
-        assert.equal(p.view().data.own.feedback.correct,true);
-        assert(!p.view().data.worked && !p.view().data.participants);
-        assert(!JSON.stringify(p.descriptor()).includes('"evaluations":'));
+      if (actors > 100) {
+        const pages = Math.ceil(actors/100);
+        for (let page=1;page<pages;page++) {
+          await presenter.getByRole('button',{name:'More answers',exact:true}).click();
+          await until(()=>host.view().data.roster_page===page,'presenter answer page');
+          await presenter.getByText(`Page ${page+1} / ${pages}`,{exact:true}).waitFor();
+        }
+        const roster = host.view().data.participants;
+        assert.equal(roster.at(-1).number,actors);
+        assert(roster.length<=100);
+        const select=presenter.getByRole('combobox',{name:'Inspect an answer privately',exact:true});
+        await select.selectOption(roster.at(-1).actor);
+        await presenter.getByRole('button',{name:'Inspect an answer privately',exact:true}).click();
+        await until(()=>host.view().data.selected?.status==='saved','last student answer');
+        assert.equal(host.view().data.counts.correct,actors);
+        await presenter.getByText(item==='practice' ? 'Your closure and derivation are correct.' :
+          item==='keys_all' ? 'Your candidate-key answer is correct.' : 'Your two rows are a valid counterexample.',{exact:true}).waitFor();
+        await presenter.screenshot({path:path.join(output,item+'-last-page.png'),fullPage:true});
+        report.roster = {pages,last_student:actors,last_answer_inspected:true};
       }
-      const events = fs.readFileSync(path.join(profile,'classroom-events.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
-      const snapshot=spawnSync(python,['-c',
-        'import json,sqlite3,sys; from pathlib import Path; from texstage.plugins.manifest import canonical; db=sqlite3.connect(Path(sys.argv[1]).as_uri()+"?mode=ro",uri=True); raw=db.execute("SELECT state FROM items WHERE item=?",(sys.argv[2],)).fetchone()[0]; s=json.loads(raw); print(json.dumps({"state_bytes":len(raw.encode()),"max_actor_slot_bytes":max(len(canonical({a:v})) for a,v in s["answers"].items()),"actors":len(s["answers"]),"pending_jobs":db.execute("SELECT count(*) FROM jobs WHERE status IN (\'queued\',\'leased\')").fetchone()[0]}))',
-        path.join(profile,'plugins.sqlite3'),item],{encoding:'utf8',windowsHide:true});
-      assert.equal(snapshot.status,0,snapshot.stderr);
-      const finalState=JSON.parse(snapshot.stdout); assert.equal(finalState.actors,64); assert.equal(finalState.pending_jobs,0);
-      const jobs = receipts.flatMap(r => Object.values(r.jobs));
-      const queue = [], evaluation = [];
-      for (const id of jobs) {
-        const created = events.find(e => e.event==='command' && Object.values(e.receipt.jobs || {}).includes(id));
-        const leased = events.find(e => e.event==='lease' && e.jobs.some(j => j.id===id));
-        const finished = events.find(e => e.event==='finish' && e.job===id && e.accepted);
-        assert(created && leased && finished); queue.push(leased.ms-created.ms); evaluation.push(finished.ms-leased.ms);
-      }
-      const burst = {item,actors:64,total_ms:end-start,
-        ack_ms:stats(students.map(p => p.acks.get(item+':1')-p.sent.get(item+':1'))),
-        feedback_ms:stats(students.map(p => p.feedback.get(item+':1')-p.sent.get(item+':1'))),
-        queue_ms:stats(queue),leased_to_result_ms:stats(evaluation),input_to_frame_ms:stats(latency),
-        max_participant_state_bytes:Math.max(...students.map(p => p.maxBytes)),
-        max_host_state_bytes:host.maxBytes,
-        max_server_rss_bytes:events.some(e=>e.rss_bytes!==null) ? Math.max(...events.map(e=>e.rss_bytes || 0)) : null,
-        max_persisted_state_bytes:Math.max(...events.map(e=>e.state_bytes || 0)),
-        final_storage:finalState,
-        lease_order_matches_acceptance:JSON.stringify(events.filter(e=>e.event==='lease').flatMap(e=>e.jobs.map(j=>j.id)).filter(id=>jobs.includes(id))) ===
-          JSON.stringify(events.filter(e=>e.event==='command').flatMap(e=>Object.values(e.receipt.jobs || {})).filter(id=>jobs.includes(id)))};
-      burst.targets = {input:latency.length ? burst.input_to_frame_ms.p95<100 : null,
-        feedback_p95:burst.feedback_ms.p95<10000,feedback_worst:burst.feedback_ms.max<30000};
-      if (process.env.TEXSTAGE_EVALUATOR_PROFILE === '1') {
-        const timings=await presenter.evaluate(ids=>window.__texstageEvaluationTimings.filter(r=>ids.includes(r.job)),jobs);
-        assert.equal(timings.length,jobs.length);
-        burst.evaluator_timing=summarizeEvaluatorTiming(timings,stats);
-      }
-      report.bursts.push(burst); console.log(JSON.stringify(burst));
-      await phone.screenshot({path:path.join(output,item+'-phone.png'),fullPage:true});
     }
     if (process.env.TEXSTAGE_CLASSROOM_RECONNECT === '1') {
       console.log('Testing evaluator loss, same-actor resume, replay and reset races');

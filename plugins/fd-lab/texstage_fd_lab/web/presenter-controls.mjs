@@ -16,6 +16,9 @@ export function mount(ctx) {
   const reveal = button(w.reveal, () => send("reveal"), ctx.signal);
   const reset = button(w.reset, () => { if (globalThis.confirm(w.resetConfirm)) send("_reset"); }, ctx.signal);
   const select = el("select", undefined, {"aria-label":w.inspect}); select.append(el("option", w.none, {value:""}));
+  const previousPage = button(w.previousPage, () => send("roster-page", {page:current.data.roster_page - 1}), ctx.signal);
+  const nextPage = button(w.nextPage, () => send("roster-page", {page:current.data.roster_page + 1}), ctx.signal);
+  const pageLabel = el("span");
   const inspect = button(w.inspect, () => send("select-answer", {actor:select.value}), ctx.signal);
   const share = button(w.share, () => send("select-demonstration", {actor:select.value}), ctx.signal);
   const clear = button(w.clear, () => send("select-demonstration", {actor:""}), ctx.signal);
@@ -23,7 +26,7 @@ export function mount(ctx) {
   const prev = button(w.prev, () => send("demonstrate", {step:current.data.demo_step - 1}), ctx.signal);
   const next = button(w.nextStep, () => send("demonstrate", {step:current.data.demo_step + 1}), ctx.signal);
   const progress = el("p"), saved = el("div"), result = el("p");
-  root.append(phase, open, close, reveal, reset, counts, select, inspect, share, clear,
+  root.append(phase, open, close, reveal, reset, counts, previousPage, pageLabel, nextPage, select, inspect, share, clear,
     saved, result, begin, prev, next, progress, error);
   const worked = workedPanel(root, w, seed);
   select.addEventListener("change", () => draw(), {signal:ctx.signal});
@@ -34,6 +37,10 @@ export function mount(ctx) {
     for (const node of [begin, prev, next, progress]) node.hidden = proofLength === undefined;
     phase.textContent = `${w.phase}: ${w[d.phase]}. ${w.count}: ${d.count}.`;
     counts.textContent = w.counts + ": " + ["pending","correct","incorrect","unavailable"].map(k => d.counts[k]).join(" / ");
+    for (const node of [previousPage, pageLabel, nextPage]) node.hidden = d.roster_pages <= 1;
+    pageLabel.textContent = ` ${w.page} ${d.roster_page + 1} / ${d.roster_pages} `;
+    previousPage.disabled = busy || d.roster_page === 0;
+    nextPage.disabled = busy || d.roster_page + 1 >= d.roster_pages;
     open.disabled = busy || d.phase === "open";
     close.disabled = busy || d.phase !== "open";
     reveal.disabled = busy || !["open", "closed"].includes(d.phase);
