@@ -1,0 +1,329 @@
+{
+  "date": "2026-11-06",
+  "scope": "F2 prepared closure lesson plus F1 regression",
+  "platform": "Windows",
+  "host_source_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_runtime_matches_wheel": true,
+  "provider_runtime_matches_wheel": true,
+  "artifact_sha256": {
+    "texstage-0.2.1.dev3-py3-none-any.whl": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "texstage_fd_lab-0.2.0-py3-none-any.whl": "cfa23960db9ced4af45c1dba65eb5cd8a88c8f66b4f9d1a5f51e40b24eeb23fb",
+    "texstage_fd_lab-0.2.0.tar.gz": "1df742e9633061d11da7d58b407134859e0fc55e806be8e85004eec9a736e6f7"
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.2.0",
+    "payload": "421f64bbdda9fe101c9e1f9bfb95b30c309d416252c8079263b085fdd40af0b6"
+  },
+  "result_schema_sha256": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "playwright": "1.62.1",
+  "esbuild": "0.28.2",
+  "locked_dependencies": {
+    "anyio": "4.15.1",
+    "attrs": "26.1.0",
+    "build": "1.6.1",
+    "certifi": "2026.10.23",
+    "click": "8.5.0",
+    "colorama": "0.4.6",
+    "h11": "0.16.0",
+    "httpcore": "1.0.9",
+    "httptools": "0.9.0",
+    "httpx": "0.28.1",
+    "idna": "3.20",
+    "iniconfig": "2.3.1",
+    "jsonschema": "4.26.0",
+    "jsonschema-specifications": "2025.9.1",
+    "lxml": "6.1.3",
+    "packaging": "26.3",
+    "pillow": "13.0.0",
+    "pluggy": "1.7.0",
+    "pygments": "2.21.0",
+    "pypdfium2": "5.14.0",
+    "pyproject-hooks": "1.3.3",
+    "pytest": "9.1.1",
+    "python-dotenv": "1.2.4",
+    "python-pptx": "1.0.2",
+    "pyyaml": "6.0.3",
+    "referencing": "0.37.0",
+    "rpds-py": "2026.9.1",
+    "segno": "1.6.6",
+    "setuptools": "84.2.1",
+    "starlette": "1.10.0",
+    "typing-extensions": "4.16.0",
+    "uv": "0.9.12",
+    "uvicorn": "0.54.0",
+    "watchfiles": "1.3.0",
+    "websockets": "17.3",
+    "xlsxwriter": "3.3.0"
+  },
+  "host_development_lock_sha256": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+  "dependency_setup": "Fresh isolated venv; copied locked dependencies rechecked against matching host lock.",
+  "pytest": {
+    "passed": 61,
+    "engine": 39,
+    "lesson": 22,
+    "skipped": 0,
+    "seconds": 276.675
+  },
+  "installed_probe_cases": 30,
+  "sdist_payload_parity": true,
+  "generated_worker_freshness": true,
+  "browser_bundle": "Built from the installed final wheel and transferred unchanged to each browser scenario.",
+  "browsers": {
+    "chromium": {
+      "engine": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2021.4000000059605,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "lesson": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "modes": [
+          "closure"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      }
+    },
+    "firefox": {
+      "engine": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2054,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "lesson": {
+        "browser": "firefox",
+        "version": "153.0",
+        "modes": [
+          "closure"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      }
+    },
+    "webkit": {
+      "engine": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2057,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "lesson": {
+        "browser": "webkit",
+        "version": "26.5",
+        "modes": [
+          "closure"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      }
+    }
+  },
+  "exports": [
+    "live bundle",
+    "static PowerPoint",
+    "handout PDF",
+    "solutions PDF",
+    "direct pdfLaTeX handout",
+    "direct pdfLaTeX solutions",
+    "source freshness failure"
+  ],
+  "visual_review": "Exercise/solution pages 2 and 3, 320px phone, presenter and projector inspected; no clipping in supplied English examples.",
+  "state_checks": [
+    "withheld/practice feedback",
+    "independent exact facts verification",
+    "alternative proofs",
+    "replayed requests",
+    "two presenter versions",
+    "same actor replacement",
+    "saturated queue atomic replacement",
+    "close with pending results",
+    "reset epochs and late results",
+    "anonymous sharing only after reveal",
+    "64 completed actor slots with feedback, full state/effects/views within bounds"
+  ],
+  "not_run_or_not_implemented": [
+    "keys/implication classroom modes (F3)",
+    "physical phones",
+    "64-answer burst, latency, fairness and memory measurements",
+    "full accessibility audit",
+    "German browser scenario",
+    "hosted CI",
+    "Linux execution and cross-OS artifact transfer",
+    "new combined-provider scenario",
+    "published immutable compatible host/provider release"
+  ]
+}

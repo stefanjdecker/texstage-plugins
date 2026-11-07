@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "empty_key",
+    "title": {
+      "en": "Can the empty set be a key?",
+      "de": "Kann die leere Menge ein Schlüssel sein?"
+    },
+    "prompt": {
+      "en": "All attributes are fixed by the given rules. What information must a row supply?",
+      "de": "Alle Attribute sind durch die gegebenen Regeln festgelegt. Welche Information muss eine Zeile liefern?"
+    },
+    "attributes": [
+      {
+        "id": "a",
+        "label": {
+          "en": "A",
+          "de": "A"
+        }
+      },
+      {
+        "id": "b",
+        "label": {
+          "en": "B",
+          "de": "B"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [],
+        "rhs": [
+          "a"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "a"
+        ],
+        "rhs": [
+          "b"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "keys",
+      "require": "all"
+    }
+  },
+  "worked_answer": {
+    "mode": "keys",
+    "keys": [
+      []
+    ]
+  },
+  "explanation": {
+    "en": "The empty set determines both attributes. Every legal set-valued relation has at most one tuple.",
+    "de": "Die leere Menge bestimmt beide Attribute. Jede zulässige Relation hat höchstens ein Tupel."
+  },
+  "feedback": "practice"
+}

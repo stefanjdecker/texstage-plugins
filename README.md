@@ -12,6 +12,7 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
 | `texstage-transaction-engine` | Schedule analysis engine `io.github.stefanjdecker.transactionengine.schedule` (M2) | None; lesson package pending |
 | `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
+| `texstage-fd-lab` | Closure, candidate-key and implication lessons (F1-F3) | `\fdlab{id}{width}{height}` |
 
 The coordinate slide accepts a phone response, displays class points on the
 projector, gives distance feedback from the presenter browser, and supports reveal
@@ -74,6 +75,34 @@ phases, anonymous sharing and static exports. The
 [R3/R4 validation record](docs/design/relational-algebra-lesson-validation.md)
 records installed-wheel authoring and browser checks. Physical-phone testing
 and measured classroom load remain release gates.
+
+## Functional dependencies and keys: classroom lessons
+
+The [FD Lab design](docs/design/functional-dependencies.md) proposes guided
+attribute closure, one/all candidate keys, and FD implication with checked
+derivations or two-row counterexamples. The [implementation plan](docs/design/functional-dependencies-plan.md)
+separates engine, prepared lessons, phone interfaces and classroom release gates.
+The [draft contract](docs/design/functional-dependencies-contract.md) and
+[synthetic examples](docs/design/functional-dependencies/README.md) make the
+semantics reviewable. The [FD Lab package](plugins/fd-lab/README.md) supplies closure, candidate-key
+and implication reasoning plus prepared lessons for all three modes (F1-F3).
+Students choose FD steps, assemble one/all keys or construct a two-row counterexample;
+presenters control feedback release, anonymous sharing and worked-proof walkthroughs. The [lesson guide](docs/fd-lesson.md) covers
+installation, authoring and static editions. See the [F1 engine record](docs/design/functional-dependencies-f1-validation.md)
+and [F2 closure record](docs/design/functional-dependencies-f2-validation.md), followed
+by the [F3 classroom record](docs/design/functional-dependencies-f3-validation.md) and
+[F4 load/reconnect measurements](docs/design/functional-dependencies-f4-validation.md).
+A [German guide](docs/fd-lesson-de.md) is also available. The 64-answer pilot
+exposes a remaining WebKit latency gate. Physical-phone checks are deferred;
+a published catalog release remains a separate step.
+
+```sh
+python maintenance/check_fd_design.py
+```
+
+The checker needs `jsonschema` from the compatible host's development lock.
+It verifies design fixtures and tiny theories; it is not plugin conformance.
+
 
 ## Worker browser compatibility
 

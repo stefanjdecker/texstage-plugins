@@ -1,0 +1,127 @@
+{
+  "manifest_version": 2,
+  "plugin_api": 1,
+  "id": "io.github.stefanjdecker.fdlab",
+  "version": "0.3.0",
+  "description": "FD reasoning and prepared closure, candidate-key and implication lessons.",
+  "license": "Apache-2.0",
+  "capabilities": {
+    "engines": {
+      "io.github.stefanjdecker.fdlab.dependencies": {
+        "engine_api": 1,
+        "module": "texstage_fd_lab/web/engine.worker.mjs",
+        "assets": [
+          "texstage_fd_lab/web/identity.mjs",
+          "texstage_fd_lab/web/validation.mjs",
+          "texstage_fd_lab/web/dependencies.mjs"
+        ],
+        "seed_types": {
+          ".json": "application/json"
+        },
+        "input": {
+          "mode": "code",
+          "label": "Closure, key sets or implication proof (JSON)",
+          "tokens": [
+            "closure",
+            "keys",
+            "steps",
+            "agree"
+          ]
+        },
+        "canonical_format": "fd-analysis-v1",
+        "summary_kinds": [
+          "text"
+        ],
+        "state_policy": "fresh-per-submission",
+        "result_data_schema": "texstage_fd_lab/schemas/analysis-result-v1.json"
+      }
+    },
+    "content_types": {
+      "io.github.stefanjdecker.fdlab.exercise": {
+        "content_api": 1,
+        "authoring_hook": "exercise",
+        "state_hook": "exercise",
+        "state_schema": 1,
+        "latex_packages": [
+          "texstage_fd_lab/latex/texstage-fd-lab.sty"
+        ],
+        "evaluations": {
+          "analysis": {
+            "engine": "io.github.stefanjdecker.fdlab.dependencies"
+          }
+        },
+        "views": {
+          "participant-input": "texstage_fd_lab/web/participant.mjs",
+          "presenter-controls": "texstage_fd_lab/web/presenter-controls.mjs",
+          "presenter-overlay": "texstage_fd_lab/web/lesson-overlay.mjs",
+          "projector-overlay": "texstage_fd_lab/web/lesson-overlay.mjs"
+        },
+        "view_schemas": {
+          "participant-input": "texstage_fd_lab/schemas/views/participant-input.json",
+          "presenter-controls": "texstage_fd_lab/schemas/views/presenter-controls.json",
+          "presenter-overlay": "texstage_fd_lab/schemas/views/presenter-overlay.json",
+          "projector-overlay": "texstage_fd_lab/schemas/views/projector-overlay.json"
+        },
+        "messages": {
+          "submit": {
+            "from": [
+              "participant"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/submit.json"
+          },
+          "open": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/control.json"
+          },
+          "close": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/control.json"
+          },
+          "reveal": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/control.json"
+          },
+          "select-answer": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/select.json"
+          },
+          "select-demonstration": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/select.json"
+          },
+          "demonstrate": {
+            "from": [
+              "presenter"
+            ],
+            "revision_policy": "latest",
+            "schema": "texstage_fd_lab/schemas/commands/demonstrate.json"
+          }
+        },
+        "fallback": "static-slide"
+      }
+    }
+  },
+  "latex_namespace": "fd",
+  "latex_exports": {
+    "commands": [
+      "fdlab"
+    ],
+    "environments": []
+  }
+}

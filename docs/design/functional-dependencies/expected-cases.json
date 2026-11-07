@@ -1,0 +1,286 @@
+{
+  "format": 1,
+  "cases": [
+    {
+      "id": "closure-correct",
+      "example": "workshop_closure",
+      "answer": {
+        "format": 1,
+        "mode": "closure",
+        "closure": 60,
+        "steps": [
+          2,
+          3
+        ]
+      },
+      "accepted": true,
+      "reason": "complete"
+    },
+    {
+      "id": "closure-missing",
+      "example": "workshop_closure",
+      "answer": {
+        "format": 1,
+        "mode": "closure",
+        "closure": 28,
+        "steps": [
+          2
+        ]
+      },
+      "accepted": false,
+      "reason": "incomplete"
+    },
+    {
+      "id": "closure-extra",
+      "example": "workshop_closure",
+      "answer": {
+        "format": 1,
+        "mode": "closure",
+        "closure": 61,
+        "steps": [
+          2,
+          3
+        ]
+      },
+      "accepted": false,
+      "reason": "overclaimed"
+    },
+    {
+      "id": "closure-too-early",
+      "example": "workshop_closure",
+      "answer": {
+        "format": 1,
+        "mode": "closure",
+        "closure": 60,
+        "steps": [
+          3,
+          2
+        ]
+      },
+      "accepted": false,
+      "reason": "unmet-lhs"
+    },
+    {
+      "id": "closure-no-op",
+      "example": "workshop_closure",
+      "answer": {
+        "format": 1,
+        "mode": "closure",
+        "closure": 60,
+        "steps": [
+          2,
+          2,
+          3
+        ]
+      },
+      "accepted": false,
+      "reason": "no-progress"
+    },
+    {
+      "id": "key-alternative",
+      "example": "workshop_one",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          6
+        ]
+      },
+      "accepted": true,
+      "reason": "candidate-key"
+    },
+    {
+      "id": "key-nonminimal",
+      "example": "workshop_one",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          7
+        ]
+      },
+      "accepted": false,
+      "reason": "nonminimal"
+    },
+    {
+      "id": "key-not-superkey",
+      "example": "workshop_one",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          9
+        ]
+      },
+      "accepted": false,
+      "reason": "not-superkey"
+    },
+    {
+      "id": "keys-missing",
+      "example": "workshop_all",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          5
+        ]
+      },
+      "accepted": false,
+      "reason": "missing-key"
+    },
+    {
+      "id": "keys-complete-reordered",
+      "example": "workshop_all",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          6,
+          5
+        ]
+      },
+      "accepted": true,
+      "reason": "complete"
+    },
+    {
+      "id": "keys-different-sizes",
+      "example": "different_sizes",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          1,
+          6
+        ]
+      },
+      "accepted": true,
+      "reason": "complete"
+    },
+    {
+      "id": "keys-smallest-only",
+      "example": "different_sizes",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          1
+        ]
+      },
+      "accepted": false,
+      "reason": "missing-key"
+    },
+    {
+      "id": "empty-key",
+      "example": "empty_key",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": [
+          0
+        ]
+      },
+      "accepted": true,
+      "reason": "complete"
+    },
+    {
+      "id": "empty-list-is-not-empty-key",
+      "example": "empty_key",
+      "answer": {
+        "format": 1,
+        "mode": "keys",
+        "keys": []
+      },
+      "accepted": false,
+      "reason": "missing-key"
+    },
+    {
+      "id": "positive-proof",
+      "example": "workshop_implied",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": true,
+        "steps": [
+          2,
+          3
+        ]
+      },
+      "accepted": true,
+      "reason": "derivation"
+    },
+    {
+      "id": "positive-incomplete",
+      "example": "workshop_implied",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": true,
+        "steps": [
+          2
+        ]
+      },
+      "accepted": false,
+      "reason": "incomplete"
+    },
+    {
+      "id": "negative-witness",
+      "example": "workshop_refuted",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": false,
+        "agree": 8
+      },
+      "accepted": true,
+      "reason": "counterexample"
+    },
+    {
+      "id": "negative-alternative",
+      "example": "workshop_refuted",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": false,
+        "agree": 40
+      },
+      "accepted": true,
+      "reason": "counterexample"
+    },
+    {
+      "id": "negative-violates-premise",
+      "example": "workshop_refuted",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": false,
+        "agree": 24
+      },
+      "accepted": false,
+      "reason": "violated-premise"
+    },
+    {
+      "id": "negative-does-not-refute",
+      "example": "workshop_refuted",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": false,
+        "agree": 63
+      },
+      "accepted": false,
+      "reason": "target-holds"
+    },
+    {
+      "id": "cannot-refute-implied",
+      "example": "workshop_implied",
+      "answer": {
+        "format": 1,
+        "mode": "implication",
+        "implied": false,
+        "agree": 60
+      },
+      "accepted": false,
+      "reason": "target-holds"
+    }
+  ]
+}

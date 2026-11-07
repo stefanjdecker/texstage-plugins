@@ -1,0 +1,363 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "exercise",
+        "answer",
+        "mode",
+        "facts"
+      ],
+      "properties": {
+        "format": {
+          "const": 1
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "mode": {
+          "const": "closure"
+        },
+        "facts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "closure",
+            "trace"
+          ],
+          "properties": {
+            "closure": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "trace": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "reached",
+                "steps",
+                "error"
+              ],
+              "properties": {
+                "reached": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "prefixItems": [
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 23
+                      },
+                      {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 255
+                      }
+                    ],
+                    "items": false
+                  },
+                  "minItems": 0,
+                  "maxItems": 8
+                },
+                "error": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "kind",
+                        "step",
+                        "missing"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "enum": [
+                            "unmet-lhs",
+                            "no-progress"
+                          ]
+                        },
+                        "step": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 7
+                        },
+                        "missing": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 255
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "exercise",
+        "answer",
+        "mode",
+        "facts"
+      ],
+      "properties": {
+        "format": {
+          "const": 1
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "mode": {
+          "const": "keys"
+        },
+        "facts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "candidate_keys",
+            "checks"
+          ],
+          "properties": {
+            "candidate_keys": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "minItems": 1,
+              "maxItems": 256,
+              "uniqueItems": true
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "prefixItems": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  }
+                ],
+                "items": false
+              },
+              "minItems": 0,
+              "maxItems": 256
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "exercise",
+        "answer",
+        "mode",
+        "facts"
+      ],
+      "properties": {
+        "format": {
+          "const": 1
+        },
+        "exercise": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "mode": {
+          "const": "implication"
+        },
+        "facts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "closure",
+            "implied",
+            "proof"
+          ],
+          "properties": {
+            "closure": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "implied": {
+              "type": "boolean"
+            },
+            "proof": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "reached",
+                    "steps",
+                    "error"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "derivation"
+                    },
+                    "reached": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 255
+                    },
+                    "steps": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 23
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 255
+                          }
+                        ],
+                        "items": false
+                      },
+                      "minItems": 0,
+                      "maxItems": 8
+                    },
+                    "error": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "kind",
+                            "step",
+                            "missing"
+                          ],
+                          "properties": {
+                            "kind": {
+                              "enum": [
+                                "unmet-lhs",
+                                "no-progress"
+                              ]
+                            },
+                            "step": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 7
+                            },
+                            "missing": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 255
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "agree",
+                    "violated_fds",
+                    "violates_target"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "pair"
+                    },
+                    "agree": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 255
+                    },
+                    "violated_fds": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 23
+                      },
+                      "minItems": 0,
+                      "maxItems": 24,
+                      "uniqueItems": true
+                    },
+                    "violates_target": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

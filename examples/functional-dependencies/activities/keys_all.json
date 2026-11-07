@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "workshop_all",
+    "title": {
+      "en": "Find every candidate key",
+      "de": "Alle Kandidatenschlüssel finden"
+    },
+    "prompt": {
+      "en": "A registration records a person and workshop with their email, tutor, room and building. Which minimal sets identify it?",
+      "de": "Eine Anmeldung erfasst Person und Workshop mit E-Mail, Tutor, Raum und Gebäude. Welche minimalen Mengen identifizieren sie?"
+    },
+    "attributes": [
+      {
+        "id": "person",
+        "label": {
+          "en": "Person",
+          "de": "Person"
+        }
+      },
+      {
+        "id": "email",
+        "label": {
+          "en": "Email",
+          "de": "E-Mail"
+        }
+      },
+      {
+        "id": "workshop",
+        "label": {
+          "en": "Workshop",
+          "de": "Workshop"
+        }
+      },
+      {
+        "id": "tutor",
+        "label": {
+          "en": "Tutor",
+          "de": "Tutor"
+        }
+      },
+      {
+        "id": "room",
+        "label": {
+          "en": "Room",
+          "de": "Raum"
+        }
+      },
+      {
+        "id": "building",
+        "label": {
+          "en": "Building",
+          "de": "Gebäude"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "person"
+        ],
+        "rhs": [
+          "email"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "email"
+        ],
+        "rhs": [
+          "person"
+        ]
+      },
+      {
+        "id": "f3",
+        "lhs": [
+          "workshop"
+        ],
+        "rhs": [
+          "tutor",
+          "room"
+        ]
+      },
+      {
+        "id": "f4",
+        "lhs": [
+          "room"
+        ],
+        "rhs": [
+          "building"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "keys",
+      "require": "all"
+    }
+  },
+  "worked_answer": {
+    "mode": "keys",
+    "keys": [
+      [
+        "person",
+        "workshop"
+      ],
+      [
+        "email",
+        "workshop"
+      ]
+    ]
+  },
+  "explanation": {
+    "en": "A workshop and either a person or email are sufficient; neither member is removable.",
+    "de": "Ein Workshop und entweder Person oder E-Mail genügen; kein Bestandteil ist entbehrlich."
+  },
+  "feedback": "practice"
+}

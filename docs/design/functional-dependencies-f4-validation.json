@@ -1,0 +1,1549 @@
+{
+  "format": 1,
+  "completed_local_date": "2026-11-07",
+  "host_base_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_status": "Base commit plus the uncommitted classroom changes listed by source hash below.",
+  "artifacts": {
+    "host": {
+      "file": "texstage-0.2.1.dev3-py3-none-any.whl",
+      "sha256": "3a73b26003c8ffbc0cf3cad1ad851fd84b6bf726d87cceddf13abc8195763b2a"
+    },
+    "fd": {
+      "file": "texstage_fd_lab-0.3.0-py3-none-any.whl",
+      "sha256": "85978a68ccc8be9f4831fd3f287efbe922cedee9192d4cdfe3bbaf3d34909c94"
+    },
+    "broad_test_host": {
+      "file": "texstage-0.2.1.dev3-py3-none-any.whl",
+      "sha256": "a52ec15b34533a3cfab111a48afe115455e9c1ebc95049533982cf238cf9bf51"
+    }
+  },
+  "host_source_sha256": {
+    "src/texstage/plugins/manifest.py": "b17ee4940776d831dcd217781823de92dc4a2083a58badb49a62a700c6490258",
+    "src/texstage/plugins/runtime.py": "4bf43576dcde381d377c753a225053b6a150256465840211e55fa4a5fc5a74c0",
+    "src/texstage/server/plugins.py": "09359e909b3ec4c10dae3a0f6aef1a7b868354f09111658f22bd3d875642c1a7",
+    "src/texstage/server/app.py": "86f830d7d6c3dc08da1c517404f2e9f601774be2a3fc35a423db0e611fc78234",
+    "src/texstage/web/stage/plugin-evaluator.js": "29ad251b09b26081fe6a7f9f68e3c0abdad2970c24979b5e231904641781ceec",
+    "src/texstage/web/play/play.js": "4fc0b766c2375e60936644de63271d31bda8682f9c5caac37cf4d94aa9659347",
+    "src/texstage/web/shared/plugins.js": "d44d7bfb78a98aa078f1f8a1d6351da00c03311316ab831c861bbfe9a9e2d918",
+    "src/texstage/web/stage/presenter.js": "5c3eea7f8fd165d7b1bca18fca812a9a147ac5ea1cc9b082e4ba5fb72677a044",
+    "src/texstage/web/stage/projector.js": "f7341e0e77a1c8ddf5473028cc63d39064d07acc1c10462ab488c6b57d6e2c63",
+    "src/texstage/web/stage/stage.css": "e1f153b83307b67860dfbe74a140f3eceb0e9ada2e486f07ac405fc1a99c9165"
+  },
+  "tests": {
+    "broad_host": {
+      "passed": 414,
+      "skipped": 1,
+      "sandbox_registry_failures": 6,
+      "registry_retry_passed": 6,
+      "registry_scope": "Unique disposable HKCU test subtree; removed afterward."
+    },
+    "final_host_focused": {
+      "passed": 123,
+      "skipped": 1,
+      "skip_reason": "Symlink creation not permitted on this Windows host."
+    },
+    "keyboard_shortcut_regression": "Passed Node regression on merged host.",
+    "fd_installed_wheel": {
+      "passed": 96,
+      "deselected": 1,
+      "retained_test": "Exhaustive tiny-theory regression passed in F3; all provider resources are unchanged."
+    },
+    "broad_to_final_runtime_difference": [
+      "texstage/server/plugins.py",
+      "texstage/web/play/play.js",
+      "texstage/web/shared/plugins.js",
+      "texstage/web/stage/presenter.js",
+      "texstage/web/stage/projector.js",
+      "texstage/web/stage/stage.css"
+    ],
+    "same_security_worker_validator_and_evaluator_bytes": true
+  },
+  "combined_providers": {
+    "fd": {
+      "id": "io.github.stefanjdecker.fdlab",
+      "version": "0.3.0",
+      "payload": "d7cdd50ed7f1c79a8ac6501cc62d544a4bc0ada935c86c4f904a87952aba1f4c"
+    },
+    "relational": {
+      "id": "io.github.stefanjdecker.relationallab",
+      "version": "0.1.0",
+      "payload": "4cd9606845da591de851f8bbaaf90889e3b569cdb6caa0a0a7067d2df0ce746d"
+    },
+    "transaction": {
+      "id": "io.github.stefanjdecker.transactionengine",
+      "version": "0.1.0",
+      "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc"
+    }
+  },
+  "engine_security": {
+    "fd": {
+      "chromium": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 34,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2024.800000011921,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "firefox": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 34,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2026,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "webkit": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 34,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2057,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    },
+    "relational": {
+      "chromium": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2018.4000000059605,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "firefox": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2022,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "webkit": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2076,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    },
+    "transaction": {
+      "chromium": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2022.699999988079,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "firefox": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2042,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "webkit": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 8,
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2032,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      }
+    }
+  },
+  "full_lesson_ui": {
+    "chromium": {
+      "browser": "chromium",
+      "version": "156.0.8078.80",
+      "modes": [
+        "closure",
+        "keys-one",
+        "keys-all",
+        "implication-derivation",
+        "implication-counterexample",
+        "different-size-keys",
+        "empty-key"
+      ],
+      "feedbackPolicies": [
+        "after-reveal",
+        "practice"
+      ],
+      "viewport": 320,
+      "realWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboard": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "modeSpecificFeedback": true,
+      "alternativeKeys": true,
+      "alternativeCounterexamples": true,
+      "walkthrough": true,
+      "reset": true,
+      "teardown": true,
+      "errors": []
+    },
+    "firefox": {
+      "browser": "firefox",
+      "version": "153.0",
+      "modes": [
+        "closure",
+        "keys-one",
+        "keys-all",
+        "implication-derivation",
+        "implication-counterexample",
+        "different-size-keys",
+        "empty-key"
+      ],
+      "feedbackPolicies": [
+        "after-reveal",
+        "practice"
+      ],
+      "viewport": 320,
+      "realWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboard": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "modeSpecificFeedback": true,
+      "alternativeKeys": true,
+      "alternativeCounterexamples": true,
+      "walkthrough": true,
+      "reset": true,
+      "teardown": true,
+      "errors": []
+    },
+    "webkit": {
+      "browser": "webkit",
+      "version": "26.5",
+      "modes": [
+        "closure",
+        "keys-one",
+        "keys-all",
+        "implication-derivation",
+        "implication-counterexample",
+        "different-size-keys",
+        "empty-key"
+      ],
+      "feedbackPolicies": [
+        "after-reveal",
+        "practice"
+      ],
+      "viewport": 320,
+      "realWorker": true,
+      "privacy": true,
+      "draftAndFocus": true,
+      "keyboard": true,
+      "touch": true,
+      "sameActorConflict": true,
+      "sharing": true,
+      "modeSpecificFeedback": true,
+      "alternativeKeys": true,
+      "alternativeCounterexamples": true,
+      "walkthrough": true,
+      "reset": true,
+      "teardown": true,
+      "errors": []
+    }
+  },
+  "classroom": {
+    "chromium": {
+      "format": 1,
+      "date": "2026-11-06T23:23:26.954Z",
+      "family": "chromium",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 6267.4532,
+          "ack_ms": {
+            "n": 64,
+            "min": 7.681900000001406,
+            "p50": 292.45460000000094,
+            "p95": 346.6437999999998,
+            "max": 346.77859999999964
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1019.4031999999988,
+            "p50": 3033.4552999999996,
+            "p95": 5759.6585,
+            "max": 6224.487800000001
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 344.9050000011921,
+            "p50": 2479.143400013447,
+            "p95": 5068.890699982643,
+            "max": 5112.912800014019
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 26.20150002837181,
+            "p50": 39.97360000014305,
+            "p95": 384.7069999873638,
+            "max": 449.15370002388954
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.4000000059604645,
+            "p50": 0.5999999940395355,
+            "p95": 3.0999999940395355,
+            "max": 3.100000023841858
+          },
+          "max_participant_state_bytes": 6679,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 81887232,
+          "max_persisted_state_bytes": 25929,
+          "final_storage": {
+            "state_bytes": 26047,
+            "max_actor_slot_bytes": 406,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 4606.891299999999,
+          "ack_ms": {
+            "n": 64,
+            "min": 11.164999999997235,
+            "p50": 438.77260000000024,
+            "p95": 439.47769999999946,
+            "max": 439.60549999999785
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1077.7431000000033,
+            "p50": 2344.1839,
+            "p95": 4132.042400000002,
+            "max": 4548.706299999998
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 431.0679000020027,
+            "p50": 1871.756200015545,
+            "p95": 3393.1712000072002,
+            "max": 3431.372099995613
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 21.044600009918213,
+            "p50": 31.792300015687943,
+            "p95": 254.6982999742031,
+            "max": 285.38259997963905
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.4000000059604645,
+            "p50": 0.5,
+            "p95": 6.0999999940395355,
+            "max": 8.799999982118607
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 81965056,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 4043.624499999998,
+          "ack_ms": {
+            "n": 64,
+            "min": 5.748999999999796,
+            "p50": 330.8666999999987,
+            "p95": 331.3689000000013,
+            "max": 331.39890000000014
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1111.5157999999974,
+            "p50": 2335.295900000001,
+            "p95": 3576.9969999999994,
+            "max": 4004.351200000001
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 692.2302999794483,
+            "p50": 1836.7274000048637,
+            "p95": 3001.4858000278473,
+            "max": 3036.5816999971867
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 20.237299978733063,
+            "p50": 30.572899997234344,
+            "p95": 253.03700000047684,
+            "max": 261.4985000193119
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 1.199999988079071,
+            "p50": 1.4000000059604645,
+            "p95": 3.0999999940395355,
+            "max": 3.5
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 82161664,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 23039,
+            "max_actor_slot_bytes": 359,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "156.0.8078.80",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 733.8241999999991,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": true
+    },
+    "firefox": {
+      "format": 1,
+      "date": "2026-11-06T23:23:59.424Z",
+      "family": "firefox",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 8420.2645,
+          "ack_ms": {
+            "n": 64,
+            "min": 11.557999999999083,
+            "p50": 465.39030000000093,
+            "p95": 466.7021999999997,
+            "max": 490.21019999999953
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1221.4128999999994,
+            "p50": 4193.9776,
+            "p95": 7862.197899999999,
+            "max": 8367.5588
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 487.9812000095844,
+            "p50": 3573.0612999796867,
+            "p95": 7000.706999987364,
+            "max": 7398.244500011206
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 41.186599999666214,
+            "p50": 62.99130001664162,
+            "p95": 444.33980000019073,
+            "max": 480.58150002360344
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0,
+            "p50": 1,
+            "p95": 1,
+            "max": 2
+          },
+          "max_participant_state_bytes": 6679,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 81383424,
+          "max_persisted_state_bytes": 25929,
+          "final_storage": {
+            "state_bytes": 26047,
+            "max_actor_slot_bytes": 406,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 8573.483,
+          "ack_ms": {
+            "n": 64,
+            "min": 11.347499999999854,
+            "p50": 447.9199000000008,
+            "p95": 448.8119000000006,
+            "max": 448.98619999999937
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1238.035100000001,
+            "p50": 4887.063700000002,
+            "p95": 8007.3753,
+            "max": 8542.5756
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 726.8100999891758,
+            "p50": 4332.960600018501,
+            "p95": 7219.8440000116825,
+            "max": 7587.35300001502
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 37.781299978494644,
+            "p50": 58.84169998764992,
+            "p95": 409.6216000020504,
+            "max": 524.0047999918461
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0,
+            "p50": 1,
+            "p95": 1,
+            "max": 1
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 81739776,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 5492.801900000002,
+          "ack_ms": {
+            "n": 64,
+            "min": 7.422099999999773,
+            "p50": 397.2971000000034,
+            "p95": 398.5781999999999,
+            "max": 398.63950000000114
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1062.3297999999995,
+            "p50": 3166.592700000001,
+            "p95": 5437.484700000001,
+            "max": 5455.5962
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 392.34120002388954,
+            "p50": 2615.5012999773026,
+            "p95": 4602.166699975729,
+            "max": 4646.363299995661
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 32.60139998793602,
+            "p50": 44.572899997234344,
+            "p95": 321.3445000052452,
+            "max": 355.0697999894619
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0,
+            "p50": 1,
+            "p95": 2,
+            "max": 2
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 82059264,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 23039,
+            "max_actor_slot_bytes": 359,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "153.0",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 1982.6083999999973,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": true
+    },
+    "webkit": {
+      "format": 1,
+      "date": "2026-11-06T23:24:42.696Z",
+      "family": "webkit",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 15294.059099999999,
+          "ack_ms": {
+            "n": 64,
+            "min": 9.449699999999211,
+            "p50": 492.21779999999853,
+            "p95": 493.0704000000005,
+            "max": 493.2021999999997
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1421.196399999999,
+            "p50": 8296.833799999999,
+            "p95": 14793.565000000002,
+            "max": 15251.890000000001
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 880.1922000348568,
+            "p50": 7630.137899965048,
+            "p95": 13636.323700010777,
+            "max": 14049.46700000763
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 95.91309997439384,
+            "p50": 141.47129997611046,
+            "p95": 438.73959997296333,
+            "max": 467.4792000055313
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 3,
+            "p50": 5,
+            "p95": 12,
+            "max": 16
+          },
+          "max_participant_state_bytes": 6679,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 80564224,
+          "max_persisted_state_bytes": 25929,
+          "final_storage": {
+            "state_bytes": 26047,
+            "max_actor_slot_bytes": 406,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": false,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 14125.314700000003,
+          "ack_ms": {
+            "n": 64,
+            "min": 8.27520000000004,
+            "p50": 452.39710000000196,
+            "p95": 455.34449999999924,
+            "max": 455.3760000000002
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1111.7697000000007,
+            "p50": 7628.237300000001,
+            "p95": 13655.094599999997,
+            "max": 14098.771799999999
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 451.2406000196934,
+            "p50": 6653.851900011301,
+            "p95": 12557.21209999919,
+            "max": 12964.315699994564
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 97.41019999980927,
+            "p50": 340.44310000538826,
+            "p95": 405.7053999900818,
+            "max": 469.93529999256134
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 2,
+            "p50": 4,
+            "p95": 11,
+            "max": 15
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 80830464,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 25855,
+            "max_actor_slot_bytes": 403,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": false,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 15779.282099999997,
+          "ack_ms": {
+            "n": 64,
+            "min": 11.609799999998359,
+            "p50": 589.1727000000028,
+            "p95": 590.129399999998,
+            "max": 590.1775999999954
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1275.9651999999987,
+            "p50": 8240.577700000002,
+            "p95": 14884.316899999998,
+            "max": 15768.708399999996
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 583.0263000130653,
+            "p50": 7088.819799989462,
+            "p95": 13135.442799985409,
+            "max": 13754.840400010347
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 93.66049998998642,
+            "p50": 359.3109999895096,
+            "p95": 539.0306000113487,
+            "max": 661.6750000119209
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 3,
+            "p50": 4,
+            "p95": 12,
+            "max": 16
+          },
+          "max_participant_state_bytes": 6725,
+          "max_host_state_bytes": 22092,
+          "max_server_rss_bytes": 81027072,
+          "max_persisted_state_bytes": 26048,
+          "final_storage": {
+            "state_bytes": 23039,
+            "max_actor_slot_bytes": 359,
+            "actors": 64,
+            "pending_jobs": 0
+          },
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": false,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "26.5",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 1149.2963000000018,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": false
+    }
+  },
+  "earlier_measurements": {
+    "baseline": {
+      "format": 1,
+      "date": "2026-11-06T22:49:38.127Z",
+      "family": "chromium",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 391531.65229999996,
+          "ack_ms": {
+            "n": 64,
+            "min": 2650.2816999999995,
+            "p50": 169700.6769,
+            "p95": 169714.0006,
+            "max": 169717.0045
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 172378.90910000002,
+            "p50": 285560.66229999997,
+            "p95": 381253.54329999996,
+            "max": 391476.601
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 167020.04370000958,
+            "p50": 204539.26200002432,
+            "p95": 219146.77950000763,
+            "max": 220983.78729999065
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 59.53659999370575,
+            "p50": 150.24729999899864,
+            "p95": 3661.53900000453,
+            "max": 3852.8558000028133
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.09999999403953552,
+            "p50": 0.29999998211860657,
+            "p95": 49,
+            "max": 199.30000001192093
+          },
+          "max_participant_state_bytes": 6709,
+          "max_host_state_bytes": 22063,
+          "max_server_rss_bytes": 83058688,
+          "max_persisted_state_bytes": 25721,
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": false,
+            "feedback_worst": false
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "156.0.8078.80",
+      "node": "v24.15.0",
+      "complete": true
+    },
+    "first_optimization": {
+      "format": 1,
+      "date": "2026-11-06T22:54:38.706Z",
+      "family": "chromium",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 31767.8243,
+          "ack_ms": {
+            "n": 64,
+            "min": 154.1877999999997,
+            "p50": 11644.5335,
+            "p95": 11658.003999999999,
+            "max": 11659.755299999999
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 11993.431400000001,
+            "p50": 20877.0032,
+            "p95": 30649.064199999997,
+            "max": 31714.673199999997
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 11466.495700001717,
+            "p50": 15705.023099988699,
+            "p95": 19329.44319999218,
+            "max": 19840.82039999962
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 21.1492999792099,
+            "p50": 98.09450000524521,
+            "p95": 372.09279999136925,
+            "max": 393.1665000319481
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.09999999403953552,
+            "p50": 0.30000001192092896,
+            "p95": 169.7999999821186,
+            "max": 269
+          },
+          "max_participant_state_bytes": 6709,
+          "max_host_state_bytes": 22063,
+          "max_server_rss_bytes": 81330176,
+          "max_persisted_state_bytes": 25721,
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": false,
+            "feedback_p95": false,
+            "feedback_worst": false
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "156.0.8078.80",
+      "node": "v24.15.0",
+      "complete": true
+    },
+    "contended_chromium": {
+      "format": 1,
+      "date": "2026-11-06T22:59:32.086Z",
+      "family": "chromium",
+      "hardware": {
+        "cpu": "11th Gen Intel(R) Core(TM) i9-11950H @ 2.60GHz",
+        "logical_cpus": 16,
+        "ram_bytes": 67869478912,
+        "platform": "win32",
+        "release": "10.0.19045",
+        "arch": "x64"
+      },
+      "scope": "Loopback: 64 protocol actors, one additional rendered participant connection for actor 1, one actual presenter evaluator; not physical phones.",
+      "quantiles": "Nearest rank; timings in milliseconds unless the field says bytes.",
+      "bursts": [
+        {
+          "item": "practice",
+          "actors": 64,
+          "total_ms": 9155.160100000001,
+          "ack_ms": {
+            "n": 64,
+            "min": 10.994399999995949,
+            "p50": 387.1431999999986,
+            "p95": 570.1656999999977,
+            "max": 570.1875
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1548.3353999999963,
+            "p50": 5167.604100000004,
+            "p95": 9114.259599999998,
+            "max": 9118.278099999996
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 569.464300006628,
+            "p50": 4357.735200017691,
+            "p95": 8061.407099992037,
+            "max": 8109.42689999938
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 28.17629998922348,
+            "p50": 47.935000002384186,
+            "p95": 522.1247999966145,
+            "max": 560.5142000317574
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.5,
+            "p50": 0.699999988079071,
+            "p95": 123.2000000178814,
+            "max": 199.90000000596046
+          },
+          "max_participant_state_bytes": 6663,
+          "max_host_state_bytes": 22076,
+          "max_server_rss_bytes": 81027072,
+          "max_persisted_state_bytes": 25929,
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": false,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "keys_all",
+          "actors": 64,
+          "total_ms": 6255.455600000001,
+          "ack_ms": {
+            "n": 64,
+            "min": 9.589200000002165,
+            "p50": 486.20530000000144,
+            "p95": 487.0645999999979,
+            "max": 487.08929999999964
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1374.4040999999997,
+            "p50": 4043.7410999999993,
+            "p95": 6239.218999999997,
+            "max": 6242.237199999996
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 483.2151000201702,
+            "p50": 2940.6365000009537,
+            "p95": 5287.0386999845505,
+            "max": 5333.869800001383
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 25.086499989032745,
+            "p50": 39.75109997391701,
+            "p95": 388.8163000047207,
+            "max": 402.76719999313354
+          },
+          "input_to_frame_ms": {
+            "n": 24,
+            "min": 0.4000000059604645,
+            "p50": 0.5999999940395355,
+            "p95": 4,
+            "max": 9.699999988079071
+          },
+          "max_participant_state_bytes": 6709,
+          "max_host_state_bytes": 22076,
+          "max_server_rss_bytes": 81272832,
+          "max_persisted_state_bytes": 26048,
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": true,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        },
+        {
+          "item": "refuted",
+          "actors": 64,
+          "total_ms": 6074.298200000005,
+          "ack_ms": {
+            "n": 64,
+            "min": 7.082999999998719,
+            "p50": 509.3029999999999,
+            "p95": 510.67600000000675,
+            "max": 510.8576999999932
+          },
+          "feedback_ms": {
+            "n": 64,
+            "min": 1306.3493000000017,
+            "p50": 3385.8916000000027,
+            "p95": 5494.672599999991,
+            "max": 6016.934200000003
+          },
+          "queue_ms": {
+            "n": 64,
+            "min": 510.6899999976158,
+            "p50": 2724.2176999747753,
+            "p95": 4630.668799996376,
+            "max": 4670.373900026083
+          },
+          "leased_to_result_ms": {
+            "n": 64,
+            "min": 24.263099998235703,
+            "p50": 38.032800018787384,
+            "p95": 384.29379999637604,
+            "max": 423.131600022316
+          },
+          "input_to_frame_ms": {
+            "n": 0
+          },
+          "max_participant_state_bytes": 6709,
+          "max_host_state_bytes": 22076,
+          "max_server_rss_bytes": 81444864,
+          "max_persisted_state_bytes": 26048,
+          "lease_order_matches_acceptance": true,
+          "targets": {
+            "input": null,
+            "feedback_p95": true,
+            "feedback_worst": true
+          }
+        }
+      ],
+      "errors": [],
+      "browser": "156.0.8078.80",
+      "node": "v24.15.0",
+      "reconnect": {
+        "absent_evaluator_pending": true,
+        "same_actor_resumed": true,
+        "replay_same_receipt": true,
+        "closed_pending_completed": true,
+        "replacement_ms": 955.017399999997,
+        "lease_generations": [
+          1,
+          2
+        ],
+        "stale_result_rejected": true,
+        "reset_late_result_rejected": true
+      },
+      "complete": true,
+      "targets_passed": false
+    }
+  },
+  "remaining": {
+    "physical_phone": "Deferred by user: automated checks only for now.",
+    "performance": "Keep provisional targets; inspect each measured browser/mode. WebKit p95 exceeded 10 seconds.",
+    "linux_and_hosted_ci": "Not run in this milestone.",
+    "release": "No commit, push, catalog entry or publication requested."
+  }
+}

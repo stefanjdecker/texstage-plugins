@@ -1,0 +1,116 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "workshop_one",
+    "title": {
+      "en": "Identify one workshop registration",
+      "de": "Eine Workshop-Anmeldung identifizieren"
+    },
+    "prompt": {
+      "en": "Choose a set that determines a whole registration. No member of your set may be redundant.",
+      "de": "Wählen Sie eine Menge, die eine ganze Anmeldung bestimmt. Kein Mitglied darf überflüssig sein."
+    },
+    "attributes": [
+      {
+        "id": "person",
+        "label": {
+          "en": "Person",
+          "de": "Person"
+        }
+      },
+      {
+        "id": "email",
+        "label": {
+          "en": "Email",
+          "de": "E-Mail"
+        }
+      },
+      {
+        "id": "workshop",
+        "label": {
+          "en": "Workshop",
+          "de": "Workshop"
+        }
+      },
+      {
+        "id": "tutor",
+        "label": {
+          "en": "Tutor",
+          "de": "Tutor"
+        }
+      },
+      {
+        "id": "room",
+        "label": {
+          "en": "Room",
+          "de": "Raum"
+        }
+      },
+      {
+        "id": "building",
+        "label": {
+          "en": "Building",
+          "de": "Gebäude"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "person"
+        ],
+        "rhs": [
+          "email"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "email"
+        ],
+        "rhs": [
+          "person"
+        ]
+      },
+      {
+        "id": "f3",
+        "lhs": [
+          "workshop"
+        ],
+        "rhs": [
+          "tutor",
+          "room"
+        ]
+      },
+      {
+        "id": "f4",
+        "lhs": [
+          "room"
+        ],
+        "rhs": [
+          "building"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "keys",
+      "require": "one"
+    }
+  },
+  "worked_answer": {
+    "mode": "keys",
+    "keys": [
+      [
+        "person",
+        "workshop"
+      ]
+    ]
+  },
+  "explanation": {
+    "en": "A workshop and either a person or email are sufficient; neither member is removable.",
+    "de": "Ein Workshop und entweder Person oder E-Mail genügen; kein Bestandteil ist entbehrlich."
+  },
+  "feedback": "practice"
+}

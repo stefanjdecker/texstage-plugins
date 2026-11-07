@@ -1,0 +1,122 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "workshop_closure",
+    "title": {
+      "en": "What does a workshop determine?",
+      "de": "Was bestimmt ein Workshop?"
+    },
+    "prompt": {
+      "en": "Compute the closure of {workshop}, showing each FD application.",
+      "de": "Berechnen Sie den Attributabschluss von {workshop} und zeigen Sie jede FD-Anwendung."
+    },
+    "attributes": [
+      {
+        "id": "person",
+        "label": {
+          "en": "Person",
+          "de": "Person"
+        }
+      },
+      {
+        "id": "email",
+        "label": {
+          "en": "Email",
+          "de": "E-Mail"
+        }
+      },
+      {
+        "id": "workshop",
+        "label": {
+          "en": "Workshop",
+          "de": "Workshop"
+        }
+      },
+      {
+        "id": "tutor",
+        "label": {
+          "en": "Tutor",
+          "de": "Tutor"
+        }
+      },
+      {
+        "id": "room",
+        "label": {
+          "en": "Room",
+          "de": "Raum"
+        }
+      },
+      {
+        "id": "building",
+        "label": {
+          "en": "Building",
+          "de": "Geb\u00e4ude"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "person"
+        ],
+        "rhs": [
+          "email"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "email"
+        ],
+        "rhs": [
+          "person"
+        ]
+      },
+      {
+        "id": "f3",
+        "lhs": [
+          "workshop"
+        ],
+        "rhs": [
+          "tutor",
+          "room"
+        ]
+      },
+      {
+        "id": "f4",
+        "lhs": [
+          "room"
+        ],
+        "rhs": [
+          "building"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "closure",
+      "start": [
+        "workshop"
+      ]
+    }
+  },
+  "worked_answer": {
+    "mode": "closure",
+    "closure": [
+      "workshop",
+      "tutor",
+      "room",
+      "building"
+    ],
+    "steps": [
+      "f3",
+      "f4"
+    ]
+  },
+  "explanation": {
+    "en": "The workshop fixes its tutor and room; the room fixes the building.",
+    "de": "Der Workshop bestimmt Tutor und Raum; der Raum bestimmt das Geb\u00e4ude."
+  },
+  "feedback": "after-reveal"
+}

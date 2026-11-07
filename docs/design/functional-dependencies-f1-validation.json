@@ -1,0 +1,237 @@
+{
+  "date": "2026-11-06",
+  "scope": "F1 engine only",
+  "platform": "Windows",
+  "host_source_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_runtime_matches_wheel": true,
+  "artifact_sha256": {
+    "texstage-0.2.1.dev3-py3-none-any.whl": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "texstage_fd_lab-0.1.0-py3-none-any.whl": "391bfea19c27da18ada4da04da9ab7ee711c8920c1bb9212edb4b72685c36735",
+    "texstage_fd_lab-0.1.0.tar.gz": "7e0f451a5247db137cd28d1cbeb7a5ba80d7d842603f813a7b86f39f25655680"
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.1.0",
+    "payload": "1a45adefd8163af466666a792bc3a25078139ae07d1b68e99d25cbc62d9827c2"
+  },
+  "result_schema_sha256": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "playwright": "1.62.1",
+  "esbuild": "0.28.2",
+  "locked_dependencies": {
+    "anyio": "4.15.1",
+    "attrs": "26.1.0",
+    "build": "1.6.1",
+    "certifi": "2026.10.23",
+    "click": "8.5.0",
+    "colorama": "0.4.6",
+    "h11": "0.16.0",
+    "httpcore": "1.0.9",
+    "httptools": "0.9.0",
+    "httpx": "0.28.1",
+    "idna": "3.20",
+    "iniconfig": "2.3.1",
+    "jsonschema": "4.26.0",
+    "jsonschema-specifications": "2025.9.1",
+    "lxml": "6.1.3",
+    "packaging": "26.3",
+    "pillow": "13.0.0",
+    "pluggy": "1.7.0",
+    "pygments": "2.21.0",
+    "pypdfium2": "5.14.0",
+    "pyproject-hooks": "1.3.3",
+    "pytest": "9.1.1",
+    "python-dotenv": "1.2.4",
+    "python-pptx": "1.0.2",
+    "pyyaml": "6.0.3",
+    "referencing": "0.37.0",
+    "rpds-py": "2026.9.1",
+    "segno": "1.6.6",
+    "setuptools": "84.2.1",
+    "starlette": "1.10.0",
+    "typing-extensions": "4.16.0",
+    "uv": "0.9.12",
+    "uvicorn": "0.54.0",
+    "watchfiles": "1.3.0",
+    "websockets": "17.3",
+    "xlsxwriter": "3.3.0"
+  },
+  "host_development_lock_sha256": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+  "dependency_setup": "Fresh venv with copied dependencies from prior isolated test environment; versions rechecked against host lock.",
+  "pytest": {
+    "passed": 39,
+    "skipped": 0,
+    "seconds": 174.161
+  },
+  "mathematics": {
+    "named_lessons": 9,
+    "hand_answer_cases": 21,
+    "three_attribute_theories": 4096,
+    "closure_comparisons": 32768,
+    "random_eight_attribute_theories": 32,
+    "random_counterexample_cases": 100
+  },
+  "installed_probe_cases": 30,
+  "sdist_payload_parity": true,
+  "generated_worker_freshness": true,
+  "browsers": {
+    "chromium": {
+      "version": "156.0.8078.80",
+      "passed": true,
+      "samples": 34,
+      "max_elapsed_ms": 29.099999994039536,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2031.0999999940395,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    },
+    "firefox": {
+      "version": "153.0",
+      "passed": true,
+      "samples": 34,
+      "max_elapsed_ms": 249,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2035,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    },
+    "webkit": {
+      "version": "26.5",
+      "passed": true,
+      "samples": 34,
+      "max_elapsed_ms": 80,
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2058,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      }
+    }
+  },
+  "not_run_or_not_implemented": [
+    "hosted CI",
+    "Linux execution and cross-OS artifact transfer",
+    "published immutable compatible host release",
+    "prepared TeX authoring and style",
+    "lesson state, role views and classroom races",
+    "phone and presenter interfaces",
+    "physical phones and classroom load",
+    "new combined-provider scenario"
+  ]
+}

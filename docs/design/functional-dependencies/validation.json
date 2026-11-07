@@ -1,0 +1,41 @@
+{
+  "status": "design-checks-passed",
+  "python": "3.14.4",
+  "examples": 9,
+  "answer_cases": 21,
+  "invalid_cases": 8,
+  "exhaustive": {
+    "attributes": 3,
+    "possible_singleton_nontrivial_fds": 12,
+    "theories": 4096,
+    "closures": 32768
+  },
+  "additional_checks": [
+    "alternative proof orders",
+    "trivial implication",
+    "target-prefix proof",
+    "eight attributes with 16 keys"
+  ],
+  "conservative_envelope_ascii_bytes": {
+    "answer": 949,
+    "data": 4608,
+    "outcome": 4801
+  },
+  "input_sha256": {
+    "docs/design/functional-dependencies/answer-v1.schema.json": "14f36ee2b77e70e2608f2c7b945092fa6bc3aaa7eba45a3c8b6fb7c21eb5e922",
+    "docs/design/functional-dependencies/examples.json": "5fb134e6896688e3d812f9743e4ee03b0aa658e208b1cecc9502403f972b4117",
+    "docs/design/functional-dependencies/expected-cases.json": "34f4870fc887a3f40d3d09a223b686433cdb9571929df8e46ff34db587e27512",
+    "docs/design/functional-dependencies/lesson-v1.schema.json": "b4804ae015c7a9e4b2888fdaa56ffd010e70721acd43a08d3b797d9015205c49",
+    "maintenance/check_fd_design.py": "a2083b922a8d7bc48477f934ae5f5ec8f8ff777fa393334c14d2d1bd957c0310"
+  },
+  "exclusions": [
+    "production parser",
+    "JavaScript engine",
+    "installed wheel",
+    "result/view schemas and host outcome validation",
+    "TeX builds",
+    "browser/security conformance",
+    "state and race tests",
+    "physical phones and classroom performance"
+  ]
+}

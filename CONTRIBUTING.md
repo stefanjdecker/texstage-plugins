@@ -48,3 +48,10 @@ installation, typed schemas and independent Python model. Its
 construction checks from verified rewrite certificates. Run its package tests
 and actual-host browser probe; a successful Node import does not close the
 Firefox/WebKit worker-policy gate.
+
+The [FD engine](plugins/fd-lab/README.md) provides a smaller finite reasoning
+example: named-source compilation, set-based Python analysis, a bit-mask browser
+engine and checked proof/counterexample facts. Its exact three-attribute tests
+compare closures with all closed attribute sets, independently of either runtime.
+Run its tests in an FD-only installed-wheel environment; the browser probe uses
+the existing worker-security harness. Engine facts are not a lesson or grade.

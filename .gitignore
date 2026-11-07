@@ -13,3 +13,6 @@ examples/texquiz-out/
 examples/relational/texquiz-out/
 relational-profile/
 relational.lock.json
+examples/functional-dependencies/texquiz-out/
+fd-profile/
+fd.lock.json

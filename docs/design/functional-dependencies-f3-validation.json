@@ -1,0 +1,370 @@
+{
+  "date": "2026-11-06",
+  "scope": "F3 candidate-key and implication classroom modes plus F1/F2 regression",
+  "platform": "Windows",
+  "host_source_commit": "de3351550f3553ca63023554521fbe84806ec94e",
+  "host_runtime_matches_wheel": true,
+  "provider_runtime_matches_wheel": true,
+  "artifact_sha256": {
+    "texstage-0.2.1.dev3-py3-none-any.whl": "d7875af6ea1d27716cc11cb03a68b635fb28e8956983bff8482e7d7ea26e1ce6",
+    "texstage_fd_lab-0.3.0-py3-none-any.whl": "85978a68ccc8be9f4831fd3f287efbe922cedee9192d4cdfe3bbaf3d34909c94",
+    "texstage_fd_lab-0.3.0.tar.gz": "ba51385a3dc0fedecc94598d1a3f4c8f9d04633cde2974c003adff1bf51156af"
+  },
+  "provider": {
+    "id": "io.github.stefanjdecker.fdlab",
+    "version": "0.3.0",
+    "payload": "d7cdd50ed7f1c79a8ac6501cc62d544a4bc0ada935c86c4f904a87952aba1f4c"
+  },
+  "result_schema_sha256": "26c603131bdfe4d0aebcfa99e9742a80637291114f6f8eb270d370e2b0596f0a",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "playwright": "1.62.1",
+  "esbuild": "0.28.2",
+  "locked_dependencies": {
+    "anyio": "4.15.1",
+    "attrs": "26.1.0",
+    "build": "1.6.1",
+    "certifi": "2026.10.23",
+    "click": "8.5.0",
+    "colorama": "0.4.6",
+    "h11": "0.16.0",
+    "httpcore": "1.0.9",
+    "httptools": "0.9.0",
+    "httpx": "0.28.1",
+    "idna": "3.20",
+    "iniconfig": "2.3.1",
+    "jsonschema": "4.26.0",
+    "jsonschema-specifications": "2025.9.1",
+    "lxml": "6.1.3",
+    "packaging": "26.3",
+    "pillow": "13.0.0",
+    "pluggy": "1.7.0",
+    "pygments": "2.21.0",
+    "pypdfium2": "5.14.0",
+    "pyproject-hooks": "1.3.3",
+    "pytest": "9.1.1",
+    "python-dotenv": "1.2.4",
+    "python-pptx": "1.0.2",
+    "pyyaml": "6.0.3",
+    "referencing": "0.37.0",
+    "rpds-py": "2026.9.1",
+    "segno": "1.6.6",
+    "setuptools": "84.2.1",
+    "starlette": "1.10.0",
+    "typing-extensions": "4.16.0",
+    "uv": "0.9.12",
+    "uvicorn": "0.54.0",
+    "watchfiles": "1.3.0",
+    "websockets": "17.3",
+    "xlsxwriter": "3.3.0"
+  },
+  "host_development_lock_sha256": "6165003f2146e5a3412c9fd6fcb72345d09f5c058e0fddaeabfc325c3ebc9813",
+  "dependency_setup": "Fresh isolated venv; copied locked dependencies rechecked against matching host lock.",
+  "pytest": {
+    "distinct_tests_passed": 97,
+    "engine": 39,
+    "closure_lesson": 22,
+    "keys_implication_lesson": 36,
+    "full_regression": {
+      "passed": 97,
+      "skipped": 0,
+      "seconds": 281.26,
+      "artifact_sha256": "37803d60dec32af8f40e47f384e5c444d3853c178641c9e6a2e8dcf923a4e686"
+    },
+    "final_artifact": {
+      "passed": 96,
+      "skipped": 0,
+      "deselected": 1,
+      "seconds": 68.97
+    },
+    "retained_test": "test_all_three_attribute_theories: Python and engine resources are byte-identical to full regression wheel; only two overlay CSS rules changed."
+  },
+  "installed_probe_cases": 30,
+  "sdist_payload_parity": true,
+  "generated_worker_freshness": true,
+  "browser_bundle": "Built from the installed final wheel and transferred unchanged to each browser scenario.",
+  "browser_server_isolation": "Reserved loopback sockets with a unique readiness file; occupied-port refusal checked before browser access.",
+  "browsers": {
+    "chromium": {
+      "engine": {
+        "version": "156.0.8078.80",
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2027.7000000178814,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "lesson": {
+        "browser": "chromium",
+        "version": "156.0.8078.80",
+        "modes": [
+          "closure",
+          "keys-one",
+          "keys-all",
+          "implication-derivation",
+          "implication-counterexample",
+          "different-size-keys",
+          "empty-key"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "modeSpecificFeedback": true,
+        "alternativeKeys": true,
+        "alternativeCounterexamples": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      }
+    },
+    "firefox": {
+      "engine": {
+        "version": "153.0",
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2056,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "lesson": {
+        "browser": "firefox",
+        "version": "153.0",
+        "modes": [
+          "closure",
+          "keys-one",
+          "keys-all",
+          "implication-derivation",
+          "implication-counterexample",
+          "different-size-keys",
+          "empty-key"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "modeSpecificFeedback": true,
+        "alternativeKeys": true,
+        "alternativeCounterexamples": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      }
+    },
+    "webkit": {
+      "engine": {
+        "version": "26.5",
+        "passed": true,
+        "samples": 34,
+        "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+        "security": {
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events",
+            "/__worker_probe__/socket"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2064,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      },
+      "lesson": {
+        "browser": "webkit",
+        "version": "26.5",
+        "modes": [
+          "closure",
+          "keys-one",
+          "keys-all",
+          "implication-derivation",
+          "implication-counterexample",
+          "different-size-keys",
+          "empty-key"
+        ],
+        "feedbackPolicies": [
+          "after-reveal",
+          "practice"
+        ],
+        "viewport": 320,
+        "realWorker": true,
+        "privacy": true,
+        "draftAndFocus": true,
+        "keyboard": true,
+        "touch": true,
+        "sameActorConflict": true,
+        "sharing": true,
+        "modeSpecificFeedback": true,
+        "alternativeKeys": true,
+        "alternativeCounterexamples": true,
+        "walkthrough": true,
+        "reset": true,
+        "teardown": true,
+        "errors": []
+      }
+    }
+  },
+  "exports": [
+    "live bundle",
+    "static PowerPoint",
+    "handout PDF",
+    "solutions PDF",
+    "direct pdfLaTeX handout",
+    "direct pdfLaTeX solutions",
+    "source freshness failure"
+  ],
+  "visual_review": "New exercise/solution pages 4-9, 320px phone, presenter and projector inspected; readable sets, empty-key symbol and two-row tables.",
+  "state_checks": [
+    "withheld/practice feedback",
+    "independent exact facts verification",
+    "alternative proofs",
+    "replayed requests",
+    "two presenter versions",
+    "same actor replacement",
+    "saturated queue atomic replacement",
+    "close with pending results",
+    "reset epochs and late results",
+    "anonymous sharing only after reveal",
+    "64 completed actor slots with feedback including 256 proposed key sets per actor, full state/effects/views within bounds",
+    "one/all key policy, inclusion minimality and completeness",
+    "implication target-prefix derivations and alternative valid pair witnesses"
+  ],
+  "not_run_or_not_implemented": [
+    "physical phones",
+    "64-answer burst, latency, fairness and memory measurements",
+    "full accessibility audit",
+    "German browser scenario",
+    "hosted CI",
+    "Linux execution and cross-OS artifact transfer",
+    "new combined-provider scenario",
+    "published immutable compatible host/provider release"
+  ]
+}

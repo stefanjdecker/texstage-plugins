@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "language": "en",
+  "items": [
+    {
+      "id": "closure",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/closure.json"
+    },
+    {
+      "id": "practice",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/practice.json"
+    },
+    {
+      "id": "keys_one",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/keys_one.json"
+    },
+    {
+      "id": "keys_all",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/keys_all.json"
+    },
+    {
+      "id": "implied",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/implied.json"
+    },
+    {
+      "id": "refuted",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/refuted.json"
+    },
+    {
+      "id": "different_sizes",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/different_sizes.json"
+    },
+    {
+      "id": "empty_key",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/empty_key.json"
+    }
+  ]
+}

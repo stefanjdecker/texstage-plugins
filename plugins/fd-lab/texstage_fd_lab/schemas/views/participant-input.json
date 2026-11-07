@@ -1,0 +1,420 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "enum": [
+        "introduce",
+        "open",
+        "closed",
+        "revealed"
+      ]
+    },
+    "phase_version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 64
+    },
+    "own": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "answer": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "closure"
+                },
+                "closure": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 23
+                  },
+                  "minItems": 0,
+                  "maxItems": 8
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "closure",
+                "steps"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "keys"
+                },
+                "keys": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "minItems": 0,
+                  "maxItems": 256,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "keys"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "implication"
+                },
+                "implied": {
+                  "const": true
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 23
+                  },
+                  "minItems": 0,
+                  "maxItems": 8
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "implied",
+                "steps"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "implication"
+                },
+                "implied": {
+                  "const": false
+                },
+                "agree": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "implied",
+                "agree"
+              ]
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "saved",
+            "unavailable"
+          ]
+        },
+        "feedback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "checked",
+                "mismatch",
+                "unavailable"
+              ]
+            },
+            "correct": {
+              "type": "boolean"
+            },
+            "reason": {
+              "enum": [
+                "unmet-lhs",
+                "no-progress",
+                "overclaimed",
+                "incomplete",
+                "final-set",
+                "checked",
+                "not-superkey",
+                "not-minimal",
+                "missing-keys",
+                "target-missing",
+                "premise-violated",
+                "target-not-violated"
+              ]
+            },
+            "missing": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "extra": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "needed": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "step": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 7
+            },
+            "next_fd": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 23
+            },
+            "missing_keys": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 256
+            },
+            "invalid_keys": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 256
+            },
+            "key": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "key_closure": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "removable": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "fd": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 23
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "answer",
+        "status"
+      ]
+    },
+    "worked": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "answer": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "closure"
+                },
+                "closure": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 23
+                  },
+                  "minItems": 0,
+                  "maxItems": 8
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "closure",
+                "steps"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "keys"
+                },
+                "keys": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "minItems": 0,
+                  "maxItems": 256,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "keys"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "implication"
+                },
+                "implied": {
+                  "const": true
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 23
+                  },
+                  "minItems": 0,
+                  "maxItems": 8
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "implied",
+                "steps"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "format": {
+                  "const": 1
+                },
+                "mode": {
+                  "const": "implication"
+                },
+                "implied": {
+                  "const": false
+                },
+                "agree": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "format",
+                "mode",
+                "implied",
+                "agree"
+              ]
+            }
+          ]
+        },
+        "explanation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1600
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1600
+            }
+          },
+          "required": [
+            "en",
+            "de"
+          ]
+        }
+      },
+      "required": [
+        "answer",
+        "explanation"
+      ]
+    }
+  },
+  "required": [
+    "phase",
+    "phase_version",
+    "active",
+    "count"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "answer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "format": {
+              "const": 1
+            },
+            "mode": {
+              "const": "closure"
+            },
+            "closure": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 23
+              },
+              "minItems": 0,
+              "maxItems": 8
+            }
+          },
+          "required": [
+            "format",
+            "mode",
+            "closure",
+            "steps"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "format": {
+              "const": 1
+            },
+            "mode": {
+              "const": "keys"
+            },
+            "keys": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              "minItems": 0,
+              "maxItems": 256,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "format",
+            "mode",
+            "keys"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "format": {
+              "const": 1
+            },
+            "mode": {
+              "const": "implication"
+            },
+            "implied": {
+              "const": true
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 23
+              },
+              "minItems": 0,
+              "maxItems": 8
+            }
+          },
+          "required": [
+            "format",
+            "mode",
+            "implied",
+            "steps"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "format": {
+              "const": 1
+            },
+            "mode": {
+              "const": "implication"
+            },
+            "implied": {
+              "const": false
+            },
+            "agree": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          "required": [
+            "format",
+            "mode",
+            "implied",
+            "agree"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "phase",
+    "version",
+    "answer"
+  ]
+}

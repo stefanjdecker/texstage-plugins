@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "control": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "actor": {
+      "type": "string",
+      "maxLength": 256
+    }
+  },
+  "required": [
+    "control",
+    "actor"
+  ]
+}

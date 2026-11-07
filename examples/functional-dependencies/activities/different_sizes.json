@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "different_sizes",
+    "title": {
+      "en": "Minimal does not mean smallest",
+      "de": "Minimal bedeutet nicht kleinstmöglich"
+    },
+    "prompt": {
+      "en": "Find all candidate keys and explain minimality.",
+      "de": "Finden Sie alle Kandidatenschlüssel und begründen Sie die Minimalität."
+    },
+    "attributes": [
+      {
+        "id": "a",
+        "label": {
+          "en": "A",
+          "de": "A"
+        }
+      },
+      {
+        "id": "b",
+        "label": {
+          "en": "B",
+          "de": "B"
+        }
+      },
+      {
+        "id": "c",
+        "label": {
+          "en": "C",
+          "de": "C"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "a"
+        ],
+        "rhs": [
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "b",
+          "c"
+        ],
+        "rhs": [
+          "a"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "keys",
+      "require": "all"
+    }
+  },
+  "worked_answer": {
+    "mode": "keys",
+    "keys": [
+      [
+        "a"
+      ],
+      [
+        "b",
+        "c"
+      ]
+    ]
+  },
+  "explanation": {
+    "en": "Both {a} and {b,c} are minimal by inclusion, even though their sizes differ.",
+    "de": "Sowohl {a} als auch {b,c} sind inklusionsminimal, obwohl sie verschieden groß sind."
+  },
+  "feedback": "practice"
+}

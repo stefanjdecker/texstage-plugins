@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "id",
+    "attributes",
+    "fds",
+    "task"
+  ],
+  "properties": {
+    "format": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16,
+      "pattern": "^[a-z][a-z0-9_]{0,15}(?![\\s\\S])"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 16,
+        "pattern": "^[a-z][a-z0-9_]{0,15}(?![\\s\\S])"
+      },
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "fds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "lhs",
+          "rhs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^[a-z][a-z0-9_]{0,15}(?![\\s\\S])"
+          },
+          "lhs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "rhs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 255
+          }
+        }
+      },
+      "minItems": 0,
+      "maxItems": 24
+    },
+    "task": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "start"
+          ],
+          "properties": {
+            "mode": {
+              "const": "closure"
+            },
+            "start": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "require"
+          ],
+          "properties": {
+            "mode": {
+              "const": "keys"
+            },
+            "require": {
+              "enum": [
+                "one",
+                "all"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "lhs",
+            "rhs"
+          ],
+          "properties": {
+            "mode": {
+              "const": "implication"
+            },
+            "lhs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "rhs": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 255
+            }
+          }
+        }
+      ]
+    }
+  }
+}

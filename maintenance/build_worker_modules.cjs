@@ -8,6 +8,10 @@ const root = path.resolve(__dirname, "..");
 const check = process.argv.includes("--check");
 const entries = [
   [
+    "plugins/fd-lab/texstage_fd_lab/web/engine.mjs",
+    "plugins/fd-lab/texstage_fd_lab/web/engine.worker.mjs"
+  ],
+  [
     "plugins/transaction-engine/texstage_transaction_engine/web/schedule.mjs",
     "plugins/transaction-engine/texstage_transaction_engine/web/schedule.worker.mjs"
   ],

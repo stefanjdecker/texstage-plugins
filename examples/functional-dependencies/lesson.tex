@@ -1,0 +1,48 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{texstage}
+\usepackage{texstage-fd-lab}
+\setbeamertemplate{navigation symbols}{}
+\title{What follows from a dependency?}
+\author{TeXStage Functional Dependencies Lab}
+\date{}
+\begin{document}
+\begin{frame}\titlepage
+\small Use given business rules to derive attributes, identify minimal keys, and prove or refute dependencies.
+\end{frame}
+\begin{frame}{What does a workshop determine?}
+\fdlab{closure}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Start with a person and a workshop}
+\fdlab{practice}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Identify one workshop registration}
+\fdlab{keys_one}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Find every candidate key}
+\fdlab{keys_all}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Does a workshop determine its building?}
+\fdlab{implied}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Does a tutor determine the workshop?}
+\fdlab{refuted}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Minimal does not mean smallest}
+\fdlab{different_sizes}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{Can the empty set be a key?}
+\fdlab{empty_key}{.96\linewidth}{.78\textheight}
+\end{frame}
+\begin{frame}{What have we shown?}
+\begin{itemize}
+\item An FD applies only when all attributes on its left are known.
+\item Repeating productive steps reaches a fixed point: the complete closure.
+\item A candidate key is minimal by inclusion; keys may have different sizes.
+\item An implication follows by derivation, or fails by a valid counterexample.
+\item Uniqueness in one sample table does not establish a schema constraint.
+\end{itemize}
+\end{frame}
+\end{document}

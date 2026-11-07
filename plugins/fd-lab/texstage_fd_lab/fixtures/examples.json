@@ -1,0 +1,1017 @@
+{
+  "format": 1,
+  "examples": [
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "workshop_closure",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Compute the closure of {workshop}, showing each FD application.",
+            "de": "Berechnen Sie den Attributabschluss von {workshop} und zeigen Sie jede FD-Anwendung."
+          },
+          "attributes": [
+            {
+              "id": "person",
+              "label": {
+                "en": "Person",
+                "de": "Person"
+              }
+            },
+            {
+              "id": "email",
+              "label": {
+                "en": "Email",
+                "de": "E-Mail"
+              }
+            },
+            {
+              "id": "workshop",
+              "label": {
+                "en": "Workshop",
+                "de": "Workshop"
+              }
+            },
+            {
+              "id": "tutor",
+              "label": {
+                "en": "Tutor",
+                "de": "Tutor"
+              }
+            },
+            {
+              "id": "room",
+              "label": {
+                "en": "Room",
+                "de": "Raum"
+              }
+            },
+            {
+              "id": "building",
+              "label": {
+                "en": "Building",
+                "de": "Gebäude"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "person"
+              ],
+              "rhs": [
+                "email"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "email"
+              ],
+              "rhs": [
+                "person"
+              ]
+            },
+            {
+              "id": "f3",
+              "lhs": [
+                "workshop"
+              ],
+              "rhs": [
+                "tutor",
+                "room"
+              ]
+            },
+            {
+              "id": "f4",
+              "lhs": [
+                "room"
+              ],
+              "rhs": [
+                "building"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "closure",
+            "start": [
+              "workshop"
+            ]
+          }
+        },
+        "worked_answer": {
+          "mode": "closure",
+          "closure": [
+            "workshop",
+            "tutor",
+            "room",
+            "building"
+          ],
+          "steps": [
+            "f3",
+            "f4"
+          ]
+        },
+        "explanation": {
+          "en": "The workshop fixes its tutor and room; the room fixes the building.",
+          "de": "Der Workshop bestimmt Tutor und Raum; der Raum bestimmt das Gebäude."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "closure": [
+          "workshop",
+          "tutor",
+          "room",
+          "building"
+        ],
+        "keys": [
+          [
+            "person",
+            "workshop"
+          ],
+          [
+            "email",
+            "workshop"
+          ]
+        ]
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "workshop_one",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Find one candidate key.",
+            "de": "Finden Sie einen Kandidatenschlüssel."
+          },
+          "attributes": [
+            {
+              "id": "person",
+              "label": {
+                "en": "Person",
+                "de": "Person"
+              }
+            },
+            {
+              "id": "email",
+              "label": {
+                "en": "Email",
+                "de": "E-Mail"
+              }
+            },
+            {
+              "id": "workshop",
+              "label": {
+                "en": "Workshop",
+                "de": "Workshop"
+              }
+            },
+            {
+              "id": "tutor",
+              "label": {
+                "en": "Tutor",
+                "de": "Tutor"
+              }
+            },
+            {
+              "id": "room",
+              "label": {
+                "en": "Room",
+                "de": "Raum"
+              }
+            },
+            {
+              "id": "building",
+              "label": {
+                "en": "Building",
+                "de": "Gebäude"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "person"
+              ],
+              "rhs": [
+                "email"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "email"
+              ],
+              "rhs": [
+                "person"
+              ]
+            },
+            {
+              "id": "f3",
+              "lhs": [
+                "workshop"
+              ],
+              "rhs": [
+                "tutor",
+                "room"
+              ]
+            },
+            {
+              "id": "f4",
+              "lhs": [
+                "room"
+              ],
+              "rhs": [
+                "building"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "keys",
+            "require": "one"
+          }
+        },
+        "worked_answer": {
+          "mode": "keys",
+          "keys": [
+            [
+              "person",
+              "workshop"
+            ]
+          ]
+        },
+        "explanation": {
+          "en": "A workshop and either a person or email are sufficient; neither member is removable.",
+          "de": "Ein Workshop und entweder Person oder E-Mail genügen; kein Bestandteil ist entbehrlich."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "person",
+            "workshop"
+          ],
+          [
+            "email",
+            "workshop"
+          ]
+        ]
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "workshop_all",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Find all candidate keys.",
+            "de": "Finden Sie alle Kandidatenschlüssel."
+          },
+          "attributes": [
+            {
+              "id": "person",
+              "label": {
+                "en": "Person",
+                "de": "Person"
+              }
+            },
+            {
+              "id": "email",
+              "label": {
+                "en": "Email",
+                "de": "E-Mail"
+              }
+            },
+            {
+              "id": "workshop",
+              "label": {
+                "en": "Workshop",
+                "de": "Workshop"
+              }
+            },
+            {
+              "id": "tutor",
+              "label": {
+                "en": "Tutor",
+                "de": "Tutor"
+              }
+            },
+            {
+              "id": "room",
+              "label": {
+                "en": "Room",
+                "de": "Raum"
+              }
+            },
+            {
+              "id": "building",
+              "label": {
+                "en": "Building",
+                "de": "Gebäude"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "person"
+              ],
+              "rhs": [
+                "email"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "email"
+              ],
+              "rhs": [
+                "person"
+              ]
+            },
+            {
+              "id": "f3",
+              "lhs": [
+                "workshop"
+              ],
+              "rhs": [
+                "tutor",
+                "room"
+              ]
+            },
+            {
+              "id": "f4",
+              "lhs": [
+                "room"
+              ],
+              "rhs": [
+                "building"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "keys",
+            "require": "all"
+          }
+        },
+        "worked_answer": {
+          "mode": "keys",
+          "keys": [
+            [
+              "person",
+              "workshop"
+            ],
+            [
+              "email",
+              "workshop"
+            ]
+          ]
+        },
+        "explanation": {
+          "en": "A workshop and either a person or email are sufficient; neither member is removable.",
+          "de": "Ein Workshop und entweder Person oder E-Mail genügen; kein Bestandteil ist entbehrlich."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "person",
+            "workshop"
+          ],
+          [
+            "email",
+            "workshop"
+          ]
+        ]
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "workshop_implied",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Does workshop determine building? Prove or refute it.",
+            "de": "Bestimmt der Workshop das Gebäude? Beweisen oder widerlegen Sie dies."
+          },
+          "attributes": [
+            {
+              "id": "person",
+              "label": {
+                "en": "Person",
+                "de": "Person"
+              }
+            },
+            {
+              "id": "email",
+              "label": {
+                "en": "Email",
+                "de": "E-Mail"
+              }
+            },
+            {
+              "id": "workshop",
+              "label": {
+                "en": "Workshop",
+                "de": "Workshop"
+              }
+            },
+            {
+              "id": "tutor",
+              "label": {
+                "en": "Tutor",
+                "de": "Tutor"
+              }
+            },
+            {
+              "id": "room",
+              "label": {
+                "en": "Room",
+                "de": "Raum"
+              }
+            },
+            {
+              "id": "building",
+              "label": {
+                "en": "Building",
+                "de": "Gebäude"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "person"
+              ],
+              "rhs": [
+                "email"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "email"
+              ],
+              "rhs": [
+                "person"
+              ]
+            },
+            {
+              "id": "f3",
+              "lhs": [
+                "workshop"
+              ],
+              "rhs": [
+                "tutor",
+                "room"
+              ]
+            },
+            {
+              "id": "f4",
+              "lhs": [
+                "room"
+              ],
+              "rhs": [
+                "building"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "implication",
+            "lhs": [
+              "workshop"
+            ],
+            "rhs": [
+              "building"
+            ]
+          }
+        },
+        "worked_answer": {
+          "mode": "implication",
+          "implied": true,
+          "steps": [
+            "f3",
+            "f4"
+          ]
+        },
+        "explanation": {
+          "en": "The two FD applications derive the building.",
+          "de": "Die beiden FD-Anwendungen leiten das Gebäude her."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "person",
+            "workshop"
+          ],
+          [
+            "email",
+            "workshop"
+          ]
+        ],
+        "implied": true
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "workshop_refuted",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Does tutor determine workshop? Prove or refute it.",
+            "de": "Bestimmt der Tutor den Workshop? Beweisen oder widerlegen Sie dies."
+          },
+          "attributes": [
+            {
+              "id": "person",
+              "label": {
+                "en": "Person",
+                "de": "Person"
+              }
+            },
+            {
+              "id": "email",
+              "label": {
+                "en": "Email",
+                "de": "E-Mail"
+              }
+            },
+            {
+              "id": "workshop",
+              "label": {
+                "en": "Workshop",
+                "de": "Workshop"
+              }
+            },
+            {
+              "id": "tutor",
+              "label": {
+                "en": "Tutor",
+                "de": "Tutor"
+              }
+            },
+            {
+              "id": "room",
+              "label": {
+                "en": "Room",
+                "de": "Raum"
+              }
+            },
+            {
+              "id": "building",
+              "label": {
+                "en": "Building",
+                "de": "Gebäude"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "person"
+              ],
+              "rhs": [
+                "email"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "email"
+              ],
+              "rhs": [
+                "person"
+              ]
+            },
+            {
+              "id": "f3",
+              "lhs": [
+                "workshop"
+              ],
+              "rhs": [
+                "tutor",
+                "room"
+              ]
+            },
+            {
+              "id": "f4",
+              "lhs": [
+                "room"
+              ],
+              "rhs": [
+                "building"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "implication",
+            "lhs": [
+              "tutor"
+            ],
+            "rhs": [
+              "workshop"
+            ]
+          }
+        },
+        "worked_answer": {
+          "mode": "implication",
+          "implied": false,
+          "agree": [
+            "tutor"
+          ]
+        },
+        "explanation": {
+          "en": "Two rows can agree on tutor and differ everywhere else without violating a premise FD.",
+          "de": "Zwei Tupel können beim Tutor übereinstimmen und sich sonst unterscheiden, ohne eine gegebene FD zu verletzen."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "person",
+            "workshop"
+          ],
+          [
+            "email",
+            "workshop"
+          ]
+        ],
+        "implied": false
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "different_sizes",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Find all candidate keys and explain minimality.",
+            "de": "Finden Sie alle Kandidatenschlüssel und begründen Sie die Minimalität."
+          },
+          "attributes": [
+            {
+              "id": "a",
+              "label": {
+                "en": "A",
+                "de": "A"
+              }
+            },
+            {
+              "id": "b",
+              "label": {
+                "en": "B",
+                "de": "B"
+              }
+            },
+            {
+              "id": "c",
+              "label": {
+                "en": "C",
+                "de": "C"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "a"
+              ],
+              "rhs": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "b",
+                "c"
+              ],
+              "rhs": [
+                "a"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "keys",
+            "require": "all"
+          }
+        },
+        "worked_answer": {
+          "mode": "keys",
+          "keys": [
+            [
+              "a"
+            ],
+            [
+              "b",
+              "c"
+            ]
+          ]
+        },
+        "explanation": {
+          "en": "Both {A} and {B,C} are minimal by inclusion, even though their sizes differ.",
+          "de": "Sowohl {A} als auch {B,C} sind inklusionsminimal, obwohl ihre Größen verschieden sind."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "a"
+          ],
+          [
+            "b",
+            "c"
+          ]
+        ]
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "no_fds",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Find all candidate keys and explain minimality.",
+            "de": "Finden Sie alle Kandidatenschlüssel und begründen Sie die Minimalität."
+          },
+          "attributes": [
+            {
+              "id": "a",
+              "label": {
+                "en": "A",
+                "de": "A"
+              }
+            },
+            {
+              "id": "b",
+              "label": {
+                "en": "B",
+                "de": "B"
+              }
+            },
+            {
+              "id": "c",
+              "label": {
+                "en": "C",
+                "de": "C"
+              }
+            }
+          ],
+          "fds": [],
+          "task": {
+            "mode": "keys",
+            "require": "all"
+          }
+        },
+        "worked_answer": {
+          "mode": "keys",
+          "keys": [
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        "explanation": {
+          "en": "With no FDs, a set only determines itself.",
+          "de": "Ohne FDs bestimmt eine Menge nur sich selbst."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "a",
+            "b",
+            "c"
+          ]
+        ]
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "empty_key",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Find all candidate keys and explain minimality.",
+            "de": "Finden Sie alle Kandidatenschlüssel und begründen Sie die Minimalität."
+          },
+          "attributes": [
+            {
+              "id": "a",
+              "label": {
+                "en": "A",
+                "de": "A"
+              }
+            },
+            {
+              "id": "b",
+              "label": {
+                "en": "B",
+                "de": "B"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [],
+              "rhs": [
+                "a"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "a"
+              ],
+              "rhs": [
+                "b"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "keys",
+            "require": "all"
+          }
+        },
+        "worked_answer": {
+          "mode": "keys",
+          "keys": [
+            []
+          ]
+        },
+        "explanation": {
+          "en": "The empty set determines both attributes. Every legal set-valued relation has at most one tuple.",
+          "de": "Die leere Menge bestimmt beide Attribute. Jede zulässige Relation hat höchstens ein Tupel."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          []
+        ]
+      }
+    },
+    {
+      "lesson": {
+        "format": 1,
+        "exercise": {
+          "format": 1,
+          "id": "cycle_and_free",
+          "title": {
+            "en": "Functional dependencies and keys",
+            "de": "Funktionale Abhängigkeiten und Schlüssel"
+          },
+          "prompt": {
+            "en": "Find all candidate keys and explain minimality.",
+            "de": "Finden Sie alle Kandidatenschlüssel und begründen Sie die Minimalität."
+          },
+          "attributes": [
+            {
+              "id": "a",
+              "label": {
+                "en": "A",
+                "de": "A"
+              }
+            },
+            {
+              "id": "b",
+              "label": {
+                "en": "B",
+                "de": "B"
+              }
+            },
+            {
+              "id": "c",
+              "label": {
+                "en": "C",
+                "de": "C"
+              }
+            }
+          ],
+          "fds": [
+            {
+              "id": "f1",
+              "lhs": [
+                "a"
+              ],
+              "rhs": [
+                "b"
+              ]
+            },
+            {
+              "id": "f2",
+              "lhs": [
+                "b"
+              ],
+              "rhs": [
+                "a"
+              ]
+            },
+            {
+              "id": "f3",
+              "lhs": [
+                "a"
+              ],
+              "rhs": [
+                "a"
+              ]
+            }
+          ],
+          "task": {
+            "mode": "keys",
+            "require": "all"
+          }
+        },
+        "worked_answer": {
+          "mode": "keys",
+          "keys": [
+            [
+              "a",
+              "c"
+            ],
+            [
+              "b",
+              "c"
+            ]
+          ]
+        },
+        "explanation": {
+          "en": "C is needed, together with either A or B. The cycle does not produce C.",
+          "de": "C wird zusammen mit A oder B benötigt. Der Zyklus erzeugt C nicht."
+        },
+        "feedback": "after-reveal"
+      },
+      "expected": {
+        "keys": [
+          [
+            "a",
+            "c"
+          ],
+          [
+            "b",
+            "c"
+          ]
+        ]
+      }
+    }
+  ]
+}
