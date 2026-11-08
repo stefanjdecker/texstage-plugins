@@ -1,0 +1,99 @@
+# SPDX-License-Identifier: Apache-2.0
+name: WebKit native crash investigation
+on:
+  push:
+    branches: [codex/webkit-load-crash]
+    paths:
+      - .github/workflows/webkit-diagnostics.yml
+      - maintenance/webkit_diagnostics.py
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+defaults:
+  run:
+    shell: bash
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        workload: [transaction, bplus]
+        playwright: ['1.62.1', '1.64.1']
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.14'}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '24'}
+      # Reuse the exact wheels/decks from the failing candidate, without rebuilds.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: matrix.workload == 'transaction'
+        with:
+          name: transactions-handoff
+          path: handoff
+          run-id: 42458730616
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: matrix.workload == 'bplus'
+        with:
+          name: bplus-lab-wheels
+          path: handoff
+          run-id: 42458732389
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: matrix.workload == 'bplus'
+        with:
+          name: bplus-prepared-bundle
+          path: handoff/prepared
+          run-id: 42458732389
+          github-token: ${{ github.token }}
+      - name: Install exact candidate and comparison browser
+        env: {PW_VERSION: '${{ matrix.playwright }}'}
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r handoff/requirements/dev.txt
+          python -m pip install --no-deps handoff/host/*.whl handoff/plugins/*.whl
+          npm ci --ignore-scripts
+          if [[ "$PW_VERSION" != 1.62.1 ]]; then
+            npm install --no-save --package-lock=false --ignore-scripts "playwright@$PW_VERSION"
+          fi
+          npx playwright install --with-deps webkit
+          sudo apt-get install -y --no-install-recommends gdb
+          mkdir -p artifacts/identity "$RUNNER_TEMP/texstage-cores"
+          git rev-parse HEAD > artifacts/identity/collection-commit.txt
+          sha256sum handoff/host/*.whl handoff/plugins/*.whl > artifacts/identity/wheels.txt
+          node -p 'JSON.stringify({node:process.version,playwright:require("playwright/package.json").version,browser:JSON.parse(require("node:fs").readFileSync(require("node:path").join(require.resolve("playwright-core/package.json"),"..","browsers.json"))).browsers.find(b=>b.name==="webkit")})' > artifacts/identity/browser.json
+          lscpu > artifacts/identity/cpu.txt
+          dpkg-query -W > artifacts/identity/system-packages.txt
+          # Disposable hosted runner only; never change a developer machine's core handler.
+          test "$GITHUB_ACTIONS" = true
+          sudo sysctl -w "kernel.core_pattern=$RUNNER_TEMP/texstage-cores/core.%e.%p"
+      - name: Reproduce with native stderr and process resources
+        env: {WORKLOAD: '${{ matrix.workload }}'}
+        run: |
+          ulimit -c unlimited
+          if [[ "$WORKLOAD" == transaction ]]; then
+            bundle=handoff/prepared/lesson-en/out/lesson.bundle
+          else
+            bundle=handoff/prepared/en
+          fi
+          failed=0
+          for repetition in 1 2 3; do
+            if [[ "$repetition" == 2 ]]; then actors=600; else actors=1000; fi
+            python maintenance/webkit_diagnostics.py "$WORKLOAD" "$bundle" "artifacts/run-$repetition-$actors" --actors "$actors" --cores "$RUNNER_TEMP/texstage-cores" || failed=1
+          done
+          exit "$failed"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: 'webkit-native-${{ matrix.workload }}-${{ matrix.playwright }}'
+          path: |
+            artifacts/
+            !artifacts/**/profile-*/
+          retention-days: 14
