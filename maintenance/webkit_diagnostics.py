@@ -93,6 +93,7 @@ def main() -> int:
     parser.add_argument("bundle", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--actors", type=int, choices=[600, 1000], required=True)
+    parser.add_argument("--browser", choices=["chromium", "firefox", "webkit"], default="webkit")
     parser.add_argument("--cores", type=Path)
     args = parser.parse_args()
     if platform.system() != "Linux":
@@ -101,7 +102,7 @@ def main() -> int:
     output.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
     known: dict[str, str] = {}
-    env = os.environ | {"DEBUG": "pw:browser", "BROWSER": "webkit",
+    env = os.environ | {"DEBUG": "pw:browser", "BROWSER": args.browser,
                        f"{args.kind.upper()}_ACTORS": str(args.actors),
                        "TRANSACTION_WAVE_SECONDS": "0"}
     script = Path(__file__).with_name(f"{args.kind}_load_browser.cjs")
@@ -128,7 +129,7 @@ def main() -> int:
     code = process.wait()
     write_json(output / "executables.json", known)
     traces = backtraces(args.cores, output, known)
-    report = {"kind": args.kind, "actors": args.actors, "exit_code": code,
+    report = {"kind": args.kind, "browser": args.browser, "actors": args.actors, "exit_code": code,
               "timed_out": timed_out, "seconds": round(time.monotonic() - started, 3),
               "platform": platform.platform(), "python": platform.python_version(),
               "node": subprocess.check_output(["node", "--version"], text=True).strip(),
