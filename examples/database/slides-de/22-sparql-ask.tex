@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Eine Ja-Nein-Frage an den Graphen}
+\small ASK prüft, ob ein Muster in diesem Graphen vorkommt.\par\vspace{3mm}
+\begin{activity}[id=sparql-ask,input=code,engine=sparql,seed=data/library.ttl,
+reference=answers/sparql-ask.rq,open=manual,limit=5,height=.61\textheight]
+\prompt{Enthält der bereitgestellte Graph eine Ausleihe mit \texttt{:member :dan} und \texttt{:status :open}? Schreiben Sie eine ASK-Anfrage. Präfixe sind vorgegeben.}
+\end{activity}
+\note{Erwartet: false, also kein Treffer im vorgegebenen Graphen. Daraus folgt weder, dass Dan nie ausleihen kann, noch vollständiges Wissen über die Wirklichkeit.}
+\end{frame}

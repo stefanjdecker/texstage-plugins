@@ -1,0 +1,12 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Same query, different physical work}
+Choose how to execute a fixed query using the printed statistics.
+\medskip
+\begin{itemize}
+\item Compare scans and indexes, then join order and join methods.
+\item Read the root cost: it already includes the work of its children.
+\item Check the memory bound for each hash build input.
+\item Costs are \textbf{teaching units}, not measured execution times.
+\end{itemize}
+\note{These examples use their own finite statistics and preserve qualifying loan rows, unlike set-based relational algebra. They have a 120-second scored round; explain the rule before opening answers.}
+\end{frame}

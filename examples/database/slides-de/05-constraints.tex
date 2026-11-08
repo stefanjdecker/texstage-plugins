@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{quiz}[id=constraints,type=multiple,partial,time=60,cols=1]{Welche zwei Aussagen folgen aus unseren Regeln?}
+\choice*[id=member]{Jede Ausleihe verweist auf ein vorhandenes Mitglied.}
+\choice*[id=unique]{Zwei Mitglieder können nicht dieselbe member\_id haben.}
+\choice[id=borrower]{Jedes Mitglied muss mindestens eine Ausleihe haben.}
+\choice[id=names]{Jedes Mitglied muss einen anderen Namen haben.}
+\explain{Fremdschlüssel verbinden Ausleihen und Mitglieder; Primärschlüssel identifizieren Mitglieder. Ausleihen sind optional; Namen sind nicht als eindeutig vereinbart.}
+\note{Ein Fremdschlüssel verpflichtet nicht jedes Mitglied zum Ausleihen. Besprechen Sie die Antworten; Teilpunkte allein belegen noch kein Verständnis.}
+\end{quiz}

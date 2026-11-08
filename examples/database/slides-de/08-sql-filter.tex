@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Filter in einer Tabelle}
+\small Wählen Sie Ausgabespalte und Bedingung.\par\vspace{3mm}
+\begin{activity}[id=sql-filter,input=code,engine=sql,seed=data/library.sql,
+reference=answers/sql-filter.sql,open=manual,limit=5,height=.61\textheight]
+\prompt{Verwenden Sie \texttt{books(book\_id,title,topic)}. Geben Sie eine Spalte \texttt{title} für Bücher mit dem Themenwert \texttt{databases} aus.}
+\end{activity}
+\note{Erwartet: Database Basics und Practical SQL. Gleichwertige Bedingungen und umgekehrte Zeilenfolge sind zulässig. Alle Titel ergeben eine andere Ergebnisgruppe.}
+\end{frame}

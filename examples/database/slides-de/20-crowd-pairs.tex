@@ -1,0 +1,13 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Die Bücher einordnen}
+
+\small Der Graph mit zwei Feldern benötigt kein eingegebenes Prädikat.\par\vspace{3mm}
+\begin{activity}[id=crowd-pairs,input=tuple,fields={Buch,Thema},
+suggest={Database Basics,Graph Stories,Practical SQL,Network Notes,databases,graphs,networks},
+open=auto,terms=exact,min=2,limit=4,height=.61\textheight]
+\prompt{Verbinden Sie einen Buchtitel mit seinem Thema aus der Tabelle.
+Die implizite Beziehung heißt \emph{hat Thema}. Eine Kante erscheint nach Zustimmung zweier verschiedener Teilnehmender.}
+\end{activity}
+
+\note{Erwartet: vier Paare. Wiederholung durch eine Person ersetzt keine zwei Personen. Für einen Einzeltest das Minimum auf eins setzen. Diese Aktivität sammelt einen Graphen; sie prüft keine RDF-Syntax.}
+\end{frame}

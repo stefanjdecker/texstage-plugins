@@ -1,0 +1,121 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "workshop_implied",
+    "title": {
+      "en": "Does a workshop determine its building?",
+      "de": "Bestimmt ein Workshop sein Gebäude?"
+    },
+    "prompt": {
+      "en": "Does workshop determine building? Prove or refute it.",
+      "de": "Bestimmt der Workshop das Gebäude? Beweisen oder widerlegen Sie dies."
+    },
+    "attributes": [
+      {
+        "id": "person",
+        "label": {
+          "en": "Person",
+          "de": "Person"
+        }
+      },
+      {
+        "id": "email",
+        "label": {
+          "en": "Email",
+          "de": "E-Mail"
+        }
+      },
+      {
+        "id": "workshop",
+        "label": {
+          "en": "Workshop",
+          "de": "Workshop"
+        }
+      },
+      {
+        "id": "tutor",
+        "label": {
+          "en": "Tutor",
+          "de": "Tutor"
+        }
+      },
+      {
+        "id": "room",
+        "label": {
+          "en": "Room",
+          "de": "Raum"
+        }
+      },
+      {
+        "id": "building",
+        "label": {
+          "en": "Building",
+          "de": "Gebäude"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "person"
+        ],
+        "rhs": [
+          "email"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "email"
+        ],
+        "rhs": [
+          "person"
+        ]
+      },
+      {
+        "id": "f3",
+        "lhs": [
+          "workshop"
+        ],
+        "rhs": [
+          "tutor",
+          "room"
+        ]
+      },
+      {
+        "id": "f4",
+        "lhs": [
+          "room"
+        ],
+        "rhs": [
+          "building"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "implication",
+      "lhs": [
+        "workshop"
+      ],
+      "rhs": [
+        "building"
+      ]
+    }
+  },
+  "worked_answer": {
+    "mode": "implication",
+    "implied": true,
+    "steps": [
+      "f3",
+      "f4"
+    ]
+  },
+  "explanation": {
+    "en": "The two FD applications derive the building.",
+    "de": "Die beiden FD-Anwendungen leiten das Gebäude her."
+  },
+  "feedback": "practice",
+  "points": 100
+}

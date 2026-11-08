@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Einen RDF-Sachverhalt schreiben}
+\small Turtle beschreibt Daten; es ist keine Anfragesprache.\par\vspace{3mm}
+\begin{activity}[id=turtle-one,input=code,engine=turtle,seed=data/library.ttl,
+reference=answers/turtle-one.ttl,open=manual,limit=5,height=.61\textheight]
+\prompt{Schreiben Sie genau ein Tripel: Ben leiht Graph Stories aus. Nutzen Sie \texttt{:ben}, das Prädikat \texttt{:borrows}, das Objekt \texttt{:b102} und einen abschließenden Punkt. Das Präfix ist vorgegeben; kopieren Sie nicht die Ausgangsdaten.}
+\end{activity}
+\note{Erwartet: :ben :borrows :b102. Nutzen Sie die Ressource :b102 statt einer Zeichenkette mit ihrem Titel. Vollständige IRIs sind ebenfalls möglich. Verglichen wird nur der eingegebene Graph.}
+\end{frame}

@@ -1,0 +1,127 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "workshop_full",
+    "title": {
+      "en": "Start with a person and a workshop",
+      "de": "Starten Sie mit Person und Workshop"
+    },
+    "prompt": {
+      "en": "Derive the closure of {person, workshop}. Practice feedback is available after saving.",
+      "de": "Leiten Sie den Abschluss von {person, workshop} her. Nach dem Speichern erhalten Sie Feedback."
+    },
+    "attributes": [
+      {
+        "id": "person",
+        "label": {
+          "en": "Person",
+          "de": "Person"
+        }
+      },
+      {
+        "id": "email",
+        "label": {
+          "en": "Email",
+          "de": "E-Mail"
+        }
+      },
+      {
+        "id": "workshop",
+        "label": {
+          "en": "Workshop",
+          "de": "Workshop"
+        }
+      },
+      {
+        "id": "tutor",
+        "label": {
+          "en": "Tutor",
+          "de": "Tutor"
+        }
+      },
+      {
+        "id": "room",
+        "label": {
+          "en": "Room",
+          "de": "Raum"
+        }
+      },
+      {
+        "id": "building",
+        "label": {
+          "en": "Building",
+          "de": "Gebäude"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "person"
+        ],
+        "rhs": [
+          "email"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "email"
+        ],
+        "rhs": [
+          "person"
+        ]
+      },
+      {
+        "id": "f3",
+        "lhs": [
+          "workshop"
+        ],
+        "rhs": [
+          "tutor",
+          "room"
+        ]
+      },
+      {
+        "id": "f4",
+        "lhs": [
+          "room"
+        ],
+        "rhs": [
+          "building"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "closure",
+      "start": [
+        "person",
+        "workshop"
+      ]
+    }
+  },
+  "worked_answer": {
+    "mode": "closure",
+    "closure": [
+      "person",
+      "email",
+      "workshop",
+      "tutor",
+      "room",
+      "building"
+    ],
+    "steps": [
+      "f1",
+      "f3",
+      "f4"
+    ]
+  },
+  "explanation": {
+    "en": "The person determines email; the workshop determines tutor and room; the room determines building.",
+    "de": "Die Person bestimmt die E-Mail, der Workshop Tutor und Raum und der Raum das Gebäude."
+  },
+  "feedback": "practice",
+  "points": 0
+}

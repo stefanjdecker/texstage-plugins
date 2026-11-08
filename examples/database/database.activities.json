@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "language": "en",
+  "items": [
+    {
+      "id": "er_registrations",
+      "type": "io.github.stefanjdecker.erdecisions.lesson",
+      "source": "activities/er-decisions/registrations.json"
+    },
+    {
+      "id": "ra_construct",
+      "type": "io.github.stefanjdecker.relationallab.tree",
+      "source": "activities/relational/construct.json"
+    },
+    {
+      "id": "ra_rewrite",
+      "type": "io.github.stefanjdecker.relationallab.tree",
+      "source": "activities/relational/rewrite.json"
+    },
+    {
+      "id": "plan_selective",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/selective.json"
+    },
+    {
+      "id": "plan_broad",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/broad.json"
+    },
+    {
+      "id": "plan_library",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/library.json"
+    },
+    {
+      "id": "plan_memory",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/memory.json"
+    },
+    {
+      "id": "bplus_lookup",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/lookup.json"
+    },
+    {
+      "id": "bplus_range",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/range.json"
+    },
+    {
+      "id": "bplus_insert",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/insert.json"
+    },
+    {
+      "id": "bplus_delete",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/delete.json"
+    },
+    {
+      "id": "bplus_cascade",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/cascade.json"
+    },
+    {
+      "id": "bplus_shrink",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/shrink.json"
+    },
+    {
+      "id": "fd_closure",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/closure.json"
+    },
+    {
+      "id": "fd_practice",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/practice.json"
+    },
+    {
+      "id": "fd_keys_one",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/keys_one.json"
+    },
+    {
+      "id": "fd_keys_all",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/keys_all.json"
+    },
+    {
+      "id": "fd_implied",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/implied.json"
+    },
+    {
+      "id": "fd_refuted",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/refuted.json"
+    },
+    {
+      "id": "fd_different_sizes",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/different_sizes.json"
+    },
+    {
+      "id": "fd_empty_key",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/empty_key.json"
+    },
+    {
+      "id": "norm_registration",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/normalization/registration.json"
+    },
+    {
+      "id": "norm_classify",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/normalization/classify.json"
+    },
+    {
+      "id": "norm_tradeoff",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/normalization/tradeoff.json"
+    },
+    {
+      "id": "tx_counter",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/counter.lesson.json"
+    },
+    {
+      "id": "tx_independent",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/independent.lesson.json"
+    },
+    {
+      "id": "tx_read_read",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/read_read.lesson.json"
+    },
+    {
+      "id": "tx_write_write",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/write_write.lesson.json"
+    },
+    {
+      "id": "tx_chain",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/chain.lesson.json"
+    },
+    {
+      "id": "tx_blind_write",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/blind_write.lesson.json"
+    }
+  ]
+}

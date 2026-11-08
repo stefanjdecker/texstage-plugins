@@ -1,0 +1,135 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "chain",
+    "language": "de",
+    "title": {
+      "de": "Einen Wert durch drei Transaktionen weitergeben",
+      "en": "Pass a value through three transactions"
+    },
+    "prompt": {
+      "de": "T1 ändert x. T2 kopiert seinen gespeicherten Lesewert von x nach y, T3 den von y nach z. Sagen Sie alle Endwerte voraus und erklären Sie die direkten Kanten.",
+      "en": "T1 updates x, T2 copies its remembered x to y, and T3 copies its remembered y to z. Predict all values and explain the direct edges."
+    },
+    "initial": {
+      "x": 100,
+      "y": 0,
+      "z": 0
+    },
+    "transactions": [
+      {
+        "id": "T1",
+        "operations": [
+          {
+            "id": "a1",
+            "kind": "read",
+            "object": "x"
+          },
+          {
+            "id": "a2",
+            "kind": "write",
+            "object": "x",
+            "value": {
+              "read": "a1",
+              "add": 10
+            }
+          },
+          {
+            "id": "a3",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "operations": [
+          {
+            "id": "b1",
+            "kind": "read",
+            "object": "x"
+          },
+          {
+            "id": "b2",
+            "kind": "write",
+            "object": "y",
+            "value": {
+              "read": "b1",
+              "add": 0
+            }
+          },
+          {
+            "id": "b3",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "operations": [
+          {
+            "id": "c1",
+            "kind": "read",
+            "object": "y"
+          },
+          {
+            "id": "c2",
+            "kind": "write",
+            "object": "z",
+            "value": {
+              "read": "c1",
+              "add": 0
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "commit"
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      "a1",
+      "a2",
+      "b1",
+      "b2",
+      "c1",
+      "c2",
+      "c3",
+      "b3",
+      "a3"
+    ],
+    "task": {
+      "repair": "conflict-serializable",
+      "feedback": "staged"
+    }
+  },
+  "worked_repairs": [
+    [
+      "a1",
+      "a2",
+      "a3",
+      "b1",
+      "b2",
+      "b3",
+      "c1",
+      "c2",
+      "c3"
+    ],
+    [
+      "c1",
+      "c2",
+      "c3",
+      "b1",
+      "b2",
+      "b3",
+      "a1",
+      "a2",
+      "a3"
+    ]
+  ],
+  "explanation": {
+    "en": "Preserve each transaction’s program order. A repair is accepted when its direct conflict graph is acyclic; several orders can work.",
+    "de": "Die Programmreihenfolge jeder Transaktion bleibt erhalten. Eine Reparatur ist gültig, wenn ihr direkter Konfliktgraph azyklisch ist; mehrere Abläufe können passen."
+  }
+}

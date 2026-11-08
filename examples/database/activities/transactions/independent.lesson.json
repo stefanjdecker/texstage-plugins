@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "independent",
+    "language": "de",
+    "title": {
+      "de": "Zwei Zähler, getrennte Änderungen",
+      "en": "Two counters, separate updates"
+    },
+    "prompt": {
+      "de": "T1 erhöht x um 10, T2 erhöht y um 20. Sagen Sie beide Endwerte voraus und entscheiden Sie, ob die Operationen in Konflikt stehen.",
+      "en": "T1 increases x by 10; T2 increases y by 20. Predict both final values and decide whether the operations conflict."
+    },
+    "initial": {
+      "x": 100,
+      "y": 50
+    },
+    "transactions": [
+      {
+        "id": "T1",
+        "operations": [
+          {
+            "id": "a1",
+            "kind": "read",
+            "object": "x"
+          },
+          {
+            "id": "a2",
+            "kind": "write",
+            "object": "x",
+            "value": {
+              "read": "a1",
+              "add": 10
+            }
+          },
+          {
+            "id": "a3",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "operations": [
+          {
+            "id": "b1",
+            "kind": "read",
+            "object": "y"
+          },
+          {
+            "id": "b2",
+            "kind": "write",
+            "object": "y",
+            "value": {
+              "read": "b1",
+              "add": 20
+            }
+          },
+          {
+            "id": "b3",
+            "kind": "commit"
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      "a1",
+      "b1",
+      "a2",
+      "b2",
+      "b3",
+      "a3"
+    ],
+    "task": {
+      "repair": "conflict-serializable",
+      "feedback": "staged"
+    }
+  },
+  "worked_repairs": [
+    [
+      "a1",
+      "a2",
+      "a3",
+      "b1",
+      "b2",
+      "b3"
+    ],
+    [
+      "b1",
+      "b2",
+      "b3",
+      "a1",
+      "a2",
+      "a3"
+    ]
+  ],
+  "explanation": {
+    "en": "Preserve each transaction’s program order. A repair is accepted when its direct conflict graph is acyclic; several orders can work.",
+    "de": "Die Programmreihenfolge jeder Transaktion bleibt erhalten. Eine Reparatur ist gültig, wenn ihr direkter Konfliktgraph azyklisch ist; mehrere Abläufe können passen."
+  }
+}

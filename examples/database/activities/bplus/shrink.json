@@ -1,0 +1,133 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Merge pages and shorten the tree",
+    "de": "Seiten vereinigen und den Baum verkürzen"
+  },
+  "prompt": {
+    "en": "Delete 5. Merge underfull pages and determine the new root.",
+    "de": "Lösche 5. Vereinige unterbelegte Seiten und bestimme die neue Wurzel."
+  },
+  "exercise": {
+    "format": 1,
+    "semantics": "bplus-operations-v1",
+    "leaf_capacity": 3,
+    "internal_capacity": 4,
+    "tree": {
+      "root": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "kind": "internal",
+          "keys": [
+            40
+          ],
+          "children": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "internal",
+          "keys": [
+            20
+          ],
+          "children": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "leaf",
+          "keys": [
+            5,
+            10
+          ],
+          "next": 3
+        },
+        {
+          "id": 3,
+          "kind": "leaf",
+          "keys": [
+            20,
+            25
+          ],
+          "next": 5
+        },
+        {
+          "id": 4,
+          "kind": "internal",
+          "keys": [
+            60
+          ],
+          "children": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "leaf",
+          "keys": [
+            40,
+            45
+          ],
+          "next": 6
+        },
+        {
+          "id": 6,
+          "kind": "leaf",
+          "keys": [
+            60,
+            65
+          ],
+          "next": null
+        }
+      ]
+    },
+    "task": {
+      "kind": "delete",
+      "key": 5
+    }
+  },
+  "worked": {
+    "answer": {
+      "format": 1,
+      "path": [
+        0,
+        1,
+        2
+      ],
+      "repairs": [
+        {
+          "op": "merge",
+          "node": 2,
+          "sibling": 3
+        },
+        {
+          "op": "merge",
+          "node": 1,
+          "sibling": 4
+        }
+      ],
+      "separators": [
+        {
+          "node": 1,
+          "keys": [
+            40,
+            60
+          ]
+        }
+      ],
+      "height": 1
+    },
+    "explanation": {
+      "en": "After the leaf and internal merges, the old root has one child. That child becomes the root automatically.",
+      "de": "Nach der Blatt- und inneren Vereinigung hat die alte Wurzel nur ein Kind. Dieses wird automatisch zur neuen Wurzel."
+    }
+  },
+  "feedback": "on-reveal",
+  "points": 1000
+}

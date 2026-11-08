@@ -1,0 +1,517 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "db_borrowers",
+    "title": {
+      "en": "Who borrowed database books?",
+      "de": "Wer hat Datenbankbücher ausgeliehen?"
+    },
+    "prompt": {
+      "en": "Return the names of members with an open loan for a database book.",
+      "de": "Geben Sie die Namen der Mitglieder mit einer offenen Ausleihe eines Datenbankbuchs an."
+    },
+    "relations": {
+      "books": [
+        [
+          "book",
+          "int"
+        ],
+        [
+          "title",
+          "text"
+        ],
+        [
+          "topic",
+          "text"
+        ]
+      ],
+      "loans": [
+        [
+          "loan",
+          "int"
+        ],
+        [
+          "borrower",
+          "int"
+        ],
+        [
+          "item",
+          "int"
+        ],
+        [
+          "open",
+          "bool"
+        ]
+      ],
+      "members": [
+        [
+          "member",
+          "int"
+        ],
+        [
+          "name",
+          "text"
+        ]
+      ]
+    },
+    "instances": [
+      {
+        "id": "shown",
+        "visibility": "public",
+        "tables": {
+          "books": [
+            [
+              10,
+              "Data",
+              "db"
+            ],
+            [
+              11,
+              "Networks",
+              "net"
+            ],
+            [
+              12,
+              "Graphs",
+              "db"
+            ]
+          ],
+          "loans": [
+            [
+              100,
+              1,
+              10,
+              true
+            ],
+            [
+              101,
+              1,
+              12,
+              true
+            ],
+            [
+              102,
+              2,
+              11,
+              true
+            ],
+            [
+              103,
+              3,
+              10,
+              false
+            ]
+          ],
+          "members": [
+            [
+              1,
+              "Ada"
+            ],
+            [
+              2,
+              "Ben"
+            ],
+            [
+              3,
+              "Cora"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "renamed",
+        "visibility": "private",
+        "tables": {
+          "books": [
+            [
+              10,
+              "Data",
+              "db"
+            ],
+            [
+              11,
+              "Networks",
+              "net"
+            ],
+            [
+              12,
+              "Graphs",
+              "db"
+            ]
+          ],
+          "loans": [
+            [
+              100,
+              1,
+              10,
+              true
+            ],
+            [
+              101,
+              1,
+              12,
+              true
+            ],
+            [
+              102,
+              2,
+              11,
+              true
+            ],
+            [
+              103,
+              3,
+              10,
+              false
+            ]
+          ],
+          "members": [
+            [
+              1,
+              "Dina"
+            ],
+            [
+              2,
+              "Ben"
+            ],
+            [
+              3,
+              "Cora"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "topics",
+        "visibility": "private",
+        "tables": {
+          "books": [
+            [
+              10,
+              "Data",
+              "net"
+            ],
+            [
+              11,
+              "Networks",
+              "db"
+            ],
+            [
+              12,
+              "Graphs",
+              "db"
+            ]
+          ],
+          "loans": [
+            [
+              100,
+              1,
+              10,
+              true
+            ],
+            [
+              101,
+              1,
+              12,
+              true
+            ],
+            [
+              102,
+              2,
+              11,
+              true
+            ],
+            [
+              103,
+              3,
+              10,
+              false
+            ]
+          ],
+          "members": [
+            [
+              1,
+              "Ada"
+            ],
+            [
+              2,
+              "Ben"
+            ],
+            [
+              3,
+              "Cora"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "closed",
+        "visibility": "private",
+        "tables": {
+          "books": [
+            [
+              10,
+              "Data",
+              "db"
+            ],
+            [
+              11,
+              "Networks",
+              "net"
+            ],
+            [
+              12,
+              "Graphs",
+              "db"
+            ]
+          ],
+          "loans": [
+            [
+              100,
+              1,
+              10,
+              false
+            ],
+            [
+              101,
+              1,
+              12,
+              false
+            ],
+            [
+              102,
+              2,
+              11,
+              false
+            ],
+            [
+              103,
+              3,
+              10,
+              false
+            ]
+          ],
+          "members": [
+            [
+              1,
+              "Ada"
+            ],
+            [
+              2,
+              "Ben"
+            ],
+            [
+              3,
+              "Cora"
+            ]
+          ]
+        }
+      }
+    ],
+    "task": {
+      "mode": "construct",
+      "allowed_operators": [
+        "rel",
+        "select",
+        "project",
+        "rename",
+        "product",
+        "join",
+        "union",
+        "difference"
+      ],
+      "expected_header": [
+        [
+          "name",
+          "text"
+        ]
+      ],
+      "feedback": "on-reveal"
+    },
+    "initial_tree": [],
+    "reference_tree": [
+      [
+        "rel",
+        "books"
+      ],
+      [
+        "rel",
+        "loans"
+      ],
+      [
+        "join",
+        0,
+        1,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "book"
+            ],
+            [
+              "a",
+              "item"
+            ]
+          ]
+        ]
+      ],
+      [
+        "rel",
+        "members"
+      ],
+      [
+        "join",
+        2,
+        3,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "borrower"
+            ],
+            [
+              "a",
+              "member"
+            ]
+          ]
+        ]
+      ],
+      [
+        "select",
+        4,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "open"
+            ],
+            [
+              "v",
+              true
+            ]
+          ],
+          [
+            "eq",
+            [
+              "a",
+              "topic"
+            ],
+            [
+              "v",
+              "db"
+            ]
+          ]
+        ]
+      ],
+      [
+        "project",
+        5,
+        [
+          "name"
+        ]
+      ]
+    ]
+  },
+  "worked_answer": {
+    "mode": "construct",
+    "tree": [
+      [
+        "rel",
+        "books"
+      ],
+      [
+        "select",
+        0,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "topic"
+            ],
+            [
+              "v",
+              "db"
+            ]
+          ]
+        ]
+      ],
+      [
+        "rel",
+        "loans"
+      ],
+      [
+        "select",
+        2,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "open"
+            ],
+            [
+              "v",
+              true
+            ]
+          ]
+        ]
+      ],
+      [
+        "join",
+        1,
+        3,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "book"
+            ],
+            [
+              "a",
+              "item"
+            ]
+          ]
+        ]
+      ],
+      [
+        "rel",
+        "members"
+      ],
+      [
+        "join",
+        4,
+        5,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "borrower"
+            ],
+            [
+              "a",
+              "member"
+            ]
+          ]
+        ]
+      ],
+      [
+        "project",
+        6,
+        [
+          "name"
+        ]
+      ]
+    ]
+  },
+  "explanation": {
+    "en": "Filter database books and open loans before joining. Project the member name; projection removes duplicates.",
+    "de": "Filtern Sie Datenbankbücher und offene Ausleihen vor den Verbünden. Projizieren Sie den Mitgliedsnamen; die Projektion entfernt Duplikate."
+  }
+}

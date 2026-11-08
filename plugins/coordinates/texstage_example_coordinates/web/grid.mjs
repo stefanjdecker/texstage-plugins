@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: 2026 Stefan Decker
 // SPDX-License-Identifier: Apache-2.0
+import { words } from "./locale.mjs";
 const NS = "http://www.w3.org/2000/svg";
 export function element(tag, attrs = {}, text = "") {
   const e = document.createElementNS(NS, tag);
@@ -7,9 +8,10 @@ export function element(tag, attrs = {}, text = "") {
   if (text) e.textContent = text;
   return e;
 }
-export function grid(container, bounds, choose, signal) {
+export function grid(container, bounds, choose, signal, language) {
+  const t = words(language);
   const svg = element("svg", { viewBox: "0 0 400 320", role: choose ? "img" : "img",
-    "aria-label": choose ? "Coordinate plane; use the X and Y fields below to enter a point with the keyboard." : "Coordinate plane with the class responses." });
+    "aria-label": choose ? t.inputPlane : t.classPlane });
   Object.assign(svg.style, { width: "100%", height: "100%", background: "white", borderRadius: "8px" });
   container.append(svg);
   const x = v => 30 + (v - bounds.xmin) / (bounds.xmax - bounds.xmin) * 340;

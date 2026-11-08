@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Mitglieder, Ausleihen und Bücher verbinden}
+\small Zwei Joins verbinden IDs mit Namen und Titeln.\par\vspace{3mm}
+\begin{activity}[id=sql-join,input=code,engine=sql,seed=data/library.sql,
+reference=answers/sql-join.sql,open=manual,limit=5,height=.61\textheight]
+\prompt{Geben Sie \texttt{name, title} in dieser Reihenfolge für offene Ausleihen aus. Verbinden Sie \texttt{members(member\_id,name)}, \texttt{loans(member\_id,book\_id,returned\_on)} und \texttt{books(book\_id,title)}. Offen heißt \texttt{returned\_on IS NULL}.}
+\end{activity}
+\note{Erwartet: Ada / Database Basics; Ben / Graph Stories; Cara / Network Notes. Fehlende Join-Bedingungen erzeugen zusätzliche Kombinationen. = NULL liefert keine Treffer.}
+\end{frame}
