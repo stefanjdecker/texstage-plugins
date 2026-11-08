@@ -6,6 +6,7 @@ on:
       texstage_ref:
         description: Published compatible host commit including projector archives (40-character SHA)
         required: true
+        default: ee9cdf1752ae01f623bcef8bb93df13e3773073c
         type: string
       capacity:
         description: Also measure 600 and 1000 students, burst and 30-second waves

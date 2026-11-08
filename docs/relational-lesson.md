@@ -24,6 +24,10 @@ alone does not distinguish unpublished development builds. See the
 [validation record](design/relational-editor-validation.md) for the exact
 tested artifacts. Do not replace a course environment with this test environment.
 
+The [classroom release handoff](transaction-relational-release.md) also covers
+the unchanged 0.2.0 provider with the newer host candidate and supplies a
+[physical-device checklist](classroom-device-checklist.md) for later acceptance.
+
 From the collection root, with that environment activated:
 
 ```sh

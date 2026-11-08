@@ -6,7 +6,7 @@ on:
     inputs:
       texstage_ref:
         description: Exact compatible Texstage commit SHA
-        default: 6b64828b98e9908fc67c265cab31a71a216308d5
+        default: ee9cdf1752ae01f623bcef8bb93df13e3773073c
         required: true
       capacity:
         description: Run the measured 600-student bursts and separate Chromium headroom check
@@ -24,7 +24,7 @@ defaults:
 env:
   PYTHONDONTWRITEBYTECODE: '1'
   PIP_DISABLE_PIP_VERSION_CHECK: '1'
-  HOST_COMMIT: ${{ inputs.texstage_ref || '6b64828b98e9908fc67c265cab31a71a216308d5' }}
+  HOST_COMMIT: ${{ inputs.texstage_ref || 'ee9cdf1752ae01f623bcef8bb93df13e3773073c' }}
 jobs:
   worker-bundles:
     runs-on: ${{ matrix.os }}
@@ -49,7 +49,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || '6b64828b98e9908fc67c265cab31a71a216308d5' }}
+          ref: ${{ inputs.texstage_ref || 'ee9cdf1752ae01f623bcef8bb93df13e3773073c' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -116,7 +116,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || '6b64828b98e9908fc67c265cab31a71a216308d5' }}
+          ref: ${{ inputs.texstage_ref || 'ee9cdf1752ae01f623bcef8bb93df13e3773073c' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -214,7 +214,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || '6b64828b98e9908fc67c265cab31a71a216308d5' }}
+          ref: ${{ inputs.texstage_ref || 'ee9cdf1752ae01f623bcef8bb93df13e3773073c' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -319,7 +319,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           repository: stefanjdecker/texstage
-          ref: ${{ inputs.texstage_ref || '6b64828b98e9908fc67c265cab31a71a216308d5' }}
+          ref: ${{ inputs.texstage_ref || 'ee9cdf1752ae01f623bcef8bb93df13e3773073c' }}
           path: host-source
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -431,7 +431,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
-      BPLUS_HOST_REF: ${{ inputs.bplus_texstage_ref || vars.TEXSTAGE_BPLUS_HOST_REF || '9fa37afda69f1cacc0d12ff2933214cf4598f79f' }}
+      BPLUS_HOST_REF: ${{ inputs.bplus_texstage_ref || vars.TEXSTAGE_BPLUS_HOST_REF || 'ee9cdf1752ae01f623bcef8bb93df13e3773073c' }}
     steps:
       - name: Require the published scoring and actor-record host pin
         run: |

@@ -87,6 +87,8 @@ def main():
             enable(args.data, provider.id, provider.version, provider.payload)
         app = create_app(ServerConfig(bundles=[args.bundle], data_dir=args.data,
             public_url=f"http://127.0.0.1:{args.port}", presenter_key="synthetic-load-key"))
+        from webkit_http_diagnostics import wrap_http_diagnostics
+        app = wrap_http_diagnostics(app, emit)
         server = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=args.port, log_level="warning"))
         def stop():
             if sys.stdin.readline().strip() == "stop": server.should_exit = True

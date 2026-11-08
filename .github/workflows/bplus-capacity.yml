@@ -6,7 +6,7 @@ on:
       texstage_ref:
         description: "Published TeXStage commit with fixed points, actor records and batched projections (40-character SHA)"
         required: true
-        default: 9fa37afda69f1cacc0d12ff2933214cf4598f79f
+        default: ee9cdf1752ae01f623bcef8bb93df13e3773073c
         type: string
 permissions:
   contents: read
@@ -56,6 +56,7 @@ jobs:
           npx playwright install --with-deps "${{ matrix.browser }}"
       - name: Build and verify the provider
         run: |
+          mkdir -p artifacts
           python maintenance/build_bplus_lesson_schemas.py --check
           python maintenance/build_wheels.py --package bplus-lab
           python -m pip install --no-deps dist/*.whl

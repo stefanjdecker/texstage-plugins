@@ -20,7 +20,10 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-normalization-workshop` | Normalization, comparison and evidence | `texstage-normalization-workshop.sty` / `\normalizationworkshop` |
 
 The [collection validation record](docs/design/plugin-collection-validation-2026-11-07.md)
-records the previous nine-package baseline. The [transaction validation](docs/design/transaction-classroom-validation.md) adds the tenth package and the compatible host changes.
+records the previous nine-package baseline. The [classroom release validation](docs/design/classroom-release-validation.md)
+records the ten-package checks, compatible host changes and remaining acceptance
+gates. The [release handoff](docs/transaction-relational-release.md) describes
+the prepared transaction and relational candidates.
 
 The coordinate slide accepts a phone response, displays class points on the
 projector, gives distance feedback from the presenter browser, and supports reveal
@@ -66,8 +69,10 @@ cards to repair a schedule. Different valid repairs are accepted. Feedback is
 released in stages; version 1 awards no scoreboard points.
 
 The [contract](docs/design/transaction-classroom-contract.md) describes actor
-records, privacy, guarded commands and recovery. The [validation record](docs/design/transaction-classroom-validation.md)
+records, privacy, guarded commands and recovery. The [validation record](docs/design/classroom-release-validation.md)
 distinguishes implemented behavior, measured capacity and remaining release gates.
+Use the [physical-device checklist](docs/classroom-device-checklist.md) for the
+remaining phone, classroom-network and accessibility rehearsal.
 The [completion plan](docs/design/transaction-schedules-plan.md) remains the
 acceptance checklist. The standalone engine still works without the activity.
 
@@ -83,7 +88,7 @@ rewrite rules. The package now supplies the engine, prepared authoring,
 lesson state, presenter controls and a visual query-tree editor on phones.
 Version 0.2.0 adds typed operator forms, intermediate tables and node-based
 rewrite controls; see the [editor guide](docs/relational-editor.md).
-The visual tree editor and public-data preview are the next milestone.
+The visual tree editor includes a bounded preview of the public example data.
 Matching example datasets is explicitly distinguished from proving
 equivalence through checked rules.
 
@@ -221,9 +226,10 @@ preview, then submit explicitly. Presenters inspect privately, share anonymously
 reveal/reset and step through attempts or worked solutions. Saved feedback stays
 separate from local preview; drafts survive peer updates and expose device/reset
 conflicts. Version 0.7.0 supports 1,000 saved student answers with the matching
-manifest-4 host with actor records. For classes approaching 1,000, use Chrome or
-Firefox for the presenter: the Windows WebKit presenter intermittently crashed
-at that load. See the [current measurements](docs/design/bplus-tree-scoring-validation.md).
+manifest-4 host with actor records. Use Chrome or Firefox for large classes:
+the latest Linux WebKit checks crashed at 600 and 1,000. See the
+[current classroom measurements](docs/design/classroom-release-validation.md)
+and the [earlier scoring measurements](docs/design/bplus-tree-scoring-validation.md).
 The [partial-credit rubric](docs/bplus-scoring.md) now connects optional fixed
 points to TeXStage's scoreboard and CSV on reveal. Sources without **points**
 remain practice activities. The [scoring record](docs/design/bplus-tree-scoring-validation.md)

@@ -12,6 +12,11 @@ solution, diagrams and live deck. Students build answers with structured phone
 controls and local preview; presenters inspect, share and replay attempts.
 See the [classroom guide](bplus-classroom.md) for the complete teaching workflow.
 
+Use Chromium or Firefox as the presenter for large classes. The
+[current capacity record](design/classroom-release-validation.md) includes
+Linux WebKit crashes at 600 and 1,000; passing the ordinary UI checks does not
+establish that browser's classroom-load reliability.
+
 ## Install and explicitly enable
 
 Use a separate Python 3.12+ environment with the matching experimental

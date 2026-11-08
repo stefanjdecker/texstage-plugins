@@ -1,5 +1,11 @@
 # Transaction classroom validation
 
+This is the historical 2026-11-07 record. See the
+[2026-11-08 classroom release validation](classroom-release-validation.md) for
+published compatibility pins, corrected burst processing, hosted CI and the
+prepared physical-device checklist. The measurements below are preserved as
+recorded; later fixes do not turn earlier failures into passes.
+
 The complete classroom activity is implemented and passes local functional checks.
 It is **not yet a released or fully classroom-validated plugin pair**. Human-paced
 600/1,000-student simulations pass; synchronized bursts retain every answer but
