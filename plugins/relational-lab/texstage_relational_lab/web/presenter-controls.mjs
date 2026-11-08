@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
-import {words, el, button, shell, feedback, errorText, workedPanel, formatAnswer} from "./lesson-ui.mjs";
+import {words, el, button, shell, feedback, errorText, workedPanel} from "./lesson-ui.mjs";
+import {answerPanel} from './tree-view.mjs';
 export function mount(ctx) {
   const w = words(ctx.language), root = shell(ctx);
   const phase = el("p"), counts = el("p"), error = el("p", "", {role:"alert"});
@@ -20,9 +21,9 @@ export function mount(ctx) {
   const inspect = button(w.inspect, () => send("select-answer", {actor:select.value}), ctx.signal);
   const share = button(w.share, () => send("select-demonstration", {actor:select.value}), ctx.signal);
   const clear = button(w.clear, () => send("select-demonstration", {actor:""}), ctx.signal);
-  const saved = el("pre"), result = el("p");
+  const saved = el("div"), result = el("p"), selectedPanel=answerPanel(ctx,saved);
   root.append(phase, open, close, reveal, reset, counts, select, inspect, share, clear, saved, result, error);
-  const worked = workedPanel(root, w);
+  const worked = workedPanel(root, w, ctx);
   select.addEventListener("change", () => draw(), {signal:ctx.signal});
   function draw() {
     if (!current) return;
@@ -36,7 +37,7 @@ export function mount(ctx) {
     share.disabled = busy || !select.value || !["closed","revealed"].includes(d.phase);
     clear.disabled = busy || !d.demonstration;
     saved.hidden = !d.selected;
-    saved.textContent = formatAnswer(d.selected?.answer);
+    selectedPanel.update(d.selected?.answer);
     result.textContent = feedback(d.selected, w);
     worked(d.worked, ctx.language);
   }
@@ -53,7 +54,7 @@ export function mount(ctx) {
       }
       draw();
     },
-    destroy() { root.remove(); }
+    destroy() { selectedPanel.destroy(); worked.destroy(); root.remove(); }
   };
 }
 

@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "language": "de",
+  "items": [
+    {
+      "id": "construct",
+      "type": "io.github.stefanjdecker.relationallab.tree",
+      "source": "activities/construct.json"
+    },
+    {
+      "id": "rewrite",
+      "type": "io.github.stefanjdecker.relationallab.tree",
+      "source": "activities/rewrite.json"
+    }
+  ]
+}

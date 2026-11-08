@@ -1,12 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
-import {words, local, el, shell, outlineAnswer} from "./lesson-ui.mjs";
+import {words, local, el, shell} from "./lesson-ui.mjs";
+import {answerPanel} from './tree-view.mjs';
 export function mount(ctx) {
   const w = words(ctx.language), root = shell(ctx);
+  root.classList.add('rl-overlay');
   Object.assign(root.style, {position:"absolute", overflow:"auto", pointerEvents:"auto"});
   const title = el("h2", local(ctx.item.title, ctx.language)), prompt = el("p", local(ctx.item.prompt, ctx.language));
   title.hidden = prompt.hidden = true; // The frame title already identifies the exercise.
-  const status = el("p"), label = el("h3"), answer = el("pre"), explanation = el("p");
+  const status = el("p"), label = el("h3"), answer = el("div"), explanation = el("p");
   root.append(title, prompt, status, label, answer, explanation);
+  const panel=answerPanel(ctx,answer);
   Object.assign(answer.style, {fontSize:".85em", lineHeight:"1.3", maxHeight:"none", overflow:"visible"});
   let placed = false;
   return {
@@ -28,10 +31,10 @@ export function mount(ctx) {
       root.hidden = !placed || !selected;
       label.hidden = answer.hidden = !selected;
       label.textContent = data.demonstration ? w.shared : w.worked;
-      answer.textContent = selected ? outlineAnswer(selected) : "";
+      panel.update(selected);
       explanation.textContent = data.demonstration ? "" : local(worked?.explanation, ctx.language);
     },
-    destroy() { root.remove(); }
+    destroy() { panel.destroy(); root.remove(); }
   };
 }
 

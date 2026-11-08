@@ -55,14 +55,35 @@ def _tables(public):
 
 
 def _tree_lines(tree):
+    """Readable preorder algebra; wire indices and JSON never enter the handout."""
+    def term(value):
+        rendered = r"\texttt{" + _cell(value[1]) + "}"
+        return "''" + rendered + "''" if value[0] == "v" and isinstance(value[1], str) else rendered
+
+    def predicate(atoms):
+        symbols = {"eq": "=", "ne": r"\ne", "lt": "<", "le": r"\le", "gt": ">", "ge": r"\ge"}
+        return r" \(\land\) ".join(term(a) + r" \(" + symbols[op] + r"\) " + term(b) for op, a, b in atoms)
+
     lines = []
-    for i, node in enumerate(tree):
-        op = node[0]
+    def visit(index, depth):
+        row = tree[index]
+        op = row[0]
         if op == "rel":
-            text = f"{i}: relation {node[1]}"
+            label = r"\texttt{" + latex_escape(row[1]) + "}"
+        elif op in ("select", "join"):
+            label = (r"\(\sigma\) " if op == "select" else r"\(\bowtie\) ") + predicate(row[-1])
+        elif op == "project":
+            label = r"\(\pi\) " + latex_escape(", ".join(row[2]))
+        elif op == "rename":
+            label = r"\(\rho\) " + ", ".join(latex_escape(a) + r" \(\to\) " + latex_escape(b) for a, b in row[2])
         else:
-            text = f"{i}: {op} " + model.canonical(node[1:])
-        lines.append(r"\mbox{\ttfamily " + latex_escape(text) + r"}\par")
+            label = {"product": r"\(\times\)", "union": r"\(\cup\)", "difference": r"\(\setminus\)"}[op]
+        lines.append(r"\noindent\hspace*{" + str(depth * .8) + "em}" + label + r"\par")
+        if op != "rel":
+            visit(row[1], depth + 1)
+            if op in ("join", "product", "union", "difference"):
+                visit(row[2], depth + 1)
+    visit(len(tree) - 1, 0)
     return "\n".join(lines)
 
 
@@ -70,7 +91,7 @@ def _fragment(public, worked, language, *, solutions):
     de = language.split("-")[0] == "de"
     title = localized(public["title"], language)
     prompt = localized(public["prompt"], language)
-    rows = [r"\begingroup\raggedright\small",
+    rows = [r"\begingroup\begin{lrbox}{\RelationalTreeContent}\begin{minipage}{\linewidth}\raggedright\small",
             r"\textbf{" + latex_escape(title) + r"}\par",
             latex_escape(prompt) + r"\par\smallskip"]
     if solutions:
@@ -97,7 +118,10 @@ def _fragment(public, worked, language, *, solutions):
             rows.append(latex_escape(
                 "Konstruieren Sie einen Anfragebaum. Projektion entfernt Duplikate." if de else
                 "Construct a query tree. Projection removes duplicate tuples.") + r"\par")
-    rows.append(r"\endgroup")
+    rows += [r"\end{minipage}\end{lrbox}",
+             r"\ifdim\dimexpr\ht\RelationalTreeContent+\dp\RelationalTreeContent>\RelationalTreeHeight",
+             r"\resizebox*{!}{\RelationalTreeHeight}{\usebox{\RelationalTreeContent}}",
+             r"\else\usebox{\RelationalTreeContent}\fi\endgroup"]
     return "\n".join(rows)
 
 

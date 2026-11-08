@@ -12,7 +12,7 @@ in a disposable operator profile. Uploading a lecture never installs code.
 | `texstage-example-coordinates` | Slide type `org.example.coordinates.plane`, using the distance engine | `texstage-coordinates-plane.sty` |
 | `texstage-transaction-engine` | Independent schedule analysis engine | None |
 | `texstage-transaction-activity` | Prepared prediction, diagnosis and repair lesson | `texstage-transactions-schedule.sty` / `transactionsschedule` |
-| `texstage-relational-lab` | Set-algebra engine and prepared query-tree lesson (R3/R4) | `texstage-relational-tree.sty` |
+| `texstage-relational-lab` | Visual query builder, intermediate results and checked rewrites | `texstage-relational-tree.sty` |
 | `texstage-bplus-lab` | B+ operations, prepared lessons and up to 1,000 student answers | `texstage-bplus-tree.sty` / `\bplustree` |
 | `texstage-er-decisions` | ER registration activity: phone decisions, model preview and discussion | `texstage-er-decisions.sty` / `\erdecisions` |
 | `texstage-query-plan` | Query-plan selectors, cost inspection and classroom activity (Q0–Q4) | `\queryplanchallenge` |
@@ -80,7 +80,9 @@ python maintenance/check_transaction_design.py
 The [Relational Algebra Lab design](docs/design/relational-algebra.md) covers
 building query trees, inspecting intermediate relations and applying verified
 rewrite rules. The package now supplies the engine, prepared authoring,
-lesson state, presenter controls and a basic JSON answer editor on phones.
+lesson state, presenter controls and a visual query-tree editor on phones.
+Version 0.2.0 adds typed operator forms, intermediate tables and node-based
+rewrite controls; see the [editor guide](docs/relational-editor.md).
 The visual tree editor and public-data preview are the next milestone.
 Matching example datasets is explicitly distinguished from proving
 equivalence through checked rules.

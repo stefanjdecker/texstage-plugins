@@ -1,6 +1,11 @@
 # Relational Algebra Lab: implementation plan
 
-Status: engine and R3/R4 lesson implemented, 2026-11-06. The
+Status update, 2026-11-08: R5 visual editing and cooperative public previews
+are implemented on `codex/relational-editor`. See the
+[editor validation record](relational-editor-validation.md) for exact evidence
+and remaining real-device, accessibility and release checks.
+
+Historical baseline: engine and R3/R4 lesson implemented, 2026-11-06. The
 [v1 contract](relational-algebra-contract.md) and
 [validation record](relational-algebra-r2-validation.md) cover the R0 schemas and
 R2 algebra/certificate engine. R1 worker startup is now fixed and tested under
@@ -9,7 +14,8 @@ Structured command errors, mount reconciliation and queue replacement now have
 generic host regression coverage. R3/R4 supply the prepared exercise/solutions,
 bounded state and role-filtered views, with a basic JSON entry interface for
 end-to-end checks. See [the lesson validation record](relational-algebra-lesson-validation.md).
-R5's visual editor/preview, remaining R1 scheduling gates and R6 measurements remain.
+At that historical checkpoint, R5's editor and preview were still outstanding.
+They are implemented in 0.2.0; R1 scheduling and R6 release measurements remain.
 The [design](relational-algebra.md) specifies the teaching modes and target behavior.
 
 ## Delivery scope and dependencies
@@ -19,7 +25,7 @@ active Texstage code checkout. The host's GitHub/GitLab repositories mirror one
 code history. Do not touch archived checkouts, original lecture-tools, existing
 courses, pins, installed course environments or private media.
 
-The transaction lesson remains unfinished. Share its generic host prerequisites;
+The transaction lesson is implemented on its separate classroom branch. Share its generic host prerequisites;
 do not duplicate a host fork, state framework or queue inside this plugin.
 This proposal does not require the transaction activity package to exist.
 The first relational implementation slice is pure algebra plus a construction
@@ -82,10 +88,11 @@ texstage-plugins/
     relational_browser.cjs
 ```
 
-The package now contains the engine, Python model, schemas, fixtures and tests.
-Authoring, state, styles and interface modules in this target tree remain planned.
-The engine uses owned pure modules intended for reuse by the future local preview;
-the Python model supplies an independently implemented static oracle.
+The package contains the engine, Python model, prepared authoring, lesson state,
+styles, visual editor, schemas, fixtures and tests. Its cooperative public preview
+reuses the pure algebra evaluator; the Python model supplies an independently
+implemented static oracle. The milestone descriptions below retain the original
+acceptance criteria; the dated validation records identify what was executed.
 
 ## R0 — freeze the finite specification
 
@@ -251,7 +258,7 @@ Review public/private archives and an actual recording containing the selected
 projector overlay. Only then prepare a reviewed immutable release and catalog
 entry under the user's release authorization. No course migration is implicit.
 
-## Next implementation task
+## Original next implementation task (implemented; acceptance gates remain)
 
 Implement R5's visual query-tree editor and cooperative public-data preview.
 Replace the basic JSON entry experience while preserving its explicit save,

@@ -1,0 +1,535 @@
+{
+  "date": "2026-11-08",
+  "scope": "Relational Algebra Lab visual classroom editor; local Windows validation",
+  "source_base_commit": "5ead891866e239de00b0128a1ea06af2551e0dad",
+  "source_branch": "codex/relational-editor",
+  "source_status": "feature changes not committed or published",
+  "host_commit": "3b290c2108d060652c07a21638f886f075b0d02d",
+  "host_wheel": "texstage-0.2.1.dev7-py3-none-any.whl",
+  "host_wheel_sha256": "ae3ecd26094a9b626e59975327e7eaa6293c16e8d1765de318371503b18aa000",
+  "provider": {
+    "id": "io.github.stefanjdecker.relationallab",
+    "version": "0.2.0",
+    "payload": "5acef0f596bf61c7442f7ae3be940430b18ef3efe4f793871e6a430676e8b89f"
+  },
+  "result_schema_sha256": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+  "python": "3.14.4",
+  "node": "v24.15.0",
+  "packaging": {
+    "texstage_relational_lab-0.2.0-py3-none-any.whl": "2bd57540b745abc146458d0f269fee8809bd527d41089139afc0abc8fbfc2e4a",
+    "texstage_relational_lab-0.2.0.tar.gz": "a7a8dc9a73ae05d788c29009c90e61706f7a8ecb6066e6571e5f95b175778e97",
+    "sdist_payload_parity": true
+  },
+  "pytest": {
+    "tests": 74,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browser_workflows": [
+    {
+      "family": "chromium",
+      "language": "en",
+      "browser": "151.0.7922.34",
+      "timings": [
+        {
+          "mode": "construct",
+          "interactionMs": 654
+        },
+        {
+          "mode": "rewrite",
+          "interactionMs": 372
+        }
+      ],
+      "checks": [
+        "native construction",
+        "all eight operators",
+        "typed predicates",
+        "invalid integer",
+        "empty projection",
+        "header mismatch and repair",
+        "empty preview",
+        "branch removal and undo",
+        "intermediate result",
+        "no JSON input",
+        "actual authoritative evaluator",
+        "privacy before reveal",
+        "draft/focus",
+        "same-actor keep",
+        "epoch reload",
+        "anonymous sharing",
+        "rewrite rule controls",
+        "undo/redo",
+        "keyboard save",
+        "touch save",
+        "320px",
+        "landscape",
+        "reduced motion",
+        "teardown"
+      ],
+      "errors": []
+    },
+    {
+      "family": "chromium",
+      "language": "de",
+      "browser": "151.0.7922.34",
+      "timings": [
+        {
+          "mode": "construct",
+          "interactionMs": 738
+        },
+        {
+          "mode": "rewrite",
+          "interactionMs": 437
+        }
+      ],
+      "checks": [
+        "native construction",
+        "all eight operators",
+        "typed predicates",
+        "invalid integer",
+        "empty projection",
+        "header mismatch and repair",
+        "empty preview",
+        "branch removal and undo",
+        "intermediate result",
+        "no JSON input",
+        "actual authoritative evaluator",
+        "privacy before reveal",
+        "draft/focus",
+        "same-actor keep",
+        "epoch reload",
+        "anonymous sharing",
+        "rewrite rule controls",
+        "undo/redo",
+        "keyboard save",
+        "touch save",
+        "320px",
+        "landscape",
+        "reduced motion",
+        "teardown"
+      ],
+      "errors": []
+    },
+    {
+      "family": "firefox",
+      "language": "en",
+      "browser": "153.0",
+      "timings": [
+        {
+          "mode": "construct",
+          "interactionMs": 1742
+        },
+        {
+          "mode": "rewrite",
+          "interactionMs": 659
+        }
+      ],
+      "checks": [
+        "native construction",
+        "all eight operators",
+        "typed predicates",
+        "invalid integer",
+        "empty projection",
+        "header mismatch and repair",
+        "empty preview",
+        "branch removal and undo",
+        "intermediate result",
+        "no JSON input",
+        "actual authoritative evaluator",
+        "privacy before reveal",
+        "draft/focus",
+        "same-actor keep",
+        "epoch reload",
+        "anonymous sharing",
+        "rewrite rule controls",
+        "undo/redo",
+        "keyboard save",
+        "touch save",
+        "320px",
+        "landscape",
+        "reduced motion",
+        "teardown"
+      ],
+      "errors": []
+    },
+    {
+      "family": "firefox",
+      "language": "de",
+      "browser": "153.0",
+      "timings": [
+        {
+          "mode": "construct",
+          "interactionMs": 1750
+        },
+        {
+          "mode": "rewrite",
+          "interactionMs": 754
+        }
+      ],
+      "checks": [
+        "native construction",
+        "all eight operators",
+        "typed predicates",
+        "invalid integer",
+        "empty projection",
+        "header mismatch and repair",
+        "empty preview",
+        "branch removal and undo",
+        "intermediate result",
+        "no JSON input",
+        "actual authoritative evaluator",
+        "privacy before reveal",
+        "draft/focus",
+        "same-actor keep",
+        "epoch reload",
+        "anonymous sharing",
+        "rewrite rule controls",
+        "undo/redo",
+        "keyboard save",
+        "touch save",
+        "320px",
+        "landscape",
+        "reduced motion",
+        "teardown"
+      ],
+      "errors": []
+    },
+    {
+      "family": "webkit",
+      "language": "en",
+      "browser": "26.5",
+      "timings": [
+        {
+          "mode": "construct",
+          "interactionMs": 2253
+        },
+        {
+          "mode": "rewrite",
+          "interactionMs": 1277
+        }
+      ],
+      "checks": [
+        "native construction",
+        "all eight operators",
+        "typed predicates",
+        "invalid integer",
+        "empty projection",
+        "header mismatch and repair",
+        "empty preview",
+        "branch removal and undo",
+        "intermediate result",
+        "no JSON input",
+        "actual authoritative evaluator",
+        "privacy before reveal",
+        "draft/focus",
+        "same-actor keep",
+        "epoch reload",
+        "anonymous sharing",
+        "rewrite rule controls",
+        "undo/redo",
+        "keyboard save",
+        "touch save",
+        "320px",
+        "landscape",
+        "reduced motion",
+        "teardown"
+      ],
+      "errors": []
+    },
+    {
+      "family": "webkit",
+      "language": "de",
+      "browser": "26.5",
+      "timings": [
+        {
+          "mode": "construct",
+          "interactionMs": 2247
+        },
+        {
+          "mode": "rewrite",
+          "interactionMs": 1310
+        }
+      ],
+      "checks": [
+        "native construction",
+        "all eight operators",
+        "typed predicates",
+        "invalid integer",
+        "empty projection",
+        "header mismatch and repair",
+        "empty preview",
+        "branch removal and undo",
+        "intermediate result",
+        "no JSON input",
+        "actual authoritative evaluator",
+        "privacy before reveal",
+        "draft/focus",
+        "same-actor keep",
+        "epoch reload",
+        "anonymous sharing",
+        "rewrite rule controls",
+        "undo/redo",
+        "keyboard save",
+        "touch save",
+        "320px",
+        "landscape",
+        "reduced motion",
+        "teardown"
+      ],
+      "errors": []
+    }
+  ],
+  "worker_security": [
+    {
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "provider_payload": "5acef0f596bf61c7442f7ae3be940430b18ef3efe4f793871e6a430676e8b89f",
+      "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2023.699999988079,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 38.19999998807907,
+      "actual_host_deadline_ms": 2000
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "provider_payload": "5acef0f596bf61c7442f7ae3be940430b18ef3efe4f793871e6a430676e8b89f",
+      "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/socket",
+          "/__worker_probe__/events",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/child.js"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2025,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 171,
+      "actual_host_deadline_ms": 2000
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "provider_payload": "5acef0f596bf61c7442f7ae3be940430b18ef3efe4f793871e6a430676e8b89f",
+      "host_result_schema": "ab27323b0097cf341ac9c7e5ba0bd91266e060b24e796caf1df7f203a5a36ebe",
+      "worker_csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'",
+      "security": {
+        "passed": true,
+        "checks": {
+          "fetch_same": "blocked",
+          "fetch_cross": "blocked",
+          "xhr": "blocked",
+          "websocket": "blocked",
+          "eventsource": "blocked",
+          "child_worker": "blocked",
+          "blob_worker": "blocked",
+          "external_module": "blocked",
+          "eval": "blocked",
+          "function_constructor": "blocked"
+        },
+        "forbidden_requests": [],
+        "control": {
+          "fetch_same": "allowed",
+          "fetch_cross": "allowed",
+          "xhr": "allowed",
+          "websocket": "allowed",
+          "eventsource": "allowed",
+          "child_worker": "allowed",
+          "blob_worker": "allowed",
+          "external_module": "allowed",
+          "eval": "allowed",
+          "function_constructor": "allowed"
+        },
+        "control_requests": [
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/xhr",
+          "/__worker_probe__/fetch",
+          "/__worker_probe__/child.js",
+          "/__worker_probe__/module.mjs",
+          "/__worker_probe__/events",
+          "/__worker_probe__/socket"
+        ],
+        "invalid_result_status": "error",
+        "loop_status": "timeout",
+        "loop_elapsed_ms": 2082,
+        "recovery_status": "ok",
+        "remaining_workers": 0
+      },
+      "passed": true,
+      "samples": 8,
+      "max_elapsed_ms": 99,
+      "actual_host_deadline_ms": 2000
+    }
+  ],
+  "combined": {
+    "providers": 10,
+    "engines": 8,
+    "slide_types": 8,
+    "probes": {
+      "transaction_engine": 0,
+      "relational": 0,
+      "bplus": 0,
+      "er": 0,
+      "query_plan": 0,
+      "fd": 0,
+      "normalization": 0
+    }
+  },
+  "combined_providers": [
+    {
+      "id": "io.github.stefanjdecker.bpluslab",
+      "version": "0.7.0",
+      "payload": "b8a8b36d52004ed7baaa610bb7855a4e2b1c095118c0ceb4cc8714a0cbd78b27"
+    },
+    {
+      "id": "io.github.stefanjdecker.erdecisions",
+      "version": "0.6.0",
+      "payload": "bd5f433f3eb845a519568f7d74574c0f35b9372a73391e82e54a0503eeaa65a6"
+    },
+    {
+      "id": "io.github.stefanjdecker.fdlab",
+      "version": "0.6.0",
+      "payload": "17e3efd1a57c9500f6a2debfd36b2647d93e0b419817acc849559012920a6c63"
+    },
+    {
+      "id": "io.github.stefanjdecker.normalizationworkshop",
+      "version": "0.5.0",
+      "payload": "5cb0a3a4252e9b39c6d272bbd6e92658650a561fcc17dec31a494e38d50ecd06"
+    },
+    {
+      "id": "io.github.stefanjdecker.queryplan",
+      "version": "0.7.0",
+      "payload": "68bdedff0baea68b2bc3bce75329d5bd57e74c526e95ae33514a6a853d7b31ab"
+    },
+    {
+      "id": "io.github.stefanjdecker.relationallab",
+      "version": "0.2.0",
+      "payload": "5acef0f596bf61c7442f7ae3be940430b18ef3efe4f793871e6a430676e8b89f"
+    },
+    {
+      "id": "io.github.stefanjdecker.transactionactivity",
+      "version": "0.1.0",
+      "payload": "df8eb3738ef8f821b226e3ed54d7aa5fae1f1d67823e9127e3c765a0434ac2c3"
+    },
+    {
+      "id": "io.github.stefanjdecker.transactionengine",
+      "version": "0.1.0",
+      "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc"
+    },
+    {
+      "id": "org.example.coordinates",
+      "version": "0.1.0",
+      "payload": "9125ee1b9e7219b09b0ae373b4b208b57d0d06c3c5b87a04111493815317cf3c"
+    },
+    {
+      "id": "org.example.distance",
+      "version": "0.1.0",
+      "payload": "461488b4dd540fb9c7e5527ce7487c1357ada41c8ecbd0df5a19b2997d11b6ab"
+    }
+  ],
+  "preservation": {
+    "unchanged": true,
+    "protected": [
+      "host",
+      "collection",
+      "lecture-tools",
+      "lecture-tools-next",
+      "dbis2027",
+      "PETs4DS",
+      "texstage",
+      "texstage-media",
+      "texstage-public",
+      "texstage-plugins"
+    ],
+    "prior_transaction_worktrees": "unchanged"
+  },
+  "not_claimed": [
+    "hosted CI execution",
+    "physical phone or screen-reader acceptance",
+    "LAN classroom load and latency targets",
+    "600/1000 participants",
+    "Linux consumer round trip",
+    "release or catalog publication"
+  ],
+  "record_scope": "Pre-commit validation snapshot. Source-status fields describe the test snapshot; the commit containing this record preserves the tested implementation."
+}

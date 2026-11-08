@@ -1,5 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{texstage-relational-tree}[2026/11/06 Prepared relational algebra lessons]
+\ProvidesPackage{texstage-relational-tree}[2026/11/08 Prepared relational algebra lessons]
 \RequirePackage{texstage}
-\newcommand{\relationaltree}[3]{\texstageprepared{#1}{#2}{#3}}
+\RequirePackage{graphicx}
+\newsavebox{\RelationalTreeContent}
+\newlength{\RelationalTreeHeight}
+\newcommand{\relationaltree}[3]{%
+  \begingroup
+  \setlength{\RelationalTreeHeight}{\dimexpr#3-2pt\relax}%
+  \texstageprepared{#1}{#2}{#3}%
+  \endgroup}
 \endinput

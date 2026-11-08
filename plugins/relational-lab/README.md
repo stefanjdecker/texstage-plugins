@@ -3,8 +3,8 @@
 Experimental, independently installable engine and prepared lesson for named
 set relational algebra and checked rewrite certificates. The lesson includes
 phased submissions, private checks, anonymous sharing, reveal/reset controls
-and a basic JSON answer editor. The graphical tree editor and cooperative
-local preview remain the next milestone.
+and a visual query-tree editor. Version 0.2.0 adds typed operator forms,
+node inspection, checked rule controls and cooperative public-data previews.
 
 Start with the [lesson guide](../../docs/relational-lesson.md) for installation,
 the example deck, LaTeX authoring, answer syntax and classroom workflow.
@@ -53,7 +53,7 @@ Both the source modules and bundle remain hashed provider resources.
 
 ```sh
 python maintenance/build_wheels.py --package relational-lab
-python -m pip install --no-deps dist/texstage_relational_lab-0.1.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_relational_lab-0.2.0-py3-none-any.whl
 python -m pytest plugins/relational-lab/tests -q
 python maintenance/relational_probe.py
 ```
@@ -130,8 +130,10 @@ binding. Deck uploads never install or enable code.
 Prepared authoring, static exports, bounded lesson state, independent grading
 policy and role-filtered views are implemented and covered by
 [the R3/R4 checks](../../docs/design/relational-algebra-lesson-validation.md).
-The JSON editor makes that workflow executable; it is not the planned visual
-tree editor. Cooperative preview, intermediate-result inspection, physical-phone
-interaction checks and measured 64-participant load remain release gates.
+The visual editor and intermediate-result preview are implemented. See the
+[editor guide](../../docs/relational-editor.md) and its
+[validation record](../../docs/design/relational-editor-validation.md).
+Physical-phone, human accessibility and measured 64-participant classroom checks
+remain release gates. The editor does not increase the existing capacity ceiling.
 
 No catalog release is published by this milestone.

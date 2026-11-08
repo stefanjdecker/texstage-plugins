@@ -436,7 +436,8 @@ function condition(atoms, columns, budget) {
     return true;
   };
 }
-function evaluateTree(exercise, tree, instance, budget = new Budget()) {
+function* evaluateTreeSteps(exercise, tree, instance, budget = new Budget()) {
+  let ticks = 0;
   const headers = infer(tree, exercise.relations, exercise.task.allowed_operators);
   const results = [], trace = [];
   let cells = 0;
@@ -455,19 +456,31 @@ function evaluateTree(exercise, tree, instance, budget = new Budget()) {
       budget.charge(left.rows.length);
       if (op === "select") {
         const test = condition(node[2], left.header, budget);
-        for (const row of left.rows) if (test(row)) add(row);
+        for (const row of left.rows) {
+          if (test(row)) add(row);
+          if (++ticks % 64 === 0) yield null;
+        }
       } else if (op === "project" || op === "rename") {
         const mapping = new Map(op === "rename" ? node[2] : []);
         const names = left.header.map((c) => mapping.get(c[0]) ?? c[0]);
         const indices = outputHeader.map((c) => names.indexOf(c[0]));
-        for (const row of left.rows) add(indices.map((i) => row[i]));
+        for (const row of left.rows) {
+          add(indices.map((i) => row[i]));
+          if (++ticks % 64 === 0) yield null;
+        }
       } else {
         const right = results[node[2]];
         budget.charge(right.rows.length);
         if (op === "union" || op === "difference") {
           const other = new Set(right.rows.map(canonical));
-          for (const row of left.rows) if (op === "union" || !other.has(canonical(row))) add(row);
-          if (op === "union") right.rows.forEach(add);
+          for (const row of left.rows) {
+            if (op === "union" || !other.has(canonical(row))) add(row);
+            if (++ticks % 64 === 0) yield null;
+          }
+          if (op === "union") for (const row of right.rows) {
+            add(row);
+            if (++ticks % 64 === 0) yield null;
+          }
         } else {
           const joinedHeader = [...left.header, ...right.header];
           const indices = outputHeader.map((c) => joinedHeader.findIndex((k) => k[0] === c[0]));
@@ -476,6 +489,7 @@ function evaluateTree(exercise, tree, instance, budget = new Budget()) {
             budget.charge();
             const joined = [...a, ...b], row = indices.map((i) => joined[i]);
             if (test(row)) add(row);
+            if (++ticks % 64 === 0) yield null;
           }
         }
       }
@@ -484,8 +498,17 @@ function evaluateTree(exercise, tree, instance, budget = new Budget()) {
     }
     results.push(result);
     trace.push([index, result.rows.length, result.header.length]);
+    yield { index, relation: result };
   }
   return { relation: results.at(-1), stats: { trace, cells } };
+}
+function evaluateTree(exercise, tree, instance, budget = new Budget()) {
+  const steps = evaluateTreeSteps(exercise, tree, instance, budget);
+  let result;
+  do {
+    result = steps.next();
+  } while (!result.done);
+  return result.value;
 }
 
 // plugins/relational-lab/texstage_relational_lab/web/rewrites.mjs

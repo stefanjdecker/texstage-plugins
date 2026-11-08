@@ -112,7 +112,7 @@ def main():
         "result_schema_sha256": config["job"]["engine"]["result_contract"]["data_schema_digest"],
         "python": platform.python_version(), "node": subprocess.check_output(["node", "--version"], text=True).strip(),
         "cases": len(results), "max_evaluation_ms": max(row["milliseconds"] for row in results),
-        "scope": "R0/R2 engine only; authoring, lesson state and interfaces remain pending",
+        "scope": "Installed engine and contract checks only; lesson/editor validation is recorded separately",
     }
     (args.output / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     (args.output / "browser-config.json").write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")

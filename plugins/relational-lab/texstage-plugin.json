@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "plugin_api": 1,
   "id": "io.github.stefanjdecker.relationallab",
-  "version": "0.1.0",
-  "description": "Bounded relational algebra engine with prepared worksheets and phased lessons.",
+  "version": "0.2.0",
+  "description": "Bounded relational algebra with visual query editing, public previews and prepared lessons.",
   "license": "Apache-2.0",
   "capabilities": {
     "engines": {

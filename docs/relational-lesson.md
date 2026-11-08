@@ -3,9 +3,9 @@
 This experimental plugin adds two prepared activities to TeXStage: construct a
 query tree, and improve a supplied tree with checked rewrite rules. A presenter
 opens submissions, inspects answers privately, optionally shares an anonymous
-answer, and reveals the worked solution. Students currently enter JSON in a
-basic editor. The graphical tree editor and local intermediate-result preview
-are the next milestone.
+answer, and reveals the worked solution. Students build queries using labelled
+operator controls, inspect intermediate tables, and apply rewrite rules by
+selecting nodes. See the [visual editor guide](relational-editor.md).
 
 The runnable example is [lesson.tex](../examples/relational/lesson.tex). It uses
 a small library database, with one construction exercise and one rewrite
@@ -21,21 +21,21 @@ provider; the SDK is the package build backend.
 The host must include prepared authoring, typed results, structured command
 errors, atomic queue replacement and mount reconciliation. A version string
 alone does not distinguish unpublished development builds. See the
-[validation record](design/relational-algebra-lesson-validation.md) for the exact
+[validation record](design/relational-editor-validation.md) for the exact
 tested artifacts. Do not replace a course environment with this test environment.
 
 From the collection root, with that environment activated:
 
 ```sh
 python maintenance/build_wheels.py --package relational-lab
-python -m pip install --no-deps dist/texstage_relational_lab-0.1.0-py3-none-any.whl
+python -m pip install --no-deps dist/texstage_relational_lab-0.2.0-py3-none-any.whl
 texstage plugins --data ./relational-profile inspect io.github.stefanjdecker.relationallab
 ```
 
 Review the provider and copy the printed payload digest into the following command:
 
 ```sh
-texstage plugins --data ./relational-profile enable io.github.stefanjdecker.relationallab --version 0.1.0 --payload <printed-payload>
+texstage plugins --data ./relational-profile enable io.github.stefanjdecker.relationallab --version 0.2.0 --payload <printed-payload>
 texstage plugins --data ./relational-profile lock --output ./relational.lock.json
 texstage present examples/relational/lesson.tex --activities examples/relational/lesson.activities.json --data ./relational-profile --plugins-lock ./relational.lock.json --no-tunnel
 ```
@@ -48,8 +48,10 @@ existing experimental sessions retain their original runtime identity.
 
 1. Navigate to **Who borrowed database books?** The slide and phones show the
    public task; phones expose the tables under **Example data**.
-2. Select **Open answers**. Students edit **Answer as JSON** and explicitly
-   select **Save answer**. Typing alone does not submit.
+2. Select **Open answers**. Students choose a table, add operators, and apply
+   typed node edits. **Result at this node** previews the selected operation on
+   example data. **Save answer** submits explicitly; editing or previewing alone
+   does not send an answer.
 3. Keep the browser presenter open: its restricted worker evaluates saved
    answers. “Waiting for the presenter's computer” means saved but not yet
    evaluated. The presenter sees counts and can inspect one response privately.
@@ -60,13 +62,14 @@ existing experimental sessions retain their original runtime identity.
    student's own compact feedback. **Open answers** starts another round and
    clears the shared demonstration. **Reset activity** clears responses and
    starts a new epoch after confirmation.
-6. On **Move filters earlier**, students submit a list of rule applications.
-   The engine derives the resulting tree and checks each rule's side conditions.
+6. On **Move filters earlier**, students select a node, choose a named rule and
+   apply it. The tree and rule history update immediately. Undo/redo supports
+   experimentation. The engine independently replays the saved rule sequence.
 
 Two devices for the same student may create competing drafts. A newer saved
 answer or reset prompts **Reload saved answer** or **Keep my draft**. Keeping
 a draft never sends it automatically. Unrelated student updates preserve the
-current text and focus. Returning after navigation starts from the saved answer;
+current typed fields, tree and focus. Returning after navigation starts from the saved answer;
 unsaved drafts are local to the mounted activity.
 
 Evaluation errors and capacity limits are operational problems, not wrong
@@ -79,7 +82,10 @@ including private checks. It is not a general equivalence proof. Rewrite success
 also requires a checked, nonempty rule sequence that reduces the public
 intermediate-output-cell metric. That metric does not estimate database runtime.
 
-## Answer format
+## Internal answer format for authors and integrations
+
+The visual editor produces this format automatically. Students need not read or
+type JSON; source files and integrations keep their existing representation.
 
 A construction answer contains postorder nodes. Child indices refer to earlier
 nodes, and the last node is the root. For example, this returns the database-book
@@ -115,8 +121,8 @@ One step need not complete the optimization. The example source contains the
 full worked sequence.
 
 Answers allow at most 16 nodes or 8 rewrite steps and 1,800 characters in the
-ASCII canonical JSON representation. Pretty-printing whitespace does not count
-toward that canonical limit; the editor separately bounds input text to 16 KiB.
+ASCII canonical JSON representation. The visual editor enforces those existing
+bounds and reports an actionable error; it does not raise storage limits.
 The host checks shape, lesson phase and actor version before accepting a command.
 
 ## Author another exercise

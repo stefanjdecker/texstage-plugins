@@ -4,7 +4,7 @@ build-backend = "texstage.plugins.sdk"
 
 [project]
 name = "texstage-relational-lab"
-version = "0.1.0"
+version = "0.2.0"
 description = "Experimental Texstage relational algebra engine and prepared query-tree lessons"
 readme = "README.md"
 requires-python = ">=3.12"

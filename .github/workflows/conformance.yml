@@ -237,12 +237,13 @@ jobs:
           python maintenance/build_wheels.py --package relational-lab
           python -m pip install --no-deps dist/*.whl
           mkdir -p artifacts
-          python -m pytest plugins/relational-lab/tests -q --basetemp=artifacts/lesson-tests --junitxml=artifacts/relational-lab-tests.xml
+          RELATIONAL_TEST_EXPORTS=artifacts/relational-exports python -m pytest plugins/relational-lab/tests -q --basetemp=artifacts/lesson-tests --junitxml=artifacts/relational-lab-tests.xml
+          python -c "import xml.etree.ElementTree as E; assert not E.parse('artifacts/relational-lab-tests.xml').findall('.//skipped'), 'Both authoring languages must execute in the producer'"
           python maintenance/relational_probe.py
           git -C host-source rev-parse HEAD > artifacts/relational-lab/host-commit.txt
       - name: Stage identical wheels for Windows
         run: |
-          python -c "from pathlib import Path; import shutil; p=Path('engine-handoff'); p.mkdir(); shutil.copytree('dist',p/'plugins'); shutil.copytree('host-source/dist',p/'host'); shutil.copytree('host-source/requirements',p/'requirements'); shutil.copytree('artifacts/lesson-tests/test_installed_authoring_all_e0/out/lesson.bundle',p/'lesson.bundle')"
+          python -c "from pathlib import Path; import shutil; p=Path('engine-handoff'); p.mkdir(); shutil.copytree('dist',p/'plugins'); shutil.copytree('host-source/dist',p/'host'); shutil.copytree('host-source/requirements',p/'requirements'); shutil.copytree('artifacts/relational-exports',p/'bundles')"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with: {name: relational-lab-wheels, path: engine-handoff/, retention-days: 14}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -276,7 +277,8 @@ jobs:
           npm ci
           npx playwright install --with-deps "$BROWSER"
           node maintenance/relational_browser.cjs
-          node maintenance/relational_lesson_browser.cjs handoff/lesson.bundle
+          RELATIONAL_LANGUAGE=en node maintenance/relational_lesson_browser.cjs handoff/bundles/en/lesson.bundle
+          RELATIONAL_LANGUAGE=de node maintenance/relational_lesson_browser.cjs handoff/bundles/de/lesson.bundle
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
