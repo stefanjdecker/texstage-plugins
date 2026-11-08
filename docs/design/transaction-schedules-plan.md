@@ -2,8 +2,9 @@
 
 > Implementation update: the classroom package, prepared authoring, four views,
 > actor records, private feedback and generic host archive integration are now
-> implemented on `codex/transactions-classroom`. See the
-> [validation record](transaction-classroom-validation.md) for measured results
+> implemented and merged. Classroom release preparation continues on
+> `codex/classroom-release`. See the
+> [release validation record](classroom-release-validation.md) for measured results
 > and remaining classroom/release gates. The planning text below preserves the
 > original acceptance criteria; it is not a claim that every gate has passed.
 

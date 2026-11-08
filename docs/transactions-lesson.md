@@ -14,17 +14,21 @@ Two separately installed packages cooperate:
 | `texstage-transaction-activity` 0.1.0 | Prepared LaTeX, phases, per-student records, feedback and four browser views |
 
 These are experimental source-built packages. No catalog release is published.
-The [validation record](design/transaction-classroom-validation.md) identifies
+The [release validation record](design/classroom-release-validation.md) identifies
 the tested artifacts and separates automated checks from classroom acceptance.
 Version 1 provides formative feedback and **does not award scoreboard points**.
+Use the [device checklist](classroom-device-checklist.md) to rehearse real phones,
+the intended network and accessibility before classroom acceptance.
 
 ## Install and enable
 
 Use a fresh Python 3.12+ environment with a compatible TeXStage wheel. Build the
-host from the accompanying `codex/transactions-classroom` changes, including
-the generic archive additions. The base host is
-`f612a366ddde07b79a6d5f70160d7ac9db8bd880`; its version string alone does not
-identify these unpublished changes. The host must support prepared authoring,
+host from `codex/classroom-release` at
+`cdf20af0fa53e284b7a49c1a4cbd18245599c6a9`, published on GitHub and the GitLab
+code mirror. This includes the generic archive API, durable submission batching
+and bounded presenter evaluation. Its `0.2.1.dev7` version string alone does not
+identify these changes.
+The host must support prepared authoring,
 manifest-3 actor records, batched projections, typed evaluation results and
 the `Runtime.public_archive` API. Use exact wheel hashes from the validation
 record rather than substituting a similarly named development build.

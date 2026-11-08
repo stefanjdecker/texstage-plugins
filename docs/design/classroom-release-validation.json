@@ -1,0 +1,5024 @@
+{
+  "format": 1,
+  "date": "2026-11-08",
+  "release_status": "candidate-not-published",
+  "host_commit": "cdf20af0fa53e284b7a49c1a4cbd18245599c6a9",
+  "collection_code_commit": "c04887bd4729c4ceca1f850e173124c9176834b9",
+  "host_artifacts": {
+    "artifacts": {
+      "texstage-0.2.1.dev7-py3-none-any.whl": "e0716492508ec893df859d0dd87fdf2ba0a93a14ce8cf23244e19380e13f9da8",
+      "texstage-0.2.1.dev7.tar.gz": "c1c1fb1f9cb63b69b25f299f925c3bf03040651b41765bd5961ef8d57040e97d"
+    },
+    "sdist_rebuild": "all wheel members byte-identical"
+  },
+  "plugins": [
+    {
+      "id": "io.github.stefanjdecker.relationallab",
+      "version": "0.2.0",
+      "payload": "5acef0f596bf61c7442f7ae3be940430b18ef3efe4f793871e6a430676e8b89f",
+      "license": "Apache-2.0",
+      "artifacts": {
+        "texstage_relational_lab-0.2.0-py3-none-any.whl": "2bd57540b745abc146458d0f269fee8809bd527d41089139afc0abc8fbfc2e4a",
+        "texstage_relational_lab-0.2.0.tar.gz": "7302d719a37ddcc12122228c261e40732a22662b186cce25222d4d633fd637da"
+      },
+      "sdist_provider_manifest_parity": true
+    },
+    {
+      "id": "io.github.stefanjdecker.transactionactivity",
+      "version": "0.1.0",
+      "payload": "df8eb3738ef8f821b226e3ed54d7aa5fae1f1d67823e9127e3c765a0434ac2c3",
+      "license": "Apache-2.0",
+      "artifacts": {
+        "texstage_transaction_activity-0.1.0-py3-none-any.whl": "027afc7b7e31e6717a66e937c1268bb6fde5ba4036e92a885a5f9a12dd892a51",
+        "texstage_transaction_activity-0.1.0.tar.gz": "128572a40faf9e4c5090f73cf777eff132c9638eea94d394fb4c84f11569db61"
+      },
+      "sdist_provider_manifest_parity": true
+    },
+    {
+      "id": "io.github.stefanjdecker.transactionengine",
+      "version": "0.1.0",
+      "payload": "145300b39001a99777a87a9f824928441a8c7eb457db317d8fa6750eccb8aacc",
+      "license": "Apache-2.0",
+      "artifacts": {
+        "texstage_transaction_engine-0.1.0-py3-none-any.whl": "6f06262b52b81b447ac3c650e07c231cc6b34826f2af627ccae5b20358405bbc",
+        "texstage_transaction_engine-0.1.0.tar.gz": "fa4102f5aff10006a7c451bdfe6d92479856ee82235ccb3835771aa73553c215"
+      },
+      "sdist_provider_manifest_parity": true
+    }
+  ],
+  "local_tests": {
+    "host_full_predecessor": {
+      "passed": 635,
+      "skipped": 1,
+      "subtests": 2,
+      "host": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "skip": "Windows symlink creation unavailable"
+    },
+    "final_host_regressions": {
+      "passed": 51
+    },
+    "lecturer_isolation": {
+      "passed": 7
+    },
+    "transaction_engine": {
+      "passed": 67
+    },
+    "transaction_activity": {
+      "passed": 44
+    },
+    "relational_lab": {
+      "passed": 74
+    }
+  },
+  "local_measurements": [
+    {
+      "name": "final-chromium-1000-0",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 1000,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1133.44,
+        "p95_ms": 2987.36,
+        "p99_ms": 3779.95,
+        "max_ms": 3982.58
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3510.348900000001
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4298.447400000001,
+          "lastSubmitToDoneMs": 4223.4054
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 4820.263300000002,
+          "lastSubmitToDoneMs": 4751.9264
+        },
+        {
+          "name": "repair",
+          "duration_ms": 21524.2233,
+          "lastSubmitToDoneMs": 21471.264399999996
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 1033.23,
+          "p95_ms": 2535.65,
+          "p99_ms": 2771.72,
+          "max_ms": 2785.27
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1266.71,
+          "p95_ms": 2401.99,
+          "p99_ms": 2613.77,
+          "max_ms": 2697.2
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1412.08,
+          "p95_ms": 3694.43,
+          "p99_ms": 3921.91,
+          "max_ms": 3982.58
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 192.71,
+          "p95_ms": 299.77,
+          "p99_ms": 300.12,
+          "max_ms": 300.46
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 213.44,
+          "p95_ms": 329.42,
+          "p99_ms": 329.83,
+          "max_ms": 329.89
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 384028672
+    },
+    {
+      "name": "final-chromium-1000-30",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 1000,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 30,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 5.51,
+        "p95_ms": 109.89,
+        "p99_ms": 305.65,
+        "max_ms": 346.71
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3512.748599999999
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 30090.960699999996,
+          "lastSubmitToDoneMs": 108.57810000000609
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 30337.617000000006,
+          "lastSubmitToDoneMs": 356.2829999999958
+        },
+        {
+          "name": "repair",
+          "duration_ms": 30307.443,
+          "lastSubmitToDoneMs": 334.3493000000017
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 4.64,
+          "p95_ms": 23.73,
+          "p99_ms": 30.54,
+          "max_ms": 35.48
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 4.95,
+          "p95_ms": 27,
+          "p99_ms": 34.91,
+          "max_ms": 72.61
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 8.3,
+          "p95_ms": 43.41,
+          "p99_ms": 62.54,
+          "max_ms": 92.14
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 178.2,
+          "p95_ms": 305.69,
+          "p99_ms": 306.04,
+          "max_ms": 306.1
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 232.13,
+          "p95_ms": 346.32,
+          "p99_ms": 346.66,
+          "max_ms": 346.71
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 384053248
+    },
+    {
+      "name": "final-chromium-600-0",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 600,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 701.07,
+        "p95_ms": 1456.08,
+        "p99_ms": 1717.63,
+        "max_ms": 1810.25
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2035.6697999999997
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 2009.1823999999997,
+          "lastSubmitToDoneMs": 1963.2974000000004
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 2313.8289999999997,
+          "lastSubmitToDoneMs": 2286.4763000000003
+        },
+        {
+          "name": "repair",
+          "duration_ms": 13577.248800000001,
+          "lastSubmitToDoneMs": 13543.558700000001
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 667.89,
+          "p95_ms": 1190.43,
+          "p99_ms": 1264.31,
+          "max_ms": 1264.47
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 734.44,
+          "p95_ms": 1310.64,
+          "p99_ms": 1373.8,
+          "max_ms": 1374.35
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 874.43,
+          "p95_ms": 1632.44,
+          "p99_ms": 1789.34,
+          "max_ms": 1810.25
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 251.69,
+          "p95_ms": 291.68,
+          "p99_ms": 291.89,
+          "max_ms": 291.89
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 139.45,
+          "p95_ms": 198.71,
+          "p99_ms": 198.85,
+          "max_ms": 198.85
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 257249280
+    },
+    {
+      "name": "final-chromium-600-30",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 600,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 30,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 5.39,
+        "p95_ms": 74.74,
+        "p99_ms": 190.55,
+        "max_ms": 204.29
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 1962.5982000000004
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 30067.3225,
+          "lastSubmitToDoneMs": 108.33719999999448
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 30060.315099999993,
+          "lastSubmitToDoneMs": 107.24550000000454
+        },
+        {
+          "name": "repair",
+          "duration_ms": 30292.401599999997,
+          "lastSubmitToDoneMs": 339.26600000000326
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 4.85,
+          "p95_ms": 17.71,
+          "p99_ms": 22.84,
+          "max_ms": 23.97
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 5.05,
+          "p95_ms": 20.28,
+          "p99_ms": 25.05,
+          "max_ms": 33.4
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 6.19,
+          "p95_ms": 26.54,
+          "p99_ms": 42.08,
+          "max_ms": 60.75
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 119.49,
+          "p95_ms": 168.17,
+          "p99_ms": 185.13,
+          "max_ms": 185.13
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 136.12,
+          "p95_ms": 204.19,
+          "p99_ms": 204.29,
+          "max_ms": 204.29
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 258166784
+    },
+    {
+      "name": "final-firefox-1000-0",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 1000,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1047.41,
+        "p95_ms": 2561.85,
+        "p99_ms": 3271.88,
+        "max_ms": 3515.24
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3244.8093
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 3985.5714000000007,
+          "lastSubmitToDoneMs": 3913.6059000000005
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 4383.703099999999,
+          "lastSubmitToDoneMs": 4326.535400000001
+        },
+        {
+          "name": "repair",
+          "duration_ms": 23111.800100000004,
+          "lastSubmitToDoneMs": 23065.4912
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 992.26,
+          "p95_ms": 2364.93,
+          "p99_ms": 2515.55,
+          "max_ms": 2586.09
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1085.4,
+          "p95_ms": 1950.74,
+          "p99_ms": 2054.65,
+          "max_ms": 2165.69
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1382.09,
+          "p95_ms": 3167.87,
+          "p99_ms": 3443.48,
+          "max_ms": 3515.24
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 202.51,
+          "p95_ms": 360.32,
+          "p99_ms": 360.6,
+          "max_ms": 360.6
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 230.25,
+          "p95_ms": 328.96,
+          "p99_ms": 329.21,
+          "max_ms": 329.23
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 384901120
+    },
+    {
+      "name": "final-firefox-600-0",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 600,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 696.43,
+        "p95_ms": 1433.91,
+        "p99_ms": 1677.89,
+        "max_ms": 1736.2
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 2051.6705
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 1897.9424,
+          "lastSubmitToDoneMs": 1854.2059999999983
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 2187.7337000000007,
+          "lastSubmitToDoneMs": 2159.2679000000007
+        },
+        {
+          "name": "repair",
+          "duration_ms": 14302.311700000002,
+          "lastSubmitToDoneMs": 14273.581199999997
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 650.84,
+          "p95_ms": 1210.14,
+          "p99_ms": 1266.95,
+          "max_ms": 1267.04
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 748.6,
+          "p95_ms": 1302.31,
+          "p99_ms": 1366.55,
+          "max_ms": 1366.82
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 825.24,
+          "p95_ms": 1640.17,
+          "p99_ms": 1735.82,
+          "max_ms": 1736.2
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 111.26,
+          "p95_ms": 170.63,
+          "p99_ms": 170.87,
+          "max_ms": 170.87
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 133.1,
+          "p95_ms": 193.04,
+          "p99_ms": 193.22,
+          "max_ms": 193.22
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 257990656
+    },
+    {
+      "name": "final-webkit-1000-0",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1141.83,
+        "p95_ms": 3146.36,
+        "p99_ms": 3875.34,
+        "max_ms": 4053.48
+      },
+      "gates": {
+        "ackP95": false,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3250.2827
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4073.7322000000004,
+          "lastSubmitToDoneMs": 4000.0755
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 5150.662400000001,
+          "lastSubmitToDoneMs": 5094.780199999999
+        },
+        {
+          "name": "repair",
+          "duration_ms": 35590.2747,
+          "lastSubmitToDoneMs": 35533.5691
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 1041.95,
+          "p95_ms": 2529.01,
+          "p99_ms": 2604.19,
+          "max_ms": 2667.45
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1260.74,
+          "p95_ms": 2928.71,
+          "p99_ms": 3146.99,
+          "max_ms": 3244.4
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1432.84,
+          "p95_ms": 3738.35,
+          "p99_ms": 3990.56,
+          "max_ms": 4053.48
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 190.56,
+          "p95_ms": 285.2,
+          "p99_ms": 285.54,
+          "max_ms": 285.56
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 206.07,
+          "p95_ms": 321.37,
+          "p99_ms": 322.13,
+          "max_ms": 322.3
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 383070208
+    },
+    {
+      "name": "final-webkit-600-0",
+      "host_runtime": "0f2389c9b828a9a15ebbb9e543c8f513f1d4a741",
+      "actors": 600,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 627.32,
+        "p95_ms": 1340.32,
+        "p99_ms": 1573.47,
+        "max_ms": 1619.01
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 1846.3701999999998
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 1827.4164,
+          "lastSubmitToDoneMs": 1786.1032999999998
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 3209.4489000000012,
+          "lastSubmitToDoneMs": 3182.3850999999995
+        },
+        {
+          "name": "repair",
+          "duration_ms": 21700.255300000004,
+          "lastSubmitToDoneMs": 21670.094600000004
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 572.69,
+          "p95_ms": 1015.45,
+          "p99_ms": 1087.65,
+          "max_ms": 1087.9
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 678.04,
+          "p95_ms": 1265.65,
+          "p99_ms": 1372.84,
+          "max_ms": 1393.83
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 824.27,
+          "p95_ms": 1555.43,
+          "p99_ms": 1618.79,
+          "max_ms": 1619.01
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 124.58,
+          "p95_ms": 233.13,
+          "p99_ms": 233.25,
+          "max_ms": 233.25
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 138.29,
+          "p95_ms": 256.57,
+          "p99_ms": 256.78,
+          "max_ms": 256.78
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 256868352
+    },
+    {
+      "name": "four-native-chromium-1000-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 1000,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1090.08,
+        "p95_ms": 3229.91,
+        "p99_ms": 4047.86,
+        "max_ms": 4179.44
+      },
+      "gates": {
+        "ackP95": false,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3507.4614
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4182.290999999999,
+          "lastSubmitToDoneMs": 4110.205400000001
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 3896.607500000002,
+          "lastSubmitToDoneMs": 3846.7584000000024
+        },
+        {
+          "name": "repair",
+          "duration_ms": 22683.6322,
+          "lastSubmitToDoneMs": 22643.0169
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 935.78,
+          "p95_ms": 2431.29,
+          "p99_ms": 2602.34,
+          "max_ms": 2686.42
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1235.7,
+          "p95_ms": 2196.51,
+          "p99_ms": 2286.21,
+          "max_ms": 2334.54
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1494.73,
+          "p95_ms": 3951.78,
+          "p99_ms": 4141.66,
+          "max_ms": 4179.44
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 195.81,
+          "p95_ms": 306.69,
+          "p99_ms": 307.04,
+          "max_ms": 307.07
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 216.2,
+          "p95_ms": 323.16,
+          "p99_ms": 323.22,
+          "max_ms": 323.25
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 385368064
+    },
+    {
+      "name": "four-native-firefox-1000-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 1000,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1122.09,
+        "p95_ms": 2777.99,
+        "p99_ms": 3519,
+        "max_ms": 3710.58
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3614.7327000000005
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4131.1199,
+          "lastSubmitToDoneMs": 4058.179899999999
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 3708.5969000000005,
+          "lastSubmitToDoneMs": 3653.089899999999
+        },
+        {
+          "name": "repair",
+          "duration_ms": 25607.322600000003,
+          "lastSubmitToDoneMs": 25558.204599999997
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 1089.67,
+          "p95_ms": 2619.57,
+          "p99_ms": 2685.22,
+          "max_ms": 2752.69
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1178.26,
+          "p95_ms": 2096.37,
+          "p99_ms": 2174.07,
+          "max_ms": 2223.3
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1424.46,
+          "p95_ms": 3443.27,
+          "p99_ms": 3643.12,
+          "max_ms": 3710.58
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 162.31,
+          "p95_ms": 246.94,
+          "p99_ms": 247.36,
+          "max_ms": 247.37
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 180.58,
+          "p95_ms": 271.29,
+          "p99_ms": 271.63,
+          "max_ms": 271.66
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 384593920
+    },
+    {
+      "name": "four-native-firefox-600-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 600,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 663.39,
+        "p95_ms": 1421.94,
+        "p99_ms": 1636.11,
+        "max_ms": 1745.45
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 1913.0990999999995
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 1932.2929000000004,
+          "lastSubmitToDoneMs": 1895.119700000001
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 2180.4349,
+          "lastSubmitToDoneMs": 2148.8544999999995
+        },
+        {
+          "name": "repair",
+          "duration_ms": 15527.803699999997,
+          "lastSubmitToDoneMs": 15495.086
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 623.65,
+          "p95_ms": 1128.4,
+          "p99_ms": 1199.58,
+          "max_ms": 1200.01
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 680.46,
+          "p95_ms": 1270.19,
+          "p99_ms": 1347.54,
+          "max_ms": 1347.79
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 850.85,
+          "p95_ms": 1593.64,
+          "p99_ms": 1701.79,
+          "max_ms": 1745.45
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 134.93,
+          "p95_ms": 181.72,
+          "p99_ms": 185.64,
+          "max_ms": 185.64
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 126.76,
+          "p95_ms": 186.11,
+          "p99_ms": 186.54,
+          "max_ms": 186.54
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 257617920
+    },
+    {
+      "name": "four-workers-chromium-1000-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 1000,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1101.07,
+        "p95_ms": 3449.81,
+        "p99_ms": 4177.81,
+        "max_ms": 4284.51
+      },
+      "gates": {
+        "ackP95": false,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3332.799100000001
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4098.612499999999,
+          "lastSubmitToDoneMs": 4033.9256000000005
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 3766.502400000001,
+          "lastSubmitToDoneMs": 3717.989700000002
+        },
+        {
+          "name": "repair",
+          "duration_ms": 23101.1895,
+          "lastSubmitToDoneMs": 23055.8478
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 954.14,
+          "p95_ms": 2372.65,
+          "p99_ms": 2528.27,
+          "max_ms": 2602.03
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1204.44,
+          "p95_ms": 2240.52,
+          "p99_ms": 2329.05,
+          "max_ms": 2385.5
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1629.31,
+          "p95_ms": 4104.56,
+          "p99_ms": 4243.24,
+          "max_ms": 4284.51
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 247.31,
+          "p95_ms": 360.04,
+          "p99_ms": 360.77,
+          "max_ms": 360.81
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 204.36,
+          "p95_ms": 333.85,
+          "p99_ms": 334.03,
+          "max_ms": 338.64
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 384196608
+    },
+    {
+      "name": "four-workers-chromium-600-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 600,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 627.86,
+        "p95_ms": 1363.22,
+        "p99_ms": 1556.98,
+        "max_ms": 1653.26
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 1883.3153999999995
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 1831.8714999999993,
+          "lastSubmitToDoneMs": 1790.036399999999
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 2410.9422000000013,
+          "lastSubmitToDoneMs": 2381.136599999998
+        },
+        {
+          "name": "repair",
+          "duration_ms": 12786.033500000005,
+          "lastSubmitToDoneMs": 12759.228199999998
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 555.85,
+          "p95_ms": 1030.96,
+          "p99_ms": 1107.5,
+          "max_ms": 1107.98
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 696.98,
+          "p95_ms": 1307.49,
+          "p99_ms": 1363.05,
+          "max_ms": 1365.99
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 802.36,
+          "p95_ms": 1532.19,
+          "p99_ms": 1633.39,
+          "max_ms": 1653.26
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 111.25,
+          "p95_ms": 150.81,
+          "p99_ms": 151.34,
+          "max_ms": 151.34
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 128.21,
+          "p95_ms": 185.29,
+          "p99_ms": 185.67,
+          "max_ms": 185.67
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 256790528
+    },
+    {
+      "name": "four-workers-firefox-1000-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 1000,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null
+      },
+      "gates": {
+        "ackP95": false,
+        "ackMaximum": false,
+        "repairDrain": false,
+        "controlsP95": false,
+        "controlsMaximum": false,
+        "correctness": false
+      },
+      "failure": "browserContext.newPage: Cannot read properties of undefined (reading '_page')",
+      "phases": [],
+      "phase_acknowledgements": {},
+      "checks": {},
+      "server_peak_rss_bytes": 55537664
+    },
+    {
+      "name": "four-workers-firefox-600-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 600,
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 0,
+        "p50_ms": null,
+        "p95_ms": null,
+        "p99_ms": null,
+        "max_ms": null
+      },
+      "gates": {
+        "ackP95": false,
+        "ackMaximum": false,
+        "repairDrain": false,
+        "controlsP95": false,
+        "controlsMaximum": false,
+        "correctness": false
+      },
+      "failure": "browserContext.newPage: Cannot read properties of undefined (reading '_page')",
+      "phases": [],
+      "phase_acknowledgements": {},
+      "checks": {},
+      "server_peak_rss_bytes": 55062528
+    },
+    {
+      "name": "four-workers-webkit-1000-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1060.4,
+        "p95_ms": 2606.49,
+        "p99_ms": 3183.81,
+        "max_ms": 3388.11
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3280.312500000001
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4172.712899999999,
+          "lastSubmitToDoneMs": 4100.973400000001
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 4658.3315,
+          "lastSubmitToDoneMs": 4603.082399999999
+        },
+        {
+          "name": "repair",
+          "duration_ms": 48557.6406,
+          "lastSubmitToDoneMs": 48509.7656
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 972.21,
+          "p95_ms": 2541.49,
+          "p99_ms": 2706.38,
+          "max_ms": 2778.42
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1164.59,
+          "p95_ms": 2215.55,
+          "p99_ms": 2317.17,
+          "max_ms": 2411.93
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1410.29,
+          "p95_ms": 3100.91,
+          "p99_ms": 3322.07,
+          "max_ms": 3388.11
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 177.7,
+          "p95_ms": 285.25,
+          "p99_ms": 285.56,
+          "max_ms": 285.56
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 222.64,
+          "p95_ms": 339.73,
+          "p99_ms": 340.56,
+          "max_ms": 340.65
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 383197184
+    },
+    {
+      "name": "four-workers-webkit-600-0",
+      "host_runtime": "c43ec8a7384988f7149ccfeb3aa6ee33e4ce2fd8",
+      "actors": 600,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 1920,
+        "p50_ms": 699.05,
+        "p95_ms": 1466.58,
+        "p99_ms": 1728.31,
+        "max_ms": 1819.46
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 1974.3391999999994
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 2050.6093999999994,
+          "lastSubmitToDoneMs": 2008.5172000000002
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 2376.8424000000014,
+          "lastSubmitToDoneMs": 2346.5712999999996
+        },
+        {
+          "name": "repair",
+          "duration_ms": 29898.0109,
+          "lastSubmitToDoneMs": 29868.159600000003
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 600,
+          "p50_ms": 639.95,
+          "p95_ms": 1152.42,
+          "p99_ms": 1214.19,
+          "max_ms": 1214.32
+        },
+        "diagnosis": {
+          "n": 600,
+          "p50_ms": 733.45,
+          "p95_ms": 1363.9,
+          "p99_ms": 1421.5,
+          "max_ms": 1421.91
+        },
+        "repair": {
+          "n": 600,
+          "p50_ms": 914.22,
+          "p95_ms": 1673.51,
+          "p99_ms": 1819.18,
+          "max_ms": 1819.46
+        },
+        "replacement": {
+          "n": 60,
+          "p50_ms": 136.86,
+          "p95_ms": 186.04,
+          "p99_ms": 186.13,
+          "max_ms": 186.13
+        },
+        "recovery": {
+          "n": 60,
+          "p50_ms": 157.21,
+          "p95_ms": 211.22,
+          "p99_ms": 215.95,
+          "max_ms": 215.95
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 660,
+        "reconnect": true,
+        "conflict": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 257564672
+    },
+    {
+      "name": "receipt-priority-chromium-1000-0",
+      "host_runtime": "cdf20af0fa53e284b7a49c1a4cbd18245599c6a9",
+      "actors": 1000,
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1054.74,
+        "p95_ms": 2672.35,
+        "p99_ms": 3425.32,
+        "max_ms": 3672.51
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3298.7348999999995
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4051.218499999999,
+          "lastSubmitToDoneMs": 3981.0967
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 3505.0875000000015,
+          "lastSubmitToDoneMs": 3452.1496000000006
+        },
+        {
+          "name": "repair",
+          "duration_ms": 22082.4013,
+          "lastSubmitToDoneMs": 22033.897
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 969.49,
+          "p95_ms": 2277.95,
+          "p99_ms": 2467.01,
+          "max_ms": 2549.14
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1116.19,
+          "p95_ms": 2096.5,
+          "p99_ms": 2180.69,
+          "max_ms": 2231.3
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1404.51,
+          "p95_ms": 3302.3,
+          "p99_ms": 3606.55,
+          "max_ms": 3672.51
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 161.82,
+          "p95_ms": 266.41,
+          "p99_ms": 266.62,
+          "max_ms": 266.81
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 216.9,
+          "p95_ms": 328.33,
+          "p99_ms": 350.09,
+          "max_ms": 350.35
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 383213568
+    },
+    {
+      "name": "receipt-priority-webkit-1000-0",
+      "host_runtime": "cdf20af0fa53e284b7a49c1a4cbd18245599c6a9",
+      "actors": 1000,
+      "browser": "webkit",
+      "browser_version": "26.5",
+      "wave_seconds": 0,
+      "scope": "synthetic sockets and real presenter on Windows loopback; shared workstation",
+      "acknowledgement": {
+        "n": 3200,
+        "p50_ms": 1097.46,
+        "p95_ms": 2677.13,
+        "p99_ms": 3291.01,
+        "max_ms": 3474.25
+      },
+      "gates": {
+        "ackP95": true,
+        "ackMaximum": true,
+        "repairDrain": true,
+        "controlsP95": true,
+        "controlsMaximum": true,
+        "correctness": true
+      },
+      "failure": null,
+      "phases": [
+        {
+          "name": "join",
+          "duration_ms": 3349.5351999999993
+        },
+        {
+          "name": "prediction",
+          "duration_ms": 4284.017899999999,
+          "lastSubmitToDoneMs": 4218.093999999999
+        },
+        {
+          "name": "diagnosis",
+          "duration_ms": 3706.5504999999976,
+          "lastSubmitToDoneMs": 3651.6993
+        },
+        {
+          "name": "repair",
+          "duration_ms": 48129.16160000001,
+          "lastSubmitToDoneMs": 48085.67670000001
+        }
+      ],
+      "phase_acknowledgements": {
+        "prediction": {
+          "n": 1000,
+          "p50_ms": 1027.01,
+          "p95_ms": 2623.01,
+          "p99_ms": 2728.22,
+          "max_ms": 2785.94
+        },
+        "diagnosis": {
+          "n": 1000,
+          "p50_ms": 1185.37,
+          "p95_ms": 2186.52,
+          "p99_ms": 2266.01,
+          "max_ms": 2354.73
+        },
+        "repair": {
+          "n": 1000,
+          "p50_ms": 1373.22,
+          "p95_ms": 3170.51,
+          "p99_ms": 3380.26,
+          "max_ms": 3474.25
+        },
+        "replacement": {
+          "n": 100,
+          "p50_ms": 190.31,
+          "p95_ms": 288.36,
+          "p99_ms": 288.54,
+          "max_ms": 288.56
+        },
+        "recovery": {
+          "n": 100,
+          "p50_ms": 203.52,
+          "p95_ms": 344.75,
+          "p99_ms": 360.86,
+          "max_ms": 361.01
+        }
+      },
+      "checks": {
+        "receiptRetry": true,
+        "distinctRepairs": 1100,
+        "reconnect": true,
+        "conflict": true,
+        "ceiling": true,
+        "evaluatorRecovery": true,
+        "noPoints": true,
+        "archives": true,
+        "reset": true
+      },
+      "server_peak_rss_bytes": 383733760
+    }
+  ],
+  "hosted_runs": [
+    {
+      "repo": "stefanjdecker/texstage-plugins",
+      "run_id": 42457555117,
+      "sha": "df5bf39872e946c5f542cbae6f2e85ca7b8649c4",
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128659710735,
+          "name": "producer",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128659710735"
+        },
+        {
+          "id": 128660277940,
+          "name": "browsers (windows-2025, webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660277940"
+        },
+        {
+          "id": 128660277973,
+          "name": "browsers (ubuntu-24.04, webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660277973"
+        },
+        {
+          "id": 128660277984,
+          "name": "browsers (windows-2025, chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660277984"
+        },
+        {
+          "id": 128660277985,
+          "name": "browsers (windows-2025, firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660277985"
+        },
+        {
+          "id": 128660278001,
+          "name": "browsers (ubuntu-24.04, chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278001"
+        },
+        {
+          "id": 128660278074,
+          "name": "browsers (ubuntu-24.04, firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278074"
+        },
+        {
+          "id": 128660278110,
+          "name": "capacity (ubuntu-24.04, chromium, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278110"
+        },
+        {
+          "id": 128660278113,
+          "name": "capacity (ubuntu-24.04, chromium, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278113"
+        },
+        {
+          "id": 128660278114,
+          "name": "capacity (ubuntu-24.04, firefox, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278114"
+        },
+        {
+          "id": 128660278116,
+          "name": "capacity (ubuntu-24.04, chromium, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278116"
+        },
+        {
+          "id": 128660278126,
+          "name": "capacity (ubuntu-24.04, webkit, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278126"
+        },
+        {
+          "id": 128660278137,
+          "name": "capacity (windows-2025, chromium, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278137"
+        },
+        {
+          "id": 128660278149,
+          "name": "capacity (ubuntu-24.04, chromium, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278149"
+        },
+        {
+          "id": 128660278162,
+          "name": "capacity (ubuntu-24.04, firefox, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278162"
+        },
+        {
+          "id": 128660278163,
+          "name": "capacity (ubuntu-24.04, webkit, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278163"
+        },
+        {
+          "id": 128660278168,
+          "name": "capacity (ubuntu-24.04, firefox, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278168"
+        },
+        {
+          "id": 128660278172,
+          "name": "capacity (ubuntu-24.04, firefox, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278172"
+        },
+        {
+          "id": 128660278173,
+          "name": "capacity (windows-2025, chromium, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278173"
+        },
+        {
+          "id": 128660278195,
+          "name": "capacity (windows-2025, firefox, 1000, 0)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278195"
+        },
+        {
+          "id": 128660278202,
+          "name": "capacity (windows-2025, webkit, 1000, 0)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278202"
+        },
+        {
+          "id": 128660278213,
+          "name": "capacity (windows-2025, webkit, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278213"
+        },
+        {
+          "id": 128660278227,
+          "name": "capacity (windows-2025, firefox, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278227"
+        },
+        {
+          "id": 128660278232,
+          "name": "capacity (windows-2025, chromium, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278232"
+        },
+        {
+          "id": 128660278236,
+          "name": "capacity (windows-2025, webkit, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278236"
+        },
+        {
+          "id": 128660278244,
+          "name": "capacity (windows-2025, firefox, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278244"
+        },
+        {
+          "id": 128660278251,
+          "name": "capacity (ubuntu-24.04, webkit, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278251"
+        },
+        {
+          "id": 128660278254,
+          "name": "capacity (ubuntu-24.04, webkit, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278254"
+        },
+        {
+          "id": 128660278290,
+          "name": "capacity (windows-2025, webkit, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278290"
+        },
+        {
+          "id": 128660278318,
+          "name": "capacity (windows-2025, firefox, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278318"
+        },
+        {
+          "id": 128660278389,
+          "name": "capacity (windows-2025, chromium, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278389"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage-plugins",
+      "run_id": 42457557084,
+      "sha": "df5bf39872e946c5f542cbae6f2e85ca7b8649c4",
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128659716120,
+          "name": "bplus-lab",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716120"
+        },
+        {
+          "id": 128659716222,
+          "name": "linux-producer",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716222"
+        },
+        {
+          "id": 128659716239,
+          "name": "worker-bundles (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716239"
+        },
+        {
+          "id": 128659716252,
+          "name": "transaction-engine",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716252"
+        },
+        {
+          "id": 128659716254,
+          "name": "relational-lab",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716254"
+        },
+        {
+          "id": 128659716262,
+          "name": "worker-bundles (windows-2025)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716262"
+        },
+        {
+          "id": 128659716322,
+          "name": "fd-lab",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659716322"
+        },
+        {
+          "id": 128659869459,
+          "name": "transaction-engine-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659869459"
+        },
+        {
+          "id": 128659869476,
+          "name": "transaction-engine-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659869476"
+        },
+        {
+          "id": 128659869498,
+          "name": "transaction-engine-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659869498"
+        },
+        {
+          "id": 128659869613,
+          "name": "transaction-engine-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659869613"
+        },
+        {
+          "id": 128659919506,
+          "name": "bplus-lab-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659919506"
+        },
+        {
+          "id": 128659919519,
+          "name": "bplus-prepared",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659919519"
+        },
+        {
+          "id": 128659919534,
+          "name": "bplus-lab-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659919534"
+        },
+        {
+          "id": 128659919584,
+          "name": "bplus-lab-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659919584"
+        },
+        {
+          "id": 128659919607,
+          "name": "bplus-lab-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128659919607"
+        },
+        {
+          "id": 128660216886,
+          "name": "relational-lab-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660216886"
+        },
+        {
+          "id": 128660216895,
+          "name": "relational-lab-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660216895"
+        },
+        {
+          "id": 128660216902,
+          "name": "relational-lab-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660216902"
+        },
+        {
+          "id": 128660216956,
+          "name": "relational-lab-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660216956"
+        },
+        {
+          "id": 128660305785,
+          "name": "fd-lab-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660305785"
+        },
+        {
+          "id": 128660305809,
+          "name": "fd-lab-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660305809"
+        },
+        {
+          "id": 128660305846,
+          "name": "fd-lab-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660305846"
+        },
+        {
+          "id": 128660305862,
+          "name": "fd-lab-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660305862"
+        },
+        {
+          "id": 128660307244,
+          "name": "fd-lab-capacity",
+          "status": "completed",
+          "conclusion": "skipped",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660307244"
+        },
+        {
+          "id": 128660403765,
+          "name": "windows-consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660403765"
+        },
+        {
+          "id": 128660789651,
+          "name": "bplus-prepared-browsers (firefox, de)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660789651"
+        },
+        {
+          "id": 128660789655,
+          "name": "bplus-prepared-browsers (chromium, en)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660789655"
+        },
+        {
+          "id": 128660789694,
+          "name": "bplus-prepared-browsers (chromium, de)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660789694"
+        },
+        {
+          "id": 128660789706,
+          "name": "bplus-prepared-browsers (webkit, en)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660789706"
+        },
+        {
+          "id": 128660789707,
+          "name": "bplus-prepared-browsers (webkit, de)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660789707"
+        },
+        {
+          "id": 128660789722,
+          "name": "bplus-prepared-browsers (firefox, en)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457557084/job/128660789722"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage-plugins",
+      "run_id": 42457860031,
+      "sha": "c04887bd4729c4ceca1f850e173124c9176834b9",
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128660619599,
+          "name": "capacity (webkit, 1000)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031/job/128660619599"
+        },
+        {
+          "id": 128660619755,
+          "name": "capacity (firefox, 1000)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031/job/128660619755"
+        },
+        {
+          "id": 128660619777,
+          "name": "capacity (chromium, 600)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031/job/128660619777"
+        },
+        {
+          "id": 128660619780,
+          "name": "capacity (webkit, 600)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031/job/128660619780"
+        },
+        {
+          "id": 128660619801,
+          "name": "capacity (chromium, 1000)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031/job/128660619801"
+        },
+        {
+          "id": 128660619891,
+          "name": "capacity (firefox, 600)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457860031/job/128660619891"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage",
+      "run_id": 42458115568,
+      "sha": "37d35ea331f9f6118cda69ef0cf82ce2ce577de6",
+      "url": "https://github.com/stefanjdecker/texstage/actions/runs/42458115568",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128661365666,
+          "name": "container",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458115568/job/128661365666"
+        },
+        {
+          "id": 128661365772,
+          "name": "test (ubuntu-24.04, 3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458115568/job/128661365772"
+        },
+        {
+          "id": 128661365849,
+          "name": "test (ubuntu-24.04, 3.14)",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458115568/job/128661365849"
+        },
+        {
+          "id": 128661365907,
+          "name": "test (ubuntu-24.04, 3.13)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458115568/job/128661365907"
+        },
+        {
+          "id": 128661366514,
+          "name": "test (windows-2025, 3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458115568/job/128661366514"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage",
+      "run_id": 42458697864,
+      "sha": "cdf20af0fa53e284b7a49c1a4cbd18245599c6a9",
+      "url": "https://github.com/stefanjdecker/texstage/actions/runs/42458697864",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128663107863,
+          "name": "test (ubuntu-24.04, 3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458697864/job/128663107863"
+        },
+        {
+          "id": 128663107986,
+          "name": "test (ubuntu-24.04, 3.13)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458697864/job/128663107986"
+        },
+        {
+          "id": 128663107988,
+          "name": "container",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458697864/job/128663107988"
+        },
+        {
+          "id": 128663108071,
+          "name": "test (windows-2025, 3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458697864/job/128663108071"
+        },
+        {
+          "id": 128663108160,
+          "name": "test (ubuntu-24.04, 3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage/actions/runs/42458697864/job/128663108160"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage-plugins",
+      "run_id": 42458730616,
+      "sha": "c04887bd4729c4ceca1f850e173124c9176834b9",
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128663204529,
+          "name": "producer",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663204529"
+        },
+        {
+          "id": 128663731993,
+          "name": "browsers (ubuntu-24.04, webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663731993"
+        },
+        {
+          "id": 128663731994,
+          "name": "browsers (windows-2025, firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663731994"
+        },
+        {
+          "id": 128663731996,
+          "name": "browsers (windows-2025, chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663731996"
+        },
+        {
+          "id": 128663731997,
+          "name": "browsers (ubuntu-24.04, firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663731997"
+        },
+        {
+          "id": 128663732050,
+          "name": "browsers (ubuntu-24.04, chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732050"
+        },
+        {
+          "id": 128663732072,
+          "name": "browsers (windows-2025, webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732072"
+        },
+        {
+          "id": 128663732132,
+          "name": "capacity (ubuntu-24.04, chromium, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732132"
+        },
+        {
+          "id": 128663732147,
+          "name": "capacity (ubuntu-24.04, firefox, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732147"
+        },
+        {
+          "id": 128663732279,
+          "name": "capacity (ubuntu-24.04, firefox, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732279"
+        },
+        {
+          "id": 128663732287,
+          "name": "capacity (windows-2025, chromium, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732287"
+        },
+        {
+          "id": 128663732299,
+          "name": "capacity (ubuntu-24.04, webkit, 600, 0)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732299"
+        },
+        {
+          "id": 128663732300,
+          "name": "capacity (windows-2025, webkit, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732300"
+        },
+        {
+          "id": 128663732311,
+          "name": "capacity (windows-2025, webkit, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732311"
+        },
+        {
+          "id": 128663732312,
+          "name": "capacity (windows-2025, firefox, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732312"
+        },
+        {
+          "id": 128663732314,
+          "name": "capacity (windows-2025, firefox, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732314"
+        },
+        {
+          "id": 128663732320,
+          "name": "capacity (ubuntu-24.04, firefox, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732320"
+        },
+        {
+          "id": 128663732321,
+          "name": "capacity (windows-2025, chromium, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732321"
+        },
+        {
+          "id": 128663732322,
+          "name": "capacity (ubuntu-24.04, firefox, 1000, 0)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732322"
+        },
+        {
+          "id": 128663732338,
+          "name": "capacity (ubuntu-24.04, webkit, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732338"
+        },
+        {
+          "id": 128663732339,
+          "name": "capacity (ubuntu-24.04, chromium, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732339"
+        },
+        {
+          "id": 128663732342,
+          "name": "capacity (ubuntu-24.04, webkit, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732342"
+        },
+        {
+          "id": 128663732354,
+          "name": "capacity (ubuntu-24.04, chromium, 1000, 0)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732354"
+        },
+        {
+          "id": 128663732357,
+          "name": "capacity (windows-2025, firefox, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732357"
+        },
+        {
+          "id": 128663732359,
+          "name": "capacity (windows-2025, webkit, 600, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732359"
+        },
+        {
+          "id": 128663732363,
+          "name": "capacity (windows-2025, chromium, 1000, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732363"
+        },
+        {
+          "id": 128663732366,
+          "name": "capacity (windows-2025, firefox, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732366"
+        },
+        {
+          "id": 128663732380,
+          "name": "capacity (ubuntu-24.04, chromium, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732380"
+        },
+        {
+          "id": 128663732381,
+          "name": "capacity (windows-2025, chromium, 1000, 0)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732381"
+        },
+        {
+          "id": 128663732394,
+          "name": "capacity (windows-2025, webkit, 600, 30)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732394"
+        },
+        {
+          "id": 128663732414,
+          "name": "capacity (ubuntu-24.04, webkit, 1000, 0)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732414"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage-plugins",
+      "run_id": 42458732389,
+      "sha": "c04887bd4729c4ceca1f850e173124c9176834b9",
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128663210089,
+          "name": "transaction-engine",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210089"
+        },
+        {
+          "id": 128663210171,
+          "name": "linux-producer",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210171"
+        },
+        {
+          "id": 128663210199,
+          "name": "worker-bundles (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210199"
+        },
+        {
+          "id": 128663210209,
+          "name": "relational-lab",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210209"
+        },
+        {
+          "id": 128663210210,
+          "name": "fd-lab",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210210"
+        },
+        {
+          "id": 128663210241,
+          "name": "bplus-lab",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210241"
+        },
+        {
+          "id": 128663210261,
+          "name": "worker-bundles (windows-2025)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663210261"
+        },
+        {
+          "id": 128663319488,
+          "name": "transaction-engine-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663319488"
+        },
+        {
+          "id": 128663319514,
+          "name": "transaction-engine-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663319514"
+        },
+        {
+          "id": 128663319567,
+          "name": "transaction-engine-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663319567"
+        },
+        {
+          "id": 128663319599,
+          "name": "transaction-engine-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663319599"
+        },
+        {
+          "id": 128663408959,
+          "name": "bplus-lab-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663408959"
+        },
+        {
+          "id": 128663408969,
+          "name": "bplus-lab-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663408969"
+        },
+        {
+          "id": 128663409025,
+          "name": "bplus-prepared",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663409025"
+        },
+        {
+          "id": 128663409045,
+          "name": "bplus-lab-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663409045"
+        },
+        {
+          "id": 128663409047,
+          "name": "bplus-lab-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663409047"
+        },
+        {
+          "id": 128663602302,
+          "name": "relational-lab-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663602302"
+        },
+        {
+          "id": 128663602357,
+          "name": "relational-lab-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663602357"
+        },
+        {
+          "id": 128663602387,
+          "name": "relational-lab-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663602387"
+        },
+        {
+          "id": 128663602397,
+          "name": "relational-lab-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663602397"
+        },
+        {
+          "id": 128663618831,
+          "name": "fd-lab-browsers (chromium)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663618831"
+        },
+        {
+          "id": 128663618846,
+          "name": "fd-lab-browsers (webkit)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663618846"
+        },
+        {
+          "id": 128663618883,
+          "name": "fd-lab-browsers (firefox)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663618883"
+        },
+        {
+          "id": 128663618890,
+          "name": "fd-lab-windows",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663618890"
+        },
+        {
+          "id": 128663619715,
+          "name": "fd-lab-capacity",
+          "status": "completed",
+          "conclusion": "skipped",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663619715"
+        },
+        {
+          "id": 128663661851,
+          "name": "windows-consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663661851"
+        },
+        {
+          "id": 128663806679,
+          "name": "bplus-prepared-browsers (chromium, de)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663806679"
+        },
+        {
+          "id": 128663806689,
+          "name": "bplus-prepared-browsers (webkit, en)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663806689"
+        },
+        {
+          "id": 128663806690,
+          "name": "bplus-prepared-browsers (chromium, en)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663806690"
+        },
+        {
+          "id": 128663806697,
+          "name": "bplus-prepared-browsers (firefox, de)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663806697"
+        },
+        {
+          "id": 128663806698,
+          "name": "bplus-prepared-browsers (webkit, de)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663806698"
+        },
+        {
+          "id": 128663806699,
+          "name": "bplus-prepared-browsers (firefox, en)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458732389/job/128663806699"
+        }
+      ]
+    },
+    {
+      "repo": "stefanjdecker/texstage-plugins",
+      "run_id": 42458734214,
+      "sha": "c04887bd4729c4ceca1f850e173124c9176834b9",
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "jobs": [
+        {
+          "id": 128663214973,
+          "name": "capacity (firefox, 600)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663214973"
+        },
+        {
+          "id": 128663215184,
+          "name": "capacity (webkit, 1000)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215184"
+        },
+        {
+          "id": 128663215186,
+          "name": "capacity (webkit, 600)",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215186"
+        },
+        {
+          "id": 128663215264,
+          "name": "capacity (chromium, 600)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215264"
+        },
+        {
+          "id": 128663215312,
+          "name": "capacity (firefox, 1000)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215312"
+        },
+        {
+          "id": 128663215464,
+          "name": "capacity (chromium, 1000)",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215464"
+        }
+      ]
+    }
+  ],
+  "four_worker_predecessor_capacity": [
+    {
+      "id": 128660278110,
+      "name": "capacity (ubuntu-24.04, chromium, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278110",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 747.64,
+          "p95_ms": 1646.64,
+          "p99_ms": 1804.48,
+          "max_ms": 1847.09
+        },
+        "repairDrainMs": 20989.452408999998
+      }
+    },
+    {
+      "id": 128660278113,
+      "name": "capacity (ubuntu-24.04, chromium, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278113",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 518.18,
+          "p95_ms": 1121.92,
+          "p99_ms": 1244.31,
+          "max_ms": 1282.71
+        },
+        "repairDrainMs": 12395.094727999998
+      }
+    },
+    {
+      "id": 128660278114,
+      "name": "capacity (ubuntu-24.04, firefox, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278114",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 481.14,
+          "p95_ms": 1033.38,
+          "p99_ms": 1199.62,
+          "max_ms": 1212.55
+        },
+        "repairDrainMs": 12849.560613000001
+      }
+    },
+    {
+      "id": 128660278116,
+      "name": "capacity (ubuntu-24.04, chromium, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278116",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 2.97,
+          "p95_ms": 95.82,
+          "p99_ms": 189.33,
+          "max_ms": 239.49
+        },
+        "repairDrainMs": 1004.9952269999922
+      }
+    },
+    {
+      "id": 128660278126,
+      "name": "capacity (ubuntu-24.04, webkit, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278126",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 1031.38,
+          "p95_ms": 2469.29,
+          "p99_ms": 3129.24,
+          "max_ms": 3315.43
+        },
+        "repairDrainMs": 24654.087002999997
+      }
+    },
+    {
+      "id": 128660278137,
+      "name": "capacity (windows-2025, chromium, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278137",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 349.44,
+          "p95_ms": 717.27,
+          "p99_ms": 827,
+          "max_ms": 848.42
+        },
+        "repairDrainMs": 9759.3473
+      }
+    },
+    {
+      "id": 128660278149,
+      "name": "capacity (ubuntu-24.04, chromium, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278149",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4,
+          "p95_ms": 178.2,
+          "p99_ms": 254.89,
+          "max_ms": 629.07
+        },
+        "repairDrainMs": 305.2268539999932
+      }
+    },
+    {
+      "id": 128660278162,
+      "name": "capacity (ubuntu-24.04, firefox, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278162",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 996.54,
+          "p95_ms": 2274.66,
+          "p99_ms": 2702.84,
+          "max_ms": 2863.66
+        },
+        "repairDrainMs": 26799.287733
+      }
+    },
+    {
+      "id": 128660278163,
+      "name": "capacity (ubuntu-24.04, webkit, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278163",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 3.41,
+          "p95_ms": 134.88,
+          "p99_ms": 238.62,
+          "max_ms": 278.76
+        },
+        "repairDrainMs": 348.6048440000013
+      }
+    },
+    {
+      "id": 128660278168,
+      "name": "capacity (ubuntu-24.04, firefox, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278168",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 3.28,
+          "p95_ms": 84.58,
+          "p99_ms": 189.27,
+          "max_ms": 336.94
+        },
+        "repairDrainMs": 606.5487550000107
+      }
+    },
+    {
+      "id": 128660278172,
+      "name": "capacity (ubuntu-24.04, firefox, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278172",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 3.9,
+          "p95_ms": 111.9,
+          "p99_ms": 268.12,
+          "max_ms": 394.06
+        },
+        "repairDrainMs": 1335.7902049999975
+      }
+    },
+    {
+      "id": 128660278173,
+      "name": "capacity (windows-2025, chromium, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278173",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 547.72,
+          "p95_ms": 1189.92,
+          "p99_ms": 1377.31,
+          "max_ms": 1429.62
+        },
+        "repairDrainMs": 15043.691200000005
+      }
+    },
+    {
+      "id": 128660278195,
+      "name": "capacity (windows-2025, firefox, 1000, 0)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278195",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": false,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 1100.36,
+          "p95_ms": 3003.32,
+          "p99_ms": 3758.54,
+          "max_ms": 3950.66
+        },
+        "repairDrainMs": 34945.8937
+      }
+    },
+    {
+      "id": 128660278202,
+      "name": "capacity (windows-2025, webkit, 1000, 0)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278202",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": false,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 1158.47,
+          "p95_ms": 3081.02,
+          "p99_ms": 3873.55,
+          "max_ms": 4070.17
+        },
+        "repairDrainMs": 42015.102900000005
+      }
+    },
+    {
+      "id": 128660278213,
+      "name": "capacity (windows-2025, webkit, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278213",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.77,
+          "p95_ms": 84.72,
+          "p99_ms": 203.07,
+          "max_ms": 268.84
+        },
+        "repairDrainMs": 1920.9414000000106
+      }
+    },
+    {
+      "id": 128660278227,
+      "name": "capacity (windows-2025, firefox, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278227",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 5.05,
+          "p95_ms": 107.08,
+          "p99_ms": 266.14,
+          "max_ms": 293.22
+        },
+        "repairDrainMs": 333.1319999999978
+      }
+    },
+    {
+      "id": 128660278232,
+      "name": "capacity (windows-2025, chromium, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278232",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 3.79,
+          "p95_ms": 66.94,
+          "p99_ms": 163.7,
+          "max_ms": 175.6
+        },
+        "repairDrainMs": 908.7204000000056
+      }
+    },
+    {
+      "id": 128660278236,
+      "name": "capacity (windows-2025, webkit, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278236",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 586.53,
+          "p95_ms": 1255.46,
+          "p99_ms": 1439.97,
+          "max_ms": 1477.96
+        },
+        "repairDrainMs": 20763.7897
+      }
+    },
+    {
+      "id": 128660278244,
+      "name": "capacity (windows-2025, firefox, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278244",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 479.14,
+          "p95_ms": 1038.61,
+          "p99_ms": 1197.78,
+          "max_ms": 1229.09
+        },
+        "repairDrainMs": 14464.5521
+      }
+    },
+    {
+      "id": 128660278251,
+      "name": "capacity (ubuntu-24.04, webkit, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278251",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 493.21,
+          "p95_ms": 1142.03,
+          "p99_ms": 1368.71,
+          "max_ms": 1399
+        },
+        "repairDrainMs": 11912.919659
+      }
+    },
+    {
+      "id": 128660278254,
+      "name": "capacity (ubuntu-24.04, webkit, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278254",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.25,
+          "p95_ms": 129.78,
+          "p99_ms": 214.35,
+          "max_ms": 254.42
+        },
+        "repairDrainMs": 105.94164699999965
+      }
+    },
+    {
+      "id": 128660278290,
+      "name": "capacity (windows-2025, webkit, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278290",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4.95,
+          "p95_ms": 121.15,
+          "p99_ms": 295.51,
+          "max_ms": 336.78
+        },
+        "repairDrainMs": 13892.921900000001
+      }
+    },
+    {
+      "id": 128660278318,
+      "name": "capacity (windows-2025, firefox, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278318",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4.98,
+          "p95_ms": 126.48,
+          "p99_ms": 308.11,
+          "max_ms": 367.82
+        },
+        "repairDrainMs": 6526.630099999995
+      }
+    },
+    {
+      "id": 128660278389,
+      "name": "capacity (windows-2025, chromium, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42457555117/job/128660278389",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4.83,
+          "p95_ms": 127.34,
+          "p99_ms": 338.34,
+          "max_ms": 357.2
+        },
+        "repairDrainMs": 1543.7050000000017
+      }
+    }
+  ],
+  "physical_acceptance": {
+    "performed": false,
+    "user_choice": "Prepare the checklist for later"
+  },
+  "catalog": {
+    "active_releases": 0,
+    "draft_entries": 3,
+    "uploaded": false
+  },
+  "preservation": {
+    "unchanged": true,
+    "protected_checkouts": [
+      "host",
+      "collection",
+      "lecture-tools",
+      "lecture-tools-next",
+      "dbis2027",
+      "PETs4DS",
+      "texstage",
+      "texstage-media",
+      "texstage-public",
+      "texstage-plugins"
+    ],
+    "prior_worktrees": 4
+  },
+  "final_capacity": [
+    {
+      "id": 128663732132,
+      "name": "capacity (ubuntu-24.04, chromium, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732132",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 3.5,
+          "p95_ms": 126.24,
+          "p99_ms": 270.26,
+          "max_ms": 553.09
+        },
+        "repairDrainMs": 909.6883260000031
+      }
+    },
+    {
+      "id": 128663732147,
+      "name": "capacity (ubuntu-24.04, firefox, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732147",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 607.21,
+          "p95_ms": 1247.78,
+          "p99_ms": 1409.2,
+          "max_ms": 1453.54
+        },
+        "repairDrainMs": 17574.664120999998
+      }
+    },
+    {
+      "id": 128663732279,
+      "name": "capacity (ubuntu-24.04, firefox, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732279",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.04,
+          "p95_ms": 78.77,
+          "p99_ms": 152.51,
+          "max_ms": 162.84
+        },
+        "repairDrainMs": 706.1299480000016
+      }
+    },
+    {
+      "id": 128663732287,
+      "name": "capacity (windows-2025, chromium, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732287",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.17,
+          "p95_ms": 65.92,
+          "p99_ms": 123.83,
+          "max_ms": 137.55
+        },
+        "repairDrainMs": 526.517399999997
+      }
+    },
+    {
+      "id": 128663732299,
+      "name": "capacity (ubuntu-24.04, webkit, 600, 0)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732299",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": false,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": false
+        },
+        "ack": {
+          "n": 1800,
+          "p50_ms": 669.77,
+          "p95_ms": 1265.69,
+          "p99_ms": 1427.22,
+          "max_ms": 1437.25
+        }
+      }
+    },
+    {
+      "id": 128663732300,
+      "name": "capacity (windows-2025, webkit, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732300",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 571.32,
+          "p95_ms": 1186.82,
+          "p99_ms": 1350.51,
+          "max_ms": 1398.66
+        },
+        "repairDrainMs": 27703.9513
+      }
+    },
+    {
+      "id": 128663732311,
+      "name": "capacity (windows-2025, webkit, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732311",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4.64,
+          "p95_ms": 115.05,
+          "p99_ms": 289.85,
+          "max_ms": 330.23
+        },
+        "repairDrainMs": 9534.897100000002
+      }
+    },
+    {
+      "id": 128663732312,
+      "name": "capacity (windows-2025, firefox, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732312",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 1089.08,
+          "p95_ms": 2773.82,
+          "p99_ms": 3441.3,
+          "max_ms": 3611.79
+        },
+        "repairDrainMs": 35421.4343
+      }
+    },
+    {
+      "id": 128663732314,
+      "name": "capacity (windows-2025, firefox, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732314",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4.07,
+          "p95_ms": 90.54,
+          "p99_ms": 252.5,
+          "max_ms": 305.81
+        },
+        "repairDrainMs": 1121.927800000005
+      }
+    },
+    {
+      "id": 128663732320,
+      "name": "capacity (ubuntu-24.04, firefox, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732320",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 3.46,
+          "p95_ms": 106.97,
+          "p99_ms": 264.89,
+          "max_ms": 295.66
+        },
+        "repairDrainMs": 1120.0060279999889
+      }
+    },
+    {
+      "id": 128663732321,
+      "name": "capacity (windows-2025, chromium, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732321",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 641.73,
+          "p95_ms": 1337.39,
+          "p99_ms": 1498.47,
+          "max_ms": 1528.47
+        },
+        "repairDrainMs": 15167.295399999999
+      }
+    },
+    {
+      "id": 128663732322,
+      "name": "capacity (ubuntu-24.04, firefox, 1000, 0)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732322",
+      "measurement": {
+        "actors": 1000,
+        "family": "firefox",
+        "gates": {
+          "ackP95": false,
+          "ackMaximum": false,
+          "repairDrain": false,
+          "controlsP95": false,
+          "controlsMaximum": false,
+          "correctness": false
+        },
+        "ack": {
+          "n": 0,
+          "p50_ms": null,
+          "p95_ms": null,
+          "p99_ms": null,
+          "max_ms": null
+        }
+      }
+    },
+    {
+      "id": 128663732338,
+      "name": "capacity (ubuntu-24.04, webkit, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732338",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 4.8,
+          "p95_ms": 113.48,
+          "p99_ms": 362.43,
+          "max_ms": 417.86
+        },
+        "repairDrainMs": 434.9446239999961
+      }
+    },
+    {
+      "id": 128663732339,
+      "name": "capacity (ubuntu-24.04, chromium, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732339",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 625.92,
+          "p95_ms": 1294.95,
+          "p99_ms": 1429.56,
+          "max_ms": 1477.77
+        },
+        "repairDrainMs": 15384.487856
+      }
+    },
+    {
+      "id": 128663732342,
+      "name": "capacity (ubuntu-24.04, webkit, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732342",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.55,
+          "p95_ms": 99.5,
+          "p99_ms": 220.32,
+          "max_ms": 255.08
+        },
+        "repairDrainMs": 309.59121099999174
+      }
+    },
+    {
+      "id": 128663732354,
+      "name": "capacity (ubuntu-24.04, chromium, 1000, 0)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732354",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": false,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 1025.45,
+          "p95_ms": 3216.45,
+          "p99_ms": 3979.04,
+          "max_ms": 4143.64
+        },
+        "repairDrainMs": 25166.526379
+      }
+    },
+    {
+      "id": 128663732357,
+      "name": "capacity (windows-2025, firefox, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732357",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 644.85,
+          "p95_ms": 1321.68,
+          "p99_ms": 1498.94,
+          "max_ms": 1545.3
+        },
+        "repairDrainMs": 20453.5944
+      }
+    },
+    {
+      "id": 128663732359,
+      "name": "capacity (windows-2025, webkit, 600, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732359",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 655.14,
+          "p95_ms": 1361.58,
+          "p99_ms": 1531.24,
+          "max_ms": 1610.58
+        },
+        "repairDrainMs": 25682.9288
+      }
+    },
+    {
+      "id": 128663732363,
+      "name": "capacity (windows-2025, chromium, 1000, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732363",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 2.31,
+          "p95_ms": 72.02,
+          "p99_ms": 171.15,
+          "max_ms": 199.12
+        },
+        "repairDrainMs": 504.6061999999947
+      }
+    },
+    {
+      "id": 128663732366,
+      "name": "capacity (windows-2025, firefox, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732366",
+      "measurement": {
+        "actors": 600,
+        "family": "firefox",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.01,
+          "p95_ms": 56.08,
+          "p99_ms": 149.26,
+          "max_ms": 201.91
+        },
+        "repairDrainMs": 522.1645000000135
+      }
+    },
+    {
+      "id": 128663732380,
+      "name": "capacity (ubuntu-24.04, chromium, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732380",
+      "measurement": {
+        "actors": 600,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.51,
+          "p95_ms": 92.7,
+          "p99_ms": 176.06,
+          "max_ms": 324.4
+        },
+        "repairDrainMs": 607.0911530000012
+      }
+    },
+    {
+      "id": 128663732381,
+      "name": "capacity (windows-2025, chromium, 1000, 0)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732381",
+      "measurement": {
+        "actors": 1000,
+        "family": "chromium",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 3200,
+          "p50_ms": 1116.67,
+          "p95_ms": 2875.82,
+          "p99_ms": 3600.13,
+          "max_ms": 3820.46
+        },
+        "repairDrainMs": 29302.7862
+      }
+    },
+    {
+      "id": 128663732394,
+      "name": "capacity (windows-2025, webkit, 600, 30)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732394",
+      "measurement": {
+        "actors": 600,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": true,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": true
+        },
+        "ack": {
+          "n": 1920,
+          "p50_ms": 4.53,
+          "p95_ms": 90.99,
+          "p99_ms": 253.18,
+          "max_ms": 271.22
+        },
+        "repairDrainMs": 2138.0417000000016
+      }
+    },
+    {
+      "id": 128663732414,
+      "name": "capacity (ubuntu-24.04, webkit, 1000, 0)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458730616/job/128663732414",
+      "measurement": {
+        "actors": 1000,
+        "family": "webkit",
+        "gates": {
+          "ackP95": true,
+          "ackMaximum": true,
+          "repairDrain": false,
+          "controlsP95": true,
+          "controlsMaximum": true,
+          "correctness": false
+        },
+        "ack": {
+          "n": 3000,
+          "p50_ms": 908.16,
+          "p95_ms": 1827.61,
+          "p99_ms": 1980.96,
+          "max_ms": 2038.39
+        }
+      }
+    }
+  ],
+  "final_bplus_capacity": [
+    {
+      "id": 128663214973,
+      "name": "capacity (firefox, 600)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663214973",
+      "measurement": {
+        "actors": 600,
+        "browser": "firefox",
+        "correctness_pass": true,
+        "normal_budget_pass": true,
+        "recovery_budget_pass": true,
+        "failure": null,
+        "groups": {
+          "initial": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 437.29,
+              "p95_ms": 769.6,
+              "p99_ms": 811.69,
+              "max_ms": 811.82
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 5344.9,
+              "p95_ms": 8794.42,
+              "p99_ms": 9024.94,
+              "max_ms": 9438.38
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 4649.65,
+              "p95_ms": 7808.57,
+              "p99_ms": 8183.67,
+              "max_ms": 8280.79
+            },
+            "evaluation": {
+              "n": 600,
+              "p50_ms": 9,
+              "p95_ms": 13,
+              "p99_ms": 15,
+              "max_ms": 16
+            },
+            "accepted_results": 600
+          },
+          "replacement-old": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 835.03,
+              "p95_ms": 2065.74,
+              "p99_ms": 2094.29,
+              "max_ms": 2132.53
+            },
+            "feedback": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "queue_wait": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 0
+          },
+          "replacement-latest": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 146.92,
+              "p95_ms": 289.89,
+              "p99_ms": 297.52,
+              "max_ms": 876.44
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 5531.15,
+              "p95_ms": 7728.7,
+              "p99_ms": 8125.19,
+              "max_ms": 8295.03
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 5204.43,
+              "p95_ms": 7514.59,
+              "p99_ms": 7859.03,
+              "max_ms": 7937.65
+            },
+            "evaluation": {
+              "n": 600,
+              "p50_ms": 9,
+              "p95_ms": 13,
+              "p99_ms": 14,
+              "max_ms": 16
+            },
+            "accepted_results": 600
+          },
+          "reconnect": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 447.6,
+              "p95_ms": 797.28,
+              "p99_ms": 817.95,
+              "max_ms": 819.9
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 6020.81,
+              "p95_ms": 9589.35,
+              "p99_ms": 10033.85,
+              "max_ms": 10037.57
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 5522.56,
+              "p95_ms": 8658.31,
+              "p99_ms": 9044.64,
+              "max_ms": 9126.2
+            },
+            "evaluation": {
+              "n": 600,
+              "p50_ms": 9,
+              "p95_ms": 14,
+              "p99_ms": 17,
+              "max_ms": 34
+            },
+            "accepted_results": 600
+          }
+        },
+        "scoring": {
+          "maximum": 1000,
+          "privateBeforeReveal": true,
+          "allPublished": true,
+          "resetWithdraws": true
+        }
+      }
+    },
+    {
+      "id": 128663215184,
+      "name": "capacity (webkit, 1000)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215184",
+      "measurement": {
+        "actors": 1000,
+        "browser": "webkit",
+        "correctness_pass": false,
+        "normal_budget_pass": false,
+        "recovery_budget_pass": true,
+        "failure": "Error: Presenter browser page crashed: initial saved",
+        "groups": {
+          "initial": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 702,
+              "p95_ms": 1486.25,
+              "p99_ms": 1622.94,
+              "max_ms": 1671.32
+            },
+            "feedback": {
+              "n": 812,
+              "p50_ms": 7254.53,
+              "p95_ms": 11799.43,
+              "p99_ms": 12031.1,
+              "max_ms": 12259.22
+            },
+            "queue_wait": {
+              "n": 816,
+              "p50_ms": 6605.44,
+              "p95_ms": 10559.22,
+              "p99_ms": 10857.72,
+              "max_ms": 10965.85
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 812
+          }
+        },
+        "scoring": {
+          "maximum": 1000,
+          "privateBeforeReveal": false,
+          "allPublished": false,
+          "resetWithdraws": false
+        }
+      }
+    },
+    {
+      "id": 128663215186,
+      "name": "capacity (webkit, 600)",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215186",
+      "measurement": {
+        "actors": 600,
+        "browser": "webkit",
+        "correctness_pass": false,
+        "normal_budget_pass": false,
+        "recovery_budget_pass": true,
+        "failure": "Error: Presenter browser page crashed: replacement saved",
+        "groups": {
+          "initial": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 447.08,
+              "p95_ms": 810.59,
+              "p99_ms": 850.31,
+              "max_ms": 850.46
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 4708.13,
+              "p95_ms": 7665.96,
+              "p99_ms": 7902.41,
+              "max_ms": 7903.31
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 4063.35,
+              "p95_ms": 6606.76,
+              "p99_ms": 6898.17,
+              "max_ms": 6970.71
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 600
+          },
+          "replacement-old": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 938.06,
+              "p95_ms": 2143.3,
+              "p99_ms": 2180.79,
+              "max_ms": 2199.86
+            },
+            "feedback": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "queue_wait": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 0
+          },
+          "replacement-latest": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 155.12,
+              "p95_ms": 294.11,
+              "p99_ms": 303.44,
+              "max_ms": 971.33
+            },
+            "feedback": {
+              "n": 104,
+              "p50_ms": 3079.8,
+              "p95_ms": 4159.72,
+              "p99_ms": 4173.48,
+              "max_ms": 4173.51
+            },
+            "queue_wait": {
+              "n": 108,
+              "p50_ms": 2585.19,
+              "p95_ms": 3076.06,
+              "p99_ms": 3098.97,
+              "max_ms": 3100.19
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 104
+          }
+        },
+        "scoring": {
+          "maximum": 1000,
+          "privateBeforeReveal": false,
+          "allPublished": false,
+          "resetWithdraws": false
+        }
+      }
+    },
+    {
+      "id": 128663215264,
+      "name": "capacity (chromium, 600)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215264",
+      "measurement": {
+        "actors": 600,
+        "browser": "chromium",
+        "correctness_pass": true,
+        "normal_budget_pass": true,
+        "recovery_budget_pass": true,
+        "failure": null,
+        "groups": {
+          "initial": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 418.51,
+              "p95_ms": 780.49,
+              "p99_ms": 825.02,
+              "max_ms": 825.3
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 4980.95,
+              "p95_ms": 8851.43,
+              "p99_ms": 9107.21,
+              "max_ms": 9107.71
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 4494.09,
+              "p95_ms": 7718.39,
+              "p99_ms": 8018.28,
+              "max_ms": 8136.63
+            },
+            "evaluation": {
+              "n": 600,
+              "p50_ms": 5.7,
+              "p95_ms": 9.3,
+              "p99_ms": 11.4,
+              "max_ms": 23.3
+            },
+            "accepted_results": 600
+          },
+          "replacement-old": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 967.33,
+              "p95_ms": 2183.22,
+              "p99_ms": 2231.61,
+              "max_ms": 2232.1
+            },
+            "feedback": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "queue_wait": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 0
+          },
+          "replacement-latest": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 159.96,
+              "p95_ms": 292.98,
+              "p99_ms": 305.87,
+              "max_ms": 987.61
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 5034.21,
+              "p95_ms": 6849.01,
+              "p99_ms": 7418.16,
+              "max_ms": 7421.32
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 4692.99,
+              "p95_ms": 6573.21,
+              "p99_ms": 6853.63,
+              "max_ms": 6933.77
+            },
+            "evaluation": {
+              "n": 600,
+              "p50_ms": 5.3,
+              "p95_ms": 8,
+              "p99_ms": 10.4,
+              "max_ms": 20.7
+            },
+            "accepted_results": 600
+          },
+          "reconnect": {
+            "submitted": 600,
+            "accepted": 600,
+            "acknowledgement": {
+              "n": 600,
+              "p50_ms": 498.92,
+              "p95_ms": 893.85,
+              "p99_ms": 929.49,
+              "max_ms": 929.62
+            },
+            "feedback": {
+              "n": 600,
+              "p50_ms": 5519.08,
+              "p95_ms": 8727.71,
+              "p99_ms": 9163.85,
+              "max_ms": 9165.09
+            },
+            "queue_wait": {
+              "n": 600,
+              "p50_ms": 4814.08,
+              "p95_ms": 7659.6,
+              "p99_ms": 7967.62,
+              "max_ms": 8039.11
+            },
+            "evaluation": {
+              "n": 600,
+              "p50_ms": 5.3,
+              "p95_ms": 8,
+              "p99_ms": 11.8,
+              "max_ms": 17.2
+            },
+            "accepted_results": 600
+          }
+        },
+        "scoring": {
+          "maximum": 1000,
+          "privateBeforeReveal": true,
+          "allPublished": true,
+          "resetWithdraws": true
+        }
+      }
+    },
+    {
+      "id": 128663215312,
+      "name": "capacity (firefox, 1000)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215312",
+      "measurement": {
+        "actors": 1000,
+        "browser": "firefox",
+        "correctness_pass": true,
+        "normal_budget_pass": true,
+        "recovery_budget_pass": true,
+        "failure": null,
+        "groups": {
+          "initial": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 712.71,
+              "p95_ms": 1605.28,
+              "p99_ms": 1732.7,
+              "max_ms": 1819.01
+            },
+            "feedback": {
+              "n": 1000,
+              "p50_ms": 9474.65,
+              "p95_ms": 15828.87,
+              "p99_ms": 16496.82,
+              "max_ms": 16931.46
+            },
+            "queue_wait": {
+              "n": 1000,
+              "p50_ms": 8584.88,
+              "p95_ms": 14095.44,
+              "p99_ms": 14601.92,
+              "max_ms": 14738.51
+            },
+            "evaluation": {
+              "n": 1000,
+              "p50_ms": 10,
+              "p95_ms": 14,
+              "p99_ms": 16,
+              "max_ms": 22
+            },
+            "accepted_results": 1000
+          },
+          "replacement-old": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 2040.39,
+              "p95_ms": 3705.65,
+              "p99_ms": 3952.29,
+              "max_ms": 3970.61
+            },
+            "feedback": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "queue_wait": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "evaluation": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "accepted_results": 0
+          },
+          "replacement-latest": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 167.99,
+              "p95_ms": 376.85,
+              "p99_ms": 391.16,
+              "max_ms": 392.2
+            },
+            "feedback": {
+              "n": 1000,
+              "p50_ms": 9359.14,
+              "p95_ms": 14261.41,
+              "p99_ms": 14678.75,
+              "max_ms": 14705.64
+            },
+            "queue_wait": {
+              "n": 1000,
+              "p50_ms": 9088.97,
+              "p95_ms": 13849.9,
+              "p99_ms": 14376.48,
+              "max_ms": 14547.42
+            },
+            "evaluation": {
+              "n": 1000,
+              "p50_ms": 10,
+              "p95_ms": 14,
+              "p99_ms": 17,
+              "max_ms": 24
+            },
+            "accepted_results": 1000
+          },
+          "reconnect": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 767.04,
+              "p95_ms": 1757.71,
+              "p99_ms": 1907.93,
+              "max_ms": 1939.02
+            },
+            "feedback": {
+              "n": 1000,
+              "p50_ms": 10305.46,
+              "p95_ms": 16851.33,
+              "p99_ms": 17321.06,
+              "max_ms": 17554.72
+            },
+            "queue_wait": {
+              "n": 1000,
+              "p50_ms": 9384.55,
+              "p95_ms": 14895.23,
+              "p99_ms": 15370.72,
+              "max_ms": 15520.9
+            },
+            "evaluation": {
+              "n": 1000,
+              "p50_ms": 9,
+              "p95_ms": 13,
+              "p99_ms": 16,
+              "max_ms": 19
+            },
+            "accepted_results": 1000
+          }
+        },
+        "scoring": {
+          "maximum": 1000,
+          "privateBeforeReveal": true,
+          "allPublished": true,
+          "resetWithdraws": true
+        }
+      }
+    },
+    {
+      "id": 128663215464,
+      "name": "capacity (chromium, 1000)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42458734214/job/128663215464",
+      "measurement": {
+        "actors": 1000,
+        "browser": "chromium",
+        "correctness_pass": true,
+        "normal_budget_pass": true,
+        "recovery_budget_pass": true,
+        "failure": null,
+        "groups": {
+          "initial": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 1006.56,
+              "p95_ms": 2432.33,
+              "p99_ms": 2528.32,
+              "max_ms": 2554.59
+            },
+            "feedback": {
+              "n": 1000,
+              "p50_ms": 8851.09,
+              "p95_ms": 15222.04,
+              "p99_ms": 15669.17,
+              "max_ms": 15676.64
+            },
+            "queue_wait": {
+              "n": 1000,
+              "p50_ms": 7697.54,
+              "p95_ms": 12592.55,
+              "p99_ms": 12964.01,
+              "max_ms": 13069.03
+            },
+            "evaluation": {
+              "n": 1000,
+              "p50_ms": 6.2,
+              "p95_ms": 9.5,
+              "p99_ms": 11.1,
+              "max_ms": 12.6
+            },
+            "accepted_results": 1000
+          },
+          "replacement-old": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 2334.51,
+              "p95_ms": 4632.36,
+              "p99_ms": 5186.12,
+              "max_ms": 5223.66
+            },
+            "feedback": {
+              "n": 0,
+              "p50_ms": null,
+              "p95_ms": null,
+              "p99_ms": null,
+              "max_ms": null
+            },
+            "queue_wait": {
+              "n": 1,
+              "p50_ms": 2287.61,
+              "p95_ms": 2287.61,
+              "p99_ms": 2287.61,
+              "max_ms": 2287.61
+            },
+            "evaluation": {
+              "n": 1,
+              "p50_ms": 4.8,
+              "p95_ms": 4.8,
+              "p99_ms": 4.8,
+              "max_ms": 4.8
+            },
+            "accepted_results": 1
+          },
+          "replacement-latest": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 210.57,
+              "p95_ms": 379.47,
+              "p99_ms": 399.68,
+              "max_ms": 3561.49
+            },
+            "feedback": {
+              "n": 1000,
+              "p50_ms": 8996.56,
+              "p95_ms": 12230.32,
+              "p99_ms": 12598.65,
+              "max_ms": 14193.4
+            },
+            "queue_wait": {
+              "n": 1000,
+              "p50_ms": 8663.36,
+              "p95_ms": 11804.57,
+              "p99_ms": 12138.35,
+              "max_ms": 12262.58
+            },
+            "evaluation": {
+              "n": 1000,
+              "p50_ms": 5.6,
+              "p95_ms": 7.9,
+              "p99_ms": 9.2,
+              "max_ms": 12.5
+            },
+            "accepted_results": 1000
+          },
+          "reconnect": {
+            "submitted": 1000,
+            "accepted": 1000,
+            "acknowledgement": {
+              "n": 1000,
+              "p50_ms": 1085.71,
+              "p95_ms": 2698.63,
+              "p99_ms": 2781.09,
+              "max_ms": 2803.8
+            },
+            "feedback": {
+              "n": 1000,
+              "p50_ms": 9765.41,
+              "p95_ms": 15698.12,
+              "p99_ms": 16406.63,
+              "max_ms": 16646.56
+            },
+            "queue_wait": {
+              "n": 1000,
+              "p50_ms": 8628.47,
+              "p95_ms": 12797.1,
+              "p99_ms": 13543.11,
+              "max_ms": 13679.02
+            },
+            "evaluation": {
+              "n": 1000,
+              "p50_ms": 5.9,
+              "p95_ms": 8.5,
+              "p99_ms": 10.3,
+              "max_ms": 24.2
+            },
+            "accepted_results": 1000
+          }
+        },
+        "scoring": {
+          "maximum": 1000,
+          "privateBeforeReveal": true,
+          "allPublished": true,
+          "resetWithdraws": true
+        }
+      }
+    }
+  ],
+  "hosted_producer_hashes": [
+    "3180d62bf2f1d0467a9ab5adb31444a331ef2e5431f562433667f576ce718c04  host-dist/texstage-0.2.1.dev7-py3-none-any.whl",
+    "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  dist/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+    "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  dist/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+  ],
+  "local_ci_artifact_comparison": [
+    {
+      "wheel": "texstage-0.2.1.dev7-py3-none-any.whl",
+      "local_sha256": "e0716492508ec893df859d0dd87fdf2ba0a93a14ce8cf23244e19380e13f9da8",
+      "ci_sha256": "3180d62bf2f1d0467a9ab5adb31444a331ef2e5431f562433667f576ce718c04",
+      "runtime_and_manifest_members_byte_identical": true,
+      "differences": "METADATA line endings and corresponding RECORD digests"
+    },
+    {
+      "wheel": "texstage_transaction_activity-0.1.0-py3-none-any.whl",
+      "local_sha256": "027afc7b7e31e6717a66e937c1268bb6fde5ba4036e92a885a5f9a12dd892a51",
+      "ci_sha256": "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e",
+      "runtime_and_manifest_members_byte_identical": true,
+      "differences": "METADATA line endings and corresponding RECORD digests"
+    },
+    {
+      "wheel": "texstage_transaction_engine-0.1.0-py3-none-any.whl",
+      "local_sha256": "6f06262b52b81b447ac3c650e07c231cc6b34826f2af627ccae5b20358405bbc",
+      "ci_sha256": "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6",
+      "runtime_and_manifest_members_byte_identical": true,
+      "differences": "METADATA line endings and corresponding RECORD digests"
+    },
+    {
+      "wheel": "texstage_relational_lab-0.2.0-py3-none-any.whl",
+      "local_sha256": "2bd57540b745abc146458d0f269fee8809bd527d41089139afc0abc8fbfc2e4a",
+      "ci_sha256": "1f11917aca26ea42d0389e0ace99bb755faf3849ad0af93ebd2482d3357e2b52",
+      "runtime_and_manifest_members_byte_identical": true,
+      "differences": "METADATA line endings and corresponding RECORD digests"
+    }
+  ]
+}
