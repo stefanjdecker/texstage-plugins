@@ -103,8 +103,29 @@ class Student{
   constructor(url,...args){super(url,...args);this.probe=String(url).includes('plugin-evaluator-worker.js');if(this.probe)this.addEventListener('message',e=>{if(this.metric){window.loadWorkers.push({...this.metric,duration_ms:performance.now()-this.metric.start,status:e.data.result?.status||e.data.t});this.metric=null;}});}
   postMessage(m,...args){if(this.probe){if(m.t==='init')this.job=m.job.id;this.metric={job:this.job,kind:m.t,start:performance.now(),bytes:new TextEncoder().encode(JSON.stringify(m)).byteLength};}return super.postMessage(m,...args);}};});
  async function captureWorkers(){const sample=await page.evaluate(()=>({workers:window.loadWorkers,heap:window.loadPeakHeap}));workerTimes.push(...sample.workers);if(sample.heap)browserHeap=Math.max(browserHeap||0,sample.heap);}
- async function presenter(hold=false){const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('crash',()=>browserFailure='Presenter crashed');if(hold)await p.route('**/static/stage/plugin-evaluator-worker.js',()=>{});await p.goto(base+'/stage?bundle='+deck.bundle);await p.locator('#next').waitFor();return p;}
- page=await presenter();for(let n=0;n<5;n++)await page.locator('#next').click();
+ async function presenter(hold=false){
+  const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('crash',()=>browserFailure='Presenter crashed');
+  p.on('response',r=>{if(r.status()>=400)browserEvents.push({event:'http',path:new URL(r.url()).pathname,status:r.status()});});
+  p.on('requestfailed',r=>browserEvents.push({event:'request-failed',path:new URL(r.url()).pathname,error:r.failure()?.errorText}));
+  if(hold)await p.route('**/static/stage/plugin-evaluator-worker.js',()=>{});
+  try{await p.goto(base+'/stage?bundle='+deck.bundle);await p.locator('#next').waitFor();}
+  catch(e){
+   // Synthetic profile only; preserve the visible error without recording keys.
+   try{fs.writeFileSync(path.join(output,'presenter-open-failure.txt'),await p.locator('body').innerText({timeout:2000}));await p.screenshot({path:path.join(output,'presenter-open-failure.png'),timeout:2000});}catch{}
+   throw e;
+  }
+  return p;
+ }
+ // Wait for acknowledged navigation: rapid clicks can arrive before the page
+ // applies the preceding state, leaving a slow runner on the wrong lesson.
+ await context.addInitScript(()=>{const Native=window.WebSocket;window.loadState=null;window.WebSocket=class extends Native{constructor(...args){super(...args);this.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.t==='state')window.loadState=m;});}};});
+ page=await presenter();await until(()=>page.evaluate(()=>!!window.loadState?.session?.slide),'initial slide');
+ for(let n=0;n<5;n++){
+  const before=await page.evaluate(()=>window.loadState.session.slide);
+  await page.locator('#next').click();
+  await until(()=>page.evaluate(before=>window.loadState?.session?.slide!==before,before),'slide acknowledgement');
+ }
+ await until(()=>page.evaluate(item=>window.loadState?.plugins?.items?.some(d=>d.item===item),item),'chain activity');
  teacher=new Student('teacher');await teacher.connect({t:'hello',role:'host',key:'synthetic-load-key',deck:deck.deck,bundle:deck.bundle});
  async function control(op,payload={}){const start=now();const receipt=(await teacher.command(op,op==='_reset'?{}:{control_version:teacher.view().data.control_version,...payload})).receipt;assert(receipt.accepted);await until(()=>teacher.view().epoch>=receipt.epoch&&teacher.view().revision>=receipt.revision,'control projection');controls.push({operation:op,ms:now()-start});}
  async function advance(expected){await control('advance-phase');await until(()=>teacher.view().data.phase===expected,'phase '+expected);if(students.length)await until(()=>students.every(s=>s.view()?.data.phase===expected),'class phase '+expected);}
@@ -138,9 +159,11 @@ class Student{
  const events=fs.existsSync(metrics)?fs.readFileSync(metrics,'utf8').split('\n').filter(Boolean).map(JSON.parse):[],groups={};
  for(const name of new Set(rows.map(r=>r.phase))){const group=rows.filter(r=>r.phase===name);groups[name]={count:group.length,accepted:group.filter(r=>r.accepted).length,acknowledgement:summary(group.map(r=>r.ack_ms)),completion:summary(group.map(r=>r.checked_ms))};}
  const ack=summary(rows.map(r=>r.ack_ms)),healthy=phases.find(p=>p.name==='repair');
- const gates={ackP95:ack.p95_ms<=(actors<=600?2000:3000),ackMaximum:ack.max_ms<=(actors<=600?5000:10000),repairDrain:healthy?.lastSubmitToDoneMs<=(actors<=600?60000:120000),controlsP95:summary(controls.map(r=>r.ms)).p95_ms<=(actors<=600?1000:2000),controlsMaximum:summary(controls.map(r=>r.ms)).max_ms<=(actors<=600?3000:5000),correctness:!failure&&!errors.length};
+ const controlSummary=summary(controls.map(r=>r.ms));
+ const gates={ackP95:ack.n>0&&ack.p95_ms<=(actors<=600?2000:3000),ackMaximum:ack.n>0&&ack.max_ms<=(actors<=600?5000:10000),repairDrain:healthy?.lastSubmitToDoneMs<=(actors<=600?60000:120000),controlsP95:controlSummary.n>0&&controlSummary.p95_ms<=(actors<=600?1000:2000),controlsMaximum:controlSummary.n>0&&controlSummary.max_ms<=(actors<=600?3000:5000),correctness:!failure&&!errors.length};
  const queued=new Map(),queueWait=[],retries=[];for(const e of events){if(e.event==='command')for(const id of Object.values(e.receipt?.jobs||{}))queued.set(id,e.ms);if(e.event==='lease')for(const j of e.jobs){if(queued.has(j.id))queueWait.push(e.ms-queued.get(j.id));if(j.generation>1)retries.push(j.id);}}
  report={byteMetricUnit:'UTF-8 serialized payload bytes (not transport overhead)',actors,family,browserVersion,wave_seconds:wave,serverPeakRSS:fs.existsSync(metrics.replace(/\.jsonl$/,'.memory.json'))?JSON.parse(fs.readFileSync(metrics.replace(/\.jsonl$/,'.memory.json'),'utf8')).server_peak_rss_bytes:null,browserPeakJSHeapBytes:browserHeap,syntheticClientRSS:process.memoryUsage().rss,queueWait:summary(queueWait),retryLeases:retries.length,os:os.platform(),cpus:os.cpus()[0]?.model,totalMemory:os.totalmem(),groups,phases,controls,checks,gates,errors,failure,hook:summary(events.filter(e=>e.event==='hook').map(e=>e.duration_ms)),worker:summary(workerTimes.filter(w=>w.kind==='eval').map(w=>w.duration_ms)),workerIPCBytes:workerTimes.reduce((n,w)=>n+w.bytes,0),projectionBytes:students.reduce((n,s)=>n+s.bytes,0)};
+ report.acknowledgement=ack;report.controlLatency=controlSummary;report.browserEvents=browserEvents;
  fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({actors,family,gates,ack,repairDrainMs:healthy?.lastSubmitToDoneMs}));if(failure||Object.values(gates).includes(false))process.exitCode=1;
  }
 })().catch(e=>{console.error(e);process.exitCode=1;});
