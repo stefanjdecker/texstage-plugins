@@ -1,0 +1,17 @@
+% SPDX-License-Identifier: Apache-2.0
+% Build with database.activities.json (same language).
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage[english]{babel}
+\newcommand{\DatabaseFooter}{Database activity lab}
+\newcommand{\DatabaseSlide}[1]{\input{slides/#1}}
+\input{database-common.tex}
+\quizsetup{time=60,points=none,leaderboard=false,shuffle=false,
+  join-title={Join the database lab},
+  join-text={Open the presenter-supplied address on your phone and enter the PIN.}}
+\title{A campus database, many ways to reason}
+\subtitle{Built-in activities and every current plugin lesson}
+\author{Synthetic teaching examples}
+\date{}
+\begin{document}
+\input{database-sequence.tex}
+\end{document}

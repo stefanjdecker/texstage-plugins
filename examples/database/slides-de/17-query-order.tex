@@ -1,0 +1,7 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{quiz}[id=query-order,type=order,partial,time=90]{Ordnen Sie die Klauseln nach ihrer üblichen logischen Auswertung.}
+\step{FROM / JOIN}\step{WHERE}\step{GROUP BY}
+\step{HAVING}\step{SELECT}\step{ORDER BY}
+\explain{Zeilen bilden, filtern, gruppieren, Gruppen filtern, projizieren, sortieren. Das ist ein Denkmodell, kein physischer Anfrageplan.}
+\note{Ein Optimierer darf eine andere physische Strategie wählen. DISTINCT, Fensterfunktionen und LIMIT bleiben hier unberücksichtigt.}
+\end{quiz}

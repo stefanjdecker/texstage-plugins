@@ -1,0 +1,109 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "counter",
+    "language": "de",
+    "title": {
+      "de": "Zwei Erhöhungen, ein Zähler",
+      "en": "Two increments, one counter"
+    },
+    "prompt": {
+      "de": "Beide Transaktionen lesen x und schreiben ihren gespeicherten Lesewert plus 10. Welcher Endwert entsteht?",
+      "en": "Each transaction reads x and writes its remembered value plus 10. What final value results?"
+    },
+    "initial": {
+      "x": 100
+    },
+    "transactions": [
+      {
+        "id": "T1",
+        "operations": [
+          {
+            "id": "a1",
+            "kind": "read",
+            "object": "x"
+          },
+          {
+            "id": "a2",
+            "kind": "write",
+            "object": "x",
+            "value": {
+              "read": "a1",
+              "add": 10
+            }
+          },
+          {
+            "id": "a3",
+            "kind": "commit"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "operations": [
+          {
+            "id": "b1",
+            "kind": "read",
+            "object": "x"
+          },
+          {
+            "id": "b2",
+            "kind": "write",
+            "object": "x",
+            "value": {
+              "read": "b1",
+              "add": 10
+            }
+          },
+          {
+            "id": "b3",
+            "kind": "commit"
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      "a1",
+      "b1",
+      "a2",
+      "b2",
+      "a3",
+      "b3"
+    ],
+    "task": {
+      "repair": "conflict-serializable",
+      "feedback": "staged"
+    }
+  },
+  "worked_repairs": [
+    [
+      "a1",
+      "a2",
+      "a3",
+      "b1",
+      "b2",
+      "b3"
+    ],
+    [
+      "b1",
+      "b2",
+      "b3",
+      "a1",
+      "a2",
+      "a3"
+    ],
+    [
+      "a1",
+      "a2",
+      "b1",
+      "b2",
+      "a3",
+      "b3"
+    ]
+  ],
+  "explanation": {
+    "en": "Preserve each transaction’s program order. A repair is accepted when its direct conflict graph is acyclic; several orders can work.",
+    "de": "Die Programmreihenfolge jeder Transaktion bleibt erhalten. Eine Reparatur ist gültig, wenn ihr direkter Konfliktgraph azyklisch ist; mehrere Abläufe können passen."
+  }
+}

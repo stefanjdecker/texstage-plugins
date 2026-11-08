@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Offene Ausleihen zählen, auch null}
+\small Ein LEFT JOIN erhält Mitglieder ohne passende offene Ausleihe.\par\vspace{3mm}
+\begin{activity}[id=sql-count,input=code,engine=sql,seed=data/library.sql,
+reference=answers/sql-count.sql,open=manual,limit=5,height=.61\textheight]
+\prompt{Geben Sie \texttt{name, active\_loans} für jedes Mitglied aus, auch bei Anzahl null. Nutzen Sie \texttt{members(member\_id,name)} und \texttt{loans(loan\_id,member\_id,returned\_on)}. Offen heißt \texttt{returned\_on IS NULL}.}
+\end{activity}
+\note{Erwartet: Ada 1, Ben 1, Cara 1, Dan 0. Zählen Sie loan\_id statt COUNT(*). Die Bedingung für offene Ausleihen gehört in ON. Gruppieren Sie nach member\_id und name, da Namen nicht eindeutig sein müssen.}
+\end{frame}

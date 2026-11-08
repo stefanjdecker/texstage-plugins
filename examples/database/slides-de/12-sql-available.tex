@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Bücher ohne offene Ausleihe finden}
+\small Gesucht ist eine fehlende passende Zeile: NOT EXISTS kann helfen.\par\vspace{3mm}
+\begin{activity}[id=sql-available,input=code,engine=sql,seed=data/library.sql,
+reference=answers/sql-available.sql,open=manual,limit=5,height=.61\textheight]
+\prompt{Geben Sie eine Spalte \texttt{title} für Bücher ohne offene Ausleihe aus. Nutzen Sie \texttt{books(book\_id,title)} und \texttt{loans(book\_id,returned\_on)}. Eine frühere Rückgabe macht ein Buch nicht unverfügbar.}
+\end{activity}
+\note{Erwartet: Practical SQL. Database Basics hat eine zurückgegebene und eine offene Ausleihe. Eine vorhandene Rückgabe allein genügt nicht. Auch ein Anti-Join mit LEFT JOIN ist möglich.}
+\end{frame}

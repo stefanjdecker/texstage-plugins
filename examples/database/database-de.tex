@@ -1,0 +1,33 @@
+% SPDX-License-Identifier: Apache-2.0
+% Build with database-de.activities.json (same language).
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage[ngerman]{babel}
+\newcommand{\DatabaseFooter}{Datenbank-Aktivitäten}
+\newcommand{\DatabaseSlide}[1]{\input{slides-de/#1}}
+\input{database-common.tex}
+\renewcommand\texactivitylabel{Live-Aktivität -- auf dem Handy}
+\renewcommand\texactivityreferencelabel{Referenzlösung}
+\quizsetup{time=60,points=none,leaderboard=false,shuffle=false,
+  handout-heading={Live-Quiz},
+  handout-text={Diese Frage wird live in der Veranstaltung gestellt.},
+  results-text={Die Ergebnisse werden live in der Veranstaltung gezeigt.},
+  true-label={Wahr},false-label={Falsch},
+  number-hint={Geben Sie eine Zahl auf dem Handy ein.},
+  text-hint={Geben Sie Ihre Antwort auf dem Handy ein.},
+  multiple-hint={Mehrere Antworten können richtig sein.},
+  poll-hint={Wählen Sie Ihre Antwort auf dem Handy.},
+  order-hint={Bringen Sie die Elemente in die richtige Reihenfolge.},
+  sketch-hint={Zeichnen Sie Ihre Antwort auf dem Handy.},
+  answer-label={Antwort:},accepted-label={Akzeptierte Antworten:},
+  answer-title={Antwort},answer-heading={Antwort},
+  answer-text={Die Antwort wird in der Veranstaltung gezeigt.},
+  leaderboard-title={Rangliste},podium-title={Podium},
+  join-title={Am Datenbanklabor teilnehmen},
+  join-text={Öffnen Sie die angegebene Adresse auf dem Handy und geben Sie die PIN ein.}}
+\title{Eine Campus-Datenbank, viele Denkwege}
+\subtitle{Eingebaute Aktivitäten und alle aktuellen Unterrichtsplugins}
+\author{Fiktive Lehrbeispiele}
+\date{}
+\begin{document}
+\input{database-sequence.tex}
+\end{document}

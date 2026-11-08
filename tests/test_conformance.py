@@ -6,6 +6,8 @@ import os
 from pathlib import Path
 import shutil
 import sys
+import subprocess
+from importlib.metadata import distribution
 from types import SimpleNamespace
 
 import pytest
@@ -22,6 +24,14 @@ from texstage.server.bundles import BundleError, load_bundle
 
 TYPE = "org.example.coordinates.plane"
 KEY = "synthetic-presenter-key"
+
+
+def test_coordinate_languages_from_installed_wheel():
+    locale = Path(distribution("texstage-example-coordinates").locate_file(
+        "texstage_example_coordinates/web/locale.mjs"))
+    source = Path(__file__).parents[1] / "plugins/coordinates/texstage_example_coordinates/web/locale.mjs"
+    assert locale.is_file() and locale.resolve() != source.resolve()
+    subprocess.run(["node", str(Path(__file__).with_name("coordinate-locale.mjs")), str(locale)], check=True)
 
 
 @pytest.fixture(scope="module")

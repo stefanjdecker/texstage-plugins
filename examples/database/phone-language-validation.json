@@ -1,0 +1,116 @@
+{
+  "validated_on": "2026-11-08",
+  "host_commit": "79d5f3d76b6dd9f6348e65672867d00e40a70ef0",
+  "host_wheel": "texstage-0.2.1.dev7-py3-none-any.whl",
+  "host_wheel_sha256": "6c8c7eac740b44f4c5905ea2b142d1575bc795b31fba11a663be2665976972a0",
+  "targeted_pytest": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browsers": [
+    {
+      "family": "chromium",
+      "version": "151.0.7922.34",
+      "checked": [
+        {
+          "language": "de",
+          "browserLocale": "en-GB",
+          "join": true,
+          "lobby": true,
+          "resume": true,
+          "duplicateNickname": true,
+          "qa": true,
+          "quiz": true,
+          "sql": true,
+          "drafts": true
+        },
+        {
+          "language": "en",
+          "browserLocale": "de-DE",
+          "join": true,
+          "lobby": true,
+          "resume": true,
+          "duplicateNickname": true,
+          "qa": true,
+          "quiz": true,
+          "sql": true,
+          "drafts": true
+        }
+      ],
+      "manualPin": true,
+      "staleLookup": true,
+      "pageErrors": []
+    },
+    {
+      "family": "firefox",
+      "version": "153.0",
+      "checked": [
+        {
+          "language": "de",
+          "browserLocale": "en-GB",
+          "join": true,
+          "lobby": true,
+          "resume": true,
+          "duplicateNickname": true,
+          "qa": true,
+          "quiz": true,
+          "sql": true,
+          "drafts": true
+        },
+        {
+          "language": "en",
+          "browserLocale": "de-DE",
+          "join": true,
+          "lobby": true,
+          "resume": true,
+          "duplicateNickname": true,
+          "qa": true,
+          "quiz": true,
+          "sql": true,
+          "drafts": true
+        }
+      ],
+      "manualPin": true,
+      "staleLookup": true,
+      "pageErrors": []
+    },
+    {
+      "family": "webkit",
+      "version": "26.5",
+      "checked": [
+        {
+          "language": "de",
+          "browserLocale": "en-GB",
+          "join": true,
+          "lobby": true,
+          "resume": true,
+          "duplicateNickname": true,
+          "qa": true,
+          "quiz": true,
+          "sql": true,
+          "drafts": true
+        },
+        {
+          "language": "en",
+          "browserLocale": "de-DE",
+          "join": true,
+          "lobby": true,
+          "resume": true,
+          "duplicateNickname": true,
+          "qa": true,
+          "quiz": true,
+          "sql": true,
+          "drafts": true
+        }
+      ],
+      "manualPin": true,
+      "staleLookup": true,
+      "pageErrors": []
+    }
+  ],
+  "physical_devices_tested": false,
+  "hosted_ci_claimed": false,
+  "note": "The wheel was built before the source commit. Its runtime sources match the commit; later edits only updated documentation and the browser test harness."
+}

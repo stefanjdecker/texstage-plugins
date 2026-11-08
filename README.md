@@ -31,6 +31,18 @@ and reset. Distance is supplementary: `(0,5)` and `(3,4)` have the same distance
 but correctness compares both coordinates. PDFs and PowerPoint retain a static
 diagram. The two packages have their own manifests, versions and portable wheels.
 
+## Complete database activity example
+
+The [campus database lab](examples/database/README.md) extends the original library
+deck with every current plugin activity and its main exercise modes: 70 logical
+slides, 53 interactive examples, a coverage map and teaching notes. It combines
+all nine quiz types, SQL/SPARQL/Turtle, shared graphs, ER decisions, relational
+algebra, physical plans, B+ trees, functional dependencies, normalization and
+transaction schedules, plus the coordinate warm-up. Each slide is a separate
+LaTeX file, in English and German; the guide explains installation, provider pins,
+static editions and short routes through the collection. The [language guide](docs/languages.md)
+explains how Babel, activity sidecars and the phone's browser language interact.
+
 ## Normalization Workshop
 
 The [workshop guide](docs/normalization-workshop.md) explains installation,
@@ -318,7 +330,7 @@ touch input, reset, teardown, blocked evaluator network access and timeouts.
 test, instead of compiling it locally.
 
 The CI workflows require a full reviewed host commit in `texstage_ref`. The
-default is `6b64828b98e9908fc67c265cab31a71a216308d5`, merged into TeXStage `main`
+default is `ee9cdf1752ae01f623bcef8bb93df13e3773073c`, merged into TeXStage `main`
 on GitHub and its GitLab mirror. The FD capacity job is opt-in with the
 `capacity` workflow input. Local checks do not establish a passing hosted run. Transaction CI has a
 separate engine-only Linux job (including Chromium, Firefox and WebKit) and a

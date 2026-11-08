@@ -1,0 +1,4 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{quiz}[id=explain-zero,type=open,display=list,max-chars=220,time=90]{Warum kann COUNT(*) Dan nach einem LEFT JOIN eine Ausleihe zuordnen?}
+\note{Erwartete Begründung: Der Join erhält Dan mit einer durch NULL ergänzten Zeile. COUNT(*) zählt sie, COUNT(loan\_id) ignoriert NULL. Die Liste ist unbewertet. Fragen Sie nach einer Korrektur, nicht nur nach dem Wort NULL.}
+\end{quiz}

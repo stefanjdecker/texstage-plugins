@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Variablenbindungen im Graphen abfragen}
+\small SELECT liefert eine Tabelle von Variablenbindungen.\par\vspace{3mm}
+\begin{activity}[id=sparql-select,input=code,engine=sparql,seed=data/library.ttl,
+reference=answers/sparql-select.rq,open=manual,limit=5,height=.61\textheight]
+\prompt{Geben Sie \texttt{?name ?title} in dieser Reihenfolge für offene Ausleihen aus. Ausleihen haben \texttt{:member}, \texttt{:book} und \texttt{:status :open}; Mitglieder haben \texttt{:name}, Bücher \texttt{:title}.}
+\end{activity}
+\note{Erwartet: dieselben drei Name-Titel-Paare wie beim SQL-Join. Variablennamen und Zeilenreihenfolge dürfen abweichen. Vertauschte Ausgabespalten ändern das geforderte Ergebnis.}
+\end{frame}

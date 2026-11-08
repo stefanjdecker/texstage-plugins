@@ -1,0 +1,16 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{SQL: eine kurze Erinnerung}
+
+\begin{block}{Eine Anfrage liefert eine Ergebnistabelle}
+\texttt{SELECT title FROM books;}\par\smallskip
+Mit \texttt{SELECT} wählen Sie Spalten, mit \texttt{WHERE} Zeilen.
+\texttt{JOIN ... ON ...} verbindet Tabellen.
+\end{block}\small
+\textbf{Schema}\par
+\texttt{members(member\_id, name)}\par
+\texttt{books(book\_id, title, topic)}\par
+\texttt{loans(loan\_id, member\_id, book\_id, returned\_on)}
+\vspace{3mm}\par Das Handy verwendet lesende SQLite-Anfragen. Jede Aufgabe startet mit denselben Daten.
+
+\note{Planen Sie etwa zwei Minuten je Versuch ein. Öffnen, sammeln, Ergebnisgruppen vergleichen, dann auflösen. SQL-Änderungen werden abgewiesen. Ein Referenztreffer auf einem Datenbestand beweist keine allgemeine Anfrageäquivalenz.}
+\end{frame}

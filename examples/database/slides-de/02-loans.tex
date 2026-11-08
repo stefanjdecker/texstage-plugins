@@ -1,0 +1,15 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Welche Ausleihen sind noch offen?}
+
+\small\centering\begin{tabular}{rrrl}\toprule
+loan\_id & member\_id & book\_id & returned\_on\\\midrule
+201 & 1 & 101 & NULL\\202 & 2 & 102 & NULL\\
+203 & 1 & 103 & 2026-10-01\\204 & 3 & 104 & NULL\\
+205 & 2 & 101 & 2026-10-02\\\bottomrule\end{tabular}
+\par\vspace{4mm}\raggedright\normalsize
+Hier bedeutet \texttt{returned\_on IS NULL}: \textbf{noch offen}.\par
+\smallskip Jede Ausleihe verweist auf genau ein vorhandenes Mitglied und Buch.
+Ein Mitglied oder Buch kann über die Zeit keine, eine oder viele Ausleihen haben.
+
+\note{Drei Ausleihen sind offen. Ausleihe 205 wurde vor der aktuellen Ausleihe 201 desselben Exemplars zurückgegeben; Ausleihdaten fehlen. NULL ist nicht die Zeichenkette NULL; der Test lautet IS NULL.}
+\end{frame}

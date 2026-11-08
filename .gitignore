@@ -22,3 +22,6 @@ bplus.lock.json
 examples/normalization/texquiz-out/
 normalization-profile/
 normalization.lock.json
+
+# Combined database example: generated decks and disposable operator profile.
+examples/database/texquiz-out/

@@ -1,0 +1,12 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Gleiche Anfrage, unterschiedlicher Aufwand}
+Wählen Sie einen Ausführungsplan anhand der angegebenen Statistiken.
+\medskip
+\begin{itemize}
+\item Vergleichen Sie Scan und Index, dann Join-Reihenfolge und Join-Verfahren.
+\item Die Kosten an der Wurzel enthalten bereits die Kosten der Kindknoten.
+\item Prüfen Sie die Speichergrenze jeder Hash-Aufbau-Eingabe.
+\item Kosten sind \textbf{Lehreinheiten}, keine gemessenen Laufzeiten.
+\end{itemize}
+\note{Die Beispiele verwenden eigene Statistiken und erhalten passende Ausleihzeilen einschließlich Duplikaten. Sie haben eine bewertete Runde von 120 Sekunden; erklären Sie die Regel vor dem Öffnen.}
+\end{frame}

@@ -1,0 +1,14 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Warum ist Dan ein besonderer Fall?}
+
+\begin{columns}[T,onlytextwidth]
+\column{.46\textwidth}\textbf{Der LEFT JOIN erhält Dan}\par\smallskip
+\small\begin{tabular}{ll}\toprule name & loan\_id\\\midrule Dan & NULL\\\bottomrule\end{tabular}
+\column{.49\textwidth}
+\texttt{COUNT(*) = 1}\par\smallskip zählt diese Platzhalterzeile.\par\medskip
+\texttt{COUNT(loan\_id) = 0}\par\smallskip zählt nur Ausleih-IDs ungleich NULL.
+\end{columns}\vspace{5mm}
+Die Bedingung für offene Ausleihen gehört in \texttt{ON}, damit auch Mitglieder mit ausschließlich zurückgegebenen Ausleihen im Ergebnis bleiben.
+
+\note{Die durch NULL ergänzte Zeile ist ein Zwischenergebnis, keine echte Ausleihe. Ein WHERE-Filter auf returned\_on kann ein Mitglied mit ausschließlich abgeschlossenen Ausleihen entfernen. Das Prüfskript enthält diesen zusätzlichen Fall.}
+\end{frame}

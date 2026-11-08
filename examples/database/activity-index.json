@@ -1,0 +1,314 @@
+{
+  "format": 1,
+  "logical_slides": 70,
+  "builtin_quizzes": 10,
+  "builtin_activities": 12,
+  "coordinate": {
+    "id": "shelf-point",
+    "type": "org.example.coordinates.plane",
+    "slide": "slides/32-coordinate-warmup.tex",
+    "logical_slide": 6
+  },
+  "prepared": [
+    {
+      "id": "er_registrations",
+      "type": "io.github.stefanjdecker.erdecisions.lesson",
+      "source": "activities/er-decisions/registrations.json",
+      "slide": "slides/34-er-registrations.tex",
+      "title": "Choose a model for workshop registrations",
+      "teaching": "Select cardinalities, status ownership and relationship/entity representation. Both intended alternatives can pass.",
+      "origin": "examples/er-decisions/activities/registrations.json",
+      "logical_slide": 11
+    },
+    {
+      "id": "ra_construct",
+      "type": "io.github.stefanjdecker.relationallab.tree",
+      "source": "activities/relational/construct.json",
+      "slide": "slides/36-ra-construct.tex",
+      "title": "Build a query tree",
+      "teaching": "Construct a join/filter/projection tree. Inspect intermediate tables; matching finite instances is not an equivalence proof.",
+      "origin": "examples/relational/activities/construct.json",
+      "logical_slide": 24
+    },
+    {
+      "id": "ra_rewrite",
+      "type": "io.github.stefanjdecker.relationallab.tree",
+      "source": "activities/relational/rewrite.json",
+      "slide": "slides/37-ra-rewrite.tex",
+      "title": "Rewrite a query tree",
+      "teaching": "Push filters down using checked rules. Explain each side condition; fewer intermediate cells are a teaching metric.",
+      "origin": "examples/relational/activities/rewrite.json",
+      "logical_slide": 25
+    },
+    {
+      "id": "plan_selective",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/selective.json",
+      "slide": "slides/39-plan-selective.tex",
+      "title": "Few matches: scan or index?",
+      "teaching": "Compare the supplied cost formulas: 5,210 teaching units for the index versus 20,000 for a scan.",
+      "origin": "examples/query-plan/activities/selective.json",
+      "logical_slide": 27
+    },
+    {
+      "id": "plan_broad",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/broad.json",
+      "slide": "slides/40-plan-broad.tex",
+      "title": "Many matches: scan or index?",
+      "teaching": "A broad predicate can make an index worse. Keep the query fixed and compare the root cost.",
+      "origin": "examples/query-plan/activities/broad.json",
+      "logical_slide": 28
+    },
+    {
+      "id": "plan_library",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/library.json",
+      "slide": "slides/41-plan-library.tex",
+      "title": "Choose a join order",
+      "teaching": "Choose access paths, join order and methods for a library query. Duplicate loan results are meaningful.",
+      "origin": "examples/query-plan/activities/library.json",
+      "logical_slide": 29
+    },
+    {
+      "id": "plan_memory",
+      "type": "io.github.stefanjdecker.queryplan.challenge",
+      "source": "activities/query-plan/memory.json",
+      "slide": "slides/42-plan-memory.tex",
+      "title": "Plan with less hash memory",
+      "teaching": "Choose the hash build side and obey each operator's memory bound. A previously attractive plan may become illegal.",
+      "origin": "examples/query-plan/activities/memory.json",
+      "logical_slide": 30
+    },
+    {
+      "id": "bplus_lookup",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/lookup.json",
+      "slide": "slides/44-bplus-lookup.tex",
+      "title": "Follow a lookup path",
+      "teaching": "Follow separators to the correct leaf and identify the entry. Leaves store data; internal keys route the search.",
+      "origin": "examples/bplus/activities/lookup.json",
+      "logical_slide": 32
+    },
+    {
+      "id": "bplus_range",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/range.json",
+      "slide": "slides/45-bplus-range.tex",
+      "title": "Scan a key interval",
+      "teaching": "Start at the lower-bound leaf, then follow leaf links. Include exactly the required keys and pages.",
+      "origin": "examples/bplus/activities/range.json",
+      "logical_slide": 33
+    },
+    {
+      "id": "bplus_insert",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/insert.json",
+      "slide": "slides/46-bplus-insert.tex",
+      "title": "Insert and split a leaf",
+      "teaching": "Preserve sorted entries, leaf links and separator meaning. Different legal repairs are accepted.",
+      "origin": "examples/bplus/activities/insert.json",
+      "logical_slide": 34
+    },
+    {
+      "id": "bplus_delete",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/delete.json",
+      "slide": "slides/47-bplus-delete.tex",
+      "title": "Delete and repair underflow",
+      "teaching": "Inspect occupancy. Borrow or merge as needed, and update the parent separators.",
+      "origin": "examples/bplus/activities/delete.json",
+      "logical_slide": 35
+    },
+    {
+      "id": "bplus_cascade",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/cascade.json",
+      "slide": "slides/48-bplus-cascade.tex",
+      "title": "Propagate a split",
+      "teaching": "Carry a split into an internal page and possibly a new root; preserve existing page identities.",
+      "origin": "examples/bplus/activities/cascade.json",
+      "logical_slide": 36
+    },
+    {
+      "id": "bplus_shrink",
+      "type": "io.github.stefanjdecker.bpluslab.tree",
+      "source": "activities/bplus/shrink.json",
+      "slide": "slides/49-bplus-shrink.tex",
+      "title": "Shrink the root",
+      "teaching": "A root with one child is removed. The new root must still describe the complete leaf order.",
+      "origin": "examples/bplus/activities/shrink.json",
+      "logical_slide": 37
+    },
+    {
+      "id": "fd_closure",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/closure.json",
+      "slide": "slides/51-fd-closure.tex",
+      "title": "Derive an attribute closure",
+      "teaching": "Apply an FD only when every left-hand attribute is known. Continue to a fixed point.",
+      "origin": "examples/functional-dependencies/activities/closure.json",
+      "logical_slide": 39
+    },
+    {
+      "id": "fd_practice",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/practice.json",
+      "slide": "slides/52-fd-practice.tex",
+      "title": "Practice a closure with feedback",
+      "teaching": "This activity gives practice feedback and no points. Use it before the scored reasoning examples.",
+      "origin": "examples/functional-dependencies/activities/practice.json",
+      "logical_slide": 40
+    },
+    {
+      "id": "fd_keys_one",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/keys_one.json",
+      "slide": "slides/53-fd-keys-one.tex",
+      "title": "Find one candidate key",
+      "teaching": "A key must determine every attribute and be minimal by inclusion.",
+      "origin": "examples/functional-dependencies/activities/keys_one.json",
+      "logical_slide": 41
+    },
+    {
+      "id": "fd_keys_all",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/keys_all.json",
+      "slide": "slides/54-fd-keys-all.tex",
+      "title": "Find all candidate keys",
+      "teaching": "Completeness matters as well as validity: an omitted key makes an all-keys answer incomplete.",
+      "origin": "examples/functional-dependencies/activities/keys_all.json",
+      "logical_slide": 42
+    },
+    {
+      "id": "fd_implied",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/implied.json",
+      "slide": "slides/55-fd-implied.tex",
+      "title": "Prove an implied dependency",
+      "teaching": "Give a productive derivation. A claim of implication without its required evidence is incomplete.",
+      "origin": "examples/functional-dependencies/activities/implied.json",
+      "logical_slide": 43
+    },
+    {
+      "id": "fd_refuted",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/refuted.json",
+      "slide": "slides/56-fd-refuted.tex",
+      "title": "Refute a dependency",
+      "teaching": "Construct two rows satisfying every given FD while agreeing on the proposed determinant and disagreeing on its dependent.",
+      "origin": "examples/functional-dependencies/activities/refuted.json",
+      "logical_slide": 44
+    },
+    {
+      "id": "fd_different_sizes",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/different_sizes.json",
+      "slide": "slides/57-fd-different-sizes.tex",
+      "title": "Compare candidate-key sizes",
+      "teaching": "Minimal does not mean minimum cardinality. Candidate keys of different sizes may coexist.",
+      "origin": "examples/functional-dependencies/activities/different_sizes.json",
+      "logical_slide": 45
+    },
+    {
+      "id": "fd_empty_key",
+      "type": "io.github.stefanjdecker.fdlab.exercise",
+      "source": "activities/functional-dependencies/empty_key.json",
+      "slide": "slides/58-fd-empty-key.tex",
+      "title": "Can an empty key work?",
+      "teaching": "An empty determinant can determine all attributes under the stated FDs; do not silently assume keys must be nonempty.",
+      "origin": "examples/functional-dependencies/activities/empty_key.json",
+      "logical_slide": 46
+    },
+    {
+      "id": "norm_registration",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/normalization/registration.json",
+      "slide": "slides/60-norm-registration.tex",
+      "title": "Decompose while keeping registrations",
+      "teaching": "Keep the student/course link. Attribute coverage and dependency preservation alone do not prove losslessness.",
+      "origin": "examples/normalization/activities/registration.json",
+      "logical_slide": 48
+    },
+    {
+      "id": "norm_classify",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/normalization/classify.json",
+      "slide": "slides/61-norm-classify.tex",
+      "title": "Classify a relation",
+      "teaching": "Find the highest normal form and a violating dependency for the next one. Assume atomic values.",
+      "origin": "examples/normalization/activities/classify.json",
+      "logical_slide": 49
+    },
+    {
+      "id": "norm_tradeoff",
+      "type": "io.github.stefanjdecker.normalizationworkshop.workshop",
+      "source": "activities/normalization/tradeoff.json",
+      "slide": "slides/62-norm-tradeoff.tex",
+      "title": "Compare losslessness and FD preservation",
+      "teaching": "A lossless BCNF decomposition can fail to preserve an FD. Examine the chase and counterexample rather than only the label.",
+      "origin": "examples/normalization/activities/tradeoff.json",
+      "logical_slide": 50
+    },
+    {
+      "id": "tx_counter",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/counter.lesson.json",
+      "slide": "slides/63-tx-counter.tex",
+      "title": "Two increments, one counter",
+      "teaching": "Predict 110, inspect remembered reads, explain the cycle, then repair to a legal acyclic schedule. The serial result is 120.",
+      "origin": "examples/transactions/activities/counter.lesson.json",
+      "logical_slide": 60
+    },
+    {
+      "id": "tx_independent",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/independent.lesson.json",
+      "slide": "slides/64-tx-independent.tex",
+      "title": "Independent transactions",
+      "teaching": "Operations on different objects do not create conflicts. Include isolated transactions in a serial certificate.",
+      "origin": "examples/transactions/activities/independent.lesson.json",
+      "logical_slide": 61
+    },
+    {
+      "id": "tx_read_read",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/read_read.lesson.json",
+      "slide": "slides/65-tx-read-read.tex",
+      "title": "Shared reads",
+      "teaching": "Reading the same object twice does not create a conflict. Avoid adding an edge just because the object is shared.",
+      "origin": "examples/transactions/activities/read_read.lesson.json",
+      "logical_slide": 62
+    },
+    {
+      "id": "tx_write_write",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/write_write.lesson.json",
+      "slide": "slides/66-tx-write-write.tex",
+      "title": "Competing writes",
+      "teaching": "Write/write pairs can conflict. Explain the earlier/later operation witness for each directed edge.",
+      "origin": "examples/transactions/activities/write_write.lesson.json",
+      "logical_slide": 63
+    },
+    {
+      "id": "tx_chain",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/chain.lesson.json",
+      "slide": "slides/67-tx-chain.tex",
+      "title": "Direct edges and a chain",
+      "teaching": "Distinguish direct conflict edges from reachability. A transitive path is not an extra direct witness.",
+      "origin": "examples/transactions/activities/chain.lesson.json",
+      "logical_slide": 64
+    },
+    {
+      "id": "tx_blind_write",
+      "type": "io.github.stefanjdecker.transactionactivity.schedule",
+      "source": "activities/transactions/blind_write.lesson.json",
+      "slide": "slides/68-tx-blind-write.tex",
+      "title": "A blind-write limitation",
+      "teaching": "Conflict serializability is sufficient, not necessary for view serializability. A matching final value does not prove the conflict graph acyclic.",
+      "origin": "examples/transactions/activities/blind_write.lesson.json",
+      "logical_slide": 65
+    }
+  ]
+}

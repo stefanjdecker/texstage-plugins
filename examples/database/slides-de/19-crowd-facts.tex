@@ -1,0 +1,13 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Gemeinsam einen Graphen aufbauen}
+
+\small Nutzen Sie die offenen Ausleihen unserer Bibliothek.\par\vspace{3mm}
+\begin{activity}[id=crowd-facts,input=tuple,fields={Mitglied,Beziehung,Buch},
+suggest={Ada,Ben,Cara,borrows,Database Basics,Graph Stories,Network Notes},
+open=manual,review,terms=exact,min=1,limit=3,height=.61\textheight]
+\prompt{Ergänzen Sie eine offene Ausleihe als Mitglied / borrows / Buch.
+Übernehmen Sie Namen und Titel genau. Dies sind Graphbeschriftungen, kein Turtle-Code.}
+\end{activity}
+
+\note{Erwartet: Ada borrows Database Basics, Ben borrows Graph Stories, Cara borrows Network Notes. Prüfen und genehmigen Sie die Beschriftungen vor der Anzeige. Besprechen Sie Schreibvarianten. Beiträge verändern keine späteren Ausgangsdaten.}
+\end{frame}

@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "workshop_refuted",
+    "title": {
+      "en": "Does a tutor determine the workshop?",
+      "de": "Bestimmt ein Tutor den Workshop?"
+    },
+    "prompt": {
+      "en": "Does tutor determine workshop? Prove or refute it.",
+      "de": "Bestimmt der Tutor den Workshop? Beweisen oder widerlegen Sie dies."
+    },
+    "attributes": [
+      {
+        "id": "person",
+        "label": {
+          "en": "Person",
+          "de": "Person"
+        }
+      },
+      {
+        "id": "email",
+        "label": {
+          "en": "Email",
+          "de": "E-Mail"
+        }
+      },
+      {
+        "id": "workshop",
+        "label": {
+          "en": "Workshop",
+          "de": "Workshop"
+        }
+      },
+      {
+        "id": "tutor",
+        "label": {
+          "en": "Tutor",
+          "de": "Tutor"
+        }
+      },
+      {
+        "id": "room",
+        "label": {
+          "en": "Room",
+          "de": "Raum"
+        }
+      },
+      {
+        "id": "building",
+        "label": {
+          "en": "Building",
+          "de": "Gebäude"
+        }
+      }
+    ],
+    "fds": [
+      {
+        "id": "f1",
+        "lhs": [
+          "person"
+        ],
+        "rhs": [
+          "email"
+        ]
+      },
+      {
+        "id": "f2",
+        "lhs": [
+          "email"
+        ],
+        "rhs": [
+          "person"
+        ]
+      },
+      {
+        "id": "f3",
+        "lhs": [
+          "workshop"
+        ],
+        "rhs": [
+          "tutor",
+          "room"
+        ]
+      },
+      {
+        "id": "f4",
+        "lhs": [
+          "room"
+        ],
+        "rhs": [
+          "building"
+        ]
+      }
+    ],
+    "task": {
+      "mode": "implication",
+      "lhs": [
+        "tutor"
+      ],
+      "rhs": [
+        "workshop"
+      ]
+    }
+  },
+  "worked_answer": {
+    "mode": "implication",
+    "implied": false,
+    "agree": [
+      "tutor"
+    ]
+  },
+  "explanation": {
+    "en": "Two rows can agree on tutor and differ everywhere else without violating a premise FD.",
+    "de": "Zwei Tupel können beim Tutor übereinstimmen und sich sonst unterscheiden, ohne eine gegebene FD zu verletzen."
+  },
+  "feedback": "practice",
+  "points": 100
+}

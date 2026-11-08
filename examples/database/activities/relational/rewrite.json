@@ -1,0 +1,274 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "id": "db_rewrite",
+    "title": {
+      "en": "Move filters earlier",
+      "de": "Filter früher anwenden"
+    },
+    "prompt": {
+      "en": "Use verified rules to reduce intermediate output cells on the shown data.",
+      "de": "Verringern Sie mit geprüften Regeln die Zahl der ausgegebenen Zwischenzellen für die gezeigten Daten."
+    },
+    "relations": {
+      "books": [
+        [
+          "book",
+          "int"
+        ],
+        [
+          "title",
+          "text"
+        ],
+        [
+          "topic",
+          "text"
+        ]
+      ],
+      "loans": [
+        [
+          "loan",
+          "int"
+        ],
+        [
+          "borrower",
+          "int"
+        ],
+        [
+          "item",
+          "int"
+        ],
+        [
+          "open",
+          "bool"
+        ]
+      ],
+      "members": [
+        [
+          "member",
+          "int"
+        ],
+        [
+          "name",
+          "text"
+        ]
+      ]
+    },
+    "instances": [
+      {
+        "id": "shown",
+        "visibility": "public",
+        "tables": {
+          "books": [
+            [
+              10,
+              "Data",
+              "db"
+            ],
+            [
+              11,
+              "Networks",
+              "net"
+            ],
+            [
+              12,
+              "Graphs",
+              "db"
+            ]
+          ],
+          "loans": [
+            [
+              100,
+              1,
+              10,
+              true
+            ],
+            [
+              101,
+              1,
+              12,
+              true
+            ],
+            [
+              102,
+              2,
+              11,
+              true
+            ],
+            [
+              103,
+              3,
+              10,
+              false
+            ]
+          ],
+          "members": [
+            [
+              1,
+              "Ada"
+            ],
+            [
+              2,
+              "Ben"
+            ],
+            [
+              3,
+              "Cora"
+            ]
+          ]
+        }
+      }
+    ],
+    "task": {
+      "mode": "rewrite",
+      "allowed_operators": [
+        "rel",
+        "select",
+        "project",
+        "rename",
+        "product",
+        "join",
+        "union",
+        "difference"
+      ],
+      "allowed_rules": [
+        "split-select",
+        "push-select-left",
+        "push-select-right",
+        "product-to-join",
+        "collapse-project"
+      ],
+      "goal": "reduce-public-materialization",
+      "feedback": "on-reveal"
+    },
+    "baseline_tree": [
+      [
+        "rel",
+        "books"
+      ],
+      [
+        "rel",
+        "loans"
+      ],
+      [
+        "join",
+        0,
+        1,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "book"
+            ],
+            [
+              "a",
+              "item"
+            ]
+          ]
+        ]
+      ],
+      [
+        "rel",
+        "members"
+      ],
+      [
+        "join",
+        2,
+        3,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "borrower"
+            ],
+            [
+              "a",
+              "member"
+            ]
+          ]
+        ]
+      ],
+      [
+        "select",
+        4,
+        [
+          [
+            "eq",
+            [
+              "a",
+              "open"
+            ],
+            [
+              "v",
+              true
+            ]
+          ],
+          [
+            "eq",
+            [
+              "a",
+              "topic"
+            ],
+            [
+              "v",
+              "db"
+            ]
+          ]
+        ]
+      ],
+      [
+        "project",
+        5,
+        [
+          "name"
+        ]
+      ]
+    ]
+  },
+  "worked_answer": {
+    "mode": "rewrite",
+    "steps": [
+      {
+        "rule": "split-select",
+        "path": [
+          0
+        ]
+      },
+      {
+        "rule": "push-select-left",
+        "path": [
+          0,
+          0
+        ]
+      },
+      {
+        "rule": "push-select-left",
+        "path": [
+          0
+        ]
+      },
+      {
+        "rule": "push-select-left",
+        "path": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "rule": "push-select-right",
+        "path": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "explanation": {
+    "en": "Split the selection, then move each condition into the input that contains its attributes. The checked rules preserve the result.",
+    "de": "Zerlegen Sie die Selektion und schieben Sie jede Bedingung in die Eingabe mit ihren Attributen. Die geprüften Regeln erhalten das Ergebnis."
+  }
+}

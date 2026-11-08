@@ -1,0 +1,66 @@
+{
+  "host_commit": "e7351a5f10018d4c0c11e1d65059046248929ca7",
+  "providers": [
+    {
+      "package": "texstage-bplus-lab",
+      "version": "0.7.0",
+      "id": "io.github.stefanjdecker.bpluslab",
+      "directory": "bplus-lab"
+    },
+    {
+      "package": "texstage-example-coordinates",
+      "version": "0.1.0",
+      "id": "org.example.coordinates",
+      "directory": "coordinates"
+    },
+    {
+      "package": "texstage-example-distance",
+      "version": "0.1.0",
+      "id": "org.example.distance",
+      "directory": "distance"
+    },
+    {
+      "package": "texstage-er-decisions",
+      "version": "0.6.0",
+      "id": "io.github.stefanjdecker.erdecisions",
+      "directory": "er-decisions"
+    },
+    {
+      "package": "texstage-fd-lab",
+      "version": "0.6.0",
+      "id": "io.github.stefanjdecker.fdlab",
+      "directory": "fd-lab"
+    },
+    {
+      "package": "texstage-normalization-workshop",
+      "version": "0.5.0",
+      "id": "io.github.stefanjdecker.normalizationworkshop",
+      "directory": "normalization-workshop"
+    },
+    {
+      "package": "texstage-query-plan",
+      "version": "0.7.0",
+      "id": "io.github.stefanjdecker.queryplan",
+      "directory": "query-plan"
+    },
+    {
+      "package": "texstage-relational-lab",
+      "version": "0.2.0",
+      "id": "io.github.stefanjdecker.relationallab",
+      "directory": "relational-lab"
+    },
+    {
+      "package": "texstage-transaction-activity",
+      "version": "0.1.0",
+      "id": "io.github.stefanjdecker.transactionactivity",
+      "directory": "transaction-activity"
+    },
+    {
+      "package": "texstage-transaction-engine",
+      "version": "0.1.0",
+      "id": "io.github.stefanjdecker.transactionengine",
+      "directory": "transaction-engine"
+    }
+  ],
+  "host_required_change": "Phone content selection from companion codex/database-activity-examples: current plugin input precedes retained built-in activity feedback."
+}

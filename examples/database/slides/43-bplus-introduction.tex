@@ -1,0 +1,12 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Find catalogue entries through pages}
+Each task starts from its own printed B+ tree.
+\medskip
+\begin{itemize}
+\item Leaves store entries; internal separators route searches.
+\item Lookup and range tasks explain the pages visited.
+\item Insertion and deletion may split, borrow, merge or replace the root.
+\item More than one repair can be valid. Preserve ordering and tree invariants.
+\end{itemize}
+\note{Explain leaf/internal capacities and the separator convention in the exercise. The six examples offer 1,000 fixed points with rubric-based partial credit. Reveal publishes the latest checked award; reset withdraws it.}
+\end{frame}

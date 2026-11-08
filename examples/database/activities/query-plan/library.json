@@ -1,0 +1,234 @@
+{
+  "format": 1,
+  "exercise": {
+    "format": 1,
+    "model": "teaching-cost-v1",
+    "query": {
+      "relations": [
+        {
+          "id": "books",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "topic",
+              "type": "text"
+            }
+          ],
+          "filter": {
+            "column": "topic",
+            "value": "db"
+          },
+          "index": {
+            "column": "topic",
+            "height": 3
+          }
+        },
+        {
+          "id": "loans",
+          "columns": [
+            {
+              "id": "book_id",
+              "type": "int"
+            },
+            {
+              "id": "member_id",
+              "type": "int"
+            },
+            {
+              "id": "open",
+              "type": "bool"
+            }
+          ],
+          "filter": {
+            "column": "open",
+            "value": true
+          }
+        },
+        {
+          "id": "members",
+          "columns": [
+            {
+              "id": "member_id",
+              "type": "int"
+            },
+            {
+              "id": "name",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "joins": [
+        {
+          "left": [
+            "books",
+            "book_id"
+          ],
+          "right": [
+            "loans",
+            "book_id"
+          ]
+        },
+        {
+          "left": [
+            "loans",
+            "member_id"
+          ],
+          "right": [
+            "members",
+            "member_id"
+          ]
+        }
+      ],
+      "output": [
+        [
+          "members",
+          "name"
+        ]
+      ]
+    },
+    "statistics": {
+      "base": [
+        {
+          "relation": "books",
+          "rows": 10000,
+          "pages": 100,
+          "row_bytes": 32
+        },
+        {
+          "relation": "loans",
+          "rows": 50000,
+          "pages": 500,
+          "row_bytes": 32
+        },
+        {
+          "relation": "members",
+          "rows": 2000,
+          "pages": 20,
+          "row_bytes": 32
+        }
+      ],
+      "cardinalities": [
+        {
+          "relations": [
+            "books"
+          ],
+          "rows": 10
+        },
+        {
+          "relations": [
+            "loans"
+          ],
+          "rows": 5000
+        },
+        {
+          "relations": [
+            "members"
+          ],
+          "rows": 2000
+        },
+        {
+          "relations": [
+            "books",
+            "loans"
+          ],
+          "rows": 50
+        },
+        {
+          "relations": [
+            "loans",
+            "members"
+          ],
+          "rows": 5000
+        },
+        {
+          "relations": [
+            "books",
+            "loans",
+            "members"
+          ],
+          "rows": 50
+        }
+      ]
+    },
+    "limits": {
+      "hash_bytes": 1048576
+    }
+  },
+  "baseline": {
+    "format": 1,
+    "nodes": [
+      {
+        "op": "scan",
+        "relation": "loans",
+        "method": "seq"
+      },
+      {
+        "op": "scan",
+        "relation": "members",
+        "method": "seq"
+      },
+      {
+        "op": "join",
+        "left": 0,
+        "right": 1,
+        "method": "hash-right"
+      },
+      {
+        "op": "scan",
+        "relation": "books",
+        "method": "index"
+      },
+      {
+        "op": "join",
+        "left": 2,
+        "right": 3,
+        "method": "hash-right"
+      }
+    ]
+  },
+  "goal": {
+    "kind": "best"
+  },
+  "worked_answer": {
+    "format": 1,
+    "nodes": [
+      {
+        "op": "scan",
+        "relation": "books",
+        "method": "index"
+      },
+      {
+        "op": "scan",
+        "relation": "loans",
+        "method": "seq"
+      },
+      {
+        "op": "join",
+        "left": 0,
+        "right": 1,
+        "method": "hash-left"
+      },
+      {
+        "op": "scan",
+        "relation": "members",
+        "method": "seq"
+      },
+      {
+        "op": "join",
+        "left": 2,
+        "right": 3,
+        "method": "hash-left"
+      }
+    ]
+  },
+  "explanation": {
+    "en": "Join the ten selected books to loans first. Build small hash tables on books, then on the 50-row result.",
+    "de": "Zuerst die zehn Bücher mit Ausleihen verbinden. Kleine Hash-Tabellen für Bücher und dann für die 50 Ergebniszeilen aufbauen."
+  },
+  "points": 1000,
+  "time": 120
+}

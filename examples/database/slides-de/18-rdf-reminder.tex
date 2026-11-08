@@ -1,0 +1,15 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Die Bibliothek als Graph}
+
+\small
+\texttt{@prefix : <https://example.org/library/> .}\par\medskip
+\texttt{:l201 :member :ada ; :book :b101 ; :status :open .}\par\smallskip
+\texttt{:ada :name "Ada" .}\par
+\texttt{:b101 :title "Database Basics" .}
+\vspace{5mm}\par\normalsize
+Ein Tripel beschreibt \textbf{Subjekt -- Prädikat -- Objekt}.\par
+\smallskip\texttt{:ada} ist ein Bezeichner; \texttt{"Ada"} eine Zeichenkette.\par
+\smallskip\texttt{:b101} bis \texttt{:b104} bezeichnen die vier Buchexemplare.
+
+\note{Die Engine übernimmt die Präfixe aus den Ausgangsdaten, daher ist :ada direkt nutzbar. Offen oder abgeschlossen wird ausdrücklich als :status :open oder :closed dargestellt. Eine fehlende Aussage ist nicht automatisch falsch.}
+\end{frame}

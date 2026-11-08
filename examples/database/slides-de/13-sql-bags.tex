@@ -1,0 +1,9 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{frame}[t]{Wiederholte Zeilen erhalten}
+\small SQL-Ergebnisse dürfen gleiche Zeilen mehrfach enthalten.\par\vspace{3mm}
+\begin{activity}[id=sql-bags,input=code,engine=sql,seed=data/library.sql,
+reference=answers/sql-bags.sql,open=manual,limit=5,height=.61\textheight]
+\prompt{Geben Sie \texttt{name} einmal je Ausleihe aus, offen oder abgeschlossen. Verbinden Sie \texttt{members(member\_id,name)} und \texttt{loans(member\_id)}. Erhalten Sie Wiederholungen: zwei Ausleihen ergeben zwei Zeilen.}
+\end{activity}
+\note{Erwartet: Ada, Ada, Ben, Ben, Cara. DISTINCT verändert die geforderte Häufigkeit. Die Zeilenreihenfolge ist für den Vergleich unerheblich.}
+\end{frame}

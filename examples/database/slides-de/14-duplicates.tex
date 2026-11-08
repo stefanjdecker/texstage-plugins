@@ -1,0 +1,5 @@
+% SPDX-License-Identifier: Apache-2.0
+\begin{quiz}[id=duplicates,type=truefalse,answer=false,time=45]{DISTINCT lässt das Ergebnis einer SQL-Anfrage immer unverändert.}
+\explain{Falsch. Unser Ausleih-Join liefert Ada und Ben jeweils zweimal. DISTINCT reduziert fünf Zeilen auf drei verschiedene Namen.}
+\note{Betrachten Sie die Häufigkeit, nicht nur die Menge angezeigter Namen.}
+\end{quiz}
