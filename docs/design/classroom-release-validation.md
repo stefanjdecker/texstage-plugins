@@ -6,6 +6,12 @@ classroom measurements and physical acceptance. The phone/network/accessibility
 rehearsal is **not performed**: the maintainer requested the
 [checklist](../classroom-device-checklist.md) for later.
 
+Follow-up: the [WebKit crash investigation](webkit-crash-investigation.md)
+records native traces, a controlled HTTP comparison and a focused host
+workaround. The measurements below remain the historical record for this
+candidate; use the follow-up's exact host revision and validation results when
+assessing the fix.
+
 ## Reproducible source and artifacts
 
 - Host: `cdf20af0fa53e284b7a49c1a4cbd18245599c6a9`, published on the

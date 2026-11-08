@@ -1,0 +1,1861 @@
+{
+  "date": "2026-11-08",
+  "baseline_host": "cdf20af0fa53e284b7a49c1a4cbd18245599c6a9",
+  "fixed_host": "ee9cdf1752ae01f623bcef8bb93df13e3773073c",
+  "upstream_fix": "https://github.com/WebKit/WebKit/commit/4103f690caccac6199a3dd6f59409668d584ecc6",
+  "native_function_identification": "Disassembly plus matching upstream source; shipped libraries lack full debug symbols.",
+  "host_ci": {
+    "url": "https://github.com/stefanjdecker/texstage/actions/runs/42466372269",
+    "all_five_jobs_passed": true
+  },
+  "runs": [
+    {
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42465030983",
+      "collection_revision": "9a8597c270b4cad61e05e9fb7d4bb50388f66df3",
+      "cases": [
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 52.859,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-1.62.1",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter browser page crashed: initial saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "6fc48bbf72775c9ad9c0f201d0b106018ef2cad1b47747f9c204c86671fca96c",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5281.gdb.log",
+              "sha256": "1b42c4919bf54757bad723f56bb44d0fee9c9d70b0fde7baedae3119dcc23cbe",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007fb48764351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ]
+        },
+        {
+          "kind": "bplus",
+          "actors": 600,
+          "exit_code": 1,
+          "seconds": 50.31,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-1.62.1",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter browser page crashed: reconnected evaluator"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": false
+          },
+          "report_sha256": "3ceb00c5a419c71433098cfc68247f5a9856c86892c67743bcd8e51da2300599",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.7384.gdb.log",
+              "sha256": "7df401ac5e2f856214181b0a5cd24030bb0221edc2a629700142f6edff348fe0",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f86c344351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ]
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 29.026,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-1.62.1",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter browser page crashed: initial saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "4c9cd70fc552dac7bb3b1e507650346efd4ab6f2b31d7ef3d52476a20dec573c",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.7567.gdb.log",
+              "sha256": "5f5edc1a9c7f8631db3701e8dada02a6933b23828de2d56ad31108a1d154255d",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f52f2e4351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ]
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 38.327,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-1.64.1",
+          "run": "run-1-1000",
+          "browser_version": "27.2",
+          "failure": [
+            "Error: Presenter browser page crashed: initial saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "46861d8a4dc125b28dab1111a8ed16b76c3d6ca04a915a9190bc8edfe268f4e4",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5425.gdb.log",
+              "sha256": "ccb3e9d90e028fc792e489cf9174c227d1d3ae3012eeac4f74ed8d5cfbecc372",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007fee0e55b08e in ?? () from /home/runner/.cache/ms-playwright/webkit-2370/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ]
+        },
+        {
+          "kind": "bplus",
+          "actors": 600,
+          "exit_code": 1,
+          "seconds": 53.849,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-1.64.1",
+          "run": "run-2-600",
+          "browser_version": "27.2",
+          "failure": [
+            "Error: Presenter browser page crashed: reconnected evaluator"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": false
+          },
+          "report_sha256": "1f6321057cfc6e8960ca54311ec997c0ac2d04a0406e409fef4fa009c1d5ea85",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.7277.gdb.log",
+              "sha256": "2b20b41d946506654f7c712cbddd17a59cb25095b88916c1beb89989049d85af",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007fba5eb5b08e in ?? () from /home/runner/.cache/ms-playwright/webkit-2370/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ]
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 62.522,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-1.64.1",
+          "run": "run-3-1000",
+          "browser_version": "27.2",
+          "failure": [
+            "Error: Presenter browser page crashed: replacement saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "b70bde3e13101fd9caab0c75467c8a1a6ee011b3975e3ad1d96c13c7d4289114",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.7534.gdb.log",
+              "sha256": "05c67e8a91ca9e31a457a130b5efb4b6b4b5b9df6ab94fb7518479ecb6ac1f92",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f4f8d75b08e in ?? () from /home/runner/.cache/ms-playwright/webkit-2370/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ]
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 51.995,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-1.62.1",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "455c2d78ca75d4f990394110161364543f200c0748356e01190aaa31096ec124",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5448.gdb.log",
+              "sha256": "e80d561fd53bbb6c1451d12f75043ac470262174ed9194df878f6e72c6600026",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007fa449c4351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 3000,
+            "p50_ms": 1064.66,
+            "p95_ms": 2226.33,
+            "p99_ms": 2467.87,
+            "max_ms": 2628.34
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 600,
+          "exit_code": 1,
+          "seconds": 29.016,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-1.62.1",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "5301641f2051f98d936aae594ccb6662590c968f10ef1e0e23c114b8a7de0d44",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.6096.gdb.log",
+              "sha256": "103cae054abc9275af8801cfe4247357f78f8e92e6d0c59f83ba0671a2766a81",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f3f8bc4351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 1800,
+            "p50_ms": 637.22,
+            "p95_ms": 1219.34,
+            "p99_ms": 1365.39,
+            "max_ms": 1480.24
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 63.85,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-1.62.1",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "078a3bb894a85012e48145691a4f542b95c714cdfb52ec01265c545f18c60dcc",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 996.84,
+            "p95_ms": 2228.54,
+            "p99_ms": 2461.03,
+            "max_ms": 2601.92
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 40.397,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-1.64.1",
+          "run": "run-1-1000",
+          "browser_version": "27.2",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "b6a8ac8c9e7a8e6d9513106495a9f5579c70359284043194dc9b33c17cd52d19",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5427.gdb.log",
+              "sha256": "86eee0a1e11175f8d51ede452ca3618afb5a65a7f66e47df74ecd73f70e9b70c",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f81f335b08e in ?? () from /home/runner/.cache/ms-playwright/webkit-2370/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 3000,
+            "p50_ms": 1079.04,
+            "p95_ms": 2345.39,
+            "p99_ms": 2777.92,
+            "max_ms": 2959.93
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 600,
+          "exit_code": 1,
+          "seconds": 38.013,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-1.64.1",
+          "run": "run-2-600",
+          "browser_version": "27.2",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "9cce87a05462b531c227add42303bfcc40494740f3bf021d78c2567504fbea1b",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5601.gdb.log",
+              "sha256": "b19d96cc25951cc0169b353d3c8c827bdaf6092bd42d034895d482e3027fb9ca",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f028af5b08e in ?? () from /home/runner/.cache/ms-playwright/webkit-2370/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 1800,
+            "p50_ms": 660.91,
+            "p95_ms": 1261.16,
+            "p99_ms": 1414.02,
+            "max_ms": 1455
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 69.551,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-1.64.1",
+          "run": "run-3-1000",
+          "browser_version": "27.2",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "30fd263fc128f54249abb52e1c6c80c9108cfc23e752e6d609b17f4299bc36c0",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 1041.2,
+            "p95_ms": 2437.64,
+            "p99_ms": 2851.99,
+            "max_ms": 3020.49
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact": "webkit-native-bplus-1.62.1",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "ed9e828adf46ca416f948f0582e0e8bb6b050499fadc3a5168b8c49cf751b5cc  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-native-bplus-1.64.1",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.64.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2370",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251"
+              },
+              "browserVersion": "27.2",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "ed9e828adf46ca416f948f0582e0e8bb6b050499fadc3a5168b8c49cf751b5cc  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-native-transaction-1.62.1",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "3180d62bf2f1d0467a9ab5adb31444a331ef2e5431f562433667f576ce718c04  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-native-transaction-1.64.1",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.64.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2370",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251"
+              },
+              "browserVersion": "27.2",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "3180d62bf2f1d0467a9ab5adb31444a331ef2e5431f562433667f576ce718c04  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42465856190",
+      "collection_revision": "f2f1606f350bff5b0fcf9df2024608d2dd41f6f7",
+      "cases": [
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 56.408,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-observe",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter browser page crashed: replacement saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "cea2ce18fcf07c07a10a1e43dd245b791e7eafb5c1c2fda9964adb2cd30c7216",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5475.gdb.log",
+              "sha256": "8330119eb7242ac40365f6208cf729efe1f22282ace07c3430db856e0e47d57e",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007fa8adc4351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 302,
+            "/static/stage/plugin-contracts-worker.mjs:200": 348,
+            "/static/stage/plugin-evaluator-worker.js:304": 301,
+            "/static/stage/plugin-contracts-worker.mjs:304": 493
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 600,
+          "exit_code": 1,
+          "seconds": 23.246,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-observe",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter browser page crashed: initial saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "4b4ce9bd0e347443a0f75056e92b8e2284a4eb3f619811dc02f18a2134070423",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.6841.gdb.log",
+              "sha256": "dfb65de11abbf9850025d168edd7d68994890ec9b4a96452d367ad2c50ebfa41",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007fcbce04351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 50,
+            "/static/stage/plugin-contracts-worker.mjs:200": 58,
+            "/static/stage/plugin-evaluator-worker.js:304": 49,
+            "/static/stage/plugin-contracts-worker.mjs:304": 88
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 32.969,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-observe",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter browser page crashed: initial saved"
+          ],
+          "gates": {
+            "correctness_pass": false,
+            "normal_budget_pass": false,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "188849110778dcbae8e76b341522a48e266d2e4684e5c6076dbb970b4b90f013",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.7156.gdb.log",
+              "sha256": "3c25e929c1bf3595289fb47bc19600e292a2ca28f9782cd9118c979ee27da062",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007f226584351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 148,
+            "/static/stage/plugin-contracts-worker.mjs:200": 171,
+            "/static/stage/plugin-evaluator-worker.js:304": 147,
+            "/static/stage/plugin-contracts-worker.mjs:304": 250
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 88.305,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-worker-200",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "f402cbd7a8aabf8a82e1a90aba614e67903a47d72735fe4c79b4b8d49e2cc3e4",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 1545,
+            "/static/stage/plugin-contracts-worker.mjs:200": 1543
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 600,
+          "exit_code": 0,
+          "seconds": 53.975,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-worker-200",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "f69003293259ba063d9e24cb39d3027732d4e2691d8d979292f61aaf40abf1a7",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 944,
+            "/static/stage/plugin-contracts-worker.mjs:200": 942
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 77.444,
+          "timed_out": false,
+          "artifact": "webkit-native-bplus-worker-200",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "c966ca6f113501b40002e072f07afecc7760971fe8878c8d4d2ac32bafe20792",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 1541,
+            "/static/stage/plugin-contracts-worker.mjs:200": 1545
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 44.657,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-observe",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "cb3982ed1182a3c9d55c97597e6eb8ebb1bf7d4bc09f5b4b92a2bcf98a867c14",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5466.gdb.log",
+              "sha256": "a820f181b7eaee41318b4993cf8331895f426b65acdb38365f91f88ee705663b",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007feb5d64351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 3000,
+            "p50_ms": 1114.73,
+            "p95_ms": 2373.93,
+            "p99_ms": 3098.91,
+            "max_ms": 3249.38
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 69,
+            "/static/stage/plugin-contracts-worker.mjs:200": 83,
+            "/static/stage/plugin-evaluator-worker.js:304": 68,
+            "/static/stage/plugin-contracts-worker.mjs:304": 120
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 600,
+          "exit_code": 1,
+          "seconds": 37.977,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-observe",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "11c56d7feb64715ba84db611fcd5675d9ba4417ce5756721ca67eb0adc8b5475",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.5923.gdb.log",
+              "sha256": "944af3e7eb8528d9a7dbb1b53292218068b401d78ac4c3ff27fbbb577a5412a9",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007feac764351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 1800,
+            "p50_ms": 661.48,
+            "p95_ms": 1273.94,
+            "p99_ms": 1441.02,
+            "max_ms": 1482.33
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 118,
+            "/static/stage/plugin-contracts-worker.mjs:200": 132,
+            "/static/stage/plugin-contracts-worker.mjs:304": 199,
+            "/static/stage/plugin-evaluator-worker.js:304": 117
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 1,
+          "seconds": 48.605,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-observe",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [
+            "Error: Presenter crashed: repair checked"
+          ],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": false,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": false
+          },
+          "report_sha256": "808d71a1dd48e7603e451e5c28139e195e4ce4688a92c87587444d8f819fbd18",
+          "backtraces": [
+            {
+              "file": "core.WPEWebProcess.6516.gdb.log",
+              "sha256": "aacdc0912665e99b570f279ad799fde08da0b20d08c16356ebe2f92850ab9e85",
+              "signal": "Program terminated with signal SIGSEGV, Segmentation fault.",
+              "top_frame": "#0  0x00007efdcb64351e in ?? () from /home/runner/.cache/ms-playwright/webkit-2336/minibrowser-wpe/lib/libWPEWebKit-2.0.so.1",
+              "null_rdi": true
+            }
+          ],
+          "acknowledgement": {
+            "n": 3000,
+            "p50_ms": 1121.27,
+            "p95_ms": 2389.22,
+            "p99_ms": 2669.39,
+            "max_ms": 2831.79
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 147,
+            "/static/stage/plugin-contracts-worker.mjs:200": 169,
+            "/static/stage/plugin-evaluator-worker.js:304": 146,
+            "/static/stage/plugin-contracts-worker.mjs:304": 250
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 65.343,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-worker-200",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "3394e280b5c16713e4aac9c4bbbbc4c58a90aad559553c06d632d2196c8b807c",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 815.66,
+            "p95_ms": 1786.74,
+            "p99_ms": 2820.7,
+            "max_ms": 3223
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 640,
+            "/static/stage/plugin-contracts-worker.mjs:200": 644
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 600,
+          "exit_code": 0,
+          "seconds": 41.503,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-worker-200",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "1db947586b75ea3746c2bb87e865caef5486428faed79d9f8b2608c0480066f3",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 1920,
+            "p50_ms": 461.32,
+            "p95_ms": 1180.87,
+            "p99_ms": 1309.37,
+            "max_ms": 1344.22
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 402,
+            "/static/stage/plugin-contracts-worker.mjs:200": 404
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 60.74,
+          "timed_out": false,
+          "artifact": "webkit-native-transaction-worker-200",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "05bb3406a02423a46f86b2cdf8778e7d2a257c189b9bb4f32aaeda10bc10022f",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 984.8,
+            "p95_ms": 2109.46,
+            "p99_ms": 2392.8,
+            "max_ms": 2682.61
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 642,
+            "/static/stage/plugin-contracts-worker.mjs:200": 640
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact": "webkit-native-bplus-observe",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "ed9e828adf46ca416f948f0582e0e8bb6b050499fadc3a5168b8c49cf751b5cc  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-native-bplus-worker-200",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "ed9e828adf46ca416f948f0582e0e8bb6b050499fadc3a5168b8c49cf751b5cc  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-native-transaction-observe",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "3180d62bf2f1d0467a9ab5adb31444a331ef2e5431f562433667f576ce718c04  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-native-transaction-worker-200",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "3180d62bf2f1d0467a9ab5adb31444a331ef2e5431f562433667f576ce718c04  handoff/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/stefanjdecker/texstage-plugins/actions/runs/42466498513",
+      "collection_revision": "3528cc7fc3deb8dc3b34cddb7db53d47eb038c7b",
+      "cases": [
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 88.588,
+          "timed_out": false,
+          "artifact": "webkit-fixed-bplus-chromium",
+          "run": "run-1-1000",
+          "browser_version": "151.0.7922.34",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "f6374d76796d4b0ffec06fa530fed499bb192f7d7b0f6eb5b0e2082d11435ae0",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 3005,
+            "/static/stage/plugin-contracts-worker.mjs:200": 3001
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 110.13,
+          "timed_out": false,
+          "artifact": "webkit-fixed-bplus-firefox",
+          "run": "run-1-1000",
+          "browser_version": "153.0",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "faa5f76b78e948aabcbdb06165667870193500f17ba7f3f223640bfbf38de9fc",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 3001,
+            "/static/stage/plugin-contracts-worker.mjs:200": 3001
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 81.595,
+          "timed_out": false,
+          "artifact": "webkit-fixed-bplus-webkit",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "6e05e833ca2be09abb06796a22ded397865a5611ae33bad0e2f83208a1cf58fe",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 771,
+            "/static/stage/plugin-contracts-worker.mjs:200": 897
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 600,
+          "exit_code": 0,
+          "seconds": 53.45,
+          "timed_out": false,
+          "artifact": "webkit-fixed-bplus-webkit",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "08865847a98bf3c5493175ea4264a830645e8994a6268ed315b8107ba7ccf36f",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 475,
+            "/static/stage/plugin-contracts-worker.mjs:200": 565
+          }
+        },
+        {
+          "kind": "bplus",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 79.976,
+          "timed_out": false,
+          "artifact": "webkit-fixed-bplus-webkit",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "correctness_pass": true,
+            "normal_budget_pass": true,
+            "recovery_budget_pass": true
+          },
+          "report_sha256": "15c15b2acdcb42d8fef48f51f01e77dc28c9bb9dc04ede397fa8857b849a2878",
+          "backtraces": [],
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 774,
+            "/static/stage/plugin-contracts-worker.mjs:200": 911
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 56.478,
+          "timed_out": false,
+          "artifact": "webkit-fixed-transaction-chromium",
+          "run": "run-1-1000",
+          "browser_version": "151.0.7922.34",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "4f2c1d061b487ca79de63bb5e5ec32c3291f52dd8ae0c47a047940b0541dd8e5",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 858.14,
+            "p95_ms": 1848.45,
+            "p99_ms": 2050.11,
+            "max_ms": 2109.23
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 1204,
+            "/static/stage/plugin-contracts-worker.mjs:200": 1200
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 60.273,
+          "timed_out": false,
+          "artifact": "webkit-fixed-transaction-firefox",
+          "run": "run-1-1000",
+          "browser_version": "153.0",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "5945765ec36b7f2b5f83e45098997e48dc93388dedcd6bf82d2ebb2d048303bc",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 763.15,
+            "p95_ms": 1579.85,
+            "p99_ms": 1800.5,
+            "max_ms": 1855.2
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 1200,
+            "/static/stage/plugin-contracts-worker.mjs:200": 1200
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 56.598,
+          "timed_out": false,
+          "artifact": "webkit-fixed-transaction-webkit",
+          "run": "run-1-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "c8e01d7ce9783bcc4cd9f0ea70eb5635a1649d7d63abce41acf6421ab5523506",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 819.44,
+            "p95_ms": 1919.36,
+            "p99_ms": 2167.96,
+            "max_ms": 2267.2
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 321,
+            "/static/stage/plugin-contracts-worker.mjs:200": 370
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 600,
+          "exit_code": 0,
+          "seconds": 45.105,
+          "timed_out": false,
+          "artifact": "webkit-fixed-transaction-webkit",
+          "run": "run-2-600",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "9e127e38b293b2ee81fae03f77321884af9863e516dd4a5f0004f0c35e008b36",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 1920,
+            "p50_ms": 464.99,
+            "p95_ms": 985.57,
+            "p99_ms": 1099.43,
+            "max_ms": 1131.97
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 201,
+            "/static/stage/plugin-contracts-worker.mjs:200": 221
+          }
+        },
+        {
+          "kind": "transaction",
+          "actors": 1000,
+          "exit_code": 0,
+          "seconds": 57.156,
+          "timed_out": false,
+          "artifact": "webkit-fixed-transaction-webkit",
+          "run": "run-3-1000",
+          "browser_version": "26.5",
+          "failure": [],
+          "gates": {
+            "ackP95": true,
+            "ackMaximum": true,
+            "repairDrain": true,
+            "controlsP95": true,
+            "controlsMaximum": true,
+            "correctness": true
+          },
+          "report_sha256": "a7257c4fc16ddbf7eda8c3e089cb008925ed5c401365cb44bc72af50379a2548",
+          "backtraces": [],
+          "acknowledgement": {
+            "n": 3200,
+            "p50_ms": 956.52,
+            "p95_ms": 2257.75,
+            "p99_ms": 2443.1,
+            "max_ms": 2516.24
+          },
+          "bootstrap_http_status_counts": {
+            "/static/stage/plugin-evaluator-worker.js:200": 321,
+            "/static/stage/plugin-contracts-worker.mjs:200": 355
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact": "webkit-fixed-bplus-chromium",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "chromium",
+              "revision": "1234",
+              "installByDefault": true,
+              "browserVersion": "151.0.7922.34",
+              "title": "Chrome for Testing"
+            }
+          },
+          "wheel_sha256": [
+            "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8  candidate/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-firefox",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "firefox",
+              "revision": "1538",
+              "installByDefault": true,
+              "browserVersion": "153.0",
+              "title": "Firefox"
+            }
+          },
+          "wheel_sha256": [
+            "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8  candidate/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-webkit",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8  candidate/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "e9275ce8ecf8cfeb2f9cb6d833c6ba81414d11a5acf2cffdacf67ac210e207ca  handoff/plugins/texstage_bplus_lab-0.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-chromium",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "chromium",
+              "revision": "1234",
+              "installByDefault": true,
+              "browserVersion": "151.0.7922.34",
+              "title": "Chrome for Testing"
+            }
+          },
+          "wheel_sha256": [
+            "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8  candidate/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-firefox",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "firefox",
+              "revision": "1538",
+              "installByDefault": true,
+              "browserVersion": "153.0",
+              "title": "Firefox"
+            }
+          },
+          "wheel_sha256": [
+            "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8  candidate/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-webkit",
+          "browser": {
+            "node": "v24.22.2",
+            "playwright": "1.62.1",
+            "browser": {
+              "name": "webkit",
+              "revision": "2336",
+              "installByDefault": true,
+              "revisionOverrides": {
+                "mac14": "2251",
+                "mac14-arm64": "2251",
+                "ubuntu20.04-x64": "2092",
+                "ubuntu20.04-arm64": "2092"
+              },
+              "browserVersion": "26.5",
+              "title": "WebKit"
+            }
+          },
+          "wheel_sha256": [
+            "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8  candidate/host/texstage-0.2.1.dev7-py3-none-any.whl",
+            "177d31f15e5acc90ef068006c05bfa4a182a7051c4085cb832811b27eabfc05e  handoff/plugins/texstage_transaction_activity-0.1.0-py3-none-any.whl",
+            "e0dfd113b1cad01377f1f290d932fd40c42d13bad4b7345edc51668e564275f6  handoff/plugins/texstage_transaction_engine-0.1.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "worker_security": [
+        {
+          "artifact": "webkit-fixed-bplus-chromium",
+          "browser": "chromium",
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2012.199999999997,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        {
+          "artifact": "webkit-fixed-bplus-firefox",
+          "browser": "firefox",
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2050,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        {
+          "artifact": "webkit-fixed-bplus-webkit",
+          "browser": "webkit",
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2010,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        {
+          "artifact": "webkit-fixed-transaction-chromium",
+          "browser": "chromium",
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2011.199999999997,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        {
+          "artifact": "webkit-fixed-transaction-firefox",
+          "browser": "firefox",
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/events",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/child.js"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2104,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        },
+        {
+          "artifact": "webkit-fixed-transaction-webkit",
+          "browser": "webkit",
+          "passed": true,
+          "checks": {
+            "fetch_same": "blocked",
+            "fetch_cross": "blocked",
+            "xhr": "blocked",
+            "websocket": "blocked",
+            "eventsource": "blocked",
+            "child_worker": "blocked",
+            "blob_worker": "blocked",
+            "external_module": "blocked",
+            "eval": "blocked",
+            "function_constructor": "blocked"
+          },
+          "forbidden_requests": [],
+          "control": {
+            "fetch_same": "allowed",
+            "fetch_cross": "allowed",
+            "xhr": "allowed",
+            "websocket": "allowed",
+            "eventsource": "allowed",
+            "child_worker": "allowed",
+            "blob_worker": "allowed",
+            "external_module": "allowed",
+            "eval": "allowed",
+            "function_constructor": "allowed"
+          },
+          "control_requests": [
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/xhr",
+            "/__worker_probe__/fetch",
+            "/__worker_probe__/child.js",
+            "/__worker_probe__/socket",
+            "/__worker_probe__/module.mjs",
+            "/__worker_probe__/events"
+          ],
+          "invalid_result_status": "error",
+          "loop_status": "timeout",
+          "loop_elapsed_ms": 2007,
+          "recovery_status": "ok",
+          "remaining_workers": 0
+        }
+      ],
+      "ui": [
+        {
+          "artifact": "webkit-fixed-bplus-chromium",
+          "language": "de",
+          "sha256": "ce17cc189ad895ddc94edf077a7cc79b809c3f9b8a83286525eeaab28f0bce6b",
+          "errors": [],
+          "checks": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-chromium",
+          "language": "en",
+          "sha256": "032452f428377264091b5eaa9a0b66d41bc8b5956c61b7e7ea3e3931d2a449aa",
+          "errors": [],
+          "checks": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-firefox",
+          "language": "de",
+          "sha256": "2391f16a566da86c731e07212fb2b582f8dc95b5c5188e9e0c95dea9c137fd1f",
+          "errors": [],
+          "checks": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-firefox",
+          "language": "en",
+          "sha256": "30bc470950951e1451cfb19ca11298145dd3d312eabb53df6a97ff33b3b30b2b",
+          "errors": [],
+          "checks": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-webkit",
+          "language": "de",
+          "sha256": "6a0d0c57a59dfc23cab7d325e81e707bc19742556c834e13c9c6b8df6dc2020e",
+          "errors": [],
+          "checks": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-bplus-webkit",
+          "language": "en",
+          "sha256": "9e05e9325cf2568727b103b90f37697b59dc4910271a82d7b90c819f2ec553da",
+          "errors": [],
+          "checks": [
+            "lookup",
+            "range",
+            "insert",
+            "delete",
+            "cascade",
+            "shrink"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-chromium",
+          "language": "de",
+          "sha256": "f60e5aac576c56048f64067c5fdbf89316a6712ec166db402626898b80b2bc76",
+          "errors": [],
+          "checks": [
+            "six lessons",
+            "all phases",
+            "independent evaluator",
+            "peer focus",
+            "two-device keep",
+            "pause/resume",
+            "anonymous sharing",
+            "epoch reset",
+            "320px geometry",
+            "native labels",
+            "synthetic screenshots"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-chromium",
+          "language": "en",
+          "sha256": "6b11b04feea4b86ac66340003559bbc7b29e7845ffe0da131ab063cae3542bb7",
+          "errors": [],
+          "checks": [
+            "six lessons",
+            "all phases",
+            "independent evaluator",
+            "peer focus",
+            "two-device keep",
+            "pause/resume",
+            "anonymous sharing",
+            "epoch reset",
+            "320px geometry",
+            "native labels",
+            "synthetic screenshots"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-firefox",
+          "language": "de",
+          "sha256": "60fa7abfb7216a67ee6229a52b24be892d6a67f07889f5356e3933f883c2b7d5",
+          "errors": [],
+          "checks": [
+            "six lessons",
+            "all phases",
+            "independent evaluator",
+            "peer focus",
+            "two-device keep",
+            "pause/resume",
+            "anonymous sharing",
+            "epoch reset",
+            "320px geometry",
+            "native labels",
+            "synthetic screenshots"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-firefox",
+          "language": "en",
+          "sha256": "dc00cf46d510431a6694c5c20081944914e7495827f048a7b717ea6220760313",
+          "errors": [],
+          "checks": [
+            "six lessons",
+            "all phases",
+            "independent evaluator",
+            "peer focus",
+            "two-device keep",
+            "pause/resume",
+            "anonymous sharing",
+            "epoch reset",
+            "320px geometry",
+            "native labels",
+            "synthetic screenshots"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-webkit",
+          "language": "de",
+          "sha256": "55859afe58095ec7aaf1b2bab4c49d42f91500e370ff0281be9d07d509ff9c54",
+          "errors": [],
+          "checks": [
+            "six lessons",
+            "all phases",
+            "independent evaluator",
+            "peer focus",
+            "two-device keep",
+            "pause/resume",
+            "anonymous sharing",
+            "epoch reset",
+            "320px geometry",
+            "native labels",
+            "synthetic screenshots"
+          ]
+        },
+        {
+          "artifact": "webkit-fixed-transaction-webkit",
+          "language": "en",
+          "sha256": "64b86780617170d12dc9516c0799342eff66ebf84e9bb73bf1d0a02a457e5e7e",
+          "errors": [],
+          "checks": [
+            "six lessons",
+            "all phases",
+            "independent evaluator",
+            "peer focus",
+            "two-device keep",
+            "pause/resume",
+            "anonymous sharing",
+            "epoch reset",
+            "320px geometry",
+            "native labels",
+            "synthetic screenshots"
+          ]
+        }
+      ]
+    }
+  ],
+  "final_host_wheel_sha256": "279bd3ef70ab636973c8d6afac4b3ac1d8cf6a03ed51b08d7a98c9043d8567a8"
+}
