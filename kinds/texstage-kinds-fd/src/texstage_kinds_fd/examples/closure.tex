@@ -1,0 +1,16 @@
+% SPDX-License-Identifier: Apache-2.0
+\documentclass[aspectratio=169]{beamer}
+\usepackage{texactivity}
+\begin{document}
+\begin{frame}[fragile]{What does a booking determine?}
+  \begin{activity}[id=booking,kind=fd-closure,attributes={Booking,Room,Floor,Host},
+       start={Booking},dependencies={Room -> Floor,Booking -> Room},
+       feedback=status,projector=count,points=standard,gap=0]
+    \prompt{A relation has the attributes Booking, Room, Floor and Host. Its
+      functional dependencies are $\mathrm{Room}\to\mathrm{Floor}$ and
+      $\mathrm{Booking}\to\mathrm{Room}$. What is the closure of
+      $\{\mathrm{Booking}\}$? Enter attribute names separated by commas.}
+    \reveal<2>
+  \end{activity}
+\end{frame}
+\end{document}

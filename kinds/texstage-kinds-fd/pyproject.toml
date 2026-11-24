@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: Apache-2.0
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "texstage-kinds-fd"
+version = "0.1.0"
+description = "Functional dependency activities for TeXStage"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+classifiers = ["Private :: Do Not Upload"]
+dependencies = ["texstage>=1.0.1.dev2"]
+
+[project.entry-points."texstage.kinds"]
+fd-closure = "texstage_kinds_fd:AttributeClosure"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+texstage_kinds_fd = ["tests/*.json", "texts/*.js", "examples/*.tex"]

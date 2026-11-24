@@ -1,0 +1,6 @@
+texstage-kinds-fd
+Copyright 2026 Stefan Decker
+
+The attribute-closure calculation adapts the set-based fixed point from
+texstage-plugins, plugins/fd-lab/texstage_fd_lab/model.py at commit 8487e9d.
+Apache License 2.0 covers both the original work and this package.

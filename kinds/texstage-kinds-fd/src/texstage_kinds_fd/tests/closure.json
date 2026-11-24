@@ -1,0 +1,504 @@
+{
+  "kind": "fd-closure",
+  "settings": {
+    "chain": {
+      "item": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      "keys": {
+        "reference": [
+          "A,B,C,D"
+        ]
+      }
+    }
+  },
+  "cases": [
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "{D, C,B,A}"
+      },
+      "check": {
+        "status": "ok",
+        "key": "A,B,C,D"
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "A D C B B"
+      },
+      "check": {
+        "status": "ok",
+        "key": "A,B,C,D"
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "C,A"
+      },
+      "check": {
+        "status": "ok",
+        "key": "A,C"
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "{} "
+      },
+      "check": {
+        "status": "ok",
+        "key": "{}"
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "∅"
+      },
+      "check": {
+        "status": "ok",
+        "key": "{}"
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "E"
+      },
+      "check": {
+        "status": "ok",
+        "key": "E"
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "Z"
+      },
+      "check": {
+        "status": "invalid",
+        "message": {
+          "code": "unknownAttribute",
+          "args": {
+            "name": "Z"
+          }
+        }
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "a"
+      },
+      "check": {
+        "status": "invalid",
+        "message": {
+          "code": "unknownAttribute",
+          "args": {
+            "name": "a"
+          }
+        }
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "A,,B"
+      },
+      "check": {
+        "status": "invalid",
+        "message": {
+          "code": "setSyntax",
+          "args": {}
+        }
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "{A,B"
+      },
+      "check": {
+        "status": "invalid",
+        "message": {
+          "code": "setSyntax",
+          "args": {}
+        }
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "B,"
+      },
+      "check": {
+        "status": "invalid",
+        "message": {
+          "code": "setSyntax",
+          "args": {}
+        }
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "A->B"
+      },
+      "check": {
+        "status": "invalid",
+        "message": {
+          "code": "setSyntax",
+          "args": {}
+        }
+      }
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "   "
+      },
+      "unfit": "text"
+    },
+    {
+      "setting": "chain",
+      "entry": {
+        "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "unfit": "too-long"
+    }
+  ],
+  "builds": [
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "A"
+        ],
+        "dependencies": [
+          "B C -> D",
+          "D -> A",
+          "A -> B C",
+          "E -> E"
+        ]
+      },
+      "bodies": {
+        "references": [
+          "{D C, A B}"
+        ]
+      },
+      "built": {
+        "item": {
+          "attributes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        "keys": {
+          "reference": [
+            "A,B,C,D"
+          ]
+        }
+      }
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "A"
+        ],
+        "dependencies": [
+          "E -> E",
+          "A -> B C",
+          "D -> A",
+          "B C -> D"
+        ]
+      },
+      "built": {
+        "item": {
+          "attributes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        "keys": {
+          "reference": [
+            "A,B,C,D"
+          ]
+        }
+      }
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "B"
+        ],
+        "dependencies": [
+          "B C -> D",
+          "D -> A",
+          "A -> B C",
+          "E -> E"
+        ]
+      },
+      "built": {
+        "item": {
+          "attributes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        "keys": {
+          "reference": [
+            "B"
+          ]
+        }
+      }
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      "built": {
+        "item": {
+          "attributes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        "keys": {
+          "reference": [
+            "{}"
+          ]
+        }
+      }
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "dependencies": [
+          "A -> C",
+          "-> A"
+        ]
+      },
+      "built": {
+        "item": {
+          "attributes": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        "keys": {
+          "reference": [
+            "A,C"
+          ]
+        }
+      }
+    },
+    {
+      "options": {
+        "attributes": [
+          "Room",
+          "Booking"
+        ],
+        "start": [
+          "Booking",
+          "Room"
+        ]
+      },
+      "built": {
+        "item": {
+          "attributes": [
+            "Room",
+            "Booking"
+          ]
+        },
+        "keys": {
+          "reference": [
+            "Room,Booking"
+          ]
+        }
+      }
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "A"
+        ]
+      },
+      "refused": "attributes= repeats a name"
+    },
+    {
+      "options": {
+        "attributes": [
+          "2A"
+        ]
+      },
+      "refused": "attributes= needs names beginning with a letter, using ASCII letters, digits or underscores"
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "Z"
+        ],
+        "dependencies": [
+          "B C -> D",
+          "D -> A",
+          "A -> B C",
+          "E -> E"
+        ]
+      },
+      "refused": "start= names an attribute outside the schema: Z"
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "A"
+        ],
+        "dependencies": [
+          "Z -> B"
+        ]
+      },
+      "refused": "dependencies= names an attribute outside the schema: Z"
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "A"
+        ],
+        "dependencies": [
+          "A -> Z"
+        ]
+      },
+      "refused": "dependencies= names an attribute outside the schema: Z"
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "A"
+        ],
+        "dependencies": [
+          "A ->"
+        ]
+      },
+      "refused": "dependencies= expects LHS -> RHS with at least one attribute on the right: A ->"
+    },
+    {
+      "options": {
+        "attributes": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "start": [
+          "A"
+        ],
+        "dependencies": [
+          "B C -> D",
+          "D -> A",
+          "A -> B C",
+          "E -> E"
+        ]
+      },
+      "bodies": {
+        "references": [
+          "A, B"
+        ]
+      },
+      "refused": "the supplied reference disagrees with the computed closure A,B,C,D"
+    },
+    {
+      "options": {
+        "attributes": [
+          "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+        ]
+      },
+      "refused": "the comma-separated attribute names must fit the phone's 100-character answer"
+    }
+  ]
+}
